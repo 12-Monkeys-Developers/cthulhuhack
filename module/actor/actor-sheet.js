@@ -50,9 +50,6 @@ export class CtHackActorSheet extends ActorSheet {
       this.actor.deleteOwnedItem(li.data("itemId"));
       li.slideUp(200, () => this.render(false));
     });
-
-    // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this));
   }
 
   /* -------------------------------------------- */
