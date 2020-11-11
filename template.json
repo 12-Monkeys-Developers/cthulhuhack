@@ -17,8 +17,29 @@
       "description": "",
       "biography": "",
       "attributes": {
-        "level": {
-          "value": 1
+        "flashlights": {
+          "value": 6,
+          "max": 6
+        },
+        "smokes": {
+          "value": 6,
+          "max": 6
+        },
+        "sanity": {
+          "value": 6,
+          "max": 6
+        },
+        "hitDice": {
+          "value": 6
+        },
+        "wealthDice": {
+          "value": 6
+        },
+        "armedDamage": {
+          "value": 6
+        },
+        "unarmedDamage": {
+          "value": 6
         }
       },
       "abilities": {

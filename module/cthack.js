@@ -44,4 +44,10 @@ Hooks.once('init', async function() {
   Handlebars.registerHelper('toLowerCase', function(str) {
     return str.toLowerCase();
   });
+
+  Handlebars.registerHelper('toAbbr', function(str) {
+    var outStr = 'CTHACK.Ability' + str.substring(0,1).toUpperCase() + str.substring(1) + 'Abbr';
+    return outStr;
+  });
+
 });
