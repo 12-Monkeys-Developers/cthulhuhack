@@ -1,8 +1,8 @@
 /**
- * A standardized helper function for managing Cthulhu "d20 rolls"
+ * A standardized helper function for managing Cthulhu Hack dice rolls
  *
- *
- * @param {Array} parts             The dice roll component parts, excluding the initial d20
+ * @param {String} diceType         The type of dice : d20, d12, d10, d8, d6, d4
+ * @param {Array} parts             The dice roll component parts, excluding the initial dice
  * @param {Object} data             Actor or item data against which to parse the roll
  * @param {Event|object} event      The triggering event which initiated the roll
  * @param {string} rollMode         A specific roll mode to apply as the default for the resulting roll
@@ -14,15 +14,16 @@
  * @param {Object} dialogOptions    Modal dialog options
  * @param {boolean} advantage       Apply advantage to the roll (unless otherwise specified)
  * @param {boolean} disadvantage    Apply disadvantage to the roll (unless otherwise specified)
+ * @param {boolean} resourceRoll    Specify if it's a resource roll
  * @param {number} targetValue      Assign a target value against which the result of this roll should be compared
  * @param {boolean} chatMessage     Automatically create a Chat Message for the result of this roll
  * @param {object} messageData      Additional data which is applied to the created Chat Message, if any
  *
  * @return {Promise}                A Promise which resolves once the roll workflow has completed
  */
-export async function d20Roll({parts=[], data={}, event={}, rollMode=null, template=null, title=null, speaker=null,
+export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rollMode=null, template=null, title=null, speaker=null,
     flavor=null, dialogOptions,
-    advantage=null, disadvantage=null, targetValue=null,
+    advantage=null, disadvantage=null, resourceRoll=false, targetValue=null,
     chatMessage=true, messageData={}}={}) {
   
    // Prepare Message Data
@@ -42,7 +43,7 @@ export async function d20Roll({parts=[], data={}, event={}, rollMode=null, templ
    // Define the inner roll function
    const _roll = (parts, adv) => {
   
-     // Determine the d20 roll and modifiers
+     // Determine the dice roll and modifiers
      let nd = 1;
      let mods = "";
   
@@ -59,8 +60,8 @@ export async function d20Roll({parts=[], data={}, event={}, rollMode=null, templ
        mods += "kl";
      }
   
-     // Prepend the d20 roll
-     let formula = `${nd}d20${mods}`;
+     // Prepend the dice roll
+     let formula = `${nd}${diceType}${mods}`;
      parts.unshift(formula);
   
      // Execute the roll
@@ -77,7 +78,7 @@ export async function d20Roll({parts=[], data={}, event={}, rollMode=null, templ
     }
   
    // Create the Roll instance
-   const roll = await _d20RollDialog({template, title, parts, data, rollMode: messageOptions.rollMode, dialogOptions, roll: _roll});
+   const roll = await _diceRollDialog({template, title, parts, data, rollMode: messageOptions.rollMode, dialogOptions, roll: _roll});
   
    // Create a Chat Message
    if ( roll && chatMessage ) roll.toMessage(messageData, messageOptions);
@@ -89,7 +90,7 @@ export async function d20Roll({parts=[], data={}, event={}, rollMode=null, templ
  * @return {Promise<Roll>}
  * @private
  */
-async function _d20RollDialog({template, title, parts, data, rollMode, dialogOptions, roll}={}) {
+async function _diceRollDialog({template, title, parts, data, rollMode, dialogOptions, roll}={}) {
 
     // Render modal dialog
     template = template || "systems/cthack/templates/chat/roll-dialog.html";

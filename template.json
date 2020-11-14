@@ -18,28 +18,28 @@
       "biography": "",
       "attributes": {
         "flashlights": {
-          "value": 6,
-          "max": 6
+          "value": "d6",
+          "max": "d6"
         },
         "smokes": {
-          "value": 6,
-          "max": 6
+          "value": "d6",
+          "max": "d6"
         },
         "sanity": {
-          "value": 6,
-          "max": 6
+          "value": "d6",
+          "max": "d6"
         },
         "hitDice": {
-          "value": 6
+          "value": "d6"
         },
         "wealthDice": {
-          "value": 6
+          "value": "d6"
         },
         "armedDamage": {
-          "value": 6
+          "value": "d6"
         },
         "unarmedDamage": {
-          "value": 6
+          "value": "d6"
         }
       },
       "abilities": {

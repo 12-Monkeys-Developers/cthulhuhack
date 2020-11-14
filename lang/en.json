@@ -41,6 +41,7 @@
     "CTHACK.Advantage": "Advantage",
     "CTHACK.Disadvantage": "Disadvantage",
     "CTHACK.Normal": "Normal",
+    "CTHACK.ResourceRollPromptTitle": "{resource} Roll",
 
     "CTHACK.None": "---"
 }

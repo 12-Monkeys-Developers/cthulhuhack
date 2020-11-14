@@ -37,8 +37,11 @@
     "CTHACK.Formula": "Formule",
     "CTHACK.RollMode": "Type de jet",
     "CTHACK.RollSituationalBonus": "Bonus de situation?",
-    "CTHACK.SavePromptTitle": "Jet de Sauvegarde",
+    "CTHACK.SavePromptTitle": "Jet de Sauvegarde {ability}",
     "CTHACK.Advantage": "Avantage",
     "CTHACK.Disadvantage": "Désavantage",
-    "CTHACK.Normal": "Normal"
+    "CTHACK.Normal": "Normal",
+    "CTHACK.ResourceRollPromptTitle": "Jet de {resource}",
+
+    "CTHACK.None": "---"
 }

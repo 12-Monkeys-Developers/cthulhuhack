@@ -9,7 +9,7 @@ export class CtHackActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["cthack", "sheet", "actor"],
       template: "systems/cthack/templates/actor/actor-sheet.hbs",
-      width: 720,
+      width: 820,
       height: 680,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
@@ -53,6 +53,9 @@ export class CtHackActorSheet extends ActorSheet {
 
     // Ability saving throws
     html.find('.ability-name').click(this._onAbilitySave.bind(this));
+
+    // Resource roll
+    html.find('.resource-name').click(this._onResourceRoll.bind(this));
   }
 
   /* -------------------------------------------- */
@@ -104,7 +107,7 @@ export class CtHackActorSheet extends ActorSheet {
     }
   }
 
-    /**
+  /**
    * Handle clickable ability save.
    * @param {Event} event   The originating click event
    * @private
@@ -115,4 +118,14 @@ export class CtHackActorSheet extends ActorSheet {
     this.actor.rollAbilitySave(ability, {event: event});
   }
 
+  /**
+   * Handle clickable resource roll
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onResourceRoll(event) {
+    event.preventDefault();
+    let resource = event.currentTarget.dataset.resource;
+    this.actor.rollResource(resource, {event: event});
+  }
 }

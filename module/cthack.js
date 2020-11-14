@@ -10,7 +10,8 @@ import { CtHackItemSheet } from "./item/item-sheet.js";
 
 Hooks.once('init', async function() {
 
-  console.log(`CTHACK | Initializing the Cthulhu Hack Game System\n${CTHACK.ASCII}`);
+  console.log(`CTHACK | Initializing the Cthulhu Hack Game System\n`);
+  console.log(CTHACK.ASCII);
 
   game.cthack = {
     CtHackActor,

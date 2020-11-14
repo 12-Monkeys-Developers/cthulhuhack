@@ -20,7 +20,7 @@ export class CtHackActor extends Actor {
     // Make separate methods for each Actor type (character, npc, etc.) to keep things organized.
   }
 
-    /**
+  /**
    * Roll an Ability Saving Throw
    * Prompt the user for input regarding Advantage/Disadvantage
    * @param {String} abilityId    The ability ID (e.g. "str")
@@ -37,6 +37,28 @@ export class CtHackActor extends Actor {
     const rollData = mergeObject(options, {
       title: game.i18n.format("CTHACK.SavePromptTitle", {ability: label}),   
       targetValue: abilityValue
+    });
+    rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
+    return d20Roll(rollData);
+  }
+
+   /**
+   * Roll a Resource dice
+   * @param {String} abilityId    The ability ID (e.g. "str")
+   * @param {Object} options      Options which configure how resource tests are rolled
+   * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
+   */
+  async rollResource(resourceId, options={}) {
+    console.log("ResourceId = " + resourceId);
+    const resource = CTHACK.resources[resourceId];
+    const label = game.i18n.localize(resource);
+    const resourceTemplate = CTHACK.resourcesTemplate[resourceId];
+    const resourceValue = this.data.data.attributes[resourceTemplate].value;
+
+    // Roll and return
+    const rollData = mergeObject(options, {
+      title: game.i18n.format("CTHACK.ResourceRollPromptTitle", {resource: label}),
+      resourceRoll: true
     });
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
     return d20Roll(rollData);

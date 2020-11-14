@@ -44,4 +44,16 @@ CTHACK.abilityDescription = {
   "cha": "CTHACK.AbilityChaDesc"
 };
 
+CTHACK.resources = {
+  "fla": "CTHACK.FlashLights",
+  "smo": "CTHACK.Smoke",
+  "san": "CTHACK.Sanity"
+};
+
+CTHACK.resourcesTemplate = {
+  "fla": "flashlights",
+  "smo": "smokes",
+  "san": "sanity"
+};
+
 export const DICE_VALUES = [4,6,8,10,12];
