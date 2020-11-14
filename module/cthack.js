@@ -1,10 +1,14 @@
 // Import Modules
+import { CTHACK } from "./config.js"
+
 import { CtHackActor } from "./actor/actor.js";
 import { CtHackActorSheet } from "./actor/actor-sheet.js";
 import { CtHackItem } from "./item/item.js";
 import { CtHackItemSheet } from "./item/item-sheet.js";
 
 Hooks.once('init', async function() {
+
+  console.log(`CTHACK | Initializing the Cthulhu Hack Game System\n${CTHACK.ASCII}`);
 
   game.cthack = {
     CtHackActor,

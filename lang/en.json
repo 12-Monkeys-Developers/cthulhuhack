@@ -24,5 +24,13 @@
     "CTHACK.UnarmedDamage": "Unarmed damage",
     "CTHACK.Description": "Description",
     "CTHACK.Biography": "Biography",
-    "CTHACK.Items": "Equipment"
+    "CTHACK.Items": "Equipment",
+
+    "CTHACK.Formula": "Formula",
+    "CTHACK.RollMode": "Roll Mode",
+    "CTHACK.RollSituationalBonus": "Situational Bonus?",
+    "CTHACK.SavePromptTitle": "{ability} Saving Throw",
+    "CTHACK.Advantage": "Advantage",
+    "CTHACK.Disadvantage": "Disadvantage",
+    "CTHACK.Normal": "Normal"
 }

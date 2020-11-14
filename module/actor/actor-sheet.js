@@ -9,8 +9,8 @@ export class CtHackActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["cthack", "sheet", "actor"],
       template: "systems/cthack/templates/actor/actor-sheet.html",
-      width: 600,
-      height: 600,
+      width: 720,
+      height: 680,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }
@@ -50,6 +50,9 @@ export class CtHackActorSheet extends ActorSheet {
       this.actor.deleteOwnedItem(li.data("itemId"));
       li.slideUp(200, () => this.render(false));
     });
+
+    // Ability saving throws
+    html.find('.ability-name').click(this._onAbilitySave.bind(this));
   }
 
   /* -------------------------------------------- */
@@ -99,6 +102,17 @@ export class CtHackActorSheet extends ActorSheet {
         flavor: label
       });
     }
+  }
+
+    /**
+   * Handle clickable ability save.
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onAbilitySave(event) {
+    event.preventDefault();
+    let ability = event.currentTarget.parentElement.dataset.ability;
+    this.actor.rollAbilitySave(ability, {event: event});
   }
 
 }

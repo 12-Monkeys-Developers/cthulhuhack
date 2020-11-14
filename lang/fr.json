@@ -24,5 +24,13 @@
     "CTHACK.UnarmedDamage": "Dégât(s) sans arme",
     "CTHACK.Description": "Description",
     "CTHACK.Biography": "Biographie",
-    "CTHACK.Items": "Equipement"
+    "CTHACK.Items": "Equipement",
+
+    "CTHACK.Formula": "Formule",
+    "CTHACK.RollMode": "Type de jet",
+    "CTHACK.RollSituationalBonus": "Bonus de situation?",
+    "CTHACK.SavePromptTitle": "Jet de Sauvegarde",
+    "CTHACK.Advantage": "Avantage",
+    "CTHACK.Disadvantage": "Désavantage",
+    "CTHACK.Normal": "Normal"
 }

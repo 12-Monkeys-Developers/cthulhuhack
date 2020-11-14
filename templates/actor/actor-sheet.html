@@ -19,9 +19,9 @@
               from 1 to 12 and will create that number of columns.  --}}
               <div class="abilities grid grid-3col">
                 {{#each data.abilities as |ability key|}}
-                  <div class="ability flexrow flex-group-center">
-                    <label for="data.abilities.{{key}}.value" class="resource-label">{{localize (toAbbr key)}}</label>
-                    <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+                  <div class="ability flexrow flex-group-center" data-ability="{{key}}">
+                    <label for="data.abilities.{{key}}.value" class="resource-label ability-name rollable">{{localize (toAbbr key)}}</label>
+                    <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number" class="ability-value"/>
                     <input type="checkbox" name="data.abilities.{{key}}.advantage" data-dtype="Boolean" {{checked ability.advantage}}/>
                   </div>
                 {{/each}}
