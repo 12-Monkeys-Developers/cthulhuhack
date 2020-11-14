@@ -1,5 +1,7 @@
 // Import Modules
-import { CTHACK } from "./config.js"
+import { CTHACK } from "./config.js";
+import {registerHandlebarsHelpers} from "./helpers.js";
+import {preloadHandlebarsTemplates} from "./templates.js";
 
 import { CtHackActor } from "./actor/actor.js";
 import { CtHackActorSheet } from "./actor/actor-sheet.js";
@@ -34,29 +36,10 @@ Hooks.once('init', async function() {
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("cthack", CtHackItemSheet, { makeDefault: true });
 
-  // If you need to add Handlebars helpers, here are a few useful examples:
-  Handlebars.registerHelper('concat', function() {
-    var outStr = '';
-    for (var arg in arguments) {
-      if (typeof arguments[arg] != 'object') {
-        outStr += arguments[arg];
-      }
-    }
-    return outStr;
-  });
+  // Preload Handlebars Templates
+  preloadHandlebarsTemplates();
 
-  Handlebars.registerHelper('toLowerCase', function(str) {
-    return str.toLowerCase();
-  });
-
-  Handlebars.registerHelper('toAbbr', function(str) {
-    var outStr = 'CTHACK.Ability' + str.substring(0,1).toUpperCase() + str.substring(1) + 'Abbr';
-    return outStr;
-  });
-
-  Handlebars.registerHelper('toDesc', function(str) {
-    var outStr = 'CTHACK.Ability' + str.substring(0,1).toUpperCase() + str.substring(1) + 'Desc';
-    return outStr;
-  });
+  // Register Handlebars Helpers
+  registerHandlebarsHelpers();
 
 });

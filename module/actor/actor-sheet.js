@@ -8,7 +8,7 @@ export class CtHackActorSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["cthack", "sheet", "actor"],
-      template: "systems/cthack/templates/actor/actor-sheet.html",
+      template: "systems/cthack/templates/actor/actor-sheet.hbs",
       width: 720,
       height: 680,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]

@@ -22,7 +22,7 @@ export class CtHackActor extends Actor {
 
     /**
    * Roll an Ability Saving Throw
-   * Prompt the user for input regarding Advantage/Disadvantage and any Situational Bonus
+   * Prompt the user for input regarding Advantage/Disadvantage
    * @param {String} abilityId    The ability ID (e.g. "str")
    * @param {Object} options      Options which configure how ability tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance

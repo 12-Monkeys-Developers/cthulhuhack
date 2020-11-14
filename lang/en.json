@@ -40,5 +40,7 @@
     "CTHACK.SavePromptTitle": "{ability} Saving Throw",
     "CTHACK.Advantage": "Advantage",
     "CTHACK.Disadvantage": "Disadvantage",
-    "CTHACK.Normal": "Normal"
+    "CTHACK.Normal": "Normal",
+
+    "CTHACK.None": "---"
 }

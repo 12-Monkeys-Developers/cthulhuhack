@@ -43,3 +43,5 @@ CTHACK.abilityDescription = {
   "wis": "CTHACK.AbilityWisDesc",
   "cha": "CTHACK.AbilityChaDesc"
 };
+
+export const DICE_VALUES = [4,6,8,10,12];
