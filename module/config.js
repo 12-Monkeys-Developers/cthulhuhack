@@ -34,3 +34,12 @@ CTHACK.abilityAbbreviations = {
   "wis": "CTHACK.AbilityWisAbbr",
   "cha": "CTHACK.AbilityChaAbbr"
 };
+
+CTHACK.abilityDescription = {
+  "str": "CTHACK.AbilityStrDesc",
+  "dex": "CTHACK.AbilityDexDesc",
+  "con": "CTHACK.AbilityConDesc",
+  "int": "CTHACK.AbilityIntDesc",
+  "wis": "CTHACK.AbilityWisDesc",
+  "cha": "CTHACK.AbilityChaDesc"
+};
