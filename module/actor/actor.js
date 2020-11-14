@@ -1,5 +1,5 @@
 import {CTHACK} from "../config.js";
-import {d20Roll} from "../dice.js";
+import {diceRoll} from "../dice.js";
 
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
@@ -39,7 +39,7 @@ export class CtHackActor extends Actor {
       targetValue: abilityValue
     });
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
-    return d20Roll(rollData);
+    return diceRoll(rollData);
   }
 
    /**
@@ -58,9 +58,10 @@ export class CtHackActor extends Actor {
     // Roll and return
     const rollData = mergeObject(options, {
       title: game.i18n.format("CTHACK.ResourceRollPromptTitle", {resource: label}),
-      resourceRoll: true
+      resourceRoll: true,
+      diceType: resourceValue
     });
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
-    return d20Roll(rollData);
+    return diceRoll(rollData);
   }
 }

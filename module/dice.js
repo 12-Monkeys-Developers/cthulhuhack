@@ -81,7 +81,25 @@ export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rol
    const roll = await _diceRollDialog({template, title, parts, data, rollMode: messageOptions.rollMode, dialogOptions, roll: _roll});
   
    // Create a Chat Message
-   if ( roll && chatMessage ) roll.toMessage(messageData, messageOptions);
+   if ( roll && chatMessage ) {
+     // Save roll
+     if (!resourceRoll) {
+      if (roll.total < targetValue){
+        messageData.flavor += ` (${game.i18n.localize("CTHACK.RollSuccess")})`;
+      }
+      else {
+        messageData.flavor += ` (${game.i18n.localize("CTHACK.RollFailure")})`;
+      }
+     }
+     // Resource roll
+     else if (resourceRoll){
+      if (roll.total == 1 || roll.total == 2){
+        messageData.flavor += ` (${game.i18n.localize("CTHACK.ResourceRollFailure")})`;
+      } 
+     }
+    roll.toMessage(messageData, messageOptions);
+   }
+
    return roll;
 }
 

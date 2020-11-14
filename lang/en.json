@@ -42,6 +42,9 @@
     "CTHACK.Disadvantage": "Disadvantage",
     "CTHACK.Normal": "Normal",
     "CTHACK.ResourceRollPromptTitle": "{resource} Roll",
+    "CTHACK.RollSuccess": "Success",
+    "CTHACK.RollFailure": "Failure",
+    "CTHACK.ResourceRollFailure": "Resource lost",
 
     "CTHACK.None": "---"
 }
