@@ -35,7 +35,7 @@ Hooks.once('init', async function() {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("cthack", CtHackActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("cthack", CtHackItemSheet, { makeDefault: true });
+  Items.registerSheet("cthack", CtHackItemSheet, { types: ["item", "archetype"], makeDefault: true });
 
   // Preload Handlebars Templates
   preloadHandlebarsTemplates();

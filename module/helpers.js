@@ -35,4 +35,8 @@ export const registerHandlebarsHelpers = function (){
     console.log(`{{value}} is not a valid dice value`);
   });
 
+  Handlebars.registerHelper('equals', function (val1, val2) {
+    return val1 === val2;
+  });
+
 }

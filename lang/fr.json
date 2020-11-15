@@ -46,5 +46,13 @@
     "CTHACK.RollFailure": "Echec",
     "CTHACK.ResourceRollFailure": "Perte de ressource",
 
+    "CTHACK.HitPointsStart": "Points de Vie de départ",
+    "CTHACK.WealthStart": "Richesse de départ",
+    "CTHACK.WealthStartSpecial": "Spécial",
+    "CTHACK.PrimarySave": "Sauvegarde primaire",
+    "CTHACK.SecondarySave1": "Autre sauvegarde",
+    "CTHACK.SecondarySave2": "Autre sauvegarde",
+
+    "CTHACK.Attributes": "Attributs",
     "CTHACK.None": "---"
 }

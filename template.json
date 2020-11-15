@@ -71,7 +71,7 @@
     }
   },
   "Item": {
-    "types": ["item"],
+    "types": ["item","archetype"],
     "templates": {
       "base": {
         "description": ""
@@ -81,6 +81,23 @@
       "templates": ["base"],
       "quantity": 1,
       "weight": 0
+    },
+    "archetype": {
+      "templates": ["base"],
+      "name": "",      
+      "flashlights": "d6",
+      "smokes": "d6",
+      "hitdice": "d6",
+      "hitpoints": "d6",
+      "wealthStart": "3",
+      "wealthDice": "d8",
+      "sanity": "d6",
+      "armeddamage": "d6",
+      "unarmeddamage": "d6",
+      "primarysave": "dex",
+      "secondarysave1": "con",
+      "secondarysave2": "for",
+      "capacities": []
     }
   }
 }
