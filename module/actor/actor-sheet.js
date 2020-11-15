@@ -21,9 +21,10 @@ export class CtHackActorSheet extends ActorSheet {
   getData() {
     const data = super.getData();
     data.dtypes = ["String", "Number", "Boolean"];
-    for (let attr of Object.values(data.data.attributes)) {
+    /*for (let attr of Object.values(data.data.attributes)) {
       attr.isCheckbox = attr.dtype === "Boolean";
     }
+    */
     return data;
   }
 
@@ -135,4 +136,69 @@ export class CtHackActorSheet extends ActorSheet {
       this.actor.sheet.render(true);
     }    
   }
+
+  /** @override */
+  _onDrop(event) {
+    event.preventDefault();
+    if (!this.options.editable) return false;
+    // Get dropped data
+    let data;
+    try {
+        data = JSON.parse(event.dataTransfer.getData('text/plain'));
+    } catch (err) {
+        return false;
+    }
+    if (!data) return false;
+
+    // Case 1 - Dropped Item
+    if (data.type === "Item") {
+        return this._onDropItem(event, data);
+    }
+    // Case 2 - Dropped Actor
+    /*if (data.type === "Actor") {
+        return this._onDropActor(event, data);
+    }*/
+  }
+
+  /**
+   * Handle dropping of an item reference or item data onto an Actor Sheet
+   * @param {DragEvent} event     The concluding DragEvent which contains drop data
+   * @param {Object} data         The data transfer extracted from the event
+   * @return {Object}             OwnedItem data to create
+   * @private
+   */
+  async _onDropItem(event, data) {
+    const item = await Item.fromDropData(data);
+    const itemData = duplicate(item.data);
+    switch (itemData.type) {
+        case "archetype"    :
+            return await this._onDropArchetypeItem(event, itemData);
+        default:
+            return;
+    }
+  }
+
+   /**
+   * Handle dropping of an archetype onto an Actor Sheet
+   * @param {DragEvent} event     The concluding DragEvent which contains drop data
+   * @param {Object} data         The data transfer extracted from the event
+   * @private
+   */
+  async _onDropArchetypeItem(event, itemData) {
+    event.preventDefault();
+    // Replace actor data
+    this.actor.update({
+      'data.archetype': itemData.name,
+      'data.attributes.flashlights': {"value": itemData.data.flashlights, "max": itemData.data.flashlights},
+      'data.attributes.smokes': {"value": itemData.data.smokes, "max": itemData.data.smokes}, 
+      'data.attributes.sanity': {"value": itemData.data.sanity, "max": itemData.data.sanity}, 
+      'data.attributes.hitDice': {"value": itemData.data.hitdice},
+      'data.attributes.hitPoints': {"value": itemData.data.hitdice},
+      'data.attributes.wealthDice': {"value": itemData.data.wealthDice},
+      'data.attributes.armedDamage': {"value": itemData.data.armeddamage},
+      'data.attributes.unarmedDamage': {"value": itemData.data.unarmeddamage},
+    });
+    this.actor.sheet.render(true);
+  }
+
 }
