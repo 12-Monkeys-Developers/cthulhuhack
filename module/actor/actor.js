@@ -72,13 +72,30 @@ export class CtHackActor extends Actor {
     return diceRoll(rollData);
   }
 
+   /**
+   * Decrease a resource dice
+   * @param {String} resourceId   The resource ID (e.g. "smo")
+   */  
   async decreaseResource(resourceId){
     console.log(`Decrease resource ${resourceId}`);
+    const actorData = this.data;
+    const actorResourceName = CTHACK.resourcesTemplate[resourceId];
+    const actorResource = actorData.data.attributes[actorResourceName];
+
     // old value is 0 or dx
-    let oldValue = this.data.data.attributes[CTHACK.resourcesTemplate[resourceId]].value;
+    const oldValue = actorResource.value;
     if (oldValue != "0"){
       let newValue = findLowerDice(oldValue);
-      this.data.data.attributes[CTHACK.resourcesTemplate[resourceId]].value = newValue;
+      actorResource.value = newValue;
+      if (resourceId === "fla"){
+        this.update({'data.attributes.flashlights': actorResource});
+      }
+      else if (resourceId === "smo"){
+        this.update({'data.attributes.smokes': actorResource});
+      }
+      else if (resourceId === "san"){
+        this.update({'data.attributes.sanity': actorResource});
+      }
     }
   }
 }

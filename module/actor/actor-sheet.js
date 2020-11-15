@@ -126,8 +126,10 @@ export class CtHackActorSheet extends ActorSheet {
   async _onResourceRoll(event) {
     event.preventDefault();
     let resource = event.currentTarget.dataset.resource;
+
     let rollResource = await this.actor.rollResource(resource, {event: event});
-    // console.log(rollResource)
+    
+    // Resource loss
     if (rollResource.results[0] === 1 || rollResource.results[0] === 2) {
       await this.actor.decreaseResource(resource);      
       this.actor.sheet.render(true);
