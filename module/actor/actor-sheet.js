@@ -130,7 +130,7 @@ export class CtHackActorSheet extends ActorSheet {
     let rollResource = await this.actor.rollResource(resource, {event: event});
     
     // Resource loss
-    if (rollResource.results[0] === 1 || rollResource.results[0] === 2) {
+    if (resource && (rollResource.results[0] === 1 || rollResource.results[0] === 2)) {
       await this.actor.decreaseResource(resource);      
       this.actor.sheet.render(true);
     }    

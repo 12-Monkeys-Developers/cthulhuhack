@@ -56,8 +56,8 @@ export class CtHackActor extends Actor {
     const resourceTemplate = CTHACK.resourcesTemplate[resourceId];
     const resourceValue = this.data.data.attributes[resourceTemplate].value;
 
-    // Resource at 0
-    if (resource === 0){
+    // Resource at "0"
+    if (resourceValue === "0"){
       return null;
     }
 
