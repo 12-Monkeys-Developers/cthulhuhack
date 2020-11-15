@@ -1,5 +1,6 @@
-import {CTHACK} from "../config.js";
-import {diceRoll} from "../dice.js";
+import { CTHACK } from "../config.js";
+import { diceRoll } from "../dice.js";
+import { findLowerDice } from "../utils.js";
 
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
@@ -28,7 +29,7 @@ export class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollAbilitySave(abilityId, options={}) {
-    console.log("AbilityId = " + abilityId);
+    console.log(`Roll save ${abilityId}`);
     const ability = CTHACK.abilities[abilityId];
     const label = game.i18n.localize(ability);
     const abilityValue = this.data.data.abilities[abilityId].value;
@@ -44,16 +45,21 @@ export class CtHackActor extends Actor {
 
    /**
    * Roll a Resource dice
-   * @param {String} abilityId    The ability ID (e.g. "str")
+   * @param {String} resourceId   The resource ID (e.g. "smo")
    * @param {Object} options      Options which configure how resource tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollResource(resourceId, options={}) {
-    console.log("ResourceId = " + resourceId);
+    console.log(`Roll resource ${resourceId}`);
     const resource = CTHACK.resources[resourceId];
     const label = game.i18n.localize(resource);
     const resourceTemplate = CTHACK.resourcesTemplate[resourceId];
     const resourceValue = this.data.data.attributes[resourceTemplate].value;
+
+    // Resource at 0
+    if (resource === 0){
+      return null;
+    }
 
     // Roll and return
     const rollData = mergeObject(options, {
@@ -62,6 +68,17 @@ export class CtHackActor extends Actor {
       diceType: resourceValue
     });
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
+    
     return diceRoll(rollData);
+  }
+
+  async decreaseResource(resourceId){
+    console.log(`Decrease resource ${resourceId}`);
+    // old value is 0 or dx
+    let oldValue = this.data.data.attributes[CTHACK.resourcesTemplate[resourceId]].value;
+    if (oldValue != "0"){
+      let newValue = findLowerDice(oldValue);
+      this.data.data.attributes[CTHACK.resourcesTemplate[resourceId]].value = newValue;
+    }
   }
 }

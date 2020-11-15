@@ -56,4 +56,4 @@ CTHACK.resourcesTemplate = {
   "san": "sanity"
 };
 
-export const DICE_VALUES = [4,6,8,10,12];
+export const DICE_VALUES = [0,4,6,8,10,12];

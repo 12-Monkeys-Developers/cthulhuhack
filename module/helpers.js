@@ -1,4 +1,4 @@
-import { DICE_VALUES} from "./config.js"
+import { isDice } from "./utils.js"
 
 export const registerHandlebarsHelpers = function (){
 
@@ -28,14 +28,11 @@ export const registerHandlebarsHelpers = function (){
 
   // Return the dice from a value
   Handlebars.registerHelper('toDice', function(value) {
-    if (_isDice(value)){
+    if (isDice(value)){
       var outStr = `1d{{value}}`;
       return outStr;
     }
     console.log(`{{value}} is not a valid dice value`);
   });
 
-  function _isDice(value){
-    return DICE_VALUES.includes(value);
-  }
 }

@@ -123,9 +123,14 @@ export class CtHackActorSheet extends ActorSheet {
    * @param {Event} event   The originating click event
    * @private
    */
-  _onResourceRoll(event) {
+  async _onResourceRoll(event) {
     event.preventDefault();
     let resource = event.currentTarget.dataset.resource;
-    this.actor.rollResource(resource, {event: event});
+    let rollResource = await this.actor.rollResource(resource, {event: event});
+    // console.log(rollResource)
+    if (rollResource.results[0] === 1 || rollResource.results[0] === 2) {
+      await this.actor.decreaseResource(resource);      
+      this.actor.sheet.render(true);
+    }    
   }
 }
