@@ -46,7 +46,7 @@ CTHACK.abilityDescription = {
 
 CTHACK.resources = {
   "fla": "CTHACK.FlashLights",
-  "smo": "CTHACK.Smoke",
+  "smo": "CTHACK.Smokes",
   "san": "CTHACK.Sanity"
 };
 
