@@ -57,6 +57,11 @@ export class CtHackActorSheet extends ActorSheet {
 
     // Resource roll
     html.find('.resource-name').click(this._onResourceRoll.bind(this));
+
+    // Armed and unarmed damage rolls
+    html.find('.armed-damage-name').click(this._onArmedDamagedRoll.bind(this));
+    html.find('.unarmed-damage-name').click(this._onUnArmedDamagedRoll.bind(this));
+
   }
 
   /* -------------------------------------------- */
@@ -135,6 +140,28 @@ export class CtHackActorSheet extends ActorSheet {
       await this.actor.decreaseResource(resource);      
       this.actor.sheet.render(true);
     }    
+  }
+
+  /**
+   * Handle clickable ability save.
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onArmedDamagedRoll(event) {
+    event.preventDefault();
+    let damage = event.currentTarget.dataset.resource;
+    this.actor.rollDamageRoll(damage, {event: event});
+  }
+
+  /**
+   * Handle clickable ability save.
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onUnArmedDamagedRoll(event) {
+    event.preventDefault();
+    let damage = event.currentTarget.dataset.resource;
+    this.actor.rollDamageRoll(damage, {event: event});
   }
 
   /** @override */

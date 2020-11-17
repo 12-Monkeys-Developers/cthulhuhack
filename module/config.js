@@ -56,4 +56,9 @@ CTHACK.resourcesTemplate = {
   "san": "sanity"
 };
 
+CTHACK.attributes = {
+  "armedDamage": "CTHACK.ArmedDamage",
+  "unarmedDamage": "CTHACK.UnarmedDamage"
+};
+
 export const DICE_VALUES = [0,4,6,8,10,12];

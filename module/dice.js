@@ -83,7 +83,7 @@ export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rol
    // Create a Chat Message
    if ( roll && chatMessage ) {
      // Save roll
-     if (!resourceRoll) {
+     if (!resourceRoll && targetValue) {
       if (roll.total < targetValue){
         messageData.flavor += ` (${game.i18n.localize("CTHACK.RollSuccess")})`;
       }

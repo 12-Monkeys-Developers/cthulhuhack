@@ -98,4 +98,28 @@ export class CtHackActor extends Actor {
       }
     }
   }
+
+  /**
+   * Roll an armed or unarmed damage
+   * @param {String} abilityId    The ability ID (e.g. "str")
+   * @param {Object} options      Options which configure how ability tests are rolled
+   * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
+   */
+  async rollDamageRoll(damageId, options={}) {
+    console.log(`Roll ${damageId} roll`);
+
+    const damageDice = this.data.data.attributes[damageId].value;
+
+    const damage = CTHACK.attributes[damageId];
+    const label = game.i18n.localize(damage);
+
+    // Roll and return
+    const rollData = mergeObject(options, {
+      title: label,
+      diceType: damageDice
+    });
+    rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
+    return diceRoll(rollData);
+  }
+  
 }

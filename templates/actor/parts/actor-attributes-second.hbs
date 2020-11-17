@@ -14,7 +14,7 @@
     </div>
 </div>                  
 <div class="resource flex-group-center">
-    <label for="data.armedDamage.value" class="resource-label">{{localize "CTHACK.ArmedDamage"}}</label>
+    <label for="data.armedDamage.value" class="resource-label armed-damage-name rollable" data-resource="armedDamage">{{localize "CTHACK.ArmedDamage"}}</label>
     <div class="resource-content flexrow flex-center flex-between">
         <select name="data.attributes.armedDamage.value" data-type="String">
         {{#select actor.data.attributes.armedDamage.value}}
@@ -29,7 +29,7 @@
     </div>
 </div>
 <div class="resource flex-group-center">
-    <label for="data.unarmedDamage.value" class="resource-label">{{localize "CTHACK.UnarmedDamage"}}</label>
+    <label for="data.unarmedDamage.value" class="resource-label unarmed-damage-name rollable" data-resource="unarmedDamage">{{localize "CTHACK.UnarmedDamage"}}</label>
     <div class="resource-content flexrow flex-center flex-between">
         <select name="data.attributes.unarmedDamage.value" data-type="String">
         {{#select actor.data.attributes.unarmedDamage.value}}
