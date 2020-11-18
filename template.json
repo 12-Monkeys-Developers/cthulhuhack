@@ -42,7 +42,7 @@
           "value": "d6"
         }
       },
-      "abilities": {
+      "saves": {
         "str": {
           "value": 10,
           "advantage": false
@@ -67,11 +67,12 @@
           "value": 10,
           "advantage": false
         }
-      }
+      },
+      "abilities": []
     }
   },
   "Item": {
-    "types": ["item","archetype"],
+    "types": ["item","archetype","ability"],
     "templates": {
       "base": {
         "description": ""
@@ -80,7 +81,7 @@
     "item": {
       "templates": ["base"],
       "quantity": 1,
-      "weight": 0
+      "dice": ""
     },
     "archetype": {
       "templates": ["base"],
@@ -98,6 +99,13 @@
       "secondarysave1": "con",
       "secondarysave2": "for",
       "capacities": []
+    },
+    "ability": {
+      "templates": ["base"],
+      "key": "",
+      "name": "",
+      "usageType": "",
+      "usageRemaining": 0
     }
   }
 }

@@ -22,22 +22,22 @@ export class CtHackActor extends Actor {
   }
 
   /**
-   * Roll an Ability Saving Throw
+   * Roll a Saving Throw 
    * Prompt the user for input regarding Advantage/Disadvantage
-   * @param {String} abilityId    The ability ID (e.g. "str")
-   * @param {Object} options      Options which configure how ability tests are rolled
+   * @param {String} saveId       The save ID (e.g. "str")
+   * @param {Object} options      Options which configure how save tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
-  async rollAbilitySave(abilityId, options={}) {
-    console.log(`Roll save ${abilityId}`);
-    const ability = CTHACK.abilities[abilityId];
-    const label = game.i18n.localize(ability);
-    const abilityValue = this.data.data.abilities[abilityId].value;
+  async rollSave(saveId, options={}) {
+    console.log(`Roll save ${saveId}`);
+    const save = CTHACK.saves[saveId];
+    const label = game.i18n.localize(save);
+    const saveValue = this.data.data.saves[saveId].value;
 
     // Roll and return
     const rollData = mergeObject(options, {
-      title: game.i18n.format("CTHACK.SavePromptTitle", {ability: label}),   
-      targetValue: abilityValue
+      title: game.i18n.format("CTHACK.SavePromptTitle", {save: label}),   
+      targetValue: saveValue
     });
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
     return diceRoll(rollData);
@@ -101,8 +101,8 @@ export class CtHackActor extends Actor {
 
   /**
    * Roll an armed or unarmed damage
-   * @param {String} abilityId    The ability ID (e.g. "str")
-   * @param {Object} options      Options which configure how ability tests are rolled
+   * @param {String} damageId     The damage ID (e.g. "armed" "unarmed")
+   * @param {Object} options      Options which configure how damage tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollDamageRoll(damageId, options={}) {

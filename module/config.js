@@ -17,31 +17,31 @@ CTHACK.ASCII = `
  * The set of Ability Scores used within the system
  * @type {Object}
  */
-CTHACK.abilities = {
-  "str": "CTHACK.AbilityStr",
-  "dex": "CTHACK.AbilityDex",
-  "con": "CTHACK.AbilityCon",
-  "int": "CTHACK.AbilityInt",
-  "wis": "CTHACK.AbilityWis",
-  "cha": "CTHACK.AbilityCha"
+CTHACK.saves = {
+  "str": "CTHACK.SaveStr",
+  "dex": "CTHACK.SaveDex",
+  "con": "CTHACK.SaveCon",
+  "int": "CTHACK.SaveInt",
+  "wis": "CTHACK.SaveWis",
+  "cha": "CTHACK.SaveCha"
 };
 
-CTHACK.abilityAbbreviations = {
-  "str": "CTHACK.AbilityStrAbbr",
-  "dex": "CTHACK.AbilityDexAbbr",
-  "con": "CTHACK.AbilityConAbbr",
-  "int": "CTHACK.AbilityIntAbbr",
-  "wis": "CTHACK.AbilityWisAbbr",
-  "cha": "CTHACK.AbilityChaAbbr"
+CTHACK.savesAbbreviation = {
+  "str": "CTHACK.SaveStrAbbr",
+  "dex": "CTHACK.SaveDexAbbr",
+  "con": "CTHACK.SaveConAbbr",
+  "int": "CTHACK.SaveIntAbbr",
+  "wis": "CTHACK.SaveWisAbbr",
+  "cha": "CTHACK.SaveChaAbbr"
 };
 
-CTHACK.abilityDescription = {
-  "str": "CTHACK.AbilityStrDesc",
-  "dex": "CTHACK.AbilityDexDesc",
-  "con": "CTHACK.AbilityConDesc",
-  "int": "CTHACK.AbilityIntDesc",
-  "wis": "CTHACK.AbilityWisDesc",
-  "cha": "CTHACK.AbilityChaDesc"
+CTHACK.savesDescription = {
+  "str": "CTHACK.SaveStrDesc",
+  "dex": "CTHACK.SaveDexDesc",
+  "con": "CTHACK.SaveConDesc",
+  "int": "CTHACK.SaveIntDesc",
+  "wis": "CTHACK.SaveWisDesc",
+  "cha": "CTHACK.SaveChaDesc"
 };
 
 CTHACK.resources = {

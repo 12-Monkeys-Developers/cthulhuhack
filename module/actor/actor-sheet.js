@@ -11,7 +11,7 @@ export class CtHackActorSheet extends ActorSheet {
       template: "systems/cthack/templates/actor/actor-sheet.hbs",
       width: 820,
       height: 680,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "abilities" }]
     });
   }
 
@@ -35,11 +35,19 @@ export class CtHackActorSheet extends ActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 
-    // Add Inventory Item
+    // Add Inventory or Ability Item
     html.find('.item-create').click(this._onItemCreate.bind(this));
+    html.find('.ability-create').click(this._onItemCreate.bind(this));
 
     // Update Inventory Item
     html.find('.item-edit').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.getOwnedItem(li.data("itemId"));
+      item.sheet.render(true);
+    });
+
+    // Update Ability Item
+    html.find('.ability-edit').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.getOwnedItem(li.data("itemId"));
       item.sheet.render(true);
@@ -52,15 +60,22 @@ export class CtHackActorSheet extends ActorSheet {
       li.slideUp(200, () => this.render(false));
     });
 
-    // Ability saving throws
-    html.find('.ability-name').click(this._onAbilitySave.bind(this));
+    // Delete Ability Item
+    html.find('.ability-delete').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      this.actor.deleteOwnedItem(li.data("itemId"));
+      li.slideUp(200, () => this.render(false));
+    });
+
+    // Saving throws
+    html.find('.save-name').click(this._onSaveRoll.bind(this));
 
     // Resource roll
     html.find('.resource-name').click(this._onResourceRoll.bind(this));
 
     // Armed and unarmed damage rolls
-    html.find('.armed-damage-name').click(this._onArmedDamagedRoll.bind(this));
-    html.find('.unarmed-damage-name').click(this._onUnArmedDamagedRoll.bind(this));
+    html.find('.armed-damage-name').click(this._onDamagedRoll.bind(this));
+    html.find('.unarmed-damage-name').click(this._onDamagedRoll.bind(this));
 
   }
 
@@ -114,14 +129,14 @@ export class CtHackActorSheet extends ActorSheet {
   }
 
   /**
-   * Handle clickable ability save.
+   * Handle clickable save roll
    * @param {Event} event   The originating click event
    * @private
    */
-  _onAbilitySave(event) {
+  _onSaveRoll(event) {
     event.preventDefault();
-    let ability = event.currentTarget.parentElement.dataset.ability;
-    this.actor.rollAbilitySave(ability, {event: event});
+    let save = event.currentTarget.parentElement.dataset.save;
+    this.actor.rollSave(save, {event: event});
   }
 
   /**
@@ -143,22 +158,11 @@ export class CtHackActorSheet extends ActorSheet {
   }
 
   /**
-   * Handle clickable ability save.
+   * Handle clickable Damaged roll.
    * @param {Event} event   The originating click event
    * @private
    */
-  _onArmedDamagedRoll(event) {
-    event.preventDefault();
-    let damage = event.currentTarget.dataset.resource;
-    this.actor.rollDamageRoll(damage, {event: event});
-  }
-
-  /**
-   * Handle clickable ability save.
-   * @param {Event} event   The originating click event
-   * @private
-   */
-  _onUnArmedDamagedRoll(event) {
+  _onDamagedRoll(event) {
     event.preventDefault();
     let damage = event.currentTarget.dataset.resource;
     this.actor.rollDamageRoll(damage, {event: event});
@@ -177,14 +181,10 @@ export class CtHackActorSheet extends ActorSheet {
     }
     if (!data) return false;
 
-    // Case 1 - Dropped Item
+    // Dropped Item
     if (data.type === "Item") {
         return this._onDropItem(event, data);
     }
-    // Case 2 - Dropped Actor
-    /*if (data.type === "Actor") {
-        return this._onDropActor(event, data);
-    }*/
   }
 
   /**
@@ -200,6 +200,8 @@ export class CtHackActorSheet extends ActorSheet {
     switch (itemData.type) {
         case "archetype"    :
             return await this._onDropArchetypeItem(event, itemData);
+        case "ability"    :
+            return await this._onDropAbilityItem(event, itemData);
         default:
             return;
     }
@@ -226,6 +228,23 @@ export class CtHackActorSheet extends ActorSheet {
       'data.attributes.unarmedDamage': {"value": itemData.data.unarmeddamage},
     });
     this.actor.sheet.render(true);
+  }
+
+     /**
+   * Handle dropping of an ability onto an Actor Sheet
+   * @param {DragEvent} event     The concluding DragEvent which contains drop data
+   * @param {Object} data         The data transfer extracted from the event
+   * @private
+   */
+  _onDropAbilityItem(event, itemData) {
+    event.preventDefault();
+    const id = itemData._id;
+    if(this.actor.data.data.abilities && !this.actor.data.data.abilities.includes(id)){
+        let abilities = this.actor.data.data.abilities;
+        abilities.push(id);
+        return this.actor.update(abilities);
+    }
+    else ui.notifications.error("Cette capacité spéciale est déjà présente.")
   }
 
 }

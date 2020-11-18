@@ -147,6 +147,13 @@
   margin-right: 10px;
 }
 
+.cthack .sheet-header .archetype-img {
+  -webkit-box-flex: 0;
+  height: 150px;
+  margin-right: 10px;
+}
+
+
 .cthack .sheet-header .header-fields {
   -webkit-box-flex: 1;
   -ms-flex: 1;
@@ -237,6 +244,10 @@
 }
 
 .cthack .items-list .item-name {
+  margin: 0;
+}
+
+.item-ability-description {
   margin: 0;
 }
 

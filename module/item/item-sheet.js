@@ -21,6 +21,9 @@ export class CtHackItemSheet extends ItemSheet {
     //return `${path}/item-sheet.html`;
     // Alternatively, you could use the following return statement to do a
     // unique item sheet by type, like `weapon-sheet.html`.
+    /*if (this.item.data.type === "ability"){
+      return `${path}/${this.item.data.type}-sheet.hbs`;
+    }*/
 
     return `${path}/${this.item.data.type}-sheet.html`;
   }

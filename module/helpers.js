@@ -17,12 +17,12 @@ export const registerHandlebarsHelpers = function (){
   });
 
   Handlebars.registerHelper('toAbbr', function(str) {
-    var outStr = 'CTHACK.Ability' + str.substring(0,1).toUpperCase() + str.substring(1) + 'Abbr';
+    var outStr = 'CTHACK.Save' + str.substring(0,1).toUpperCase() + str.substring(1) + 'Abbr';
     return outStr;
   });
 
   Handlebars.registerHelper('toDesc', function(str) {
-    var outStr = 'CTHACK.Ability' + str.substring(0,1).toUpperCase() + str.substring(1) + 'Desc';
+    var outStr = 'CTHACK.Save' + str.substring(0,1).toUpperCase() + str.substring(1) + 'Desc';
     return outStr;
   });
 
