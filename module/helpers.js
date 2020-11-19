@@ -39,4 +39,11 @@ export const registerHandlebarsHelpers = function (){
     return val1 === val2;
   });
 
+  Handlebars.registerHelper('booleanToString', function (value) {
+    if (value){
+      return game.i18n.localize("CTHACK.YES");
+    }
+    return game.i18n.localize("CTHACK.NO");
+  });
+
 }

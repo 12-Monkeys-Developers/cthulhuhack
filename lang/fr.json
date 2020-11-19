@@ -35,6 +35,12 @@
     "CTHACK.Items": "Equipement",
     "CTHACK.Abilities": "Capacités spéciales",
 
+    "CTHACK.AbilityKey": "Clé",
+    "CTHACK.AbilityUsageType": "Type d'usage",
+    "CTHACK.AbilityUsageRemaining": "Utilisations restantes",
+    "CTHACK.AbilityUsageLast": "Dernier usage",
+    "CTHACK.AbilityMultiple": "Multiple",
+
     "CTHACK.Formula": "Formule",
     "CTHACK.RollMode": "Type de jet",
     "CTHACK.RollSituationalBonus": "Bonus de situation?",
@@ -54,6 +60,19 @@
     "CTHACK.SecondarySave1": "Autre sauvegarde",
     "CTHACK.SecondarySave2": "Autre sauvegarde",
 
+    "CTHACK.Add": "Ajouter",
+    "CTHACK.ItemAdd": "Ajouter Objet",
+    "CTHACK.ItemCreate": "Créer Objet",
+    "CTHACK.ItemEdit": "Editer Objet",
+    "CTHACK.ItemDelete": "Supprimer Objet",
+    "CTHACK.AbilityAdd": "Ajouter Capacité",
+    "CTHACK.AbilityCreate": "Créer Capacité",
+    "CTHACK.AbilityEdit": "Editer Capacité",
+    "CTHACK.AbilityDelete": "Supprimer Capacité",
+
     "CTHACK.Attributes": "Attributs",
-    "CTHACK.None": "---"
+
+    "CTHACK.None": "---",
+    "CTHACK.NO": "Oui",
+    "CTHACK.YES": "Non"
 }

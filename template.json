@@ -105,7 +105,9 @@
       "key": "",
       "name": "",
       "usageType": "",
-      "usageRemaining": 0
+      "usageRemaining": "",
+      "usageLastTime": "",
+      "multiple": false
     }
   }
 }

@@ -122,4 +122,28 @@ export class CtHackActor extends Actor {
     return diceRoll(rollData);
   }
   
+  deleteAbility(key, itemId){
+    const index = this._findAbilityIndex(key,itemId);
+    if (index !== -1){
+      let abilitiesList = this.data.data.abilities;
+      abilitiesList.splice (index, 1);
+      
+      this.update({'data.abilities': abilitiesList});
+    }    
+  }
+
+  _findAbilityIndex(key,id){
+    let abilitiesList = this.data.data.abilities;
+    let trouve = false;
+    let index = -1;
+    let i = 0;
+    while (!trouve && i < abilitiesList.length) {
+      if (key === abilitiesList[i].key){
+        trouve = true;
+        index = i;
+      }
+      i++;
+    }
+    return index;
+  }
 }

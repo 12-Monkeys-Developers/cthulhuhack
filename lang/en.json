@@ -35,6 +35,12 @@
     "CTHACK.Items": "Equipment",
     "CTHACK.Abilities": "Special abilities",
 
+    "CTHACK.AbilityKey": "Key",
+    "CTHACK.AbilityUsageType": "Usage Type",
+    "CTHACK.AbilityUsageRemaining": "Usage Remaining",
+    "CTHACK.AbilityUsageLast": "Last usage",
+    "CTHACK.AbilityMultiple": "Multiple",
+
     "CTHACK.Formula": "Formula",
     "CTHACK.RollMode": "Roll Mode",
     "CTHACK.RollSituationalBonus": "Situational Bonus?",
@@ -54,6 +60,19 @@
     "CTHACK.SecondarySave1": "Other Save",
     "CTHACK.SecondarySave2": "Other Save",
 
+    "CTHACK.Add": "Add",
+    "CTHACK.ItemAdd": "Add item",
+    "CTHACK.ItemCreate": "Create Item",
+    "CTHACK.ItemEdit": "Edit Item",
+    "CTHACK.ItemDelete": "Delete Item",
+    "CTHACK.AbilityAdd": "Add Ability",
+    "CTHACK.AbilityCreate": "Create Ability",
+    "CTHACK.AbilityEdit": "Edit Ability",
+    "CTHACK.AbilityDelete": "Delete Ability",
+
     "CTHACK.Attributes": "Attributes",
-    "CTHACK.None": "---"
+
+    "CTHACK.None": "---",
+    "CTHACK.NO": "No",
+    "CTHACK.YES": "Yes"
 }

@@ -33,17 +33,35 @@
         {{!-- Attributes Tab --}}
         <div class="tab attributes" data-group="primary" data-tab="attributes">
             <div class="form-group">
-                <label>Type d'usage</label>
+                <label>{{localize "CTHACK.AbilityKey"}}</label>
                 <div class="form-fields">
-                    <input class="field-value" name="data.usageType" type="text" value="{{data.usageType}}" placeholder="Session" data-dtype="String">
+                    <input class="field-value" name="data.key" type="text" value="{{data.key}}" data-dtype="String">
                 </div>
             </div>
             <div class="form-group">
-                <label>Usage Restant</label>
+                <label>{{localize "CTHACK.AbilityUsageType"}}</label>
                 <div class="form-fields">
-                    <input class="field-value" name="data.usageRemaining" type="text" value="{{data.usageRemaining}}" placeholder="1" data-dtype="Number">
+                    <input class="field-value" name="data.usageType" type="text" value="{{data.usageType}}" data-dtype="String">
                 </div>
             </div>
+            <div class="form-group">
+                <label>{{localize "CTHACK.AbilityUsageRemaining"}}</label>
+                <div class="form-fields">
+                    <input class="field-value" name="data.usageRemaining" type="text" value="{{data.usageRemaining}}" data-dtype="String">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>{{localize "CTHACK.AbilityUsageLast"}}</label>
+                <div class="form-fields">
+                    <input class="field-value" name="data.usageLastTime" type="text" value="{{data.usageLastTime}}" data-dtype="String">
+                </div>
+            </div>        
+            <div class="form-group">
+                <label>{{localize "CTHACK.AbilityMultiple"}}</label>
+                <div class="form-fields">
+                    <input class="checkbox" name="data.multiple" type="checkbox" {{checked data.multiple}}>
+                </div>
+            </div>       
         </div>
     </section>
 </form>
