@@ -72,6 +72,18 @@
 
     "CTHACK.Attributes": "Attributes",
 
+    "CTHACK.Advantages": "Advantages:\n",
+    "CTHACK.AdvantageSWILEA": "TODO",
+    "CTHACK.AdvantageSTA": "TODO",
+    "CTHACK.AdvantageANIHAN": "TODO",
+    "CTHACK.AdvantageIND": "TODO",
+    "CTHACK.AdvantageMEC": "TODO",
+    "CTHACK.AdvantageIRONMIN": "TODO\n",
+    "CTHACK.AdvantageRIP": "TODO\n",
+    "CTHACK.AdvantageLEG": "TODO\n",
+    "CTHACK.AdvantageSELPRE": "TODO\n",
+    "CTHACK.AdvantageHAR": "TODO\n",
+
     "CTHACK.None": "---",
     "CTHACK.NO": "No",
     "CTHACK.YES": "Yes"

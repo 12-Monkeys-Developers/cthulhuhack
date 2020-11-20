@@ -90,7 +90,7 @@
                   {{#if (equals item.type "ability")}}
                     <li class="item flexrow" data-item-id="{{item._id}}">
                       <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-                      <h4 class="item-name" title="{{item.data.description}}">{{item.name}}</h4>
+                      <h4 class="item-name" title="{{{item.data.description}}}">{{item.name}}</h4>
                       <div>{{item.data.usageType}}</div>
                       <div>{{item.data.usageRemaining}}</div>
                       <div>{{item.data.usageLastTime}}</div>

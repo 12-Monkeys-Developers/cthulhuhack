@@ -18,13 +18,14 @@
  * @param {number} targetValue      Assign a target value against which the result of this roll should be compared
  * @param {boolean} chatMessage     Automatically create a Chat Message for the result of this roll
  * @param {object} messageData      Additional data which is applied to the created Chat Message, if any
+ * @param {object} abilitiesAdvantages      Advantages gained from abilities
  *
  * @return {Promise}                A Promise which resolves once the roll workflow has completed
  */
 export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rollMode=null, template=null, title=null, speaker=null,
     flavor=null, dialogOptions,
     advantage=null, disadvantage=null, resourceRoll=false, targetValue=null,
-    chatMessage=true, messageData={}}={}) {
+    chatMessage=true, abilitiesAdvantages=null, messageData={}}={}) {
   
    // Prepare Message Data
    messageData.flavor = flavor || title;
@@ -78,7 +79,7 @@ export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rol
     }
   
    // Create the Roll instance
-   const roll = await _diceRollDialog({template, title, parts, data, rollMode: messageOptions.rollMode, dialogOptions, roll: _roll});
+   const roll = await _diceRollDialog({template, title, parts, data, rollMode: messageOptions.rollMode, dialogOptions,abilitiesAdvantages, roll: _roll});
   
    // Create a Chat Message
    if ( roll && chatMessage ) {
@@ -108,7 +109,7 @@ export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rol
  * @return {Promise<Roll>}
  * @private
  */
-async function _diceRollDialog({template, title, parts, data, rollMode, dialogOptions, roll}={}) {
+async function _diceRollDialog({template, title, parts, data, rollMode, dialogOptions,abilitiesAdvantages, roll}={}) {
 
     // Render modal dialog
     template = template || "systems/cthack/templates/chat/roll-dialog.html";
@@ -116,7 +117,8 @@ async function _diceRollDialog({template, title, parts, data, rollMode, dialogOp
       formula: parts.join(" + "),
       data: data,
       rollMode: rollMode,
-      rollModes: CONFIG.Dice.rollModes
+      rollModes: CONFIG.Dice.rollModes,
+      abilitiesAdvantages: abilitiesAdvantages
     };
     const html = await renderTemplate(template, dialogData);
   

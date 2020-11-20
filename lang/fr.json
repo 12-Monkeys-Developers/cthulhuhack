@@ -72,7 +72,19 @@
 
     "CTHACK.Attributes": "Attributs",
 
+    "CTHACK.Advantages": "Avantages:\n",
+    "CTHACK.AdvantageSWILEA": "grimper, sauter ou se balancer\n",
+    "CTHACK.AdvantageSTA": "divertir un auditoire ou jouer un rôle afin d'éviter des dégâts ou des répercussions de ses actes\n",
+    "CTHACK.AdvantageANIHAN": "s'occuper, monter ou affrontre un animal\n",
+    "CTHACK.AdvantageIND": "contre la tromperie, le contrôle mental ou tenter de tromper son interlocuteur\n",
+    "CTHACK.AdvantageMEC": "réparer des machines ou des véhicules endommagés\n",
+    "CTHACK.AdvantageIRONMIN": "résister à la magie, aux rituels occultes, aux malédictions ou à la possession\n",
+    "CTHACK.AdvantageRIP": "utiliser sa force pour soulever, déplacer ou lutter\n",
+    "CTHACK.AdvantageLEG": "bonne coordination entre la main et l'oeil, tours de passe-passe, vol à la tire et manipulation de petits objets fragiles\n",
+    "CTHACK.AdvantageSELPRE": "éviter les pièges ou les machines pouvant le blesser ou l'entraver\n",
+    "CTHACK.AdvantageHAR": "éviter les effets des poisons, de drogues ou de l'alcool\n",
+
     "CTHACK.None": "---",
-    "CTHACK.NO": "Oui",
-    "CTHACK.YES": "Non"
+    "CTHACK.NO": "Non",
+    "CTHACK.YES": "Oui"
 }
