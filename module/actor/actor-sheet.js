@@ -67,6 +67,9 @@ export class CtHackActorSheet extends ActorSheet {
     html.find('.armed-damage-name').click(this._onDamagedRoll.bind(this));
     html.find('.unarmed-damage-name').click(this._onDamagedRoll.bind(this));
 
+    // Fortune option
+    html.find('.fortune-use').click(this._onFortuneUse.bind(this));
+
   }
 
   /* -------------------------------------------- */
@@ -202,7 +205,7 @@ export class CtHackActorSheet extends ActorSheet {
   }
 
   /**
-   * Handle dropping of an ability onto an Actor Sheet
+   * Handle dropping of an ability Item onto an Actor Sheet
    * @param {DragEvent} event     The concluding DragEvent which contains drop data
    * @param {Object} data         The data transfer extracted from the event
    * @private
@@ -235,5 +238,18 @@ export class CtHackActorSheet extends ActorSheet {
     }
     return false;
   }
+
+/**
+ * Reduce the Fortune value by 1
+ * @param {Event} event   The originating click event
+ * @private
+*/
+ _onFortuneUse(event) {
+  event.preventDefault();
+  let currentValue = game.settings.get("cthack", "FortuneValue");
+  if (currentValue > 0){
+    game.settings.set("cthack", "FortuneValue", currentValue - 1);
+  }  
+}
 
 }

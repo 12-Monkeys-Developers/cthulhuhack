@@ -85,7 +85,15 @@
     "CTHACK.AdvantageHAR": "TODO\n",
 
     "CTHACK.Fortune": "Fortune",
+    "CTHACK.FortuneUse": "Spend",
     "CTHACK.None": "---",
     "CTHACK.NO": "No",
-    "CTHACK.YES": "Yes"
+    "CTHACK.YES": "Yes",
+
+    "SETTINGS.FortuneAvailableName": "Fortune Option",
+    "SETTINGS.FortuneAvailableHint": "Allow Fortune option",
+    "SETTINGS.FortuneValueName": "Fortune available",
+    "SETTINGS.FortuneValueHint": "Fortune value available to players",
+    "SETTINGS.AdrenalineName": "Adrenaline Option",
+    "SETTINGS.AdrenalineHint": "Allow Adrenaline option"
 }

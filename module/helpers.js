@@ -54,4 +54,11 @@ export const registerHandlebarsHelpers = function (){
     return game.settings.get("cthack", "FortuneValue");
   });
 
+  Handlebars.registerHelper('getAdrenaline', function(value) {
+    if (value === "pj"){
+      return "broach-lightning-gold";
+    }
+    else return "token-white-skull";
+  });
+
 }

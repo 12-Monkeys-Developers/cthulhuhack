@@ -40,6 +40,12 @@
         },
         "unarmedDamage": {
           "value": "d6"
+        },
+        "adrenaline1": {
+          "value": "pj"
+        },
+        "adrenaline2": {
+          "value": "pj"
         }
       },
       "saves": {

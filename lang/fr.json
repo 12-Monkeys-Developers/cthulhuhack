@@ -85,7 +85,16 @@
     "CTHACK.AdvantageHAR": "éviter les effets des poisons, de drogues ou de l'alcool\n",
 
     "CTHACK.Fortune": "Fortune",
+    "CTHACK.FortuneUse": "Dépenser",
     "CTHACK.None": "---",
     "CTHACK.NO": "Non",
-    "CTHACK.YES": "Oui"
+    "CTHACK.YES": "Oui",
+
+    "SETTINGS.FortuneAvailableName": "Option Fortune",
+    "SETTINGS.FortuneAvailableHint": "Active la gestion des jetons de Fortune",
+    "SETTINGS.FortuneValueName": "Nb jetons Fortune",
+    "SETTINGS.FortuneValueHint": "Nombre de jetons Fortune restant",
+    "SETTINGS.AdrenalineName": "Option Adrenaline",
+    "SETTINGS.AdrenalineHint": "Active la gestion de l'adrénaline"
+
 }
