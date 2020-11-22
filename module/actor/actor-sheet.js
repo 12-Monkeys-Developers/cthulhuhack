@@ -70,6 +70,10 @@ export class CtHackActorSheet extends ActorSheet {
     // Fortune option
     html.find('.fortune-use').click(this._onFortuneUse.bind(this));
 
+    // Adrenaline option
+    html.find('#adr1').click(this._onAdrenalineUse.bind(this));
+    html.find('#adr2').click(this._onAdrenalineUse.bind(this));
+
   }
 
   /* -------------------------------------------- */
@@ -250,6 +254,33 @@ export class CtHackActorSheet extends ActorSheet {
   if (currentValue > 0){
     game.settings.set("cthack", "FortuneValue", currentValue - 1);
   }  
+}
+
+/**
+ * Toggle adrenaline 1 
+ * @param {Event} event   The originating click event
+ * @private
+*/
+_onAdrenalineUse(event) {
+  event.preventDefault();
+  const adr = event.currentTarget.id;
+  if (adr === "adr1"){
+    const value = this.actor.data.data.attributes.adrenaline1.value;
+    let newData = {"value": "pj"};
+    if (value === "pj"){
+      newData = {"value": "mj"};
+    }
+    this.actor.update({'data.attributes.adrenaline1': newData});
+  }
+  else if (adr === "adr2"){
+    const value = this.actor.data.data.attributes.adrenaline2.value;
+    let newData = {"value": "pj"};
+    if (value === "pj"){
+      newData = {"value": "mj"};
+    }
+    this.actor.update({'data.attributes.adrenaline2': newData});
+  } 
+  this.actor.sheet.render(true);
 }
 
 }

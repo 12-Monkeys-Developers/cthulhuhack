@@ -54,7 +54,7 @@ export const registerHandlebarsHelpers = function (){
     return game.settings.get("cthack", "FortuneValue");
   });
 
-  Handlebars.registerHelper('getAdrenaline', function(value) {
+  Handlebars.registerHelper('getAdrenalineImage', function(value) {
     if (value === "pj"){
       return "broach-lightning-gold";
     }
