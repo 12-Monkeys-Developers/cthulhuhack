@@ -10,7 +10,7 @@ export class CtHackActorSheet extends ActorSheet {
       classes: ["cthack", "sheet", "actor"],
       template: "systems/cthack/templates/actor/actor-sheet.hbs",
       width: 820,
-      height: 680,
+      height: 720,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "abilities" }]
     });
   }

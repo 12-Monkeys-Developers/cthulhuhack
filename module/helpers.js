@@ -46,4 +46,12 @@ export const registerHandlebarsHelpers = function (){
     return game.i18n.localize("CTHACK.NO");
   });
 
+  Handlebars.registerHelper('isEnabled', function (configKey) {
+    return game.settings.get("cthack", configKey);
+  });
+
+  Handlebars.registerHelper('getFortuneValue', function() {
+    return game.settings.get("cthack", "FortuneValue");
+  });
+
 }

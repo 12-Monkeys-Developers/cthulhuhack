@@ -3,7 +3,7 @@
 }
 
 .sheet-header {
-  flex: 0 0 355px;
+  flex: 0 0 425px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -12,13 +12,12 @@
   margin-bottom: 10px;
 
   .profile-img {
-    flex: 0 0 125px;
     height: 150px;
-    margin-right: 10px;
+    width: auto;
   }
 
   .header-fields {
-    flex: 1;
+    flex: 5;
   }
 
   h1.charname {

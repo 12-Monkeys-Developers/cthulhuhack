@@ -1,7 +1,8 @@
 // Import Modules
 import { CTHACK } from "./config.js";
-import {registerHandlebarsHelpers} from "./helpers.js";
-import {preloadHandlebarsTemplates} from "./templates.js";
+import { registerHandlebarsHelpers } from "./helpers.js";
+import { preloadHandlebarsTemplates } from "./templates.js";
+import { registerSystemSettings } from "./settings.js";
 
 import { CtHackActor } from "./actor/actor.js";
 import { CtHackActorSheet } from "./actor/actor-sheet.js";
@@ -42,5 +43,8 @@ Hooks.once('init', async function() {
 
   // Register Handlebars Helpers
   registerHandlebarsHelpers();
+
+  // Register System Settings
+  registerSystemSettings();
 
 });

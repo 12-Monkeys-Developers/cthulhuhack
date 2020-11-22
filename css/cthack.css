@@ -121,8 +121,8 @@
 
 .cthack .sheet-header {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 355px;
-  flex: 0 0 355px;
+  -ms-flex: 0 0 425px;
+  flex: 0 0 425px;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -140,24 +140,14 @@
 }
 
 .cthack .sheet-header .profile-img {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 125px;
-  flex: 0 0 125px;
   height: 150px;
-  margin-right: 10px;
+  width: auto;
 }
-
-.cthack .sheet-header .archetype-img {
-  -webkit-box-flex: 0;
-  height: 150px;
-  margin-right: 10px;
-}
-
 
 .cthack .sheet-header .header-fields {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  -webkit-box-flex: 5;
+  -ms-flex: 5;
+  flex: 5;
 }
 
 .cthack .sheet-header h1.charname {
@@ -247,7 +237,7 @@
   margin: 0;
 }
 
-.item-ability-description {
+.cthack .items-list .item-ability-description {
   margin: 0;
 }
 

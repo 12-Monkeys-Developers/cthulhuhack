@@ -10,7 +10,20 @@
   "esmodules": ["module/cthack.js"],
   "styles": ["css/cthack.css"],
   "scripts": [],
-  "packs": [],
+  "packs": [{
+    "name": "archetypes",
+    "label": "Archetypes",
+    "system": "cthack",
+    "path": "./packs/archetypes.db",
+    "entity": "Item"
+  },
+  {
+    "name": "abilities",
+    "label": "Capacités spéciales",
+    "system": "cthack",
+    "path": "./packs/capacities.db",
+    "entity": "Item"
+  }],
   "languages": [
     {
       "lang": "en",
