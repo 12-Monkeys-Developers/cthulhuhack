@@ -21,6 +21,11 @@
     width: auto;
   }
 
+  .archetype-img {
+    height: 128px;
+    width: auto;
+  }
+
   .header-fields {
     flex: 5;
   }
@@ -56,4 +61,16 @@
   .tox-edit-area {
     padding: 0 8px;
   }
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
 }

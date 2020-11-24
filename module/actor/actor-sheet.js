@@ -74,6 +74,9 @@ export class CtHackActorSheet extends ActorSheet {
     html.find('#adr1').click(this._onAdrenalineUse.bind(this));
     html.find('#adr2').click(this._onAdrenalineUse.bind(this));
 
+    // Roll for inventory
+    html.find('.fa-dice-d20').click(this._onMaterialRoll.bind(this));
+
   }
 
   /* -------------------------------------------- */
@@ -159,13 +162,28 @@ export class CtHackActorSheet extends ActorSheet {
   }
 
   /**
+   * Handle clickable Material roll as a resource
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  async _onMaterialRoll(event) {
+    event.preventDefault();
+    const dice = event.currentTarget.parentElement.children[1].value;
+    const materialName = event.currentTarget.parentElement.parentElement.children[1].outerText;   
+    const message = game.i18n.format("CTHACK.MaterialRollDetails", {material: materialName});
+
+    let rollMaterial = await this.actor.rollMaterial(dice, {event: event, flavor: message});
+  }
+  
+
+  /**
    * Handle clickable Damaged roll.
    * @param {Event} event   The originating click event
    * @private
    */
   _onDamagedRoll(event) {
     event.preventDefault();
-    let damage = event.currentTarget.dataset.resource;
+    const damage = event.currentTarget.dataset.resource;
     this.actor.rollDamageRoll(damage, {event: event});
   }
 

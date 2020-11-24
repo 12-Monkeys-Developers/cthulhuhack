@@ -4,6 +4,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+.window-app .window-content {
+  background: url("../ui/fond.png") repeat white;
+}
+
 .rollable:hover, .rollable:focus {
   color: #000;
   text-shadow: 0 0 10px red;
@@ -149,6 +153,11 @@
   width: auto;
 }
 
+.cthack .sheet-header .archetype-img {
+  height: 128px;
+  width: auto;
+}
+
 .cthack .sheet-header .header-fields {
   -webkit-box-flex: 5;
   -ms-flex: 5;
@@ -186,6 +195,18 @@
 
 .cthack .tox .tox-edit-area {
   padding: 0 8px;
+}
+
+.cthack .align-left {
+  text-align: left;
+}
+
+.cthack .align-right {
+  text-align: right;
+}
+
+.cthack .align-center {
+  text-align: center;
 }
 
 .cthack .resource-label {

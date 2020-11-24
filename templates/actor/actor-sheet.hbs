@@ -66,20 +66,22 @@
         <div class="tab items" data-group="primary" data-tab="items">
             <ol class="items-list">
                 <li class="item flexrow item-header">
-                  <div class="item-image"></div>
-                  <div class="item-name">{{localize "CTHACK.Name"}}</div>
-                  <div>{{localize "CTHACK.ItemDiceName"}}</div>
-                  <div>{{localize "CTHACK.ItemRangeName"}}</div>
+                  <div class="item-name align-center">{{localize "CTHACK.Name"}}</div>
+                  <div class="align-right">{{localize "CTHACK.ItemDiceName"}}</div>
+                  <div class="align-center">{{localize "CTHACK.ItemRangeName"}}</div>
                   <div class="item-controls">
                     <a class="item-control item-create" title="{{localize "CTHACK.ItemCreate"}}" data-type="item"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
                   </div>
                 </li>
-                {{#each (getItems actor.items) as |item id|}}
+                {{#each (getItemsAndWeapons actor.items) as |item id|}}
                   <li class="item flexrow" data-item-id="{{item._id}}">
-                      <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-                      <h4 class="item-name" title="{{item.description}}">{{item.name}}</h4>
-                      <div class="item-dice">
-                        <select name="data.attributes.wealthDice.value" data-type="String">
+                      <div class="item-image align-left"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+                      <h4 class="item-name align-left" title="{{item.description}}">{{item.name}}</h4>
+                      <div class="item-dice rollable align-right">
+                        {{#if (isItemWithDice item.data.dice)}}
+                        <i class="fas fa-dice-d20"></i>
+                        {{/if}}
+                        <select name="item.data.dice" data-type="String">
                         {{#select item.data.dice}}
                             <option value="">{{localize "CTHACK.None"}}</option>
                             <option value="d4">1d4</option>
@@ -90,7 +92,7 @@
                         {{/select}}
                         </select>
                       </div>
-                      <div>{{#if (equals item.type "weapon")}}
+                      <div class="align-center">{{#if (equals item.type "weapon")}}
                       {{localize (rangeDesc item.data.range)}}
                       {{/if}}
                       </div>                      

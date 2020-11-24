@@ -97,6 +97,9 @@
     "CTHACK.RangeDistant": "Distant",
     "CTHACK.Range3str": "3 * STRENGTH",
 
+    "CTHACK.MaterialRollPromptTitle": "Material Roll",
+    "CTHACK.MaterialRollDetails": "Roll for {material}",
+
     "SETTINGS.FortuneAvailableName": "Fortune Option",
     "SETTINGS.FortuneAvailableHint": "Allow Fortune option",
     "SETTINGS.FortuneValueName": "Fortune available",

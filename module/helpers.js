@@ -62,11 +62,15 @@ export const registerHandlebarsHelpers = function (){
     else return "token-white-skull";
   });
 
-  Handlebars.registerHelper('getItems', function (items) {
+  Handlebars.registerHelper('getItemsAndWeapons', function (items) {
     return items.filter(item => item.type === "item" || item.type === "weapon");
   });
 
   Handlebars.registerHelper('rangeDesc', function(str) {
     return CTHACK.range[str];
+  });
+
+  Handlebars.registerHelper('isItemWithDice', function(str) {
+    return str != "";
   });
 }

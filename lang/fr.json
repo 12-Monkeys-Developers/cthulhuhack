@@ -97,6 +97,9 @@
     "CTHACK.RangeDistant": "Distant",
     "CTHACK.Range3str": "3 * Force",
 
+    "CTHACK.MaterialRollPromptTitle": "Jet de matériel",
+    "CTHACK.MaterialRollDetails": "Jet pour {material}",
+
     "SETTINGS.FortuneAvailableName": "Option Fortune",
     "SETTINGS.FortuneAvailableHint": "Active la gestion des jetons de Fortune",
     "SETTINGS.FortuneValueName": "Nb jetons Fortune",

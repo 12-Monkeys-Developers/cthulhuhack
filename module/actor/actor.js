@@ -45,7 +45,7 @@ export class CtHackActor extends Actor {
     return diceRoll(rollData);
   }
 
-   /**
+  /**
    * Roll a Resource dice
    * @param {String} resourceId   The resource ID (e.g. "smo")
    * @param {Object} options      Options which configure how resource tests are rolled
@@ -74,8 +74,33 @@ export class CtHackActor extends Actor {
     return diceRoll(rollData);
   }
 
+  /**
+   * Roll a MAterial dice
+   * @param {String} dice         The type of dice (e.g. "d6")
+   * @param {Object} options      Options which configure how resource tests are rolled
+   * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
+   */
+  async rollMaterial(dice, options={}) {
+    console.log(`Roll material ${dice}`);
+
+    // Material at "0"
+    if (dice === "0"){
+      return null;
+    }
+
+    // Roll and return
+    const rollData = mergeObject(options, {
+      title: game.i18n.format("CTHACK.MaterialRollPromptTitle"),
+      resourceRoll: true,
+      diceType: dice
+    });
+    rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
+    
+    return diceRoll(rollData);
+  }
+
    /**
-   * Decrease a resource dice
+   * Decrease a Resource dice
    * @param {String} resourceId   The resource ID (e.g. "smo")
    */  
   async decreaseResource(resourceId){
