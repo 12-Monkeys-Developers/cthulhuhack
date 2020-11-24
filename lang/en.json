@@ -90,6 +90,13 @@
     "CTHACK.NO": "No",
     "CTHACK.YES": "Yes",
 
+    "CTHACK.ItemDiceName": "Material Dice",
+    "CTHACK.ItemRangeName": "Range",
+    "CTHACK.RangeNear":"Near",
+    "CTHACK.RangeFar": "Far",
+    "CTHACK.RangeDistant": "Distant",
+    "CTHACK.Range3str": "3 * STRENGTH",
+
     "SETTINGS.FortuneAvailableName": "Fortune Option",
     "SETTINGS.FortuneAvailableHint": "Allow Fortune option",
     "SETTINGS.FortuneValueName": "Fortune available",

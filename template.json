@@ -78,7 +78,7 @@
     }
   },
   "Item": {
-    "types": ["item","archetype","ability"],
+    "types": ["item","weapon","archetype","ability"],
     "templates": {
       "base": {
         "description": ""
@@ -86,8 +86,12 @@
     },
     "item": {
       "templates": ["base"],
-      "quantity": 1,
       "dice": ""
+    },
+    "weapon":{
+      "templates": ["base"],
+      "dice": "",
+      "range": ""
     },
     "archetype": {
       "templates": ["base"],

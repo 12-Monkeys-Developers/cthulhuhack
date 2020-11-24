@@ -61,4 +61,11 @@ CTHACK.attributes = {
   "unarmedDamage": "CTHACK.UnarmedDamage"
 };
 
+CTHACK.range = {
+  "near": "CTHACK.RangeNear",
+  "far": "CTHACK.RangeFar",
+  "distant": "CTHACK.RangeDistant",
+  "3str": "CTHACK.Range3Str"
+};
+
 export const DICE_VALUES = [0,4,6,8,10,12];

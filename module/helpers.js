@@ -1,4 +1,5 @@
-import { isDice } from "./utils.js"
+import { isDice } from "./utils.js";
+import { CTHACK } from "./config.js";
 
 export const registerHandlebarsHelpers = function (){
 
@@ -61,4 +62,11 @@ export const registerHandlebarsHelpers = function (){
     else return "token-white-skull";
   });
 
+  Handlebars.registerHelper('getItems', function (items) {
+    return items.filter(item => item.type === "item" || item.type === "weapon");
+  });
+
+  Handlebars.registerHelper('rangeDesc', function(str) {
+    return CTHACK.range[str];
+  });
 }

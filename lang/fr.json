@@ -90,6 +90,13 @@
     "CTHACK.NO": "Non",
     "CTHACK.YES": "Oui",
 
+    "CTHACK.ItemDiceName": "Dé de Matériel",
+    "CTHACK.ItemRangeName": "Portée",
+    "CTHACK.RangeNear":"Proche",
+    "CTHACK.RangeFar": "Loin",
+    "CTHACK.RangeDistant": "Distant",
+    "CTHACK.Range3str": "3 * Force",
+
     "SETTINGS.FortuneAvailableName": "Option Fortune",
     "SETTINGS.FortuneAvailableHint": "Active la gestion des jetons de Fortune",
     "SETTINGS.FortuneValueName": "Nb jetons Fortune",

@@ -17,7 +17,18 @@
                     {{/select}}
                 </select>
               </div>
-            </select>
+              <div class="resource">
+                <label class="resource-label">Portée</label>
+                <select name="data.range" data-type="String">
+                    {{#select data.range}}
+                        <option value="">{{localize "CTHACK.None"}}</option>
+                        <option value="near">Proche</option>
+                        <option value="far">Loin</option>
+                        <option value="distant">Distant</option>
+                        <option value="3str">3*Force</option>
+                    {{/select}}
+                </select>
+              </div>
             </div>
         </div>
     </header>

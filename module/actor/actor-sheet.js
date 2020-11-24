@@ -169,22 +169,38 @@ export class CtHackActorSheet extends ActorSheet {
     this.actor.rollDamageRoll(damage, {event: event});
   }
 
-  /**
-   * Handle the final creation of dropped Item data on the Actor.
-   * This method is factored out to allow downstream classes the opportunity to override item creation behavior.
-   * @param {object} itemData     The item data requested for creation
-   * @return {Promise<Actor>}
-   * @private  
-   **/ 
+  /** @override */
   async _onDropItemCreate(itemData) {
     switch (itemData.type) {
       case "archetype"    :
           return await this._onDropArchetypeItem(itemData);
       case "ability"    :
           return await this._onDropAbilityItem(itemData);
+      case "item" :
+      case "weapon": 
+          return await this._onDropStandardItem(itemData);
       default:
           return;
     }
+  }
+
+  /**
+   * Handle dropping of an item reference or item data onto an Actor Sheet
+   * @param {Object} data         The data transfer extracted from the event
+   * @return {Object}             OwnedItem data to create
+   * @private
+   */
+  async _onDropStandardItem(data) {
+    if (!this.actor.owner) return false;
+
+    //const item = await Item.fromDropData(data);
+    const itemData = duplicate(data);
+
+    /*const actor = this.actor;
+    let sameActor = (data.actorId === actor._id) || (actor.isToken && (data.tokenId === actor.token.id));
+    if (sameActor) return this._onSortItem(itemData);*/
+    // Create the owned item
+    return this.actor.createEmbeddedEntity("OwnedItem", itemData,{renderSheet: true});
   }
 
    /**
