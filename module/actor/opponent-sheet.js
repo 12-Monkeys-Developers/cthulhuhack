@@ -36,16 +36,54 @@ export class CtHackOpponentSheet extends ActorSheet {
     if (!this.options.editable) return;
 
     html.find('.attack-create').click(this._onAttackCreate.bind(this));
+        
+    html.find('.attack-edit').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.getOwnedItem(li.data("itemId"));
+      item.sheet.render(true);
+    });
+
+    html.find('.attack-delete').click(this._onAttackDelete.bind(this));
 
   }
 
-    /**
+  /**
    * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
    * @param {Event} event   The originating click event
    * @private
   */
- _onAttackCreate(event) {
-  event.preventDefault();
-  console.log("Create attack");
-} 
+  _onAttackCreate(event) {
+    event.preventDefault();
+    const header = event.currentTarget;
+    // Get the type of item to create.
+    const type = header.dataset.type;
+    // Grab any data associated with this control.
+    const data = duplicate(header.dataset);
+    // Initialize a default name.
+    const name = `New ${type.capitalize()}`;
+    // Prepare the item object.
+    const itemData = {
+      name: name,
+      type: type,
+      data: data
+    };
+    // Remove the type from the dataset since it's in the itemData.type prop.
+    delete itemData.data["type"];
+
+    // Finally, create the item!
+    return this.actor.createOwnedItem(itemData,{renderSheet: true});
+  } 
+
+  /**
+   * Handle deleting a new Owned Item for the actor using initial data defined in the HTML dataset
+   * @param {Event} event   The originating click event
+   * @private
+  */
+ _onAttackDelete(event) {
+    event.preventDefault();
+    const li = $(event.currentTarget).parents(".item");
+    const itemId = li.data("itemId");
+    li.slideUp(200, () => this.render(false));
+    return this.actor.deleteOwnedItem(itemId);
+  } 
 }

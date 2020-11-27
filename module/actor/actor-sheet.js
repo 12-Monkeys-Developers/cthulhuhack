@@ -203,10 +203,11 @@ export class CtHackActorSheet extends ActorSheet {
   /** @override */
   async _onDropItemCreate(itemData) {
     switch (itemData.type) {
-      case "archetype"    :
+      case "archetype" :
           return await this._onDropArchetypeItem(itemData);
-      case "ability"    :
+      case "ability" :
           return await this._onDropAbilityItem(itemData);
+      case "attack" :
       case "item" :
       case "weapon": 
           return await this._onDropStandardItem(itemData);
