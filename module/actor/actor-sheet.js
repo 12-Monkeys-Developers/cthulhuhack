@@ -7,20 +7,33 @@ export class CtHackActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["cthack", "sheet", "actor"],
-      template: "systems/cthack/templates/actor/actor-sheet.hbs",
+      classes: ["cthack", "sheet", "actor", "character"],
       width: 820,
       height: 720,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "abilities" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }
+
+    /** @override */
+    get template() {
+      return "systems/cthack/templates/actor/actor-sheet.hbs";
+      // Return a single sheet for all item types. return `${path}/item-sheet.html`;
+      // Alternatively, you could use the following return statement to do a  unique item sheet by type, like `weapon-sheet.html`.
+      /*if (this.actor.data.type === "actor"){
+        return `${path}/${this.actor.data.type}-sheet.hbs`;
+      }
+      if(this.actor.data.type === "opponent"){
+        return `${path}/${this.actor.data.type}-sheet.html`;
+
+      }*/
+    }
 
   /* -------------------------------------------- */
 
   /** @override */
   getData() {
     const data = super.getData();
-    data.dtypes = ["String", "Number", "Boolean"];
+    //data.dtypes = ["String", "Number", "Boolean"];
     /*for (let attr of Object.values(data.data.attributes)) {
       attr.isCheckbox = attr.dtype === "Boolean";
     }

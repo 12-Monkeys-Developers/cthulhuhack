@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character"],
+    "types": ["character","opponent"],
     "templates": {
       "base": {
         "hp": {
@@ -74,6 +74,14 @@
           "advantage": false
         }
       },
+      "abilities": []
+    },
+    "opponent": {
+      "templates": ["base"],
+      "description": "",
+      "hitDice": 1,
+      "armor": 0,
+      "attacks": [],
       "abilities": []
     }
   },

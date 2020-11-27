@@ -6,6 +6,7 @@ import { registerSystemSettings } from "./settings.js";
 
 import { CtHackActor } from "./actor/actor.js";
 import { CtHackActorSheet } from "./actor/actor-sheet.js";
+import { CtHackOpponentSheet } from "./actor/opponent-sheet.js";
 import { CtHackItem } from "./item/item.js";
 import { CtHackItemSheet } from "./item/item-sheet.js";
 
@@ -35,6 +36,7 @@ Hooks.once('init', async function() {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("cthack", CtHackActorSheet, { makeDefault: true });
+  Actors.registerSheet("cthack", CtHackOpponentSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("cthack", CtHackItemSheet, { types: ["item", "weapon", "archetype", "ability"], makeDefault: true });
 

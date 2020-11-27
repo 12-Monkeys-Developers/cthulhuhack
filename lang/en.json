@@ -99,6 +99,11 @@
 
     "CTHACK.MaterialRollPromptTitle": "Material Roll",
     "CTHACK.MaterialRollDetails": "Roll for {material}",
+    
+    "CTHACK.OpponentArmor": "Armor Points",
+    "CTHACK.OpponentTouchMalus": "Touch malus",
+    "CTHACK.OpponentAttacks": "Attacks",
+    "CTHACK.OpponentAbilities": "Special abilities",
 
     "SETTINGS.FortuneAvailableName": "Fortune Option",
     "SETTINGS.FortuneAvailableHint": "Allow Fortune option",

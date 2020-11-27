@@ -209,6 +209,10 @@
   text-align: center;
 }
 
+.cthack .noborder {
+  border: 0;
+}
+
 .cthack .resource-label {
   font-weight: bold;
   text-transform: uppercase;
@@ -220,12 +224,12 @@
   border-bottom: 1px solid #AAA;
 }
 
-.cthack .tabs .item {
+.cthack .tabs .choice {
   line-height: 40px;
   font-weight: bold;
 }
 
-.cthack .tabs .item.active {
+.cthack .tabs .choice.active {
   text-decoration: underline;
   text-shadow: none;
 }

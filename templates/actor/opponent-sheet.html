@@ -1,0 +1,74 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="actor-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs align-center">
+        <a class="choice" data-tab="description">Description</a>
+        <a class="choice" data-tab="attributes">{{localize "CTHACK.Attributes"}}</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab" data-tab="description">
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="tab" data-tab="attributes">            
+            <div class="flexrow flex-group-center noborder">
+                <label for="data.hitDice" class="resource-label resource-name" title='{{localize "CTHACK.HitDice"}}'>{{localize "CTHACK.HitDice"}}</label>
+                <select name="data.hitDice" data-type="String">
+                {{#select data.hitDice}}
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                {{/select}}
+                </select>
+                <label for="data.hp.value" class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
+                <div class="flexrow flex-center">
+                    <input type="text" name="data.hp.value" value="{{data.hp.value}}" data-dtype="Number"/>
+                    <span> / </span>
+                    <input type="text" name="data.hp.max" value="{{data.hp.max}}" data-dtype="Number"/>
+                </div>
+            </div>
+            <div class="flexrow flex-group-center noborder">
+                <label class="resource-label">{{localize "CTHACK.OpponentArmor"}}: </label>
+                <input name="data.armor" type="text" value="{{data.armor}}"/>
+                <label class="resource-label">{{localize "CTHACK.OpponentTouchMalus"}}: </label>
+                <input name="data.malus" type="text" value="{{data.malus}}"/>
+            </div>  
+            <div class="flexrow ">
+                  <li class="flexrow flex-group-right">    
+                    <div class="attack-controls">
+                        <a class="attack-control attack-edit" title="Ajouter"><i class="fas fa-edit"></i></a>
+                        <a class="attack-control attack-delete" title="Supprimer"><i class="fas fa-trash"></i></a>
+                    </div>  
+                    {{#each data.attacks as |attack key|}}
+                    <li class="attack flexrow" data-attribute={{key}} data-attack-id="{{attack._id}}">
+                    <span class="attack-label"> <a data-attack-id="{{attack._id}}">{{attack.name}}</a></span>                 
+                    </li>
+                    {{/each}}
+                    </div>
+                  </li>
+            </div>
+          </div>
+        </div>
+        
+    </section>
+</form>
