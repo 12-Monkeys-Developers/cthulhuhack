@@ -35,10 +35,10 @@ Hooks.once('init', async function() {
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("cthack", CtHackActorSheet, { makeDefault: true });
-  Actors.registerSheet("cthack", CtHackOpponentSheet, { makeDefault: true });
+  Actors.registerSheet("cthack", CtHackActorSheet, { makeDefault: true, label: "CTHACK.SheetClassCharacter" });
+  Actors.registerSheet("cthack", CtHackOpponentSheet, { makeDefault: true, label: "CTHACK.SheetClassOpponent" });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("cthack", CtHackItemSheet, { types: ["item", "weapon", "attack","archetype", "ability"], makeDefault: true });
+  Items.registerSheet("cthack", CtHackItemSheet, { types: ["item", "weapon", "attack","archetype", "ability"], makeDefault: true, label: "CTHACK.SheetClassItem" });
 
   // Preload Handlebars Templates
   preloadHandlebarsTemplates();

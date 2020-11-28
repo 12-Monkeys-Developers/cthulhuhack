@@ -73,4 +73,29 @@ export const registerHandlebarsHelpers = function (){
   Handlebars.registerHelper('isItemWithDice', function(str) {
     return str != "";
   });
+
+  Handlebars.registerHelper('timeSince', function(timeStamp) {
+    timeStamp = new Date(timeStamp);
+    let now = new Date(),
+        secondsPast = (now - timeStamp) / 1000,
+        since = "";
+  
+    // Format the time
+    if (secondsPast < 60) {
+      since = parseInt(secondsPast);
+      if ( since <= 0 ) return "Now";
+      else since = since + "s";
+    }
+    else if (secondsPast < 3600) since = parseInt(secondsPast/60) + 'm';
+    else if (secondsPast <= 86400) since = parseInt(secondsPast/3600) + 'h';
+    else {
+      let hours = parseInt(secondsPast/3600),
+          days = parseInt(hours/24);
+      since = `${days}d ${hours % 24}h`;
+    }
+  
+    // Return the string
+    return since + " ago";
+  });
+
 }

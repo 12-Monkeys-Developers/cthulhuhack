@@ -1,5 +1,9 @@
 {
     "CTHACK": {
+        "SheetClassCharacter": "Character",
+        "SheetClassOpponent": "Opponent",
+        "SheetClassItem": "Object",
+
         "Name": "Name",
         "Occupation": "Occupation",
         "Archetype": "Archetype",
@@ -39,7 +43,7 @@
 
         "AbilityKey": "Key",
         "AbilityUsageType": "Usage Type",
-        "AbilityUsageRemaining": "Usage Remaining",
+        "AbilityUsageRemaining": "Usages",
         "AbilityUsageLast": "Last usage",
         "AbilityMultiple": "Multiple",
 
@@ -65,6 +69,7 @@
         "Add": "Add",
         "Edit": "Edit",
         "Delete": "Delete",
+        "Use": "Use",
 
         "Attributes": "Attributes",
 

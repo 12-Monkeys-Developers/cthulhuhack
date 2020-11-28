@@ -1,3 +1,5 @@
+import { formatDate} from "../utils.js"
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -48,27 +50,24 @@ export class CtHackActorSheet extends ActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 
-    // Add Inventory or Ability Item
+    // Add, Update or Delete Inventory
     html.find('.item-create').click(this._onItemCreate.bind(this));
-    html.find('.ability-create').click(this._onItemCreate.bind(this));
-
-    // Update Inventory Item
     html.find('.item-edit').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.getOwnedItem(li.data("itemId"));
       item.sheet.render(true);
     });
-
-    // Update Ability Item
+    html.find('.item-delete').click(this._onItemDelete.bind(this));
+    
+    // Add, Update, Delete or Use Ability Item
+    html.find('.ability-create').click(this._onItemCreate.bind(this));
     html.find('.ability-edit').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.getOwnedItem(li.data("itemId"));
       item.sheet.render(true);
-    });
-
-    // Delete Inventory or Ability Item
-    html.find('.item-delete').click(this._onItemDelete.bind(this));
+    });   
     html.find('.ability-delete').click(this._onItemDelete.bind(this));
+    html.find('.ability-use').click(this._onItemUse.bind(this));
 
     // Saving throws
     html.find('.save-name').click(this._onSaveRoll.bind(this));
@@ -87,7 +86,7 @@ export class CtHackActorSheet extends ActorSheet {
     html.find('#adr1').click(this._onAdrenalineUse.bind(this));
     html.find('#adr2').click(this._onAdrenalineUse.bind(this));
 
-    // Roll for inventory
+    // Roll for item in inventory
     html.find('.fa-dice-d20').click(this._onMaterialRoll.bind(this));
 
   }
@@ -145,6 +144,36 @@ export class CtHackActorSheet extends ActorSheet {
     }
   }
  
+  /**
+   * Callback on use item actions
+   * @param event the roll event
+   * @private
+   */
+  _onItemUse(event) {
+    event.preventDefault();
+    const li = $(event.currentTarget).parents(".item");
+    const itemId = li.data("itemId");
+    const entity = this.actor.items.find(item => item._id === itemId);
+    switch (entity.data.type) {
+      case "ability" :
+            return this._useAbility(entity);
+      default :
+        return;
+    }
+  }
+
+  _useAbility(ability){
+    console.log(`Use ability ${ability.name}`);
+    let remaining = ability.data.data.usageRemaining;
+    if (remaining > 0 ){
+      remaining--;
+    }
+    const now = new Date();//new Date(game.time.serverTime * 1000);// new Date().getTime();
+    const lastTime = formatDate(now);
+    ability.update({'data.usageRemaining': remaining, 'data.usageLastTime': lastTime});
+    this.actor.sheet.render(true);
+  }
+
   /**
    * Handle clickable save roll
    * @param {Event} event   The originating click event

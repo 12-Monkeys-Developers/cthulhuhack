@@ -1,5 +1,9 @@
 {
     "CTHACK": {
+        "SheetClassCharacter": "Personnage",
+        "SheetClassOpponent": "Adversaire",
+        "SheetClassItem": "Objet",
+
         "Name": "Nom",
         "Occupation": "Métier",
         "Archetype": "Archétype",
@@ -39,7 +43,7 @@
 
         "AbilityKey": "Clé",
         "AbilityUsageType": "Type d'usage",
-        "AbilityUsageRemaining": "Utilisations restantes",
+        "AbilityUsageRemaining": "Utilisations",
         "AbilityUsageLast": "Dernier usage",
         "AbilityMultiple": "Multiple",
 
@@ -65,6 +69,7 @@
         "Add": "Ajouter",
         "Edit": "Editer",
         "Delete": "Supprimer",
+        "Use": "Utiliser",
 
         "Attributes": "Attributs",
 
