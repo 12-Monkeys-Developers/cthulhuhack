@@ -47,6 +47,9 @@ export class CtHackActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
+    // Item summaries
+    html.find('.item .item-name h4').click(event => this._onItemSummary(event));
+
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 
@@ -359,5 +362,26 @@ _onAdrenalineUse(event) {
   } 
   this.actor.sheet.render(true);
 }
+
+  /**
+   * Handle toggling of an item from the Actor sheet
+   * @private
+   */
+  _onItemSummary(event) {
+    event.preventDefault();
+    let li = $(event.currentTarget).parents(".item"),
+        item = this.actor.getOwnedItem(li.data("item-id"));
+
+    // Toggle summary
+    if ( li.hasClass("expanded") ) {
+      let summary = li.children(".item-summary");
+      summary.slideUp(200, () => summary.remove());
+    } else {
+      let div = $(`<div class="item-summary">${item.data.data.description}</div>`);
+      li.append(div.hide());
+      div.slideDown(200);
+    }
+    li.toggleClass("expanded");
+  }
 
 }

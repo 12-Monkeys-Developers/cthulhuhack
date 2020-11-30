@@ -109,10 +109,10 @@
                 <li class="item flexrow item-header">
                   <div class="item-image"></div>
                   <div class="item-name">{{localize "CTHACK.Name"}}</div>
-                  <div class="item-usageType">{{localize "CTHACK.AbilityUsageType"}}</div>
-                  <div class="item-usageRemaining">{{localize "CTHACK.AbilityUsageRemaining"}}</div>
-                  <div class="item-usageLastTime">{{localize "CTHACK.AbilityUsageLast"}}</div>
-                  <div class="item-usageMultiple">{{localize "CTHACK.AbilityMultiple"}}</div>
+                  <div class="item-usageType align-center">{{localize "CTHACK.AbilityUsageType"}}</div>
+                  <div class="item-usageRemaining align-center">{{localize "CTHACK.AbilityUsageRemaining"}}</div>
+                  <div class="item-usageLastTime align-center">{{localize "CTHACK.AbilityUsageLast"}}</div>
+                  <div class="item-usageMultiple align-center">{{localize "CTHACK.AbilityMultiple"}}</div>
                   <div class="item-controls">
                     <a class="item-control ability-create" title="{{localize "CTHACK.Add"}}" data-type="ability"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
                   </div>
@@ -120,12 +120,14 @@
                 {{#each items as |item|}}
                   {{#if (equals item.type "ability")}}
                     <li class="item flexrow" data-item-id="{{item._id}}">
+                      <div class="item-name flexrow rollable">
                       <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-                      <h4 class="item-name" title="{{{item.data.description}}}">{{item.name}}</h4>
-                      <div>{{item.data.usageType}}</div>
-                      <div>{{item.data.usageRemaining}}</div>
-                      <div>{{item.data.usageLastTime}}</div>
-                      <div>{{booleanToString item.data.multiple}}</div>
+                      <h4>{{item.name}}</h4>
+                      </div>
+                      <div class="align-center">{{item.data.usageType}}</div>
+                      <div class="align-center">{{item.data.usageRemaining}}</div>
+                      <div class="align-center">{{item.data.usageLastTime}}</div>
+                      <div class="align-center">{{booleanToString item.data.multiple}}</div>
                       <div class="item-controls">
                         {{#if (gt item.data.usageRemaining 0) }}
                         <a class="item-control ability-use" title="{{localize "CTHACK.Use"}}"><i class="fas fa-check"></i></a>
