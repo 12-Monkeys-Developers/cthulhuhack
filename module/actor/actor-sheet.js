@@ -167,13 +167,13 @@ export class CtHackActorSheet extends ActorSheet {
 
   _useAbility(ability){
     console.log(`Use ability ${ability.name}`);
-    let remaining = ability.data.data.usageRemaining;
+    let remaining = ability.data.data.uses.value;
     if (remaining > 0 ){
       remaining--;
     }
     const now = new Date();//new Date(game.time.serverTime * 1000);// new Date().getTime();
     const lastTime = formatDate(now);
-    ability.update({'data.usageRemaining': remaining, 'data.usageLastTime': lastTime});
+    ability.update({'data.uses.value': remaining, 'data.uses.last': lastTime});
     this.actor.sheet.render(true);
   }
 

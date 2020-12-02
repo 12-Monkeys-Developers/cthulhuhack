@@ -42,10 +42,16 @@
         "Damage": "Damage",
 
         "AbilityKey": "Key",
-        "AbilityUsageType": "Usage Type",
-        "AbilityUsageRemaining": "Usages",
-        "AbilityUsageLast": "Last usage",
+        "AbilityUsePer": "Use Type",
+        "AbilityUseValue": "Uses",
+        "AbilityUseValueDtl": "Remaining uses",
+        "AbilityUseMax": "Maximum",
+        "AbilityUseLast": "Last use",
         "AbilityMultiple": "Multiple",
+        "AbilityUsePermanent": "Permanent",
+        "AbilityUsePerSession": "Per session",
+        "AbilityUsePerHour": "Per hour",
+        "AbilityUsePerFight": "Per fight",
 
         "Formula": "Formula",
         "RollMode": "Roll Mode",
@@ -104,8 +110,7 @@
         "OpponentArmor": "Armor Points",
         "OpponentTouchMalus": "Touch malus",
         "OpponentAttacks": "Attacks",
-        "OpponentAbilities": "Special abilities"
-        
+        "OpponentAbilities": "Special abilities"   
     },
 
     "SETTINGS": {

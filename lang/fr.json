@@ -42,10 +42,16 @@
         "Damage": "Dégâts",
 
         "AbilityKey": "Clé",
-        "AbilityUsageType": "Type d'usage",
-        "AbilityUsageRemaining": "Utilisations",
-        "AbilityUsageLast": "Dernier usage",
+        "AbilityUsePer": "Type d'usage",
+        "AbilityUseValue": "Utilisations",
+        "AbilityUseValueDtl": "Utilisations restantes",
+        "AbilityUseMax": "Maximum",
+        "AbilityUseLast": "Dernier usage",
         "AbilityMultiple": "Multiple",
+        "AbilityUsePermanent": "Permanent",
+        "AbilityUsePerSession": "Par session",
+        "AbilityUsePerHour": "Par heure",
+        "AbilityUsePerFight": "Par combat",
 
         "Formula": "Formule",
         "RollMode": "Type de jet",
@@ -106,6 +112,7 @@
         "OpponentAttacks": "Attaques",
         "OpponentAbilities": "Capacités spéciales"
     },
+
     "SETTINGS": {
         "FortuneAvailableName": "Option Fortune",
         "FortuneAvailableHint": "Active la gestion des jetons de Fortune",

@@ -6,6 +6,13 @@ Currently Work In Progress
 -------------------------------------
 Fonctionnalités
 
+0.1.4
+- Description d'une capacité dépliable
+- Capacité : type en liste déroulante
+- Capacité : affichage du nombre d'utilisations restantes et max
+- Capacité : champ clé en lecture seule si c'est une capacité de base
+- Capacité : pas d'affichage des informations d'utilisation si c'est de type permanent
+
 0.1.3
 - Opposant : création, ajout des attaques sous forme d'Item
 - Capacité : gestion du nombre d'utilisations et de la date de dernier usage

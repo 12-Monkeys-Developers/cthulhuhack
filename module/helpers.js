@@ -1,4 +1,4 @@
-import { isDice } from "./utils.js";
+import { isDice, isAbilityKeyReserved } from "./utils.js";
 import { CTHACK } from "./config.js";
 
 export const registerHandlebarsHelpers = function (){
@@ -98,4 +98,14 @@ export const registerHandlebarsHelpers = function (){
     return since + " ago";
   });
 
+  Handlebars.registerHelper('abilityPeriodToString', function(str) {
+    const period = CTHACK.abilityUsePeriod[str];
+    return game.i18n.localize(period);
+  });
+  
+  Handlebars.registerHelper('isAbilityKeyReadOnly', function(key) {
+    if (isAbilityKeyReserved(key)) {
+      return "readonly";
+    }
+  });
 }

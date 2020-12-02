@@ -3,16 +3,6 @@
         <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
         <div class="header-fields">
             <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
-            <!--<div class="grid grid-2col">
-              <div class="resource">
-                <label class="resource-label">Quantity</label>
-                  <input type="text" name="data.quantity" value="{{data.quantity}}" data-dtype="Number"/>
-              </div>
-              <div class="resource">
-                <label class="resource-label">Weight</label>
-                  <input type="text" name="data.weight" value="{{data.weight}}" data-dtype="Number"/>
-              </div>
-            </div>-->
         </div>
     </header>
 
@@ -35,25 +25,36 @@
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityKey"}}</label>
                 <div class="form-fields">
-                    <input class="field-value" name="data.key" type="text" value="{{data.key}}" data-dtype="String">
+                    <input class="field-value" name="data.key" type="text" value="{{data.key}}" data-dtype="String" {{isAbilityKeyReadOnly data.key}}>
                 </div>
             </div>
             <div class="form-group">
-                <label>{{localize "CTHACK.AbilityUsageType"}}</label>
+                <label for="data.uses.per">{{localize "CTHACK.AbilityUsePer"}}</label>
+                <select name="data.uses.per" data-type="String">
+                {{#select data.uses.per}}
+                    <option value="Permanent">{{localize "CTHACK.AbilityUsePermanent"}}</option>
+                    <option value="Session">{{localize "CTHACK.AbilityUsePerSession"}}</option>
+                    <option value="Hour">{{localize "CTHACK.AbilityUsePerHour"}}</option>
+                    <option value="Fight">{{localize "CTHACK.AbilityUsePerFight"}}</option>>
+                {{/select}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>{{localize "CTHACK.AbilityUseValueDtl"}}</label>
                 <div class="form-fields">
-                    <input class="field-value" name="data.usageType" type="text" value="{{data.usageType}}" data-dtype="String">
+                    <input class="field-value" name="data.uses.value" type="text" value="{{data.uses.value}}" data-dtype="Number">
                 </div>
             </div>
             <div class="form-group">
-                <label>{{localize "CTHACK.AbilityUsageRemaining"}}</label>
+                <label>{{localize "CTHACK.AbilityUseMax"}}</label>
                 <div class="form-fields">
-                    <input class="field-value" name="data.usageRemaining" type="text" value="{{data.usageRemaining}}" data-dtype="String">
+                    <input class="field-value" name="data.uses.max" type="text" value="{{data.uses.max}}" data-dtype="Number">
                 </div>
             </div>
             <div class="form-group">
-                <label>{{localize "CTHACK.AbilityUsageLast"}}</label>
+                <label>{{localize "CTHACK.AbilityUseLast"}}</label>
                 <div class="form-fields">
-                    <input class="field-value" name="data.usageLastTime" type="text" value="{{data.usageLastTime}}" data-dtype="String">
+                    <input class="field-value" name="data.uses.last" type="text" value="{{data.uses.last}}" data-dtype="String">
                 </div>
             </div>        
             <div class="form-group">

@@ -68,4 +68,13 @@ CTHACK.range = {
   "3str": "CTHACK.Range3Str"
 };
 
+CTHACK.abilityUsePeriod = {
+  "Permanent": "CTHACK.AbilityUsePermanent",
+  "Session": "CTHACK.AbilityUsePerSession",
+  "Hour": "CTHACK.AbilityUsePerHour",
+  "Fight": "CTHACK.AbilityUsePerFight"
+};
+
+export const ABILITY_KEYS_RESERVED = ["SWILEA","STA","ANIHAN","IND","MEC","IROMIN","RIP","LEG","SELPRE","HAR"];
+
 export const DICE_VALUES = [0,4,6,8,10,12];

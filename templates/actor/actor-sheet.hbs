@@ -109,9 +109,9 @@
                 <li class="item flexrow item-header">
                   <div class="item-image"></div>
                   <div class="item-name">{{localize "CTHACK.Name"}}</div>
-                  <div class="item-usageType align-center">{{localize "CTHACK.AbilityUsageType"}}</div>
-                  <div class="item-usageRemaining align-center">{{localize "CTHACK.AbilityUsageRemaining"}}</div>
-                  <div class="item-usageLastTime align-center">{{localize "CTHACK.AbilityUsageLast"}}</div>
+                  <div class="item-usageType align-center">{{localize "CTHACK.AbilityUsePer"}}</div>
+                  <div class="item-usageRemaining align-center">{{localize "CTHACK.AbilityUseValue"}}</div>
+                  <div class="item-usageLastTime align-center">{{localize "CTHACK.AbilityUseLast"}}</div>
                   <div class="item-usageMultiple align-center">{{localize "CTHACK.AbilityMultiple"}}</div>
                   <div class="item-controls">
                     <a class="item-control ability-create" title="{{localize "CTHACK.Add"}}" data-type="ability"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
@@ -124,12 +124,16 @@
                       <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
                       <h4>{{item.name}}</h4>
                       </div>
-                      <div class="align-center">{{item.data.usageType}}</div>
-                      <div class="align-center">{{item.data.usageRemaining}}</div>
-                      <div class="align-center">{{item.data.usageLastTime}}</div>
+                      <div class="align-center">{{abilityPeriodToString item.data.uses.per}}</div>
+                      <div class="align-center">
+                      {{#if (gt item.data.uses.max 0)}}
+                      {{item.data.uses.value}}/{{item.data.uses.max}}
+                      {{/if}}
+                      </div>
+                      <div class="align-center">{{item.data.uses.last}}</div>
                       <div class="align-center">{{booleanToString item.data.multiple}}</div>
                       <div class="item-controls">
-                        {{#if (gt item.data.usageRemaining 0) }}
+                        {{#if (gt item.data.uses.value 0) }}
                         <a class="item-control ability-use" title="{{localize "CTHACK.Use"}}"><i class="fas fa-check"></i></a>
                         {{/if}}
                         <a class="item-control ability-edit" title="{{localize "CTHACK.Edit"}}"><i class="fas fa-edit"></i></a>

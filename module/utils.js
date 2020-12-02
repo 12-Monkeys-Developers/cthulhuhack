@@ -1,4 +1,4 @@
-import { DICE_VALUES} from "./config.js"
+import { DICE_VALUES, ABILITY_KEYS_RESERVED} from "./config.js"
 
 /**
  * Check the value is a valid dice (dX)
@@ -50,4 +50,12 @@ export function formatDate(dt) {
     const date_string = `${DD}/${MM}/${YYYY} ${hh}:${mm}:${ss}`;
 
     return date_string;
+}
+
+/**
+ * Check if the key of the ability is reserved by the standard abilities
+ * @param {String} key
+ */
+export function isAbilityKeyReserved(key) {
+    return (ABILITY_KEYS_RESERVED.includes(key));
 }
