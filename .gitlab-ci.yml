@@ -18,11 +18,6 @@ build:
   stage: build
   script:
     - zip foundryvtt-cthulhu-hack.zip -r *.js *.json *.md css lang module packs templates ui -x ".*"
-  artifacts:
-    name: foundryvtt-cthulhu-hack
-    when: on_success
-    paths:
-      - foundryvtt-cthulhu-hack.zip
   when: on_success
   only:
     - tags
