@@ -55,6 +55,7 @@
 
         "Formula": "Formula",
         "RollMode": "Roll Mode",
+        "RollModifier": "Modifier",
         "RollSituationalBonus": "Situational Bonus?",
         "SavePromptTitle": "{save} Saving Throw",
         "Advantage": "Advantage",
@@ -64,6 +65,8 @@
         "RollSuccess": "Success",
         "RollFailure": "Failure",
         "ResourceRollFailure": "Resource lost",
+        "RollWithBonus": " with a bonus of {modifier} ",
+        "RollWithMalus": " with a malus of {modifier} ",
 
         "HitPointsStart": "Starting Hit Points",
         "WealthStart": "Richesse",

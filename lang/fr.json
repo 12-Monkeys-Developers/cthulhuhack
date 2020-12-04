@@ -55,6 +55,7 @@
 
         "Formula": "Formule",
         "RollMode": "Type de jet",
+        "RollModifier": "Modificateur",
         "RollSituationalBonus": "Bonus de situation?",
         "SavePromptTitle": "Jet de Sauvegarde {save}",
         "Advantage": "Avantage",
@@ -64,6 +65,8 @@
         "RollSuccess": "Succès",
         "RollFailure": "Echec",
         "ResourceRollFailure": "Perte de ressource",
+        "RollWithBonus": " avec un bonus de {modifier} ",
+        "RollWithMalus": " avec un malus de {modifier} ",
 
         "HitPointsStart": "Points de Vie de départ",
         "WealthStart": "Richesse de départ",
