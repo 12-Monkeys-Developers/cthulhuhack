@@ -216,43 +216,45 @@ export class CtHackActor extends Actor {
   }
 
   _findSavesAdvantages(saveId){
-    let advantages = game.i18n.localize("CTHACK.Advantages");
+    let advantages = "<ul>";
     let abilitiesList = this.data.data.abilities;
     for (let index = 0; index < abilitiesList.length; index++) {
       const element = abilitiesList[index];
       if (element.key === "SWILEA" && (saveId === "str" || saveId === "dex" || saveId === "con")){
-        advantages += game.i18n.localize("CTHACK.AdvantageSWILEA");
+        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageSWILEA") + "</li>";
       } 
       if (element.key === "STA"){
-        advantages += game.i18n.localize("CTHACK.AdvantageSTA");
+        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageSTA") + "</li>";
       }
       if (element.key === "ANIHAN"){
-        advantages += game.i18n.localize("CTHACK.AdvantageANIHAN");
+        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageANIHAN") + "</li>";
       }
       if (element.key === "IND" && (saveId === "wis" || saveId === "int" || saveId === "cha")){
-        advantages += game.i18n.localize("CTHACK.AdvantageIND");
+        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageIND") + "</li>";
       }
       if (element.key === "MEC"){
-        advantages += game.i18n.localize("CTHACK.AdvantageMEC");
+        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageMEC") + "</li>";
       }
       if (element.key === "IROMIN"){
-        advantages += game.i18n.localize("CTHACK.AdvantageIROMIN");
+        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageIROMIN") + "</li>";
       }
       if (element.key === "RIP" && (saveId === "str")){
-        advantages += game.i18n.localize("CTHACK.AdvantageRIP");
+        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageRIP") + "</li>";
       }
       if (element.key === "LEG"){
-        advantages += game.i18n.localize("CTHACK.AdvantageLEG");
+        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageLEG") + "</li>";
       }
       if (element.key === "SELPRE"){
-        advantages += game.i18n.localize("CTHACK.AdvantageSELPRE");
+        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageSELPRE") + "</li>";
       }
       if (element.key === "HAR"){
-        advantages += game.i18n.localize("CTHACK.AdvantageHAR");
-      }
-      
-      
+        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageHAR") + "</li>";
+      }      
     }
+    if (advantages === "<ul>") {
+      advantages = "";
+    }
+    else advantages += "</ul>";
     return advantages;
   }
 }
