@@ -40,6 +40,18 @@ export const registerHandlebarsHelpers = function (){
     return val1 === val2;
   });
 
+  Handlebars.registerHelper('notEquals', function (val1, val2) {
+    return val1 !== val2;
+  });
+
+  Handlebars.registerHelper('stringNotEmpty', function (str) {
+    return str !== "";
+  });
+
+  Handlebars.registerHelper('stringNeitherNullEmpty', function (str) {
+    return str !== null && str !== "" ;
+  });
+
   Handlebars.registerHelper('booleanToString', function (value) {
     if (value){
       return game.i18n.localize("CTHACK.YES");

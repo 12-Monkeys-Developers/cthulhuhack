@@ -6,6 +6,11 @@ Currently Work In Progress
 -------------------------------------
 Fonctionnalités
 
+0.1.5
+- Possibilité d'avoir un bonus ou malus sur le jet de dés
+- Fix de l'avantage/désavantage
+- Ajout d'un champ optionnel qui affiche les cas d'avantage en fonction des capacités spéciales
+
 0.1.4
 - Description d'une capacité dépliable
 - Capacité : type en liste déroulante
