@@ -75,8 +75,9 @@
                 </li>
                 {{#each (getItemsAndWeapons actor.items) as |item id|}}
                   <li class="item flexrow" data-item-id="{{item._id}}">
-                      <div class="item-image align-left"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-                      <h4 class="item-name align-left" title="{{item.description}}">{{item.name}}</h4>
+					            <div class="item-name flexrow">
+                      <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+                      <h4>{{item.name}}</h4>
                       <div class="item-dice rollable align-right">
                         {{#if (isItemWithDice item.data.dice)}}
                         <i class="fas fa-dice-d20"></i>
@@ -120,7 +121,7 @@
                 {{#each items as |item|}}
                   {{#if (equals item.type "ability")}}
                     <li class="item flexrow" data-item-id="{{item._id}}">
-                      <div class="item-name flexrow rollable">
+                      <div class="item-name flexrow">
                       <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
                       <h4>{{item.name}}</h4>
                       </div>
