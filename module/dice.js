@@ -14,10 +14,10 @@
  * @param {Object} dialogOptions    Modal dialog options
  * @param {boolean} advantage       Apply advantage to the roll (unless otherwise specified)
  * @param {boolean} disadvantage    Apply disadvantage to the roll (unless otherwise specified)
- * @param {boolean} resourceRoll    Specify if it's a resource roll
+ * @param {boolean} rollType        Specify the type of roll : Save, Resource, Damage, Material
  * @param {number} targetValue      Assign a target value against which the result of this roll should be compared
  * @param {boolean} chatMessage     Automatically create a Chat Message for the result of this roll
- * modifier
+ * @param {number} modifier         Bonus (+X) or malus (-X) for the roll
  * @param {object} messageData      Additional data which is applied to the created Chat Message, if any
  * @param {object} abilitiesAdvantages      Advantages gained from abilities
  *
@@ -25,14 +25,16 @@
  */
 export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rollMode=null, template=null, title=null, speaker=null,
     flavor=null, dialogOptions,
-    advantage=null, disadvantage=null, resourceRoll=false, targetValue=null,
-    chatMessage=true, modifier=0,abilitiesAdvantages=null, messageData={}}={}) {
+    advantage=null, disadvantage=null, rollType=null, targetValue=null,
+    chatMessage=true, modifier=null,abilitiesAdvantages=null, messageData={}}={}) {
   
    // Prepare Message Data
    messageData.flavor = flavor || title;
    messageData.speaker = speaker || ChatMessage.getSpeaker();
    const messageOptions = {rollMode: rollMode || game.settings.get("core", "rollMode")};
-   parts = parts.concat(["@modifier"]);
+   if (rollType === "Save") {
+    parts = parts.concat(["@modifier"]);
+   }
 
    let adv = 0;
 
@@ -54,7 +56,7 @@ export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rol
      if (adv === 1) {
       nd = 2; 
       messageData.flavor += ` (${game.i18n.localize("CTHACK.Advantage")})`;
-      if (resourceRoll){
+      if (rollType === "Resource"){
         mods += "kh";
       }
       else mods += "kl";      
@@ -63,7 +65,7 @@ export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rol
      else if (adv === -1) {
        nd = 2;
        messageData.flavor += ` (${game.i18n.localize("CTHACK.Disadvantage")})`;
-       if (resourceRoll){
+       if (rollType === "Resource"){
         mods += "kl";
        }
        else mods += "kh";
@@ -75,13 +77,13 @@ export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rol
      
   
      // Optionally include a situational bonus
-    if ( form ) {      
+    if ( rollType === "Save" && form ) {      
       data['modifier'] = -1 * form.modifier.value;
       modifier = form.modifier.value;
       messageOptions.rollMode = form.rollMode.value;
     }
     // Remove the @modifier if there is no modifier
-    if (!data["modifier"]) parts.pop();
+    if (rollType === "Save" && !data["modifier"]) parts.pop();
 
      // Execute the roll
      let roll = new Roll(parts.join(" + "), data);
@@ -97,18 +99,18 @@ export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rol
     }
   
    // Create the Roll instance
-   const roll = await _diceRollDialog({template, title, parts, data, rollMode: messageOptions.rollMode, dialogOptions, modifier, abilitiesAdvantages, roll: _roll});
+   const roll = await _diceRollDialog({template, title, parts, data, rollMode: messageOptions.rollMode, dialogOptions, rollType, modifier, abilitiesAdvantages, roll: _roll});
   
    // Create a Chat Message
    if ( roll && chatMessage ) {
-     if (modifier > 0){
+     if (modifier !== null && modifier > 0){
       messageData.flavor += `${game.i18n.format("CTHACK.RollWithBonus", {modifier: modifier})}`;
      }
-     if (modifier < 0){
+     if (modifier !== null && modifier < 0){
       messageData.flavor += `${game.i18n.format("CTHACK.RollWithMalus", {modifier: modifier})}`;
      }
      // Save roll
-     if (!resourceRoll && targetValue) {
+     if (rollType === "Save" && targetValue) {
       if (roll.total < targetValue){
         messageData.flavor += `<br><b>${game.i18n.localize("CTHACK.RollSuccess")}</b>`;
       }
@@ -117,7 +119,7 @@ export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rol
       }
      }
      // Resource roll
-     else if (resourceRoll){
+     else if (rollType === "Resource"){
       if (roll.total == 1 || roll.total == 2){
         messageData.flavor += `<br><b>${game.i18n.localize("CTHACK.ResourceRollFailure")}</b>`;
       }
@@ -133,7 +135,7 @@ export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rol
  * @return {Promise<Roll>}
  * @private
  */
-async function _diceRollDialog({template, title, parts, data, rollMode, dialogOptions, modifier, abilitiesAdvantages, roll}={}) {
+async function _diceRollDialog({template, title, parts, data, rollMode, dialogOptions, rollType, modifier, abilitiesAdvantages, roll}={}) {
 
     // Render modal dialog
     template = template || "systems/cthack/templates/chat/roll-dialog.html";
@@ -142,6 +144,7 @@ async function _diceRollDialog({template, title, parts, data, rollMode, dialogOp
       data: data,
       rollMode: rollMode,
       rollModes: CONFIG.Dice.rollModes,
+      rollType: rollType,
       modifier: modifier,
       abilitiesAdvantages: abilitiesAdvantages
     };

@@ -218,6 +218,12 @@ export class CtHackActorSheet extends ActorSheet {
     const message = game.i18n.format("CTHACK.MaterialRollDetails", {material: materialName});
 
     let rollMaterial = await this.actor.rollMaterial(dice, {event: event, flavor: message});
+
+    // Resource loss
+    if (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2) {
+      console.log("Decrease Material Ressource");    
+      this.actor.sheet.render(true);
+    }  
   }
   
 

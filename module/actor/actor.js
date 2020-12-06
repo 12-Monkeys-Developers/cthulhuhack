@@ -79,6 +79,7 @@ export class CtHackActor extends Actor {
     // Roll and return
     const rollData = mergeObject(options, {
       title: game.i18n.format("CTHACK.SavePromptTitle", {save: label}),   
+      rollType: "Save",
       targetValue: saveValue,
       abilitiesAdvantages: abilitiesAdvantages
     });
@@ -107,7 +108,7 @@ export class CtHackActor extends Actor {
     // Roll and return
     const rollData = mergeObject(options, {
       title: game.i18n.format("CTHACK.ResourceRollPromptTitle", {resource: label}),
-      resourceRoll: true,
+      rollType: "Resource",
       diceType: resourceValue
     });
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
@@ -116,7 +117,7 @@ export class CtHackActor extends Actor {
   }
 
   /**
-   * Roll a MAterial dice
+   * Roll a Material dice
    * @param {String} dice         The type of dice (e.g. "d6")
    * @param {Object} options      Options which configure how resource tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
@@ -132,7 +133,7 @@ export class CtHackActor extends Actor {
     // Roll and return
     const rollData = mergeObject(options, {
       title: game.i18n.format("CTHACK.MaterialRollPromptTitle"),
-      resourceRoll: true,
+      rollType: "Material",
       diceType: dice
     });
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
@@ -184,7 +185,8 @@ export class CtHackActor extends Actor {
     // Roll and return
     const rollData = mergeObject(options, {
       title: label,
-      diceType: damageDice
+      diceType: damageDice,
+      rollType: "Damage"
     });
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
     return diceRoll(rollData);

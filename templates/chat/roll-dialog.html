@@ -4,10 +4,12 @@
         <label>{{localize "CTHACK.Advantages"}}</label>{{{abilitiesAdvantages}}}
     </div>
     {{/if}}
+    {{#if (eq rollType "Save")}}
     <div class="form-group">
         <label>{{localize "CTHACK.RollModifier"}}</label>
         <input class="field-value" name="modifier" type="text" value="" data-dtype="Number">
     </div>
+    {{/if}}
     <div class="form-group">
         <label>{{ localize "CTHACK.RollMode" }}</label>
         <select name="rollMode">
