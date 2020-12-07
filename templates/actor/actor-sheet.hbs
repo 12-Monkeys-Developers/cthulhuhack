@@ -82,7 +82,7 @@
                         {{#if (isItemWithDice item.data.dice)}}
                         <i class="fas fa-dice-d20"></i>
                         {{/if}}
-                        <select name="item.data.dice" data-type="String">
+                        <select class="item-dice-select" name="{{item._id}}" data-type="String">
                         {{#select item.data.dice}}
                             <option value="">{{localize "CTHACK.None"}}</option>
                             <option value="d4">1d4</option>

@@ -91,7 +91,14 @@ export class CtHackActorSheet extends ActorSheet {
 
     // Roll for item in inventory
     html.find('.fa-dice-d20').click(this._onMaterialRoll.bind(this));
-
+    html.find('.item-dice').change(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.getOwnedItem(li.data("itemId"));
+      const selectName = "[name='" + item._id + "']";
+      const newValue = html.find(selectName)[0].value;
+      const update = {_id: item._id, "data.dice": newValue };
+      this.actor.updateEmbeddedEntity("OwnedItem", update);
+    });
   }
 
   /* -------------------------------------------- */
