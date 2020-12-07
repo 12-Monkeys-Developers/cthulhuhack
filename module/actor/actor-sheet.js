@@ -82,6 +82,12 @@ export class CtHackActorSheet extends ActorSheet {
     html.find('.armed-damage-name').click(this._onDamagedRoll.bind(this));
     html.find('.unarmed-damage-name').click(this._onDamagedRoll.bind(this));
 
+    // Wealth roll
+    html.find('.wealth-name').click(this._onResourceRoll.bind(this));
+
+    // HitDice roll
+    html.find('.hit-name').click(this._onResourceRoll.bind(this));
+
     // Fortune option
     html.find('.fortune-use').click(this._onFortuneUse.bind(this));
 

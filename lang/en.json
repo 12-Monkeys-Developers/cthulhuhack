@@ -30,9 +30,11 @@
         "Smokes": "Smokes",
         "SmokesDesc": "Coerce, Carouse, Bully",
         "Sanity": "Sanity",
-        "HitPoints": "Hit Points",    
+        "HitPoints": "Hit Points",  
+        "Hit": "Hit",
         "HitDice": "Hit Dice",
-        "WealthDice": "Wealth Dice",
+        "Wealth": "Wealth",
+        "WealthDice": "Wealth Dice",        
         "ArmedDamage": "Armed damage",
         "UnarmedDamage": "Unarmed damage",
         "Description": "Description",
@@ -122,6 +124,10 @@
         "FortuneValueName": "Fortune available",
         "FortuneValueHint": "Fortune value available to players",
         "AdrenalineName": "Adrenaline Option",
-        "AdrenalineHint": "Allow Adrenaline option"
+        "AdrenalineHint": "Allow Adrenaline option",
+        "WealthResourceName": "Wealth Resource Option",
+        "WealthResourceHint": "Handle wealth as a resource",
+        "HitDiceResourceName": "Hit Dice Resource Option",
+        "HitDiceResourceHint": "Handle hit dice as a resource"
     }    
 }

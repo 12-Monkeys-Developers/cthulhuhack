@@ -47,13 +47,17 @@ CTHACK.savesDescription = {
 CTHACK.resources = {
   "fla": "CTHACK.FlashLights",
   "smo": "CTHACK.Smokes",
-  "san": "CTHACK.Sanity"
+  "san": "CTHACK.Sanity",
+  "wea": "CTHACK.Wealth",
+  "hit": "CTHACK.Hit"
 };
 
 CTHACK.resourcesTemplate = {
   "fla": "flashlights",
   "smo": "smokes",
-  "san": "sanity"
+  "san": "sanity",
+  "wea": "wealthDice",
+  "hit": "hitDice"
 };
 
 CTHACK.attributes = {

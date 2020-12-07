@@ -30,10 +30,12 @@
           "max": "d6"
         },
         "hitDice": {
-          "value": "d6"
+          "value": "d6",
+          "max": "d6"
         },
         "wealthDice": {
-          "value": "d6"
+          "value": "d6",
+          "max": "d6"
         },
         "armedDamage": {
           "value": "d6"

@@ -8,9 +8,8 @@ export const registerSystemSettings = function() {
       hint: "SETTINGS.FortuneAvailableHint",
       scope: "world",
       config: true,
-      default: false,
       type: Boolean,
-      default: 0
+      default: false      
     });
 
     /**
@@ -21,7 +20,6 @@ export const registerSystemSettings = function() {
       hint: "SETTINGS.FortuneValueHint",
       scope: "world",
       config: true,
-      default: false,
       type: Number,
       default: 0
   });
@@ -34,9 +32,32 @@ export const registerSystemSettings = function() {
       hint: "SETTINGS.AdrenalineHint",
       scope: "world",
       config: true,
-      default: false,
       type: Boolean,
-      default: 0
+      default: false
+    });
+
+    /**
+     * Wealth as resource option
+     */
+    game.settings.register("cthack", "WealthResource", {
+      name: "SETTINGS.WealthResourceName",
+      hint: "SETTINGS.WealthResourceHint",
+      scope: "world",
+      config: true,
+      type: Boolean,
+      default: false
+    });
+
+     /**
+     * HitDice as resource option
+     */
+    game.settings.register("cthack", "HitDiceResource", {
+      name: "SETTINGS.HitDiceResourceName",
+      hint: "SETTINGS.HitDiceResourceHint",
+      scope: "world",
+      config: true,
+      type: Boolean,
+      default: false
     });
 
 };

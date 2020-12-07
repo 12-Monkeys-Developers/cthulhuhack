@@ -6,6 +6,10 @@ Currently Work In Progress
 -------------------------------------
 Fonctionnalités
 
+0.1.6
+- Ajout de l'option Dé de vie en tant que ressource
+- Ajout de l'option Richesse en tant que ressource
+
 0.1.5
 - Possibilité d'avoir un bonus ou malus sur le jet de dés
 - Fix de l'avantage/désavantage

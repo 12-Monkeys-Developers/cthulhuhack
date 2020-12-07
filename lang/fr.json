@@ -31,7 +31,9 @@
         "SmokesDesc": "Contraindre, sociabiliser, intimider",
         "Sanity": "Santé mentale",
         "HitPoints": "Points de Vie",    
+        "Hit": "Dé de Vie",  
         "HitDice": "Dé de Vie",
+        "Wealth": "Santé",
         "WealthDice": "Dé de richesse",
         "ArmedDamage": "Dégât(s) armé",
         "UnarmedDamage": "Dégât(s) sans arme",
@@ -122,6 +124,10 @@
         "FortuneValueName": "Nb jetons Fortune",
         "FortuneValueHint": "Nombre de jetons Fortune restant",
         "AdrenalineName": "Option Adrenaline",
-        "AdrenalineHint": "Active la gestion de l'adrénaline"
+        "AdrenalineHint": "Active la gestion de l'adrénaline",
+        "WealthResourceName": "Richesse en tant que Ressource",
+        "WealthResourceHint": "La richesse est gérée comme une ressource",
+        "HitDiceResourceName": "Dé de vie en tant que ressource",
+        "HitDiceResourceHint": "Au lieu d'une valeur fixe, vous pouvez gérer les dégâts d'un personnage avec le Dé de Vie"
     }
 }

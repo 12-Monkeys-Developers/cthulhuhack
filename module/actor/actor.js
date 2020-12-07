@@ -113,7 +113,8 @@ export class CtHackActor extends Actor {
     });
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
     
-    return diceRoll(rollData);
+    const result = await diceRoll(rollData);
+    return result;
   }
 
   /**
