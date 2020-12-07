@@ -75,6 +75,6 @@ CTHACK.abilityUsePeriod = {
   "Fight": "CTHACK.AbilityUsePerFight"
 };
 
-export const ABILITY_KEYS_RESERVED = ["SWILEA","STA","ANIHAN","IND","MEC","IROMIN","RIP","LEG","SELPRE","HAR","SAV"];
+export const ABILITY_KEYS_RESERVED = ["SWILEA","STA","SURATT","HOUCAR","LIKROC","DED","ANIHAN","IND","MEC","IROMIN","RIP","LEG","SELPRE","HAR","SAV","STEHAN"];
 
 export const DICE_VALUES = [0,4,6,8,10,12];
