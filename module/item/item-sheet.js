@@ -6,11 +6,14 @@ export class CtHackItemSheet extends ItemSheet {
 
   /** @override */
   static get defaultOptions() {
+    let width = 520;
+    let height = 580;
+    let tabs = [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }];
     return mergeObject(super.defaultOptions, {
       classes: ["cthack", "sheet", "item"],
-      width: 520,
-      height: 480,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
+      width: width,
+      height: height,
+      tabs: tabs
     });
   }
 
@@ -34,7 +37,8 @@ export class CtHackItemSheet extends ItemSheet {
   setPosition(options = {}) {
     const position = super.setPosition(options);
     const sheetBody = this.element.find(".sheet-body");
-    const bodyHeight = position.height - 192;
+    //const bodyHeight = position.height - 192;
+    const bodyHeight = position.height - 52;
     sheetBody.css("height", bodyHeight);
     return position;
   }
