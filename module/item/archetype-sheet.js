@@ -6,8 +6,8 @@ export class CtHackArchetypeSheet extends ItemSheet {
 
   /** @override */
   static get defaultOptions() {
-    let width = 590;
-    let height = 830;
+    let width = 600;
+    let height = 860;
     return mergeObject(super.defaultOptions, {
       classes: ["cthack", "sheet", "item", "sheet-archetype"],
       width: width,

@@ -243,12 +243,6 @@
   font-size: 18px;
 }
 
-.cthack .sheet-body,
-.cthack .sheet-body .tab,
-.cthack .sheet-body .tab .editor {
-  height: 100%;
-}
-
 .cthack .tox .tox-editor-container {
   background: #fff;
 }
