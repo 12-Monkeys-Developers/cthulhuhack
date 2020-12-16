@@ -6,6 +6,11 @@ Currently Work In Progress
 -------------------------------------
 Fonctionnalités
 
+0.2.0
+- Changement de design en cours
+- Les 5 archetypes sont dans un compendium avec les 3 variations pour le savant
+- Toutes les capacités spéciales sont dans un compendium : texte et icône en cours de complétion.
+
 0.1.6
 - Ajout de l'option Dé de vie en tant que ressource
 - Ajout de l'option Richesse en tant que ressource
