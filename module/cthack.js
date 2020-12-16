@@ -9,6 +9,7 @@ import { CtHackActorSheet } from "./actor/actor-sheet.js";
 import { CtHackOpponentSheet } from "./actor/opponent-sheet.js";
 import { CtHackItem } from "./item/item.js";
 import { CtHackItemSheet } from "./item/item-sheet.js";
+import { CtHackArchetypeSheet } from "./item/archetype-sheet.js";
 
 Hooks.once('init', async function() {
 
@@ -38,7 +39,8 @@ Hooks.once('init', async function() {
   Actors.registerSheet("cthack", CtHackActorSheet, { makeDefault: true, label: "CTHACK.SheetClassCharacter" });
   Actors.registerSheet("cthack", CtHackOpponentSheet, { makeDefault: true, label: "CTHACK.SheetClassOpponent" });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("cthack", CtHackItemSheet, { types: ["item", "weapon", "attack","archetype", "ability"], makeDefault: true, label: "CTHACK.SheetClassItem" });
+  Items.registerSheet("cthack", CtHackItemSheet, { types: ["item", "weapon", "attack", "ability"], makeDefault: true, label: "CTHACK.SheetClassItem" });
+  Items.registerSheet("cthack", CtHackArchetypeSheet, { types: ["archetype"], makeDefault: true, label: "CTHACK.SheetClassItem" });
 
   // Preload Handlebars Templates
   preloadHandlebarsTemplates();
