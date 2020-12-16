@@ -1,5 +1,5 @@
 /**
- * Extend the basic ItemSheet with some very simple modifications
+ * Standard Item Sheet
  * @extends {ItemSheet}
  */
 export class CtHackItemSheet extends ItemSheet {

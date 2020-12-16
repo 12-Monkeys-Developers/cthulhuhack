@@ -40,6 +40,9 @@ export class CtHackActorSheet extends ActorSheet {
       attr.isCheckbox = attr.dtype === "Boolean";
     }
     */
+    data.abilities = data.items.filter (function (item) {return item.type === "ability"});
+    data.weapons = data.items.filter (function (item) {return item.type === "weapon"});
+    data.items = data.items.filter (function (item) {return item.type === "item"});
     return data;
   }
 
@@ -348,11 +351,14 @@ export class CtHackActorSheet extends ActorSheet {
  * @private
 */
  _onFortuneUse(event) {
-  event.preventDefault();
-  let currentValue = game.settings.get("cthack", "FortuneValue");
-  if (currentValue > 0){
-    game.settings.set("cthack", "FortuneValue", currentValue - 1);
-  }  
+  event.preventDefault();  
+  if (game.user.isGM){
+    let currentValue = game.settings.get("cthack", "FortuneValue");
+    if (currentValue > 0){
+      game.settings.set("cthack", "FortuneValue", currentValue - 1);
+      this.actor.sheet.render(true);
+    } 
+ }
 }
 
 /**
