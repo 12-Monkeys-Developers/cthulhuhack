@@ -1,0 +1,52 @@
+.align-left {
+    text-align: left;
+  }
+  
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.noborder {
+  border: 0;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+input[type="time"] {
+  color: $c-white;
+}
+
+select {
+  background: url("../ui/cthack-green.jpg");
+  color: $c-white;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+
+}
+
+option {
+  color: $c-white;
+  background: rgb(55,55,45);
+}
+
+option:checked, option:hover {
+  color: $c-white;
+  background: rgb(55,55,45);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.dialog-button {
+  color: $c-white;
+}
+
+nav.sheet-tabs {
+  height: 40px;
+}

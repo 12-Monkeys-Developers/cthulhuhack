@@ -11,8 +11,12 @@
 
 /* Styles limited to cthack sheets */
 .cthack {
+  @import 'components/window';
+  @import 'components/main';
   @import 'components/forms';
-  @import 'components/resource';
   @import 'components/tabs';
+  @import 'components/resource';
+  @import 'components/save';
   @import 'components/items';
+  @import 'components/archetype';
 }

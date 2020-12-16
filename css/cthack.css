@@ -1,17 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,700&family=Roboto:wght@300;400;500&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,700&family=Roboto:wght@300;400;500&display=swap");
 /* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;
 }
 
 .window-app .window-content {
-  background: url("../ui/fond.png") repeat white;
+  background: url("../ui/fond.png") repeat #fff;
 }
 
 .rollable:hover, .rollable:focus {
   color: #d44d54;
-  text-shadow: 0 0 10px rgb(238, 163, 163);
+  text-shadow: 0 0 10px #eea3a3;
   cursor: pointer;
 }
 
@@ -86,7 +85,7 @@
   align-items: center;
   text-align: center;
   padding: 5px;
-  border: 1px solid rgb(255, 250, 250);
+  border: 1px solid #999;
 }
 
 .flex-group-left {
@@ -120,15 +119,67 @@
 }
 
 /* Styles limited to cthack sheets */
-.cthack .window-content{
+.cthack .window-content {
   background: url("../ui/cthack-green.jpg");
   background-size: cover;
-  color: #ffffff;
+  color: #fff;
   font-family: 'Averia Libre', cursive;
 }
 
+.cthack .align-left {
+  text-align: left;
+}
+
+.cthack .align-right {
+  text-align: right;
+}
+
+.cthack .align-center {
+  text-align: center;
+}
+
+.cthack .noborder {
+  border: 0;
+}
+
+.cthack input[type="text"],
+.cthack input[type="number"],
+.cthack input[type="password"],
+.cthack input[type="date"],
+.cthack input[type="time"] {
+  color: #fff;
+}
+
+.cthack select {
+  background: url("../ui/cthack-green.jpg");
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.cthack option {
+  color: #fff;
+  background: #37372d;
+}
+
+.cthack option:checked, .cthack option:hover {
+  color: #fff;
+  background: #37372d;
+}
+
+.cthack ::-webkit-scrollbar {
+  display: none;
+}
+
+.cthack .dialog-button {
+  color: #fff;
+}
+
+.cthack nav.sheet-tabs {
+  height: 40px;
+}
+
 .cthack .item-form {
-  color: #fffef7;
+  color: #fff;
 }
 
 .cthack .sheet-header {
@@ -149,7 +200,6 @@
   -ms-flex-pack: start;
   justify-content: flex-start;
   margin-bottom: 10px;
- /* font-family: 'HeadlTwoHPLHS';*/
 }
 
 .cthack .sheet-header .profile-img {
@@ -200,44 +250,17 @@
 }
 
 .cthack .tox .tox-editor-container {
-  background: white;
+  background: #fff;
 }
 
-/*.cthack .editor {
-  height: 150px;
-}*/
-
-
-/*.cthack .tox .tox-edit-area {
+.cthack .tox .tox-edit-area {
   padding: 0 8px;
-}*/
-
-.cthack .align-left {
-  text-align: left;
-}
-
-.cthack .align-right {
-  text-align: right;
-}
-
-.cthack .align-center {
-  text-align: center;
-}
-
-.cthack .noborder {
-  border: 0;
-}
-
-.cthack .resource-label {
-  font-weight: bold; 
-  text-transform: uppercase;
 }
 
 .cthack .tabs {
   height: 40px;
- /* border-top: 1px solid #AAA;*/
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
+  border-top: 1px solid "Roboto", sans-serif;
+  border-bottom: 1px solid "Roboto", sans-serif;
 }
 
 .cthack .tabs .choice {
@@ -248,6 +271,24 @@
 .cthack .tabs .choice.active {
   text-decoration: underline;
   text-shadow: none;
+}
+
+.cthack .resource-label {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.cthack .resource-content {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.cthack .save {
+  font-size: 18px;
+}
+
+.cthack input.save {
+  color: #fff;
 }
 
 .cthack .items-list {
@@ -303,62 +344,14 @@
   border-top: 1px solid #c9c7b8;
 }
 
-.cthack .save {
-  font-size: 18px;
-}
-
-.cthack input.save{
-  color: white;
-}
-
-.cthack input[type="text"],
-input[type="number"],
-input[type="password"],
-input[type="date"],
-input[type="time"] {
-  color: white;
-}
-
-.cthack .sheet nav.sheet-tabs {
-  height: 40px;
-}
-
-.cthack .resource-content {
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
-.cthack select {
-  background: url("../ui/cthack-green.jpg");
-  color: white;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-
-}
-
-.cthack ::-webkit-scrollbar {
-  display: none;
-}
-
-.cthack option {
-  color: white;
-  background: rgb(55,55,45);
-}
-
-.cthack option:checked, option:hover {
-  color: white;
-  background: rgb(55,55,45);
-}
-
-.cthack .sheet-archetype .sheet-body{
+.cthack .sheet-archetype .sheet-body {
   height: 400px;
 }
 
-.cthack .sheet-archetype select{
+.cthack .sheet-archetype select {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 150px;
   flex: 0 0 150px;
+  -moz-text-align-last: center;
   text-align-last: center;
 }
-
-.cthack .dialog-button {
-  color: white;
-}
-

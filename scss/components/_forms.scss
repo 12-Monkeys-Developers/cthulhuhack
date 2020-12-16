@@ -1,5 +1,5 @@
 .item-form {
-  font-family: $font-primary;
+  color: $c-white;
 }
 
 .sheet-header {
@@ -22,8 +22,8 @@
   }
 
   .archetype-img {
-    height: 128px;
-    width: auto;
+    height: auto;
+    width: 128px;
   }
 
   .header-fields {
@@ -45,6 +45,7 @@
 
 .sheet-tabs {
   flex: 0;
+  font-size: 18px
 }
 
 .sheet-body,
@@ -63,18 +64,4 @@
   }
 }
 
-.align-left {
-  text-align: left;
-}
 
-.align-right {
-  text-align: right;
-}
-
-.align-center {
-  text-align: center;
-}
-
-.noborder {
-  border: 0;
-}
