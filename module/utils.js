@@ -59,3 +59,18 @@ export function formatDate(dt) {
 export function isAbilityKeyReserved(key) {
     return (ABILITY_KEYS_RESERVED.includes(key));
 }
+
+export class CthackUtils {
+
+  static performSocketMesssage( sockmsg ) {
+    console.log(">>>>> MSG RECV", sockmsg);
+    switch(sockmsg.msg)    {
+      case  "msg_use_fortune":
+        return CthackUtils._handleMsgUseFortune(sockmsg.data);
+    }
+  }
+
+  static _handleMsgUseFortune (data) {
+    game.settings.set("cthack", "FortuneValue", data);
+  }
+}

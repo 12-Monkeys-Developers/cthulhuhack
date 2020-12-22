@@ -3,6 +3,7 @@ import { CTHACK } from "./config.js";
 import { registerHandlebarsHelpers } from "./helpers.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { registerSystemSettings } from "./settings.js";
+import { CthackUtils } from "./utils.js"
 
 import { CtHackActor } from "./actor/actor.js";
 import { CtHackActorSheet } from "./actor/actor-sheet.js";
@@ -29,6 +30,11 @@ Hooks.once('init', async function() {
     formula: "1d20",
     decimals: 2
   };
+
+  // Define socket
+  game.socket.on("system.cthack", data => { 
+    CthackUtils.performSocketMesssage( data );
+  });
 
   // Define custom Entity classes
   CONFIG.Actor.entityClass = CtHackActor;

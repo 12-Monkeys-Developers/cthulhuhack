@@ -355,7 +355,7 @@ export class CtHackActorSheet extends ActorSheet {
   if (game.user.isGM){
     let currentValue = game.settings.get("cthack", "FortuneValue");
     if (currentValue > 0){
-      game.settings.set("cthack", "FortuneValue", currentValue - 1);
+      await game.settings.set("cthack", "FortuneValue", currentValue - 1);
       this.actor.sheet.render(true);
     } 
  }
