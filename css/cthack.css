@@ -251,6 +251,21 @@
   padding: 0 8px;
 }
 
+.cthack .sheet-body {
+  min-height: 150px;
+  height: 100%;
+}
+
+.cthack .sheet-body .tab {
+  min-height: 150px;
+  height: 100%;
+}
+
+.cthack .sheet-body .tab .editor {
+  min-height: 150px;
+  height: 100%;
+}
+
 .cthack .tabs {
   height: 40px;
   border-top: 1px solid "Roboto", sans-serif;

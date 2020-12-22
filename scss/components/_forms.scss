@@ -58,4 +58,18 @@
   }
 }
 
+.sheet-body {
+  min-height: 150px;
+  height: 100%;
+
+  .tab {
+    min-height: 150px;
+    height: 100%;
+
+    .editor {
+      min-height: 150px;
+      height: 100%;
+    }
+  }
+}
 
