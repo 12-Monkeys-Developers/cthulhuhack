@@ -23,6 +23,13 @@
     "system": "cthack",
     "path": "./packs/capacities.db",
     "entity": "Item"
+  },
+  {
+    "name": "weapons",
+    "label": "Armes spéciales",
+    "system": "cthack",
+    "path": "./packs/special-weapons.db",
+    "entity": "Item"
   }],
   "languages": [
     {
