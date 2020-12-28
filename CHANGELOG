@@ -1,0 +1,32 @@
+0.3.3
+- Add special weapons compendium 
+- Add attack'd description field
+
+0.3.2 Features
+--------------
+
+Actor
+- Character
+    - Add/modify/delete objects and special abilities
+    - Save roll with advantage/disadvantage/bonus/malus, display of the possible advantage given by a special ability
+    - Resource roll with advantage/disadvantage/bonus/malus and decrease management
+- Opponent
+    - Attacks are items
+
+Item
+- Ability: special ability
+- Item : management of the supplies die with the possibility to make a roll (known limitation : in case of loss of resource, the die must be decreased by hand)
+- Weapon: for weapons, drag and drop on the character sheet
+- Attack: opponent's attacks, to be dragged on the opponent's card
+
+Options
+- Fortune: activates/deactivates the display on the form
+    - The GM activates the option and makes the number of tokens available to the players.
+    - Display of the number of tokens under the portrait and possibility to spend for a player (known limitation: after spending, you have to close and open the card to see the remaining number updated)
+- Adrenaline: activates/deactivates the display on the card
+    - Under the portrait: token lightning for the player, skull and crossbones for the GM.
+- Hit dice as a resource: activates/deactivates the display on the form
+- Wealth as a resource: enables/disables display on the form
+
+Compendiums
+- Only in French right now
