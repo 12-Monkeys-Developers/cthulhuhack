@@ -1,43 +1,88 @@
+Système Cthulhu Hack pour Foundry VTT
+
+Cthulhu Hack est un jeu de rôle créé par Paul Baldowski.
+
+Cthulhu Hack est édité en version française par <a href="https://www.les12singes.com">Les XII Singes</a>.
+Les visuels sont ceux de la version Cthulhu Hack des XII Singes.
+
+Le jeu original est édité par <a href="http://www.justcrunch.com">Just Crunch Games</a>.
+
+Ce système est en cours de développement.
+Rejoignez la communauté Discord FR : <a href='https://discord.gg/pPSDNJk'>Foundry VTT Discord FR</a>
+
+---------------
+Fonctionnalités
+---------------
+
+Actor
+- Personnage
+    - Ajout/modification/suppression des objets et des capacités spéciales
+    - Jet de sauvegarde avec avantage/désavantage/bonus/malus, affichage de l'avantage éventuel donné par une capacité
+    - Jet de ressource avec avantage/désavantage/bonus/malus et gestion de la diminution
+- Opposant
+    - Les attaques sont sous forme d'item
+
+Item
+- Ability : capacité spéciale
+- Item : gestion du dé de matériel avec possibilité de faire un jet (limitation connue : en cas de perte de ressource, il faut diminuer le dé à la main)
+- Weapon : pour les armes, à faire glisser sur la fiche de personnage
+- Attack : les attaques, à faire glisser sur la fiche d'opposant
+
+Options
+- Fortune : active/désactive l'affichage sur la fiche
+    - Le MJ active l'option et met le nombre de jetons disponibles pour les joueurs
+    - Affichage du nombre de jetons sous le portrait et possibilité de dépenser pour un joueur (limitation connue : après la dépense, il faut fermer et ouvrir la fiche pour voir le nombre restant mis à jour)
+- Adrenaline : active/désactive l'affichage sur la fiche
+    - Sous le portrait : éclair jeton pour le joueur, tête de mort jeton pour le MJ
+- Dé de vie en tant que ressource : active/désactive l'affichage sur la fiche
+- Richesse en tant que ressource : active/désactive l'affichage sur la fiche
+
+Compendiums
+- Archétypes standards (avec les variations pour le savant) : Drag and drop sur la fiche de perso qui remplace les valeurs de la fiche par celles de l'archetype
+- Capacités spéciales : contient toutes les capacités standards
+    - Drag and drop pour ajouter à la fiche (avec prise en compte des capacités multiples)
+    - Gestion du nombre d'utilisations et affichage de la date de dernier usage lors du clic sur l'utilisation
+    - Clic sur le nom pour déplier la description
+
+
+-------------------------------------------------------------------------------------------------------------------------
 Cthulhu Hack System for Foundry VTT
 
+Cthulhu Hack is a role playing game created by Paul Baldowski.
 
-Currently Work In Progress
+Cthulhu Hack is edited in French by <a href="https://www.les12singes.com">Les XII Singes</a>.
+The visuals are those of the Cthulhu Hack version of the XII Monkeys.
 
--------------------------------------
-Fonctionnalités
+The original game is edited by <a href="http://www.justcrunch.com">Just Crunch Games</a>.
 
-0.2.0
-- Changement de design en cours
-- Les 5 archetypes sont dans un compendium avec les 3 variations pour le savant
-- Toutes les capacités spéciales sont dans un compendium : texte et icône en cours de complétion.
+This system is under development.
 
-0.1.6
-- Ajout de l'option Dé de vie en tant que ressource
-- Ajout de l'option Richesse en tant que ressource
+---------------
+Features
+---------------
 
-0.1.5
-- Possibilité d'avoir un bonus ou malus sur le jet de dés
-- Fix de l'avantage/désavantage
-- Ajout d'un champ optionnel qui affiche les cas d'avantage en fonction des capacités spéciales
+Actor
+- Character
+    - Add/modify/delete objects and special abilities
+    - Save roll with advantage/disadvantage/bonus/malus, display of the possible advantage given by a special ability
+    - Resource roll with advantage/disadvantage/bonus/malus and decrease management
+- Opponent
+    - Attacks are items
 
-0.1.4
-- Description d'une capacité dépliable
-- Capacité : type en liste déroulante
-- Capacité : affichage du nombre d'utilisations restantes et max
-- Capacité : champ clé en lecture seule si c'est une capacité de base
-- Capacité : pas d'affichage des informations d'utilisation si c'est de type permanent
+Item
+- Ability: special ability
+- Item : management of the supplies die with the possibility to make a roll (known limitation : in case of loss of resource, the die must be decreased by hand)
+- Weapon: for weapons, drag and drop on the character sheet
+- Attack: opponent's attacks, to be dragged on the opponent's card
 
-0.1.3
-- Opposant : création, ajout des attaques sous forme d'Item
-- Capacité : gestion du nombre d'utilisations et de la date de dernier usage
+Options
+- Fortune: activates/deactivates the display on the form
+    - The GM activates the option and makes the number of tokens available to the players.
+    - Display of the number of tokens under the portrait and possibility to spend for a player (known limitation: after spending, you have to close and open the card to see the remaining number updated)
+- Adrenaline: activates/deactivates the display on the card
+    - Under the portrait: token lightning for the player, skull and crossbones for the GM.
+- Hit dice as a resource: activates/deactivates the display on the form
+- Wealth as a resource: enables/disables display on the form
 
-0.1.2
-- Fiche de personnage "classique" avec ajout/modification/suppression des objets et des capacités spéciales
-- Jet de sauvegarde avec avantage/désavantage
-- Jet de ressource avec avantage/désavantage et gestion de la diminution
-- Archétype : Drag and drop sur la fiche de perso pour mettre à jour les valeurs
-- Capacité spéciale : drag and drop depuis les capacités spéciales standards, avec prise en compte des capacités multiples (qui peuvent être prises plusieurs fois)
-- Capacité spéciale : pour les capacités qui donnent un avantage, affichage de l'information sur la fenêtre de lancer de dés sur la partie Type de jets
-- Fortune : option, avec affichage sous le portrait et possibilité de dépenser
-
-
+Compendiums
+- Only in French right now
