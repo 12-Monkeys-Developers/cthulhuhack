@@ -1,11 +1,13 @@
 Système Cthulhu Hack pour Foundry VTT
 
-Cthulhu Hack est un jeu de rôle créé par Paul Baldowski.
+Cthulhu Hack est un jeu de rôle de Paul Baldowski édité par <a href="http://www.justcrunch.com">Just Crunch Games</a>.
+Cthulhu Hack est édité en version française par <a href="https://www.les12singes.com">Les XII Singes</a> sous le nom Cthulhu Hack VF.
+Cthulhu Hack VF fait partie de la collection Dark Monkeys.
 
-Cthulhu Hack est édité en version française par <a href="https://www.les12singes.com">Les XII Singes</a>.
-Les visuels sont ceux de la version Cthulhu Hack des XII Singes.
+La marque Cthulhu Hack VF, le logo Cthulhu Hack VF, la marque Dark Monkeys, le logo Dark Monkeys, la marque Les XII Singes, le logo Les XII Singes sont la propriété de ReSpell.
+La marque Cthulhu Hack, le logo Cthulhu Hack, la marque Just Crunch Games, le logo Just Crunch Games sont la propriété de Just Crunch Games.
 
-Le jeu original est édité par <a href="http://www.justcrunch.com">Just Crunch Games</a>.
+Les visuels utilisés sur Foundry VTT sont réalisés par Maxime Plasse (https://www.maxsmaps.com/). Ils sont fournis pour l'utilisation de Foundry VTT. Toute autre utilisation ou reproduction d'image doit obtenir l'accord de ReSpell / Les XII Singes.
 
 Ce système est en cours de développement.
 Rejoignez la communauté Discord FR : <a href='https://discord.gg/pPSDNJk'>Foundry VTT Discord FR</a>
