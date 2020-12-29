@@ -8,7 +8,6 @@ export class CtHackOpponentSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["cthack", "sheet", "actor", "opponent"],
-      template: "systems/cthack/templates/actor/opponent-sheet.html",
       width: 650,
       height: 430,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
@@ -18,13 +17,13 @@ export class CtHackOpponentSheet extends ActorSheet {
   /* -------------------------------------------- */
 
   /** @override */
+  get template() {
+    return "systems/cthack/templates/actor/opponent-sheet.hbs";
+  }
+
+  /** @override */
   getData() {
     const data = super.getData();
-    //data.dtypes = ["String", "Number", "Boolean"];
-    /*for (let attr of Object.values(data.data.attributes)) {
-      attr.isCheckbox = attr.dtype === "Boolean";
-    }
-    */
     return data;
   }
 
@@ -34,6 +33,9 @@ export class CtHackOpponentSheet extends ActorSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
+
+    // Item summaries
+    html.find('.item .item-name h4').click(event => this._onItemSummary(event));
 
     html.find('.attack-create').click(this._onAttackCreate.bind(this));
         
@@ -86,4 +88,25 @@ export class CtHackOpponentSheet extends ActorSheet {
     li.slideUp(200, () => this.render(false));
     return this.actor.deleteOwnedItem(itemId);
   } 
+
+  /**
+   * Handle toggling of an item from the Opponent sheet
+   * @private
+   */
+  _onItemSummary(event) {
+    event.preventDefault();
+    let li = $(event.currentTarget).parents(".item"),
+        item = this.actor.getOwnedItem(li.data("item-id"));
+
+    // Toggle summary
+    if ( li.hasClass("expanded") ) {
+      let summary = li.children(".item-summary");
+      summary.slideUp(200, () => summary.remove());
+    } else {
+      let div = $(`<div class="item-summary">${item.data.data.description}</div>`);
+      li.append(div.hide());
+      div.slideDown(200);
+    }
+    li.toggleClass("expanded");
+  }
 }

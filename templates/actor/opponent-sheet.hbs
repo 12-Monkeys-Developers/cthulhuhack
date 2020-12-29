@@ -64,9 +64,11 @@
                 </li>
                 {{#each items as |item|}}
                   {{#if (equals item.type "attack")}}
-                    <li class="item flexrow" data-item-id="{{item._id}}">
-                      <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-                      <h4 class="item-name" title="{{{item.data.description}}}">{{item.name}}</h4>
+					<li class="item flexrow" data-item-id="{{item._id}}">
+					  <div class="item-name flexrow">
+					  <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+                      <h4>{{item.name}}</h4>
+                      </div>
                       <div>{{item.data.damage}}</div>                      
                       <div class="item-controls">
                         <a class="item-control attack-edit" title='{{localize "CTHACK.Edit"}}'><i class="fas fa-edit"></i></a>

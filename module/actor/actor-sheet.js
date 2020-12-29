@@ -16,19 +16,19 @@ export class CtHackActorSheet extends ActorSheet {
     });
   }
 
-    /** @override */
-    get template() {
-      return "systems/cthack/templates/actor/actor-sheet.hbs";
-      // Return a single sheet for all item types. return `${path}/item-sheet.html`;
-      // Alternatively, you could use the following return statement to do a  unique item sheet by type, like `weapon-sheet.html`.
-      /*if (this.actor.data.type === "actor"){
-        return `${path}/${this.actor.data.type}-sheet.hbs`;
-      }
-      if(this.actor.data.type === "opponent"){
-        return `${path}/${this.actor.data.type}-sheet.html`;
-
-      }*/
+  /** @override */
+  get template() {
+    return "systems/cthack/templates/actor/actor-sheet.hbs";
+    // Return a single sheet for all item types. return `${path}/item-sheet.html`;
+    // Alternatively, you could use the following return statement to do a  unique item sheet by type, like `weapon-sheet.html`.
+    /*if (this.actor.data.type === "actor"){
+      return `${path}/${this.actor.data.type}-sheet.hbs`;
     }
+    if(this.actor.data.type === "opponent"){
+      return `${path}/${this.actor.data.type}-sheet.html`;
+
+    }*/
+  }
 
   /* -------------------------------------------- */
 
