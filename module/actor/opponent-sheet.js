@@ -47,6 +47,14 @@ export class CtHackOpponentSheet extends ActorSheet {
 
     html.find('.attack-delete').click(this._onAttackDelete.bind(this));
 
+    html.find('.selectHitDice').change(ev => {
+      const newValue = 4 * ev.currentTarget.value;
+      this.actor.update({
+        'data.hp': {"max": newValue}
+      });
+      this.actor.sheet.render(true);
+    });
+
   }
 
   /**

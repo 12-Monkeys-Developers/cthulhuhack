@@ -21,16 +21,6 @@ export class CtHackActor extends Actor {
     // Make separate methods for each Actor type (character, npc, etc.) to keep things organized.
   }
 
-  /** @override */
-    prepareBaseData() {
-    switch ( this.data.type ) {
-      case "character":
-        return ;
-      case "opponent":
-        return this._prepareOpponentBaseData(this.data);
-    }
-  }
-
    /** @override */
    prepareDerivedData() {
     switch ( this.data.type ) {
@@ -39,17 +29,6 @@ export class CtHackActor extends Actor {
       case "opponent":
         return this._prepareOpponentDerivedData(this.data);
     }
-  }
-
-
-  /**
-   * Prepare opponent type-specific data
-   * @param actorData
-   * @private
-   */
-  _prepareOpponentBaseData(actorData) {
-    const data = actorData.data;
-    data.hp.max = 4 * data.hitDice;
   }
 
   /**
