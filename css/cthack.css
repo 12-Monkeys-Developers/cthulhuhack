@@ -207,6 +207,11 @@
   width: auto;
 }
 
+.cthack .sheet-header .weapon-img {
+  height: 150px;
+  width: auto;
+}
+
 .cthack .sheet-header .adrenaline-img {
   height: 20px;
   width: auto;
@@ -215,6 +220,11 @@
 .cthack .sheet-header .archetype-img {
   height: auto;
   width: 128px;
+}
+
+.cthack .sheet-header .attack-img {
+  height: 150px;
+  width: auto;
 }
 
 .cthack .sheet-header .header-fields {
@@ -363,4 +373,9 @@
   flex: 0 0 150px;
   -moz-text-align-last: center;
   text-align-last: center;
+}
+
+.cthack .attack-damage {
+  width: 75px;
+  text-align: center;
 }
