@@ -50,6 +50,6 @@
   "socket": true,
   "url": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack",
   "manifest": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack/-/raw/main/system.json",
-  "download": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack/-/archive/0.3.4/FoundryVTT-Cthulhu-Hack-0.3.4.zip",
+  "download": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack/-/archive/0.3.5/FoundryVTT-Cthulhu-Hack-0.3.5.zip",
   "license": "LICENSE.txt"
 }
