@@ -1,3 +1,10 @@
+0.3.5
+- Refactor opponent sheet to allow damage dice field and roll
+
+0.3.4
+- Add expendable description for opponent's item
+- Change hp calculation for opponent : field is now editable
+
 0.3.3
 - Add special weapons compendium 
 - Add attack'd description field

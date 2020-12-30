@@ -103,7 +103,9 @@
       "range": ""
     },
     "attack":{
-      "damage": 0
+      "templates": ["base"],
+      "damage": "2",
+      "damageDice": "d4"
     },
     "archetype": {
       "templates": ["base"],  
