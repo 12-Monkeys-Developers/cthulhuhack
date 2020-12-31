@@ -50,11 +50,11 @@ export class CtHackActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    // Item summaries
-    html.find('.item .item-name h4').click(event => this._onItemSummary(event));
-
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
+
+    // Item summaries
+    html.find('.item .item-name h4').click(event => this._onItemSummary(event));
 
     // Add, Update or Delete Inventory
     html.find('.item-create').click(this._onItemCreate.bind(this));
@@ -100,6 +100,8 @@ export class CtHackActorSheet extends ActorSheet {
 
     // Roll for item in inventory
     html.find('.fa-dice-d20').click(this._onMaterialRoll.bind(this));
+
+    // Change item dice value in inventory
     html.find('.item-dice').change(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.getOwnedItem(li.data("itemId"));
@@ -236,7 +238,7 @@ export class CtHackActorSheet extends ActorSheet {
     let rollMaterial = await this.actor.rollMaterial(dice, {event: event, flavor: message});
 
     // Resource loss
-    if (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2) {
+    if (rollMaterial && (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2)) {
       console.log("Decrease Material Ressource");    
       this.actor.sheet.render(true);
     }  
@@ -398,15 +400,17 @@ _onAdrenalineUse(event) {
         item = this.actor.getOwnedItem(li.data("item-id"));
 
     // Toggle summary
-    if ( li.hasClass("expanded") ) {
-      let summary = li.children(".item-summary");
-      summary.slideUp(200, () => summary.remove());
-    } else {
-      let div = $(`<div class="item-summary">${item.data.data.description}</div>`);
-      li.append(div.hide());
-      div.slideDown(200);
+    if (item.data.data.description !== undefined && item.data.data.description !== null){
+      if ( li.hasClass("expanded") ) {
+        let summary = li.children(".item-summary");
+        summary.slideUp(200, () => summary.remove());
+      } else {
+        let div = $(`<div class="item-summary">${item.data.data.description}</div>`);
+        li.append(div.hide());
+        div.slideDown(200);
+      }
+      li.toggleClass("expanded");
     }
-    li.toggleClass("expanded");
   }
 
 }

@@ -150,7 +150,7 @@ export class CtHackActor extends Actor {
 
   /**
    * Roll an armed or unarmed damage
-   * @param {String} damageId     The damage ID (e.g. "armed" "unarmed")
+   * @param {String} damageId     The damage ID (e.g. "armed" "unarmed" "attack")
    * @param {Object} options      Options which configure how damage tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
@@ -171,7 +171,28 @@ export class CtHackActor extends Actor {
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
     return diceRoll(rollData);
   }
-  
+
+  /**
+   * Roll an attack damage
+   * @param {String} damageDice   The damage dice
+   * @param {Object} options      Options which configure how damage tests are rolled
+   * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
+   */
+  async rollAttackDamageRoll(damageDice, options={}) {
+    console.log(`Roll attack ${damageDice} roll`);
+
+    const label = game.i18n.localize("CTHACK.DamageDiceRollPrompt"); 
+
+    // Roll and return
+    const rollData = mergeObject(options, {
+      title: label,
+      customFormula: damageDice,
+      rollType: "AttackDamage"
+    });
+    rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
+    return diceRoll(rollData);
+  }
+
   deleteAbility(key, itemId){
     const index = this._findAbilityIndex(key,itemId);
     if (index !== -1){

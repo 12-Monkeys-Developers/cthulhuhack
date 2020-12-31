@@ -24,6 +24,8 @@ export class CtHackOpponentSheet extends ActorSheet {
   /** @override */
   getData() {
     const data = super.getData();
+
+    data.attacks = data.items.filter (function (item) {return item.type === "attack"});
     return data;
   }
 
@@ -54,6 +56,9 @@ export class CtHackOpponentSheet extends ActorSheet {
       });
       this.actor.sheet.render(true);
     });
+
+    // Roll for item in inventory
+    html.find('.fa-dice-d20').click(this._onAttackDamageRoll.bind(this));
 
   }
 
@@ -107,14 +112,28 @@ export class CtHackOpponentSheet extends ActorSheet {
         item = this.actor.getOwnedItem(li.data("item-id"));
 
     // Toggle summary
-    if ( li.hasClass("expanded") ) {
-      let summary = li.children(".item-summary");
-      summary.slideUp(200, () => summary.remove());
-    } else {
-      let div = $(`<div class="item-summary">${item.data.data.description}</div>`);
-      li.append(div.hide());
-      div.slideDown(200);
+    if (item.data.data.description !== undefined && item.data.data.description !== null){
+      if ( li.hasClass("expanded") ) {
+        let summary = li.children(".item-summary");
+        summary.slideUp(200, () => summary.remove());
+      } else {
+        let div = $(`<div class="item-summary">${item.data.data.description}</div>`);
+        li.append(div.hide());
+        div.slideDown(200);
+      }
+      li.toggleClass("expanded");
     }
-    li.toggleClass("expanded");
   }
+
+  /**
+   * Handle clickable Damaged roll.
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onAttackDamageRoll(event) {
+    event.preventDefault();
+    const dice = event.currentTarget.parentElement.childNodes[1].nodeValue;
+    this.actor.rollAttackDamageRoll(dice, {event: event});
+  }
+
 }

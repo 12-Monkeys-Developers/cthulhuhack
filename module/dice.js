@@ -2,6 +2,7 @@
  * A standardized helper function for managing Cthulhu Hack dice rolls
  *
  * @param {String} diceType         The type of dice : d20, d12, d10, d8, d6, d4
+ * @param {String} customFormula    Custom Formula
  * @param {Array} parts             The dice roll component parts, excluding the initial dice
  * @param {Object} data             Actor or item data against which to parse the roll
  * @param {Event|object} event      The triggering event which initiated the roll
@@ -23,7 +24,7 @@
  *
  * @return {Promise}                A Promise which resolves once the roll workflow has completed
  */
-export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rollMode=null, template=null, title=null, speaker=null,
+export async function diceRoll({diceType="d20", customFormula=null, parts=[], data={}, event={}, rollMode=null, template=null, title=null, speaker=null,
     flavor=null, dialogOptions,
     advantage=null, disadvantage=null, rollType=null, targetValue=null,
     chatMessage=true, modifier=null,abilitiesAdvantages=null, messageData={}}={}) {
@@ -73,9 +74,14 @@ export async function diceRoll({diceType="d20", parts=[], data={}, event={}, rol
   
      // Prepend the dice roll
      let formula = `${nd}${diceType}${mods}`;
-     parts.unshift(formula);
+
+     if (customFormula !== null){
+      parts.unshift(customFormula);
+     } 
+     else {
+      parts.unshift(formula);
+     }    
      
-  
      // Optionally include a situational bonus
     if ( rollType === "Save" && form ) {      
       data['modifier'] = -1 * form.modifier.value;
