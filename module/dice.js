@@ -1,28 +1,28 @@
 /**
  * A standardized helper function for managing Cthulhu Hack dice rolls
  *
- * @param {String} diceType         The type of dice : d20, d12, d10, d8, d6, d4
- * @param {String} customFormula    Custom Formula
- * @param {Array} parts             The dice roll component parts, excluding the initial dice
- * @param {Object} data             Actor or item data against which to parse the roll
- * @param {Event|object} event      The triggering event which initiated the roll
- * @param {string} rollMode         A specific roll mode to apply as the default for the resulting roll
- * @param {string|null} template    The HTML template used to render the roll dialog
- * @param {string|null} title       The dice roll UI window title
- * @param {Object} speaker          The ChatMessage speaker to pass when creating the chat
- * @param {string|null} flavor      Flavor text to use in the posted chat message
- * @param {Function} onClose        Callback for actions to take when the dialog form is closed
- * @param {Object} dialogOptions    Modal dialog options
- * @param {boolean} advantage       Apply advantage to the roll (unless otherwise specified)
- * @param {boolean} disadvantage    Apply disadvantage to the roll (unless otherwise specified)
- * @param {boolean} rollType        Specify the type of roll : Save, Resource, Damage, Material
- * @param {number} targetValue      Assign a target value against which the result of this roll should be compared
- * @param {boolean} chatMessage     Automatically create a Chat Message for the result of this roll
- * @param {number} modifier         Bonus (+X) or malus (-X) for the roll
- * @param {object} messageData      Additional data which is applied to the created Chat Message, if any
- * @param {object} abilitiesAdvantages      Advantages gained from abilities
+ * @param {String} diceType             The type of dice : d20, d12, d10, d8, d6, d4
+ * @param {String} customFormula        Custom Formula
+ * @param {Array} parts                 The dice roll component parts, excluding the initial dice
+ * @param {Object} data                 Actor or item data against which to parse the roll
+ * @param {Event|object} event          The triggering event which initiated the roll
+ * @param {string} rollMode             A specific roll mode to apply as the default for the resulting roll
+ * @param {string|null} template        The HTML template used to render the roll dialog
+ * @param {string|null} title           The dice roll UI window title
+ * @param {Object} speaker              The ChatMessage speaker to pass when creating the chat
+ * @param {string|null} flavor          Flavor text to use in the posted chat message
+ * @param {Function} onClose            Callback for actions to take when the dialog form is closed
+ * @param {Object} dialogOptions        Modal dialog options
+ * @param {boolean} advantage           Apply advantage to the roll (unless otherwise specified)
+ * @param {boolean} disadvantage        Apply disadvantage to the roll (unless otherwise specified)
+ * @param {boolean} rollType            Specify the type of roll : Save, Resource, Damage, Material, AttackDamage
+ * @param {number} targetValue          Assign a target value against which the result of this roll should be compared
+ * @param {boolean} chatMessage         Automatically create a Chat Message for the result of this roll
+ * @param {number} modifier             Bonus (+X) or malus (-X) for the roll
+ * @param {object} messageData          Additional data which is applied to the created Chat Message, if any
+ * @param {object} abilitiesAdvantages  Advantages gained from abilities
  *
- * @return {Promise}                A Promise which resolves once the roll workflow has completed
+ * @return {Promise}                    A Promise which resolves once the roll workflow has completed
  */
 export async function diceRoll({diceType="d20", customFormula=null, parts=[], data={}, event={}, rollMode=null, template=null, title=null, speaker=null,
     flavor=null, dialogOptions,
@@ -137,7 +137,7 @@ export async function diceRoll({diceType="d20", customFormula=null, parts=[], da
 }
 
 /**
- * Present a Dialog form which creates a d20 roll once submitted
+ * Present a Dialog form which creates a roll once submitted
  * @return {Promise<Roll>}
  * @private
  */
@@ -156,29 +156,50 @@ async function _diceRollDialog({template, title, parts, data, rollMode, dialogOp
     };
     const html = await renderTemplate(template, dialogData);
   
-    // Create the Dialog window
-    return new Promise(resolve => {
-      new Dialog({
-        title: title,
-        content: html,
-        buttons: {
-          advantage: {
-            label: game.i18n.localize("CTHACK.Advantage"),
-            callback: html => resolve(roll(parts, 1, html[0].querySelector("form")))
+    if (rollType !== "AttackDamage"){
+      // Create the Dialog window
+      return new Promise(resolve => {
+        new Dialog({
+          title: title,
+          content: html,
+          buttons: {
+            advantage: {
+              label: game.i18n.localize("CTHACK.Advantage"),
+              callback: html => resolve(roll(parts, 1, html[0].querySelector("form")))
+            },
+            normal: {
+              label: game.i18n.localize("CTHACK.Normal"),
+              callback: html => resolve(roll(parts, 0, html[0].querySelector("form")))
+            },
+            disadvantage: {
+              label: game.i18n.localize("CTHACK.Disadvantage"),
+              callback: html => resolve(roll(parts, -1, html[0].querySelector("form")))
+            }
           },
-          normal: {
-            label: game.i18n.localize("CTHACK.Normal"),
-            callback: html => resolve(roll(parts, 0, html[0].querySelector("form")))
+          default: "normal",
+          close: () => resolve(null)
+        }, dialogOptions).render(true);
+      });
+    }
+    else {
+      // Create the Dialog window
+      return new Promise(resolve => {
+        new Dialog({
+          title: title,
+          content: html,
+          buttons: {
+            normal: {
+              label: game.i18n.localize("CTHACK.Normal"),
+              callback: html => resolve(roll(parts, 0, html[0].querySelector("form")))
+            }
           },
-          disadvantage: {
-            label: game.i18n.localize("CTHACK.Disadvantage"),
-            callback: html => resolve(roll(parts, -1, html[0].querySelector("form")))
-          }
-        },
-        default: "normal",
-        close: () => resolve(null)
-      }, dialogOptions).render(true);
-    });
+          default: "normal",
+          close: () => resolve(null)
+        }, dialogOptions).render(true);
+      });
+
+    }
+
 }
 
 
