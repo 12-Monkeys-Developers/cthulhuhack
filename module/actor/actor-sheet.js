@@ -232,14 +232,14 @@ export class CtHackActorSheet extends ActorSheet {
   async _onMaterialRoll(event) {
     event.preventDefault();
     const dice = event.currentTarget.parentElement.children[1].value;
-    const materialName = event.currentTarget.parentElement.parentElement.children[1].outerText;   
+    const materialName = event.currentTarget.parentElement.parentElement.children[0].outerText;   
     const message = game.i18n.format("CTHACK.MaterialRollDetails", {material: materialName});
 
     let rollMaterial = await this.actor.rollMaterial(dice, {event: event, flavor: message});
 
     // Resource loss
     if (rollMaterial && (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2)) {
-      console.log("Decrease Material Ressource");    
+      if (CONFIG.debug.cthack) console.log("Decrease Material Ressource");    
       this.actor.sheet.render(true);
     }  
   }

@@ -17,6 +17,8 @@ Hooks.once('init', async function() {
   console.log(`CTHACK | Initializing the Cthulhu Hack Game System\n`);
   console.log(CTHACK.ASCII);
 
+  CONFIG.debug.cthack = true;
+
   game.cthack = {
     CtHackActor,
     CtHackItem
