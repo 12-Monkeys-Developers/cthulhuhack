@@ -19,15 +19,6 @@ export class CtHackActorSheet extends ActorSheet {
   /** @override */
   get template() {
     return "systems/cthack/templates/actor/actor-sheet.hbs";
-    // Return a single sheet for all item types. return `${path}/item-sheet.html`;
-    // Alternatively, you could use the following return statement to do a  unique item sheet by type, like `weapon-sheet.html`.
-    /*if (this.actor.data.type === "actor"){
-      return `${path}/${this.actor.data.type}-sheet.hbs`;
-    }
-    if(this.actor.data.type === "opponent"){
-      return `${path}/${this.actor.data.type}-sheet.html`;
-
-    }*/
   }
 
   /* -------------------------------------------- */
@@ -281,12 +272,8 @@ export class CtHackActorSheet extends ActorSheet {
   async _onDropStandardItem(data) {
     if (!this.actor.owner) return false;
 
-    //const item = await Item.fromDropData(data);
     const itemData = duplicate(data);
 
-    /*const actor = this.actor;
-    let sameActor = (data.actorId === actor._id) || (actor.isToken && (data.tokenId === actor.token.id));
-    if (sameActor) return this._onSortItem(itemData);*/
     // Create the owned item
     return this.actor.createEmbeddedEntity("OwnedItem", itemData,{renderSheet: true});
   }
