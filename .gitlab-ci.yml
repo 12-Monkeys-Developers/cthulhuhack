@@ -6,7 +6,7 @@ before_script:
 stages:
   - build
 
-test and create artifact:
+package:
   stage: build
   only:
     - tags
