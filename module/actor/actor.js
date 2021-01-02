@@ -49,7 +49,7 @@ export class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollSave(saveId, options={}) {
-    console.log(`Roll save ${saveId}`);
+    if (CONFIG.debug.cthack) console.log(`Roll save ${saveId}`);
     const save = CTHACK.saves[saveId];
     const label = game.i18n.localize(save);
     const saveValue = this.data.data.saves[saveId].value;
@@ -73,7 +73,7 @@ export class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollResource(resourceId, options={}) {
-    console.log(`Roll resource ${resourceId}`);
+    if (CONFIG.debug.cthack)  console.log(`Roll resource ${resourceId}`);
     const resource = CTHACK.resources[resourceId];
     const label = game.i18n.localize(resource);
     const resourceTemplate = CTHACK.resourcesTemplate[resourceId];
@@ -103,7 +103,7 @@ export class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollMaterial(dice, options={}) {
-    console.log(`Roll material ${dice}`);
+    if (CONFIG.debug.cthack) console.log(`Roll material ${dice}`);
 
     // Material at "0"
     if (dice === "0"){
@@ -126,7 +126,7 @@ export class CtHackActor extends Actor {
    * @param {String} resourceId   The resource ID (e.g. "smo")
    */  
   async decreaseResource(resourceId){
-    console.log(`Decrease resource ${resourceId}`);
+    if (CONFIG.debug.cthack) console.log(`Decrease resource ${resourceId}`);
     const actorData = this.data;
     const actorResourceName = CTHACK.resourcesTemplate[resourceId];
     const actorResource = actorData.data.attributes[actorResourceName];
@@ -155,7 +155,7 @@ export class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollDamageRoll(damageId, options={}) {
-    console.log(`Roll ${damageId} roll`);
+    if (CONFIG.debug.cthack) console.log(`Roll ${damageId} roll`);
 
     const damageDice = this.data.data.attributes[damageId].value;
 
@@ -179,7 +179,7 @@ export class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollAttackDamageRoll(damageDice, options={}) {
-    console.log(`Roll attack ${damageDice} roll`);
+    if (CONFIG.debug.cthack) console.log(`Roll attack ${damageDice} roll`);
 
     const label = game.i18n.localize("CTHACK.DamageDiceRollPrompt"); 
 
