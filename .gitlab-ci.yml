@@ -2,33 +2,33 @@ image: python:3-alpine
 
 before_script:
   - apk update
+  - apk add zip
 
 stages:
+  - test
   - build
   - release
 
-build:
-  stage: build
-  only:
-    - tags
-    - main
+test:
+  stage: test
   script:
     - python -mjson.tool 'system.json' > /dev/null
     - python -mjson.tool 'template.json' > /dev/null
+
+build:
+  stage: build
+  script:
+    - zip cthack.zip -r css lang module packs templates ui README.md system.json template.json LICENSE CHANGELOG
   artifacts:
     name: cthack
-    paths:
-      - css/
-      - images/
-      - lang/
-      - module/
-      - packs/
-      - templates/
-      - ui/
-      - README.md
-      - system.json
-      - template.json
+    expire_in: never 
     when: on_success
+    paths:
+      - cthack.zip
+  when: on_success
+  only:
+    - tags
+    - main
 
 release:
   stage: release

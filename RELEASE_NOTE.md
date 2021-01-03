@@ -1,1 +1,1 @@
-Trying to improve CD file
+Rollback to initial CI/CD with zip
