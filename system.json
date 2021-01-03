@@ -2,7 +2,7 @@
   "name": "cthack",
   "title": "Cthulhu Hack",
   "description": "The Cthulhu Hack system for FoundryVTT <p>Rejoignez la communauté Discord FR : <a href='https://discord.gg/pPSDNJk'>https://discord.gg/pPSDNJk</a></p>",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.9",
   "templateVersion": 6,
@@ -50,6 +50,6 @@
   "socket": true,
   "url": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack",
   "manifest": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack/-/raw/main/system.json",
-  "download": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack/-/archive/0.3.6/FoundryVTT-Cthulhu-Hack-0.3.6.zip",
+  "download": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack/-/archive/0.3.7/FoundryVTT-Cthulhu-Hack-0.3.7.zip",
   "license": "LICENSE.txt"
 }
