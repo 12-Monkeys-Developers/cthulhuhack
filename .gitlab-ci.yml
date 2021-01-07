@@ -1,9 +1,3 @@
-image: python:3-alpine
-
-before_script:
-  - apk update
-  - apk add zip
-
 stages:
   - test
   - build
@@ -17,16 +11,21 @@ variables:
 
 test:
   stage: test
+  image: python:3-alpine
   script:
+    - apk update
     - python -mjson.tool 'system.json' > /dev/null
     - python -mjson.tool 'template.json' > /dev/null
 
 build:
   stage: build
+  image: python:3-alpine
   rules:
-    - if: '$CI_COMMIT_BRANCH == "main" || $CI_COMMIT_TAG'
+    - if: '$CI_COMMIT_BRANCH == "main" || $CI_COMMIT_TAG'   # Allow this step when a tag is created manually or on the main branch
       when: on_success
   script:
+    - apk update
+    - apk add zip
     - zip ${ZIP_FILE} -r css lang module packs templates ui README.md system.json template.json LICENSE CHANGELOG
   artifacts:
     name: cthack
@@ -39,7 +38,7 @@ upload:
   stage: upload
   image: curlimages/curl:latest
   rules:
-    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_TAG                  # Allow this step when a tag is created manually
       when: manual
   script:
     - |
@@ -49,7 +48,7 @@ release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   rules:
-    - if: $CI_COMMIT_TAG                  # Run this job when a tag is created manually
+    - if: $CI_COMMIT_TAG                  # Allow this step when a tag is created manually
       when: manual
   script:
     - |
