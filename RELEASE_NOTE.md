@@ -1,3 +1,1 @@
-- Add new item type : definition
-- Add compendium of rolltable Out of Action (Hors jeu)
-- Add compendium of Out of Action (Hors jeu) items
+CI Technical release

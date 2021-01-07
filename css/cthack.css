@@ -178,6 +178,11 @@
   height: 40px;
 }
 
+.cthack .attack-damage {
+  width: 75px;
+  text-align: center;
+}
+
 .cthack .item-form {
   color: #fff;
 }
@@ -212,6 +217,11 @@
   width: auto;
 }
 
+.cthack .sheet-header .attack-img {
+  height: 150px;
+  width: auto;
+}
+
 .cthack .sheet-header .adrenaline-img {
   height: 20px;
   width: auto;
@@ -222,14 +232,9 @@
   width: 128px;
 }
 
-.cthack .sheet-header .attack-img {
-  height: 150px;
-  width: auto;
-}
-
 .cthack .sheet-header .definition-img {
-  height: 50px;
-  width: auto;
+  height: auto;
+  width: 50px;
 }
 
 .cthack .sheet-header .header-fields {
@@ -378,9 +383,4 @@
   flex: 0 0 150px;
   -moz-text-align-last: center;
   text-align-last: center;
-}
-
-.cthack .attack-damage {
-  width: 75px;
-  text-align: center;
 }
