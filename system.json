@@ -30,7 +30,22 @@
     "system": "cthack",
     "path": "./packs/special-weapons.db",
     "entity": "Item"
-  }],
+  },
+  {
+    "name": "gametables",
+    "label": "Tableaux",
+    "system": "cthack",
+    "path": "./packs/game-tables.db",
+    "entity": "RollTable"
+  },
+  {
+    "name": "outofaction",
+    "label": "Hors Jeu",
+    "system": "cthack",
+    "path": "./packs/out-of-action.db",
+    "entity": "Item"
+  }
+],
   "languages": [
     {
       "lang": "en",
