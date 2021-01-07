@@ -87,7 +87,7 @@
     }
   },
   "Item": {
-    "types": ["item","weapon","attack","archetype","ability"],
+    "types": ["item","weapon","attack","archetype","ability","definition"],
     "templates": {
       "base": {
         "description": ""
@@ -133,6 +133,11 @@
         "last": ""
         },
       "multiple": false
+    },
+    "definition": {
+      "templates": ["base"],
+      "definitionType": "", 
+      "key": ""
     }
   }
 }

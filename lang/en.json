@@ -56,6 +56,9 @@
         "AbilityUsePerHour": "Per hour",
         "AbilityUsePerFight": "Per fight",
 
+        "DefinitionType": "Type",
+        "DefinitionKey": "Key",
+
         "Formula": "Formula",
         "RollMode": "Roll Mode",
         "RollModifier": "Modifier",

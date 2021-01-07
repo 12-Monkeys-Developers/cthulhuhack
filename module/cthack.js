@@ -47,7 +47,7 @@ Hooks.once('init', async function() {
   Actors.registerSheet("cthack", CtHackActorSheet, { makeDefault: true, label: "CTHACK.SheetClassCharacter" });
   Actors.registerSheet("cthack", CtHackOpponentSheet, { makeDefault: true, label: "CTHACK.SheetClassOpponent" });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("cthack", CtHackItemSheet, { types: ["item", "weapon", "attack", "ability"], makeDefault: true, label: "CTHACK.SheetClassItem" });
+  Items.registerSheet("cthack", CtHackItemSheet, { types: ["item", "weapon", "attack", "ability", "definition"], makeDefault: true, label: "CTHACK.SheetClassItem" });
   Items.registerSheet("cthack", CtHackArchetypeSheet, { types: ["archetype"], makeDefault: true, label: "CTHACK.SheetClassItem" });
 
   // Preload Handlebars Templates
