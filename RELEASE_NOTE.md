@@ -1,1 +1,3 @@
-Rollback to initial CI/CD with zip
+- Add new item type : definition
+- Add compendium of rolltable Out of Action (Hors jeu)
+- Add compendium of Out of Action (Hors jeu) items

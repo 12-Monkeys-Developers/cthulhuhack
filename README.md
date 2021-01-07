@@ -12,9 +12,10 @@ Les visuels utilisés sur Foundry VTT sont réalisés par Maxime Plasse (https:/
 Ce système est en cours de développement.
 Rejoignez la communauté Discord FR : <a href='https://discord.gg/pPSDNJk'>Foundry VTT Discord FR</a>
 
----------------
-Fonctionnalités
----------------
+----------------
+Fonctionnalités 
+----------------
+version : 0.3.0
 
 Actor
 - Personnage
@@ -62,6 +63,7 @@ This system is under development.
 ---------------
 Features
 ---------------
+version : 0.3.0
 
 Actor
 - Character

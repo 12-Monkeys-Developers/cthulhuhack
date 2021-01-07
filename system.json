@@ -2,7 +2,7 @@
   "name": "cthack",
   "title": "Cthulhu Hack",
   "description": "The Cthulhu Hack system for FoundryVTT <p>Rejoignez la communauté Discord FR : <a href='https://discord.gg/pPSDNJk'>https://discord.gg/pPSDNJk</a></p>",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.9",
   "templateVersion": 6,
