@@ -1,1 +1,1 @@
-CI Technical release with new delivery pipelines
+CI Technical release
