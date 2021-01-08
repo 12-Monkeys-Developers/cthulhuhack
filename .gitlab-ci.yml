@@ -6,7 +6,7 @@ stages:
   - deploy
 
 variables:
-  PACKAGE_VERSION: "0.3.11"
+  PACKAGE_VERSION: "0.3.12"
   ZIP_FILE: "cthack-${PACKAGE_VERSION}.zip"
   PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/cthackrelease/${PACKAGE_VERSION}"
 
@@ -57,7 +57,7 @@ release:
 pages:
   stage: deploy
   dependencies:
-    - release
+    - build
   rules:
     - if: $CI_COMMIT_TAG
   script:
