@@ -3,9 +3,10 @@ stages:
   - build
   - upload
   - release
+  - deploy
 
 variables:
-  PACKAGE_VERSION: "0.3.10"
+  PACKAGE_VERSION: "0.3.11"
   ZIP_FILE: "cthack-${PACKAGE_VERSION}.zip"
   PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/cthackrelease/${PACKAGE_VERSION}"
 
@@ -28,7 +29,7 @@ build:
     - apk add zip
     - zip ${ZIP_FILE} -r css lang module packs templates ui README.md system.json template.json LICENSE CHANGELOG
   artifacts:
-    name: cthack
+    name: ${ZIP_FILE}
     expire_in: never
     when: on_success
     paths:
@@ -39,7 +40,6 @@ upload:
   image: curlimages/curl:latest
   rules:
     - if: $CI_COMMIT_TAG                  # Allow this step when a tag is created manually
-      when: manual
   script:
     - |
       curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file ${ZIP_FILE} ${PACKAGE_REGISTRY_URL}/${ZIP_FILE}
@@ -49,8 +49,16 @@ release:
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   rules:
     - if: $CI_COMMIT_TAG                  # Allow this step when a tag is created manually
-      when: manual
   script:
     - |
       release-cli create --name "Release $CI_COMMIT_TAG" --description "RELEASE_NOTE.md" --tag-name $CI_COMMIT_TAG \
         --assets-link "{\"name\":\"${ZIP_FILE}\",\"url\":\"${PACKAGE_REGISTRY_URL}/${ZIP_FILE}\"}"
+
+pages:
+  stage: deploy
+  dependencies:
+    - release
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - cp ${ZIP_FILE} public/
