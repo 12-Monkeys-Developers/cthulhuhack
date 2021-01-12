@@ -137,7 +137,8 @@
     "definition": {
       "templates": ["base"],
       "definitionType": "", 
-      "key": ""
+      "key": "",
+      "creationDate": ""
     }
   }
 }

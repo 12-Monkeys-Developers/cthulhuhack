@@ -50,6 +50,7 @@
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs align-center" data-group="primary">
         <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>
+        <a class="choice" data-tab="conditions">{{localize "CTHACK.Conditions"}}</a>
         <a class="choice" data-tab="items">{{localize "CTHACK.Items"}}</a>
         <a class="choice" data-tab="abilities">{{localize "CTHACK.Abilities"}}</a>
     </nav>
@@ -62,6 +63,18 @@
             {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
 
+        {{!-- Conditions Tab --}}
+        <div class="tab items" data-group="primary" data-tab="conditions">
+            <ol class="items-list">
+                <li class="item flexrow item-header">
+                  <div class="item-name">{{localize "CTHACK.Name"}}</div>
+                </li>
+                {{#each conditions as |condition id|}}
+                  {{> "systems/cthack/templates/actor/parts/actor-condition.hbs" condition}}
+                {{/each}}           
+            </ol>
+        </div>
+        
         {{!-- Owned Items Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">
             <ol class="items-list">
@@ -76,11 +89,13 @@
                 {{#each weapons as |item id|}}
                   {{> "systems/cthack/templates/actor/parts/actor-item.hbs" item}}
                 {{/each}}
-                {{#each items as |item id|}}
+                {{#each otheritems as |item id|}}
                   {{> "systems/cthack/templates/actor/parts/actor-item.hbs" item}}
                 {{/each}}            
             </ol>
         </div>
+
+        {{!-- Abilities Tab --}}
         <div class="tab abilities" data-group="primary" data-tab="abilities">
             <ol class="items-list">
                 <li class="item flexrow item-header">

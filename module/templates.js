@@ -11,6 +11,7 @@ export const preloadHandlebarsTemplates = async function () {
         "systems/cthack/templates/actor/parts/actor-attributes-first.hbs",
         "systems/cthack/templates/actor/parts/actor-attributes-second.hbs",
         "systems/cthack/templates/actor/parts/actor-item.hbs",
+        "systems/cthack/templates/actor/parts/actor-condition.hbs",
         "systems/cthack/templates/actor/parts/opponent-attack.hbs",
         "systems/cthack/templates/actor/actor-sheet.hbs",
         "systems/cthack/templates/actor/opponent-sheet.hbs"

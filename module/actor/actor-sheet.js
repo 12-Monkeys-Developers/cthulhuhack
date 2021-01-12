@@ -33,7 +33,9 @@ export class CtHackActorSheet extends ActorSheet {
     */
     data.abilities = data.items.filter (function (item) {return item.type === "ability"});
     data.weapons = data.items.filter (function (item) {return item.type === "weapon"});
-    data.items = data.items.filter (function (item) {return item.type === "item"});
+    data.otheritems = data.items.filter (function (item) {return item.type === "item"});
+    data.conditions = data.items.filter (function (item) {return item.type === "definition"});
+
     return data;
   }
 
@@ -258,6 +260,8 @@ export class CtHackActorSheet extends ActorSheet {
       case "item" :
       case "weapon": 
           return await this._onDropStandardItem(itemData);
+      case "definition":
+          return await this._onDropDefinitionItem(itemData);
       default:
           return;
     }
@@ -276,6 +280,22 @@ export class CtHackActorSheet extends ActorSheet {
 
     // Create the owned item
     return this.actor.createEmbeddedEntity("OwnedItem", itemData,{renderSheet: true});
+  }
+
+  /**
+   * Handle dropping of an item reference or item data of type definition onto an Actor Sheet
+   * @param {Object} data         The data transfer extracted from the event
+   * @return {Object}             OwnedItem data to create
+   * @private
+   */
+  async _onDropDefinitionItem(data) {
+    if (!this.actor.owner) return false;
+
+    const itemData = duplicate(data);
+    itemData.data.creationDate = formatDate(new Date());
+
+    // Create the owned item
+    return this.actor.createEmbeddedEntity("OwnedItem", itemData, {renderSheet: true});
   }
 
    /**
