@@ -14,36 +14,50 @@
     "name": "archetypes",
     "label": "Archetypes",
     "system": "cthack",
-    "path": "./packs/archetypes.db",
+    "path": "packs/archetypes.db",
     "entity": "Item"
   },
   {
     "name": "abilities",
     "label": "Capacités spéciales",
     "system": "cthack",
-    "path": "./packs/capacities.db",
+    "path": "packs/capacities.db",
     "entity": "Item"
   },
   {
     "name": "weapons",
     "label": "Armes spéciales",
     "system": "cthack",
-    "path": "./packs/special-weapons.db",
+    "path": "packs/special-weapons.db",
     "entity": "Item"
   },
   {
     "name": "gametables",
     "label": "Tableaux",
     "system": "cthack",
-    "path": "./packs/game-tables.db",
+    "path": "packs/game-tables.db",
     "entity": "RollTable"
   },
   {
     "name": "outofaction",
     "label": "Hors Jeu",
     "system": "cthack",
-    "path": "./packs/out-of-action.db",
+    "path": "packs/out-of-action.db",
     "entity": "Item"
+  },
+  {
+    "name": "temporaryinsanity",
+    "label": "Folie passagère",
+    "system": "cthack",
+    "path": "packs/temporary-insanity.db",
+    "entity": "Item"
+  },
+  {
+    "name": "pregenerated",
+    "label": "Prétirés",
+    "system": "cthack",
+    "path": "packs/pregenerated.db",
+    "entity": "Actor"
   }
 ],
   "languages": [
