@@ -79,6 +79,18 @@ CTHACK.abilityUsePeriod = {
   "Fight": "CTHACK.AbilityUsePerFight"
 };
 
+CTHACK.outofaction = {
+  "OOA-DEA": "CTHACK.OutOfAction.Dea",
+  "OOA-BRO": "CTHACK.OutOfAction.Bro",
+  "OOA-SAV": "CTHACK.OutOfAction.Sav",
+  "OOA-CRI": "CTHACK.OutOfAction.Cri",
+  "OOA-CRB": "CTHACK.OutOfAction.Cra",
+  "OOA-KNO": "CTHACK.OutOfAction.Kno",
+  "OOA-MIC": "CTHACK.OutOfAction.Mil",
+  "OOA-STA": "CTHACK.OutOfAction.Sta",
+  "OOA-WIN": "CTHACK.OutOfAction.Win"
+};
+
 export const ABILITY_KEYS_RESERVED = ["ANIHAN","ADRRUS","BAC","BETALO","DEADEY","IMPDEADEY","DED","ERU","FIEMED","GRIDET","HAR","HEAHIT","IMPHEAHIT","HOUCAR","IND","INF","INH","IROMIN","JACHOL","LEG","LIKROC","LOC","IMPLOC","MAC","MEC","NARESC","PUG","IMPPUG","RIP","ROB","SAV","SCR","IMPSCR","SELPRE","SIZIUP","SLICUS","STA","STEHAN","IMPSTEHAN","SURATT","SWILEA","TACADV","WITWOR"];
 
 export const DICE_VALUES = [0,4,6,8,10,12];

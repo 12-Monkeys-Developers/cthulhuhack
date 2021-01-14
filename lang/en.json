@@ -122,7 +122,20 @@
         "OpponentArmor": "Armor Points",
         "OpponentTouchMalus": "Touch malus",
         "OpponentAttacks": "Attacks",
-        "OpponentAbilities": "Special abilities"   
+        "OpponentAbilities": "Special abilities",
+
+        "OutOfAction": {
+            "Dea": "Dead",
+            "Bro": "Broken",
+            "Save": "Savaged",
+            "Cri": "Crippled",
+            "Crb": "Cracked Bones",
+            "Kno": "Knocked Out",
+            "Mic": "Mild Concussion",
+            "Sta": "Staggered",
+            "Win": "Winded"
+        }
+        
     },
 
     "SETTINGS": {

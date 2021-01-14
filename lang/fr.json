@@ -122,7 +122,19 @@
         "OpponentArmor": "Points d'Armure",
         "OpponentTouchMalus": "Malus au toucher",
         "OpponentAttacks": "Attaques",
-        "OpponentAbilities": "Capacités spéciales"
+        "OpponentAbilities": "Capacités spéciales",
+
+        "OutOfAction": {
+            "Dea": "Mort",
+            "Bro": "Détruit",
+            "Save": "Ravagé",
+            "Cri": "Estropié",
+            "Crb": "Os brisés",
+            "Kno": "Inconscient",
+            "Mic": "Commotion",
+            "Sta": "Titubant",
+            "Win": "Essouflé"
+        }
     },
 
     "SETTINGS": {
