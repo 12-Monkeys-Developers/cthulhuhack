@@ -143,7 +143,17 @@
             "Hys": "Hysteria",
             "Pas": "Paralysis",
             "Del": "Delusions"
-        }        
+        },
+        
+        "Shock": {
+            "Sha": "Shaking",
+            "Vag": "Vague",
+            "Rab": "Rabbit",
+            "Fai": "Faint",
+            "Div": "Dive",
+            "Scr": "Scream"
+        }
+
     },
 
     "SETTINGS": {

@@ -143,7 +143,16 @@
             "Hys": "Hystérie",
             "Pas": "Paralysie",
             "Del": "Délire"
-        } 
+        },
+
+        "Shock": {
+            "Sha": "Tremblements",
+            "Vag": "Confus",
+            "Rab": "Immobile",
+            "Fai": "Inconscience",
+            "Div": "Frayeur",
+            "Scr": "Hurlement"
+        }
     },
 
     "SETTINGS": {
