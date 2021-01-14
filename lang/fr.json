@@ -97,7 +97,7 @@
         "AdvantageANIHAN": "s'occuper, monter ou affronter un animal",
         "AdvantageIND": "contre la tromperie, le contrôle mental ou tenter de tromper son interlocuteur",
         "AdvantageMEC": "réparer des machines ou des véhicules endommagés",
-        "AdvantageIRONMIN": "résister à la magie, aux rituels occultes, aux malédictions ou à la possession",
+        "AdvantageIROMIN": "résister à la magie, aux rituels occultes, aux malédictions ou à la possession",
         "AdvantageRIP": "utiliser sa force pour soulever, déplacer ou lutter",
         "AdvantageLEG": "bonne coordination entre la main et l'oeil, tours de passe-passe, vol à la tire et manipulation de petits objets fragiles",
         "AdvantageSELPRE": "éviter les pièges ou les machines pouvant le blesser ou l'entraver",
@@ -134,7 +134,16 @@
             "Mic": "Commotion",
             "Sta": "Titubant",
             "Win": "Essouflé"
-        }
+        },
+
+        "TemporaryInsanity": {
+            "Amn": "Amnésie",
+            "Bla": "Evanouissement",
+            "Paa": "Paranoia",
+            "Hys": "Hystérie",
+            "Pas": "Paralysie",
+            "Del": "Délire"
+        } 
     },
 
     "SETTINGS": {

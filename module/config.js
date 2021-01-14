@@ -91,6 +91,15 @@ CTHACK.outofaction = {
   "OOA-WIN": "CTHACK.OutOfAction.Win"
 };
 
+CTHACK.temporaryInsanity = {
+  "TI-AMN": "CTHACK.TemporaryInsanity.Amn",
+  "TI-BLA": "CTHACK.TemporaryInsanity.Bla",
+  "TI-PAA": "CTHACK.TemporaryInsanity.Paa",
+  "TI-HYS": "CTHACK.TemporaryInsanity.Hys",
+  "TI-PAS": "CTHACK.TemporaryInsanity.Pas",
+  "TI-DEL": "CTHACK.TemporaryInsanity.Del"
+};
+
 export const ABILITY_KEYS_RESERVED = ["ANIHAN","ADRRUS","BAC","BETALO","DEADEY","IMPDEADEY","DED","ERU","FIEMED","GRIDET","HAR","HEAHIT","IMPHEAHIT","HOUCAR","IND","INF","INH","IROMIN","JACHOL","LEG","LIKROC","LOC","IMPLOC","MAC","MEC","NARESC","PUG","IMPPUG","RIP","ROB","SAV","SCR","IMPSCR","SELPRE","SIZIUP","SLICUS","STA","STEHAN","IMPSTEHAN","SURATT","SWILEA","TACADV","WITWOR"];
 
 export const DICE_VALUES = [0,4,6,8,10,12];

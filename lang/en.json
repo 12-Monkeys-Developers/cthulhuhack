@@ -134,8 +134,16 @@
             "Mic": "Mild Concussion",
             "Sta": "Staggered",
             "Win": "Winded"
-        }
-        
+        },
+
+        "TemporaryInsanity": {
+            "Amn": "Amnesia",
+            "Bla": "Blackout",
+            "Paa": "Paranoia",
+            "Hys": "Hysteria",
+            "Pas": "Paralysis",
+            "Del": "Delusions"
+        }        
     },
 
     "SETTINGS": {
