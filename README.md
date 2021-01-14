@@ -46,7 +46,11 @@ Compendiums
     - Drag and drop pour ajouter à la fiche (avec prise en compte des capacités multiples)
     - Gestion du nombre d'utilisations et affichage de la date de dernier usage lors du clic sur l'utilisation
     - Clic sur le nom pour déplier la description
-
+- Table Hors Jeu
+- Table Folie Passagère
+- Table Choc
+- RollTable sur les 3 tables
+- Prétirés
 
 -------------------------------------------------------------------------------------------------------------------------
 Cthulhu Hack System for Foundry VTT
