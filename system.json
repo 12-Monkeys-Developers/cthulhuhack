@@ -58,6 +58,13 @@
     "system": "cthack",
     "path": "packs/pregenerated.db",
     "entity": "Actor"
+  },
+  {
+    "name": "shock",
+    "label": "Choc",
+    "system": "cthack",
+    "path": "packs/shock.db",
+    "entity": "Item"
   }
 ],
   "languages": [
