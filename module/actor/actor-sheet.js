@@ -67,6 +67,7 @@ export class CtHackActorSheet extends ActorSheet {
     });   
     html.find('.ability-delete').click(this._onItemDelete.bind(this));
     html.find('.ability-use').click(this._onItemUse.bind(this));
+    html.find('.ability-reset').click(this._onAbilityReset.bind(this));
 
     // Saving throws
     html.find('.save-name').click(this._onSaveRoll.bind(this));
@@ -186,6 +187,22 @@ export class CtHackActorSheet extends ActorSheet {
     const lastTime = formatDate(now);
     ability.update({'data.uses.value': remaining, 'data.uses.last': lastTime});
     this.actor.sheet.render(true);
+  }
+
+  /**
+   * Reset ability use
+   * @param event the roll event
+   * @private
+   */
+  _onAbilityReset(event) {
+    event.preventDefault();
+    const li = $(event.currentTarget).parents(".item");
+    const itemId = li.data("itemId");
+    const item = this.actor.items.find(item => item._id === itemId);
+    
+    console.log(`Reset ability ${item.name}`);
+    const maxUse = item.data.data.uses.max;
+    item.update({'data.uses.value': maxUse, 'data.uses.last': ""});
   }
 
   /**

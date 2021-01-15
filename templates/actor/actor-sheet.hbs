@@ -125,6 +125,10 @@
                       <div class="item-controls">
                         {{#if (gt ability.data.uses.value 0) }}
                         <a class="item-control ability-use" title="{{localize "CTHACK.Use"}}"><i class="fas fa-check"></i></a>
+                        {{else}}
+                          {{#if (gt ability.data.uses.max 0)}}
+                          <a class="item-control ability-reset" title="{{localize "CTHACK.Reset"}}"><i class="fas fa-times"></i></a>
+                          {{/if}}
                         {{/if}}
                         <a class="item-control ability-edit" title="{{localize "CTHACK.Edit"}}"><i class="fas fa-edit"></i></a>
                         <a class="item-control ability-delete" title="{{localize "CTHACK.Delete"}}"><i class="fas fa-trash"></i></a>
