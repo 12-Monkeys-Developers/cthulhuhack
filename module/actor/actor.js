@@ -1,6 +1,7 @@
 import { CTHACK } from "../config.js";
 import { diceRoll } from "../dice.js";
 import { findLowerDice } from "../utils.js";
+import { manageActiveEffect } from "../effects.js";
 
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
@@ -260,4 +261,100 @@ export class CtHackActor extends Actor {
     else advantages += "</ul>";
     return advantages;
   }
+
+  /**
+   * Create a definition item with the active effect if necessary
+   * @param {*} itemData 
+   */
+  createDefinitionItem(itemData){
+    if (itemData.data.key === "OOA-CRB" || itemData.data.key === "OOA-MIC" || itemData.data.key === "OOA-STA" || itemData.data.key === "OOA-WIN" ){
+      this._createActiveEffect(itemData);
+    }
+    
+    return this.createEmbeddedEntity("OwnedItem", itemData, {renderSheet: true});
+  }
+
+  _createActiveEffect(itemData){
+    console.log(itemData);
+
+    let effectData;
+
+    if (itemData.data.key === "OOA-CRB"){
+      effectData = {
+        label: "OOA-CRB",
+        icon: "systems/cthack/ui/icons/first-aid-kit.png",
+        changes: [{
+            key: "data.saves.str.value",
+            mode: 2,
+            value: -4,
+            priority: "20"},
+          {
+            key: "data.saves.dex.value",
+            mode: 2,
+            value: -4,
+            priority: "20"
+          },{
+            key: "data.saves.con.value",
+            mode: 2,
+            value: -4,
+            priority: "20"
+        }],
+        duration: {
+          "seconds": 3600
+        },
+        tint: "#BB0022"
+      };
+    }
+    else if (itemData.data.key === "OOA-MIC"){
+      effectData = {
+        label: "OOA-MIC",
+        icon: "systems/cthack/ui/icons/first-aid-kit.png",
+        duration: {
+          "seconds": 1200
+        },
+        tint: "#BB0022"
+      };
+    }
+    else if (itemData.data.key === "OOA-STA"){
+      effectData = {
+        label: "OOA-STA",
+        icon: "systems/cthack/ui/icons/first-aid-kit.png",
+        duration: {
+          "seconds": 600
+        },
+        tint: "#BB0022"
+      };
+    }
+    else if (itemData.data.key === "OOA-WIN"){
+      effectData = {
+        label: "OOA-WIN",
+        icon: "systems/cthack/ui/icons/first-aid-kit.png",
+        duration: {
+          "seconds": 60
+        },
+        tint: "#BB0022"
+      };
+    }
+    
+    this.createEmbeddedEntity("ActiveEffect", effectData);
+  }
+
+  /**
+   * Delete a definition item and the associated active effect if necessary
+   * @param {*} itemData 
+   */
+  deleteDefinitionItem(item){
+    // Delete the Active Effect
+    let effect;
+    const definitionKey = item.data.data.key;
+    if (definitionKey === "OOA-CRB" || definitionKey === "OOA-MIC" || definitionKey === "OOA-STA" || definitionKey === "OOA-WIN"){
+      effect = this.effects.find(i => i.data.label === definitionKey);
+      console.log("Delete Active Effect : " + effect.data._id);
+      this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
+    }
+    
+    // Delete the OwnedItem
+    return this.deleteOwnedItem(item._id);
+  }
+  
 }

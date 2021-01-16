@@ -144,16 +144,18 @@ export class CtHackActorSheet extends ActorSheet {
     event.preventDefault();
     const li = $(event.currentTarget).parents(".item");
     const itemId = li.data("itemId");
-    const entity = this.actor.items.find(item => item._id === itemId);
-    const key = entity.data.data.key;
+    const item = this.actor.items.find(item => item._id === itemId);
+    const key = item.data.data.key;
     li.slideUp(200, () => this.render(false));
     //return this.actor.deleteOwnedItem(itemId);
-    switch (entity.data.type) {
+    switch (item.data.type) {
       case "item" :
             return this.actor.deleteOwnedItem(itemId);
       case "ability" :
             this.actor.deleteAbility(key, itemId);
             return this.actor.deleteOwnedItem(itemId);
+      case "definition" :
+            return this.actor.deleteDefinitionItem(item);
       default: 
             return this.actor.deleteOwnedItem(itemId);
     }
@@ -311,8 +313,9 @@ export class CtHackActorSheet extends ActorSheet {
     const itemData = duplicate(data);
     itemData.data.creationDate = formatDate(new Date());
 
+    return this.actor.createDefinitionItem(itemData);
     // Create the owned item
-    return this.actor.createEmbeddedEntity("OwnedItem", itemData, {renderSheet: true});
+    //return this.actor.createEmbeddedEntity("OwnedItem", itemData, {renderSheet: true});
   }
 
    /**
