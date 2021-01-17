@@ -55,13 +55,19 @@ export class CtHackActor extends Actor {
     const label = game.i18n.localize(save);
     const saveValue = this.data.data.saves[saveId].value;
     const abilitiesAdvantages = this._findSavesAdvantages(saveId);
+    let hasDisadvantage = false;
+    if (this.getFlag("cthack","disadvantageOOA") !== undefined){
+      console.log("Désavantage de Hors Jeu");
+      hasDisadvantage = true;
+    };
 
     // Roll and return
     const rollData = mergeObject(options, {
       title: game.i18n.format("CTHACK.SavePromptTitle", {save: label}),   
       rollType: "Save",
       targetValue: saveValue,
-      abilitiesAdvantages: abilitiesAdvantages
+      abilitiesAdvantages: abilitiesAdvantages,
+      disadvantage: hasDisadvantage
     });
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
     return diceRoll(rollData);
@@ -267,11 +273,14 @@ export class CtHackActor extends Actor {
    * @param {*} itemData 
    */
   createDefinitionItem(itemData){
-    if (itemData.data.key === "OOA-CRB" || itemData.data.key === "OOA-MIC" || itemData.data.key === "OOA-STA" || itemData.data.key === "OOA-WIN" 
-          || itemData.data.key.startsWith('OOA') || itemData.data.key.startsWith('TI') || itemData.data.key.startsWith('SK')){
+    if (itemData.data.key === "OOA-CRB" || itemData.data.key === "OOA-MIC" || itemData.data.key === "OOA-STA" || itemData.data.key === "OOA-WIN"){
+      this._createActiveEffect(itemData);
+    }
+    else if (itemData.data.key.startsWith('OOA') || itemData.data.key.startsWith('TI') || itemData.data.key.startsWith('SK')){
       this._createActiveEffect(itemData);
     }
     
+    // Create the owned item
     return this.createEmbeddedEntity("OwnedItem", itemData, {renderSheet: true});
   }
 
@@ -315,6 +324,7 @@ export class CtHackActor extends Actor {
         },
         tint: "#BB0022"
       };
+      this.setFlag("cthack", "disadvantageOOA", true);
     }
     else if (itemData.data.key === "OOA-STA"){
       effectData = {
@@ -325,6 +335,7 @@ export class CtHackActor extends Actor {
         },
         tint: "#BB0022"
       };
+      this.setFlag("cthack", "disadvantageOOA", true);
     }
     else if (itemData.data.key === "OOA-WIN"){
       effectData = {
@@ -335,6 +346,7 @@ export class CtHackActor extends Actor {
         },
         tint: "#BB0022"
       };
+      this.setFlag("cthack", "disadvantageOOA", true);
     }
     else if (itemData.data.key.startsWith('OOA')){
       effectData = {
@@ -367,20 +379,28 @@ export class CtHackActor extends Actor {
       };
     }
     
+    // Create the Active Effect
     this.createEmbeddedEntity("ActiveEffect", effectData);
   }
 
   /**
-   * Delete a definition item and the associated active effect if necessary
+   * Delete the associated active effect of a definition item if necessary
    * @param {*} itemData 
    */
-  deleteDefinitionItem(item){
+  deleteEffectFromItem(item){
     // Delete the Active Effect
     let effect;
     const definitionKey = item.data.data.key;
-    if (definitionKey === "OOA-CRB" || definitionKey === "OOA-MIC" || definitionKey === "OOA-STA" || definitionKey === "OOA-WIN"){
+    console.log("deleteDefinitionItem : definitionKey = " + definitionKey);
+    if (definitionKey === "OOA-CRB"){
       effect = this.effects.find(i => i.data.label === definitionKey);
       console.log("Delete Active Effect : " + effect.data._id);
+      this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
+    }
+    else if (definitionKey === "OOA-MIC" || definitionKey === "OOA-STA" || definitionKey === "OOA-WIN"){
+      effect = this.effects.find(i => i.data.label === definitionKey);
+      console.log("Delete Active Effect : " + effect.data._id);
+      this.unsetFlag("cthack","disadvantageOOA");
       this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
     }
     else if (definitionKey.startsWith('OOA')){
@@ -398,9 +418,6 @@ export class CtHackActor extends Actor {
       console.log("Delete Active Effect : " + effect.data._id);
       this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
     }
-    
-    // Delete the OwnedItem
-    return this.deleteOwnedItem(item._id);
   }
   
 }

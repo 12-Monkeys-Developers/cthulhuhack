@@ -155,7 +155,8 @@ export class CtHackActorSheet extends ActorSheet {
             this.actor.deleteAbility(key, itemId);
             return this.actor.deleteOwnedItem(itemId);
       case "definition" :
-            return this.actor.deleteDefinitionItem(item);
+            this.actor.deleteEffectFromItem(item);
+            return this.actor.deleteOwnedItem(itemId);
       default: 
             return this.actor.deleteOwnedItem(itemId);
     }
@@ -314,8 +315,6 @@ export class CtHackActorSheet extends ActorSheet {
     itemData.data.creationDate = formatDate(new Date());
 
     return this.actor.createDefinitionItem(itemData);
-    // Create the owned item
-    //return this.actor.createEmbeddedEntity("OwnedItem", itemData, {renderSheet: true});
   }
 
    /**
