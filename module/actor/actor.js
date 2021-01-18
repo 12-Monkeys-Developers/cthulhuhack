@@ -55,9 +55,10 @@ export class CtHackActor extends Actor {
     const label = game.i18n.localize(save);
     const saveValue = this.data.data.saves[saveId].value;
     const abilitiesAdvantages = this._findSavesAdvantages(saveId);
+    let hasAdvantage = false;
     let hasDisadvantage = false;
-    if (this.getFlag("cthack","disadvantageOOA") !== undefined){
-      console.log("Désavantage de Hors Jeu");
+    if (this.getFlag("cthack","disadvantageOOA") !== undefined && this.getFlag("cthack","disadvantageOOA") === true){
+      console.log("Out of Action Disadvantage");
       hasDisadvantage = true;
     };
 
@@ -67,6 +68,7 @@ export class CtHackActor extends Actor {
       rollType: "Save",
       targetValue: saveValue,
       abilitiesAdvantages: abilitiesAdvantages,
+      advantage: hasAdvantage,
       disadvantage: hasDisadvantage
     });
     rollData.speaker = options.speaker || ChatMessage.getSpeaker({actor: this});
@@ -272,7 +274,7 @@ export class CtHackActor extends Actor {
    * Create a definition item with the active effect if necessary
    * @param {*} itemData 
    */
-  createDefinitionItem(itemData){
+async  createDefinitionItem(itemData){
     if (itemData.data.key === "OOA-CRB" || itemData.data.key === "OOA-MIC" || itemData.data.key === "OOA-STA" || itemData.data.key === "OOA-WIN"){
       this._createActiveEffect(itemData);
     }
@@ -284,7 +286,7 @@ export class CtHackActor extends Actor {
     return this.createEmbeddedEntity("OwnedItem", itemData, {renderSheet: true});
   }
 
-  _createActiveEffect(itemData){
+async _createActiveEffect(itemData){
     console.log(itemData);
 
     let effectData;
@@ -324,7 +326,7 @@ export class CtHackActor extends Actor {
         },
         tint: "#BB0022"
       };
-      this.setFlag("cthack", "disadvantageOOA", true);
+      await this.setFlag("cthack", "disadvantageOOA", true);
     }
     else if (itemData.data.key === "OOA-STA"){
       effectData = {
@@ -335,7 +337,7 @@ export class CtHackActor extends Actor {
         },
         tint: "#BB0022"
       };
-      this.setFlag("cthack", "disadvantageOOA", true);
+      await this.setFlag("cthack", "disadvantageOOA", true);
     }
     else if (itemData.data.key === "OOA-WIN"){
       effectData = {
@@ -346,7 +348,7 @@ export class CtHackActor extends Actor {
         },
         tint: "#BB0022"
       };
-      this.setFlag("cthack", "disadvantageOOA", true);
+      await this.setFlag("cthack", "disadvantageOOA", true);
     }
     else if (itemData.data.key.startsWith('OOA')){
       effectData = {
@@ -387,7 +389,7 @@ export class CtHackActor extends Actor {
    * Delete the associated active effect of a definition item if necessary
    * @param {*} itemData 
    */
-  deleteEffectFromItem(item){
+  async deleteEffectFromItem(item){
     // Delete the Active Effect
     let effect;
     const definitionKey = item.data.data.key;
@@ -395,28 +397,28 @@ export class CtHackActor extends Actor {
     if (definitionKey === "OOA-CRB"){
       effect = this.effects.find(i => i.data.label === definitionKey);
       console.log("Delete Active Effect : " + effect.data._id);
-      this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
+      await this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
     }
     else if (definitionKey === "OOA-MIC" || definitionKey === "OOA-STA" || definitionKey === "OOA-WIN"){
       effect = this.effects.find(i => i.data.label === definitionKey);
-      console.log("Delete Active Effect : " + effect.data._id);
-      this.unsetFlag("cthack","disadvantageOOA");
-      this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
+      console.log("Delete Active Effect : " + effect.data._id);      
+      await this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
+      await this.unsetFlag("cthack","disadvantageOOA");
     }
     else if (definitionKey.startsWith('OOA')){
       effect = this.effects.find(i => i.data.label === definitionKey);
       console.log("Delete Active Effect : " + effect.data._id);
-      this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
+      await this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
     }
     else if (definitionKey.startsWith('TI')){
       effect = this.effects.find(i => i.data.label === definitionKey);
       console.log("Delete Active Effect : " + effect.data._id);
-      this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
+      await this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
     }
     else if (definitionKey.startsWith('SK')){
       effect = this.effects.find(i => i.data.label === definitionKey);
       console.log("Delete Active Effect : " + effect.data._id);
-      this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
+      await this.deleteEmbeddedEntity("ActiveEffect", effect.data._id);
     }
   }
   

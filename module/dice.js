@@ -39,37 +39,78 @@ export async function diceRoll({diceType="d20", customFormula=null, parts=[], da
 
    let adv = 0;
 
+   /*
    if (advantage){
        adv = 1;
    }
    else if (disadvantage){
        adv = -1;
    }
+   */
 
    // Define the inner roll function
-   const _roll = (parts, adv, form) => {
+   const _roll = (parts, adv, form, advantage, disadvantage) => {
   
      // Determine the dice roll and modifiers
      let nd = 1;
      let mods = "";
-       
-     // Handle advantage
+
+     // Handle advantage choice
      if (adv === 1) {
-      nd = 2; 
-      messageData.flavor += ` (${game.i18n.localize("CTHACK.Advantage")})`;
-      if (rollType === "Resource"){
-        mods += "kh";
-      }
-      else mods += "kl";      
+        nd++;
+        // Custom advantage or disadvantage
+        if (advantage){
+          nd++;
+          messageData.flavor += ` (${game.i18n.localize("CTHACK.ConditionAdvantage")})`;
+        }
+        else if (disadvantage){
+          nd--;
+          messageData.flavor += ` (${game.i18n.localize("CTHACK.ConditionDisadvantage")})`;
+        }
+        messageData.flavor += ` (${game.i18n.localize("CTHACK.Advantage")})`;
+        if (rollType === "Resource"){
+          mods += "kh";
+        }
+        else mods += "kl";      
      }
-     // Handle disadvantage
+     // Handle disadvantage choice
      else if (adv === -1) {
-       nd = 2;
+       nd++;
+       // Custom advantage or disadvantage
+       if (advantage){
+       nd--;
+       nd--;Désava
+       messageData.flavor += ` (${game.i18n.localize("CTHACK.ConditionAdvantage")})`;
+       }
+        else if (disadvantage){
+        nd++;
+        messageData.flavor += ` (${game.i18n.localize("CTHACK.ConditionDisadvantage")})`;
+       }
        messageData.flavor += ` (${game.i18n.localize("CTHACK.Disadvantage")})`;
        if (rollType === "Resource"){
         mods += "kl";
        }
        else mods += "kh";
+     }
+     // Handle normal choice
+     else if (adv === 0){
+        // Custom advantage or disadvantage
+        if (advantage){
+          nd++;
+          messageData.flavor += ` (${game.i18n.localize("CTHACK.ConditionAdvantage")})`;
+          if (rollType === "Resource"){
+            mods += "kh";
+          }
+          else mods += "kl";   
+        }
+        else if (disadvantage){
+          nd++;
+          messageData.flavor += ` (${game.i18n.localize("CTHACK.ConditionDisadvantage")})`;
+        if (rollType === "Resource"){
+          mods += "kl";
+          }
+          else mods += "kh";
+        }
      }
   
      // Prepend the dice roll
@@ -105,7 +146,7 @@ export async function diceRoll({diceType="d20", customFormula=null, parts=[], da
     }
   
    // Create the Roll instance
-   const roll = await _diceRollDialog({template, title, parts, data, rollMode: messageOptions.rollMode, dialogOptions, rollType, modifier, abilitiesAdvantages, roll: _roll});
+   const roll = await _diceRollDialog({template, title, parts, data, rollMode: messageOptions.rollMode, dialogOptions, rollType, modifier, advantage, disadvantage, abilitiesAdvantages, roll: _roll});
   
    // Create a Chat Message
    if ( roll && chatMessage ) {
@@ -141,7 +182,7 @@ export async function diceRoll({diceType="d20", customFormula=null, parts=[], da
  * @return {Promise<Roll>}
  * @private
  */
-async function _diceRollDialog({template, title, parts, data, rollMode, dialogOptions, rollType, modifier, abilitiesAdvantages, roll}={}) {
+async function _diceRollDialog({template, title, parts, data, rollMode, dialogOptions, rollType, modifier, advantage, disadvantage, abilitiesAdvantages, roll}={}) {
 
     // Render modal dialog
     template = template || "systems/cthack/templates/chat/roll-dialog.html";
@@ -152,6 +193,8 @@ async function _diceRollDialog({template, title, parts, data, rollMode, dialogOp
       rollModes: CONFIG.Dice.rollModes,
       rollType: rollType,
       modifier: modifier,
+      advantage: advantage,
+      disadvantage: disadvantage,
       abilitiesAdvantages: abilitiesAdvantages
     };
     const html = await renderTemplate(template, dialogData);
@@ -163,20 +206,20 @@ async function _diceRollDialog({template, title, parts, data, rollMode, dialogOp
           title: title,
           content: html,
           buttons: {
-            advantage: {
+            advantageBtn: {
               label: game.i18n.localize("CTHACK.Advantage"),
-              callback: html => resolve(roll(parts, 1, html[0].querySelector("form")))
+              callback: html => resolve(roll(parts, 1, html[0].querySelector("form"),advantage,disadvantage))
             },
-            normal: {
+            normalBtn: {
               label: game.i18n.localize("CTHACK.Normal"),
-              callback: html => resolve(roll(parts, 0, html[0].querySelector("form")))
+              callback: html => resolve(roll(parts, 0, html[0].querySelector("form"),advantage,disadvantage))
             },
-            disadvantage: {
+            disadvantageBtn: {
               label: game.i18n.localize("CTHACK.Disadvantage"),
-              callback: html => resolve(roll(parts, -1, html[0].querySelector("form")))
+              callback: html => resolve(roll(parts, -1, html[0].querySelector("form"),advantage,disadvantage))
             }
           },
-          default: "normal",
+          default: "normalBtn",
           close: () => resolve(null)
         }, dialogOptions).render(true);
       });
@@ -188,12 +231,12 @@ async function _diceRollDialog({template, title, parts, data, rollMode, dialogOp
           title: title,
           content: html,
           buttons: {
-            normal: {
+            normalBtn: {
               label: game.i18n.localize("CTHACK.Normal"),
-              callback: html => resolve(roll(parts, 0, html[0].querySelector("form")))
+              callback: html => resolve(roll(parts, 0, html[0].querySelector("form"),advantage,disadvantage))
             }
           },
-          default: "normal",
+          default: "normalBtn",
           close: () => resolve(null)
         }, dialogOptions).render(true);
       });

@@ -1,4 +1,14 @@
 <form>
+    {{#if advantage}}
+    <div class="form-group">
+        <label>{{localize "CTHACK.Condition"}}</label>{{localize "CTHACK.AdvantageFromCondition"}}
+    </div>
+    {{/if}}
+    {{#if disadvantage}}
+    <div class="form-group">
+        <label>{{localize "CTHACK.Condition"}}</label>{{localize "CTHACK.DisadvantageFromCondition"}}
+    </div>
+    {{/if}}
     {{#if (stringNeitherNullEmpty abilitiesAdvantages)}}
     <div class="form-group">
         <label>{{localize "CTHACK.Advantages"}}</label>{{{abilitiesAdvantages}}}

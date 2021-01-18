@@ -140,14 +140,14 @@ export class CtHackActorSheet extends ActorSheet {
    * @param event the roll event
    * @private
    */
-  _onItemDelete(event) {
+  async _onItemDelete(event) {
     event.preventDefault();
     const li = $(event.currentTarget).parents(".item");
     const itemId = li.data("itemId");
     const item = this.actor.items.find(item => item._id === itemId);
     const key = item.data.data.key;
     li.slideUp(200, () => this.render(false));
-    //return this.actor.deleteOwnedItem(itemId);
+
     switch (item.data.type) {
       case "item" :
             return this.actor.deleteOwnedItem(itemId);
@@ -155,7 +155,7 @@ export class CtHackActorSheet extends ActorSheet {
             this.actor.deleteAbility(key, itemId);
             return this.actor.deleteOwnedItem(itemId);
       case "definition" :
-            this.actor.deleteEffectFromItem(item);
+            await this.actor.deleteEffectFromItem(item);
             return this.actor.deleteOwnedItem(itemId);
       default: 
             return this.actor.deleteOwnedItem(itemId);
