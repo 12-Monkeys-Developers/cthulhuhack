@@ -3,20 +3,19 @@
  * Pre-loaded templates are compiled and cached for fast access when rendering
  * @return {Promise}
  */
-export const preloadHandlebarsTemplates = async function () {
+export const preloadHandlebarsTemplates = async function() {
+	// Define template paths to load
+	const templatePaths = [
+		// ACTOR
+		'systems/cthack/templates/actor/parts/actor-attributes-firstline.hbs',
+		'systems/cthack/templates/actor/parts/actor-attributes-secondline.hbs',
+		'systems/cthack/templates/actor/parts/actor-item.hbs',
+		'systems/cthack/templates/actor/parts/actor-condition.hbs',
+		'systems/cthack/templates/actor/parts/opponent-attack.hbs',
+		'systems/cthack/templates/actor/actor-sheet.hbs',
+		'systems/cthack/templates/actor/opponent-sheet.hbs'
+	];
 
-    // Define template paths to load
-    const templatePaths = [
-        // ACTOR
-        "systems/cthack/templates/actor/parts/actor-attributes-firstline.hbs",
-        "systems/cthack/templates/actor/parts/actor-attributes-secondline.hbs",
-        "systems/cthack/templates/actor/parts/actor-item.hbs",
-        "systems/cthack/templates/actor/parts/actor-condition.hbs",
-        "systems/cthack/templates/actor/parts/opponent-attack.hbs",
-        "systems/cthack/templates/actor/actor-sheet.hbs",
-        "systems/cthack/templates/actor/opponent-sheet.hbs"
-    ];
-
-    // Load the template parts
-    return loadTemplates(templatePaths);
+	// Load the template parts
+	return loadTemplates(templatePaths);
 };
