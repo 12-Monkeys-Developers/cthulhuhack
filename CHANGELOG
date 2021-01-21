@@ -1,3 +1,16 @@
+0.4.1
+- Add opponents compendium
+- Add macros compendium
+
+0.4.0
+- Add button reset of usage for capacity
+- Add Active Effect to out of actions status
+- Add icon on token for conditions
+
+0.3.16
+- Add out-of-action conditions display
+- Add read only keys for all conditions
+
 0.3.10 to 0.3.14
 - Technical releases to improve package delivery
 
