@@ -65,6 +65,13 @@
     "system": "cthack",
     "path": "packs/shock.db",
     "entity": "Item"
+  },
+  {
+    "name": "opponents",
+    "label": "Créatures",
+    "system": "cthack",
+    "path": "packs/opponents.db",
+    "entity": "Actor"
   }
 ],
   "languages": [

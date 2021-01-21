@@ -23,13 +23,16 @@ Actor
     - Jet de sauvegarde avec avantage/désavantage/bonus/malus, affichage de l'avantage éventuel donné par une capacité
     - Jet de ressource avec avantage/désavantage/bonus/malus et gestion de la diminution
 - Opposant
-    - Les attaques sont sous forme d'item
+    - Les attaques sont sous forme d'item avec jet de dommages intégré
 
 Item
 - Ability : capacité spéciale
 - Item : gestion du dé de matériel avec possibilité de faire un jet (limitation connue : en cas de perte de ressource, il faut diminuer le dé à la main)
 - Weapon : pour les armes, à faire glisser sur la fiche de personnage
 - Attack : les attaques, à faire glisser sur la fiche d'opposant
+- Definition : utilisé pour les statuts des tables Hors Jeu, Folie temporaire et Choc ; ajouté au personnage via drag and drop
+    - Prise en compte du désavantage pour certains statuts Hors Jeu
+    - Une icône apparait sur le token en cas de condition
 
 Options
 - Fortune : active/désactive l'affichage sur la fiche
@@ -42,15 +45,18 @@ Options
 
 Compendiums
 - Archétypes standards (avec les variations pour le savant) : Drag and drop sur la fiche de perso qui remplace les valeurs de la fiche par celles de l'archetype
+- Armes spéciales
 - Capacités spéciales : contient toutes les capacités standards
     - Drag and drop pour ajouter à la fiche (avec prise en compte des capacités multiples)
     - Gestion du nombre d'utilisations et affichage de la date de dernier usage lors du clic sur l'utilisation
+    - Un bouton pour réinitialiser le nombre d'usages et la date de dernier usage
     - Clic sur le nom pour déplier la description
 - Table Hors Jeu
 - Table Folie Passagère
 - Table Choc
 - RollTable sur les 3 tables
-- Prétirés
+- Prétirés : un prétiré par archétype avec les capacités spéciales, il suffit de choisir laquelle supprimer
+- Créatures : les créatures du livre de base
 
 -------------------------------------------------------------------------------------------------------------------------
 Cthulhu Hack System for Foundry VTT
