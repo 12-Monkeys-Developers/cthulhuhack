@@ -73,6 +73,14 @@
     "path": "packs/opponents.db",
     "entity": "Actor"
   }
+  ,
+  {
+    "name": "macros",
+    "label": "Macros",
+    "system": "cthack",
+    "path": "packs/macros.db",
+    "entity": "Macro"
+  }
 ],
   "languages": [
     {
