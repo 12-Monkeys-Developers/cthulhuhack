@@ -43,8 +43,8 @@ Hooks.once('init', async function() {
 
 	// Register sheet application classes
 	Actors.unregisterSheet('core', ActorSheet);
-	Actors.registerSheet('cthack', CtHackActorSheet, { makeDefault: true, label: 'CTHACK.SheetClassCharacter' });
-	Actors.registerSheet('cthack', CtHackOpponentSheet, { makeDefault: true, label: 'CTHACK.SheetClassOpponent' });
+	Actors.registerSheet('cthack', CtHackActorSheet, { types: [ 'character' ], makeDefault: true, label: 'CTHACK.SheetClassCharacter' });
+	Actors.registerSheet('cthack', CtHackOpponentSheet, { types: [ 'opponent' ], makeDefault: true, label: 'CTHACK.SheetClassOpponent' });
 	Items.unregisterSheet('core', ItemSheet);
 	Items.registerSheet('cthack', CtHackItemSheet, { types: [ 'item', 'weapon', 'attack', 'ability', 'definition' ], makeDefault: true, label: 'CTHACK.SheetClassItem' });
 	Items.registerSheet('cthack', CtHackArchetypeSheet, { types: [ 'archetype' ], makeDefault: true, label: 'CTHACK.SheetClassItem' });
