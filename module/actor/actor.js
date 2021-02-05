@@ -71,7 +71,7 @@ export class CtHackActor extends Actor {
 			disadvantage: hasDisadvantage
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
-		return diceRoll(rollData);
+		return await diceRoll(rollData);
 	}
 
 	/**
@@ -100,8 +100,7 @@ export class CtHackActor extends Actor {
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 
-		const result = await diceRoll(rollData);
-		return result;
+		return await diceRoll(rollData);
 	}
 
 	/**
@@ -126,7 +125,7 @@ export class CtHackActor extends Actor {
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 
-		return diceRoll(rollData);
+		return await diceRoll(rollData);
 	}
 
 	/**
@@ -176,7 +175,7 @@ export class CtHackActor extends Actor {
 			rollType: 'Damage'
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
-		return diceRoll(rollData);
+		return await diceRoll(rollData);
 	}
 
 	/**
@@ -197,7 +196,7 @@ export class CtHackActor extends Actor {
 			rollType: 'AttackDamage'
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
-		return diceRoll(rollData);
+		return await diceRoll(rollData);
 	}
 
 	deleteAbility(key, itemId) {
