@@ -17,7 +17,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 0.4.1
+version : 0.4.2
 
 Actor
 - Personnage
@@ -75,7 +75,7 @@ This system is under development.
 ---------------
 Features
 ---------------
-version : 0.3.0
+version : 0.4.2
 
 Actor
 - Character
@@ -90,6 +90,9 @@ Item
 - Item : management of the supplies die with the possibility to make a roll (known limitation : in case of loss of resource, the die must be decreased by hand)
 - Weapon: for weapons, drag and drop on the character sheet
 - Attack: opponent's attacks, to be dragged on the opponent's card
+- Definition: used for Out of Game, Temporary Insanity and Shock table statuses; added to character via drag and drop
+    - Taking into account the disadvantage for certain Out-of-Game statuses
+    - An icon appears on the token in case of condition
 
 Options
 - Fortune: activates/deactivates the display on the form

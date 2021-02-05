@@ -1,2 +1,2 @@
-- Add opponents compendium
-- Add macros compendium
+- Fix advantage and disadvantage for armed and unarmed roll
+- Fix sheet template choice
