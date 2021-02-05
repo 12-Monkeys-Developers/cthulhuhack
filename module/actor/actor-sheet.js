@@ -184,7 +184,7 @@ export class CtHackActorSheet extends ActorSheet {
 	}
 
 	_useAbility(ability) {
-		console.log(`Use ability ${ability.name}`);
+		if (CONFIG.debug.cthack) console.log(`Use ability ${ability.name}`);
 		let remaining = ability.data.data.uses.value;
 		if (remaining > 0) {
 			remaining--;
@@ -206,7 +206,7 @@ export class CtHackActorSheet extends ActorSheet {
 		const itemId = li.data('itemId');
 		const item = this.actor.items.find((item) => item._id === itemId);
 
-		console.log(`Reset ability ${item.name}`);
+		if (CONFIG.debug.cthack) console.log(`Reset ability ${item.name}`);
 		const maxUse = item.data.data.uses.max;
 		item.update({ 'data.uses.value': maxUse, 'data.uses.last': '' });
 	}

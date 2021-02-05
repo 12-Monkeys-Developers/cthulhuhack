@@ -1,3 +1,3 @@
 export function manageActiveEffect(itemData) {
-	console.log('manageActiveEffect');
+	if (CONFIG.debug.cthack) console.log('manageActiveEffect');
 }

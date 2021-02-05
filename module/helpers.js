@@ -32,7 +32,7 @@ export const registerHandlebarsHelpers = function() {
 			var outStr = `1d{{value}}`;
 			return outStr;
 		}
-		console.log(`{{value}} is not a valid dice value`);
+		if (CONFIG.debug.cthack) (`{{value}} is not a valid dice value`);
 	});
 
 	Handlebars.registerHelper('equals', function(val1, val2) {
