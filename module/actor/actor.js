@@ -57,7 +57,7 @@ export class CtHackActor extends Actor {
 		let hasAdvantage = false;
 		let hasDisadvantage = false;
 		if (this.getFlag('cthack', 'disadvantageOOA') !== undefined && this.getFlag('cthack', 'disadvantageOOA') === true) {
-			console.log('Out of Action Disadvantage');
+			if (CONFIG.debug.cthack) console.log('Out of Action Disadvantage');
 			hasDisadvantage = true;
 		}
 
@@ -165,6 +165,10 @@ export class CtHackActor extends Actor {
 
 		const damageDice = this.data.data.attributes[damageId].value;
 
+		if (damageDice == 1){
+			return;
+		}
+		
 		const damage = CTHACK.attributes[damageId];
 		const label = game.i18n.localize(damage);
 
@@ -282,7 +286,7 @@ export class CtHackActor extends Actor {
 	}
 
 	async _createActiveEffect(itemData) {
-		console.log(itemData);
+		if (CONFIG.debug.cthack) console.log(itemData);
 
 		let effectData;
 
@@ -386,27 +390,27 @@ export class CtHackActor extends Actor {
 		// Delete the Active Effect
 		let effect;
 		const definitionKey = item.data.data.key;
-		console.log('deleteDefinitionItem : definitionKey = ' + definitionKey);
+		if (CONFIG.debug.cthack) console.log('deleteDefinitionItem : definitionKey = ' + definitionKey);
 		if (definitionKey === 'OOA-CRB') {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			console.log('Delete Active Effect : ' + effect.data._id);
+			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		} else if (definitionKey === 'OOA-MIC' || definitionKey === 'OOA-STA' || definitionKey === 'OOA-WIN') {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			console.log('Delete Active Effect : ' + effect.data._id);
+			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 			await this.unsetFlag('cthack', 'disadvantageOOA');
 		} else if (definitionKey.startsWith('OOA')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			console.log('Delete Active Effect : ' + effect.data._id);
+			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		} else if (definitionKey.startsWith('TI')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			console.log('Delete Active Effect : ' + effect.data._id);
+			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		} else if (definitionKey.startsWith('SK')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			console.log('Delete Active Effect : ' + effect.data._id);
+			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		}
 	}

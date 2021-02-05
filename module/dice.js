@@ -75,9 +75,9 @@ export async function diceRoll(
 				messageData.flavor += ` (${game.i18n.localize('CTHACK.ConditionDisadvantage')})`;
 			}
 			messageData.flavor += ` (${game.i18n.localize('CTHACK.Advantage')})`;
-			if (rollType === 'Resource') {
-				mods += 'kh';
-			} else mods += 'kl';
+			if (rollType === 'Save') {
+				mods += 'kl';
+			} else mods += 'kh';
 		} else if (adv === -1) {
 			// Handle disadvantage choice
 			nd++;
@@ -92,24 +92,24 @@ export async function diceRoll(
 				messageData.flavor += ` (${game.i18n.localize('CTHACK.ConditionDisadvantage')})`;
 			}
 			messageData.flavor += ` (${game.i18n.localize('CTHACK.Disadvantage')})`;
-			if (rollType === 'Resource') {
-				mods += 'kl';
-			} else mods += 'kh';
+			if (rollType === 'Save') {
+				mods += 'kh';
+			} else mods += 'kl';
 		} else if (adv === 0) {
 			// Handle normal choice
 			// Custom advantage or disadvantage
 			if (advantage) {
 				nd++;
 				messageData.flavor += ` (${game.i18n.localize('CTHACK.ConditionAdvantage')})`;
-				if (rollType === 'Resource') {
-					mods += 'kh';
-				} else mods += 'kl';
+				if (rollType === 'Save') {
+					mods += 'kl';
+				} else mods += 'kh';
 			} else if (disadvantage) {
 				nd++;
 				messageData.flavor += ` (${game.i18n.localize('CTHACK.ConditionDisadvantage')})`;
-				if (rollType === 'Resource') {
-					mods += 'kl';
-				} else mods += 'kh';
+				if (rollType === 'Save') {
+					mods += 'kh';
+				} else mods += 'kl';
 			}
 		}
 
