@@ -66,6 +66,15 @@ export const registerHandlebarsHelpers = function() {
 		return game.settings.get('cthack', 'FortuneValue');
 	});
 
+	Handlebars.registerHelper('shouldDisplayFortuneUse', function() {
+		if (game.settings.get('cthack', 'FortuneValue') > 0){
+			return true;
+		}
+		else {
+			return false;
+		}
+	});
+
 	Handlebars.registerHelper('getAdrenalineImage', function(value) {
 		if (value === 'pj') {
 			return 'broach-lightning-gold';

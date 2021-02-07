@@ -111,6 +111,7 @@
 
         "Fortune": "Fortune",
         "FortuneUse": "Spend",
+        "FortuneUseMessage": "One token of Fortune has been used by {name}. The remaining total is {total}.",
         "None": "---",
         "NO": "No",
         "YES": "Yes",

@@ -58,4 +58,5 @@ export const registerSystemSettings = function() {
 		type: Boolean,
 		default: false
 	});
+	
 };

@@ -39,6 +39,8 @@ export class CtHackActorSheet extends ActorSheet {
 			return item.type === 'definition';
 		});
 
+		data.isGm = game.user.isGM;
+
 		return data;
 	}
 
@@ -379,19 +381,38 @@ export class CtHackActorSheet extends ActorSheet {
 		return false;
 	}
 
-	/**
- * Reduce the Fortune value by 1
+/**
+ * Reduce the Fortune value by 1 (GM only)
  * @param {Event} event   The originating click event
  * @private
 */
 	_onFortuneUse(event) {
 		event.preventDefault();
 		if (game.user.isGM) {
-			let currentValue = game.settings.get('cthack', 'FortuneValue');
+			const currentValue = game.settings.get('cthack', 'FortuneValue');
+			const newValue = currentValue - 1;
+
 			if (currentValue > 0) {
-				game.settings.set('cthack', 'FortuneValue', currentValue - 1);
-				this.actor.sheet.render(true);
+				game.settings.set('cthack', 'FortuneValue', newValue);
+				//this.actor.sheet.render(true);
+				ChatMessage.create({
+					user: game.user._id,
+					//speaker: ChatMessage.getSpeaker({user: game.user}),
+					content: game.i18n.format('CTHACK.FortuneUseMessage', { name: this.actor.name, total: newValue })
+				  });
+	
 			}
+					
+			/*
+			if (currentValue > 0) {
+				const newValue = currentValue - 1;
+				let data = {
+					value: newValue
+				};
+				game.socket.emit("system.cthack", { msg: "msg_use_fortune", data: data});
+			}
+			*/
+			
 		}
 	}
 

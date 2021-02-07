@@ -69,7 +69,7 @@ export class CthackUtils {
 		}
 	}
 
-	static _handleMsgUseFortune(data) {
-		game.settings.set('cthack', 'FortuneValue', data);
+	static _handleMsgUseFortune(data) {		
+		game.settings.set('cthack', 'FortuneValue', data.value);
 	}
 }

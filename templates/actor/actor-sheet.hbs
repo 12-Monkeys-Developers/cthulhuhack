@@ -7,9 +7,13 @@
           {{#if (isEnabled "FortuneAvailable")}}
           <label class="resource-label">{{localize "CTHACK.Fortune"}} :</label>
           <label class="resource-label">{{getFortuneValue}}</label>
-          <div class="item-controls">
-              <a class="fortune-use" title="{{localize "CTHACK.FortuneUse"}}"><i class="fa fa-check-circle"></i></a>
-          </div>
+            {{#if isGm}}
+              {{#if (shouldDisplayFortuneUse)}}
+              <div class="item-controls">
+                <a class="fortune-use" title="{{localize "CTHACK.FortuneUse"}}"><i class="fa fa-check-circle"></i></a>
+              </div>
+              {{/if}}
+            {{/if}}
           {{/if}}
           {{#if (isEnabled "Adrenaline")}}
           <img class="adrenaline-img" id="adr1" src="icons/commodities/treasure/{{getAdrenalineImage data.attributes.adrenaline1.value}}.webp" >
