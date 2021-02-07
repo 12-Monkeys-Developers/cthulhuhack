@@ -17,7 +17,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 0.4.2
+version : 0.4.3
 
 Actor
 - Personnage
@@ -39,7 +39,9 @@ Item
 Options
 - Fortune : active/désactive l'affichage sur la fiche
     - Le MJ active l'option et met le nombre de jetons disponibles pour les joueurs
-    - Affichage du nombre de jetons sous le portrait et possibilité de dépenser pour un joueur (limitation connue : après la dépense, il faut fermer et ouvrir la fiche pour voir le nombre restant mis à jour)
+    - Affichage du nombre de jetons restant sous le portrait
+    - Possibilité d'en dépenser un uniquement pour un MJ (Limitation connue : après la dépense, il faut fermer et ouvrir la fiche pour voir le nombre restant mis à jour)
+    - La dépense est affichée pour tout le monde dans le chat
 - Adrenaline : active/désactive l'affichage sur la fiche
     - Sous le portrait : éclair jeton pour le joueur, tête de mort jeton pour le MJ
 - Dé de vie en tant que ressource : active/désactive l'affichage sur la fiche
@@ -75,7 +77,7 @@ This system is under development.
 ---------------
 Features
 ---------------
-version : 0.4.2
+version : 0.4.3
 
 Actor
 - Character
@@ -97,7 +99,9 @@ Item
 Options
 - Fortune: activates/deactivates the display on the form
     - The GM activates the option and makes the number of tokens available to the players.
-    - Display of the number of tokens under the portrait and possibility to spend for a player (known limitation: after spending, you have to close and open the card to see the remaining number updated)
+    - Display of the number of tokens under the portrait
+    - Only a GM could spend a token (Known limitation: after spending, you have to close and open the card to see the remaining number updated)
+    - A message is displayed in the chat when a token is spent
 - Adrenaline: activates/deactivates the display on the card
     - Under the portrait: token lightning for the player, skull and crossbones for the GM.
 - Hit dice as a resource: activates/deactivates the display on the form

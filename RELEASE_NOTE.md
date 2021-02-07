@@ -1,2 +1,5 @@
-- Fix advantage and disadvantage for armed and unarmed roll
-- Fix sheet template choice
+- Change Fortune use management :
+  - Remove spend button for players
+  - Display button for GM if there is enough tokens
+  - Add message about the use in the chat for all
+- Minor fixes
