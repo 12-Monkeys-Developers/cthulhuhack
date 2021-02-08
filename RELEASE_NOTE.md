@@ -1,5 +1,1 @@
-- Change Fortune use management :
-  - Remove spend button for players
-  - Display button for GM if there is enough tokens
-  - Add message about the use in the chat for all
-- Minor fixes
+Technical release, same as 0.4.3
