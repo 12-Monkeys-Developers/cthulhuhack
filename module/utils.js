@@ -73,3 +73,10 @@ export class CthackUtils {
 		game.settings.set('cthack', 'FortuneValue', data.value);
 	}
 }
+
+export function refreshAllActorSheets(){
+	console.log("Refreshing all ActorSheets");
+	Object.values(ui.windows)
+    .filter(w => w.constructor.name === "CtHackActorSheet")
+    .forEach(w => w.render(false));
+}

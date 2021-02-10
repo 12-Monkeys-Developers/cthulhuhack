@@ -1,3 +1,5 @@
+import { refreshAllActorSheets } from './utils.js';
+
 export const registerSystemSettings = function() {
 	/**
      * Fortune option
@@ -8,7 +10,8 @@ export const registerSystemSettings = function() {
 		scope: 'world',
 		config: true,
 		type: Boolean,
-		default: false
+		default: false,
+		onChange: () => refreshAllActorSheets()
 	});
 
 	/**
@@ -20,7 +23,8 @@ export const registerSystemSettings = function() {
 		scope: 'world',
 		config: true,
 		type: Number,
-		default: 0
+		default: 0,
+		onChange: () => refreshAllActorSheets()
 	});
 
 	/**
@@ -32,7 +36,8 @@ export const registerSystemSettings = function() {
 		scope: 'world',
 		config: true,
 		type: Boolean,
-		default: false
+		default: false,
+		onChange: () => refreshAllActorSheets()
 	});
 
 	/**
@@ -44,7 +49,8 @@ export const registerSystemSettings = function() {
 		scope: 'world',
 		config: true,
 		type: Boolean,
-		default: false
+		default: false,
+		onChange: () => refreshAllActorSheets()
 	});
 
 	/**
@@ -56,7 +62,8 @@ export const registerSystemSettings = function() {
 		scope: 'world',
 		config: true,
 		type: Boolean,
-		default: false
+		default: false,
+		onChange: () => refreshAllActorSheets()
 	});
 	
 };
