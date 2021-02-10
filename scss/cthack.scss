@@ -9,6 +9,8 @@
 @import 'global/grid';
 @import 'global/flex';
 
+@import 'global/actor';
+
 /* Styles limited to cthack sheets */
 .cthack {
   @import 'components/window';

@@ -1,19 +1,18 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
 
     {{!-- Sheet Header --}}
-    <header class="sheet-header">
+    <header class="sheet-header actor-sheet-top">
         <div class="flex-center">
           <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
           {{#if (isEnabled "FortuneAvailable")}}
-          <label class="resource-label">{{localize "CTHACK.Fortune"}} :</label>
-          <label class="resource-label">{{getFortuneValue}}</label>
+          <div>
+          <label class="resource-label">{{localize "CTHACK.Fortune"}} : {{getFortuneValue}}</label>
             {{#if isGm}}
               {{#if (shouldDisplayFortuneUse)}}
-              <div class="item-controls">
-                <a class="fortune-use" title="{{localize "CTHACK.FortuneUse"}}"><i class="fa fa-check-circle"></i></a>
-              </div>
+              <a class="fortune-use" title="{{localize "CTHACK.FortuneUse"}}"><i class="fa fa-check-circle"></i></a>
               {{/if}}
             {{/if}}
+          </div>
           {{/if}}
           {{#if (isEnabled "Adrenaline")}}
           <img class="adrenaline-img" id="adr1" src="icons/commodities/treasure/{{getAdrenalineImage data.attributes.adrenaline1.value}}.webp" >
@@ -52,7 +51,7 @@
     </header>
 
     {{!-- Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs align-center" data-group="primary">
+    <nav class="sheet-tabs tabs align-center actor-sheet-middle" data-group="primary">
         <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>
         <a class="choice" data-tab="conditions">{{localize "CTHACK.Conditions"}}</a>
         <a class="choice" data-tab="items">{{localize "CTHACK.Items"}}</a>
@@ -60,7 +59,7 @@
     </nav>
 
     {{!-- Sheet Body --}}
-    <section class="sheet-body">
+    <section class="sheet-body actor-sheet-bottom">
 
         {{!-- Biography Tab --}}
         <div class="tab biography" data-group="primary" data-tab="description">

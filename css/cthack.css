@@ -118,6 +118,41 @@
   justify-content: space-between;
 }
 
+.actor-sheet-top {
+  background-image: url("../ui/fiche-haut.png");
+  background-size: cover;
+  background-position: top;
+  color: #fff;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+.actor-sheet-middle {
+  background-image: url("../ui/fiche-milieu.png");
+  background-size: cover;
+  color: #fff;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  border: 0;
+}
+
+.actor-sheet-bottom {
+  background-image: url("../ui/fiche-bas.png");
+  background-size: cover;
+  background-position: bottom;
+  color: #fff;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 /* Styles limited to cthack sheets */
 .cthack .window-content {
   background: url("../ui/cthack-green.jpg");
@@ -204,7 +239,6 @@
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  margin-bottom: 10px;
 }
 
 .cthack .sheet-header .profile-img {
