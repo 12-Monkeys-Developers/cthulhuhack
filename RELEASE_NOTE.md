@@ -1,1 +1,4 @@
-Technical release, same as 0.4.3
+- Global improve of design, in particular with dices images
+- Refactor of templates select
+- Change actor sheet background image
+- Refresh all open actor sheets if settings are changed

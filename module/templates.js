@@ -7,13 +7,28 @@ export const preloadHandlebarsTemplates = async function() {
 	// Define template paths to load
 	const templatePaths = [
 		// ACTOR
+		
 		'systems/cthack/templates/actor/parts/actor-attributes-firstline.hbs',
 		'systems/cthack/templates/actor/parts/actor-attributes-secondline.hbs',
 		'systems/cthack/templates/actor/parts/actor-item.hbs',
 		'systems/cthack/templates/actor/parts/actor-condition.hbs',
 		'systems/cthack/templates/actor/parts/opponent-attack.hbs',
+
+
 		'systems/cthack/templates/actor/actor-sheet.hbs',
-		'systems/cthack/templates/actor/opponent-sheet.hbs'
+		'systems/cthack/templates/actor/opponent-sheet.hbs',
+
+		'systems/cthack/templates/item/ability-sheet.hbs',
+		'systems/cthack/templates/item/archetype-sheet.hbs',
+		'systems/cthack/templates/item/attack-sheet.hbs',
+		'systems/cthack/templates/item/definition-sheet.hbs',
+		'systems/cthack/templates/item/item-sheet.hbs',
+		'systems/cthack/templates/item/weapon-sheet.hbs',
+		
+
+		'systems/cthack/templates/parts/dice-sides-options-value.hbs',
+		'systems/cthack/templates/parts/dice-sides-options-max.hbs',
+		'systems/cthack/templates/parts/dice-sides-options-damage.hbs'
 	];
 
 	// Load the template parts

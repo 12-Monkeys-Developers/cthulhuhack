@@ -122,8 +122,9 @@
         "RangeNear":"Proche",
         "RangeFar": "Loin",
         "RangeDistant": "Distant",
-        "Range3str": "3 * Force",
+        "RangeThreeStr": "3 * Force",
 
+        "Material": "Matériel",
         "MaterialRollPromptTitle": "Jet de matériel",
         "MaterialRollDetails": "Jet pour {material}",
 

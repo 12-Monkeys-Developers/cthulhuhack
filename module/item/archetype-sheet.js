@@ -16,8 +16,7 @@ export class CtHackArchetypeSheet extends ItemSheet {
 
 	/** @override */
 	get template() {
-		const path = 'systems/cthack/templates/item';
-		return `${path}/archetype-sheet.html`;
+		return "systems/cthack/templates/item/archetype-sheet.hbs";
 	}
 
 	/* -------------------------------------------- */

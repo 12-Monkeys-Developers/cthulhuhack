@@ -68,7 +68,7 @@ CTHACK.range = {
 	near: 'CTHACK.RangeNear',
 	far: 'CTHACK.RangeFar',
 	distant: 'CTHACK.RangeDistant',
-	'3str': 'CTHACK.Range3Str'
+	'3str': 'CTHACK.RangeThreeStr'
 };
 
 CTHACK.abilityUsePeriod = {

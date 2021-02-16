@@ -2,26 +2,15 @@
 <div class="resource flex-group-center">
     <label for="data.flashlights.value" class="resource-label resource-name rollable" title='{{localize "CTHACK.FlashLightsDesc"}}' data-resource="fla">{{localize "CTHACK.FlashLights"}}</label>
     <div class="resource-content">
-        <select name="data.attributes.flashlights.value" data-type="String">
+        <select name="data.attributes.flashlights.value" data-type="String" {{{getStyleForDice actor.data.attributes.flashlights.value}}} >
         {{#select actor.data.attributes.flashlights.value}}
-            <option value="">{{localize "CTHACK.None"}}</option>
-            <option value="0">0</option>
-            <option value="d4">1d4</option>
-            <option value="d6">1d6</option>
-            <option value="d8">1d8</option>
-            <option value="d10">1d10</option>
-            <option value="d12">1d12</option>
+            {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
         {{/select}}
         </select>
         <span>/</span>
-        <select name="data.attributes.flashlights.max" data-type="String">
+        <select name="data.attributes.flashlights.max" data-type="String" {{{getStyleForDice actor.data.attributes.flashlights.max}}} >
         {{#select actor.data.attributes.flashlights.max}}
-            <option value="">{{localize "CTHACK.None"}}</option>
-            <option value="d4">1d4</option>
-            <option value="d6">1d6</option>
-            <option value="d8">1d8</option>
-            <option value="d10">1d10</option>
-            <option value="d12">1d12</option>
+            {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
         {{/select}}
         </select>
     </div>
@@ -29,26 +18,15 @@
 <div class="resource flex-group-center">
     <label for="data.smokes.value" class="resource-label resource-name rollable" title='{{localize "CTHACK.SmokesDesc"}}' data-resource="smo">{{localize "CTHACK.Smokes"}}</label>
     <div class="resource-content">
-        <select name="data.attributes.smokes.value" data-type="String">
+        <select name="data.attributes.smokes.value" data-type="String" {{{getStyleForDice actor.data.attributes.smokes.value}}} >
         {{#select actor.data.attributes.smokes.value}}
-            <option value="">{{localize "CTHACK.None"}}</option>
-            <option value="0">0</option>
-            <option value="d4">1d4</option>
-            <option value="d6">1d6</option>
-            <option value="d8">1d8</option>
-            <option value="d10">1d10</option>
-            <option value="d12">1d12</option>
+            {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
         {{/select}}
         </select>
         <span>/</span>
-        <select name="data.attributes.smokes.max" data-type="String">
+        <select name="data.attributes.smokes.max" data-type="String" {{{getStyleForDice actor.data.attributes.smokes.max}}} >
         {{#select actor.data.attributes.smokes.max}}
-            <option value="">{{localize "CTHACK.None"}}</option>
-            <option value="d4">1d4</option>
-            <option value="d6">1d6</option>
-            <option value="d8">1d8</option>
-            <option value="d10">1d10</option>
-            <option value="d12">1d12</option>
+            {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
         {{/select}}
         </select>
     </div>
@@ -56,26 +34,15 @@
 <div class="resource flex-group-center">
     <label for="data.sanity.value" class="resource-label resource-name rollable" data-resource="san">{{localize "CTHACK.Sanity"}}</label>
     <div class="resource-content">
-        <select name="data.attributes.sanity.value" data-type="String">
+        <select name="data.attributes.sanity.value" data-type="String" {{{getStyleForDice actor.data.attributes.sanity.value}}} >
         {{#select actor.data.attributes.sanity.value}}
-            <option value="">{{localize "CTHACK.None"}}</option>
-            <option value="0">0</option>
-            <option value="d4">1d4</option>
-            <option value="d6">1d6</option>
-            <option value="d8">1d8</option>
-            <option value="d10">1d10</option>
-            <option value="d12">1d12</option>
+            {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
         {{/select}}
         </select>
         <span>/</span>
-        <select name="data.attributes.sanity.max" data-type="String">
+        <select name="data.attributes.sanity.max" data-type="String" {{{getStyleForDice actor.data.attributes.sanity.max}}} >
         {{#select actor.data.attributes.sanity.max}}
-            <option value="">{{localize "CTHACK.None"}}</option>
-            <option value="d4">1d4</option>
-            <option value="d6">1d6</option>
-            <option value="d8">1d8</option>
-            <option value="d10">1d10</option>
-            <option value="d12">1d12</option>
+            {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
         {{/select}}
         </select>
     </div>

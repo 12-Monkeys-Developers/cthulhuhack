@@ -13,11 +13,7 @@
                 <label for="data.flashlights.value" class="resource-label resource-name" title='{{localize "CTHACK.FlashLightsDesc"}}'>{{localize "CTHACK.FlashLights"}}</label>
                 <select name="data.flashlights" data-type="String">
                 {{#select data.flashlights}}
-                    <option value="d4">1d4</option>
-                    <option value="d6">1d6</option>
-                    <option value="d8">1d8</option>
-                    <option value="d10">1d10</option>
-                    <option value="d12">1d12</option>
+                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
             </div>            
@@ -25,11 +21,7 @@
                 <label for="data.smokes.value" class="resource-label resource-name" title='{{localize "CTHACK.SmokesDesc"}}'>{{localize "CTHACK.Smokes"}}</label>
                 <select name="data.smokes" data-type="String">
                 {{#select data.smokes}}
-                    <option value="d4">1d4</option>
-                    <option value="d6">1d6</option>
-                    <option value="d8">1d8</option>
-                    <option value="d10">1d10</option>
-                    <option value="d12">1d12</option>
+                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
             </div>
@@ -37,11 +29,7 @@
                 <label for="data.hitdice.value" class="resource-label resource-name">{{localize "CTHACK.HitDice"}}</label>
                 <select name="data.hitdice" data-type="String">
                 {{#select data.hitdice}}
-                    <option value="d4">1d4</option>
-                    <option value="d6">1d6</option>
-                    <option value="d8">1d8</option>
-                    <option value="d10">1d10</option>
-                    <option value="d12">1d12</option>
+                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
             </div>
@@ -49,11 +37,7 @@
                 <label for="data.hitpoints.value" class="resource-label resource-name">{{localize "CTHACK.HitPointsStart"}}</label>
                 <select name="data.hitpoints" data-type="String">
                 {{#select data.hitpoints}}
-                    <option value="d4">1d4+8</option>
-                    <option value="d6">1d6+8</option>
-                    <option value="d8">1d8+8</option>
-                    <option value="d10">1d10+8</option>
-                    <option value="d12">1d12+8</option>
+                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
             </div>
@@ -72,11 +56,7 @@
                 <label for="data.wealthDice.value" class="resource-label resource-name">{{localize "CTHACK.WealthDice"}}</label>
                 <select name="data.wealthDice" data-type="String">
                 {{#select data.wealthDice}}
-                    <option value="d4">1d4</option>
-                    <option value="d6">1d6</option>
-                    <option value="d8">1d8</option>
-                    <option value="d10">1d10</option>
-                    <option value="d12">1d12</option>
+                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
             </div>
@@ -84,11 +64,7 @@
                 <label for="data.sanity.value" class="resource-label resource-name">{{localize "CTHACK.Sanity"}}</label>
                 <select name="data.sanity" data-type="String">
                 {{#select data.sanity}}
-                    <option value="d4">1d4</option>
-                    <option value="d6">1d6</option>
-                    <option value="d8">1d8</option>
-                    <option value="d10">1d10</option>
-                    <option value="d12">1d12</option>
+                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
             </div>
@@ -96,11 +72,7 @@
                 <label for="data.armeddamage.value" class="resource-label resource-name">{{localize "CTHACK.ArmedDamage"}}</label>
                 <select name="data.armeddamage" data-type="String">
                 {{#select data.armeddamage}}
-                    <option value="d4">1d4</option>
-                    <option value="d6">1d6</option>
-                    <option value="d8">1d8</option>
-                    <option value="d10">1d10</option>
-                    <option value="d12">1d12</option>
+                    {{> "systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
                 {{/select}}
                 </select>
             </div>
@@ -108,12 +80,7 @@
                 <label for="data.unarmeddamage.value" class="resource-label resource-name">{{localize "CTHACK.UnarmedDamage"}}</label>
                 <select name="data.unarmeddamage" data-type="String">
                 {{#select data.unarmeddamage}}
-                    <option value="1">1</option>    
-                    <option value="d4">1d4</option>
-                    <option value="d6">1d6</option>
-                    <option value="d8">1d8</option>
-                    <option value="d10">1d10</option>
-                    <option value="d12">1d12</option>
+                    {{> "systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
                 {{/select}}
                 </select>
             </div>

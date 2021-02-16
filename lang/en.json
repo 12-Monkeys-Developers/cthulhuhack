@@ -121,8 +121,9 @@
         "RangeNear":"Near",
         "RangeFar": "Far",
         "RangeDistant": "Distant",
-        "Range3str": "3 * STRENGTH",
+        "RangeThreeStr": "3 * STRENGTH",
 
+        "Material": "Material",
         "MaterialRollPromptTitle": "Material Roll",
         "MaterialRollDetails": "Roll for {material}",
         

@@ -19,7 +19,7 @@ export class CtHackItemSheet extends ItemSheet {
 	/** @override */
 	get template() {
 		const path = 'systems/cthack/templates/item';
-		return `${path}/${this.item.data.type}-sheet.html`;
+		return `${path}/${this.item.data.type}-sheet.hbs`;
 	}
 
 	/* -------------------------------------------- */

@@ -11,7 +11,11 @@
 .rollable:hover, .rollable:focus {
   color: #d44d54;
   text-shadow: 0 0 10px #eea3a3;
-  cursor: pointer;
+  cursor: url("../ui/dice/d20-red.svg") 32 24, pointer;
+}
+
+.color-white {
+  color: white;
 }
 
 .grid,
@@ -186,9 +190,19 @@
 }
 
 .cthack select {
-  background: url("../ui/cthack-green.jpg");
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  font-weight: 800;
 }
 
 .cthack option {
@@ -224,8 +238,8 @@
 
 .cthack .sheet-header {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 340px;
-  flex: 0 0 340px;
+  -ms-flex: 0 0 360px;
+  flex: 0 0 360px;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;

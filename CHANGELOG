@@ -1,3 +1,9 @@
+0.5.0
+- Global improve of design, in particular with dices images
+- Refactor of templates select
+- Change actor sheet background image
+- Refresh all open actor sheets if settings are changed
+
 0.4.4
  Technical release
  

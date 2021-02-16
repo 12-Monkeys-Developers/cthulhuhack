@@ -126,4 +126,16 @@ export const registerHandlebarsHelpers = function() {
 			return 'readonly';
 		}
 	});
+
+	Handlebars.registerHelper('getStyleForDice', function(value) {
+		if (value === "" || value == 0 || value == 1){
+			return `style="color:white;"`;
+		}
+		return `style="background-image:url('systems/cthack/ui/dice/${value}-grey.svg');"`;
+		/*let result = "style=\"background-image:url('systems/cthack/ui/dice/";
+		result += value;
+		result += "-grey.svg')\"";
+		return result;		
+		*/
+	});
 };

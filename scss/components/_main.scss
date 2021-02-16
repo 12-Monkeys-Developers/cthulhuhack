@@ -23,10 +23,19 @@ input[type="time"] {
 }
 
 select {
-  background: url("../ui/cthack-green.jpg");
-  color: $c-white;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  font-weight: 800;
 }
 
 option {

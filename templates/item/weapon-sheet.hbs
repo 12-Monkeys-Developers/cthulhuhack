@@ -5,21 +5,16 @@
             <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
             <div class="grid grid-2col">
               <div class="resource">
-                <label class="resource-label">Matériel</label>
-                <select name="data.dice" data-type="String">
+                <label class="resource-label select-wider">{{localize "CTHACK.Material"}}</label>
+                <select name="data.dice" data-type="String" {{{getStyleForDice data.dice}}}>
                     {{#select data.dice}}
-                        <option value="">{{localize "CTHACK.None"}}</option>
-                        <option value="d4">1d4</option>
-                        <option value="d6">1d6</option>
-                        <option value="d8">1d8</option>
-                        <option value="d10">1d10</option>
-                        <option value="d12">1d12</option>
+                        {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                     {{/select}}
                 </select>
               </div>
               <div class="resource">
-                <label class="resource-label">Portée</label>
-                <select name="data.range" data-type="String">
+                <label class="resource-label select-wider">{{localize "CTHACK.ItemRangeName"}}</label>
+                <select name="data.range" data-type="String" class="color-white" style="width: 70px;">
                     {{#select data.range}}
                         <option value="">{{localize "CTHACK.None"}}</option>
                         <option value="near">Proche</option>
