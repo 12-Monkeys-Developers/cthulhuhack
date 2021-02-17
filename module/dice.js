@@ -69,12 +69,12 @@ export async function diceRoll(
 			// Custom advantage or disadvantage
 			if (advantage) {
 				nd++;
-				messageData.flavor += ` (${game.i18n.localize('CTHACK.ConditionAdvantage')})`;
+				messageData.flavor += `<br> ${game.i18n.localize('CTHACK.AdvantageFromCondition')}`;
 			} else if (disadvantage) {
 				nd--;
-				messageData.flavor += ` (${game.i18n.localize('CTHACK.ConditionDisadvantage')})`;
+				messageData.flavor += `<br> ${game.i18n.localize('CTHACK.DisadvantageFromCondition')}`;
 			}
-			messageData.flavor += ` (${game.i18n.localize('CTHACK.Advantage')})`;
+			messageData.flavor += `<br> ${game.i18n.localize('CTHACK.AdvantageMessage')}`;
 			if (rollType === 'Save') {
 				mods += 'kl';
 			} else mods += 'kh';
@@ -85,13 +85,12 @@ export async function diceRoll(
 			if (advantage) {
 				nd--;
 				nd--;
-				Désava;
-				messageData.flavor += ` (${game.i18n.localize('CTHACK.ConditionAdvantage')})`;
+				messageData.flavor += `<br> ${game.i18n.localize('CTHACK.AdvantageFromCondition')}`;
 			} else if (disadvantage) {
 				nd++;
-				messageData.flavor += ` (${game.i18n.localize('CTHACK.ConditionDisadvantage')})`;
+				messageData.flavor += `<br> ${game.i18n.localize('CTHACK.DisadvantageFromCondition')}`;
 			}
-			messageData.flavor += ` (${game.i18n.localize('CTHACK.Disadvantage')})`;
+			messageData.flavor += `<br> ${game.i18n.localize('CTHACK.DisadvantageMessage')}`;
 			if (rollType === 'Save') {
 				mods += 'kh';
 			} else mods += 'kl';
@@ -100,13 +99,13 @@ export async function diceRoll(
 			// Custom advantage or disadvantage
 			if (advantage) {
 				nd++;
-				messageData.flavor += ` (${game.i18n.localize('CTHACK.ConditionAdvantage')})`;
+				messageData.flavor += ` ${game.i18n.localize('CTHACK.AdvantageFromCondition')}`;
 				if (rollType === 'Save') {
 					mods += 'kl';
 				} else mods += 'kh';
 			} else if (disadvantage) {
 				nd++;
-				messageData.flavor += ` (${game.i18n.localize('CTHACK.ConditionDisadvantage')})`;
+				messageData.flavor += ` ${game.i18n.localize('CTHACK.DisadvantageFromCondition')}`;
 				if (rollType === 'Save') {
 					mods += 'kh';
 				} else mods += 'kl';
@@ -140,6 +139,17 @@ export async function diceRoll(
 			ui.notifications.error(`Dice roll evaluation failed: ${err.message}`);
 			return null;
 		}
+
+		// Flag options for any roll
+		for (let d of roll.dice) {
+			if ( adv === 1 ) d.options.advantage = true;
+			else if ( adv === -1 ) d.options.disadvantage = true;
+			if (targetValue) d.options.target = targetValue;
+
+			if (advantage) d.options.advantageFromCondition = true;
+			if (disadvantage) d.options.disadvantageFromCondition = true;
+		}
+
 
 		return roll;
 	};
