@@ -12,6 +12,9 @@ import { CtHackItem } from './item/item.js';
 import { CtHackItemSheet } from './item/item-sheet.js';
 import { CtHackArchetypeSheet } from './item/archetype-sheet.js';
 
+// Import Helpers
+import * as chat from "./chat.js";
+
 Hooks.once('init', async function() {
 	console.log(`CTHACK | Initializing the Cthulhu Hack Game System\n`);
 	console.log(CTHACK.ASCII);
@@ -57,4 +60,8 @@ Hooks.once('init', async function() {
 
 	// Register System Settings
 	registerSystemSettings();
+});
+
+Hooks.on('renderChatMessage', async (app, html, data) => {
+	chat.highlightSuccessFailure(app, html, data);
 });
