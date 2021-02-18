@@ -48,7 +48,8 @@ CTHACK.resources = {
 	smo: 'CTHACK.Smokes',
 	san: 'CTHACK.Sanity',
 	wea: 'CTHACK.Wealth',
-	hit: 'CTHACK.Hit'
+	hit: 'CTHACK.Hit',
+	mis: 'CTHACK.Miscellaneous'
 };
 
 CTHACK.resourcesTemplate = {
@@ -56,7 +57,8 @@ CTHACK.resourcesTemplate = {
 	smo: 'smokes',
 	san: 'sanity',
 	wea: 'wealthDice',
-	hit: 'hitDice'
+	hit: 'hitDice',
+	mis: 'miscellaneous'
 };
 
 CTHACK.attributes = {

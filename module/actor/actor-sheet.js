@@ -94,6 +94,11 @@ export class CtHackActorSheet extends ActorSheet {
 			html.find('.hit-name').click(this._onResourceRoll.bind(this));
 		}
 
+		// Miscellaneous roll if the option is enabled
+		if (game.settings.get('cthack', 'MiscellaneousResource')) {
+			html.find('.miscellaneous-name').click(this._onResourceRoll.bind(this));
+		}
+
 		// Fortune option
 		html.find('.fortune-use').click(this._onFortuneUse.bind(this));
 

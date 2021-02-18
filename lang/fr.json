@@ -37,7 +37,6 @@
         "WealthDice": "Dé de richesse",
         "ArmedDamage": "Dégât(s) armé",
         "UnarmedDamage": "Dégât(s) sans arme",
-        "UnarmedDamage": "Dégât(s) sans arme",
         "Description": "Description",
         "Biography": "Biographie",
         "Condition": "Condition(s)",
@@ -102,7 +101,7 @@
         "Advantages": "Avantages",
         "AdvantageSWILEA": "grimper, sauter ou se balancer",
         "AdvantageSTA": "divertir un auditoire ou jouer un rôle afin d'éviter des dégâts ou des répercussions de ses actes",
-        "AdvantageIMPLOC": "dévérouiller une serrure ou un cadenas",
+        "AdvantageIMPLOC": "déverouiller une serrure ou un cadenas",
         "AdvantageANIHAN": "s'occuper, monter ou affronter un animal",
         "AdvantageIND": "contre la tromperie, le contrôle mental ou tenter de tromper son interlocuteur",
         "AdvantageMEC": "réparer des machines ou des véhicules endommagés",
@@ -175,7 +174,9 @@
         "AdrenalineHint": "Active la gestion de l'adrénaline",
         "WealthResourceName": "Richesse en tant que Ressource",
         "WealthResourceHint": "La richesse est gérée comme une ressource",
-        "HitDiceResourceName": "Dé de vie en tant que ressource",
-        "HitDiceResourceHint": "Au lieu d'une valeur fixe, vous pouvez gérer les dégâts d'un personnage avec le Dé de Vie"
+        "HitDiceResourceName": "Dé de vie en tant que Ressource",
+        "HitDiceResourceHint": "Au lieu d'une valeur fixe, vous pouvez gérer les dégâts d'un personnage avec le Dé de Vie",
+        "MiscellaneousResourceName": "Ressource diverse",
+        "MiscellaneousResourceHint": "Permet de choisir une ressource qui remplacera la ressource Richesse"
     }
 }
