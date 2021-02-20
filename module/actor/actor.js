@@ -92,9 +92,18 @@ export class CtHackActor extends Actor {
 			return null;
 		}
 
+		let title;
+
+		if (game.settings.get('cthack', 'MiscellaneousResource')) {
+			title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: game.settings.get('cthack', 'MiscellaneousResource') });
+		}
+		else {
+			title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: label });
+		}
+
 		// Roll and return
 		const rollData = mergeObject(options, {
-			title: game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: label }),
+			title: title,
 			rollType: 'Resource',
 			diceType: resourceValue
 		});

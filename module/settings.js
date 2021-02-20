@@ -41,6 +41,19 @@ export const registerSystemSettings = function() {
 	});
 
 	/**
+     * HitDice as resource option
+     */
+	game.settings.register('cthack', 'HitDiceResource', {
+		name: 'SETTINGS.HitDiceResourceName',
+		hint: 'SETTINGS.HitDiceResourceHint',
+		scope: 'world',
+		config: true,
+		type: Boolean,
+		default: false,
+		onChange: () => refreshAllActorSheets()
+	});
+
+	/**
      * Wealth as resource option
      */
 	game.settings.register('cthack', 'WealthResource', {
@@ -54,15 +67,15 @@ export const registerSystemSettings = function() {
 	});
 
 	/**
-     * HitDice as resource option
+     * Option to replace Wealth by another resource
      */
-	game.settings.register('cthack', 'HitDiceResource', {
-		name: 'SETTINGS.HitDiceResourceName',
-		hint: 'SETTINGS.HitDiceResourceHint',
+	game.settings.register('cthack', 'MiscellaneousResource', {
+		name: 'SETTINGS.MiscellaneousResourceName',
+		hint: 'SETTINGS.MiscellaneousResourceHint',
 		scope: 'world',
 		config: true,
-		type: Boolean,
-		default: false,
+		type: String,
+		default: "",
 		onChange: () => refreshAllActorSheets()
 	});
 	

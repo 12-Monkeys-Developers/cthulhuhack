@@ -48,6 +48,10 @@
         },
         "adrenaline2": {
           "value": "pj"
+        },
+        "miscellaneous": {
+          "value": "d6",
+          "max": "d6"
         }
       },
       "saves": {

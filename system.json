@@ -5,7 +5,7 @@
   "version": "0.5.0",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.9",
-  "templateVersion": 6,
+  "templateVersion": 7,
   "author": "Kristov",
   "esmodules": ["module/cthack.js"],
   "styles": ["css/cthack.css"],

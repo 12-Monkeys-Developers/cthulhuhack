@@ -66,6 +66,10 @@ export const registerHandlebarsHelpers = function() {
 		return game.settings.get('cthack', 'FortuneValue');
 	});
 
+	Handlebars.registerHelper('getMiscellaneousValue', function() {
+		return game.settings.get('cthack', 'MiscellaneousResource');
+	});
+
 	Handlebars.registerHelper('shouldDisplayFortuneUse', function() {
 		if (game.settings.get('cthack', 'FortuneValue') > 0){
 			return true;

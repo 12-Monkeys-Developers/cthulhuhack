@@ -176,6 +176,8 @@
         "WealthResourceName": "Wealth Resource Option",
         "WealthResourceHint": "Handle wealth as a resource",
         "HitDiceResourceName": "Hit Dice Resource Option",
-        "HitDiceResourceHint": "Handle hit dice as a resource"
+        "HitDiceResourceHint": "Handle hit dice as a resource",
+        "MiscellaneousResourceName": "Miscellaneous Resource",
+        "MiscellaneousResourceHint": "Allow to choose a resource which replaces Wealth resource"
     }    
 }

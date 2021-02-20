@@ -18,24 +18,44 @@
         </select>
     </div>
 </div>
-<div class="resource flex-group-center">
-    <label for="data.wealthDice.value" class="resource-label wealth-name {{#if (isEnabled "WealthResource")}}rollable{{/if}}"  data-resource="wea">{{localize "CTHACK.Wealth"}}</label>
-    <div class="resource-content">
-        <select name="data.attributes.wealthDice.value" data-type="String" {{{getStyleForDice actor.data.attributes.wealthDice.value}}} >
-            {{#select actor.data.attributes.wealthDice.value}}
-                {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
-            {{/select}}
-        </select>
-        {{#if (isEnabled "WealthResource")}}
-        <span> / </span>
-        <select name="data.attributes.wealthDice.max" data-type="String" {{{getStyleForDice actor.data.attributes.wealthDice.max}}}>
-            {{#select actor.data.attributes.wealthDice.max}}
-                {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
-            {{/select}}
-        </select>
-        {{/if}}
+{{#if (isEnabled "MiscellaneousResource")}}    
+    <div class="resource flex-group-center">
+        <label for="data.miscellaneous.value" class="resource-label miscellaneous-name rollable"  data-resource="mis">{{getMiscellaneousValue}}</label>
+        <div class="resource-content">
+            <select name="data.attributes.miscellaneous.value" data-type="String" {{{getStyleForDice actor.data.attributes.miscellaneous.value}}} >
+                {{#select actor.data.attributes.miscellaneous.value}}
+                    {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+                {{/select}}
+            </select>
+            <span> / </span>
+            <select name="data.attributes.miscellaneous.max" data-type="String" {{{getStyleForDice actor.data.attributes.miscellaneous.max}}}>
+                {{#select actor.data.attributes.miscellaneous.max}}
+                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                {{/select}}
+            </select>
+        </div>
     </div>
-</div>
+{{else}}
+    <div class="resource flex-group-center">
+        <label for="data.wealthDice.value" class="resource-label wealth-name {{#if (isEnabled "WealthResource")}}rollable{{/if}}"  data-resource="wea">{{localize "CTHACK.Wealth"}}</label>
+        <div class="resource-content">
+            <select name="data.attributes.wealthDice.value" data-type="String" {{{getStyleForDice actor.data.attributes.wealthDice.value}}} >
+                {{#select actor.data.attributes.wealthDice.value}}
+                    {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+                {{/select}}
+            </select>
+            {{#if (isEnabled "WealthResource")}}
+            <span> / </span>
+            <select name="data.attributes.wealthDice.max" data-type="String" {{{getStyleForDice actor.data.attributes.wealthDice.max}}}>
+                {{#select actor.data.attributes.wealthDice.max}}
+                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                {{/select}}
+            </select>
+            {{/if}}
+        </div>
+    </div>
+{{/if}}
+
 <div class="resource flex-group-center">
     <label for="data.hitDice.value" class="resource-label hit-name {{#if (isEnabled "HitDiceResource")}}rollable{{/if}}" data-resource="hit">{{localize "CTHACK.HitDice"}}</label>
     <div class="resource-content">
