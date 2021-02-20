@@ -1,4 +1,3 @@
-- Global improve of design, in particular with dices images
-- Refactor of templates select
-- Change actor sheet background image
-- Refresh all open actor sheets if settings are changed
+- Highlights success or failure in chat message
+- Allow a miscellaneous resource in option
+- Add custom abilities management

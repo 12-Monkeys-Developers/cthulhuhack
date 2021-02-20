@@ -17,7 +17,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 0.5.0
+version : 0.6.0
 
 Actor
 - Personnage
@@ -29,6 +29,7 @@ Actor
 
 Item
 - Ability : capacité spéciale
+    - Si les champs "Custom" et "Donne un avantage" sont activés, le champ Description avantage est utilisé dans l'aide au jet de dé
 - Item : gestion du dé de matériel avec possibilité de faire un jet (limitation connue : en cas de perte de ressource, il faut diminuer le dé à la main)
 - Weapon : pour les armes, à faire glisser sur la fiche de personnage
 - Attack : les attaques, à faire glisser sur la fiche d'opposant
@@ -46,6 +47,7 @@ Options
     - Sous le portrait : éclair jeton pour le joueur, tête de mort jeton pour le MJ
 - Dé de vie en tant que ressource : active/désactive l'affichage sur la fiche
 - Richesse en tant que ressource : active/désactive l'affichage sur la fiche
+- Resource diverse : si le champ est rempli, alors une nouvelle ressource portant ce nom est activée en remplacement de la resource Richesse
 
 Compendiums
 - Archétypes standards (avec les variations pour le savant) : Drag and drop sur la fiche de perso qui remplace les valeurs de la fiche par celles de l'archetype
@@ -77,7 +79,7 @@ This system is under development.
 ---------------
 Features
 ---------------
-version : 0.5.0
+version : 0.6.0
 
 Actor
 - Character
@@ -106,6 +108,7 @@ Options
     - Under the portrait: token lightning for the player, skull and crossbones for the GM.
 - Hit dice as a resource: activates/deactivates the display on the form
 - Wealth as a resource: enables/disables display on the form
+- Miscellaneous option : if the field is filled, this is used as a resource and will replace Wealth resource
 
 Compendiums
 - Only in French right now

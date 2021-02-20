@@ -1,3 +1,9 @@
+0.6.0
+- Template update
+- Highlights success or failure in chat message
+- Allow a miscellaneous resource in option
+- Add custom abilities management
+
 0.5.0
 - Global improve of design, in particular with dices images
 - Refactor of templates select
