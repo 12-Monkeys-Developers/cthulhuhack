@@ -57,6 +57,9 @@
         "AbilityUsePerSession": "Par session",
         "AbilityUsePerHour": "Par heure",
         "AbilityUsePerFight": "Par combat",
+        "AbilityIsCustom": "Custom",
+        "AbilityAdvantageGiven": "Donne un avantage",
+        "AbilityAdvantageText": "Description avantage",
 
         "DefinitionType": "Type",
         "DefinitionKey": "Clé",

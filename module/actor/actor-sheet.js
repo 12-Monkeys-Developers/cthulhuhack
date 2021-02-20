@@ -363,12 +363,22 @@ export class CtHackActorSheet extends ActorSheet {
 		const multiple = itemData.data.multiple;
 
 		let abilitiesList = this.actor.data.data.abilities;
-		if (multiple || !this._hasAbility(key, abilitiesList)) {
-			abilitiesList.push({ key: key, id: id });
-			this.actor.update({ 'data.abilities': abilitiesList });
+
+		if (multiple){
+			if (!this._hasAbility(key, abilitiesList)){
+				abilitiesList.push({ key: key, id: id });
+				this.actor.update({ 'data.abilities': abilitiesList });
+			}
 			return this.actor.createEmbeddedEntity('OwnedItem', itemData, { renderSheet: true });
 		}
-		return;
+		else {
+			if (!this._hasAbility(key, abilitiesList)){
+				abilitiesList.push({ key: key, id: id });
+				this.actor.update({ 'data.abilities': abilitiesList });
+				return this.actor.createEmbeddedEntity('OwnedItem', itemData, { renderSheet: true });
+			}
+			else return;
+		}
 	}
 
 	/**
