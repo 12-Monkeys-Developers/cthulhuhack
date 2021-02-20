@@ -136,7 +136,10 @@
         "per": "Permanent",
         "last": ""
         },
-      "multiple": false
+      "multiple": false,
+      "isCustom": false,
+      "advantageGiven": false,
+      "advantageText": ""
     },
     "definition": {
       "templates": ["base"],

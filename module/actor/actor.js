@@ -141,7 +141,6 @@ export class CtHackActor extends Actor {
    * Decrease a Resource dice
    * @param {String} resourceId   The resource ID (e.g. "smo")
    */
-
 	async decreaseResource(resourceId) {
 		if (CONFIG.debug.cthack) console.log(`Decrease resource ${resourceId}`);
 		const actorData = this.data;
@@ -273,11 +272,32 @@ export class CtHackActor extends Actor {
 				advantages += '<li>' + game.i18n.localize('CTHACK.AdvantageHAR') + '</li>';
 			}
 		}
+
+		const customAdvantagesText = this._findSavesAdvantagesFromCustomAbilities();
+		if (customAdvantagesText != "") {
+			advantages += customAdvantagesText;
+		}
+
 		if (advantages === '<ul>') {
 			advantages = '';
 		} else advantages += '</ul>';
 		return advantages;
 	}
+
+	/**
+   * Find advantages given by custom abilitites
+   * 
+	*/
+	_findSavesAdvantagesFromCustomAbilities() {
+		let customAdvantagesText = "";
+		this.data.items.forEach(element => {
+			if (element.type === 'ability' && element.data.isCustom && element.data.advantageGiven && element.data.advantageText !== ""){
+				customAdvantagesText += '<li>' + element.data.advantageText + '</li>';
+			}
+		});
+		return customAdvantagesText;
+	}   
+
 
 	/**
    * Create a definition item with the active effect if necessary
