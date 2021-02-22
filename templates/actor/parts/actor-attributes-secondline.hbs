@@ -20,7 +20,7 @@
 </div>
 {{#if (isEnabled "MiscellaneousResource")}}    
     <div class="resource flex-group-center">
-        <label for="data.miscellaneous.value" class="resource-label miscellaneous-name rollable"  data-resource="mis">{{getMiscellaneousValue}}</label>
+        <label for="data.miscellaneous.value" class="resource-label miscellaneous-name {{#if (isDiceRollable data.attributes.miscellaneous.value)}}rollable{{/if}}"  data-resource="mis">{{getMiscellaneousValue}}</label>
         <div class="resource-content">
             <select name="data.attributes.miscellaneous.value" data-type="String" {{{getStyleForDice actor.data.attributes.miscellaneous.value}}} >
                 {{#select actor.data.attributes.miscellaneous.value}}

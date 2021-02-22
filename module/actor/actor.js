@@ -87,8 +87,8 @@ export class CtHackActor extends Actor {
 		const resourceTemplate = CTHACK.resourcesTemplate[resourceId];
 		const resourceValue = this.data.data.attributes[resourceTemplate].value;
 
-		// Resource at "0"
-		if (resourceValue === '0') {
+		// Resource at "0" or "---"
+		if (resourceValue === '0' || resourceValue === '') {
 			return null;
 		}
 
@@ -121,8 +121,8 @@ export class CtHackActor extends Actor {
 	async rollMaterial(dice, options = {}) {
 		if (CONFIG.debug.cthack) console.log(`Roll material ${dice}`);
 
-		// Material at "0"
-		if (dice === '0') {
+		// Material at "0" or "---"
+		if (dice === '0' || dice === '') {
 			return null;
 		}
 

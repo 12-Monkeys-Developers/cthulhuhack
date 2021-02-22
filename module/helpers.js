@@ -93,8 +93,8 @@ export const registerHandlebarsHelpers = function() {
 		return CTHACK.range[str];
 	});
 
-	Handlebars.registerHelper('isItemWithDice', function(str) {
-		return str !== "" && str !== "0";
+	Handlebars.registerHelper('isDiceRollable', function(dice) {
+		return dice !== "" && dice !== "0";
 	});
 
 	Handlebars.registerHelper('timeSince', function(timeStamp) {
