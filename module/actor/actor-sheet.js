@@ -1,4 +1,4 @@
-import { formatDate } from '../utils.js';
+import { formatDate, findLowerDice } from '../utils.js';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -258,8 +258,13 @@ export class CtHackActorSheet extends ActorSheet {
    */
 	async _onMaterialRoll(event) {
 		event.preventDefault();
-		const dice = event.currentTarget.parentElement.children[1].value;
-		const materialName = event.currentTarget.parentElement.parentElement.children[0].outerText;
+		
+		const li = $(event.currentTarget).parents('.item');
+		const itemId = li.data('item-id');
+		let item = this.actor.getOwnedItem(itemId);
+
+		const dice = item.data.data.dice;
+		const materialName = item.data.name;
 		const message = game.i18n.format('CTHACK.MaterialRollDetails', { material: materialName });
 
 		let rollMaterial = await this.actor.rollMaterial(dice, { event: event, flavor: message });
@@ -267,6 +272,8 @@ export class CtHackActorSheet extends ActorSheet {
 		// Resource loss
 		if (rollMaterial && (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2)) {
 			if (CONFIG.debug.cthack) console.log('Decrease Material Ressource');
+			const newDiceValue = findLowerDice(dice);
+			this.actor.updateOwnedItem({ _id: itemId, 'data.dice': newDiceValue });
 			this.actor.sheet.render(true);
 		}
 	}

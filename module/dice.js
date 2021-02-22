@@ -185,7 +185,7 @@ export async function diceRoll(
 			} else {
 				messageData.flavor += `<br><b>${game.i18n.localize('CTHACK.RollFailure')}</b>`;
 			}
-		} else if (rollType === 'Resource') {
+		} else if (rollType === 'Resource' || rollType === 'Material') {
 			// Resource roll
 			if (roll.total == 1 || roll.total == 2) {
 				messageData.flavor += `<br><b>${game.i18n.localize('CTHACK.ResourceRollFailure')}</b>`;

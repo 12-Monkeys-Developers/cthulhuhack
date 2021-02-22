@@ -94,7 +94,7 @@ export const registerHandlebarsHelpers = function() {
 	});
 
 	Handlebars.registerHelper('isItemWithDice', function(str) {
-		return str != '';
+		return str !== "" && str !== "0";
 	});
 
 	Handlebars.registerHelper('timeSince', function(timeStamp) {
@@ -136,10 +136,5 @@ export const registerHandlebarsHelpers = function() {
 			return `style="color:white;"`;
 		}
 		return `style="background-image:url('systems/cthack/ui/dice/${value}-grey.svg');"`;
-		/*let result = "style=\"background-image:url('systems/cthack/ui/dice/";
-		result += value;
-		result += "-grey.svg')\"";
-		return result;		
-		*/
 	});
 };

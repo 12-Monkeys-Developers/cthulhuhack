@@ -4,7 +4,7 @@
         <h4>{{name}}</h4>
     </div>
     <div class="item-dice align-center">
-        {{#if (isItemWithDice item.data.dice)}} <i class="fas fa-dice-d20 rollable"></i> {{/if}}
+        {{#if (isItemWithDice data.dice)}} <i class="fas fa-dice-d20 rollable"></i> {{/if}}
         <select class="item-dice-select color-white" name="{{_id}}" data-type="String">
             {{#select data.dice }}
                 {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
