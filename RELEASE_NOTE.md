@@ -1,3 +1,2 @@
-- Highlights success or failure in chat message
-- Allow a miscellaneous resource in option
-- Add custom abilities management
+- Automatic descrease if Material roll failed
+- Remove rollable if resource at 0

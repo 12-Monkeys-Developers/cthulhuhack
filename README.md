@@ -17,7 +17,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 0.6.0
+version : 0.6.1
 
 Actor
 - Personnage
@@ -30,21 +30,22 @@ Actor
 Item
 - Ability : capacité spéciale
     - Si les champs "Custom" et "Donne un avantage" sont activés, le champ Description avantage est utilisé dans l'aide au jet de dé
-- Item : gestion du dé de matériel avec possibilité de faire un jet (limitation connue : en cas de perte de ressource, il faut diminuer le dé à la main)
+- Item : gestion du dé de matériel avec possibilité de faire un jet
 - Weapon : pour les armes, à faire glisser sur la fiche de personnage
 - Attack : les attaques, à faire glisser sur la fiche d'opposant
 - Definition : utilisé pour les statuts des tables Hors Jeu, Folie temporaire et Choc ; ajouté au personnage via drag and drop
     - Prise en compte du désavantage pour certains statuts Hors Jeu
     - Une icône apparait sur le token en cas de condition
+- Clic sur le nom pour déplier la description
 
 Options
 - Fortune : active/désactive l'affichage sur la fiche
     - Le MJ active l'option et met le nombre de jetons disponibles pour les joueurs
     - Affichage du nombre de jetons restant sous le portrait
-    - Possibilité d'en dépenser un uniquement pour un MJ (Limitation connue : après la dépense, il faut fermer et ouvrir la fiche pour voir le nombre restant mis à jour)
+    - Possibilité d'en dépenser un uniquement pour un MJ
     - La dépense est affichée pour tout le monde dans le chat
 - Adrenaline : active/désactive l'affichage sur la fiche
-    - Sous le portrait : éclair jeton pour le joueur, tête de mort jeton pour le MJ
+    - Sous le portrait : jeton éclair pour le joueur, jeton tête de mort pour le MJ
 - Dé de vie en tant que ressource : active/désactive l'affichage sur la fiche
 - Richesse en tant que ressource : active/désactive l'affichage sur la fiche
 - Resource diverse : si le champ est rempli, alors une nouvelle ressource portant ce nom est activée en remplacement de la resource Richesse
@@ -79,7 +80,7 @@ This system is under development.
 ---------------
 Features
 ---------------
-version : 0.6.0
+version : 0.6.1
 
 Actor
 - Character
@@ -91,21 +92,22 @@ Actor
 
 Item
 - Ability: special ability
-- Item : management of the supplies die with the possibility to make a roll (known limitation : in case of loss of resource, the die must be decreased by hand)
+- Item : management of the supplies die with the possibility to make a roll
 - Weapon: for weapons, drag and drop on the character sheet
 - Attack: opponent's attacks, to be dragged on the opponent's card
 - Definition: used for Out of Game, Temporary Insanity and Shock table statuses; added to character via drag and drop
     - Taking into account the disadvantage for certain Out-of-Game statuses
     - An icon appears on the token in case of condition
+- Click on name to display description
 
 Options
 - Fortune: activates/deactivates the display on the form
     - The GM activates the option and makes the number of tokens available to the players.
     - Display of the number of tokens under the portrait
-    - Only a GM could spend a token (Known limitation: after spending, you have to close and open the card to see the remaining number updated)
+    - Only a GM could spend a token
     - A message is displayed in the chat when a token is spent
 - Adrenaline: activates/deactivates the display on the card
-    - Under the portrait: token lightning for the player, skull and crossbones for the GM.
+    - Under the portrait: lightning token for the player, skull and crossbones token for the GM.
 - Hit dice as a resource: activates/deactivates the display on the form
 - Wealth as a resource: enables/disables display on the form
 - Miscellaneous option : if the field is filled, this is used as a resource and will replace Wealth resource

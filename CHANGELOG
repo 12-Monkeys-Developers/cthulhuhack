@@ -1,3 +1,7 @@
+0.6.1
+- Automatic descrease if Material roll failed
+- Remove rollable if resource at 0
+
 0.6.0
 - Template update
 - Highlights success or failure in chat message
