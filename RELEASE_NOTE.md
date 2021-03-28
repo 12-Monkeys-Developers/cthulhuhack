@@ -1,2 +1,1 @@
-- Automatic descrease if Material roll failed
-- Remove rollable if resource at 0
+- Fix title display for resource roll

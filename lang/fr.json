@@ -79,6 +79,7 @@
         "DisadvantageFromCondition": "Vous avez un Désavantage dû à une condition",
         "Normal": "Normal",
         "ResourceRollPromptTitle": "Jet de {resource}",
+        "MiscResource": "Ressource diverse",
         "RollSuccess": "C'est un Succès !",
         "RollFailure": "C'est un Echec !",
         "ResourceRollFailure": "Perte de ressource",

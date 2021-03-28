@@ -79,6 +79,7 @@
         "DisadvantageFromCondition": "You have a Disadvantage from a condition",
         "Normal": "Normal",
         "ResourceRollPromptTitle": "{resource} Roll",
+        "MiscResource": "miscellaneous Resource",
         "RollSuccess": "Success",
         "RollFailure": "Failure",
         "ResourceRollFailure": "Resource lost",

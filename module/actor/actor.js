@@ -94,11 +94,17 @@ export class CtHackActor extends Actor {
 
 		let title;
 
-		if (game.settings.get('cthack', 'MiscellaneousResource')) {
-			title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: game.settings.get('cthack', 'MiscellaneousResource') });
+		if (resourceId != "mis") {
+			title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: label });
 		}
 		else {
-			title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: label });
+			if (game.settings.get('cthack', 'MiscellaneousResource')) {
+				title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: game.settings.get('cthack', 'MiscellaneousResource') });
+			}
+			else {
+				const resourceName = game.i18n.format('CTHACK.MiscResource');
+				title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: resourceName }); 
+			}
 		}
 
 		// Roll and return
