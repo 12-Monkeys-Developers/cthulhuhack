@@ -1,1 +1,1 @@
-- Fix title display for resource roll
+- Improve chat display

@@ -24,7 +24,7 @@
  *
  * @return {Promise}                    A Promise which resolves once the roll workflow has completed
  */
-export async function diceRoll(
+ export async function diceRoll(
 	{
 		diceType = 'd20',
 		customFormula = null,
@@ -40,6 +40,7 @@ export async function diceRoll(
 		advantage = null,
 		disadvantage = null,
 		rollType = null,
+		rollId = null,
 		targetValue = null,
 		chatMessage = true,
 		modifier = null,
@@ -48,9 +49,9 @@ export async function diceRoll(
 	} = {}
 ) {
 	// Prepare Message Data
-	messageData.flavor = flavor || title;
+	//messageData.flavor = flavor || title;
 	messageData.speaker = speaker || ChatMessage.getSpeaker();
-	const messageOptions = { rollMode: rollMode || game.settings.get('core', 'rollMode') };
+	let messageOptions = { rollMode: rollMode || game.settings.get('core', 'rollMode') };
 	if (rollType === 'Save') {
 		parts = parts.concat([ '@modifier' ]);
 	}
@@ -69,12 +70,10 @@ export async function diceRoll(
 			// Custom advantage or disadvantage
 			if (advantage) {
 				nd++;
-				messageData.flavor += `<br> ${game.i18n.localize('CTHACK.AdvantageFromCondition')}`;
 			} else if (disadvantage) {
 				nd--;
-				messageData.flavor += `<br> ${game.i18n.localize('CTHACK.DisadvantageFromCondition')}`;
 			}
-			messageData.flavor += `<br> ${game.i18n.localize('CTHACK.AdvantageMessage')}`;
+
 			if (rollType === 'Save') {
 				mods += 'kl';
 			} else mods += 'kh';
@@ -84,13 +83,9 @@ export async function diceRoll(
 			// Custom advantage or disadvantage
 			if (advantage) {
 				nd--;
-				nd--;
-				messageData.flavor += `<br> ${game.i18n.localize('CTHACK.AdvantageFromCondition')}`;
 			} else if (disadvantage) {
 				nd++;
-				messageData.flavor += `<br> ${game.i18n.localize('CTHACK.DisadvantageFromCondition')}`;
 			}
-			messageData.flavor += `<br> ${game.i18n.localize('CTHACK.DisadvantageMessage')}`;
 			if (rollType === 'Save') {
 				mods += 'kh';
 			} else mods += 'kl';
@@ -99,13 +94,11 @@ export async function diceRoll(
 			// Custom advantage or disadvantage
 			if (advantage) {
 				nd++;
-				messageData.flavor += ` ${game.i18n.localize('CTHACK.AdvantageFromCondition')}`;
 				if (rollType === 'Save') {
 					mods += 'kl';
 				} else mods += 'kh';
 			} else if (disadvantage) {
 				nd++;
-				messageData.flavor += ` ${game.i18n.localize('CTHACK.DisadvantageFromCondition')}`;
 				if (rollType === 'Save') {
 					mods += 'kh';
 				} else mods += 'kl';
@@ -140,7 +133,7 @@ export async function diceRoll(
 			return null;
 		}
 
-		// Flag options for any roll
+		// Flag options for all dices of a roll
 		for (let d of roll.dice) {
 			if ( adv === 1 ) d.options.advantage = true;
 			else if ( adv === -1 ) d.options.disadvantage = true;
@@ -148,8 +141,9 @@ export async function diceRoll(
 
 			if (advantage) d.options.advantageFromCondition = true;
 			if (disadvantage) d.options.disadvantageFromCondition = true;
-		}
 
+			d.options.rollType = rollType;
+		}
 
 		return roll;
 	};
@@ -163,6 +157,7 @@ export async function diceRoll(
 		rollMode: messageOptions.rollMode,
 		dialogOptions,
 		rollType,
+		rollId,
 		modifier,
 		advantage,
 		disadvantage,
@@ -172,25 +167,54 @@ export async function diceRoll(
 
 	// Create a Chat Message
 	if (roll && chatMessage) {
-		if (modifier !== null && modifier > 0) {
-			messageData.flavor += `${game.i18n.format('CTHACK.RollWithBonus', { modifier: modifier })}`;
+
+		// Get the display name of the roll
+		roll.rollId = rollId;
+
+		if (advantage){
+			roll.advantage = true;
 		}
-		if (modifier !== null && modifier < 0) {
-			messageData.flavor += `${game.i18n.format('CTHACK.RollWithMalus', { modifier: modifier })}`;
+		if (disadvantage){
+			roll.disadvantage = true;
 		}
-		// Save roll
-		if (rollType === 'Save' && targetValue) {
-			if (roll.total < targetValue) {
-				messageData.flavor += `<br><b>${game.i18n.localize('CTHACK.RollSuccess')}</b>`;
-			} else {
-				messageData.flavor += `<br><b>${game.i18n.localize('CTHACK.RollFailure')}</b>`;
-			}
-		} else if (rollType === 'Resource' || rollType === 'Material') {
+
+		for (let d of roll.dice) {
+			if ( d.options.advantage ){
+				roll.advantageFromDialog = true;
+			};
+			if ( d.options.disadvantage ){
+				roll.disadvantageFromDialog = true;
+			};				
+		}
+
+		if (rollType === 'Resource' || rollType === 'Material') {
 			// Resource roll
 			if (roll.total == 1 || roll.total == 2) {
-				messageData.flavor += `<br><b>${game.i18n.localize('CTHACK.ResourceRollFailure')}</b>`;
+				roll.resourceLost = true;
+				roll.isSuccess = false;
 			}
+			else roll.resourceLost = false;
+			
+			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollResource.hbs`, roll);
 		}
+
+		if (rollType === 'Save' && targetValue){
+			if (modifier !== null && modifier != "") {
+				roll.modifier = modifier;
+			}
+
+			if (roll.total < targetValue) {
+				roll.isSuccess = true;
+			} else {
+				roll.isSuccess = false;
+			}
+			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollSave.hbs`, roll);
+		}
+
+		if (rollType !== "Resource" && rollType != "Material" && rollType != "save") {
+			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollResource.hbs`, roll);
+		}
+
 		roll.toMessage(messageData, messageOptions);
 	}
 

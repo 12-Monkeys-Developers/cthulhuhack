@@ -28,7 +28,11 @@ export const preloadHandlebarsTemplates = async function() {
 
 		'systems/cthack/templates/parts/dice-sides-options-value.hbs',
 		'systems/cthack/templates/parts/dice-sides-options-max.hbs',
-		'systems/cthack/templates/parts/dice-sides-options-damage.hbs'
+		'systems/cthack/templates/parts/dice-sides-options-damage.hbs',
+
+		'systems/cthack/templates/chat/rollSave.hbs',
+		'systems/cthack/templates/chat/rollResource.hbs',
+		'systems/cthack/templates/chat/tooltip.hbs'
 	];
 
 	// Load the template parts

@@ -80,11 +80,7 @@
         "Normal": "Normal",
         "ResourceRollPromptTitle": "Jet de {resource}",
         "MiscResource": "Ressource diverse",
-        "RollSuccess": "C'est un Succès !",
-        "RollFailure": "C'est un Echec !",
         "ResourceRollFailure": "Perte de ressource",
-        "RollWithBonus": " avec un bonus de {modifier} ",
-        "RollWithMalus": " avec un malus de {modifier} ",
         "DamageDiceRollPrompt": "Jet de dé(s) de dégâts",
 
         "HitPointsStart": "Points de Vie de départ",
@@ -182,5 +178,17 @@
         "HitDiceResourceHint": "Au lieu d'une valeur fixe, vous pouvez gérer les dégâts d'un personnage avec le Dé de Vie",
         "MiscellaneousResourceName": "Ressource diverse",
         "MiscellaneousResourceHint": "Permet de choisir une ressource qui remplacera la ressource Richesse"
+    },
+
+    "CHAT": {
+        "RollWithAdvantage": "Vous avez un Avantage.",
+        "RollWithDisdvantage": "Vous subissez un Désavantage.",
+        "ResourceLost": "Vous perdez une ressource !",
+        "RollWithAdvantageFromDialog": "Vous avez lancé avec un Avantage.",
+        "RollWithDisadvantageFromDialog": "Vous avez lancé avec un Désavantage.",
+        "RollWithBonus": "Avec un bonus de {modifier}.",
+        "RollWithMalus": "Avec un malus de {modifier}.",
+        "RollSuccess": "C'est un Succès !",
+        "RollFailure": "C'est un Echec !"
     }
 }

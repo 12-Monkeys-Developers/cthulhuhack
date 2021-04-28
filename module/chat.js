@@ -12,8 +12,15 @@ export const highlightSuccessFailure = function(message, html, data) {
     const options = d.options;
   
     if ( options.target ) {
-        if ( roll.total < d.options.target ) html.find(".dice-total").addClass("success");
-        else html.find(".dice-total").addClass("failure");
+        if ( roll.total < d.options.target ) html.find(".dice-total").addClass("roll-success");
+        else html.find(".dice-total").addClass("roll-failure");
     }
+
+    if ( options.rollType === "Resource" || options.rollType === "Material") {
+        if (roll.total === 1 || roll.total === 2) {
+            html.find(".dice-total").addClass("roll-failure");
+        }
+    }
+    
 };
 

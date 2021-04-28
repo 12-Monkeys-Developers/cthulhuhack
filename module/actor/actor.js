@@ -8,6 +8,13 @@ import { manageActiveEffect } from '../effects.js';
  * @extends {Actor}
  */
 export class CtHackActor extends Actor {
+
+/*
+	chatTemplate = {
+		"save": "systems/cthack/templates/dice/rollSave.html"
+	};
+*/
+
 	/**
    * Augment the basic actor data with additional dynamic data.
    */
@@ -65,6 +72,7 @@ export class CtHackActor extends Actor {
 		const rollData = mergeObject(options, {
 			title: game.i18n.format('CTHACK.SavePromptTitle', { save: label }),
 			rollType: 'Save',
+			rollId: label,
 			targetValue: saveValue,
 			abilitiesAdvantages: abilitiesAdvantages,
 			advantage: hasAdvantage,
@@ -102,7 +110,7 @@ export class CtHackActor extends Actor {
 				title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: game.settings.get('cthack', 'MiscellaneousResource') });
 			}
 			else {
-				const resourceName = game.i18n.format('CTHACK.MiscResource');
+				const resourceName = ame.i18n.format('CTHACK.Misc');
 				title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: resourceName }); 
 			}
 		}
@@ -111,6 +119,7 @@ export class CtHackActor extends Actor {
 		const rollData = mergeObject(options, {
 			title: title,
 			rollType: 'Resource',
+			rollId: title,
 			diceType: resourceValue
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
@@ -136,6 +145,7 @@ export class CtHackActor extends Actor {
 		const rollData = mergeObject(options, {
 			title: game.i18n.format('CTHACK.MaterialRollPromptTitle'),
 			rollType: 'Material',
+			rollId: game.i18n.format('CTHACK.MaterialRollPromptTitle'),
 			diceType: dice
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
@@ -190,7 +200,8 @@ export class CtHackActor extends Actor {
 		const rollData = mergeObject(options, {
 			title: label,
 			diceType: damageDice,
-			rollType: 'Damage'
+			rollType: 'Damage',
+			rollId: label,
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 		return await diceRoll(rollData);

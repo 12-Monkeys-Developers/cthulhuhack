@@ -12,8 +12,26 @@ export const registerHandlebarsHelpers = function() {
 		return outStr;
 	});
 
+	Handlebars.registerHelper('isModifierPositive', function(modifier) {
+		if (modifier !== null && modifier > 0 ){
+			return true;
+		}
+		return false;
+	});
+
+	Handlebars.registerHelper('isModifierNegative', function(modifier) {
+		if (modifier !== null && modifier < 0 ){
+			return true;
+		}
+		return false;
+	});
+
 	Handlebars.registerHelper('toLowerCase', function(str) {
 		return str.toLowerCase();
+	});
+
+	Handlebars.registerHelper('toUpperCase', function(str) {
+		return str.toUpperCase();
 	});
 
 	Handlebars.registerHelper('toAbbr', function(str) {

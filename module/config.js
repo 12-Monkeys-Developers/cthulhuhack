@@ -49,7 +49,7 @@ CTHACK.resources = {
 	san: 'CTHACK.Sanity',
 	wea: 'CTHACK.Wealth',
 	hit: 'CTHACK.Hit',
-	mis: 'CTHACK.Miscellaneous'
+	mis: 'CTHACK.Misc'
 };
 
 CTHACK.resourcesTemplate = {

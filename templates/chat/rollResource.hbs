@@ -1,0 +1,14 @@
+<div class="chat-resource-roll">
+    <h4 class="chat-resource-roll-title">{{rollId}}</h4>
+    <div>
+    {{#if advantageFromDialog}}<span>{{localize "CHAT.RollWithAdvantageFromDialog"}}<br></span>{{/if}}{{#if disadvantageFromDialog}}<span>{{localize "CHAT.RollWithDisadvantageFromDialog"}}<br></span>{{/if}}        
+    {{#if resourceLost}}{{localize "CHAT.ResourceLost"}}{{/if}}
+    </div>
+</div>
+<div class="dice-roll chat-resource-roll">
+        <div class="dice-result">
+            <h4 class="dice-total">{{total}}</h4>
+            {{> "systems/cthack/templates/chat/tooltip.hbs"}}
+            <div class="dice-formula">{{formula}}</div>                                                            
+        </div>
+</div>

@@ -444,3 +444,44 @@
   -moz-text-align-last: center;
   text-align-last: center;
 }
+
+.chat-save-roll-title {
+  font-weight: 400;
+}
+
+.chat-save-roll {
+  font-family: 'Averia Libre', cursive;
+  background-image: url("../ui/fiche-milieu.png");
+  background-size: cover;
+  color: #fff;
+}
+
+.chat-resource-roll-title {
+  font-weight: 400;
+}
+
+.chat-resource-roll {
+  font-family: 'Averia Libre', cursive;
+  background-image: url("../ui/fiche-milieu.png");
+  background-size: cover;
+  color: #fff;
+}
+
+.chat-other-roll-title {
+  font-weight: 400;
+}
+
+.chat-other-roll {
+  font-family: 'Averia Libre', cursive;
+  background-image: url("../ui/fiche-milieu.png");
+  background-size: cover;
+  color: #fff;
+}
+
+.roll-failure {
+  color: red;
+}
+
+.roll-success {
+  color: green;
+}

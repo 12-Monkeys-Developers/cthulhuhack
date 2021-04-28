@@ -80,11 +80,7 @@
         "Normal": "Normal",
         "ResourceRollPromptTitle": "{resource} Roll",
         "MiscResource": "miscellaneous Resource",
-        "RollSuccess": "Success",
-        "RollFailure": "Failure",
         "ResourceRollFailure": "Resource lost",
-        "RollWithBonus": " with a bonus of {modifier} ",
-        "RollWithMalus": " with a malus of {modifier} ",
         "DamageDiceRollPrompt": "Damage dice Roll",
 
         "HitPointsStart": "Starting Hit Points",
@@ -183,5 +179,17 @@
         "HitDiceResourceHint": "Handle hit dice as a resource",
         "MiscellaneousResourceName": "Miscellaneous Resource",
         "MiscellaneousResourceHint": "Allow to choose a resource which replaces Wealth resource"
-    }    
+    },
+
+    "CHAT": {
+        "RollWithAdvantage": "You have an advantage.",
+        "RollWithDisadvantage": "You have a disadvantage.",
+        "ResourceLost": "You lost a resource !",
+        "RollWithAdvantageFromDialog": "You rolled with an Advantage.",
+        "RollWithDisadvantageFromDialog": "You rolled with a Disadvantage.",
+        "RollWithBonus": "With a bonus of {modifier}.",
+        "RollWithMalus": "With a malus of {modifier}.",
+        "RollSuccess": "This is a Success !",
+        "RollFailure": "This is a Failure !"
+    }
 }
