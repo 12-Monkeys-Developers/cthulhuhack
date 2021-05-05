@@ -242,13 +242,9 @@ export class CtHackActorSheet extends ActorSheet {
 		event.preventDefault();
 		let resource = event.currentTarget.dataset.resource;
 
-		let rollResource = await this.actor.rollResource(resource, { event: event });
-
-		// Resource loss
-		if (resource && (rollResource.results[0] === 1 || rollResource.results[0] === 2)) {
-			await this.actor.decreaseResource(resource);
-			this.actor.sheet.render(true);
-		}
+		await this.actor.rollResource(resource, { event: event });
+		
+		this.actor.sheet.render(true);
 	}
 
 	/**
@@ -263,19 +259,9 @@ export class CtHackActorSheet extends ActorSheet {
 		const itemId = li.data('item-id');
 		let item = this.actor.getOwnedItem(itemId);
 
-		const dice = item.data.data.dice;
-		const materialName = item.data.name;
-		const message = game.i18n.format('CTHACK.MaterialRollDetails', { material: materialName });
+		await this.actor.rollMaterial(item, { event: event });
 
-		let rollMaterial = await this.actor.rollMaterial(dice, { event: event, flavor: message });
-
-		// Resource loss
-		if (rollMaterial && (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2)) {
-			if (CONFIG.debug.cthack) console.log('Decrease Material Ressource');
-			const newDiceValue = findLowerDice(dice);
-			this.actor.updateOwnedItem({ _id: itemId, 'data.dice': newDiceValue });
-			this.actor.sheet.render(true);
-		}
+		this.actor.sheet.render(true);
 	}
 
 	/**

@@ -23,7 +23,8 @@ Hooks.once('init', async function() {
 
 	game.cthack = {
 		CtHackActor,
-		CtHackItem
+		CtHackItem,
+		config: CTHACK
 	};
 
 	/**
@@ -39,6 +40,8 @@ Hooks.once('init', async function() {
 	game.socket.on('system.cthack', (data) => {
 		CthackUtils.performSocketMesssage(data);
 	});
+
+	CONFIG.CTHACK = CTHACK;
 
 	// Define custom Entity classes
 	CONFIG.Actor.entityClass = CtHackActor;
@@ -64,4 +67,27 @@ Hooks.once('init', async function() {
 
 Hooks.on('renderChatMessage', async (app, html, data) => {
 	chat.highlightSuccessFailure(app, html, data);
+});
+
+Hooks.once("setup", function() {
+
+	// Localize CONFIG objects once up-front
+	const toLocalize = ["saves","attributes"];
+	// Exclude some from sorting where the default order matters
+	const noSort = ["saves","attributes"];
+
+	// Localize and sort CONFIG objects
+	for ( let o of toLocalize ) {
+		const localized = Object.entries(CONFIG.CTHACK[o]).map(e => {
+		  return [e[0], game.i18n.localize(e[1])];
+		});
+		if ( !noSort.includes(o) ) localized.sort((a, b) => a[1].localeCompare(b[1]));
+		CONFIG.CTHACK[o] = localized.reduce((obj, e) => {
+		  obj[e[0]] = e[1];
+		  return obj;
+		}, {});
+	  }
+
+	//
+	
 });

@@ -9,12 +9,6 @@ import { manageActiveEffect } from '../effects.js';
  */
 export class CtHackActor extends Actor {
 
-/*
-	chatTemplate = {
-		"save": "systems/cthack/templates/dice/rollSave.html"
-	};
-*/
-
 	/**
    * Augment the basic actor data with additional dynamic data.
    */
@@ -84,16 +78,14 @@ export class CtHackActor extends Actor {
 
 	/**
    * Roll a Resource dice
-   * @param {String} resourceId   The resource ID (e.g. "smo")
+   * @param {String} resourceId   The resource ID (e.g. "smokes")
    * @param {Object} options      Options which configure how resource tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
 	async rollResource(resourceId, options = {}) {
 		if (CONFIG.debug.cthack) console.log(`Roll resource ${resourceId}`);
-		const resource = CTHACK.resources[resourceId];
-		const label = game.i18n.localize(resource);
-		const resourceTemplate = CTHACK.resourcesTemplate[resourceId];
-		const resourceValue = this.data.data.attributes[resourceTemplate].value;
+		const label = game.i18n.localize(CTHACK.attributes[resourceId]);
+		const resourceValue = this.data.data.attributes[resourceId].value;
 
 		// Resource at "0" or "---"
 		if (resourceValue === '0' || resourceValue === '') {
@@ -117,23 +109,30 @@ export class CtHackActor extends Actor {
 
 		// Roll and return
 		const rollData = mergeObject(options, {
-			title: title,
 			rollType: 'Resource',
+			title: title,
 			rollId: title,
 			diceType: resourceValue
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 
-		return await diceRoll(rollData);
+		let rollResource =  await diceRoll(rollData);
+
+		// Resource loss
+		if (rollResource && (rollResource.results[0] === 1 || rollResource.results[0] === 2)) {
+			await this.decreaseResource(resourceId);			
+		}
 	}
 
 	/**
    * Roll a Material dice
-   * @param {String} dice         The type of dice (e.g. "d6")
+   * @param {Item} item         The item used for the roll
    * @param {Object} options      Options which configure how resource tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
-	async rollMaterial(dice, options = {}) {
+	async rollMaterial(item, options = {}) {
+		const dice = item.data.data.dice;
+
 		if (CONFIG.debug.cthack) console.log(`Roll material ${dice}`);
 
 		// Material at "0" or "---"
@@ -141,17 +140,36 @@ export class CtHackActor extends Actor {
 			return null;
 		}
 
+		const materialName = item.data.name;
+		const message = game.i18n.format('CTHACK.MaterialRollDetails', { material: materialName });
+
 		// Roll and return
 		const rollData = mergeObject(options, {
-			title: game.i18n.format('CTHACK.MaterialRollPromptTitle'),
 			rollType: 'Material',
-			rollId: game.i18n.format('CTHACK.MaterialRollPromptTitle'),
-			diceType: dice
+			title: game.i18n.format('CTHACK.MaterialRollPromptTitle') + " : " + item.data.name,
+			rollId: message,
+			diceType: dice				
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 
-		return await diceRoll(rollData);
+		let rollMaterial = await diceRoll(rollData);
+
+		// Resource loss
+		if (rollMaterial && (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2)) {
+			await this.decreaseMaterialResource(item._id, item.data.data.dice) ;
+		}
 	}
+
+
+	/**
+   * Decrease a material dice
+   * @param {String} itemId   The id of the item
+   * @param {String} dice   "d4""
+   */
+	 async decreaseMaterialResource(itemId, dice) {
+		const newDiceValue = findLowerDice(dice);
+		this.updateOwnedItem({ _id: itemId, 'data.dice': newDiceValue });			
+	}	
 
 	/**
    * Decrease a Resource dice
@@ -160,19 +178,18 @@ export class CtHackActor extends Actor {
 	async decreaseResource(resourceId) {
 		if (CONFIG.debug.cthack) console.log(`Decrease resource ${resourceId}`);
 		const actorData = this.data;
-		const actorResourceName = CTHACK.resourcesTemplate[resourceId];
-		const actorResource = actorData.data.attributes[actorResourceName];
+		const actorResource = actorData.data.attributes[resourceId];
 
 		// old value is 0 or dx
 		const oldValue = actorResource.value;
 		if (oldValue != '0') {
 			let newValue = findLowerDice(oldValue);
 			actorResource.value = newValue;
-			if (resourceId === 'fla') {
+			if (resourceId === 'flashlights') {
 				this.update({ 'data.attributes.flashlights': actorResource });
-			} else if (resourceId === 'smo') {
+			} else if (resourceId === 'smokes') {
 				this.update({ 'data.attributes.smokes': actorResource });
-			} else if (resourceId === 'san') {
+			} else if (resourceId === 'sanity') {
 				this.update({ 'data.attributes.sanity': actorResource });
 			}
 		}
