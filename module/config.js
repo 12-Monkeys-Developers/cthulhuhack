@@ -43,25 +43,13 @@ CTHACK.savesDescription = {
 	cha: 'CTHACK.SaveChaDesc'
 };
 
-CTHACK.resources = {
-	fla: 'CTHACK.FlashLights',
-	smo: 'CTHACK.Smokes',
-	san: 'CTHACK.Sanity',
-	wea: 'CTHACK.Wealth',
-	hit: 'CTHACK.Hit',
-	mis: 'CTHACK.Misc'
-};
-
-CTHACK.resourcesTemplate = {
-	fla: 'flashlights',
-	smo: 'smokes',
-	san: 'sanity',
-	wea: 'wealthDice',
-	hit: 'hitDice',
-	mis: 'miscellaneous'
-};
-
 CTHACK.attributes = {
+	flashlights: 'CTHACK.FlashLights',
+	smokes: 'CTHACK.Smokes',
+	sanity: 'CTHACK.Sanity',
+	wealthDice: 'CTHACK.Wealth',
+	hitDice: 'CTHACK.Hit',
+	miscellaneous: 'CTHACK.Misc',
 	armedDamage: 'CTHACK.ArmedDamage',
 	unarmedDamage: 'CTHACK.UnarmedDamage'
 };
@@ -109,6 +97,8 @@ CTHACK.shock = {
 	'SK-DIV': 'CTHACK.Shock.Div',
 	'SK-SCR': 'CTHACK.Shock.Scr'
 };
+
+CTHACK.debug = false;
 
 export const ABILITY_KEYS_RESERVED = [
 	'ANIHAN',

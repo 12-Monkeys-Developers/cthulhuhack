@@ -10,12 +10,12 @@
  * @param {string|null} template        The HTML template used to render the roll dialog
  * @param {string|null} title           The dice roll UI window title
  * @param {Object} speaker              The ChatMessage speaker to pass when creating the chat
- * @param {string|null} flavor          Flavor text to use in the posted chat message
  * @param {Function} onClose            Callback for actions to take when the dialog form is closed
  * @param {Object} dialogOptions        Modal dialog options
  * @param {boolean} advantage           Apply advantage to the roll (unless otherwise specified)
  * @param {boolean} disadvantage        Apply disadvantage to the roll (unless otherwise specified)
  * @param {boolean} rollType            Specify the type of roll : Save, Resource, Damage, Material, AttackDamage
+ * @param {boolean} rollId            	
  * @param {number} targetValue          Assign a target value against which the result of this roll should be compared
  * @param {boolean} chatMessage         Automatically create a Chat Message for the result of this roll
  * @param {number} modifier             Bonus (+X) or malus (-X) for the roll
@@ -35,7 +35,6 @@
 		template = null,
 		title = null,
 		speaker = null,
-		flavor = null,
 		dialogOptions,
 		advantage = null,
 		disadvantage = null,
@@ -49,7 +48,6 @@
 	} = {}
 ) {
 	// Prepare Message Data
-	//messageData.flavor = flavor || title;
 	messageData.speaker = speaker || ChatMessage.getSpeaker();
 	let messageOptions = { rollMode: rollMode || game.settings.get('core', 'rollMode') };
 	if (rollType === 'Save') {
@@ -211,7 +209,7 @@
 			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollSave.hbs`, roll);
 		}
 
-		if (rollType !== "Resource" && rollType != "Material" && rollType != "save") {
+		if (rollType !== "Resource" && rollType != "Material" && rollType != "Save") {
 			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollResource.hbs`, roll);
 		}
 

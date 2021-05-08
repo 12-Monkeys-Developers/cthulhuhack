@@ -35,6 +35,7 @@
         "HitDice": "Dé de Vie",
         "Wealth": "Richesse",
         "WealthDice": "Dé de richesse",
+        "Misc": "Divers",
         "ArmedDamage": "Dégât(s) armé",
         "UnarmedDamage": "Dégât(s) sans arme",
         "Description": "Description",
@@ -81,7 +82,7 @@
         "ResourceRollPromptTitle": "Jet de {resource}",
         "MiscResource": "Ressource diverse",
         "ResourceRollFailure": "Perte de ressource",
-        "DamageDiceRollPrompt": "Jet de dé(s) de dégâts",
+        "DamageDiceRollPrompt": "Jet de dé(s) de dégâts avec {item}",
 
         "HitPointsStart": "Points de Vie de départ",
         "WealthStart": "Richesse de départ",
@@ -190,5 +191,17 @@
         "RollWithMalus": "Avec un malus de {modifier}.",
         "RollSuccess": "C'est un Succès !",
         "RollFailure": "C'est un Echec !"
+    },
+
+    "MACROS": {
+        "MultipleTokensSelected": "Vous avez sélectionné plusieurs tokens.",
+        "NoTokenSelected": "Aucun token n'est sélectionné.",
+        "ObjectNotInInventory": "L'objet {itemName} n'est pas dans l'inventaire de {actorName}.",
+        "ObjectWithoutResource": "L'objet {itemName} n'est pas un objet à ressource.",
+        "ObjectEmptyResource": "L'objet ${itemName} n'a plus de ressources.",
+        "AttackNotFound": "{opponentName} n'a pas l'attaque {itemName}.",
+        "AbilityNotFound": "{characterName} n'a pas la capacité {itemName}.",
+        "AbilityWithoutUsage": "La capacité {itemName} n'a pas d'utilisation limitée.",
+        "AbilityUsesAtZero": "La capacité {itemName} ne peut plus être utilisée."
     }
 }

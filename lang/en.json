@@ -34,7 +34,8 @@
         "Hit": "Hit",
         "HitDice": "Hit Dice",
         "Wealth": "Wealth",
-        "WealthDice": "Wealth Dice",        
+        "WealthDice": "Wealth Dice",     
+        "Misc": "Miscellaneous",   
         "ArmedDamage": "Armed damage",
         "UnarmedDamage": "Unarmed damage",
         "Description": "Description",
@@ -81,7 +82,7 @@
         "ResourceRollPromptTitle": "{resource} Roll",
         "MiscResource": "miscellaneous Resource",
         "ResourceRollFailure": "Resource lost",
-        "DamageDiceRollPrompt": "Damage dice Roll",
+        "DamageDiceRollPrompt": "Damage dice Roll with {item}",
 
         "HitPointsStart": "Starting Hit Points",
         "WealthStart": "Richesse",
@@ -191,5 +192,17 @@
         "RollWithMalus": "With a malus of {modifier}.",
         "RollSuccess": "This is a Success !",
         "RollFailure": "This is a Failure !"
+    },
+
+    "MACROS": {
+        "MultipleTokensSelected": "You have selected several tokens.",
+        "NoTokenSelected": "No token is selected.",
+        "ObjectNotInInventory": "The item {itemName} is not in the inventory of {actorName}.",
+        "ObjectWithoutResource": "The item {itemName} is an object without resources.",
+        "ObjectEmptyResource": "The item ${itemName} has no more resources.",
+        "AttackNotFound": "{opponentName} has not the attack {itemName}.",
+        "AbilityNotFound": "{characterName} has not the ability {itemName}.",
+        "AbilityWithoutUsage": "The ability {itemName} has no limited usage.",
+        "AbilityUsesAtZero": "The ability {itemName} can't be used anymore."
     }
 }

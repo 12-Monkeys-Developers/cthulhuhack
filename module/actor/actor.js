@@ -1,7 +1,6 @@
 import { CTHACK } from '../config.js';
 import { diceRoll } from '../dice.js';
-import { findLowerDice } from '../utils.js';
-import { manageActiveEffect } from '../effects.js';
+import { formatDate, findLowerDice } from '../utils.js';
 
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
@@ -9,15 +8,7 @@ import { manageActiveEffect } from '../effects.js';
  */
 export class CtHackActor extends Actor {
 
-/*
-	chatTemplate = {
-		"save": "systems/cthack/templates/dice/rollSave.html"
-	};
-*/
-
-	/**
-   * Augment the basic actor data with additional dynamic data.
-   */
+	/** @override */
 	prepareData() {
 		super.prepareData();
 
@@ -48,15 +39,19 @@ export class CtHackActor extends Actor {
 		data.malus = -1 * (data.hitDice - 1);
 	}
 
-	/**
-   * Roll a Saving Throw 
-   * Prompt the user for input regarding Advantage/Disadvantage
-   * @param {String} saveId       The save ID (e.g. "str")
-   * @param {Object} options      Options which configure how save tests are rolled
-   * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
-   */
+    /**
+     * @name rollSave
+     * @description Roll a Saving Throw 
+     *              Prompt the user for input regarding Advantage/Disadvantage
+     * @public
+	 * 
+     * @param {String} saveId       The save ID (e.g. "str")
+   	 * @param {Object} options      Options which configure how save tests are rolled
+	 * 
+     * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
+     */
 	async rollSave(saveId, options = {}) {
-		if (CONFIG.debug.cthack) console.log(`Roll save ${saveId}`);
+		if (CTHACK.debug) console.log(`Roll save ${saveId}`);
 		const save = CTHACK.saves[saveId];
 		const label = game.i18n.localize(save);
 		const saveValue = this.data.data.saves[saveId].value;
@@ -64,7 +59,7 @@ export class CtHackActor extends Actor {
 		let hasAdvantage = false;
 		let hasDisadvantage = false;
 		if (this.getFlag('cthack', 'disadvantageOOA') !== undefined && this.getFlag('cthack', 'disadvantageOOA') === true) {
-			if (CONFIG.debug.cthack) console.log('Out of Action Disadvantage');
+			if (CTHACK.debug) console.log('Out of Action Disadvantage');
 			hasDisadvantage = true;
 		}
 
@@ -82,18 +77,21 @@ export class CtHackActor extends Actor {
 		return await diceRoll(rollData);
 	}
 
-	/**
-   * Roll a Resource dice
-   * @param {String} resourceId   The resource ID (e.g. "smo")
-   * @param {Object} options      Options which configure how resource tests are rolled
-   * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
-   */
+    /**
+     * @name rollResource
+     * @description Roll a Saving Throw 
+     *              Prompt the user for input regarding Advantage/Disadvantage
+     * @public
+	 * 
+     * @param {String} resourceId   The resource ID (e.g. "smokes")
+     * @param {Object} options      Options which configure how resource tests are rolled
+	 *
+     * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
+     */
 	async rollResource(resourceId, options = {}) {
-		if (CONFIG.debug.cthack) console.log(`Roll resource ${resourceId}`);
-		const resource = CTHACK.resources[resourceId];
-		const label = game.i18n.localize(resource);
-		const resourceTemplate = CTHACK.resourcesTemplate[resourceId];
-		const resourceValue = this.data.data.attributes[resourceTemplate].value;
+		if (CTHACK.debug) console.log(`Roll resource ${resourceId}`);
+		const label = game.i18n.localize(CTHACK.attributes[resourceId]);
+		const resourceValue = this.data.data.attributes[resourceId].value;
 
 		// Resource at "0" or "---"
 		if (resourceValue === '0' || resourceValue === '') {
@@ -117,62 +115,110 @@ export class CtHackActor extends Actor {
 
 		// Roll and return
 		const rollData = mergeObject(options, {
-			title: title,
 			rollType: 'Resource',
+			title: title,
 			rollId: title,
 			diceType: resourceValue
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 
-		return await diceRoll(rollData);
+		let rollResource =  await diceRoll(rollData);
+
+		// Resource loss
+		if (rollResource && (rollResource.results[0] === 1 || rollResource.results[0] === 2)) {
+			await this.decreaseResource(resourceId);			
+		}
 	}
 
 	/**
    * Roll a Material dice
-   * @param {String} dice         The type of dice (e.g. "d6")
+   * @param {Item} item         The item used for the roll
    * @param {Object} options      Options which configure how resource tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
-	async rollMaterial(dice, options = {}) {
-		if (CONFIG.debug.cthack) console.log(`Roll material ${dice}`);
+	async rollMaterial(item, options = {}) {
+		const dice = item.data.data.dice;
+
+		if (CTHACK.debug) console.log(`Roll dice ${dice} for material ${item.name}`);
 
 		// Material at "0" or "---"
 		if (dice === '0' || dice === '') {
 			return null;
 		}
 
+		const materialName = item.data.name;
+		const message = game.i18n.format('CTHACK.MaterialRollDetails', { material: materialName });
+
 		// Roll and return
 		const rollData = mergeObject(options, {
-			title: game.i18n.format('CTHACK.MaterialRollPromptTitle'),
 			rollType: 'Material',
-			rollId: game.i18n.format('CTHACK.MaterialRollPromptTitle'),
-			diceType: dice
+			title: game.i18n.format('CTHACK.MaterialRollPromptTitle') + " : " + item.data.name,
+			rollId: message,
+			diceType: dice				
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 
-		return await diceRoll(rollData);
+		let rollMaterial = await diceRoll(rollData);
+
+		// Resource loss
+		if (rollMaterial && (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2)) {
+			await this._decreaseMaterialResource(item._id, item.data.data.dice) ;
+		}
 	}
+
+	/**
+	 * @name useAbility
+	 * @description 		Handles ability use
+	 * 						Decreases the usage left by 1
+	 * 						Display the time of the use
+	 * @public
+	 * 
+	 * @param {*} ability   The ability item used
+	 * 
+	 */ 
+	useAbility(ability) {
+		if (CTHACK.debug) console.log(`Use ability ${ability.name}`);
+		let remaining = ability.data.data.uses.value;
+		if (remaining === 0){
+			return;
+		}
+		if (remaining > 0) {
+			remaining--;
+		}
+		const now = new Date(); 
+		const lastTime = formatDate(now);
+		ability.update({ 'data.uses.value': remaining, 'data.uses.last': lastTime });		
+	}
+
+	/**
+	 * Decrease a material dice
+	 * @param {String} itemId   The id of the item
+	 * @param {String} dice   "d4""
+	 */
+	async _decreaseMaterialResource(itemId, dice) {
+		const newDiceValue = findLowerDice(dice);
+		this.updateOwnedItem({ _id: itemId, 'data.dice': newDiceValue });			
+	}	
 
 	/**
    * Decrease a Resource dice
    * @param {String} resourceId   The resource ID (e.g. "smo")
    */
 	async decreaseResource(resourceId) {
-		if (CONFIG.debug.cthack) console.log(`Decrease resource ${resourceId}`);
+		if (CTHACK.debug) console.log(`Decrease resource ${resourceId}`);
 		const actorData = this.data;
-		const actorResourceName = CTHACK.resourcesTemplate[resourceId];
-		const actorResource = actorData.data.attributes[actorResourceName];
+		const actorResource = actorData.data.attributes[resourceId];
 
 		// old value is 0 or dx
 		const oldValue = actorResource.value;
 		if (oldValue != '0') {
 			let newValue = findLowerDice(oldValue);
 			actorResource.value = newValue;
-			if (resourceId === 'fla') {
+			if (resourceId === 'flashlights') {
 				this.update({ 'data.attributes.flashlights': actorResource });
-			} else if (resourceId === 'smo') {
+			} else if (resourceId === 'smokes') {
 				this.update({ 'data.attributes.smokes': actorResource });
-			} else if (resourceId === 'san') {
+			} else if (resourceId === 'sanity') {
 				this.update({ 'data.attributes.sanity': actorResource });
 			}
 		}
@@ -185,7 +231,7 @@ export class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
 	async rollDamageRoll(damageId, options = {}) {
-		if (CONFIG.debug.cthack) console.log(`Roll ${damageId} roll`);
+		if (CTHACK.debug) console.log(`Roll ${damageId} roll`);
 
 		const damageDice = this.data.data.attributes[damageId].value;
 
@@ -209,25 +255,31 @@ export class CtHackActor extends Actor {
 
 	/**
    * Roll an attack damage
-   * @param {String} damageDice   The damage dice
+   * @param {Item} item   		  Item of type attack
    * @param {Object} options      Options which configure how damage tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
-	async rollAttackDamageRoll(damageDice, options = {}) {
-		if (CONFIG.debug.cthack) console.log(`Roll attack ${damageDice} roll`);
+	async rollAttackDamageRoll(item, options = {}) {
+		const itemData = item.data;
+		if (CTHACK.debug) console.log(`Attack roll for ${itemData.name} with a ${itemData.data.damageDice} dice`);
 
-		const label = game.i18n.localize('CTHACK.DamageDiceRollPrompt');
+		const label = game.i18n.format('CTHACK.DamageDiceRollPrompt', {item: itemData.name});
 
 		// Roll and return
 		const rollData = mergeObject(options, {
 			title: label,
-			customFormula: damageDice,
+			customFormula: itemData.data.damageDice,
 			rollType: 'AttackDamage'
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 		return await diceRoll(rollData);
 	}
 
+	/**
+	 * 
+	 * @param {*} key 
+	 * @param {*} itemId 
+	 */
 	deleteAbility(key, itemId) {
 		const index = this._findAbilityIndex(key, itemId);
 		if (index !== -1) {
@@ -238,6 +290,12 @@ export class CtHackActor extends Actor {
 		}
 	}
 
+	/**
+	 * 
+	 * @param {*} key 
+	 * @param {*} id 
+	 * @returns 
+	 */
 	_findAbilityIndex(key, id) {
 		let abilitiesList = this.data.data.abilities;
 		let trouve = false;
@@ -253,6 +311,11 @@ export class CtHackActor extends Actor {
 		return index;
 	}
 
+	/**
+	 * 
+	 * @param {*} saveId 
+	 * @returns 
+	 */
 	_findSavesAdvantages(saveId) {
 		let advantages = '<ul>';
 		let abilitiesList = this.data.data.abilities;
@@ -302,9 +365,13 @@ export class CtHackActor extends Actor {
 	}
 
 	/**
-   * Find advantages given by custom abilitites
-   * 
-	*/
+	 * @name _findSavesAdvantagesFromCustomAbilities
+	 * @private
+	 * 
+	 * @description Find advantages given by custom abilitites
+	 * 
+	 * @returns 
+	 */
 	_findSavesAdvantagesFromCustomAbilities() {
 		let customAdvantagesText = "";
 		this.data.items.forEach(element => {
@@ -331,8 +398,12 @@ export class CtHackActor extends Actor {
 		return this.createEmbeddedEntity('OwnedItem', itemData, { renderSheet: true });
 	}
 
+	/**
+	 * 
+	 * @param {*} itemData 
+	 */
 	async _createActiveEffect(itemData) {
-		if (CONFIG.debug.cthack) console.log(itemData);
+		if (CTHACK.debug) console.log(itemData);
 
 		let effectData;
 
@@ -429,35 +500,69 @@ export class CtHackActor extends Actor {
 	}
 
 	/**
-   * Delete the associated active effect of a definition item if necessary
-   * @param {*} itemData 
-   */
+	 * @name deleteEffectFromItem
+	 * 
+	 * @description Delete the associated active effect of a definition item if necessary
+	 * 
+	 * @param {*} item 
+	 */
 	async deleteEffectFromItem(item) {
 		// Delete the Active Effect
 		let effect;
 		const definitionKey = item.data.data.key;
-		if (CONFIG.debug.cthack) console.log('deleteDefinitionItem : definitionKey = ' + definitionKey);
+		if (CTHACK.debug) console.log('deleteDefinitionItem : definitionKey = ' + definitionKey);
 		if (definitionKey === 'OOA-CRB') {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
+			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		} else if (definitionKey === 'OOA-MIC' || definitionKey === 'OOA-STA' || definitionKey === 'OOA-WIN') {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
+			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 			await this.unsetFlag('cthack', 'disadvantageOOA');
 		} else if (definitionKey.startsWith('OOA')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
+			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		} else if (definitionKey.startsWith('TI')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
+			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		} else if (definitionKey.startsWith('SK')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
+			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		}
+	}
+
+    /**
+     * @name getAvailableAttributes
+     * @description Get attributes for an actor
+     *              Depends on settings
+	 * 				Don't return adrenaline1 and adrenaline2
+	 * 				Used for the module Token Action HUD
+     * @public
+	 * 
+     * @returns 	An array (key/values) of available attributes
+     */
+	getAvailableAttributes(){      
+		let availableAttributes = Object.entries(this.data.data.attributes).filter(
+			(function(a) {
+				if (a[0] === "adrenaline1" || a[0] === "adrenaline2") {
+					return false;
+				}
+				if (a[0] === "hitDice" && !game.settings.get('cthack', 'HitDiceResource')) {
+					return false;
+				}
+				if (a[0] === "wealthDice" && (!game.settings.get('cthack', 'WealthResource') || game.settings.get('cthack', 'MiscellaneousResource') !== "")) {
+					return false;
+				}
+				if (a[0] === "miscellaneous" && game.settings.get('cthack', 'MiscellaneousResource') === "") {
+					return false;
+				}
+				return true;
+			  }));
+			
+		return availableAttributes;
 	}
 }
