@@ -199,10 +199,11 @@
         "NoTokenSelected": "No token is selected.",
         "ObjectNotInInventory": "The item {itemName} is not in the inventory of {actorName}.",
         "ObjectWithoutResource": "The item {itemName} is an object without resources.",
-        "ObjectEmptyResource": "The item ${itemName} has no more resources.",
+        "ObjectEmptyResource": "The item {itemName} has no more resources.",
         "AttackNotFound": "{opponentName} has not the attack {itemName}.",
         "AbilityNotFound": "{characterName} has not the ability {itemName}.",
         "AbilityWithoutUsage": "The ability {itemName} has no limited usage.",
-        "AbilityUsesAtZero": "The ability {itemName} can't be used anymore."
+        "AbilityUsesAtZero": "The ability {itemName} can't be used anymore.",
+        "ResourceAtZero": "The resource {resourceName} is exhausted."
     }
 }

@@ -7,7 +7,6 @@ import { formatDate, findLowerDice } from '../utils.js';
  * @extends {Actor}
  */
 export class CtHackActor extends Actor {
-
 	/** @override */
 	prepareData() {
 		super.prepareData();
@@ -39,7 +38,7 @@ export class CtHackActor extends Actor {
 		data.malus = -1 * (data.hitDice - 1);
 	}
 
-    /**
+	/**
      * @name rollSave
      * @description Roll a Saving Throw 
      *              Prompt the user for input regarding Advantage/Disadvantage
@@ -77,7 +76,7 @@ export class CtHackActor extends Actor {
 		return await diceRoll(rollData);
 	}
 
-    /**
+	/**
      * @name rollResource
      * @description Roll a Saving Throw 
      *              Prompt the user for input regarding Advantage/Disadvantage
@@ -93,23 +92,21 @@ export class CtHackActor extends Actor {
 		const label = game.i18n.localize(CTHACK.attributes[resourceId]);
 		const resourceValue = this.data.data.attributes[resourceId].value;
 
-		// Resource at "0" or "---"
-		if (resourceValue === '0' || resourceValue === '') {
-			return null;
+		// Resource at 0
+		if (resourceValue === '0') {
+			return ui.notifications.warn(game.i18n.format('MACROS.ResourceAtZero', { resourceName: label }));
 		}
 
 		let title;
 
-		if (resourceId != "mis") {
+		if (resourceId != 'mis') {
 			title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: label });
-		}
-		else {
+		} else {
 			if (game.settings.get('cthack', 'MiscellaneousResource')) {
 				title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: game.settings.get('cthack', 'MiscellaneousResource') });
-			}
-			else {
+			} else {
 				const resourceName = ame.i18n.format('CTHACK.Misc');
-				title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: resourceName }); 
+				title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: resourceName });
 			}
 		}
 
@@ -122,11 +119,11 @@ export class CtHackActor extends Actor {
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 
-		let rollResource =  await diceRoll(rollData);
+		let rollResource = await diceRoll(rollData);
 
 		// Resource loss
 		if (rollResource && (rollResource.results[0] === 1 || rollResource.results[0] === 2)) {
-			await this.decreaseResource(resourceId);			
+			await this.decreaseResource(resourceId);
 		}
 	}
 
@@ -141,9 +138,13 @@ export class CtHackActor extends Actor {
 
 		if (CTHACK.debug) console.log(`Roll dice ${dice} for material ${item.name}`);
 
-		// Material at "0" or "---"
-		if (dice === '0' || dice === '') {
-			return null;
+		// Material without resource
+		if (item.data.data.dice === '') {
+			return ui.notifications.warn(game.i18n.format('MACROS.ObjectWithoutResource', { itemName: item.name }));
+		}
+		// Material with resource at 0
+		if (item.data.data.dice === '0') {
+			return ui.notifications.warn(game.i18n.format('MACROS.ObjectEmptyResource', { itemName: item.name }));
 		}
 
 		const materialName = item.data.name;
@@ -152,9 +153,9 @@ export class CtHackActor extends Actor {
 		// Roll and return
 		const rollData = mergeObject(options, {
 			rollType: 'Material',
-			title: game.i18n.format('CTHACK.MaterialRollPromptTitle') + " : " + item.data.name,
+			title: game.i18n.format('CTHACK.MaterialRollPromptTitle') + ' : ' + item.data.name,
 			rollId: message,
-			diceType: dice				
+			diceType: dice
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 
@@ -162,7 +163,7 @@ export class CtHackActor extends Actor {
 
 		// Resource loss
 		if (rollMaterial && (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2)) {
-			await this._decreaseMaterialResource(item._id, item.data.data.dice) ;
+			await this._decreaseMaterialResource(item._id, item.data.data.dice);
 		}
 	}
 
@@ -175,19 +176,20 @@ export class CtHackActor extends Actor {
 	 * 
 	 * @param {*} ability   The ability item used
 	 * 
-	 */ 
+	 */
+
 	useAbility(ability) {
 		if (CTHACK.debug) console.log(`Use ability ${ability.name}`);
 		let remaining = ability.data.data.uses.value;
-		if (remaining === 0){
+		if (remaining === 0) {
 			return;
 		}
 		if (remaining > 0) {
 			remaining--;
 		}
-		const now = new Date(); 
+		const now = new Date();
 		const lastTime = formatDate(now);
-		ability.update({ 'data.uses.value': remaining, 'data.uses.last': lastTime });		
+		ability.update({ 'data.uses.value': remaining, 'data.uses.last': lastTime });
 	}
 
 	/**
@@ -197,8 +199,8 @@ export class CtHackActor extends Actor {
 	 */
 	async _decreaseMaterialResource(itemId, dice) {
 		const newDiceValue = findLowerDice(dice);
-		this.updateOwnedItem({ _id: itemId, 'data.dice': newDiceValue });			
-	}	
+		this.updateOwnedItem({ _id: itemId, 'data.dice': newDiceValue });
+	}
 
 	/**
    * Decrease a Resource dice
@@ -235,10 +237,10 @@ export class CtHackActor extends Actor {
 
 		const damageDice = this.data.data.attributes[damageId].value;
 
-		if (damageDice == 1){
+		if (damageDice == 1) {
 			return;
 		}
-		
+
 		const damage = CTHACK.attributes[damageId];
 		const label = game.i18n.localize(damage);
 
@@ -247,7 +249,7 @@ export class CtHackActor extends Actor {
 			title: label,
 			diceType: damageDice,
 			rollType: 'Damage',
-			rollId: label,
+			rollId: label
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 		return await diceRoll(rollData);
@@ -263,7 +265,7 @@ export class CtHackActor extends Actor {
 		const itemData = item.data;
 		if (CTHACK.debug) console.log(`Attack roll for ${itemData.name} with a ${itemData.data.damageDice} dice`);
 
-		const label = game.i18n.format('CTHACK.DamageDiceRollPrompt', {item: itemData.name});
+		const label = game.i18n.format('CTHACK.DamageDiceRollPrompt', { item: itemData.name });
 
 		// Roll and return
 		const rollData = mergeObject(options, {
@@ -354,7 +356,7 @@ export class CtHackActor extends Actor {
 		}
 
 		const customAdvantagesText = this._findSavesAdvantagesFromCustomAbilities();
-		if (customAdvantagesText != "") {
+		if (customAdvantagesText != '') {
 			advantages += customAdvantagesText;
 		}
 
@@ -373,15 +375,14 @@ export class CtHackActor extends Actor {
 	 * @returns 
 	 */
 	_findSavesAdvantagesFromCustomAbilities() {
-		let customAdvantagesText = "";
-		this.data.items.forEach(element => {
-			if (element.type === 'ability' && element.data.isCustom && element.data.advantageGiven && element.data.advantageText !== ""){
+		let customAdvantagesText = '';
+		this.data.items.forEach((element) => {
+			if (element.type === 'ability' && element.data.isCustom && element.data.advantageGiven && element.data.advantageText !== '') {
 				customAdvantagesText += '<li>' + element.data.advantageText + '</li>';
 			}
 		});
 		return customAdvantagesText;
-	}   
-
+	}
 
 	/**
    * Create a definition item with the active effect if necessary
@@ -535,7 +536,7 @@ export class CtHackActor extends Actor {
 		}
 	}
 
-    /**
+	/**
      * @name getAvailableAttributes
      * @description Get attributes for an actor
      *              Depends on settings
@@ -545,24 +546,23 @@ export class CtHackActor extends Actor {
 	 * 
      * @returns 	An array (key/values) of available attributes
      */
-	getAvailableAttributes(){      
-		let availableAttributes = Object.entries(this.data.data.attributes).filter(
-			(function(a) {
-				if (a[0] === "adrenaline1" || a[0] === "adrenaline2") {
-					return false;
-				}
-				if (a[0] === "hitDice" && !game.settings.get('cthack', 'HitDiceResource')) {
-					return false;
-				}
-				if (a[0] === "wealthDice" && (!game.settings.get('cthack', 'WealthResource') || game.settings.get('cthack', 'MiscellaneousResource') !== "")) {
-					return false;
-				}
-				if (a[0] === "miscellaneous" && game.settings.get('cthack', 'MiscellaneousResource') === "") {
-					return false;
-				}
-				return true;
-			  }));
-			
+	getAvailableAttributes() {
+		let availableAttributes = Object.entries(this.data.data.attributes).filter(function(a) {
+			if (a[0] === 'adrenaline1' || a[0] === 'adrenaline2') {
+				return false;
+			}
+			if (a[0] === 'hitDice' && !game.settings.get('cthack', 'HitDiceResource')) {
+				return false;
+			}
+			if (a[0] === 'wealthDice' && (!game.settings.get('cthack', 'WealthResource') || game.settings.get('cthack', 'MiscellaneousResource') !== '')) {
+				return false;
+			}
+			if (a[0] === 'miscellaneous' && game.settings.get('cthack', 'MiscellaneousResource') === '') {
+				return false;
+			}
+			return true;
+		});
+
 		return availableAttributes;
 	}
 }

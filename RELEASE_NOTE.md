@@ -1,2 +1,1 @@
-- Add macros creation and hotbar management
-- Refactor to be compatible with Token Action HUD
+- Fix for Token Action HUD
