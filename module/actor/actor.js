@@ -179,6 +179,9 @@ export class CtHackActor extends Actor {
 	useAbility(ability) {
 		if (CTHACK.debug) console.log(`Use ability ${ability.name}`);
 		let remaining = ability.data.data.uses.value;
+		if (remaining === 0){
+			return;
+		}
 		if (remaining > 0) {
 			remaining--;
 		}
@@ -272,6 +275,11 @@ export class CtHackActor extends Actor {
 		return await diceRoll(rollData);
 	}
 
+	/**
+	 * 
+	 * @param {*} key 
+	 * @param {*} itemId 
+	 */
 	deleteAbility(key, itemId) {
 		const index = this._findAbilityIndex(key, itemId);
 		if (index !== -1) {
@@ -282,6 +290,12 @@ export class CtHackActor extends Actor {
 		}
 	}
 
+	/**
+	 * 
+	 * @param {*} key 
+	 * @param {*} id 
+	 * @returns 
+	 */
 	_findAbilityIndex(key, id) {
 		let abilitiesList = this.data.data.abilities;
 		let trouve = false;
@@ -297,6 +311,11 @@ export class CtHackActor extends Actor {
 		return index;
 	}
 
+	/**
+	 * 
+	 * @param {*} saveId 
+	 * @returns 
+	 */
 	_findSavesAdvantages(saveId) {
 		let advantages = '<ul>';
 		let abilitiesList = this.data.data.abilities;
@@ -346,9 +365,13 @@ export class CtHackActor extends Actor {
 	}
 
 	/**
-   * Find advantages given by custom abilitites
-   * 
-	*/
+	 * @name _findSavesAdvantagesFromCustomAbilities
+	 * @private
+	 * 
+	 * @description Find advantages given by custom abilitites
+	 * 
+	 * @returns 
+	 */
 	_findSavesAdvantagesFromCustomAbilities() {
 		let customAdvantagesText = "";
 		this.data.items.forEach(element => {
@@ -375,6 +398,10 @@ export class CtHackActor extends Actor {
 		return this.createEmbeddedEntity('OwnedItem', itemData, { renderSheet: true });
 	}
 
+	/**
+	 * 
+	 * @param {*} itemData 
+	 */
 	async _createActiveEffect(itemData) {
 		if (CTHACK.debug) console.log(itemData);
 
@@ -473,9 +500,12 @@ export class CtHackActor extends Actor {
 	}
 
 	/**
-   * Delete the associated active effect of a definition item if necessary
-   * @param {*} itemData 
-   */
+	 * @name deleteEffectFromItem
+	 * 
+	 * @description Delete the associated active effect of a definition item if necessary
+	 * 
+	 * @param {*} item 
+	 */
 	async deleteEffectFromItem(item) {
 		// Delete the Active Effect
 		let effect;

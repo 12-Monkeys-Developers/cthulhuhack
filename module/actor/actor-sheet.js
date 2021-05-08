@@ -1,4 +1,5 @@
 import { formatDate } from '../utils.js';
+import { CTHACK } from '../config.js';
 
 /**
  * Extend the basic ActorSheet
@@ -213,7 +214,6 @@ export class CtHackActorSheet extends ActorSheet {
 	 * @param {Event} event   The originating click event
 	 * 
 	 */
-
 	_onItemUse(event) {
 		event.preventDefault();
 		const li = $(event.currentTarget).parents('.item');

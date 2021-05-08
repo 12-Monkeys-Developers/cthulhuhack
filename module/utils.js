@@ -1,4 +1,5 @@
 import { DICE_VALUES, ABILITY_KEYS_RESERVED } from './config.js';
+import { CTHACK } from './config.js';
 
 /**
  * Check the value is a valid dice (dX)

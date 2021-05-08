@@ -199,6 +199,9 @@
         "ObjectNotInInventory": "L'objet {itemName} n'est pas dans l'inventaire de {actorName}.",
         "ObjectWithoutResource": "L'objet {itemName} n'est pas un objet à ressource.",
         "ObjectEmptyResource": "L'objet ${itemName} n'a plus de ressources.",
-        "AttackNotFound": "{opponentName} n'a pas l'attaque {itemName}."
+        "AttackNotFound": "{opponentName} n'a pas l'attaque {itemName}.",
+        "AbilityNotFound": "{characterName} n'a pas la capacité {itemName}.",
+        "AbilityWithoutUsage": "La capacité {itemName} n'a pas d'utilisation limitée.",
+        "AbilityUsesAtZero": "La capacité {itemName} ne peut plus être utilisée."
     }
 }

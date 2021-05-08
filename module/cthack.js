@@ -135,7 +135,21 @@ Hooks.once("setup", function() {
 
 			// Ability
 			if (item.type === "ability") {
-				return;
+				const maxUses = item.data.uses.max;
+				if (maxUses === null) {
+					return ui.notifications.warn(game.i18n.format('MACROS.AbilityWithoutUsage',{itemName: item.name}));
+				}
+
+				command = `game.cthack.macros.useAbilityMacro("${item._id}", "${item.name}");`;
+				macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+				if (!macro) {
+					macro = await Macro.create({
+						name: item.name,
+						type : "script",
+						img: item.img,
+						command : command
+					}, {displaySheet: false})
+				}
 			}
 
            game.user.assignHotbarMacro(macro, slot);
