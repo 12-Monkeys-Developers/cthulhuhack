@@ -1,7 +1,6 @@
 import { CTHACK } from '../config.js';
 import { diceRoll } from '../dice.js';
 import { findLowerDice } from '../utils.js';
-import { manageActiveEffect } from '../effects.js';
 
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
@@ -9,9 +8,7 @@ import { manageActiveEffect } from '../effects.js';
  */
 export class CtHackActor extends Actor {
 
-	/**
-   * Augment the basic actor data with additional dynamic data.
-   */
+	/** @override */
 	prepareData() {
 		super.prepareData();
 
@@ -42,13 +39,17 @@ export class CtHackActor extends Actor {
 		data.malus = -1 * (data.hitDice - 1);
 	}
 
-	/**
-   * Roll a Saving Throw 
-   * Prompt the user for input regarding Advantage/Disadvantage
-   * @param {String} saveId       The save ID (e.g. "str")
-   * @param {Object} options      Options which configure how save tests are rolled
-   * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
-   */
+    /**
+     * @name rollSave
+     * @description Roll a Saving Throw 
+     *              Prompt the user for input regarding Advantage/Disadvantage
+     * @public
+	 * 
+     * @param {String} saveId       The save ID (e.g. "str")
+   	 * @param {Object} options      Options which configure how save tests are rolled
+	 * 
+     * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
+     */
 	async rollSave(saveId, options = {}) {
 		if (CONFIG.debug.cthack) console.log(`Roll save ${saveId}`);
 		const save = CTHACK.saves[saveId];
@@ -76,12 +77,17 @@ export class CtHackActor extends Actor {
 		return await diceRoll(rollData);
 	}
 
-	/**
-   * Roll a Resource dice
-   * @param {String} resourceId   The resource ID (e.g. "smokes")
-   * @param {Object} options      Options which configure how resource tests are rolled
-   * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
-   */
+    /**
+     * @name rollResource
+     * @description Roll a Saving Throw 
+     *              Prompt the user for input regarding Advantage/Disadvantage
+     * @public
+	 * 
+     * @param {String} resourceId   The resource ID (e.g. "smokes")
+     * @param {Object} options      Options which configure how resource tests are rolled
+	 *
+     * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
+     */
 	async rollResource(resourceId, options = {}) {
 		if (CONFIG.debug.cthack) console.log(`Roll resource ${resourceId}`);
 		const label = game.i18n.localize(CTHACK.attributes[resourceId]);
@@ -226,19 +232,20 @@ export class CtHackActor extends Actor {
 
 	/**
    * Roll an attack damage
-   * @param {String} damageDice   The damage dice
+   * @param {Item} item   		  Item of type attack
    * @param {Object} options      Options which configure how damage tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
-	async rollAttackDamageRoll(damageDice, options = {}) {
-		if (CONFIG.debug.cthack) console.log(`Roll attack ${damageDice} roll`);
+	async rollAttackDamageRoll(item, options = {}) {
+		const itemData = item.data;
+		if (CONFIG.debug.cthack) console.log(`Attack roll for ${itemData.name} with a ${itemData.data.damageDice} dice`);
 
-		const label = game.i18n.localize('CTHACK.DamageDiceRollPrompt');
+		const label = game.i18n.format('CTHACK.DamageDiceRollPrompt', {item: itemData.name});
 
 		// Roll and return
 		const rollData = mergeObject(options, {
 			title: label,
-			customFormula: damageDice,
+			customFormula: itemData.data.damageDice,
 			rollType: 'AttackDamage'
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
@@ -476,5 +483,36 @@ export class CtHackActor extends Actor {
 			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		}
+	}
+
+    /**
+     * @name getAvailableAttributes
+     * @description Get attributes for an actor
+     *              Depends on settings
+	 * 				Don't return adrenaline1 and adrenaline2
+	 * 				Used for the module Token Action HUD
+     * @public
+	 * 
+     * @returns 	An array (key/values) of available attributes
+     */
+	getAvailableAttributes(){      
+		let availableAttributes = Object.entries(this.data.data.attributes).filter(
+			(function(a) {
+				if (a[0] === "adrenaline1" || a[0] === "adrenaline2") {
+					return false;
+				}
+				if (a[0] === "hitDice" && !game.settings.get('cthack', 'HitDiceResource')) {
+					return false;
+				}
+				if (a[0] === "wealthDice" && (!game.settings.get('cthack', 'WealthResource') || game.settings.get('cthack', 'MiscellaneousResource') !== "")) {
+					return false;
+				}
+				if (a[0] === "miscellaneous" && game.settings.get('cthack', 'MiscellaneousResource') === "") {
+					return false;
+				}
+				return true;
+			  }));
+			
+		return availableAttributes;
 	}
 }

@@ -82,7 +82,7 @@
         "ResourceRollPromptTitle": "{resource} Roll",
         "MiscResource": "miscellaneous Resource",
         "ResourceRollFailure": "Resource lost",
-        "DamageDiceRollPrompt": "Damage dice Roll",
+        "DamageDiceRollPrompt": "Damage dice Roll with {item}",
 
         "HitPointsStart": "Starting Hit Points",
         "WealthStart": "Richesse",

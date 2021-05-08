@@ -82,7 +82,7 @@
         "ResourceRollPromptTitle": "Jet de {resource}",
         "MiscResource": "Ressource diverse",
         "ResourceRollFailure": "Perte de ressource",
-        "DamageDiceRollPrompt": "Jet de dé(s) de dégâts",
+        "DamageDiceRollPrompt": "Jet de dé(s) de dégâts avec {item}",
 
         "HitPointsStart": "Points de Vie de départ",
         "WealthStart": "Richesse de départ",

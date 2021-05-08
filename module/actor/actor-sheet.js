@@ -1,17 +1,19 @@
 import { formatDate, findLowerDice } from '../utils.js';
 
 /**
- * Extend the basic ActorSheet with some very simple modifications
+ * Extend the basic ActorSheet
  * @extends {ActorSheet}
  */
 export class CtHackActorSheet extends ActorSheet {
+
 	/** @override */
 	static get defaultOptions() {
 		return mergeObject(super.defaultOptions, {
 			classes: [ 'cthack', 'sheet', 'actor', 'character' ],
 			width: 880,
 			height: 720,
-			tabs: [ { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'items' } ]
+			tabs: [ { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'items' } ],
+			dragDrop: [{ dragSelector: ".items-list .item", dropSelector: null }]
 		});
 	}
 
@@ -19,8 +21,6 @@ export class CtHackActorSheet extends ActorSheet {
 	get template() {
 		return 'systems/cthack/templates/actor/actor-sheet.hbs';
 	}
-
-	/* -------------------------------------------- */
 
 	/** @override */
 	getData() {
@@ -123,10 +123,14 @@ export class CtHackActorSheet extends ActorSheet {
 	/* -------------------------------------------- */
 
 	/**
-   * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
-   * @param {Event} event   The originating click event
-   * @private
-  */
+	 * @name _onItemCreate
+	 * @description Callback on delete item actions
+	 * 				Creates a new Owned Item for the actor using initial data defined in the HTML dataset
+	 * @private
+	 * 
+	 * @param {Event} event   The originating click event
+	 * 
+	 */
 	_onItemCreate(event) {
 		event.preventDefault();
 		const header = event.currentTarget;
@@ -150,10 +154,14 @@ export class CtHackActorSheet extends ActorSheet {
 	}
 
 	/**
-   * Callback on delete item actions
-   * @param event the roll event
-   * @private
-   */
+	 * @name _onItemDelete
+	 * @description Callback on delete item actions
+	 * 				The result depends on the data type
+	 * @private
+	 * 
+	 * @param {Event} event   The originating click event
+	 * 
+	 */  
 	async _onItemDelete(event) {
 		event.preventDefault();
 		const li = $(event.currentTarget).parents('.item');
@@ -177,10 +185,14 @@ export class CtHackActorSheet extends ActorSheet {
 	}
 
 	/**
-   * Callback on use item actions
-   * @param event the roll event
-   * @private
-   */
+	 * @name _onItemUse
+	 * @description Callback on use item actions
+	 * 				Only ability type is managed
+	 * @private
+	 * 
+	 * @param {Event} event   The originating click event
+	 * 
+	 */  
 	_onItemUse(event) {
 		event.preventDefault();
 		const li = $(event.currentTarget).parents('.item');
@@ -194,13 +206,23 @@ export class CtHackActorSheet extends ActorSheet {
 		}
 	}
 
+	/**
+	 * @name _useAbility
+	 * @description 		Handles ability use
+	 * 						Decreases the usage left by 1
+	 * 						Display the time of the use
+	 * @private
+	 * 
+	 * @param {*} ability   The ability item used
+	 * 
+	 */ 
 	_useAbility(ability) {
 		if (CONFIG.debug.cthack) console.log(`Use ability ${ability.name}`);
 		let remaining = ability.data.data.uses.value;
 		if (remaining > 0) {
 			remaining--;
 		}
-		const now = new Date(); //new Date(game.time.serverTime * 1000);// new Date().getTime();
+		const now = new Date(); 
 		const lastTime = formatDate(now);
 		ability.update({ 'data.uses.value': remaining, 'data.uses.last': lastTime });
 		this.actor.sheet.render(true);

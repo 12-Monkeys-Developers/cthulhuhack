@@ -9,7 +9,8 @@ export class CtHackOpponentSheet extends ActorSheet {
 			classes: [ 'cthack', 'sheet', 'actor', 'opponent' ],
 			width: 650,
 			height: 430,
-			tabs: [ { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' } ]
+			tabs: [ { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' } ],
+			dragDrop: [{ dragSelector: ".items-list .item", dropSelector: null }]
 		});
 	}
 
@@ -131,8 +132,17 @@ export class CtHackOpponentSheet extends ActorSheet {
    * @private
    */
 	_onAttackDamageRoll(event) {
+		/*
+
+
 		event.preventDefault();
 		const dice = event.currentTarget.parentElement.childNodes[1].nodeValue;
 		this.actor.rollAttackDamageRoll(dice, { event: event });
+		*/
+		const li = $(event.currentTarget).parents('.item');
+		const itemId = li.data('itemId');
+		let item = this.actor.getOwnedItem(itemId);
+
+		this.actor.rollAttackDamageRoll(item, { event: event });
 	}
 }
