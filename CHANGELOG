@@ -1,3 +1,7 @@
+0.7.0
+- Add macros creation and hotbar management
+- Refactor to be compatible with Token Action HUD
+
 0.6.3
 - Improve chat display
 

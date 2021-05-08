@@ -17,7 +17,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 0.6.1
+version : 0.7.0
 
 Actor
 - Personnage
@@ -50,6 +50,10 @@ Options
 - Richesse en tant que ressource : active/désactive l'affichage sur la fiche
 - Resource diverse : si le champ est rempli, alors une nouvelle ressource portant ce nom est activée en remplacement de la resource Richesse
 
+Hotbar
+- Création de macros pour les Acteurs
+- Création de macros pour les Objets
+
 Compendiums
 - Archétypes standards (avec les variations pour le savant) : Drag and drop sur la fiche de perso qui remplace les valeurs de la fiche par celles de l'archetype
 - Armes spéciales
@@ -80,7 +84,7 @@ This system is under development.
 ---------------
 Features
 ---------------
-version : 0.6.3
+version : 0.7.0
 
 Actor
 - Character
@@ -111,6 +115,10 @@ Options
 - Hit dice as a resource: activates/deactivates the display on the form
 - Wealth as a resource: enables/disables display on the form
 - Miscellaneous option : if the field is filled, this is used as a resource and will replace Wealth resource
+
+Hotbar
+- Macro creation with Actor
+- Macro creation with Items
 
 Compendiums
 - Only in French right now
