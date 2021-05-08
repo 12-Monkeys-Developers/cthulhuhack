@@ -98,6 +98,8 @@ CTHACK.shock = {
 	'SK-SCR': 'CTHACK.Shock.Scr'
 };
 
+CTHACK.debug = false;
+
 export const ABILITY_KEYS_RESERVED = [
 	'ANIHAN',
 	'ADRRUS',

@@ -191,5 +191,14 @@
         "RollWithMalus": "Avec un malus de {modifier}.",
         "RollSuccess": "C'est un Succès !",
         "RollFailure": "C'est un Echec !"
+    },
+
+    "MACROS": {
+        "MultipleTokensSelected": "Vous avez sélectionné plusieurs tokens.",
+        "NoTokenSelected": "Aucun token n'est sélectionné.",
+        "ObjectNotInInventory": "L'objet {itemName} n'est pas dans l'inventaire de {actorName}.",
+        "ObjectWithoutResource": "L'objet {itemName} n'est pas un objet à ressource.",
+        "ObjectEmptyResource": "L'objet ${itemName} n'a plus de ressources.",
+        "AttackNotFound": "{opponentName} n'a pas l'attaque {itemName}."
     }
 }

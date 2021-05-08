@@ -21,9 +21,6 @@ Hooks.once('init', async function() {
 	console.log(`CTHACK | Initializing the Cthulhu Hack Game System\n`);
 	console.log(CTHACK.ASCII);
 
-	//TODO false by default
-	CONFIG.debug.cthack = true;
-
 	game.cthack = {
 		CtHackActor,
 		CtHackItem,
@@ -108,7 +105,7 @@ Hooks.once("setup", function() {
 			let macro;
 
 			// Item or weapon for character
-			if (item.type === "item" && item.type === "weapon") {
+			if (item.type === "item" || item.type === "weapon") {
 				command = `game.cthack.macros.rollItemMacro("${item._id}", "${item.name}");`;
 				macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
 				if (!macro) {

@@ -1,6 +1,6 @@
 import { CTHACK } from '../config.js';
 import { diceRoll } from '../dice.js';
-import { findLowerDice } from '../utils.js';
+import { formatDate, findLowerDice } from '../utils.js';
 
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
@@ -51,7 +51,7 @@ export class CtHackActor extends Actor {
      * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
      */
 	async rollSave(saveId, options = {}) {
-		if (CONFIG.debug.cthack) console.log(`Roll save ${saveId}`);
+		if (CTHACK.debug) console.log(`Roll save ${saveId}`);
 		const save = CTHACK.saves[saveId];
 		const label = game.i18n.localize(save);
 		const saveValue = this.data.data.saves[saveId].value;
@@ -59,7 +59,7 @@ export class CtHackActor extends Actor {
 		let hasAdvantage = false;
 		let hasDisadvantage = false;
 		if (this.getFlag('cthack', 'disadvantageOOA') !== undefined && this.getFlag('cthack', 'disadvantageOOA') === true) {
-			if (CONFIG.debug.cthack) console.log('Out of Action Disadvantage');
+			if (CTHACK.debug) console.log('Out of Action Disadvantage');
 			hasDisadvantage = true;
 		}
 
@@ -89,7 +89,7 @@ export class CtHackActor extends Actor {
      * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
      */
 	async rollResource(resourceId, options = {}) {
-		if (CONFIG.debug.cthack) console.log(`Roll resource ${resourceId}`);
+		if (CTHACK.debug) console.log(`Roll resource ${resourceId}`);
 		const label = game.i18n.localize(CTHACK.attributes[resourceId]);
 		const resourceValue = this.data.data.attributes[resourceId].value;
 
@@ -139,7 +139,7 @@ export class CtHackActor extends Actor {
 	async rollMaterial(item, options = {}) {
 		const dice = item.data.data.dice;
 
-		if (CONFIG.debug.cthack) console.log(`Roll material ${dice}`);
+		if (CTHACK.debug) console.log(`Roll dice ${dice} for material ${item.name}`);
 
 		// Material at "0" or "---"
 		if (dice === '0' || dice === '') {
@@ -162,17 +162,37 @@ export class CtHackActor extends Actor {
 
 		// Resource loss
 		if (rollMaterial && (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2)) {
-			await this.decreaseMaterialResource(item._id, item.data.data.dice) ;
+			await this._decreaseMaterialResource(item._id, item.data.data.dice) ;
 		}
 	}
 
+	/**
+	 * @name useAbility
+	 * @description 		Handles ability use
+	 * 						Decreases the usage left by 1
+	 * 						Display the time of the use
+	 * @public
+	 * 
+	 * @param {*} ability   The ability item used
+	 * 
+	 */ 
+	useAbility(ability) {
+		if (CTHACK.debug) console.log(`Use ability ${ability.name}`);
+		let remaining = ability.data.data.uses.value;
+		if (remaining > 0) {
+			remaining--;
+		}
+		const now = new Date(); 
+		const lastTime = formatDate(now);
+		ability.update({ 'data.uses.value': remaining, 'data.uses.last': lastTime });		
+	}
 
 	/**
-   * Decrease a material dice
-   * @param {String} itemId   The id of the item
-   * @param {String} dice   "d4""
-   */
-	 async decreaseMaterialResource(itemId, dice) {
+	 * Decrease a material dice
+	 * @param {String} itemId   The id of the item
+	 * @param {String} dice   "d4""
+	 */
+	async _decreaseMaterialResource(itemId, dice) {
 		const newDiceValue = findLowerDice(dice);
 		this.updateOwnedItem({ _id: itemId, 'data.dice': newDiceValue });			
 	}	
@@ -182,7 +202,7 @@ export class CtHackActor extends Actor {
    * @param {String} resourceId   The resource ID (e.g. "smo")
    */
 	async decreaseResource(resourceId) {
-		if (CONFIG.debug.cthack) console.log(`Decrease resource ${resourceId}`);
+		if (CTHACK.debug) console.log(`Decrease resource ${resourceId}`);
 		const actorData = this.data;
 		const actorResource = actorData.data.attributes[resourceId];
 
@@ -208,7 +228,7 @@ export class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
 	async rollDamageRoll(damageId, options = {}) {
-		if (CONFIG.debug.cthack) console.log(`Roll ${damageId} roll`);
+		if (CTHACK.debug) console.log(`Roll ${damageId} roll`);
 
 		const damageDice = this.data.data.attributes[damageId].value;
 
@@ -238,7 +258,7 @@ export class CtHackActor extends Actor {
    */
 	async rollAttackDamageRoll(item, options = {}) {
 		const itemData = item.data;
-		if (CONFIG.debug.cthack) console.log(`Attack roll for ${itemData.name} with a ${itemData.data.damageDice} dice`);
+		if (CTHACK.debug) console.log(`Attack roll for ${itemData.name} with a ${itemData.data.damageDice} dice`);
 
 		const label = game.i18n.format('CTHACK.DamageDiceRollPrompt', {item: itemData.name});
 
@@ -356,7 +376,7 @@ export class CtHackActor extends Actor {
 	}
 
 	async _createActiveEffect(itemData) {
-		if (CONFIG.debug.cthack) console.log(itemData);
+		if (CTHACK.debug) console.log(itemData);
 
 		let effectData;
 
@@ -460,27 +480,27 @@ export class CtHackActor extends Actor {
 		// Delete the Active Effect
 		let effect;
 		const definitionKey = item.data.data.key;
-		if (CONFIG.debug.cthack) console.log('deleteDefinitionItem : definitionKey = ' + definitionKey);
+		if (CTHACK.debug) console.log('deleteDefinitionItem : definitionKey = ' + definitionKey);
 		if (definitionKey === 'OOA-CRB') {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
+			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		} else if (definitionKey === 'OOA-MIC' || definitionKey === 'OOA-STA' || definitionKey === 'OOA-WIN') {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
+			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 			await this.unsetFlag('cthack', 'disadvantageOOA');
 		} else if (definitionKey.startsWith('OOA')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
+			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		} else if (definitionKey.startsWith('TI')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
+			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		} else if (definitionKey.startsWith('SK')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CONFIG.debug.cthack) console.log('Delete Active Effect : ' + effect.data._id);
+			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
 			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
 		}
 	}
