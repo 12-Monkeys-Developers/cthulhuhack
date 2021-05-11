@@ -1,1 +1,1 @@
-- Fix for Token Action HUD
+- Fix miscellaneous resource

@@ -17,7 +17,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 0.7.1
+version : 0.7.2
 
 Actor
 - Personnage
@@ -37,6 +37,7 @@ Item
     - Prise en compte du désavantage pour certains statuts Hors Jeu
     - Une icône apparait sur le token en cas de condition
 - Clic sur le nom pour déplier la description
+- Possibilité de trier les capacités et les objets (dans la catégorie Armes ou Equipement) en faisant glisser un objet
 
 Options
 - Fortune : active/désactive l'affichage sur la fiche
@@ -50,9 +51,14 @@ Options
 - Richesse en tant que ressource : active/désactive l'affichage sur la fiche
 - Resource diverse : si le champ est rempli, alors une nouvelle ressource portant ce nom est activée en remplacement de la resource Richesse
 
-Hotbar
-- Création de macros pour les Acteurs
-- Création de macros pour les Objets
+Barre de macros
+- Glisser un acteur : permet d'ouvrir la fiche. Ne peut être créé que par le MJ, mais il peut le faire pour un joueur et lui partager la macro créée.
+- Glisser un article : permet de l'ouvrir directement
+- Glisser un item
+    - Equipement d'un personnage : s'il reste des ressources, permet d'ouvrir la fenêtre de lancer de dés correspondante
+    - Attaque d'un opposant : permet d'ouvrir la fenêtre de dommages
+    - Capacité : si c'est une capacité qui a un nombre d'usages limité seulement. Permet d'utiliser la capacité une fois. Mettre Maximum vide au lieu de 0 pour les capacités non utilisables
+- Pour utiliser une macro il faut sélectionner le token qui peut l'utiliser
 
 Compendiums
 - Archétypes standards (avec les variations pour le savant) : Drag and drop sur la fiche de perso qui remplace les valeurs de la fiche par celles de l'archetype
@@ -84,7 +90,7 @@ This system is under development.
 ---------------
 Features
 ---------------
-version : 0.7.1
+version : 0.7.2
 
 Actor
 - Character

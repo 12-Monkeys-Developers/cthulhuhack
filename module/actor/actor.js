@@ -99,7 +99,7 @@ export class CtHackActor extends Actor {
 
 		let title;
 
-		if (resourceId != 'mis') {
+		if (resourceId != 'miscellaneous') {
 			title = game.i18n.format('CTHACK.ResourceRollPromptTitle', { resource: label });
 		} else {
 			if (game.settings.get('cthack', 'MiscellaneousResource')) {
