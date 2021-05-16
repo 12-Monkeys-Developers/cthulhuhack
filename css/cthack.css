@@ -361,7 +361,9 @@
   text-shadow: none;
 }
 
-.cthack .resource-label {
+.cthack .
+
+{
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -483,4 +485,75 @@
 
 .roll-success {
   color: green;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptextleft {
+  visibility: hidden;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -45px;
+  left: -25px;
+}
+
+.tooltip .tooltiptextright {
+  visibility: hidden;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -45px;
+  left: -85px;
+}
+
+.tooltip:hover .tooltiptextleft,
+.tooltip:hover .tooltiptextright {
+  visibility: visible;
+}
+
+div.tip .tip-title {
+  color: #E77600 !important;
+  font-weight: bold;
+}
+
+label em {
+  /*display:none;*/
+  visibility: hidden;
+  width: 400px;
+  background-color: black;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: 14px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+}
+/*label:hover em {display:block;}*/
+label:hover em {visibility: visible;}
+
+.chat-message .message-header .message-sender {
+  font-weight: bold;
 }

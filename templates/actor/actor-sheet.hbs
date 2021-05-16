@@ -35,7 +35,7 @@
               <div class="saves grid grid-3col">
                 {{#each data.saves as |save key|}}
                   <div class="save flexrow flex-group-center" data-save="{{key}}">
-                    <label for="data.saves.{{key}}.value" class="resource-label save-name rollable" title='{{localize (toDesc key)}}'>{{localize (toAbbr key)}}</label>
+                    <label for="data.saves.{{key}}.value" class="resource-label save-name rollable">{{localize (toAbbr key)}}<em>{{localize (toDesc key)}}</em></label>
                     <input type="text" name="data.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value"/>
                     <input type="checkbox" name="data.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}}/>
                   </div>

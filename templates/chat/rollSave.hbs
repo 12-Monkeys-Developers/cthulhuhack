@@ -1,7 +1,7 @@
 <div class="chat-save-roll">
     <h4 class="chat-save-roll-title">Jet de SAUVEGARDE de : {{rollId}}</h4>
     <div >
-    {{#if advantageFromDialog}}<span>{{localize "CHAT.RollWithAdvantageFromDialog"}}<br></span>{{/if}}{{#if disadvantageFromDialog}}<span>{{localize "CHAT.RollWithDisadvantageFromDialog"}}<br></span>{{/if}}
+    {{#if advantageFromDialog}}<span>{{localize "CHAT.RollWithAdvantageFromDialog"}}<br></span>{{/if}}{{#if disadvantageFromDialog}}<span>{{localize "CHAT.RollWithDisadvantageFromDialog"}}<br></span>{{/if}}{{#if doubleAdvantageFromDialog}}<span>{{localize "CHAT.RollWithDoubleAdvantageFromDialog"}}<br></span>{{/if}}{{#if doubleDisadvantageFromDialog}}<span>{{localize "CHAT.RollWithDoubleDisadvantageFromDialog"}}<br></span>{{/if}}
     {{#if advantage}}<span>{{localize "CHAT.RollWithAdvantage"}}<br></span>{{/if}}{{#if disadvantage}}<span>{{localize "CHAT.RollWithDisadvantage"}}<br></span>{{/if}}
     {{#if (isModifierPositive modifier)}}<span>{{ localize "CHAT.RollWithBonus" modifier=modifier }}<br></span>{{/if}}
     {{#if (isModifierNegative modifier)}}<span>{{ localize "CHAT.RollWithMalus" modifier=modifier }}<br></span>{{/if}}

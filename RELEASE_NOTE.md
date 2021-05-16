@@ -1,1 +1,3 @@
-- Fix miscellaneous resource
+- Add double advantage and double disadvantage for rolls : Saves, Resources, Weapons, Material of a character
+- Update dice roll interface with tooltips
+- Change tooltip's design and position for Saves and Resources

@@ -24,7 +24,7 @@
  *
  * @return {Promise}                    A Promise which resolves once the roll workflow has completed
  */
- export async function diceRoll(
+export async function diceRoll(
 	{
 		diceType = 'd20',
 		customFormula = null,
@@ -54,52 +54,34 @@
 		parts = parts.concat([ '@modifier' ]);
 	}
 
+	// adv is the choice on the Dialog Roll : from -2 to +2
 	let adv = 0;
 
 	// Define the inner roll function
 	const _roll = (parts, adv, form, advantage, disadvantage) => {
 		// Determine the dice roll and modifiers
-		let nd = 1;
+		let nd;
 		let mods = '';
 
-		// Handle advantage choice
-		if (adv === 1) {
-			nd++;
-			// Custom advantage or disadvantage
-			if (advantage) {
-				nd++;
-			} else if (disadvantage) {
-				nd--;
-			}
+		nd = _calculateNumberOfDices(adv, advantage, disadvantage);
 
-			if (rollType === 'Save') {
-				mods += 'kl';
-			} else mods += 'kh';
-		} else if (adv === -1) {
-			// Handle disadvantage choice
-			nd++;
-			// Custom advantage or disadvantage
-			if (advantage) {
-				nd--;
-			} else if (disadvantage) {
-				nd++;
-			}
-			if (rollType === 'Save') {
-				mods += 'kh';
-			} else mods += 'kl';
-		} else if (adv === 0) {
-			// Handle normal choice
-			// Custom advantage or disadvantage
-			if (advantage) {
-				nd++;
-				if (rollType === 'Save') {
+		if (rollType === 'Save') {
+			if (nd === 1) mods += 'kl';
+			else {
+				if (adv === 1 || adv == 2) {
 					mods += 'kl';
-				} else mods += 'kh';
-			} else if (disadvantage) {
-				nd++;
-				if (rollType === 'Save') {
+				} else {
 					mods += 'kh';
-				} else mods += 'kl';
+				}
+			}
+		} else {
+			if (nd === 1) mods += 'kh';
+			else {
+				if (adv === 1 || adv == 2) {
+					mods += 'kh';
+				} else {
+					mods += 'kl';
+				}
 			}
 		}
 
@@ -133,8 +115,10 @@
 
 		// Flag options for all dices of a roll
 		for (let d of roll.dice) {
-			if ( adv === 1 ) d.options.advantage = true;
-			else if ( adv === -1 ) d.options.disadvantage = true;
+			if (adv === 1) d.options.advantage = true;
+			else if (adv === -1) d.options.disadvantage = true;
+			else if (adv === 2) d.options.doubleadvantage = true;
+			else if (adv === -2) d.options.doubledisadvantage = true;
 			if (targetValue) d.options.target = targetValue;
 
 			if (advantage) d.options.advantageFromCondition = true;
@@ -165,39 +149,34 @@
 
 	// Create a Chat Message
 	if (roll && chatMessage) {
-
 		// Get the display name of the roll
 		roll.rollId = rollId;
 
-		if (advantage){
+		if (advantage) {
 			roll.advantage = true;
 		}
-		if (disadvantage){
+		if (disadvantage) {
 			roll.disadvantage = true;
 		}
 
 		for (let d of roll.dice) {
-			if ( d.options.advantage ){
+			if (d.options.advantage) {
 				roll.advantageFromDialog = true;
-			};
-			if ( d.options.disadvantage ){
-				roll.disadvantageFromDialog = true;
-			};				
-		}
-
-		if (rollType === 'Resource' || rollType === 'Material') {
-			// Resource roll
-			if (roll.total == 1 || roll.total == 2) {
-				roll.resourceLost = true;
-				roll.isSuccess = false;
 			}
-			else roll.resourceLost = false;
-			
-			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollResource.hbs`, roll);
+			if (d.options.disadvantage) {
+				roll.disadvantageFromDialog = true;
+			}
+			if (d.options.doubleadvantage) {
+				roll.doubleAdvantageFromDialog = true;
+			}
+			if (d.options.doubledisadvantage) {
+				roll.doubleDisadvantageFromDialog = true;
+			}
 		}
 
-		if (rollType === 'Save' && targetValue){
-			if (modifier !== null && modifier != "") {
+		// Define which template to use for the different rollType (Save, Resource, Material, Damage, AttackDamage)
+		if (rollType === 'Save' && targetValue) {
+			if (modifier !== null && modifier != '') {
 				roll.modifier = modifier;
 			}
 
@@ -209,8 +188,22 @@
 			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollSave.hbs`, roll);
 		}
 
-		if (rollType !== "Resource" && rollType != "Material" && rollType != "Save") {
+		if (rollType === 'Resource' || rollType === 'Material') {
+			// Resource roll
+			if (roll.total == 1 || roll.total == 2) {
+				roll.resourceLost = true;
+				roll.isSuccess = false;
+			} else roll.resourceLost = false;
+
 			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollResource.hbs`, roll);
+		}
+
+		if (rollType === 'Damage') {
+			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollOther.hbs`, roll);
+		}
+
+		if (rollType === 'AttackDamage') {
+			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollOther.hbs`, roll);
 		}
 
 		roll.toMessage(messageData, messageOptions);
@@ -220,8 +213,81 @@
 }
 
 /**
+ * @name _calculateNumberOfDices
+ * 
+ * @description	Calculate the number of idices to roll depending of advantages and disadvantages
+ *
+ * @private
+ * 
+ * @param (Int)		dialogChoice From -2 (Double disadvantage) to +2 (Double advantage) chosen on the roll dialog
+ * @param (Boolean)	advantage		true if there is an advantage given by a capacity or condition
+ * @param (Boolean)	disadvantage	false if there is a disadvantage given by a capacity or condition
+ * 
+ * @returns (Int) the number of dices to roll
+ */
+function _calculateNumberOfDices(dialogChoice, advantage, disadvantage) {
+	let numberofDices;
+
+	// Handle normal choice
+	if (dialogChoice === 0) {
+		numberofDices = 1;
+		// Custom advantage or disadvantage
+		if (advantage && disadvantage) {
+			return numberofDices;
+		}
+		if (advantage || disadvantage) {
+			numberofDices++;
+		}
+		return numberofDices;
+	}
+
+	// Handle double advantage choice
+	if (dialogChoice === 2) {
+		numberofDices = 3;
+		// Custom advantage or disadvantage
+		if (advantage) {
+			numberofDices++;
+		}
+		if (disadvantage) {
+			numberofDices--;
+		}
+	} else if (dialogChoice === 1) {
+		// Handle advantage choice
+		numberofDices = 2;
+		// Custom advantage or disadvantage
+		if (advantage) {
+			numberofDices++;
+		}
+		if (disadvantage) {
+			numberofDices--;
+		}
+	} else if (dialogChoice === -1) {
+		// Handle disadvantage choice
+		numberofDices = 2;
+		// Custom advantage or disadvantage
+		if (advantage) {
+			numberofDices--;
+		}
+		if (disadvantage) {
+			numberofDices++;
+		}
+	} else if (dialogChoice === -2) {
+		// Handle double disadvantage choice
+		numberofDices = 3;
+		// Custom advantage or disadvantage
+		if (advantage) {
+			numberofDices--;
+		}
+		if (disadvantage) {
+			numberofDices++;
+		}
+	}
+	return numberofDices;
+}
+
+/**
  * Present a Dialog form which creates a roll once submitted
- * @return {Promise<Roll>}
+ * @returns {Promise<Roll>}
  * @private
  */
 async function _diceRollDialog({ template, title, parts, data, rollMode, dialogOptions, rollType, modifier, advantage, disadvantage, abilitiesAdvantages, roll } = {}) {
@@ -240,7 +306,7 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 	};
 	const html = await renderTemplate(template, dialogData);
 
-	if (rollType !== 'AttackDamage') {
+	if (rollType !== 'Damage' && rollType !== 'AttackDamage') {
 		// Create the Dialog window
 		return new Promise((resolve) => {
 			new Dialog(
@@ -248,17 +314,29 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 					title: title,
 					content: html,
 					buttons: {
-						advantageBtn: {
-							label: game.i18n.localize('CTHACK.Advantage'),
-							callback: (html) => resolve(roll(parts, 1, html[0].querySelector('form'), advantage, disadvantage))
-						},
-						normalBtn: {
-							label: game.i18n.localize('CTHACK.Normal'),
-							callback: (html) => resolve(roll(parts, 0, html[0].querySelector('form'), advantage, disadvantage))
+						doubleDisadvantageBtn: {
+							icon: `<div class="tooltip"><i class="fas fa-minus"></i> <i class="fas fa-minus"></i><span class="tooltiptextleft">${game.i18n.localize(
+								'CTHACK.DoubleDisadvantage'
+							)}</span></div>`,
+							callback: (html) => resolve(roll(parts, -2, html[0].querySelector('form'), advantage, disadvantage))
 						},
 						disadvantageBtn: {
-							label: game.i18n.localize('CTHACK.Disadvantage'),
+							icon: `<div class="tooltip"><i class="fas fa-minus"></i><span class="tooltiptextleft">${game.i18n.localize('CTHACK.Disadvantage')}</span></div>`,
 							callback: (html) => resolve(roll(parts, -1, html[0].querySelector('form'), advantage, disadvantage))
+						},
+						normalBtn: {
+							icon: `<div class="tooltip"><i class="fas fa-check"></i><span class="tooltiptextleft">${game.i18n.localize('CTHACK.Normal')}</span></div>`,
+							callback: (html) => resolve(roll(parts, 0, html[0].querySelector('form'), advantage, disadvantage))
+						},
+						advantageBtn: {
+							icon: `<div class="tooltip"><i class="fas fa-plus"></i><span class="tooltiptextright">${game.i18n.localize('CTHACK.Advantage')}</span></div>`,
+							callback: (html) => resolve(roll(parts, 1, html[0].querySelector('form'), advantage, disadvantage))
+						},
+						doubleAdvantageBtn: {
+							icon: `<div class="tooltip"><i class="fas fa-plus"></i> <i class="fas fa-plus"></i><span class="tooltiptextright">${game.i18n.localize(
+								'CTHACK.DoubleAdvantage'
+							)}</span></div>`,
+							callback: (html) => resolve(roll(parts, 2, html[0].querySelector('form'), advantage, disadvantage))
 						}
 					},
 					default: 'normalBtn',
@@ -267,7 +345,34 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 				dialogOptions
 			).render(true);
 		});
-	} else {
+	} else if (rollType === 'Damage') {
+		// Create the Dialog window
+		return new Promise((resolve) => {
+			new Dialog(
+				{
+					title: title,
+					content: html,
+					buttons: {
+						disadvantageBtn: {
+							icon: `<div class="tooltip"><i class="fas fa-minus"></i><span class="tooltiptextleft">${game.i18n.localize('CTHACK.Disadvantage')}</span></div>`,
+							callback: (html) => resolve(roll(parts, -1, html[0].querySelector('form'), advantage, disadvantage))
+						},
+						normalBtn: {
+							icon: `<div class="tooltip"><i class="fas fa-check"></i><span class="tooltiptextleft">${game.i18n.localize('CTHACK.Normal')}</span></div>`,
+							callback: (html) => resolve(roll(parts, 0, html[0].querySelector('form'), advantage, disadvantage))
+						},
+						advantageBtn: {
+							icon: `<div class="tooltip"><i class="fas fa-plus"></i><span class="tooltiptextright">${game.i18n.localize('CTHACK.Advantage')}</span></div>`,
+							callback: (html) => resolve(roll(parts, 1, html[0].querySelector('form'), advantage, disadvantage))
+						}
+					},
+					default: 'normalBtn',
+					close: () => resolve(null)
+				},
+				dialogOptions
+			).render(true);
+		});
+	} else if (rollType === 'AttackDamage') {
 		// Create the Dialog window
 		return new Promise((resolve) => {
 			new Dialog(
@@ -276,7 +381,7 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 					content: html,
 					buttons: {
 						normalBtn: {
-							label: game.i18n.localize('CTHACK.Normal'),
+							icon: `<div class="tooltip"><i class="fas fa-check"></i><span class="tooltiptextleft">${game.i18n.localize('CTHACK.Normal')}</span></div>`,
 							callback: (html) => resolve(roll(parts, 0, html[0].querySelector('form'), advantage, disadvantage))
 						}
 					},

@@ -63,9 +63,9 @@ export class CtHackActor extends Actor {
 		}
 
 		// Roll and return
-		const rollData = mergeObject(options, {
-			title: game.i18n.format('CTHACK.SavePromptTitle', { save: label }),
+		const rollData = mergeObject(options, {			
 			rollType: 'Save',
+			title: game.i18n.format('CTHACK.SavePromptTitle', { save: label }),
 			rollId: label,
 			targetValue: saveValue,
 			abilitiesAdvantages: abilitiesAdvantages,
@@ -111,7 +111,7 @@ export class CtHackActor extends Actor {
 		}
 
 		// Roll and return
-		const rollData = mergeObject(options, {
+		const rollData = mergeObject(options, {						
 			rollType: 'Resource',
 			title: title,
 			rollId: title,
@@ -228,7 +228,7 @@ export class CtHackActor extends Actor {
 
 	/**
    * Roll an armed or unarmed damage
-   * @param {String} damageId     The damage ID (e.g. "armed" "unarmed" "attack")
+   * @param {String} damageId     The damage ID (e.g. "armed" "unarmed")
    * @param {Object} options      Options which configure how damage tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
@@ -245,11 +245,11 @@ export class CtHackActor extends Actor {
 		const label = game.i18n.localize(damage);
 
 		// Roll and return
-		const rollData = mergeObject(options, {
-			title: label,
-			diceType: damageDice,
+		const rollData = mergeObject(options, {			
 			rollType: 'Damage',
-			rollId: label
+			title: label,
+			rollId: label,
+			diceType: damageDice
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 		return await diceRoll(rollData);
@@ -257,7 +257,7 @@ export class CtHackActor extends Actor {
 
 	/**
    * Roll an attack damage
-   * @param {Item} item   		  Item of type attack
+   * @param {Item} item   		  Item of type attack for opponent
    * @param {Object} options      Options which configure how damage tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
@@ -265,13 +265,18 @@ export class CtHackActor extends Actor {
 		const itemData = item.data;
 		if (CTHACK.debug) console.log(`Attack roll for ${itemData.name} with a ${itemData.data.damageDice} dice`);
 
-		const label = game.i18n.format('CTHACK.DamageDiceRollPrompt', { item: itemData.name });
+		const label = game.i18n.format('CTHACK.AttackDamageDiceRollPrompt', { item: itemData.name });
+
+		// If there is a + in the formula, it's a custom Formula
+		let count = itemData.data.damageDice.match(/"+"/g);
 
 		// Roll and return
 		const rollData = mergeObject(options, {
+			rollType: 'AttackDamage',
 			title: label,
-			customFormula: itemData.data.damageDice,
-			rollType: 'AttackDamage'
+			rollId: label,
+			diceType: count === null ? itemData.data.damageDice : null,
+			customFormula: count !== null ? itemData.data.damageDice : null			
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 		return await diceRoll(rollData);

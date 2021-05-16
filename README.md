@@ -17,13 +17,13 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 0.7.2
+version : 0.7.3
 
 Actor
 - Personnage
     - Ajout/modification/suppression des objets et des capacités spéciales
-    - Jet de sauvegarde avec avantage/désavantage/bonus/malus, affichage de l'avantage éventuel donné par une capacité
-    - Jet de ressource avec avantage/désavantage/bonus/malus et gestion de la diminution
+    - Jet de sauvegarde avec avantage/désavantage/double avantage/double désavantage/bonus (Modificateur positi)/malus (Modificateur négatif), affichage de l'avantage éventuel donné par une capacité
+    - Jet de ressource avec avantage/désavantage/double avantage/double désavantage/bonus/malus et gestion de la diminution
 - Opposant
     - Les attaques sont sous forme d'item avec jet de dommages intégré
 
@@ -90,7 +90,7 @@ This system is under development.
 ---------------
 Features
 ---------------
-version : 0.7.2
+version : 0.7.3
 
 Actor
 - Character

@@ -1,3 +1,8 @@
+0.7.3
+- Add double advantage and double disadvantage for rolls : Saves, Resources, Weapons, Material of a character
+- Update dice roll interface with tooltips
+- Change tooltip's design and position for Saves and Resources
+
 0.7.2
 - Fix miscellaneous resource
 
