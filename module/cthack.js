@@ -45,8 +45,8 @@ Hooks.once('init', async function() {
 	CONFIG.CTHACK = CTHACK;
 
 	// Define custom Entity classes
-	CONFIG.Actor.entityClass = CtHackActor;
-	CONFIG.Item.entityClass = CtHackItem;
+	CONFIG.Actor.documentClass = CtHackActor;
+	CONFIG.Item.documentClass = CtHackItem;
 
 	// Register sheet application classes
 	Actors.unregisterSheet('core', ActorSheet);

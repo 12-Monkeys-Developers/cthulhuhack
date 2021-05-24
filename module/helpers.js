@@ -150,9 +150,8 @@ export const registerHandlebarsHelpers = function() {
 	});
 
 	Handlebars.registerHelper('getStyleForDice', function(value) {
-		if (value === "" || value == 0 || value == 1){
-			return `style="color:white;"`;
-		}
+		if (value === undefined) return;
+		if (value === "" || value == 0 || value == 1) return `style="color:white;"`;
 		return `style="background-image:url('systems/cthack/ui/dice/${value}-grey.svg');"`;
 	});
 };

@@ -2,86 +2,21 @@
   "name": "cthack",
   "title": "Cthulhu Hack",
   "description": "The Cthulhu Hack system for FoundryVTT <p>Rejoignez la communauté Discord FR : <a href='https://discord.gg/pPSDNJk'>https://discord.gg/pPSDNJk</a></p>",
+  "author": "Kristov",
+  "authors": [],
+  "url": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack",
+  "license": "LICENSE.txt",
+  "flags": {},
   "version": "0.7.3",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.9",
-  "templateVersion": 2,
-  "author": "Kristov",
-  "esmodules": ["module/cthack.js"],
-  "styles": ["css/cthack.css"],
   "scripts": [],
-  "packs": [{
-    "name": "archetypes",
-    "label": "Archetypes",
-    "system": "cthack",
-    "path": "packs/archetypes.db",
-    "entity": "Item"
-  },
-  {
-    "name": "abilities",
-    "label": "Capacités spéciales",
-    "system": "cthack",
-    "path": "packs/capacities.db",
-    "entity": "Item"
-  },
-  {
-    "name": "weapons",
-    "label": "Armes spéciales",
-    "system": "cthack",
-    "path": "packs/special-weapons.db",
-    "entity": "Item"
-  },
-  {
-    "name": "gametables",
-    "label": "Tableaux",
-    "system": "cthack",
-    "path": "packs/game-tables.db",
-    "entity": "RollTable"
-  },
-  {
-    "name": "outofaction",
-    "label": "Hors Jeu",
-    "system": "cthack",
-    "path": "packs/out-of-action.db",
-    "entity": "Item"
-  },
-  {
-    "name": "temporaryinsanity",
-    "label": "Folie passagère",
-    "system": "cthack",
-    "path": "packs/temporary-insanity.db",
-    "entity": "Item"
-  },
-  {
-    "name": "pregenerated",
-    "label": "Prétirés",
-    "system": "cthack",
-    "path": "packs/pregenerated.db",
-    "entity": "Actor"
-  },
-  {
-    "name": "shock",
-    "label": "Choc",
-    "system": "cthack",
-    "path": "packs/shock.db",
-    "entity": "Item"
-  },
-  {
-    "name": "opponents",
-    "label": "Créatures",
-    "system": "cthack",
-    "path": "packs/opponents.db",
-    "entity": "Actor"
-  }
-  ,
-  {
-    "name": "macros",
-    "label": "Macros",
-    "system": "cthack",
-    "path": "packs/macros.db",
-    "entity": "Macro"
-  }
-],
+  "esmodules": [
+    "module/cthack.js"
+  ],
+  "styles": [
+    "css/cthack.css"
+  ],
   "languages": [
     {
       "lang": "en",
@@ -94,13 +29,95 @@
       "path": "lang/fr.json"
     }
   ],
-  "gridDistance": 5,
-  "gridUnits": "ft",
-  "primaryTokenAttribute": "hp",
-  "secondaryTokenAttribute": null,
+  "packs": [
+    {
+      "name": "archetypes",
+      "label": "Archetypes",
+      "system": "cthack",
+      "path": "packs/archetypes.db",
+      "entity": "Item",
+      "private": false
+    },
+    {
+      "name": "abilities",
+      "label": "Capacités spéciales",
+      "system": "cthack",
+      "path": "packs/capacities.db",
+      "entity": "Item",
+      "private": false
+    },
+    {
+      "name": "weapons",
+      "label": "Armes spéciales",
+      "system": "cthack",
+      "path": "packs/special-weapons.db",
+      "entity": "Item",
+      "private": false
+    },
+    {
+      "name": "gametables",
+      "label": "Tableaux",
+      "system": "cthack",
+      "path": "packs/game-tables.db",
+      "entity": "RollTable",
+      "private": false
+    },
+    {
+      "name": "outofaction",
+      "label": "Hors Jeu",
+      "system": "cthack",
+      "path": "packs/out-of-action.db",
+      "entity": "Item",
+      "private": false
+    },
+    {
+      "name": "temporaryinsanity",
+      "label": "Folie passagère",
+      "system": "cthack",
+      "path": "packs/temporary-insanity.db",
+      "entity": "Item",
+      "private": false
+    },
+    {
+      "name": "pregenerated",
+      "label": "Prétirés",
+      "system": "cthack",
+      "path": "packs/pregenerated.db",
+      "entity": "Actor",
+      "private": false
+    },
+    {
+      "name": "shock",
+      "label": "Choc",
+      "system": "cthack",
+      "path": "packs/shock.db",
+      "entity": "Item",
+      "private": false
+    },
+    {
+      "name": "opponents",
+      "label": "Créatures",
+      "system": "cthack",
+      "path": "packs/opponents.db",
+      "entity": "Actor",
+      "private": false
+    },
+    {
+      "name": "macros",
+      "label": "Macros",
+      "system": "cthack",
+      "path": "packs/macros.db",
+      "entity": "Macro",
+      "private": false
+    }
+  ],
+  "system": [],
+  "dependencies": [],
   "socket": true,
-  "url": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack",
   "manifest": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack/-/raw/main/system.json",
   "download": "https://foundryvtt2.gitlab.io/FoundryVTT-Cthulhu-Hack/cthack-0.7.3.zip",
-  "license": "LICENSE.txt"
+  "protected": false,
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "hp"
 }

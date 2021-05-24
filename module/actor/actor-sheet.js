@@ -24,25 +24,27 @@ export class CtHackActorSheet extends ActorSheet {
 	}
 
 	/** @override */
-	getData() {
-		const data = super.getData();
+	getData(options) {
+		const context = super.getData(options);
+		context.actorData = context.data;
+		context.systemData = context.actorData.data;
 
-		data.abilities = data.items.filter(function(item) {
+		context.abilities = context.items.filter(function(item) {
 			return item.type === 'ability';
 		});
-		data.weapons = data.items.filter(function(item) {
+		context.weapons = context.items.filter(function(item) {
 			return item.type === 'weapon';
 		});
-		data.otheritems = data.items.filter(function(item) {
+		context.otheritems = context.items.filter(function(item) {
 			return item.type === 'item';
 		});
-		data.conditions = data.items.filter(function(item) {
+		context.conditions = context.items.filter(function(item) {
 			return item.type === 'definition';
 		});
 
-		data.isGm = game.user.isGM;
+		context.isGm = game.user.isGM;
 
-		return data;
+		return context;
 	}
 
 	/** @override */
