@@ -22,13 +22,14 @@ export class CtHackOpponentSheet extends ActorSheet {
 	}
 
 	/** @override */
-	getData() {
-		const data = super.getData();
+	getData(options) {
+		const context = super.getData(options);
+		context.opponentData = context.data;
+		context.systemData = context.opponentData.data;
 
-		data.attacks = data.items.filter(function(item) {
-			return item.type === 'attack';
-		});
-		return data;
+		context.attacks = context.items.filter(function(item) {	return item.type === 'attack'; });
+
+		return context;
 	}
 
 	/** @override */
@@ -45,7 +46,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 
 		html.find('.attack-edit').click((ev) => {
 			const li = $(ev.currentTarget).parents('.item');
-			const item = this.actor.getOwnedItem(li.data('itemId'));
+			const item = this.actor.items.get(li.data('itemId'));
 			item.sheet.render(true);
 		});
 
@@ -100,7 +101,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 		const li = $(event.currentTarget).parents('.item');
 		const itemId = li.data('itemId');
 		li.slideUp(200, () => this.render(false));
-		return this.actor.deleteOwnedItem(itemId);
+		return this.actor.deleteEmbeddedDocuments("Item",[itemId]);
 	}
 
 	/**
@@ -110,7 +111,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 	_onItemSummary(event) {
 		event.preventDefault();
 		let li = $(event.currentTarget).parents('.item'),
-			item = this.actor.getOwnedItem(li.data('item-id'));
+			item = this.actor.items.get(li.data('item-id'));
 
 		// Toggle summary
 		if (item.data.data.description !== undefined && item.data.data.description !== null) {
@@ -141,7 +142,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 		*/
 		const li = $(event.currentTarget).parents('.item');
 		const itemId = li.data('itemId');
-		let item = this.actor.getOwnedItem(itemId);
+		let item = this.actor.items.get(itemId);
 
 		this.actor.rollAttackDamageRoll(item, { event: event });
 	}

@@ -61,7 +61,7 @@ export class CtHackActorSheet extends ActorSheet {
 		html.find('.item-create').click(this._onItemCreate.bind(this));
 		html.find('.item-edit').click((ev) => {
 			const li = $(ev.currentTarget).parents('.item');
-			const item = this.actor.getOwnedItem(li.data('itemId'));
+			const item = this.actor.items.get(li.data('itemId'));
 			item.sheet.render(true);
 		});
 		html.find('.item-delete').click(this._onItemDelete.bind(this));
@@ -70,7 +70,7 @@ export class CtHackActorSheet extends ActorSheet {
 		html.find('.ability-create').click(this._onItemCreate.bind(this));
 		html.find('.ability-edit').click((ev) => {
 			const li = $(ev.currentTarget).parents('.item');
-			const item = this.actor.getOwnedItem(li.data('itemId'));
+			const item = this.actor.items.get(li.data('itemId'));
 			item.sheet.render(true);
 		});
 		html.find('.ability-delete').click(this._onItemDelete.bind(this));
@@ -115,11 +115,11 @@ export class CtHackActorSheet extends ActorSheet {
 		// Change item dice value in inventory
 		html.find('.item-dice').change((ev) => {
 			const li = $(ev.currentTarget).parents('.item');
-			const item = this.actor.getOwnedItem(li.data('itemId'));
-			const selectName = "[name='" + item._id + "']";
+			const item = this.actor.items.get(li.data('itemId'));
+			const selectName = "[name='" + item.id + "']";
 			const newValue = html.find(selectName)[0].value;
-			const update = { _id: item._id, 'data.dice': newValue };
-			this.actor.updateEmbeddedEntity('OwnedItem', update);
+			const update = { _id: item.id, 'data.dice': newValue };
+			this.actor.updateEmbeddedDocuments('Item', [update]);
 		});
 	}
 
@@ -189,21 +189,21 @@ export class CtHackActorSheet extends ActorSheet {
 		event.preventDefault();
 		const li = $(event.currentTarget).parents('.item');
 		const itemId = li.data('itemId');
-		const item = this.actor.items.find((item) => item._id === itemId);
+		const item = this.actor.items.find((item) => item.id === itemId);
 		const key = item.data.data.key;
 		li.slideUp(200, () => this.render(false));
 
 		switch (item.data.type) {
 			case 'item':
-				return this.actor.deleteOwnedItem(itemId);
+				return this.actor.deleteEmbeddedDocuments("Item",[itemId]);
 			case 'ability':
 				this.actor.deleteAbility(key, itemId);
-				return this.actor.deleteOwnedItem(itemId);
+				return this.actor.deleteEmbeddedDocuments("Item",[itemId]);
 			case 'definition':
 				await this.actor.deleteEffectFromItem(item);
-				return this.actor.deleteOwnedItem(itemId);
+				return this.actor.deleteEmbeddedDocuments("Item",[itemId]);
 			default:
-				return this.actor.deleteOwnedItem(itemId);
+				return this.actor.deleteEmbeddedDocuments("Item",[itemId]);
 		}
 	}
 
@@ -220,7 +220,7 @@ export class CtHackActorSheet extends ActorSheet {
 		event.preventDefault();
 		const li = $(event.currentTarget).parents('.item');
 		const itemId = li.data('itemId');
-		const item = this.actor.items.find((item) => item._id === itemId);
+		const item = this.actor.items.find((item) => item.id === itemId);
 		switch (item.data.type) {
 			case 'ability':
 				this.actor.useAbility(item);
@@ -244,7 +244,7 @@ export class CtHackActorSheet extends ActorSheet {
 		event.preventDefault();
 		const li = $(event.currentTarget).parents('.item');
 		const itemId = li.data('itemId');
-		const item = this.actor.items.find((item) => item._id === itemId);
+		const item = this.actor.items.find((item) => item.id === itemId);
 
 		if (CTHACK.debug) console.log(`Reset ability ${item.name}`);
 		const maxUse = item.data.data.uses.max;
@@ -296,7 +296,7 @@ export class CtHackActorSheet extends ActorSheet {
 
 		const li = $(event.currentTarget).parents('.item');
 		const itemId = li.data('item-id');
-		let item = this.actor.getOwnedItem(itemId);
+		let item = this.actor.items.get(itemId);
 
 		await this.actor.rollMaterial(item, { event: event });
 
@@ -329,12 +329,12 @@ export class CtHackActorSheet extends ActorSheet {
 	 * @return {Object}       OwnedItem data to create
 	 */	  
 	async _onDropStandardItem(data) {
-		if (!this.actor.owner) return false;
+		if (!this.actor.isOwner) return false;
 
 		const itemData = duplicate(data);
 
 		// Create the owned item
-		return this.actor.createEmbeddedEntity('OwnedItem', itemData, { renderSheet: true });
+		return this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 	}
 
 	/**
@@ -344,7 +344,7 @@ export class CtHackActorSheet extends ActorSheet {
    * @private
    */
 	async _onDropDefinitionItem(data) {
-		if (!this.actor.owner) return false;
+		if (!this.actor.isOwner) return false;
 
 		const itemData = duplicate(data);
 		itemData.data.creationDate = formatDate(new Date());
@@ -391,12 +391,12 @@ export class CtHackActorSheet extends ActorSheet {
 				abilitiesList.push({ key: key, id: id });
 				this.actor.update({ 'data.abilities': abilitiesList });
 			}
-			return this.actor.createEmbeddedEntity('OwnedItem', itemData, { renderSheet: true });
+			return this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 		} else {
 			if (!this._hasAbility(key, abilitiesList)) {
 				abilitiesList.push({ key: key, id: id });
 				this.actor.update({ 'data.abilities': abilitiesList });
-				return this.actor.createEmbeddedEntity('OwnedItem', itemData, { renderSheet: true });
+				return this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 			} else return;
 		}
 	}
@@ -482,7 +482,7 @@ export class CtHackActorSheet extends ActorSheet {
 	_onItemSummary(event) {
 		event.preventDefault();
 		let li = $(event.currentTarget).parents('.item'),
-			item = this.actor.getOwnedItem(li.data('item-id'));
+			item = this.actor.items.get(li.data('item-id'));
 
 		// Toggle summary
 		if (item.data.data.description !== undefined && item.data.data.description !== null) {

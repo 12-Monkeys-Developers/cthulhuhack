@@ -1,13 +1,13 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="weapon-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <img class="weapon-img" src="{{itemData.img}}" data-edit="img" title="{{itemData.name}}"/>
         <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+            <h1 class="charname"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>
             <div class="grid grid-2col">
               <div class="resource">
                 <label class="resource-label select-wider">{{localize "CTHACK.Material"}}</label>
-                <select name="data.dice" data-type="String" {{{getStyleForDice data.dice}}}>
-                    {{#select data.dice}}
+                <select name="data.dice" data-type="String" {{{getStyleForDice systemData.dice}}}>
+                    {{#select systemData.dice}}
                         {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                     {{/select}}
                 </select>
@@ -15,7 +15,7 @@
               <div class="resource">
                 <label class="resource-label select-wider">{{localize "CTHACK.ItemRangeName"}}</label>
                 <select name="data.range" data-type="String" class="color-white" style="width: 70px;">
-                    {{#select data.range}}
+                    {{#select systemData.range}}
                         <option value="">{{localize "CTHACK.None"}}</option>
                         <option value="near">Proche</option>
                         <option value="far">Loin</option>
@@ -38,7 +38,7 @@
 
         {{!-- Description Tab --}}
         <div class="tab" data-group="primary" data-tab="description">
-            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
         </div>
 
     </section>

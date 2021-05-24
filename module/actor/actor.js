@@ -401,7 +401,7 @@ export class CtHackActor extends Actor {
 		}
 
 		// Create the owned item
-		return this.createEmbeddedEntity('OwnedItem', itemData, { renderSheet: true });
+		return this.createEmbeddedDocuments('OwnedItem', itemData, { renderSheet: true });
 	}
 
 	/**

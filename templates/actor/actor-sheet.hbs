@@ -34,7 +34,6 @@
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use, use both the "grid" and "grid-Ncol" class where "N" can be any number from 1 to 12 and will create that number of columns.  --}}
               <div class="saves grid grid-3col">
                 {{#each systemData.saves as |save key|}}
-                  {{log 'save' save key}}
                   <div class="save flexrow flex-group-center" data-save="{{key}}">
                     <label class="resource-label save-name rollable">{{localize (toAbbr key)}}<em>{{localize (toDesc key)}}</em></label>
                     <input type="text" name="data.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value"/>
@@ -64,7 +63,7 @@
 
         {{!-- Biography Tab --}}
         <div class="tab biography" data-group="primary" data-tab="description">
-            {{editor content=systemData.biography target="systemData.biography" button=true owner=owner editable=editable}}
+            {{editor content=systemData.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
 
         {{!-- Conditions Tab --}}
