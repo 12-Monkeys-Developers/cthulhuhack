@@ -122,7 +122,7 @@ export class CtHackActor extends Actor {
 		let rollResource = await diceRoll(rollData);
 
 		// Resource loss
-		if (rollResource && (rollResource.results[0] === 1 || rollResource.results[0] === 2)) {
+		if (rollResource && (rollResource.total === 1 || rollResource.total === 2)) {
 			await this.decreaseResource(resourceId);
 		}
 	}
@@ -162,8 +162,8 @@ export class CtHackActor extends Actor {
 		let rollMaterial = await diceRoll(rollData);
 
 		// Resource loss
-		if (rollMaterial && (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2)) {
-			await this._decreaseMaterialResource(item._id, item.data.data.dice);
+		if (rollMaterial && (rollMaterial.total === 1 || rollMaterial.total === 2)) {
+			await this._decreaseMaterialResource(item.id, item.data.data.dice);
 		}
 	}
 
@@ -199,7 +199,7 @@ export class CtHackActor extends Actor {
 	 */
 	async _decreaseMaterialResource(itemId, dice) {
 		const newDiceValue = findLowerDice(dice);
-		this.updateOwnedItem({ _id: itemId, 'data.dice': newDiceValue });
+		this.updateEmbeddedDocuments("Item", [{ _id: itemId, 'data.dice': newDiceValue }]);
 	}
 
 	/**
@@ -401,7 +401,7 @@ export class CtHackActor extends Actor {
 		}
 
 		// Create the owned item
-		return this.createEmbeddedDocuments('OwnedItem', itemData, { renderSheet: true });
+		return this.createEmbeddedDocuments('Item', itemData, { renderSheet: true });
 	}
 
 	/**

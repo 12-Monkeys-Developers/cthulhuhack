@@ -88,7 +88,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 		delete itemData.data['type'];
 
 		// Finally, create the item!
-		return this.actor.createOwnedItem(itemData, { renderSheet: true });
+		return this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 	}
 
 	/**

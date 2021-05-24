@@ -106,7 +106,7 @@ Hooks.once("setup", function() {
 
 			// Item or weapon for character
 			if (item.type === "item" || item.type === "weapon") {
-				command = `game.cthack.macros.rollItemMacro("${item._id}", "${item.name}");`;
+				command = `game.cthack.macros.rollItemMacro("${item.id}", "${item.name}");`;
 				macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
 				if (!macro) {
 					macro = await Macro.create({
@@ -121,7 +121,7 @@ Hooks.once("setup", function() {
 
 			// Attack for opponent
 			if (item.type === "attack") {
-				command = `game.cthack.macros.rollAttackMacro("${item._id}", "${item.name}");`;
+				command = `game.cthack.macros.rollAttackMacro("${item.id}", "${item.name}");`;
 				macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
 				if (!macro) {
 					macro = await Macro.create({
@@ -140,7 +140,7 @@ Hooks.once("setup", function() {
 					return ui.notifications.warn(game.i18n.format('MACROS.AbilityWithoutUsage',{itemName: item.name}));
 				}
 
-				command = `game.cthack.macros.useAbilityMacro("${item._id}", "${item.name}");`;
+				command = `game.cthack.macros.useAbilityMacro("${item.id}", "${item.name}");`;
 				macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
 				if (!macro) {
 					macro = await Macro.create({

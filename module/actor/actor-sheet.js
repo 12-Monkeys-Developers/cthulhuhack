@@ -172,7 +172,7 @@ export class CtHackActorSheet extends ActorSheet {
 		delete itemData.data['type'];
 
 		// Finally, create the item!
-		return this.actor.createOwnedItem(itemData, { renderSheet: true });
+		return this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 	}
 
 	/**
@@ -326,7 +326,7 @@ export class CtHackActorSheet extends ActorSheet {
 	 * 
 	 * @param {Object} data   The data transfer extracted from the event
 	 * 
-	 * @return {Object}       OwnedItem data to create
+	 * @return {Object}       EmbeddedDocument Item data to create
 	 */	  
 	async _onDropStandardItem(data) {
 		if (!this.actor.isOwner) return false;
@@ -340,7 +340,7 @@ export class CtHackActorSheet extends ActorSheet {
 	/**
    * Handle dropping of an item reference or item data of type definition onto an Actor Sheet
    * @param {Object} data         The data transfer extracted from the event
-   * @return {Object}             OwnedItem data to create
+   * @return {Object}             EmbeddedDocument Item to create
    * @private
    */
 	async _onDropDefinitionItem(data) {

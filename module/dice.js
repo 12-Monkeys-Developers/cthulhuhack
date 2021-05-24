@@ -106,7 +106,8 @@ export async function diceRoll(
 		// Execute the roll
 		let roll = new Roll(parts.join(' + '), data);
 		try {
-			roll.roll();
+			//roll.roll(); //r3.evaluate({async: true}); 
+			roll.evaluate({async: true});
 		} catch (err) {
 			console.error(err);
 			ui.notifications.error(`Dice roll evaluation failed: ${err.message}`);
