@@ -525,25 +525,25 @@ export class CtHackActor extends Actor {
 		if (CTHACK.debug) console.log('CTHACK | deleteDefinitionItem : definitionKey = ' + definitionKey);
 		if (definitionKey === 'OOA-CRB') {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data.id);
-			await this.deleteEmbeddedDocuments('ActiveEffect', effect.data.id);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data._id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', [effect.data._id]);
 		} else if (definitionKey === 'OOA-MIC' || definitionKey === 'OOA-STA' || definitionKey === 'OOA-WIN') {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data.id);
-			await this.deleteEmbeddedDocuments('ActiveEffect', effect.data.id);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data._id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', [effect.data._id]);
 			await this.unsetFlag('cthack', 'disadvantageOOA');
 		} else if (definitionKey.startsWith('OOA')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data.id);
-			await this.deleteEmbeddedDocuments('ActiveEffect', effect.data.id);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data._id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', [effect.data._id]);
 		} else if (definitionKey.startsWith('TI')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data.id);
-			await this.deleteEmbeddedDocuments('ActiveEffect', effect.data.id);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data._id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', [effect.data._id]);
 		} else if (definitionKey.startsWith('SK')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data.id);
-			await this.deleteEmbeddedDocuments('ActiveEffect', effect.data.id);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data._id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', [effect.data._id]);
 		}
 	}
 

@@ -1,1 +1,1 @@
-- Compatible version with Foundry 0.8.6
+- Fix delete definition item
