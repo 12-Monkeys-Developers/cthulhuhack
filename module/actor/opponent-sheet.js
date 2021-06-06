@@ -133,13 +133,6 @@ export class CtHackOpponentSheet extends ActorSheet {
    * @private
    */
 	_onAttackDamageRoll(event) {
-		/*
-
-
-		event.preventDefault();
-		const dice = event.currentTarget.parentElement.childNodes[1].nodeValue;
-		this.actor.rollAttackDamageRoll(dice, { event: event });
-		*/
 		const li = $(event.currentTarget).parents('.item');
 		const itemId = li.data('itemId');
 		let item = this.actor.items.get(itemId);

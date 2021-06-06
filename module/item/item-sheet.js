@@ -22,12 +22,6 @@ export class CtHackItemSheet extends ItemSheet {
 		return `${path}/${this.item.data.type}-sheet.hbs`;
 	}
 
-	/** @override 
-	getData() {
-		const data = super.getData();
-		return data;
-	}*/
-
 	/** @override */
 	getData(options) {
 		const context = super.getData(options);

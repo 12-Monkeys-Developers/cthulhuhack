@@ -246,7 +246,7 @@ export class CtHackActorSheet extends ActorSheet {
 		const itemId = li.data('itemId');
 		const item = this.actor.items.find((item) => item.id === itemId);
 
-		if (CTHACK.debug) console.log(`Reset ability ${item.name}`);
+		if (CTHACK.debug) console.log(`CTHACK | Reset ability ${item.name}`);
 		const maxUse = item.data.data.uses.max;
 		item.update({ 'data.uses.value': maxUse, 'data.uses.last': '' });
 	}
@@ -380,7 +380,7 @@ export class CtHackActorSheet extends ActorSheet {
    * @private
    */
 	_onDropAbilityItem(itemData) {
-		const id = itemData._id;
+		const id = itemData.id;
 		const key = itemData.data.key;
 		const multiple = itemData.data.multiple;
 
@@ -431,7 +431,7 @@ export class CtHackActorSheet extends ActorSheet {
 				game.settings.set('cthack', 'FortuneValue', newValue);
 				//this.actor.sheet.render(true);
 				ChatMessage.create({
-					user: game.user._id,
+					user: game.user.id,
 					//speaker: ChatMessage.getSpeaker({user: game.user}),
 					content: game.i18n.format('CTHACK.FortuneUseMessage', { name: this.actor.name, total: newValue })
 				});

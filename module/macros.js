@@ -21,7 +21,7 @@ export class Macros {
         if (!actor) return ui.notifications.warn(game.i18n.localize('MACROS.NoTokenSelected'));
 
         // Check the actor has the item
-        let item = actor.getOwnedItem(itemId);
+        let item = actor.items.get(itemId);
         if (!item) return ui.notifications.warn(game.i18n.format('MACROS.ObjectNotInInventory',{itemName:itemName, actorName: actor.data.name }));
 
         // Open the roll window if the item uses resource and is not at 0
@@ -36,7 +36,7 @@ export class Macros {
 
     /**
      * @name rollAttackMacro
-     * @description Roll the item
+     * @description Roll the item of type Attack for Opponent
      *              Check that only one token is selected and he has the attack item
      * @public
 	 * 
@@ -55,7 +55,7 @@ export class Macros {
         if (!actor) return ui.notifications.warn(game.i18n.localize('MACROS.NoTokenSelected'));
 
         // Check the actor has the item
-        let item = actor.getOwnedItem(itemId);
+        let item = actor.items.get(itemId);
         if (!item) return ui.notifications.warn(game.i18n.format('MACROS.AttackNotFound',{opponentName:actor.data.name, itemName: itemName }));
 
         // Open the roll window
@@ -83,7 +83,7 @@ export class Macros {
         if (!actor) return ui.notifications.warn(game.i18n.localize('MACROS.NoTokenSelected'));
 
         // Check the actor has the item
-        let item = actor.getOwnedItem(itemId);
+        let item = actor.items.get(itemId);
         if (!item) return ui.notifications.warn(game.i18n.format('MACROS.AbilityNotFound',{characterName:actor.data.name, itemName: itemName}));
 
         // Use the ability

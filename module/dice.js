@@ -96,7 +96,7 @@ export async function diceRoll(
 
 		// Optionally include a situational bonus
 		if (rollType === 'Save' && form) {
-			data['modifier'] = -1 * form.modifier.value;
+			data['modifier'] = Math.abs(form.modifier.value);
 			modifier = form.modifier.value;
 			messageOptions.rollMode = form.rollMode.value;
 		}
@@ -104,13 +104,19 @@ export async function diceRoll(
 		if (rollType === 'Save' && !data['modifier']) parts.pop();
 
 		// Execute the roll
-		let roll = new Roll(parts.join(' + '), data);
+		let roll;
+
+		// A malus is added to the dice result
+		if (rollType === 'Save' && form.modifier.value < 0 ) {			
+			roll = new Roll(parts.join(' + '), data);
+		}
+		else roll = new Roll(parts.join(' - '), data);
+
 		try {
-			//roll.roll(); //r3.evaluate({async: true}); 
 			roll.evaluate({async: true});
 		} catch (err) {
 			console.error(err);
-			ui.notifications.error(`Dice roll evaluation failed: ${err.message}`);
+			//ui.notifications.error(`Dice roll evaluation failed: ${err.message}`);
 			return null;
 		}
 

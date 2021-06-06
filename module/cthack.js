@@ -90,99 +90,97 @@ Hooks.once("setup", function() {
 	}
 });
 
-   /**
-     * Create a macro when dropping an entity on the hotbar
-     * Item      - open roll dialog 
-     * Actor     - open actor sheet
-     * Journal   - open journal sheet
-     */
+/**
+ * Create a macro when dropping an entity on the hotbar
+ * Item      - open roll dialog 
+ * Actor     - open actor sheet
+ * Journal   - open journal sheet
+ */
+Hooks.on("hotbarDrop", async (bar, data, slot) => {
+	// Create macro depending of the item dropped on the hotbar
+	if (data.type == "Item") {
+		const item = data.data;
+		let command;
+		let macro;
 
-    Hooks.on("hotbarDrop", async (bar, data, slot) => {
-        // Create macro depending of the item dropped on the hotbar
-        if (data.type == "Item") {
-            const item = data.data;
-			let command;
-			let macro;
-
-			// Item or weapon for character
-			if (item.type === "item" || item.type === "weapon") {
-				command = `game.cthack.macros.rollItemMacro("${item.id}", "${item.name}");`;
-				macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
-				if (!macro) {
-					macro = await Macro.create({
-						name: item.name,
-						type : "script",
-						img: item.img,
-						command : command
-					}, {displaySheet: false})
-				}
-
+		// Item or weapon for character
+		if (item.type === "item" || item.type === "weapon") {
+			command = `game.cthack.macros.rollItemMacro("${item._id}", "${item.name}");`;
+			macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+			if (!macro) {
+				macro = await Macro.create({
+					name: item.name,
+					type : "script",
+					img: item.img,
+					command : command
+				}, {displaySheet: false})
 			}
 
-			// Attack for opponent
-			if (item.type === "attack") {
-				command = `game.cthack.macros.rollAttackMacro("${item.id}", "${item.name}");`;
-				macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
-				if (!macro) {
-					macro = await Macro.create({
-						name: item.name,
-						type : "script",
-						img: item.img,
-						command : command
-					}, {displaySheet: false})
-				}
+		}
+
+		// Attack for opponent
+		if (item.type === "attack") {
+			command = `game.cthack.macros.rollAttackMacro("${item._id}", "${item.name}");`;
+			macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+			if (!macro) {
+				macro = await Macro.create({
+					name: item.name,
+					type : "script",
+					img: item.img,
+					command : command
+				}, {displaySheet: false})
+			}
+		}
+
+		// Ability
+		if (item.type === "ability") {
+			const maxUses = item.data.uses.max;
+			if (maxUses === null) {
+				return ui.notifications.warn(game.i18n.format('MACROS.AbilityWithoutUsage',{itemName: item.name}));
 			}
 
-			// Ability
-			if (item.type === "ability") {
-				const maxUses = item.data.uses.max;
-				if (maxUses === null) {
-					return ui.notifications.warn(game.i18n.format('MACROS.AbilityWithoutUsage',{itemName: item.name}));
-				}
-
-				command = `game.cthack.macros.useAbilityMacro("${item.id}", "${item.name}");`;
-				macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
-				if (!macro) {
-					macro = await Macro.create({
-						name: item.name,
-						type : "script",
-						img: item.img,
-						command : command
-					}, {displaySheet: false})
-				}
+			command = `game.cthack.macros.useAbilityMacro("${item._id}", "${item.name}");`;
+			macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+			if (!macro) {
+				macro = await Macro.create({
+					name: item.name,
+					type : "script",
+					img: item.img,
+					command : command
+				}, {displaySheet: false})
 			}
+		}
 
-           game.user.assignHotbarMacro(macro, slot);
-        }
-        // Creates a macro to open the actor sheet of the actor dropped on the hotbar
-        else if (data.type == "Actor") {
-            let actor = game.actors.get(data.id);
-            let command = `game.actors.get("${data.id}").sheet.render(true)`
-            let macro = game.macros.entities.find(m => (m.name === actor.name) && (m.command === command));
-            if (!macro) {
-                macro = await Macro.create({
-                    name: actor.data.name,
-                    type: "script",
-                    img: actor.data.img,
-                    command: command
-                }, {displaySheet: false})
-                game.user.assignHotbarMacro(macro, slot);
-            }
-        }
-        // Creates a macro to open the journal sheet of the journal dropped on the hotbar
-        else if (data.type == "JournalEntry") {
-            let journal = game.journal.get(data.id);
-            let command = `game.journal.get("${data.id}").sheet.render(true)`
-            let macro = game.macros.entities.find(m => (m.name === journal.name) && (m.command === command));
-            if (!macro) {
-                macro = await Macro.create({
-                    name: journal.data.name,
-                    type: "script",
-                    img: (journal.data.img) ? journal.data.img : "icons/svg/book.svg",
-                    command: command
-                }, {displaySheet: false})
-                game.user.assignHotbarMacro(macro, slot);
-            }
-        }
-        //return false;
-    });
+		game.user.assignHotbarMacro(macro, slot);
+	}
+	// Creates a macro to open the actor sheet of the actor dropped on the hotbar
+	else if (data.type == "Actor") {
+		let actor = game.actors.get(data.id);
+		let command = `game.actors.get("${data.id}").sheet.render(true)`
+		let macro = game.macros.entities.find(m => (m.name === actor.name) && (m.command === command));
+		if (!macro) {
+			macro = await Macro.create({
+				name: actor.data.name,
+				type: "script",
+				img: actor.data.img,
+				command: command
+			}, {displaySheet: false})
+			game.user.assignHotbarMacro(macro, slot);
+		}
+	}
+	// Creates a macro to open the journal sheet of the journal dropped on the hotbar
+	else if (data.type == "JournalEntry") {
+		let journal = game.journal.get(data.id);
+		let command = `game.journal.get("${data.id}").sheet.render(true)`
+		let macro = game.macros.entities.find(m => (m.name === journal.name) && (m.command === command));
+		if (!macro) {
+			macro = await Macro.create({
+				name: journal.data.name,
+				type: "script",
+				img: (journal.data.img) ? journal.data.img : "icons/svg/book.svg",
+				command: command
+			}, {displaySheet: false})
+			game.user.assignHotbarMacro(macro, slot);
+		}
+	}
+});

@@ -7,9 +7,10 @@
   "url": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack",
   "license": "LICENSE.txt",
   "flags": {},
-  "version": "0.7.3",
-  "minimumCoreVersion": "0.7.5",
-  "compatibleCoreVersion": "0.7.9",
+  "version": "0.8.0",
+  "manifestPlusVersion": "1.0.0",
+  "minimumCoreVersion": "0.8.6",
+  "compatibleCoreVersion": "0.8.6",
   "scripts": [],
   "esmodules": [
     "module/cthack.js"
@@ -115,7 +116,7 @@
   "dependencies": [],
   "socket": true,
   "manifest": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack/-/raw/main/system.json",
-  "download": "https://foundryvtt2.gitlab.io/FoundryVTT-Cthulhu-Hack/cthack-0.7.3.zip",
+  "download": "https://foundryvtt2.gitlab.io/FoundryVTT-Cthulhu-Hack/cthack-0.8.0.zip",
   "protected": false,
   "gridDistance": 5,
   "gridUnits": "ft",
