@@ -1,8 +1,8 @@
 <div class="resource flex-group-center">
     <label for="data.armedDamage.value" class="resource-label armed-damage-name rollable" data-resource="armedDamage">{{localize "CTHACK.ArmedDamage"}}</label>
     <div class="resource-content">
-        <select name="data.attributes.armedDamage.value" data-type="String" {{{getStyleForDice actor.data.attributes.armedDamage.value}}} >
-        {{#select actor.data.attributes.armedDamage.value}}
+        <select name="data.attributes.armedDamage.value" data-type="String" {{{getStyleForDice systemData.attributes.armedDamage.value}}} >
+        {{#select systemData.attributes.armedDamage.value}}
             {{> "systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
         {{/select}}
         </select>
@@ -11,8 +11,8 @@
 <div class="resource flex-group-center">
     <label for="data.unarmedDamage.value" class="resource-label unarmed-damage-name rollable" data-resource="unarmedDamage">{{localize "CTHACK.UnarmedDamage"}}</label>
     <div class="resource-content">
-        <select name="data.attributes.unarmedDamage.value" data-type="String" {{{getStyleForDice actor.data.attributes.unarmedDamage.value}}} >
-        {{#select actor.data.attributes.unarmedDamage.value}}
+        <select name="data.attributes.unarmedDamage.value" data-type="String" {{{getStyleForDice systemData.attributes.unarmedDamage.value}}} >
+        {{#select systemData.attributes.unarmedDamage.value}}
             {{> "systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
         {{/select}}
         </select>
@@ -20,16 +20,16 @@
 </div>
 {{#if (isEnabled "MiscellaneousResource")}}    
     <div class="resource flex-group-center">
-        <label for="data.miscellaneous.value" class="resource-label miscellaneous-name {{#if (isDiceRollable data.attributes.miscellaneous.value)}}rollable{{/if}}"  data-resource="miscellaneous">{{getMiscellaneousValue}}</label>
+        <label for="data.miscellaneous.value" class="resource-label miscellaneous-name {{#if (isDiceRollable systemData.attributes.miscellaneous.value)}}rollable{{/if}}"  data-resource="miscellaneous">{{getMiscellaneousValue}}</label>
         <div class="resource-content">
-            <select name="data.attributes.miscellaneous.value" data-type="String" {{{getStyleForDice actor.data.attributes.miscellaneous.value}}} >
-                {{#select actor.data.attributes.miscellaneous.value}}
+            <select name="data.attributes.miscellaneous.value" data-type="String" {{{getStyleForDice systemData.attributes.miscellaneous.value}}} >
+                {{#select systemData.attributes.miscellaneous.value}}
                     {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                 {{/select}}
             </select>
             <span> / </span>
-            <select name="data.attributes.miscellaneous.max" data-type="String" {{{getStyleForDice actor.data.attributes.miscellaneous.max}}}>
-                {{#select actor.data.attributes.miscellaneous.max}}
+            <select name="data.attributes.miscellaneous.max" data-type="String" {{{getStyleForDice systemData.attributes.miscellaneous.max}}}>
+                {{#select systemData.attributes.miscellaneous.max}}
                     {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
             </select>
@@ -39,15 +39,15 @@
     <div class="resource flex-group-center">
         <label for="data.wealthDice.value" class="resource-label wealth-name {{#if (isEnabled "WealthResource")}}rollable{{/if}}"  data-resource="wealthDice">{{localize "CTHACK.Wealth"}}</label>
         <div class="resource-content">
-            <select name="data.attributes.wealthDice.value" data-type="String" {{{getStyleForDice actor.data.attributes.wealthDice.value}}} >
-                {{#select actor.data.attributes.wealthDice.value}}
+            <select name="data.attributes.wealthDice.value" data-type="String" {{{getStyleForDice systemData.attributes.wealthDice.value}}} >
+                {{#select systemData.attributes.wealthDice.value}}
                     {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                 {{/select}}
             </select>
             {{#if (isEnabled "WealthResource")}}
             <span> / </span>
-            <select name="data.attributes.wealthDice.max" data-type="String" {{{getStyleForDice actor.data.attributes.wealthDice.max}}}>
-                {{#select actor.data.attributes.wealthDice.max}}
+            <select name="data.attributes.wealthDice.max" data-type="String" {{{getStyleForDice systemData.attributes.wealthDice.max}}}>
+                {{#select systemData.attributes.wealthDice.max}}
                     {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
             </select>
@@ -59,15 +59,15 @@
 <div class="resource flex-group-center">
     <label for="data.hitDice.value" class="resource-label hit-name {{#if (isEnabled "HitDiceResource")}}rollable{{/if}}" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</label>
     <div class="resource-content">
-        <select name="data.attributes.hitDice.value" data-type="String" {{{getStyleForDice actor.data.attributes.hitDice.value}}} >
-            {{#select actor.data.attributes.hitDice.value}}
+        <select name="data.attributes.hitDice.value" data-type="String" {{{getStyleForDice systemData.attributes.hitDice.value}}} >
+            {{#select systemData.attributes.hitDice.value}}
                 {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
             {{/select}}
         </select>
         {{#if (isEnabled "HitDiceResource")}}        
         <span> / </span>
-        <select name="data.attributes.hitDice.max" data-type="String" {{{getStyleForDice actor.data.attributes.hitDice.max}}} >
-            {{#select actor.data.attributes.hitDice.max}}
+        <select name="data.attributes.hitDice.max" data-type="String" {{{getStyleForDice systemData.attributes.hitDice.max}}} >
+            {{#select systemData.attributes.hitDice.max}}
                 {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
             {{/select}}
         </select>

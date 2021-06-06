@@ -15,7 +15,6 @@ export class CtHackActor extends Actor {
 		const data = actorData.data;
 		const flags = actorData.flags;
 
-		// Make separate methods for each Actor type (character, npc, etc.) to keep things organized.
 	}
 
 	/** @override */
@@ -50,7 +49,7 @@ export class CtHackActor extends Actor {
      * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
      */
 	async rollSave(saveId, options = {}) {
-		if (CTHACK.debug) console.log(`Roll save ${saveId}`);
+		if (CTHACK.debug) console.log(`CTHACK | Roll save ${saveId}`);
 		const save = CTHACK.saves[saveId];
 		const label = game.i18n.localize(save);
 		const saveValue = this.data.data.saves[saveId].value;
@@ -58,7 +57,7 @@ export class CtHackActor extends Actor {
 		let hasAdvantage = false;
 		let hasDisadvantage = false;
 		if (this.getFlag('cthack', 'disadvantageOOA') !== undefined && this.getFlag('cthack', 'disadvantageOOA') === true) {
-			if (CTHACK.debug) console.log('Out of Action Disadvantage');
+			if (CTHACK.debug) console.log('CTHACK | Out of Action Disadvantage');
 			hasDisadvantage = true;
 		}
 
@@ -88,7 +87,7 @@ export class CtHackActor extends Actor {
      * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
      */
 	async rollResource(resourceId, options = {}) {
-		if (CTHACK.debug) console.log(`Roll resource ${resourceId}`);
+		if (CTHACK.debug) console.log(`CTHACK | Roll resource ${resourceId}`);
 		const label = game.i18n.localize(CTHACK.attributes[resourceId]);
 		const resourceValue = this.data.data.attributes[resourceId].value;
 
@@ -122,7 +121,7 @@ export class CtHackActor extends Actor {
 		let rollResource = await diceRoll(rollData);
 
 		// Resource loss
-		if (rollResource && (rollResource.results[0] === 1 || rollResource.results[0] === 2)) {
+		if (rollResource && (rollResource.total === 1 || rollResource.total === 2)) {
 			await this.decreaseResource(resourceId);
 		}
 	}
@@ -136,7 +135,7 @@ export class CtHackActor extends Actor {
 	async rollMaterial(item, options = {}) {
 		const dice = item.data.data.dice;
 
-		if (CTHACK.debug) console.log(`Roll dice ${dice} for material ${item.name}`);
+		if (CTHACK.debug) console.log(`CTHACK | Roll dice ${dice} for material ${item.name}`);
 
 		// Material without resource
 		if (item.data.data.dice === '') {
@@ -162,8 +161,8 @@ export class CtHackActor extends Actor {
 		let rollMaterial = await diceRoll(rollData);
 
 		// Resource loss
-		if (rollMaterial && (rollMaterial.results[0] === 1 || rollMaterial.results[0] === 2)) {
-			await this._decreaseMaterialResource(item._id, item.data.data.dice);
+		if (rollMaterial && (rollMaterial.total === 1 || rollMaterial.total === 2)) {
+			await this._decreaseMaterialResource(item.id, item.data.data.dice);
 		}
 	}
 
@@ -179,7 +178,7 @@ export class CtHackActor extends Actor {
 	 */
 
 	useAbility(ability) {
-		if (CTHACK.debug) console.log(`Use ability ${ability.name}`);
+		if (CTHACK.debug) console.log(`CTHACK | Use ability ${ability.name}`);
 		let remaining = ability.data.data.uses.value;
 		if (remaining === 0) {
 			return;
@@ -199,7 +198,7 @@ export class CtHackActor extends Actor {
 	 */
 	async _decreaseMaterialResource(itemId, dice) {
 		const newDiceValue = findLowerDice(dice);
-		this.updateOwnedItem({ _id: itemId, 'data.dice': newDiceValue });
+		this.updateEmbeddedDocuments("Item", [{ _id: itemId, 'data.dice': newDiceValue }]);
 	}
 
 	/**
@@ -207,7 +206,7 @@ export class CtHackActor extends Actor {
    * @param {String} resourceId   The resource ID (e.g. "smo")
    */
 	async decreaseResource(resourceId) {
-		if (CTHACK.debug) console.log(`Decrease resource ${resourceId}`);
+		if (CTHACK.debug) console.log(`CTHACK | Decrease resource ${resourceId}`);
 		const actorData = this.data;
 		const actorResource = actorData.data.attributes[resourceId];
 
@@ -233,7 +232,7 @@ export class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
 	async rollDamageRoll(damageId, options = {}) {
-		if (CTHACK.debug) console.log(`Roll ${damageId} roll`);
+		if (CTHACK.debug) console.log(`CTHACK | Roll ${damageId} roll`);
 
 		const damageDice = this.data.data.attributes[damageId].value;
 
@@ -256,27 +255,34 @@ export class CtHackActor extends Actor {
 	}
 
 	/**
-   * Roll an attack damage
-   * @param {Item} item   		  Item of type attack for opponent
-   * @param {Object} options      Options which configure how damage tests are rolled
-   * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
-   */
+	 * Roll an attack damage
+	 * @param {Item} item   		Item of type attack for opponent
+	 * @param {Object} options      Options which configure how damage tests are rolled
+	 * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
+	 */
 	async rollAttackDamageRoll(item, options = {}) {
 		const itemData = item.data;
-		if (CTHACK.debug) console.log(`Attack roll for ${itemData.name} with a ${itemData.data.damageDice} dice`);
+		if (CTHACK.debug) console.log(`CTHACK | Attack roll for ${itemData.name} with a ${itemData.data.damageDice} dice`);
 
 		const label = game.i18n.format('CTHACK.AttackDamageDiceRollPrompt', { item: itemData.name });
 
+		// Custom Formula ?
+		let isCustomFormula = false;
+
 		// If there is a + in the formula, it's a custom Formula
-		let count = itemData.data.damageDice.match(/"+"/g);
+		const count = itemData.data.damageDice.includes("+");
+		if (count != null) isCustomFormula = true;
+
+		// If the first character is not d, it's a custom Formula, 2d6 by exemple
+		if (itemData.data.damageDice.charAt(0) !== 'd') isCustomFormula = true;
 
 		// Roll and return
 		const rollData = mergeObject(options, {
 			rollType: 'AttackDamage',
 			title: label,
 			rollId: label,
-			diceType: count === null ? itemData.data.damageDice : null,
-			customFormula: count !== null ? itemData.data.damageDice : null			
+			diceType: isCustomFormula === false ? itemData.data.damageDice : null,
+			customFormula: isCustomFormula === true ? itemData.data.damageDice : null			
 		});
 		rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
 		return await diceRoll(rollData);
@@ -401,7 +407,7 @@ export class CtHackActor extends Actor {
 		}
 
 		// Create the owned item
-		return this.createEmbeddedEntity('OwnedItem', itemData, { renderSheet: true });
+		return this.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 	}
 
 	/**
@@ -409,7 +415,7 @@ export class CtHackActor extends Actor {
 	 * @param {*} itemData 
 	 */
 	async _createActiveEffect(itemData) {
-		if (CTHACK.debug) console.log(itemData);
+		if (CTHACK.debug) console.log(`CTHACK | Create active Effect with itemData ${itemData}`);
 
 		let effectData;
 
@@ -502,7 +508,7 @@ export class CtHackActor extends Actor {
 		}
 
 		// Create the Active Effect
-		this.createEmbeddedEntity('ActiveEffect', effectData);
+		this.createEmbeddedDocuments('ActiveEffect', [effectData]);
 	}
 
 	/**
@@ -516,28 +522,28 @@ export class CtHackActor extends Actor {
 		// Delete the Active Effect
 		let effect;
 		const definitionKey = item.data.data.key;
-		if (CTHACK.debug) console.log('deleteDefinitionItem : definitionKey = ' + definitionKey);
+		if (CTHACK.debug) console.log('CTHACK | deleteDefinitionItem : definitionKey = ' + definitionKey);
 		if (definitionKey === 'OOA-CRB') {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
-			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data.id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', effect.data.id);
 		} else if (definitionKey === 'OOA-MIC' || definitionKey === 'OOA-STA' || definitionKey === 'OOA-WIN') {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
-			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data.id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', effect.data.id);
 			await this.unsetFlag('cthack', 'disadvantageOOA');
 		} else if (definitionKey.startsWith('OOA')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
-			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data.id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', effect.data.id);
 		} else if (definitionKey.startsWith('TI')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
-			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data.id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', effect.data.id);
 		} else if (definitionKey.startsWith('SK')) {
 			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('Delete Active Effect : ' + effect.data._id);
-			await this.deleteEmbeddedEntity('ActiveEffect', effect.data._id);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data.id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', effect.data.id);
 		}
 	}
 

@@ -1,8 +1,8 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <img class="profile-img" src="{{itemData.img}}" data-edit="img" title="{{itemData.name}}"/>
         <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+            <h1 class="charname"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>
         </div>
     </header>
 
@@ -17,7 +17,7 @@
 
         {{!-- Description Tab --}}
         <div class="tab" data-group="primary" data-tab="description">
-            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
         </div>
 
         {{!-- Attributes Tab --}}
@@ -25,13 +25,13 @@
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityKey"}}</label>
                 <div class="form-fields">
-                    <input class="field-value input-key" name="data.key" type="text" value="{{data.key}}" data-dtype="String" {{isAbilityKeyReadOnly data.key}}>
+                    <input class="field-value input-key" name="data.key" type="text" value="{{systemData.key}}" data-dtype="String" {{isAbilityKeyReadOnly systemData.key}}>
                 </div>
             </div>
             <div class="form-group">
                 <label for="data.uses.per">{{localize "CTHACK.AbilityUsePer"}}</label>
                 <select name="data.uses.per" data-type="String">
-                {{#select data.uses.per}}
+                {{#select systemData.uses.per}}
                     <option value="Permanent">{{localize "CTHACK.AbilityUsePermanent"}}</option>
                     <option value="Session">{{localize "CTHACK.AbilityUsePerSession"}}</option>
                     <option value="Hour">{{localize "CTHACK.AbilityUsePerHour"}}</option>
@@ -42,43 +42,43 @@
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityUseValueDtl"}}</label>
                 <div class="form-fields">
-                    <input class="field-value" name="data.uses.value" type="text" value="{{data.uses.value}}" data-dtype="Number">
+                    <input class="field-value" name="data.uses.value" type="text" value="{{systemData.uses.value}}" data-dtype="Number">
                 </div>
             </div>
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityUseMax"}}</label>
                 <div class="form-fields">
-                    <input class="field-value" name="data.uses.max" type="text" value="{{data.uses.max}}" data-dtype="Number">
+                    <input class="field-value" name="data.uses.max" type="text" value="{{systemData.uses.max}}" data-dtype="Number">
                 </div>
             </div>
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityUseLast"}}</label>
                 <div class="form-fields">
-                    <input class="field-value" name="data.uses.last" type="text" value="{{data.uses.last}}" data-dtype="String">
+                    <input class="field-value" name="data.uses.last" type="text" value="{{systemData.uses.last}}" data-dtype="String">
                 </div>
             </div>        
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityMultiple"}}</label>
                 <div class="form-fields">
-                    <input class="checkbox" name="data.multiple" type="checkbox" {{checked data.multiple}}>
+                    <input class="checkbox" name="data.multiple" type="checkbox" {{checked systemData.multiple}}>
                 </div>
             </div>
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityIsCustom"}}</label>
                 <div class="form-fields">
-                    <input class="checkbox" name="data.isCustom" type="checkbox" {{checked data.isCustom}}>
+                    <input class="checkbox" name="data.isCustom" type="checkbox" {{checked systemData.isCustom}}>
                 </div>
             </div>        
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityAdvantageGiven"}}</label>
                 <div class="form-fields">
-                    <input class="checkbox" name="data.advantageGiven" type="checkbox" {{checked data.advantageGiven}}>
+                    <input class="checkbox" name="data.advantageGiven" type="checkbox" {{checked systemData.advantageGiven}}>
                 </div>
             </div> 
              <div class="form-group">
                 <label>{{localize "CTHACK.AbilityAdvantageText"}}</label>
                 <div class="form-fields">
-                    <input class="field-value" name="data.advantageText" type="text" value="{{data.advantageText}}" data-dtype="String">
+                    <input class="field-value" name="data.advantageText" type="text" value="{{systemData.advantageText}}" data-dtype="String">
                 </div>
             </div>  
         </div>
