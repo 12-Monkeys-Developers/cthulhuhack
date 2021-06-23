@@ -216,11 +216,11 @@ export class CtHackActor extends Actor {
 			let newValue = findLowerDice(oldValue);
 			actorResource.value = newValue;
 			if (resourceId === 'flashlights') {
-				this.update({ 'data.attributes.flashlights': actorResource });
+				await this.update({ 'data.attributes.flashlights': actorResource });
 			} else if (resourceId === 'smokes') {
-				this.update({ 'data.attributes.smokes': actorResource });
+				await this.update({ 'data.attributes.smokes': actorResource });
 			} else if (resourceId === 'sanity') {
-				this.update({ 'data.attributes.sanity': actorResource });
+				await this.update({ 'data.attributes.sanity': actorResource });
 			}
 		}
 	}
@@ -293,13 +293,13 @@ export class CtHackActor extends Actor {
 	 * @param {*} key 
 	 * @param {*} itemId 
 	 */
-	deleteAbility(key, itemId) {
+	async deleteAbility(key, itemId) {
 		const index = this._findAbilityIndex(key, itemId);
 		if (index !== -1) {
 			let abilitiesList = this.data.data.abilities;
 			abilitiesList.splice(index, 1);
 
-			this.update({ 'data.abilities': abilitiesList });
+			await this.update({ 'data.abilities': abilitiesList });
 		}
 	}
 
@@ -320,6 +320,10 @@ export class CtHackActor extends Actor {
 				index = i;
 			}
 			i++;
+		}
+
+		if (index === -1) {
+			if (CTHACK.debug) console.log(`La capacité de clé ${key} n'a pas été trouvée dans la liste.`);
 		}
 		return index;
 	}

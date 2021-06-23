@@ -1,1 +1,1 @@
-- Fix delete definition item
+- Fix error during ability deletion

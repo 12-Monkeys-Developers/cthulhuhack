@@ -17,7 +17,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 0.8.1
+version : 0.8.2
 
 Actor
 - Personnage
@@ -90,7 +90,7 @@ This system is under development.
 ---------------
 Features
 ---------------
-version : 0.8.1
+version : 0.8.2
 
 Actor
 - Character

@@ -153,7 +153,7 @@ export class CtHackActorSheet extends ActorSheet {
 	 * @param {Event} event   The originating click event
 	 * 
 	 */
-	_onItemCreate(event) {
+	async _onItemCreate(event) {
 		event.preventDefault();
 		const header = event.currentTarget;
 		// Get the type of item to create.
@@ -172,7 +172,7 @@ export class CtHackActorSheet extends ActorSheet {
 		delete itemData.data['type'];
 
 		// Finally, create the item!
-		return this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
+		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 	}
 
 	/**
@@ -195,15 +195,19 @@ export class CtHackActorSheet extends ActorSheet {
 
 		switch (item.data.type) {
 			case 'item':
-				return this.actor.deleteEmbeddedDocuments("Item",[itemId]);
+				await this.actor.deleteEmbeddedDocuments("Item",[itemId]);
+				break;
 			case 'ability':
-				this.actor.deleteAbility(key, itemId);
-				return this.actor.deleteEmbeddedDocuments("Item",[itemId]);
+				await this.actor.deleteEmbeddedDocuments("Item",[itemId]);
+				await this.actor.deleteAbility(key, itemId);
+				break;
 			case 'definition':
 				await this.actor.deleteEffectFromItem(item);
-				return this.actor.deleteEmbeddedDocuments("Item",[itemId]);
+				await this.actor.deleteEmbeddedDocuments("Item",[itemId]);
+				break;
 			default:
-				return this.actor.deleteEmbeddedDocuments("Item",[itemId]);
+				await this.actor.deleteEmbeddedDocuments("Item",[itemId]);
+				break;
 		}
 	}
 
@@ -225,8 +229,9 @@ export class CtHackActorSheet extends ActorSheet {
 			case 'ability':
 				this.actor.useAbility(item);
 				this.actor.sheet.render(true);
+				break;
 			default:
-				return;
+				break;
 		}
 	}
 
@@ -334,7 +339,7 @@ export class CtHackActorSheet extends ActorSheet {
 		const itemData = duplicate(data);
 
 		// Create the owned item
-		return this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
+		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 	}
 
 	/**
@@ -379,7 +384,7 @@ export class CtHackActorSheet extends ActorSheet {
    * @param {Object} data         The data transfer extracted from the event
    * @private
    */
-	_onDropAbilityItem(itemData) {
+	async _onDropAbilityItem(itemData) {
 		const id = itemData.id;
 		const key = itemData.data.key;
 		const multiple = itemData.data.multiple;
@@ -389,14 +394,14 @@ export class CtHackActorSheet extends ActorSheet {
 		if (multiple) {
 			if (!this._hasAbility(key, abilitiesList)) {
 				abilitiesList.push({ key: key, id: id });
-				this.actor.update({ 'data.abilities': abilitiesList });
+				await this.actor.update({ 'data.abilities': abilitiesList });
 			}
-			return this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
+			return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 		} else {
 			if (!this._hasAbility(key, abilitiesList)) {
 				abilitiesList.push({ key: key, id: id });
-				this.actor.update({ 'data.abilities': abilitiesList });
-				return this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
+				await this.actor.update({ 'data.abilities': abilitiesList });
+				return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 			} else return;
 		}
 	}

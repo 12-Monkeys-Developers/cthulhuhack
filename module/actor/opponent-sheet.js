@@ -69,7 +69,7 @@ export class CtHackOpponentSheet extends ActorSheet {
    * @param {Event} event   The originating click event
    * @private
   */
-	_onAttackCreate(event) {
+	async _onAttackCreate(event) {
 		event.preventDefault();
 		const header = event.currentTarget;
 		// Get the type of item to create.
@@ -88,7 +88,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 		delete itemData.data['type'];
 
 		// Finally, create the item!
-		return this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
+		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 	}
 
 	/**
