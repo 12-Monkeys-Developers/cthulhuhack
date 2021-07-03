@@ -65,6 +65,7 @@ CTHACK.abilityUsePeriod = {
 	Permanent: 'CTHACK.AbilityUsePermanent',
 	Session: 'CTHACK.AbilityUsePerSession',
 	Hour: 'CTHACK.AbilityUsePerHour',
+	Scene: 'CTHACK.AbilityUsePerScene',
 	Fight: 'CTHACK.AbilityUsePerFight'
 };
 

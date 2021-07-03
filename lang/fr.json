@@ -58,6 +58,7 @@
         "AbilityUsePermanent": "Permanent",
         "AbilityUsePerSession": "Par session",
         "AbilityUsePerHour": "Par heure",
+        "AbilityUsePerScene": "Par scène",
         "AbilityUsePerFight": "Par combat",
         "AbilityIsCustom": "Custom",
         "AbilityAdvantageGiven": "Donne un avantage",

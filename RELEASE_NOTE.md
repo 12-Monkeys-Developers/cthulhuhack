@@ -1,1 +1,1 @@
-- Fix error during ability deletion
+- Add per scene value to ability's usage type
