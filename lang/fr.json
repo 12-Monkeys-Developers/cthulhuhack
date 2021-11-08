@@ -1,4 +1,18 @@
 {
+    "ACTOR": {
+        "TypeCharacter": "Personnage",
+        "TypeOpponent": "Adversaire"
+    },
+
+    "ITEM": {
+        "TypeItem": "Objet",
+        "TypeWeapon": "Arme",
+        "TypeAttack": "Attaque",
+        "TypeArchetype": "Archétype",
+        "TypeAbility": "Capacité",
+        "TypeDefinition": "Définition"
+    },
+
     "CTHACK": {
         "SheetClassCharacter": "Personnage",
         "SheetClassOpponent": "Adversaire",

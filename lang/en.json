@@ -1,4 +1,18 @@
 {
+    "ACTOR": {
+        "TypeCharacter": "Character",
+        "TypeOpponent": "Opponent"
+    },
+
+    "ITEM": {
+        "TypeItem": "Item",
+        "TypeWeapon": "Weapon",
+        "TypeAttack": "Attack",
+        "TypeAbility": "Ability",
+        "TypeArchetype": "Archetype",
+        "TypeDefinition": "Definition"
+    },
+
     "CTHACK": {
         "SheetClassCharacter": "Character",
         "SheetClassOpponent": "Opponent",
