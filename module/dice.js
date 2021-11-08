@@ -113,7 +113,7 @@ export async function diceRoll(
 		else roll = new Roll(parts.join(' - '), data);
 
 		try {
-			roll.evaluate({async: true});
+			roll.evaluate({async: false});
 		} catch (err) {
 			console.error(err);
 			//ui.notifications.error(`Dice roll evaluation failed: ${err.message}`);
