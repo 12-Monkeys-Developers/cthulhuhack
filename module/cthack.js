@@ -113,13 +113,14 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 					type : "script",
 					img: item.img,
 					command : command
-				}, {displaySheet: false})
+				}, {displaySheet: false});
+				game.user.assignHotbarMacro(macro, slot);
 			}
 
 		}
 
 		// Attack for opponent
-		if (item.type === "attack") {
+		else if (item.type === "attack") {
 			command = `game.cthack.macros.rollAttackMacro("${item._id}", "${item.name}");`;
 			macro = game.macros.contents.find(m => (m.name === item.name) && (m.data.command === command));
 			if (!macro) {
@@ -128,12 +129,13 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 					type : "script",
 					img: item.img,
 					command : command
-				}, {displaySheet: false})
+				}, {displaySheet: false});
+				game.user.assignHotbarMacro(macro, slot);
 			}
 		}
 
 		// Ability
-		if (item.type === "ability") {
+		else if (item.type === "ability") {
 			const maxUses = item.data.uses.max;
 			if (maxUses === null) {
 				return ui.notifications.warn(game.i18n.format('MACROS.AbilityWithoutUsage',{itemName: item.name}));
@@ -147,12 +149,12 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 					type : "script",
 					img: item.img,
 					command : command
-				}, {displaySheet: false})
+				}, {displaySheet: false});
+				game.user.assignHotbarMacro(macro, slot);
 			}
 		}
-
-		game.user.assignHotbarMacro(macro, slot);
 	}
+
 	// Creates a macro to open the actor sheet of the actor dropped on the hotbar
 	else if (data.type == "Actor") {
 		let actor = game.actors.get(data.id);
@@ -168,6 +170,7 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 			game.user.assignHotbarMacro(macro, slot);
 		}
 	}
+
 	// Creates a macro to open the journal sheet of the journal dropped on the hotbar
 	else if (data.type == "JournalEntry") {
 		let journal = game.journal.get(data.id);
