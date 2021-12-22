@@ -106,7 +106,7 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 		// Item or weapon for character
 		if (item.type === "item" || item.type === "weapon") {
 			command = `game.cthack.macros.rollItemMacro("${item._id}", "${item.name}");`;
-			macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+			macro = game.macros.contents.find(m => (m.name === item.name) && (m.data.command === command));
 			if (!macro) {
 				macro = await Macro.create({
 					name: item.name,
@@ -121,7 +121,7 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 		// Attack for opponent
 		if (item.type === "attack") {
 			command = `game.cthack.macros.rollAttackMacro("${item._id}", "${item.name}");`;
-			macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+			macro = game.macros.contents.find(m => (m.name === item.name) && (m.data.command === command));
 			if (!macro) {
 				macro = await Macro.create({
 					name: item.name,
@@ -140,7 +140,7 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 			}
 
 			command = `game.cthack.macros.useAbilityMacro("${item._id}", "${item.name}");`;
-			macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+			macro = game.macros.contents.find(m => (m.name === item.name) && (m.data.command === command));
 			if (!macro) {
 				macro = await Macro.create({
 					name: item.name,
@@ -157,7 +157,7 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 	else if (data.type == "Actor") {
 		let actor = game.actors.get(data.id);
 		let command = `game.actors.get("${data.id}").sheet.render(true)`
-		let macro = game.macros.entities.find(m => (m.name === actor.name) && (m.command === command));
+		let macro = game.macros.contents.find(m => (m.name === actor.name) && (m.data.command === command));
 		if (!macro) {
 			macro = await Macro.create({
 				name: actor.data.name,
@@ -172,7 +172,7 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 	else if (data.type == "JournalEntry") {
 		let journal = game.journal.get(data.id);
 		let command = `game.journal.get("${data.id}").sheet.render(true)`
-		let macro = game.macros.entities.find(m => (m.name === journal.name) && (m.command === command));
+		let macro = game.macros.contents.find(m => (m.name === journal.name) && (m.data.command === command));
 		if (!macro) {
 			macro = await Macro.create({
 				name: journal.data.name,
