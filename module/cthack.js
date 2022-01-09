@@ -1,5 +1,6 @@
 // Import Modules
 import { CTHACK } from './config.js';
+import { SYSTEM_NAME, LOG_HEAD } from './constants.js';
 import { registerHandlebarsHelpers } from './helpers.js';
 import { preloadHandlebarsTemplates } from './templates.js';
 import { registerSystemSettings } from './settings.js';
@@ -17,8 +18,10 @@ import { Macros } from "./macros.js";
 // Import Helpers
 import * as chat from "./chat.js";
 
+import { GMManager } from './app/gm-manager.js';
+
 Hooks.once('init', async function() {
-	console.log(`CTHACK | Initializing the Cthulhu Hack Game System\n`);
+	console.log(LOG_HEAD + 'Initializing the Cthulhu Hack Game System');
 	console.log(CTHACK.ASCII);
 
 	game.cthack = {
@@ -50,11 +53,11 @@ Hooks.once('init', async function() {
 
 	// Register sheet application classes
 	Actors.unregisterSheet('core', ActorSheet);
-	Actors.registerSheet('cthack', CtHackActorSheet, { types: [ 'character' ], makeDefault: true, label: 'CTHACK.SheetClassCharacter' });
-	Actors.registerSheet('cthack', CtHackOpponentSheet, { types: [ 'opponent' ], makeDefault: true, label: 'CTHACK.SheetClassOpponent' });
+	Actors.registerSheet(SYSTEM_NAME, CtHackActorSheet, { types: [ 'character' ], makeDefault: true, label: 'CTHACK.SheetClassCharacter' });
+	Actors.registerSheet(SYSTEM_NAME, CtHackOpponentSheet, { types: [ 'opponent' ], makeDefault: true, label: 'CTHACK.SheetClassOpponent' });
 	Items.unregisterSheet('core', ItemSheet);
-	Items.registerSheet('cthack', CtHackItemSheet, { types: [ 'item', 'weapon', 'attack', 'ability', 'definition' ], makeDefault: true, label: 'CTHACK.SheetClassItem' });
-	Items.registerSheet('cthack', CtHackArchetypeSheet, { types: [ 'archetype' ], makeDefault: true, label: 'CTHACK.SheetClassItem' });
+	Items.registerSheet(SYSTEM_NAME, CtHackItemSheet, { types: [ 'item', 'weapon', 'attack', 'ability', 'definition' ], makeDefault: true, label: 'CTHACK.SheetClassItem' });
+	Items.registerSheet(SYSTEM_NAME, CtHackArchetypeSheet, { types: [ 'archetype' ], makeDefault: true, label: 'CTHACK.SheetClassItem' });
 
 	// Preload Handlebars Templates
 	preloadHandlebarsTemplates();
@@ -64,6 +67,10 @@ Hooks.once('init', async function() {
 
 	// Register System Settings
 	registerSystemSettings();
+
+	// Game Manager
+	//game.cthack.gmManager = new GMManager();
+
 });
 
 Hooks.on('renderChatMessage', async (app, html, data) => {
