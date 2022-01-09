@@ -1,43 +1,50 @@
-const GM_MANAGER = "gm-manager";
-const GM_MANAGER_POSITION = "gm-manager-position";
-const GM_MANAGER_INITIAL_POSITION = { top: 200, left: 200 };
-const GM_MANAGER_TEMPLATE = 'systems/cthack/templates/app/gm-manager.hbs';
+import { HandleDragApplication } from "./handle-drag.js";
+import { SYSTEM_NAME } from "../constants.js";
 
+const GM_MANAGER = "gm-manager";
+const GM_MANAGER_TEMPLATE = 'systems/cthack/templates/app/gm-manager.hbs';
 export class GMManager extends Application {
 
     constructor() {
-        super();
-        this.handleDrag = new HandleDragApplication(
-            doc => doc.getElementById("gm-manager"),
-            {
-              initial: GM_MANAGER_INITIAL_POSITION,
-              maxPos: { left: 200, top: 100 },
-              settings: {
-                system: SYSTEM_NAME,
-                keyPosition: GM_MANAGER_POSITION
-              }
-            }
-        )
+        super({id: GM_MANAGER});
+        Hooks.on('updateSetting', async (setting, update, options, id) => this.updateManager(setting, update, options, id));
+        Hooks.on('updateActor', async (setting, update, options, id) => this.updateManager(setting, update, options, id));
+        Hooks.on('renderPlayerList', async (setting, update, options, id) => this.updateManager(setting, update, options, id));                
         Hooks.once('ready', () => this.onReady());
       }
 
+    async updateManager(setting, update, options, id) {
+      game.cthack.gmManager.render(false);
+    }
+
     onReady() {
         if (game.user.isGM) {
-            game.cthack.gmManager.render(true);
+          game.cthack.gmManager.render(true);
         }
     }
 
     static get defaultOptions() {
-        let options = {};
-        options.id = GM_MANAGER;
-        //options.title = game.i18n.localize(ANARCHY.gmManager.title);
-        options.title = " GM Manager"
-        options.template = GM_MANAGER_TEMPLATE;
-        options.popOut = false;
-        options.resizable = false;
-        options.height = "200px";
-        options.width = "200px";
-        return options;
-    }    
+      return mergeObject(super.defaultOptions, {
+        template: GM_MANAGER_TEMPLATE,
+        title: "Statut des joueurs",
+        top: 100,
+        left: 120,
+        width: game.settings.get('cthack', 'Adrenaline') ? 600 : 500,
+        height: "auto",
+        resizable: true,
+      });
+    }
+
+    getData() {
+      const data = super.getData();
+      data.players = game.users.filter(u=>u.hasPlayerOwner && u.active);     
+      return data;      
+    }
+
+    render(force=false, options={}){
+      if (game.user.isGM) {
+        return super.render(force, options);
+      }      
+    }
 
 }

@@ -31,7 +31,11 @@ export const preloadHandlebarsTemplates = async function() {
 		// CHAT
 		'systems/cthack/templates/chat/rollSave.hbs',
 		'systems/cthack/templates/chat/rollResource.hbs',
-		'systems/cthack/templates/chat/tooltip.hbs'
+		'systems/cthack/templates/chat/tooltip.hbs',
+
+		// APP
+		'systems/cthack/templates/app/gm-manager.hbs',
+		'systems/cthack/templates/app/gm-player.hbs'
 	];
 
 	// Load the template parts

@@ -225,5 +225,11 @@
         "AbilityWithoutUsage": "La capacité {itemName} n'a pas d'utilisation limitée.",
         "AbilityUsesAtZero": "La capacité {itemName} ne peut plus être utilisée.",
         "ResourceAtZero": "La ressource {resourceName} est épuisée."
+    },
+
+    "GMMANAGER": {
+        "Adrenaline": "Adrénaline",
+        "Player": "Joueur",
+        "Character": "Personnage"
     }
 }

@@ -194,3 +194,9 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 		}
 	}
 });
+
+/*
+Hooks.on("renderPause", (_app, html) => {
+	html.find("img").attr("src", "systems/cthack/ui/cthack-logo.webp");
+});
+*/

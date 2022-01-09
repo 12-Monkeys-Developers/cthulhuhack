@@ -226,5 +226,11 @@
         "AbilityWithoutUsage": "The ability {itemName} has no limited usage.",
         "AbilityUsesAtZero": "The ability {itemName} can't be used anymore.",
         "ResourceAtZero": "The resource {resourceName} is exhausted."
+    },
+
+    "GMMANAGER": {
+        "Adrenaline": "Adrenaline",
+        "Player": "Player",
+        "Character": "Character"
     }
 }
