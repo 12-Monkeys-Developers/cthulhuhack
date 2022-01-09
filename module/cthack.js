@@ -69,7 +69,7 @@ Hooks.once('init', async function() {
 	registerSystemSettings();
 
 	// Game Manager
-	//game.cthack.gmManager = new GMManager();
+	game.cthack.gmManager = new GMManager();
 
 });
 
