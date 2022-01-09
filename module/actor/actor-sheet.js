@@ -1,5 +1,6 @@
 import { formatDate } from '../utils.js';
 import { CTHACK } from '../config.js';
+import { LOG_HEAD } from '../constants.js';
 
 /**
  * Extend the basic ActorSheet
@@ -251,7 +252,7 @@ export class CtHackActorSheet extends ActorSheet {
 		const itemId = li.data('itemId');
 		const item = this.actor.items.find((item) => item.id === itemId);
 
-		if (CTHACK.debug) console.log(`CTHACK | Reset ability ${item.name}`);
+		if (CTHACK.debug) console.log(`${LOG_HEAD}Reset ability ${item.name}`);
 		const maxUse = item.data.data.uses.max;
 		item.update({ 'data.uses.value': maxUse, 'data.uses.last': '' });
 	}

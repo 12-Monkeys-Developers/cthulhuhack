@@ -1,6 +1,7 @@
 import { CTHACK } from '../config.js';
 import { diceRoll } from '../dice.js';
 import { formatDate, findLowerDice } from '../utils.js';
+import { LOG_HEAD } from '../constants.js';
 
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
@@ -49,7 +50,7 @@ export class CtHackActor extends Actor {
      * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
      */
 	async rollSave(saveId, options = {}) {
-		if (CTHACK.debug) console.log(`CTHACK | Roll save ${saveId}`);
+		if (CTHACK.debug) console.log(`${LOG_HEAD}Roll save ${saveId}`);
 		const save = CTHACK.saves[saveId];
 		const label = game.i18n.localize(save);
 		const saveValue = this.data.data.saves[saveId].value;
@@ -87,7 +88,7 @@ export class CtHackActor extends Actor {
      * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
      */
 	async rollResource(resourceId, options = {}) {
-		if (CTHACK.debug) console.log(`CTHACK | Roll resource ${resourceId}`);
+		if (CTHACK.debug) console.log(`${LOG_HEAD}Roll resource ${resourceId}`);
 		const label = game.i18n.localize(CTHACK.attributes[resourceId]);
 		const resourceValue = this.data.data.attributes[resourceId].value;
 
@@ -135,7 +136,7 @@ export class CtHackActor extends Actor {
 	async rollMaterial(item, options = {}) {
 		const dice = item.data.data.dice;
 
-		if (CTHACK.debug) console.log(`CTHACK | Roll dice ${dice} for material ${item.name}`);
+		if (CTHACK.debug) console.log(`${LOG_HEAD}Roll dice ${dice} for material ${item.name}`);
 
 		// Material without resource
 		if (item.data.data.dice === '') {
@@ -178,7 +179,7 @@ export class CtHackActor extends Actor {
 	 */
 
 	useAbility(ability) {
-		if (CTHACK.debug) console.log(`CTHACK | Use ability ${ability.name}`);
+		if (CTHACK.debug) console.log(`${LOG_HEAD}Use ability ${ability.name}`);
 		let remaining = ability.data.data.uses.value;
 		if (remaining === 0) {
 			return;
@@ -206,7 +207,7 @@ export class CtHackActor extends Actor {
    * @param {String} resourceId   The resource ID (e.g. "smo")
    */
 	async decreaseResource(resourceId) {
-		if (CTHACK.debug) console.log(`CTHACK | Decrease resource ${resourceId}`);
+		if (CTHACK.debug) console.log(`${LOG_HEAD}Decrease resource ${resourceId}`);
 		const actorData = this.data;
 		const actorResource = actorData.data.attributes[resourceId];
 
@@ -232,7 +233,7 @@ export class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
 	async rollDamageRoll(damageId, options = {}) {
-		if (CTHACK.debug) console.log(`CTHACK | Roll ${damageId} roll`);
+		if (CTHACK.debug) console.log(`${LOG_HEAD}Roll ${damageId} roll`);
 
 		const damageDice = this.data.data.attributes[damageId].value;
 
@@ -262,7 +263,7 @@ export class CtHackActor extends Actor {
 	 */
 	async rollAttackDamageRoll(item, options = {}) {
 		const itemData = item.data;
-		if (CTHACK.debug) console.log(`CTHACK | Attack roll for ${itemData.name} with a ${itemData.data.damageDice} dice`);
+		if (CTHACK.debug) console.log(`${LOG_HEAD}Attack roll for ${itemData.name} with a ${itemData.data.damageDice} dice`);
 
 		const label = game.i18n.format('CTHACK.AttackDamageDiceRollPrompt', { item: itemData.name });
 

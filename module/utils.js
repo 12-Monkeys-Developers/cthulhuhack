@@ -1,5 +1,6 @@
 import { DICE_VALUES, ABILITY_KEYS_RESERVED } from './config.js';
 import { CTHACK } from './config.js';
+import { LOG_HEAD } from './constants.js';
 
 /**
  * Check the value is a valid dice (dX)
@@ -14,7 +15,7 @@ export function isDice(value) {
  * @param dice the current dice dX
  */
 export function findLowerDice(dice) {
-	if (CTHACK.debug) console.log(`CTHACK | Find lower dice of ${dice}`);
+	if (CTHACK.debug) console.log(`${LOG_HEAD}Find lower dice of ${dice}`);
 	let result = '0';
 	if (dice !== '0') {
 		let value = parseInt(dice.substring(1));
@@ -24,7 +25,7 @@ export function findLowerDice(dice) {
 			result = 'd' + newValue;
 		}
 	}
-	if (CTHACK.debug) console.log(`CTHACK | Lower dice is ${result}`);
+	if (CTHACK.debug) console.log(`${LOG_HEAD}Lower dice is ${result}`);
 	return result;
 }
 
@@ -63,7 +64,7 @@ export function isAbilityKeyReserved(key) {
 
 export class CthackUtils {
 	static performSocketMesssage(sockmsg) {
-		if (CTHACK.debug) console.log('CTHACK | >>>>> MSG RECV', sockmsg);
+		if (CTHACK.debug) console.log(LOG_HEAD + '>>>>> MSG RECV', sockmsg);
 		switch (sockmsg.msg) {
 			case 'msg_use_fortune':
 				return CthackUtils._handleMsgUseFortune(sockmsg.data);
@@ -76,6 +77,6 @@ export class CthackUtils {
 }
 
 export function refreshAllActorSheets() {
-	if (CTHACK.debug) console.log('CTHACK | Refreshing all ActorSheets');
+	if (CTHACK.debug) console.log(LOG_HEAD + 'Refreshing all ActorSheets');
 	Object.values(ui.windows).filter((w) => w.constructor.name === 'CtHackActorSheet').forEach((w) => w.render(false));
 }
