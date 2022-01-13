@@ -99,8 +99,8 @@ export const registerHandlebarsHelpers = function() {
 
 	Handlebars.registerHelper('getAdrenalineImage', function(value) {
 		if (value === 'pj') {
-			return 'broach-lightning-gold';
-		} else return 'token-white-skull';
+			return 'icons/commodities/currency/coin-plain-portal-gold.webp';
+		} else return 'icons/commodities/currency/coin-embossed-skull-silver.webp';
 	});
 
 	Handlebars.registerHelper('getItemsAndWeapons', function(items) {

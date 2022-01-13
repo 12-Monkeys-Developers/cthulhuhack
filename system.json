@@ -7,9 +7,9 @@
   "url": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack",
   "license": "LICENSE.txt",
   "flags": {},
-  "version": "0.9.1",
-  "minimumCoreVersion": "0.8.6",
-  "compatibleCoreVersion": "9.238",
+  "version": "0.9.3",
+  "minimumCoreVersion": "9",
+  "compatibleCoreVersion": "9.241",
   "scripts": [],
   "esmodules": [
     "module/cthack.js"
@@ -35,7 +35,7 @@
       "label": "Archetypes",
       "system": "cthack",
       "path": "packs/archetypes.db",
-      "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -43,7 +43,7 @@
       "label": "Capacités spéciales",
       "system": "cthack",
       "path": "packs/capacities.db",
-      "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -51,7 +51,7 @@
       "label": "Armes spéciales",
       "system": "cthack",
       "path": "packs/special-weapons.db",
-      "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -59,7 +59,7 @@
       "label": "Tableaux",
       "system": "cthack",
       "path": "packs/game-tables.db",
-      "entity": "RollTable",
+      "type": "RollTable",
       "private": false
     },
     {
@@ -67,7 +67,7 @@
       "label": "Hors Jeu",
       "system": "cthack",
       "path": "packs/out-of-action.db",
-      "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -75,7 +75,7 @@
       "label": "Folie passagère",
       "system": "cthack",
       "path": "packs/temporary-insanity.db",
-      "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -83,7 +83,7 @@
       "label": "Prétirés",
       "system": "cthack",
       "path": "packs/pregenerated.db",
-      "entity": "Actor",
+      "type": "Actor",
       "private": false
     },
     {
@@ -91,7 +91,7 @@
       "label": "Choc",
       "system": "cthack",
       "path": "packs/shock.db",
-      "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -99,7 +99,7 @@
       "label": "Créatures",
       "system": "cthack",
       "path": "packs/opponents.db",
-      "entity": "Actor",
+      "type": "Actor",
       "private": false
     },
     {
@@ -107,7 +107,7 @@
       "label": "Macros",
       "system": "cthack",
       "path": "packs/macros.db",
-      "entity": "Macro",
+      "type": "Macro",
       "private": false
     }
   ],
@@ -115,7 +115,7 @@
   "dependencies": [],
   "socket": true,
   "manifest": "https://gitlab.com/foundryvtt2/FoundryVTT-Cthulhu-Hack/-/raw/main/system.json",
-  "download": "https://foundryvtt2.gitlab.io/FoundryVTT-Cthulhu-Hack/cthack-0.9.1.zip",
+  "download": "https://foundryvtt2.gitlab.io/FoundryVTT-Cthulhu-Hack/cthack-0.9.3.zip",
   "protected": false,
   "gridDistance": 5,
   "gridUnits": "ft",

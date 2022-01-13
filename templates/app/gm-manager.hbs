@@ -1,0 +1,34 @@
+<div id="gm-manager" class="flex">
+  <header class="window-header flexrow draggable app-title-bar">
+  </header>
+  
+  {{#if (isEnabled "FortuneAvailable")}}
+    <br>
+    <label class="resource-label">{{localize "CTHACK.Fortune"}} : {{getFortuneValue}}</label>
+  {{/if}}
+
+  <table>
+    <thead>
+      <tr>
+        <th>{{localize "GMMANAGER.Player"}}</th>
+        <th>{{localize "GMMANAGER.Character"}}</th>
+        <th>{{localize "CTHACK.FlashLights"}}</th>
+        <th>{{localize "CTHACK.Smokes"}}</th>
+        <th>{{localize "CTHACK.Sanity"}}</th>
+        <th>{{#if (isEnabled "MiscellaneousResource")}}{{getMiscellaneousValue}}{{else}}{{localize "CTHACK.Wealth"}}{{/if}}</th>
+        <th>{{#if (isEnabled "HitDiceResource")}}{{localize "CTHACK.HitDice"}}{{else}}{{localize "CTHACK.HitPoints"}}{{/if}}</th>
+        {{#if (isEnabled "Adrenaline")}}<th>{{localize "GMMANAGER.Adrenaline"}}</th>{{/if}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each players as |player|}}
+        {{> "systems/cthack/templates/app/gm-player.hbs" player}}
+      {{/each}}    
+    </tbody>
+  </table>
+</div>
+
+
+
+
+

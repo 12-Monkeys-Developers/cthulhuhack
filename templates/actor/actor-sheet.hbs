@@ -15,8 +15,8 @@
           </div>
           {{/if}}
           {{#if (isEnabled "Adrenaline")}}
-          <img class="adrenaline-img" id="adr1" src="icons/commodities/treasure/{{getAdrenalineImage systemData.attributes.adrenaline1.value}}.webp" >
-          <img class="adrenaline-img" id="adr2" src="icons/commodities/treasure/{{getAdrenalineImage systemData.attributes.adrenaline2.value}}.webp" >
+          <img class="adrenaline-img" id="adr1" src="{{getAdrenalineImage systemData.attributes.adrenaline1.value}}" >
+          <img class="adrenaline-img" id="adr2" src="{{getAdrenalineImage systemData.attributes.adrenaline2.value}}" >
           {{/if}}
         </div>
         <div class="header-fields flex5">
