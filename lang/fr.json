@@ -228,6 +228,7 @@
     },
 
     "GMMANAGER": {
+        "Title": "Statut des joueurs",
         "Adrenaline": "Adrénaline",
         "Player": "Joueur",
         "Character": "Personnage"

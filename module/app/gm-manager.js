@@ -1,6 +1,3 @@
-import { HandleDragApplication } from "./handle-drag.js";
-import { SYSTEM_NAME } from "../constants.js";
-
 const GM_MANAGER = "gm-manager";
 const GM_MANAGER_TEMPLATE = 'systems/cthack/templates/app/gm-manager.hbs';
 export class GMManager extends Application {
@@ -26,7 +23,7 @@ export class GMManager extends Application {
     static get defaultOptions() {
       return mergeObject(super.defaultOptions, {
         template: GM_MANAGER_TEMPLATE,
-        title: "Statut des joueurs",
+        title:  game.i18n.localize('GMMANAGER.Title'),
         top: 100,
         left: 120,
         width: game.settings.get('cthack', 'Adrenaline') ? 600 : 500,

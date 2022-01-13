@@ -229,6 +229,7 @@
     },
 
     "GMMANAGER": {
+        "Title": "Players status",
         "Adrenaline": "Adrenaline",
         "Player": "Player",
         "Character": "Character"
