@@ -1,1 +1,2 @@
-Update to V9 version
+- Images change : pause logo and above left menu
+- Add a new GM only windows : display ressources summary for each connected player

@@ -17,7 +17,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 0.9.1
+version : 0.9.2
 
 Actor
 - Personnage
@@ -74,6 +74,7 @@ Compendiums
 - RollTable sur les 3 tables
 - Prétirés : un prétiré par archétype avec les capacités spéciales, il suffit de choisir laquelle supprimer
 - Créatures : les créatures du livre de base
+- Macros : Jet sur chacun des 3 tables, commande pour faire apparaitre le fenêtre du statut des joueurs
 
 -------------------------------------------------------------------------------------------------------------------------
 Cthulhu Hack System for Foundry VTT
@@ -90,7 +91,7 @@ This system is under development.
 ---------------
 Features
 ---------------
-version : 0.9.1
+version : 0.9.2
 
 Actor
 - Character
