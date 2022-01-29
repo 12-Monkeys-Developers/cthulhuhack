@@ -9,7 +9,6 @@ La marque Cthulhu Hack, le logo Cthulhu Hack, la marque Just Crunch Games, le lo
 
 Les visuels utilisés sur Foundry VTT sont réalisés par Maxime Plasse (https://www.maxsmaps.com/). Ils sont fournis pour l'utilisation de Foundry VTT. Toute autre utilisation ou reproduction d'image doit obtenir l'accord de ReSpell / Les XII Singes.
 
-Ce système est en cours de développement.
 Rejoignez la communauté Discord FR : <a href='https://discord.gg/pPSDNJk'>Foundry VTT Discord FR</a>
 
 Ce système est développé par Kristov, avec la contribution de Lightbringer pour les compendiums et les tests
@@ -17,7 +16,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 0.9.4
+version : 0.9.5
 
 Actor
 - Personnage
@@ -91,7 +90,7 @@ This system is under development.
 ---------------
 Features
 ---------------
-version : 0.9.4
+version : 0.9.5
 
 Actor
 - Character
