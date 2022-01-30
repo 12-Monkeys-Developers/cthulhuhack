@@ -400,3 +400,56 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 		});
 	}
 }
+
+/*export class Die6Cthack extends Die {
+    constructor(termData){
+        termData.faces = 6;
+        super(termData);
+    }
+
+    
+    static diceSoNiceReady(dice3d) {
+        dice3d.addSystem({id: "cthack", name: "Cthulhu Hack"}, "preferred");
+        
+        dice3d.addDicePreset({
+            type: "d6",
+            labels: [
+                "systems/cthack/ui/dice/dsn/D6_1.png",
+                "systems/cthack/ui/dice/dsn/D6_2.png",
+                "systems/cthack/ui/dice/dsn/D6_3.png",
+                "systems/cthack/ui/dice/dsn/D6_4.png",
+                "systems/cthack/ui/dice/dsn/D6_5.png",
+                "systems/cthack/ui/dice/dsn/D6_6.png",
+            ],
+            system: "cthack"
+        });
+        
+    }
+}*/
+
+/*
+export class Die4Cthack extends Die {
+    constructor(termData){
+        termData.faces = 4;
+        super(termData);
+    }
+
+    
+    static diceSoNiceReady(dice3d) {
+        dice3d.addSystem({id: "cthack", name: "Cthulhu Hack"}, "preferred");
+        
+        dice3d.addDicePreset({
+            type: "d4",
+            labels: [
+                "systems/cthack/ui/dice/dsn/D4_1.webp",
+                "systems/cthack/ui/dice/dsn/D4_2.webp",
+                "systems/cthack/ui/dice/dsn/D4_3.webp",
+                "systems/cthack/ui/dice/dsn/D4_4.webp"
+            ],
+            system: "cthack"
+        });
+        
+    }
+}
+*/
+
