@@ -19,6 +19,7 @@ import { Macros } from "./macros.js";
 import * as chat from "./chat.js";
 
 import { GMManager } from './app/gm-manager.js';
+import { configureDiceSoNice } from './dice.js';
 
 Hooks.once('init', async function() {
 	console.log(LOG_HEAD + 'Initializing the Cthulhu Hack Game System');
@@ -70,6 +71,8 @@ Hooks.once('init', async function() {
 
 	// Game Manager
 	game.cthack.gmManager = new GMManager();
+
+	//CONFIG.Dice.terms["c"] = DieCthack;
 
 });
 
@@ -195,8 +198,7 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 	}
 });
 
-/*
-Hooks.on("renderPause", (_app, html) => {
-	html.find("img").attr("src", "systems/cthack/ui/cthack-logo.webp");
+// Dice-so-nice Ready
+Hooks.once('diceSoNiceReady', (dice3d) => {
+	configureDiceSoNice(dice3d);		
 });
-*/
