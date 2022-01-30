@@ -236,6 +236,19 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
         });
 
 		dice3d.addDicePreset({
+            type: "d6",
+            labels: [
+                "systems/cthack/ui/dice/d6/d6-1.webp",
+                "systems/cthack/ui/dice/d6/d6-2.webp",
+                "systems/cthack/ui/dice/d6/d6-3.webp",
+                "systems/cthack/ui/dice/d6/d6-4.webp",
+                "systems/cthack/ui/dice/d6/d6-5.webp",
+                "systems/cthack/ui/dice/d6/d6-6.webp"
+            ],
+            system: "cthack"
+        });	
+
+		dice3d.addDicePreset({
             type: "d8",
             labels: [
                 "systems/cthack/ui/dice/d8/d8-1.webp",
@@ -267,17 +280,50 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
             system: "cthack"
         });
 
-        dice3d.addDicePreset({
-            type: "d6",
+		dice3d.addDicePreset({
+            type: "d12",
             labels: [
-                "systems/cthack/ui/dice/d6/d6-1.webp",
-                "systems/cthack/ui/dice/d6/d6-2.webp",
-                "systems/cthack/ui/dice/d6/d6-3.webp",
-                "systems/cthack/ui/dice/d6/d6-4.webp",
-                "systems/cthack/ui/dice/d6/d6-5.webp",
-                "systems/cthack/ui/dice/d6/d6-6.webp"
+                "systems/cthack/ui/dice/d20/d20-1.webp",
+                "systems/cthack/ui/dice/d20/d20-2.webp",
+                "systems/cthack/ui/dice/d20/d20-3.webp",
+                "systems/cthack/ui/dice/d20/d20-4.webp",
+                "systems/cthack/ui/dice/d20/d20-5.webp",
+				"systems/cthack/ui/dice/d20/d20-6.webp",
+				"systems/cthack/ui/dice/d20/d20-7.webp",
+				"systems/cthack/ui/dice/d20/d20-8.webp",
+				"systems/cthack/ui/dice/d20/d20-9.webp",
+				"systems/cthack/ui/dice/d20/d20-10.webp",
+				"systems/cthack/ui/dice/d20/d20-11.webp",
+				"systems/cthack/ui/dice/d20/d20-12.webp",
             ],
             system: "cthack"
-        });		
+        });	
+
+		dice3d.addDicePreset({
+            type: "d20",
+            labels: [
+                "systems/cthack/ui/dice/d20/d20-1.webp",
+                "systems/cthack/ui/dice/d20/d20-2.webp",
+				"systems/cthack/ui/dice/d20/d20-3.webp",
+				"systems/cthack/ui/dice/d20/d20-4.webp",
+				"systems/cthack/ui/dice/d20/d20-5.webp",
+				"systems/cthack/ui/dice/d20/d20-6.webp",
+				"systems/cthack/ui/dice/d20/d20-7.webp",
+				"systems/cthack/ui/dice/d20/d20-8.webp",
+				"systems/cthack/ui/dice/d20/d20-9.webp",
+				"systems/cthack/ui/dice/d20/d20-10.webp",
+				"systems/cthack/ui/dice/d20/d20-11.webp",
+				"systems/cthack/ui/dice/d20/d20-12.webp",
+				"systems/cthack/ui/dice/d20/d20-13.webp",
+				"systems/cthack/ui/dice/d20/d20-14.webp",
+				"systems/cthack/ui/dice/d20/d20-15.webp",
+				"systems/cthack/ui/dice/d20/d20-16.webp",
+				"systems/cthack/ui/dice/d20/d20-17.webp",
+				"systems/cthack/ui/dice/d20/d20-18.webp",
+				"systems/cthack/ui/dice/d20/d20-19.webp",
+				"systems/cthack/ui/dice/d20/d20-20.webp"
+            ],
+            system: "cthack"
+        });			
 		
 });
