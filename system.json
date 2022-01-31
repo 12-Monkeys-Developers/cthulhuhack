@@ -114,7 +114,7 @@
   "system": [],
   "dependencies": [],
   "socket": true,
-  "manifest": "https://raw.githubusercontent.com/Qaw/cthulhuhack/releases/latest/download/system.json",
+  "manifest": "https://github.com/Qaw/cthulhuhack/releases/latest/download/system.json",
   "download": "https://github.com/Qaw/cthulhuhack/releases/download/0.9.6/system.zip",
   "protected": false,
   "gridDistance": 5,
