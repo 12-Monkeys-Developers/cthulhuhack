@@ -491,7 +491,7 @@ export class CtHackActorSheet extends ActorSheet {
 			item = this.actor.items.get(li.data('item-id'));
 
 		// Toggle summary
-		if (item.data.data.description !== undefined && item.data.data.description !== null) {
+		if (item.data.data.description) {
 			if (li.hasClass('expanded')) {
 				let summary = li.children('.item-summary');
 				summary.slideUp(200, () => summary.remove());
