@@ -72,8 +72,6 @@ Hooks.once('init', async function() {
 	// Game Manager
 	game.cthack.gmManager = new GMManager();
 
-	//CONFIG.Dice.terms["c"] = DieCthack;
-
 });
 
 Hooks.on('renderChatMessage', async (app, html, data) => {
@@ -113,8 +111,8 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 		let command;
 		let macro;
 
-		// Item or weapon for character
-		if (item.type === "item" || item.type === "weapon") {
+		// Character's item
+		if (item.type === "item") {
 			command = `game.cthack.macros.rollItemMacro("${item._id}", "${item.name}");`;
 			macro = game.macros.contents.find(m => (m.name === item.name) && (m.data.command === command));
 			if (!macro) {
@@ -126,7 +124,21 @@ Hooks.on("hotbarDrop", async (bar, data, slot) => {
 				}, {displaySheet: false});
 				game.user.assignHotbarMacro(macro, slot);
 			}
+		}
 
+		// Character's weapon
+		if (item.type === "weapon") {
+			command = `game.cthack.macros.rollWeaponMacro("${item._id}", "${item.name}");`;
+			macro = game.macros.contents.find(m => (m.name === item.name) && (m.data.command === command));
+			if (!macro) {
+				macro = await Macro.create({
+					name: item.name,
+					type : "script",
+					img: item.img,
+					command : command
+				}, {displaySheet: false});
+				game.user.assignHotbarMacro(macro, slot);
+			}
 		}
 
 		// Attack for opponent
