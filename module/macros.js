@@ -63,15 +63,20 @@ export class Macros {
             return ui.notifications.warn(game.i18n.format('MACROS.ObjectEmptyResource',{itemName:itemName }));
         }
 
-        // Strength save
-        if (item.data.data.range === "") {
-            actor.rollSave("str");
+        let mod = 0;
+        if ( game.user.targets.size > 0) {
+            const target = [...game.user.targets][0];
+            if (target.actor.type=="opponent") {
+                mod = target.actor.data.data.malus;
+            }
         }
-        // Dexterity save
+        if (mod < 0) {
+            item.data.data.range === "" ? actor.rollSave("str", {modifier: mod}) : actor.rollSave("dex", {modifier: mod}); 
+        }
         else {
-           actor.rollSave("dex"); 
+            item.data.data.range === "" ? actor.rollSave("str") : actor.rollSave("dex"); 
         }
-        
+      
 	}
 
     /**
