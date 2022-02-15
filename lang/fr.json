@@ -201,6 +201,7 @@
     },
 
     "CHAT": {
+        "RollSave": "Jet de SAUVEGARDE de {save}",
         "RollWithAdvantage": "Vous avez un Avantage.",
         "RollWithDisadvantage": "Vous subissez un Désavantage.",
         "ResourceLost": "Vous perdez une ressource !",
@@ -210,6 +211,7 @@
         "RollWithDoubleDisadvantageFromDialog": "Vous avez lancé avec un Double Désavantage.",
         "RollWithBonus": "Avec un bonus de {modifier}.",
         "RollWithMalus": "Avec un malus de {modifier}.",
+        "RollDifficulty": "Difficulté : {difficulty}.",
         "RollSuccess": "C'est un Succès !",
         "RollFailure": "C'est un Echec !"
     },

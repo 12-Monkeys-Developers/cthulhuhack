@@ -50,9 +50,9 @@ export async function diceRoll(
 	// Prepare Message Data
 	messageData.speaker = speaker || ChatMessage.getSpeaker();
 	let messageOptions = { rollMode: rollMode || game.settings.get('core', 'rollMode') };
-	if (rollType === 'Save') {
+	/*if (rollType === 'Save') {
 		parts = parts.concat([ '@modifier' ]);
-	}
+	}*/
 
 	// adv is the choice on the Dialog Roll : from -2 to +2
 	let adv = 0;
@@ -101,16 +101,17 @@ export async function diceRoll(
 			messageOptions.rollMode = form.rollMode.value;
 		}
 		// Remove the @modifier if there is no modifier
-		if (rollType === 'Save' && !data['modifier']) parts.pop();
+		// if (rollType === 'Save' && !data['modifier']) parts.pop();
 
 		// Execute the roll
-		let roll;
+		let roll = new Roll(parts.join(' + '), data);
 
 		// A malus is added to the dice result
-		if (rollType === 'Save' && form.modifier.value < 0 ) {			
+		/*if (rollType === 'Save' && form.modifier.value < 0 ) {			
 			roll = new Roll(parts.join(' + '), data);
 		}
 		else roll = new Roll(parts.join(' - '), data);
+		*/
 
 		try {
 			roll.evaluate({async: false});
@@ -127,6 +128,7 @@ export async function diceRoll(
 			else if (adv === 2) d.options.doubleadvantage = true;
 			else if (adv === -2) d.options.doubledisadvantage = true;
 			if (targetValue) d.options.target = targetValue;
+			if (modifier) d.options.modifier = modifier;
 
 			if (advantage) d.options.advantageFromCondition = true;
 			if (disadvantage) d.options.disadvantageFromCondition = true;
@@ -183,15 +185,19 @@ export async function diceRoll(
 
 		// Define which template to use for the different rollType (Save, Resource, Material, Damage, AttackDamage)
 		if (rollType === 'Save' && targetValue) {
+			let hasModifier = false;
 			if (modifier !== null && modifier != '') {
 				roll.modifier = modifier;
+				hasModifier = true;
 			}
 
-			if (roll.total < targetValue) {
+			if (roll.total < (hasModifier ? targetValue + parseFloat(modifier) : targetValue)) {
 				roll.isSuccess = true;
 			} else {
 				roll.isSuccess = false;
 			}
+
+			roll.realTargetValue = hasModifier ? targetValue + parseFloat(modifier) : targetValue;
 			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollSave.hbs`, roll);
 		}
 

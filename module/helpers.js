@@ -12,6 +12,14 @@ export const registerHandlebarsHelpers = function() {
 		return outStr;
 	});
 
+	Handlebars.registerHelper('hasModifier', function(modifier) {
+		if (modifier !== null && modifier !== 0 ){
+			return true;
+		}
+		return false;
+	});
+
+
 	Handlebars.registerHelper('isModifierPositive', function(modifier) {
 		if (modifier !== null && modifier > 0 ){
 			return true;
