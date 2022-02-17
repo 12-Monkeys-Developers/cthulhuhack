@@ -183,7 +183,6 @@
             "Div": "Dive",
             "Scr": "Scream"
         }
-
     },
 
     "SETTINGS": {
@@ -202,6 +201,7 @@
     },
 
     "CHAT": {
+        "RollSave": "SAVE roll of {save}",
         "RollWithAdvantage": "You have an advantage.",
         "RollWithDisadvantage": "You have a disadvantage.",
         "ResourceLost": "You lost a resource !",
@@ -211,6 +211,7 @@
         "RollWithDoubleDisadvantageFromDialog": "You rolled with a Double Disadvantage.",
         "RollWithBonus": "With a bonus of {modifier}.",
         "RollWithMalus": "With a malus of {modifier}.",
+        "RollDifficulty": "Difficulty : {difficulty}.",
         "RollSuccess": "This is a Success !",
         "RollFailure": "This is a Failure !"
     },
