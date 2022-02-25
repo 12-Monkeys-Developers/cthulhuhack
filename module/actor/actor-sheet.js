@@ -12,8 +12,8 @@ export class CtHackActorSheet extends ActorSheet {
 	static get defaultOptions() {
 		return mergeObject(super.defaultOptions, {
 			classes: [ 'cthack', 'sheet', 'actor', 'character' ],
-			width: 880,
-			height: 720,
+			width: 1200,
+			height: 850,
 			tabs: [ { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'items' } ],
 			dragDrop: [ { dragSelector: '.items-list .item', dropSelector: null } ]
 		});
@@ -56,7 +56,7 @@ export class CtHackActorSheet extends ActorSheet {
 		if (!this.options.editable) return;
 
 		// Item summaries
-		html.find('.item .item-name h4').click((event) => this._onItemSummary(event));
+		html.find('.item .item-name').click((event) => this._onItemSummary(event));
 
 		// Add, Edit or Delete Inventory
 		html.find('.item-create').click(this._onItemCreate.bind(this));

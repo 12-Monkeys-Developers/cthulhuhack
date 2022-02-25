@@ -47,6 +47,11 @@ export const registerHandlebarsHelpers = function() {
 		return outStr;
 	});
 
+	Handlebars.registerHelper('getSaveLabel', function(str) {
+		var outStr = 'CTHACK.Save' + str.substring(0, 1).toUpperCase() + str.substring(1);
+		return outStr;
+	});
+
 	Handlebars.registerHelper('toDesc', function(str) {
 		var outStr = 'CTHACK.Save' + str.substring(0, 1).toUpperCase() + str.substring(1) + 'Desc';
 		return outStr;

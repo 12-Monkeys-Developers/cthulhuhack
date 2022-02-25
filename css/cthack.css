@@ -1,11 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,700&family=Roboto:wght@300;400;500&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,700&family=Roboto:wght@300;400;500&display=swap");*/
+@import url("https://fonts.googleapis.com/css?family=EBGaramond&display=swap");
+
 /* Global styles */
 .window-app {
-  font-family: "Roboto", sans-serif;
+  /*font-family: "Roboto", sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;*/
+  font-family: EBGaramond, sans-serif;
 }
 
 .window-app .window-content {
-  background: url("../ui/fond.png") repeat #fff;
+  /* background: url("../ui/fond.png") repeat #fff; */
 }
 
 .rollable:hover, .rollable:focus {
@@ -122,41 +126,6 @@
   justify-content: space-between;
 }
 
-.actor-sheet-top {
-  background-image: url("../ui/fiche-haut.png");
-  background-size: cover;
-  background-position: top;
-  color: #fff;
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin: 0;
-}
-
-.actor-sheet-middle {
-  background-image: url("../ui/fiche-milieu.png");
-  background-size: cover;
-  color: #fff;
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin: 0;
-  border: 0;
-}
-
-.actor-sheet-bottom {
-  background-image: url("../ui/fiche-bas.png");
-  background-size: cover;
-  background-position: bottom;
-  color: #fff;
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
 .dice-roll .dice-total.success {
   color: inherit;
   background: #c7d0c0;
@@ -170,11 +139,13 @@
 }
 
 /* Styles limited to cthack sheets */
-.cthack .window-content {
-  background: url("../ui/cthack-green.jpg");
-  background-size: cover;
+
+.cthack.sheet .window-content {
+  background-image: url("../ui/fiche2.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;/*
+  background-attachment: fixed;*/
   color: #fff;
-  font-family: 'Averia Libre', cursive;
 }
 
 .cthack .align-left {
@@ -187,6 +158,7 @@
 
 .cthack .align-center {
   text-align: center;
+  vertical-align: middle;
 }
 
 .cthack .noborder {
@@ -221,6 +193,7 @@
   background-size: contain;
   background-position: center;
   height: 35px;
+  width: 35px;
   text-align: center;
   text-align-last: center;
   -moz-text-align-last: center;
@@ -229,6 +202,7 @@
   background-color: transparent;
   font-weight: 800;
 }
+
 
 .cthack option {
   color: #fff;
@@ -250,6 +224,8 @@
 
 .cthack nav.sheet-tabs {
   height: 40px;
+  border-top: 0;
+  border-bottom: 0;
 }
 
 .cthack .attack-damage {
@@ -281,7 +257,7 @@
 }
 
 .cthack .sheet-header .profile-img {
-  height: 150px;
+  height: 360px;
   width: auto;
 }
 
@@ -318,7 +294,7 @@
 
 .cthack .sheet-header h1.charname {
   height: 50px;
-  padding: 0px;
+  padding: 0px 20px 0px 20px;
   margin: 5px 0;
   border-bottom: 0;
 }
@@ -333,7 +309,7 @@
   -webkit-box-flex: 0;
   -ms-flex: 0;
   flex: 0;
-  font-size: 18px;
+  font-size: var(--font-size-18);
 }
 
 .cthack .tox .tox-editor-container {
@@ -345,8 +321,9 @@
 }
 
 .cthack .sheet-body {
+  margin: 10px 20px 10px 20px;
   min-height: 150px;
-  height: 100%;
+  height: fit-content;
 }
 
 .cthack .sheet-body .tab {
@@ -361,8 +338,8 @@
 
 .cthack .tabs {
   height: 40px;
-  border-top: 1px solid "Roboto", sans-serif;
-  border-bottom: 1px solid "Roboto", sans-serif;
+  /*border-top: 1px solid "Roboto", sans-serif;
+  border-bottom: 1px solid "Roboto", sans-serif;*/
 }
 
 .cthack .tabs .choice {
@@ -371,45 +348,62 @@
 }
 
 .cthack .tabs .choice.active {
-  text-decoration: underline;
-  text-shadow: none;
-}
-
-.cthack .
-
-{
+  color: darkgrey;
   font-weight: bold;
-  text-transform: uppercase;
+  /*  text-shadow: #fff;
+  color: #d44d54;*/
+  text-shadow: 0 0 10px #851016;
 }
 
 .cthack .resource-content {
   margin-top: 2px;
   margin-bottom: 2px;
+  padding-top: 5px;
+}
+
+.occupation, .archetype, .save, .resource {
+  border: none;
+}
+
+.resource-label {
+  font-size: var(--font-size-16);
 }
 
 .cthack .save {
-  font-size: 18px;
+  font-size: var(--font-size-16);
 }
 
 .cthack input.save {
   color: #fff;
 }
 
+.cthack input.save-value {
+  border-radius: 50%;
+  border: 2px solid #fff;
+  /*padding: 20px; 
+  width: 30px;
+  height: 15px;*/
+}
+
+.save-name {
+  flex-grow: 3;
+}
+
 .cthack .items-list {
   list-style: none;
-  margin: 7px 0;
+  margin: 10px 20px 10px 20px;
   padding: 0;
 }
 
 .cthack .items-list .item-header {
-  font-size: 16px;
+  font-size: var(--font-size-16);
 }
 
 .cthack .items-list .item {
   line-height: 24px;
-  padding: 3px 0;
+  padding: 5px 0;
   border-bottom: 1px solid white;
-  font-size: 16px;
+  font-size: var(--font-size-16);
 }
 
 .cthack .items-list .item .item-image {
@@ -420,10 +414,11 @@
 }
 
 .cthack .items-list .item img {
-  display: block;
+  /* display: block; */
+  max-width: 40px;
 }
 
-.cthack .items-list .item-name {
+.cthack .items-list .item-bloc {
   margin: 0;
 }
 
@@ -436,13 +431,37 @@
   -ms-flex: 0 0 86px;
   flex: 0 0 86px;
   text-align: right;
+  padding-top: 10px;
+}
+
+.cthack .items-list .item .item-dice {
+  padding-top: 5px;
+}
+
+.cthack .items-list .item .item-range {
+  padding-top: 10px;
+}
+
+
+.cthack .items-list .item .item-controls {
+  padding-top: 10px;
+}
+
+.cthack .items-list .item .item-name {
+  padding-top: 10px;
+}
+
+
+.cthack .item.equipment {
+  /* height: 50px; */
+  /* line-height: 50px; */
 }
 
 .cthack .items-list .item-summary {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
-  font-size: 12px;
+  font-size: var(--font-size-14);
   line-height: 16px;
   padding: 0.25em 0.5em;
   border-top: 1px solid #c9c7b8;
@@ -557,7 +576,7 @@ label em {
   text-align: left;
   border-radius: 6px;
   padding: 5px 0;
-  font-size: 14px;
+  font-size: var(--font-size-14);
 
   /* Position the tooltip */
   position: absolute;
@@ -605,4 +624,8 @@ label:hover em {visibility: visible;}
 .character-resume .adrenaline-img {
   height: 25px;
   width: 25px;  
+}
+
+.sheet-actor {
+  margin: 10px 20px;
 }
