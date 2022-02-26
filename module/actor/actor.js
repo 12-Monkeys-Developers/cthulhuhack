@@ -393,8 +393,8 @@ export class CtHackActor extends Actor {
 	_findSavesAdvantagesFromCustomAbilities() {
 		let customAdvantagesText = '';
 		this.data.items.forEach((element) => {
-			if (element.type === 'ability' && element.data.isCustom && element.data.advantageGiven && element.data.advantageText !== '') {
-				customAdvantagesText += '<li>' + element.data.advantageText + '</li>';
+			if (element.type === 'ability' && element.data.data.isCustom && element.data.data.advantageGiven && element.data.data.advantageText !== '') {
+				customAdvantagesText += '<li>' + element.data.data.advantageText + '</li>';
 			}
 		});
 		return customAdvantagesText;
