@@ -197,7 +197,7 @@
         "HitDiceResourceName": "Dé de vie en tant que Ressource",
         "HitDiceResourceHint": "Au lieu d'une valeur fixe, vous pouvez gérer les dégâts d'un personnage avec le Dé de Vie",
         "MiscellaneousResourceName": "Ressource diverse",
-        "MiscellaneousResourceHint": "Permet de choisir une ressource qui remplacera la ressource Richesse"
+        "MiscellaneousResourceHint": "Permet de gérer une ressource supplémentaire"
     },
 
     "CHAT": {

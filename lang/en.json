@@ -197,7 +197,7 @@
         "HitDiceResourceName": "Hit Dice Resource Option",
         "HitDiceResourceHint": "Handle hit dice as a resource",
         "MiscellaneousResourceName": "Miscellaneous Resource",
-        "MiscellaneousResourceHint": "Allow to choose a resource which replaces Wealth resource"
+        "MiscellaneousResourceHint": "Allow to have a additional resource"
     },
 
     "CHAT": {

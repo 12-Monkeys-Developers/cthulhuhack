@@ -49,10 +49,28 @@
 </div>
 
 <div class="resource flex-group-center">
-    <label class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
-    <div class="resource-content flexrow flex-center">
-        <input type="text" name="data.hp.value" value="{{systemData.hp.value}}" data-dtype="Number"/>
-        &nbsp;/&nbsp;
-        <input type="text" name="data.hp.max" value="{{systemData.hp.max}}" data-dtype="Number"/>
-    </div>
+    {{#if (isEnabled "HitDiceResource")}}
+        <label for="data.hitDice.value" class="resource-label hit-name {{#if (isEnabled "HitDiceResource")}}rollable{{/if}}" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</label>
+        <div class="resource-content">
+            <select name="data.attributes.hitDice.value" data-type="String" {{{getStyleForDice systemData.attributes.hitDice.value}}} >
+                {{#select systemData.attributes.hitDice.value}}
+                    {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+                {{/select}}
+            </select>
+            <span>/</span>
+            <select name="data.attributes.hitDice.max" data-type="String" {{{getStyleForDice systemData.attributes.hitDice.max}}} >
+                {{#select systemData.attributes.hitDice.max}}
+                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                {{/select}}
+            </select>
+        </div>
+    {{else}}
+        <label class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
+        <div class="resource-content flexrow flex-center">
+            <input type="text" name="data.hp.value" value="{{systemData.hp.value}}" data-dtype="Number"/>
+            &nbsp;/&nbsp;
+            <input type="text" name="data.hp.max" value="{{systemData.hp.max}}" data-dtype="Number"/>
+        </div>
+    {{/if}}
+
 </div>
