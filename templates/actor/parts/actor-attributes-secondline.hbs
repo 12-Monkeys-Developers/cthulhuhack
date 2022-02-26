@@ -56,4 +56,17 @@
             </select>
         </div>
     </div>
+{{else}}
+    {{#unless (isEnabled "HitDiceResource")}}
+        <div class="resource flex-group-center">
+        <label for="data.hitDice.value" class="resource-label hit-name {{#if (isEnabled "HitDiceResource")}}rollable{{/if}}" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</label>
+            <div class="resource-content">
+                <select name="data.attributes.hitDice.value" data-type="String" {{{getStyleForDice systemData.attributes.hitDice.value}}} >
+                    {{#select systemData.attributes.hitDice.value}}
+                        {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+    {{/unless}}
 {{/if}}

@@ -201,6 +201,20 @@
   color: #fff;
 }
 
+.cthack .hitpoints {
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.cthack .input-hitpoints {
+  border-style: none;
+}
+
+.cthack input[type="checkbox"] {
+  height: 12px;
+  width: 12px;
+}
+
 .cthack select {
   border: none;
   background-repeat: no-repeat;
