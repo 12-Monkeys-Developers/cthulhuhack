@@ -11,8 +11,9 @@
   justify-content: flex-start;
   
   .profile-img {
-    height: 150px;
+    height: 300px;
     width: auto;
+    margin: 0;
   }
   
   .weapon-img {
@@ -46,7 +47,7 @@
 
   h1.charname {
     height: 50px;
-    padding: 0px;
+    padding: 0px 20px 0px 20px;
     margin: 5px 0;
     border-bottom: 0;
     input {
@@ -59,7 +60,7 @@
 
 .sheet-tabs {
   flex: 0;
-  font-size: 18px
+  font-size: var(--font-size-18);
 }
 
 .tox {
@@ -72,9 +73,10 @@
   }
 }
 
-.sheet-body {
-  min-height: 150px;
+.sheet-body {  
   height: 100%;
+  min-height: 150px;
+  margin: 10px 20px 10px 20px;
 
   .tab {
     min-height: 150px;

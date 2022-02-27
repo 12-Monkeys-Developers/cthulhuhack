@@ -1,7 +1,16 @@
 .save {
-    font-size: 18px;
-  }
-  
+  font-size: var(--font-size-16);
+}
+ 
+.save-name {
+  flex-grow: 3;
+}
+
 input.save{
-color: $c-white;
+  color: $c-white;
+}
+
+input.save-value {
+  border-radius: 50%;
+  border: 2px solid #fff;
 }

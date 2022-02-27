@@ -8,6 +8,7 @@
 
 .align-center {
   text-align: center;
+  vertical-align: middle;
 }
 
 .noborder {
@@ -22,12 +23,18 @@ input[type="time"] {
   color: $c-white;
 }
 
+input[type="checkbox"] {
+  height: 12px;
+  width: 12px;
+}
+
 select {
   border: none;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   height: 35px;
+  width: 35px;
   text-align: center;
   text-align-last: center;
   -moz-text-align-last: center;
@@ -57,7 +64,23 @@ option:checked, option:hover {
 
 nav.sheet-tabs {
   height: 40px;
+  border-top: 0;
+  border-bottom: 0;
 }
+
+.hitpoints {
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.input-hitpoints {
+  border-style: none;
+}
+
+.occupation, .archetype, .save, .resource {
+  border: none;
+}
+
 
 .attack-damage {
   width: 75px;
@@ -119,7 +142,7 @@ label em {
   text-align: left;
   border-radius: 6px;
   padding: 5px 0;
-  font-size: 14px;
+  font-size: var(--font-size-14);
 
   /* Position the tooltip */
   position: absolute;
@@ -134,4 +157,8 @@ label:hover em {
 
 .chat-message .message-header .message-sender {
   font-weight: bold;
+}
+
+.sheet-actor {
+  margin: 10px 20px;
 }

@@ -1,44 +1,59 @@
 .items-list {
   list-style: none;
-  margin: 7px 0;
+  margin: 10px 20px 10px 20px;
   padding: 0;
 
   .item-header {
-    font-size: 16px;
+    font-size:var(--font-size-16);
   }
 
   .item {
     line-height: 24px;
-    padding: 3px 0;
+    padding: 5px 0;
     border-bottom: 1px solid white;
-    font-size: 16px;
+    font-size: var(--font-size-16);
 
+    img {
+      max-width: 40px;
+    }
+    
     .item-image {
       flex: 0 0 24px;
       margin-right: 5px;
     }
 
-    img {
-      display: block;
+    .item-name {
+      padding-top: 10px;
+    }
+
+    .item-dice {
+      padding-top: 5px;
+    }
+    
+    .item-range {
+      padding-top: 10px;
+    }
+
+    .item-align-middle {
+      text-align: center;
+      vertical-align: middle;
+      padding-top: 10px;
     }
   }
 
-  .item-name {
-    margin: 0;
-  }
-
-  .item-ability-description {
+  .item-bloc, .item-name, .item-ability-description  {
     margin: 0;
   }
 
   .item-controls {
     flex: 0 0 86px;
     text-align: right;
+    padding-top: 10px;
   }
   
   .item-summary {
     flex: 0 0 100%;
-    font-size: 12px;
+    font-size: var(--font-size-12);
     line-height: 16px;
     padding: 0.25em 0.5em;
     border-top: 1px solid #c9c7b8;

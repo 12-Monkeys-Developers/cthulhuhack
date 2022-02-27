@@ -7,13 +7,14 @@ export const preloadHandlebarsTemplates = async function() {
 	// Define template paths to load
 	const templatePaths = [
 		// ACTOR		
+		'systems/cthack/templates/actor/actor-sheet.hbs',
 		'systems/cthack/templates/actor/parts/actor-attributes-firstline.hbs',
 		'systems/cthack/templates/actor/parts/actor-attributes-secondline.hbs',
 		'systems/cthack/templates/actor/parts/actor-item.hbs',
 		'systems/cthack/templates/actor/parts/actor-condition.hbs',
-		'systems/cthack/templates/actor/parts/opponent-attack.hbs',
-		'systems/cthack/templates/actor/actor-sheet.hbs',
+		'systems/cthack/templates/actor/parts/actor-ability.hbs',
 		'systems/cthack/templates/actor/opponent-sheet.hbs',
+		'systems/cthack/templates/actor/parts/opponent-attack.hbs',
 
 		// ITEM
 		'systems/cthack/templates/item/ability-sheet.hbs',
