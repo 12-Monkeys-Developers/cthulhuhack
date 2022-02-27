@@ -143,7 +143,8 @@
 .cthack.sheet .window-content {
   background-image: url("../ui/fiche2.webp");
   background-repeat: no-repeat;
-  background-size: 100% 100%;/*
+  background-size: 100% 100%;
+  /*
   background-attachment: fixed;*/
   color: #fff;
 }
@@ -351,8 +352,6 @@
 .cthack .tabs .choice.active {
   color: darkgrey;
   font-weight: bold;
-  /*  text-shadow: #fff;
-  color: #d44d54;*/
   text-shadow: 0 0 10px #851016;
 }
 
@@ -381,12 +380,9 @@
 .cthack input.save-value {
   border-radius: 50%;
   border: 2px solid #fff;
-  /*padding: 20px; 
-  width: 30px;
-  height: 15px;*/
 }
 
-.save-name {
+.cthack .save-name {
   flex-grow: 3;
 }
 
@@ -415,8 +411,7 @@
 }
 
 .cthack .items-list .item img {
-  /* display: block; */
-  max-width: 40px;
+   max-width: 40px;
 }
 
 .cthack .items-list .item-bloc {
@@ -450,12 +445,6 @@
 
 .cthack .items-list .item .item-name {
   padding-top: 10px;
-}
-
-
-.cthack .item.equipment {
-  /* height: 50px; */
-  /* line-height: 50px; */
 }
 
 .cthack .items-list .item-summary {

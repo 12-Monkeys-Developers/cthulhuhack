@@ -56,6 +56,7 @@
         <a class="choice" data-tab="conditions">{{localize "CTHACK.Conditions"}}</a>
         <a class="choice" data-tab="items">{{localize "CTHACK.Items"}}</a>
         <a class="choice" data-tab="abilities">{{localize "CTHACK.Abilities"}}</a>
+        <a class="choice" data-tab="notes">{{localize "CTHACK.Notes"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -139,6 +140,11 @@
                     </li>
                 {{/each}}
             </ol>
+        </div>
+
+        {{!-- Notes Tab --}}
+        <div class="tab notes" data-group="primary" data-tab="notes">
+            {{editor content=systemData.notes target="data.notes" button=true owner=owner editable=editable}}
         </div>
 
     </section>

@@ -55,6 +55,7 @@
         "UnarmedDamage": "Unarmed damage",
         "Description": "Description",
         "Biography": "Biography",
+        "Notes": "Notes",
         "Condition": "Condition(s)",
         "Conditions": "Conditions",
         "Items": "Equipment",
@@ -133,7 +134,7 @@
 
         "Fortune": "Fortune",
         "FortuneUse": "Spend",
-        "FortuneUseMessage": "One token of Fortune has been used by {name}. The remaining total is {total}.",
+        "FortuneUseMessage": "One token of Fortune has been used by {name}.<br>The remaining total is {total}.",
         "None": "---",
         "NO": "No",
         "YES": "Yes",

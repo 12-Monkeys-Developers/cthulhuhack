@@ -80,7 +80,8 @@
           "advantage": false
         }
       },
-      "abilities": []
+      "abilities": [],
+      "notes"
     },
     "opponent": {
       "templates": ["base"],
