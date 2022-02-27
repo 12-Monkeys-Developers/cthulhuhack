@@ -1,3 +1,8 @@
+.saves {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
 .save {
   font-size: var(--font-size-16);
 }
@@ -8,9 +13,4 @@
 
 input.save{
   color: $c-white;
-}
-
-input.save-value {
-  border-radius: 50%;
-  border: 2px solid #fff;
 }

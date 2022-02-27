@@ -38,6 +38,75 @@
   width: 25px;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptextleft {
+  visibility: hidden;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -45px;
+  left: -25px;
+}
+
+.tooltip .tooltiptextright {
+  visibility: hidden;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -45px;
+  left: -85px;
+}
+
+.tooltip:hover .tooltiptextleft,
+.tooltip:hover .tooltiptextright {
+  visibility: visible;
+}
+
+div.tip .tip-title {
+  color: #E77600 !important;
+  font-weight: bold;
+}
+
+label em {
+  visibility: hidden;
+  width: 400px;
+  background-color: black;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: var(--font-size-14);
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+}
+
+label:hover em {
+  visibility: visible;
+}
+
+.chat-message .message-header .message-sender {
+  font-weight: bold;
+}
+
 .grid,
 .grid-2col {
   display: -ms-grid;
@@ -248,10 +317,10 @@
 .cthack select {
   border: none;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 40px;
   background-position: center;
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 40px;
   text-align: center;
   text-align-last: center;
   -moz-text-align-last: center;
@@ -285,13 +354,9 @@
   border-bottom: 0;
 }
 
-.cthack .hitpoints {
-  border-radius: 50%;
-  border: 2px solid #fff;
-}
-
 .cthack .input-hitpoints {
   border-style: none;
+  font-size: 16px;
 }
 
 .cthack .occupation, .cthack .archetype, .cthack .save, .cthack .resource {
@@ -307,77 +372,47 @@
   text-align: center;
 }
 
-.cthack .tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.cthack .tooltip .tooltiptextleft {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -25px;
-}
-
-.cthack .tooltip .tooltiptextright {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -85px;
-}
-
-.cthack .tooltip:hover .tooltiptextleft,
-.cthack .tooltip:hover .tooltiptextright {
-  visibility: visible;
-}
-
-.cthack div.tip .tip-title {
-  color: #E77600 !important;
-  font-weight: bold;
-}
-
-.cthack label em {
-  visibility: hidden;
-  width: 400px;
-  background-color: black;
-  color: #fff;
-  text-align: left;
-  border-radius: 6px;
-  padding: 5px 0;
-  font-size: var(--font-size-14);
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: 0px;
-  left: 0px;
-}
-
-.cthack label:hover em {
-  visibility: visible;
-}
-
-.cthack .chat-message .message-header .message-sender {
-  font-weight: bold;
-}
-
 .cthack .sheet-actor {
   margin: 10px 20px;
+}
+
+.cthack .cadre {
+  background-image: url("../ui/cadre.png");
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-position: center;
+  height: 50px;
+  border: none;
+  color: #fff;
+}
+
+.cthack .hitpoints {
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.cthack .hitpoints-cadre {
+  background-image: url("../ui/cadre.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center;
+  height: 40px;
+  width: 40px;
+  border: none;
+  color: #fff;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.cthack .occupation {
+  padding-right: 15px;
+}
+
+.cthack .occupation-input {
+  font-size: var(--font-size-16);
 }
 
 .cthack .item-form {
@@ -386,8 +421,8 @@
 
 .cthack .sheet-header {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 360px;
-          flex: 0 0 360px;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -404,6 +439,12 @@
 }
 
 .cthack .sheet-header .profile-img {
+  height: 300px;
+  width: auto;
+  margin: 0;
+}
+
+.cthack .sheet-header .opponent-img {
   height: 300px;
   width: auto;
   margin: 0;
@@ -471,7 +512,8 @@
 .cthack .sheet-body {
   height: 100%;
   min-height: 150px;
-  margin: 10px 20px 10px 20px;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
 }
 
 .cthack .sheet-body .tab {
@@ -511,6 +553,11 @@
   padding-top: 5px;
 }
 
+.cthack .saves {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
 .cthack .save {
   font-size: var(--font-size-16);
 }
@@ -523,11 +570,6 @@
 
 .cthack input.save {
   color: #fff;
-}
-
-.cthack input.save-value {
-  border-radius: 50%;
-  border: 2px solid #fff;
 }
 
 .cthack .items-list {
@@ -581,6 +623,13 @@
       -ms-flex: 2;
           flex: 2;
   margin: 0;
+}
+
+.cthack .items-list .item-controls-header {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 86px;
+          flex: 0 0 86px;
+  text-align: right;
 }
 
 .cthack .items-list .item-controls {

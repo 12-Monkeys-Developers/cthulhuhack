@@ -21,14 +21,14 @@
         </div>
         <div class="header-fields flex5">
             <h1 class="charname"><input name="name" type="text" value="{{actorData.name}}" placeholder="Name"/></h1>  
-            <div class="grid grid-2col">     
+            <div class="grid grid-2col occupation">     
               <div class="flexrow flex-group-center occupation">
                 <label class="resource-label">{{localize "CTHACK.Occupation"}}</label>
-                <input name="data.occupation" type="text" value="{{systemData.occupation}}" placeholder="Occupation"/>
+                <input name="data.occupation" type="text" value="{{systemData.occupation}}" placeholder='{{localize "CTHACK.Occupation"}}' class="occupation-input"/>
               </div>     
               <div class="flexrow flex-group-center archetype">
                 <label class="resource-label">{{localize "CTHACK.Archetype"}}</label>
-                <input name="data.archetype" type="text" value="{{systemData.archetype}}" placeholder='{{localize "CTHACK.Archetype"}}'/>
+                <input name="data.archetype" type="text" value="{{systemData.archetype}}" placeholder='{{localize "CTHACK.Archetype"}}' class="occupation-input"/>
               </div>                      
             </div>            
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use, use both the "grid" and "grid-Ncol" class where "N" can be any number from 1 to 12 and will create that number of columns.  --}}
@@ -36,7 +36,7 @@
                 {{#each systemData.saves as |save key|}}
                   <div class="save flexrow flex-group-center" data-save="{{key}}">
                     <label class="resource-label save-name rollable">{{localize (getSaveLabel key)}}<em>{{localize (toDesc key)}}</em></label>
-                    <input type="text" name="data.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value"/>
+                    <input type="text" name="data.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value cadre"/>
                     <input type="checkbox" name="data.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}}/>
                   </div>
                 {{/each}}
@@ -66,18 +66,6 @@
         <div class="tab biography" data-group="primary" data-tab="description">
             {{editor content=systemData.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
-
-        {{!-- Conditions Tab --}}
-        <div class="tab items" data-group="primary" data-tab="conditions">
-            <ol class="items-list">
-                <li class="item flexrow item-header">
-                  <div class="item-name">{{localize "CTHACK.Name"}}</div>
-                </li>
-                {{#each conditions as |condition id|}}
-                  {{> "systems/cthack/templates/actor/parts/actor-condition.hbs" condition}}
-                {{/each}}           
-            </ol>
-        </div>
         
         {{!-- Owned Items Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">
@@ -86,7 +74,7 @@
                   <div class="item-name">{{localize "CTHACK.Name"}}</div>
                   <div class="align-center">{{localize "CTHACK.ItemDiceName"}}</div>
                   <div class="align-center">{{localize "CTHACK.ItemRangeName"}}</div>
-                  <div class="item-controls">
+                  <div class="item-controls-header">
                     <a class="item-control item-create" title="{{localize "CTHACK.Add"}}" data-type="item"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
                   </div>
                 </li>
@@ -117,6 +105,18 @@
                 {{/each}}
             </ol>
         </div>
+
+        {{!-- Conditions Tab --}}
+        <div class="tab items" data-group="primary" data-tab="conditions">
+            <ol class="items-list">
+                <li class="item flexrow item-header">
+                  <div class="item-name">{{localize "CTHACK.Name"}}</div>
+                </li>
+                {{#each conditions as |condition id|}}
+                  {{> "systems/cthack/templates/actor/parts/actor-condition.hbs" condition}}
+                {{/each}}           
+            </ol>
+        </div>      
 
         {{!-- Notes Tab --}}
         <div class="tab character-notes" data-group="primary" data-tab="notes">

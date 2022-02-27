@@ -1,6 +1,6 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="actor-img" src="{{opponentData.img}}" data-edit="img" title="{{opponentData.name}}"/>
+        <img class="opponent-img" src="{{opponentData.img}}" data-edit="img" title="{{opponentData.name}}"/>
         <div class="header-fields">
             <h1 class="charname"><input name="name" type="text" value="{{opponentData.name}}" placeholder="Name"/></h1>
         </div>
@@ -55,10 +55,10 @@
             </div>  
             <ol class="items-list">
                 <li class="item flexrow item-header">
-                  <div class="item-name align-center">{{localize "CTHACK.Name"}}</div>
-                  <div class="item-damage align-center">{{localize "CTHACK.Damage"}}</div>
-                  <div class="item-damageDice align-center">{{localize "CTHACK.DamageDice"}}</div>
-                  <div class="item-controls">
+                  <div class="item-name">{{localize "CTHACK.Name"}}</div>
+                  <div class="item-damage item-align-middle">{{localize "CTHACK.Damage"}}</div>
+                  <div class="item-damageDice item-align-middle">{{localize "CTHACK.DamageDice"}}</div>
+                  <div class="item-controls-header">
                     <a class="item-control attack-create" title='{{localize "CTHACK.Add"}}' data-type="attack"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
                   </div>
                 </li>

@@ -79,6 +79,8 @@
         "AbilityAdvantageGiven": "Advantage given",
         "AbilityAdvantageText": "Advantage description",
 
+        "ConditionWhen": "Condition received",
+
         "DefinitionType": "Type",
         "DefinitionKey": "Key",
 

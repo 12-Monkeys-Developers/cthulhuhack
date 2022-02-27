@@ -79,6 +79,8 @@
         "AbilityAdvantageGiven": "Donne un avantage",
         "AbilityAdvantageText": "Description avantage",
 
+        "ConditionWhen": "Condition reçue",
+
         "DefinitionType": "Type",
         "DefinitionKey": "Clé",
 

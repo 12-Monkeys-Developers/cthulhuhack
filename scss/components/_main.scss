@@ -31,10 +31,10 @@ input[type="checkbox"] {
 select {
   border: none;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 40px;
   background-position: center;
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 40px;
   text-align: center;
   text-align-last: center;
   -moz-text-align-last: center;
@@ -68,13 +68,9 @@ nav.sheet-tabs {
   border-bottom: 0;
 }
 
-.hitpoints {
-  border-radius: 50%;
-  border: 2px solid #fff;
-}
-
 .input-hitpoints {
   border-style: none;
+  font-size: 16px;
 }
 
 .occupation, .archetype, .save, .resource {
@@ -90,78 +86,45 @@ nav.sheet-tabs {
   text-align: center;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptextleft {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -25px;
-}
-
-.tooltip .tooltiptextright {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -85px;
-}
-
-.tooltip:hover .tooltiptextleft,
-.tooltip:hover .tooltiptextright {
-  visibility: visible;
-}
-
-div.tip .tip-title {
-  color: #E77600 !important;
-  font-weight: bold;
-}
-
-label em {
-  visibility: hidden;
-  width: 400px;
-  background-color: black;
-  color: #fff;
-  text-align: left;
-  border-radius: 6px;
-  padding: 5px 0;
-  font-size: var(--font-size-14);
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: 0px;
-  left: 0px;
-}
-
-label:hover em {
-  visibility: visible;
-}
-
-.chat-message .message-header .message-sender {
-  font-weight: bold;
-}
-
 .sheet-actor {
   margin: 10px 20px;
+}
+
+.cadre {
+  background-image: url("../ui/cadre.png");
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-position: center;
+  height: 50px;
+  border: none;
+  color: #fff;
+}
+
+.hitpoints {
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.hitpoints-cadre {
+  background-image: url("../ui/cadre.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center;
+  height: 40px;
+  width: 40px;
+  border: none;
+  color: #fff;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;  
+}
+
+.occupation {
+  padding-right: 15px;
+}
+
+.occupation-input {
+  font-size: var(--font-size-16);
 }
