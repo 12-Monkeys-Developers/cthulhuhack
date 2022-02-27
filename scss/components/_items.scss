@@ -41,7 +41,8 @@
     }
   }
 
-  .item-bloc, .item-name, .item-ability-description  {
+  .item-bloc, .item-name  {
+    flex: 2;
     margin: 0;
   }
 
@@ -58,4 +59,7 @@
     border-top: 1px solid #c9c7b8;
   }
   
+  .item-condition {
+    padding-top: 5px;
+  }
 }
