@@ -298,6 +298,10 @@
   border: none;
 }
 
+.cthack .character-notes {
+  color: #fff;
+}
+
 .cthack .attack-damage {
   width: 75px;
   text-align: center;
@@ -558,11 +562,11 @@
   padding-top: 10px;
 }
 
-.cthack .items-list .item .item-dice {
+.cthack .items-list .item .padding-top-5 {
   padding-top: 5px;
 }
 
-.cthack .items-list .item .item-range {
+.cthack .items-list .item .padding-top-10 {
   padding-top: 10px;
 }
 
@@ -588,7 +592,6 @@
   -webkit-box-flex: 0;
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
-  font-size: var(--font-size-12);
   line-height: 16px;
   padding: 0.25em 0.5em;
   border-top: 1px solid #c9c7b8;

@@ -51,7 +51,7 @@
     </header>
 
     {{!-- Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs align-center actor-sheet-middle" data-group="primary">
+    <nav class="sheet-tabs tabs align-center" data-group="primary">
         <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>        
         <a class="choice" data-tab="items">{{localize "CTHACK.Items"}}</a>
         <a class="choice" data-tab="abilities">{{localize "CTHACK.Abilities"}}</a>
@@ -119,7 +119,7 @@
         </div>
 
         {{!-- Notes Tab --}}
-        <div class="tab notes" data-group="primary" data-tab="notes">
+        <div class="tab character-notes" data-group="primary" data-tab="notes">
             {{editor content=systemData.notes target="data.notes" button=true owner=owner editable=editable}}
         </div>
 

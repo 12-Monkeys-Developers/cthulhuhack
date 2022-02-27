@@ -26,14 +26,14 @@
       padding-top: 10px;
     }
 
-    .item-dice {
+    .padding-top-5 {
       padding-top: 5px;
     }
-    
-    .item-range {
+
+    .padding-top-10 {
       padding-top: 10px;
     }
-
+    
     .item-align-middle {
       text-align: center;
       vertical-align: middle;
@@ -53,7 +53,6 @@
   
   .item-summary {
     flex: 0 0 100%;
-    font-size: var(--font-size-12);
     line-height: 16px;
     padding: 0.25em 0.5em;
     border-top: 1px solid #c9c7b8;
