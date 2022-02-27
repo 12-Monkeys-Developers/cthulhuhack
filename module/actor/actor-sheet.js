@@ -12,7 +12,7 @@ export class CtHackActorSheet extends ActorSheet {
 	static get defaultOptions() {
 		return mergeObject(super.defaultOptions, {
 			classes: [ 'cthack', 'sheet', 'actor', 'character' ],
-			width: 1200,
+			width: 1350,
 			height: 850,
 			tabs: [ { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'items' } ],
 			dragDrop: [ { dragSelector: '.items-list .item', dropSelector: null } ]

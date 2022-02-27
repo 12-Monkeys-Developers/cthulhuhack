@@ -257,8 +257,9 @@
 }
 
 .cthack .sheet-header .profile-img {
-  height: 360px;
+  height: 300px;
   width: auto;
+  margin: 0;
 }
 
 .cthack .sheet-header .weapon-img {
