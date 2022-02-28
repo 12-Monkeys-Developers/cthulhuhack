@@ -252,9 +252,7 @@ export class CtHackActorSheet extends ActorSheet {
 		const itemId = li.data('itemId');
 		const item = this.actor.items.find((item) => item.id === itemId);
 
-		if (CTHACK.debug) console.log(`${LOG_HEAD}Reset ability ${item.name}`);
-		const maxUse = item.data.data.uses.max;
-		item.update({ 'data.uses.value': maxUse, 'data.uses.last': '' });
+		this.actor.resetAbility(item);		
 	}
 
 	/**

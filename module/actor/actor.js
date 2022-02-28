@@ -193,6 +193,22 @@ export class CtHackActor extends Actor {
 	}
 
 	/**
+	 * @name resetAbility
+	 * @description 		Handles ability reset
+	 * 						Reset usage to max
+	 * 						Reset the last time of the use
+	 * @public
+	 * 
+	 * @param {*} ability   The ability item used
+	 * 
+	 */
+
+	 resetAbility(ability) {
+		if (CTHACK.debug) console.log(`${LOG_HEAD}Reset ability ${ability.name}`);
+		ability.update({ 'data.uses.value': ability.data.data.uses.max, 'data.uses.last': '' });
+	}
+
+	/**
 	 * Decrease a material dice
 	 * @param {String} itemId   The id of the item
 	 * @param {String} dice   "d4""
