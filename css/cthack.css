@@ -620,10 +620,21 @@ label:hover em {
   padding-top: 5px;
 }
 
-.cthack .item-image {
-  height: calc(100%/5);
+.cthack .sheet-header .item-image {
+  min-height: 128px;
   width: auto;
-  margin: 0;
+}
+
+.cthack .sheet-header .item-name {
+  margin: 0 10px 0 10px;
+}
+
+.cthack .item-item {
+  padding-left: 15px;
+}
+
+.cthack .item-item label {
+  margin-right: 10px;
 }
 
 .cthack .sheet-actor {

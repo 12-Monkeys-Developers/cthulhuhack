@@ -91,8 +91,20 @@
   }
 }
 
-.item-image {
-  height: calc(100%/5);
+.sheet-header .item-image {
+  
+  min-height: 128px;
   width: auto;
-  margin: 0;
+}
+
+.sheet-header .item-name {
+  margin: 0 10px 0 10px;
+}
+
+.item-item {
+  padding-left: 15px;
+
+  label {
+    margin-right: 10px;
+  }
 }
