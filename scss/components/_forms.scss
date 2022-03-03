@@ -17,21 +17,11 @@
   }
 
   .opponent-img {
-    height: 300px;
+    height: calc(100%/10);
     width: auto;
     margin: 0;
   }
   
-  .weapon-img {
-    height: 150px;
-    width: auto;
-  }
-
-  .attack-img {
-    height: 150px;
-    width: auto;
-  }
-
   .adrenaline-img {
     height: 30px;
     width: auto;

@@ -360,6 +360,11 @@ label:hover em {
   color: #fff;
 }
 
+.cthack .attack-damage {
+  width: 75px;
+  text-align: center;
+}
+
 .cthack .item-form {
   color: #fff;
 }
@@ -390,19 +395,9 @@ label:hover em {
 }
 
 .cthack .sheet-header .opponent-img {
-  height: 300px;
+  height: calc(100%/10);
   width: auto;
   margin: 0;
-}
-
-.cthack .sheet-header .weapon-img {
-  height: 150px;
-  width: auto;
-}
-
-.cthack .sheet-header .attack-img {
-  height: 150px;
-  width: auto;
 }
 
 .cthack .sheet-header .adrenaline-img {
@@ -523,11 +518,24 @@ label:hover em {
   padding: 0;
 }
 
+.cthack .items-list div {
+  text-align: center;
+  vertical-align: middle;
+}
+
 .cthack .items-list .item-header {
   line-height: 25px;
   padding: 0 5px 0 5px;
   border-bottom: 1px solid white;
   font-size: var(--font-size-16);
+}
+
+.cthack .items-list .item-header .item-header-name {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  text-align: left;
+  vertical-align: middle;
 }
 
 .cthack .items-list .item {
@@ -536,7 +544,12 @@ label:hover em {
 }
 
 .cthack .items-list .item:hover {
-  background-color: #2b3c2c;
+  /* darkgrey version
+      color: darkgrey;
+      font-weight: bold;
+      text-shadow: 0 0 10px #851016;
+      */
+  background-color: darkolivegreen;
 }
 
 .cthack .items-list .item .item-image {
@@ -549,6 +562,7 @@ label:hover em {
 
 .cthack .items-list .item .item-name {
   padding-top: 10px;
+  text-align: left;
 }
 
 .cthack .items-list .item .item-element {
@@ -563,11 +577,19 @@ label:hover em {
   vertical-align: middle;
 }
 
-.cthack .items-list .item-bloc, .cthack .items-list .item-name {
+.cthack .items-list .item-bloc {
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
   margin: 0;
+}
+
+.cthack .items-list .item-name {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin: 0;
+  padding-top: 10px;
 }
 
 .cthack .items-list .item-controls-header {
@@ -598,16 +620,22 @@ label:hover em {
   padding-top: 5px;
 }
 
+.cthack .item-image {
+  height: calc(100%/5);
+  width: auto;
+  margin: 0;
+}
+
+.cthack .sheet-actor {
+  margin: 10px 20px;
+}
+
 .cthack .occupation, .cthack .archetype, .cthack .save, .cthack .resource {
   border: none;
 }
 
 .cthack .character-notes {
   color: #fff;
-}
-
-.cthack .sheet-actor {
-  margin: 10px 20px;
 }
 
 .cthack .input-hitpoints {
@@ -621,6 +649,45 @@ label:hover em {
 
 .cthack .occupation-input {
   font-size: var(--font-size-16);
+}
+
+.cthack .hitpoints {
+  padding-left: calc(100%/4);
+  padding-right: calc(100%/4);
+}
+
+.cthack .hitpoints-cadre {
+  background-image: url("../ui/cadre.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center;
+  height: 40px;
+  width: 40px;
+  border: none;
+  color: #fff;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.cthack .sheet-opponent {
+  margin: 10px 20px;
+}
+
+.cthack .sheet-opponent .charname {
+  border: 0;
+}
+
+.cthack .sheet-opponent .flexrow {
+  border: 0;
+}
+
+.cthack .sheet-opponent label {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
 }
 
 .cthack .sheet-archetype .sheet-body {

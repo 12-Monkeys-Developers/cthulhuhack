@@ -1,7 +1,5 @@
 <form class="{{cssClass}} flexcol sheet-actor" autocomplete="off">
-
-    {{!-- Sheet Header --}}
-    <header class="sheet-header actor-sheet-top">
+    <header class="sheet-header">
         <div class="flex-center">
           <img class="profile-img" src="{{actorData.img}}" data-edit="img" title="{{actorData.name}}" height="100" width="100"/>
           {{#if (isEnabled "FortuneAvailable")}}
@@ -31,8 +29,7 @@
                 <input name="data.archetype" type="text" value="{{systemData.archetype}}" placeholder='{{localize "CTHACK.Archetype"}}' class="occupation-input"/>
               </div>                      
             </div>            
-            {{!-- The grid classes are defined in scss/global/_grid.scss. To use, use both the "grid" and "grid-Ncol" class where "N" can be any number from 1 to 12 and will create that number of columns.  --}}
-              <div class="saves grid grid-3col">
+            <div class="saves grid grid-3col">
                 {{#each systemData.saves as |save key|}}
                   <div class="save flexrow flex-group-center" data-save="{{key}}">
                     <label class="resource-label save-name rollable">{{localize (getSaveLabel key)}}<em>{{localize (toDesc key)}}</em></label>
@@ -60,7 +57,7 @@
     </nav>
 
     {{!-- Sheet Body --}}
-    <section class="sheet-body actor-sheet-bottom">
+    <section class="sheet-body">
 
         {{!-- Biography Tab --}}
         <div class="tab biography" data-group="primary" data-tab="description">
@@ -71,9 +68,9 @@
         <div class="tab items" data-group="primary" data-tab="items">
             <ol class="items-list">
                 <li class="item-header flexrow" draggable="true">
-                  <div class="item-name">{{localize "CTHACK.Name"}}</div>
-                  <div class="align-center">{{localize "CTHACK.ItemDiceName"}}</div>
-                  <div class="align-center">{{localize "CTHACK.ItemRangeName"}}</div>
+                  <div class="item-header-name">{{localize "CTHACK.Name"}}</div>
+                  <div>{{localize "CTHACK.ItemDiceName"}}</div>
+                  <div>{{localize "CTHACK.ItemRangeName"}}</div>
                   <div class="item-controls-header">
                     <a class="item-control item-create" title="{{localize "CTHACK.Add"}}" data-type="item"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
                   </div>
@@ -91,12 +88,12 @@
         <div class="tab abilities" data-group="primary" data-tab="abilities">
             <ol class="items-list">
                 <li class="item-header flexrow">
-                  <div class="item-name">{{localize "CTHACK.Name"}}</div>
-                  <div class="item-usageType align-center">{{localize "CTHACK.AbilityUsePer"}}</div>
-                  <div class="item-usageRemaining align-center">{{localize "CTHACK.AbilityUseValue"}}</div>
-                  <div class="item-usageLastTime align-center">{{localize "CTHACK.AbilityUseLast"}}</div>
-                  <div class="item-usageMultiple align-center">{{localize "CTHACK.AbilityMultiple"}}</div>
-                  <div class="item-controls">
+                  <div class="item-header-name">{{localize "CTHACK.Name"}}</div>
+                  <div>{{localize "CTHACK.AbilityUsePer"}}</div>
+                  <div>{{localize "CTHACK.AbilityUseValue"}}</div>
+                  <div>{{localize "CTHACK.AbilityUseLast"}}</div>
+                  <div>{{localize "CTHACK.AbilityMultiple"}}</div>
+                  <div class="item-controls-header">
                     <a class="item-control ability-create" title="{{localize "CTHACK.Add"}}" data-type="ability"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
                   </div>
                 </li>
@@ -110,7 +107,7 @@
         <div class="tab items" data-group="primary" data-tab="conditions">
             <ol class="items-list">
                 <li class="item-header flexrow">
-                  <div class="item-name">{{localize "CTHACK.Name"}}</div>
+                  <div class="item-header-name">{{localize "CTHACK.Name"}}</div>
                 </li>
                 {{#each conditions as |condition id|}}
                   {{> "systems/cthack/templates/actor/parts/actor-condition.hbs" condition}}

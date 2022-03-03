@@ -1,24 +1,45 @@
+.sheet-actor {
+  margin: 10px 20px;
+}
+
 .occupation, .archetype, .save, .resource {
-    border: none;
-  }
-  
-  .character-notes {
-    color: #fff;
-  }
+  border: none;
+}
 
-  .sheet-actor {
-    margin: 10px 20px;
-  }
+.character-notes {
+  color: #fff;
+}
 
-  .input-hitpoints {
-    border-style: none;
-    font-size: 16px;
-  }
-    
-  .occupation {
-    padding-right: 15px;
-  }
+.input-hitpoints {
+  border-style: none;
+  font-size: 16px;
+}
   
-  .occupation-input {
-    font-size: var(--font-size-16);
-  }
+.occupation {
+  padding-right: 15px;
+}
+
+.occupation-input {
+  font-size: var(--font-size-16);
+}
+
+.hitpoints {
+  padding-left: calc(100%/4);
+  padding-right: calc(100%/4);
+}
+
+.hitpoints-cadre {
+  background-image: url("../ui/cadre.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center;
+  height: 40px;
+  width: 40px;
+  border: none;
+  color: #fff;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;  
+}

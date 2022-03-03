@@ -3,18 +3,34 @@
   margin: 0;
   padding: 0;
 
+  div {
+    text-align: center;
+    vertical-align: middle;
+  }
+
   .item-header {
     line-height: 25px;
     padding: 0 5px 0 5px;
     border-bottom: 1px solid white;
     font-size:var(--font-size-16);
+
+    .item-header-name {
+      flex: 2;
+      text-align: left;
+      vertical-align: middle;
+    }
   }
 
   .item {
     line-height: 25px;
     padding: 0 5px 0 5px;
     &:hover {
-      background-color: #2b3c2c;
+      /* darkgrey version
+      color: darkgrey;
+      font-weight: bold;
+      text-shadow: 0 0 10px #851016;
+      */
+      background-color:darkolivegreen;
     }
     
     .item-image {
@@ -25,6 +41,7 @@
 
     .item-name {
       padding-top: 10px;
+      text-align: left;
     }
 
     .item-element {
@@ -40,9 +57,15 @@
     }    
   }
 
-  .item-bloc, .item-name  {
+  .item-bloc {
     flex: 2;
     margin: 0;
+  }
+
+  .item-name {
+    flex: 2;
+    margin: 0;
+    padding-top: 10px;
   }
 
   .item-controls-header {
@@ -66,4 +89,10 @@
   .item-condition {
     padding-top: 5px;
   }
+}
+
+.item-image {
+  height: calc(100%/5);
+  width: auto;
+  margin: 0;
 }
