@@ -9,7 +9,6 @@
 @import 'global/grid';
 @import 'global/flex';
 
-@import 'global/actor';
 @import 'global/chat';
 
 /* Styles limited to cthack sheets */
@@ -21,5 +20,7 @@
   @import 'components/resource';
   @import 'components/save';
   @import 'components/items';
+  @import 'components/character';
+  @import 'components/opponent';
   @import 'components/archetype';
 }

@@ -58,36 +58,10 @@ option:checked, option:hover {
   display: none;
 }
 
-.dialog-button {
-  color: $c-white;
-}
-
 nav.sheet-tabs {
   height: 40px;
   border-top: 0;
   border-bottom: 0;
-}
-
-.input-hitpoints {
-  border-style: none;
-  font-size: 16px;
-}
-
-.occupation, .archetype, .save, .resource {
-  border: none;
-}
-
-.character-notes {
-  color: #fff;
-}
-
-.attack-damage {
-  width: 75px;
-  text-align: center;
-}
-
-.sheet-actor {
-  margin: 10px 20px;
 }
 
 .cadre {
@@ -100,31 +74,3 @@ nav.sheet-tabs {
   color: #fff;
 }
 
-.hitpoints {
-  padding-left: 70px;
-  padding-right: 70px;
-}
-
-.hitpoints-cadre {
-  background-image: url("../ui/cadre.png");
-  background-repeat: no-repeat;
-  background-size: 40px;
-  background-position: center;
-  height: 40px;
-  width: 40px;
-  border: none;
-  color: #fff;
-  text-align: center;
-  text-align-last: center;
-  -moz-text-align-last: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;  
-}
-
-.occupation {
-  padding-right: 15px;
-}
-
-.occupation-input {
-  font-size: var(--font-size-16);
-}

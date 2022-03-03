@@ -115,7 +115,7 @@ label:hover em {
   -ms-grid-columns: (minmax(0, 1fr))[2];
       grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  margin: 10px 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -344,36 +344,10 @@ label:hover em {
   display: none;
 }
 
-.cthack .dialog-button {
-  color: #fff;
-}
-
 .cthack nav.sheet-tabs {
   height: 40px;
   border-top: 0;
   border-bottom: 0;
-}
-
-.cthack .input-hitpoints {
-  border-style: none;
-  font-size: 16px;
-}
-
-.cthack .occupation, .cthack .archetype, .cthack .save, .cthack .resource {
-  border: none;
-}
-
-.cthack .character-notes {
-  color: #fff;
-}
-
-.cthack .attack-damage {
-  width: 75px;
-  text-align: center;
-}
-
-.cthack .sheet-actor {
-  margin: 10px 20px;
 }
 
 .cthack .cadre {
@@ -384,35 +358,6 @@ label:hover em {
   height: 50px;
   border: none;
   color: #fff;
-}
-
-.cthack .hitpoints {
-  padding-left: 70px;
-  padding-right: 70px;
-}
-
-.cthack .hitpoints-cadre {
-  background-image: url("../ui/cadre.png");
-  background-repeat: no-repeat;
-  background-size: 40px;
-  background-position: center;
-  height: 40px;
-  width: 40px;
-  border: none;
-  color: #fff;
-  text-align: center;
-  text-align-last: center;
-  -moz-text-align-last: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-.cthack .occupation {
-  padding-right: 15px;
-}
-
-.cthack .occupation-input {
-  font-size: var(--font-size-16);
 }
 
 .cthack .item-form {
@@ -439,7 +384,7 @@ label:hover em {
 }
 
 .cthack .sheet-header .profile-img {
-  height: 300px;
+  height: calc(100%/5);
   width: auto;
   margin: 0;
 }
@@ -574,29 +519,31 @@ label:hover em {
 
 .cthack .items-list {
   list-style: none;
-  margin: 10px 20px 10px 20px;
+  margin: 0;
   padding: 0;
 }
 
 .cthack .items-list .item-header {
-  font-size: var(--font-size-16);
-}
-
-.cthack .items-list .item {
-  line-height: 24px;
-  padding: 5px 0;
+  line-height: 25px;
+  padding: 0 5px 0 5px;
   border-bottom: 1px solid white;
   font-size: var(--font-size-16);
 }
 
-.cthack .items-list .item img {
-  max-width: 40px;
+.cthack .items-list .item {
+  line-height: 25px;
+  padding: 0 5px 0 5px;
+}
+
+.cthack .items-list .item:hover {
+  background-color: #2b3c2c;
 }
 
 .cthack .items-list .item .item-image {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 24px;
-          flex: 0 0 24px;
+      -ms-flex: 0 0 40px;
+          flex: 0 0 40px;
+  padding-top: 5px;
   margin-right: 5px;
 }
 
@@ -604,18 +551,16 @@ label:hover em {
   padding-top: 10px;
 }
 
-.cthack .items-list .item .padding-top-5 {
+.cthack .items-list .item .item-element {
   padding-top: 5px;
-}
-
-.cthack .items-list .item .padding-top-10 {
-  padding-top: 10px;
-}
-
-.cthack .items-list .item .item-align-middle {
   text-align: center;
   vertical-align: middle;
+}
+
+.cthack .items-list .item .item-element-text {
   padding-top: 10px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .cthack .items-list .item-bloc, .cthack .items-list .item-name {
@@ -651,6 +596,31 @@ label:hover em {
 
 .cthack .items-list .item-condition {
   padding-top: 5px;
+}
+
+.cthack .occupation, .cthack .archetype, .cthack .save, .cthack .resource {
+  border: none;
+}
+
+.cthack .character-notes {
+  color: #fff;
+}
+
+.cthack .sheet-actor {
+  margin: 10px 20px;
+}
+
+.cthack .input-hitpoints {
+  border-style: none;
+  font-size: 16px;
+}
+
+.cthack .occupation {
+  padding-right: 15px;
+}
+
+.cthack .occupation-input {
+  font-size: var(--font-size-16);
 }
 
 .cthack .sheet-archetype .sheet-body {

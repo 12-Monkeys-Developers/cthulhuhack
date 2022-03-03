@@ -1,24 +1,25 @@
 .items-list {
   list-style: none;
-  margin: 10px 20px 10px 20px;
+  margin: 0;
   padding: 0;
 
   .item-header {
+    line-height: 25px;
+    padding: 0 5px 0 5px;
+    border-bottom: 1px solid white;
     font-size:var(--font-size-16);
   }
 
   .item {
-    line-height: 24px;
-    padding: 5px 0;
-    border-bottom: 1px solid white;
-    font-size: var(--font-size-16);
-
-    img {
-      max-width: 40px;
+    line-height: 25px;
+    padding: 0 5px 0 5px;
+    &:hover {
+      background-color: #2b3c2c;
     }
     
     .item-image {
-      flex: 0 0 24px;
+      flex: 0 0 40px;
+      padding-top: 5px;
       margin-right: 5px;
     }
 
@@ -26,19 +27,17 @@
       padding-top: 10px;
     }
 
-    .padding-top-5 {
+    .item-element {
       padding-top: 5px;
+      text-align: center;
+      vertical-align: middle;      
     }
 
-    .padding-top-10 {
+    .item-element-text {
       padding-top: 10px;
-    }
-    
-    .item-align-middle {
       text-align: center;
       vertical-align: middle;
-      padding-top: 10px;
-    }
+    }    
   }
 
   .item-bloc, .item-name  {

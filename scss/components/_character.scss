@@ -1,0 +1,24 @@
+.occupation, .archetype, .save, .resource {
+    border: none;
+  }
+  
+  .character-notes {
+    color: #fff;
+  }
+
+  .sheet-actor {
+    margin: 10px 20px;
+  }
+
+  .input-hitpoints {
+    border-style: none;
+    font-size: 16px;
+  }
+    
+  .occupation {
+    padding-right: 15px;
+  }
+  
+  .occupation-input {
+    font-size: var(--font-size-16);
+  }
