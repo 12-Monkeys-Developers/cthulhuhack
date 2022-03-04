@@ -60,25 +60,25 @@
             </div>        
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityMultiple"}}</label>
-                <div class="form-fields">
+                <div class="form-fields ability-checkbox">
                     <input class="checkbox" name="data.multiple" type="checkbox" {{checked systemData.multiple}}>
                 </div>
             </div>
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityIsCustom"}}</label>
-                <div class="form-fields">
+                <div class="form-fields ability-checkbox">
                     <input class="checkbox" name="data.isCustom" type="checkbox" {{checked systemData.isCustom}}>
                 </div>
             </div>        
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityAdvantageGiven"}}</label>
-                <div class="form-fields">
+                <div class="form-fields ability-checkbox">
                     <input class="checkbox" name="data.advantageGiven" type="checkbox" {{checked systemData.advantageGiven}}>
                 </div>
             </div> 
              <div class="form-group">
-                <label>{{localize "CTHACK.AbilityAdvantageText"}}</label>
-                <div class="form-fields">
+                <label class="advantage">{{localize "CTHACK.AbilityAdvantageText"}}</label>
+                <div class="form-fields ability-checkbox">
                     <input class="field-value" name="data.advantageText" type="text" value="{{systemData.advantageText}}" data-dtype="String">
                 </div>
             </div>  

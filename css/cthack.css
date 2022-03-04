@@ -725,6 +725,22 @@ label:hover em {
           flex: 8;
 }
 
+.cthack .item-ability input {
+  text-align: center;
+}
+
+.cthack .item-ability label.advantage {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.cthack .item-ability .ability-checkbox {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .cthack .sheet-archetype .sheet-body {
   height: 400px;
 }
