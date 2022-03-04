@@ -1,5 +1,4 @@
 <div class="chat-save-roll">
-    {{log 'chat' this}}
     <h4 class="chat-save-roll-title">{{ localize "CHAT.RollSave" save=rollId}}</h4>
     <div >
     {{#if advantageFromDialog}}<span>{{localize "CHAT.RollWithAdvantageFromDialog"}}<br></span>{{/if}}{{#if disadvantageFromDialog}}<span>{{localize "CHAT.RollWithDisadvantageFromDialog"}}<br></span>{{/if}}{{#if doubleAdvantageFromDialog}}<span>{{localize "CHAT.RollWithDoubleAdvantageFromDialog"}}<br></span>{{/if}}{{#if doubleDisadvantageFromDialog}}<span>{{localize "CHAT.RollWithDoubleDisadvantageFromDialog"}}<br></span>{{/if}}
@@ -16,6 +15,5 @@
         <div class="dice-result">
             <h4 class="dice-total">{{total}}</h4>
             {{> "systems/cthack/templates/chat/tooltip.hbs"}}
-            <div class="dice-formula">{{formula}}</div>                                                            
         </div>
 </div>
