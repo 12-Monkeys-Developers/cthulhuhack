@@ -35,11 +35,7 @@
             </div>
             <div class="resource-content-archetype flexrow flex-center flex-between">
                 <label for="data.hitpoints.value" class="resource-label resource-name">{{localize "CTHACK.HitPointsStart"}}</label>
-                <select name="data.hitpoints" data-type="String">
-                {{#select systemData.hitpoints}}
-                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
-                {{/select}}
-                </select>
+                <input class="field-value" type="text" name="data.hitpoints" data-type="String" value="{{systemData.hitpoints}}"> 
             </div>
             <div class="resource-content-archetype flexrow flex-center flex-between">
                 <label for="data.wealthStart.value" class="resource-label resource-name">{{localize "CTHACK.WealthStart"}}</label>
