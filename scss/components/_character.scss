@@ -17,6 +17,7 @@
   
 .occupation {
   padding-right: 15px;
+  padding-bottom: $padding-md;
 }
 
 .occupation-input {
@@ -42,4 +43,33 @@
   -moz-text-align-last: center;
   -webkit-appearance: none;
   -moz-appearance: none;  
+}
+
+.saves {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: $padding-md;
+}
+
+.save {
+  font-size: var(--font-size-16);
+}
+ 
+.save-name {
+  flex-grow: 3;
+}
+
+input.save{
+  color: $c-white;
+}
+
+.resource-label {
+  text-transform: uppercase;
+  font-size: var(--font-size-16);
+}
+
+.resource-content {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-top: $padding-sm;
 }

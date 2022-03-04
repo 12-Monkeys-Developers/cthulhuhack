@@ -8,7 +8,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 		return mergeObject(super.defaultOptions, {
 			classes: [ 'cthack', 'sheet', 'actor', 'opponent' ],
 			width: 700,
-			height: 430,
+			height: 480,
 			tabs: [ { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' } ],
 			dragDrop: [{ dragSelector: ".items-list .item", dropSelector: null }]
 		});

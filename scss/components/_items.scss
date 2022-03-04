@@ -10,7 +10,7 @@
 
   .item-header {
     line-height: 25px;
-    padding: 0 5px 0 5px;
+    padding: 0 $padding-sm 0 $padding-sm;
     border-bottom: 1px solid white;
     font-size:var(--font-size-16);
 
@@ -23,35 +23,30 @@
 
   .item {
     line-height: 25px;
-    padding: 0 5px 0 5px;
+    padding: 0 $padding-sm 0 $padding-sm;
     &:hover {
-      /* darkgrey version
-      color: darkgrey;
-      font-weight: bold;
-      text-shadow: 0 0 10px #851016;
-      */
-      background-color:darkolivegreen;
+      background-color:#59564c;
     }
     
     .item-image {
       flex: 0 0 40px;
-      padding-top: 5px;
-      margin-right: 5px;
+      padding-top: $padding-sm;
+      margin-right: $padding-sm;
     }
 
     .item-name {
-      padding-top: 10px;
+      padding-top: $padding-md;
       text-align: left;
     }
 
     .item-element {
-      padding-top: 5px;
+      padding-top: $padding-sm;
       text-align: center;
       vertical-align: middle;      
     }
 
     .item-element-text {
-      padding-top: 10px;
+      padding-top: $padding-md;
       text-align: center;
       vertical-align: middle;
     }    
@@ -65,7 +60,7 @@
   .item-name {
     flex: 2;
     margin: 0;
-    padding-top: 10px;
+    padding-top: $padding-md;
   }
 
   .item-controls-header {
@@ -76,7 +71,7 @@
   .item-controls {
     flex: 0 0 86px;
     text-align: right;
-    padding-top: 10px;
+    padding-top: $padding-md;
   }
   
   .item-summary {
@@ -87,7 +82,7 @@
   }
   
   .item-condition {
-    padding-top: 5px;
+    padding-top: $padding-sm;
   }
 }
 

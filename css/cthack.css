@@ -4,6 +4,21 @@
   font-family: "EBGaramond", sans-serif;
 }
 
+.window-app .window-content {
+  background-image: url("../ui/fond-blanc.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.window-app .window-content .compendium.directory .directory-list .directory-item {
+  border: none;
+}
+
+.window-app .window-content .compendium.directory .directory-list .directory-item:hover {
+  background-color: #59564c;
+  color: #fff;
+}
+
 .rollable:hover, .rollable:focus {
   color: #d44d54;
   text-shadow: 0 0 10px #eea3a3;
@@ -11,7 +26,8 @@
 }
 
 .color-white {
-  color: white;
+  /*color: white;*/
+  color: #dfe2d5;
 }
 
 #logo {
@@ -235,45 +251,29 @@ label:hover em {
   border: 1px solid #6e0000;
 }
 
-.chat-save-roll-title {
+/*.chat-save-roll-title, .chat-resource-roll-title, .chat-other-roll-title  {
   font-weight: 400;
-}
-
-.chat-save-roll {
+}*/
+/*
+.chat-save-roll, .chat-resource-roll, .chat-other-roll {
   font-family: 'Averia Libre', cursive;
   background-image: url("../ui/fiche-milieu.png");
   background-size: cover;
   color: #fff;
-}
-
-.chat-resource-roll-title {
-  font-weight: 400;
-}
-
-.chat-resource-roll {
-  font-family: 'Averia Libre', cursive;
-  background-image: url("../ui/fiche-milieu.png");
-  background-size: cover;
-  color: #fff;
-}
-
-.chat-other-roll-title {
-  font-weight: 400;
-}
-
-.chat-other-roll {
-  font-family: 'Averia Libre', cursive;
-  background-image: url("../ui/fiche-milieu.png");
-  background-size: cover;
-  color: #fff;
-}
-
+}*/
 .roll-failure {
   color: red;
 }
 
 .roll-success {
   color: green;
+}
+
+.chat-message .message-content {
+  background-image: url(../ui/cthack-green.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
 }
 
 /* Styles limited to cthack sheets */
@@ -298,7 +298,7 @@ label:hover em {
 }
 
 .cthack .noborder {
-  border: 0;
+  border: none;
 }
 
 .cthack input[type="text"],
@@ -307,6 +307,10 @@ label:hover em {
 .cthack input[type="date"],
 .cthack input[type="time"] {
   color: #fff;
+}
+
+.cthack input[type="text"] {
+  border: none;
 }
 
 .cthack input[type="checkbox"] {
@@ -476,20 +480,57 @@ label:hover em {
   text-shadow: 0 0 10px #851016;
 }
 
-.cthack .resource-label {
-  text-transform: uppercase;
+.cthack .sheet-actor {
+  margin: 10px 20px;
+}
+
+.cthack .occupation, .cthack .archetype, .cthack .save, .cthack .resource {
+  border: none;
+}
+
+.cthack .character-notes {
+  color: #fff;
+}
+
+.cthack .input-hitpoints {
+  border-style: none;
+  font-size: 16px;
+}
+
+.cthack .occupation {
+  padding-right: 15px;
+  padding-bottom: 10px;
+}
+
+.cthack .occupation-input {
   font-size: var(--font-size-16);
 }
 
-.cthack .resource-content {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  padding-top: 5px;
+.cthack .hitpoints {
+  padding-left: calc(100%/4);
+  padding-right: calc(100%/4);
+}
+
+.cthack .hitpoints-cadre {
+  background-image: url("../ui/cadre.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center;
+  height: 40px;
+  width: 40px;
+  border: none;
+  color: #fff;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .cthack .saves {
   padding-left: 100px;
   padding-right: 100px;
+  padding-bottom: 10px;
 }
 
 .cthack .save {
@@ -504,6 +545,35 @@ label:hover em {
 
 .cthack input.save {
   color: #fff;
+}
+
+.cthack .resource-label {
+  text-transform: uppercase;
+  font-size: var(--font-size-16);
+}
+
+.cthack .resource-content {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-top: 5px;
+}
+
+.cthack .sheet-opponent {
+  margin: 10px 20px;
+}
+
+.cthack .sheet-opponent .charname {
+  border: 0;
+}
+
+.cthack .sheet-opponent .flexrow {
+  border: 0;
+}
+
+.cthack .sheet-opponent label {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
 }
 
 .cthack .items-list {
@@ -538,12 +608,7 @@ label:hover em {
 }
 
 .cthack .items-list .item:hover {
-  /* darkgrey version
-      color: darkgrey;
-      font-weight: bold;
-      text-shadow: 0 0 10px #851016;
-      */
-  background-color: darkolivegreen;
+  background-color: #59564c;
 }
 
 .cthack .items-list .item .item-image {
@@ -664,70 +729,6 @@ label:hover em {
   -webkit-box-flex: 8;
       -ms-flex: 8;
           flex: 8;
-}
-
-.cthack .sheet-actor {
-  margin: 10px 20px;
-}
-
-.cthack .occupation, .cthack .archetype, .cthack .save, .cthack .resource {
-  border: none;
-}
-
-.cthack .character-notes {
-  color: #fff;
-}
-
-.cthack .input-hitpoints {
-  border-style: none;
-  font-size: 16px;
-}
-
-.cthack .occupation {
-  padding-right: 15px;
-}
-
-.cthack .occupation-input {
-  font-size: var(--font-size-16);
-}
-
-.cthack .hitpoints {
-  padding-left: calc(100%/4);
-  padding-right: calc(100%/4);
-}
-
-.cthack .hitpoints-cadre {
-  background-image: url("../ui/cadre.png");
-  background-repeat: no-repeat;
-  background-size: 40px;
-  background-position: center;
-  height: 40px;
-  width: 40px;
-  border: none;
-  color: #fff;
-  text-align: center;
-  text-align-last: center;
-  -moz-text-align-last: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-.cthack .sheet-opponent {
-  margin: 10px 20px;
-}
-
-.cthack .sheet-opponent .charname {
-  border: 0;
-}
-
-.cthack .sheet-opponent .flexrow {
-  border: 0;
-}
-
-.cthack .sheet-opponent label {
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
 }
 
 .cthack .sheet-archetype .sheet-body {

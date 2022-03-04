@@ -10,38 +10,17 @@
   border: 1px solid #6e0000;
 }
 
-.chat-save-roll-title {
+/*.chat-save-roll-title, .chat-resource-roll-title, .chat-other-roll-title  {
   font-weight: 400;
-}
+}*/
 
-.chat-save-roll {
+/*
+.chat-save-roll, .chat-resource-roll, .chat-other-roll {
   font-family: 'Averia Libre', cursive;
   background-image: url("../ui/fiche-milieu.png");
   background-size: cover;
   color: #fff;
-}
-
-.chat-resource-roll-title {
-  font-weight: 400;
-}
-
-.chat-resource-roll {
-  font-family: 'Averia Libre', cursive;
-  background-image: url("../ui/fiche-milieu.png");
-  background-size: cover;
-  color: #fff;
-}
-
-.chat-other-roll-title {
-  font-weight: 400;
-}
-
-.chat-other-roll {
-  font-family: 'Averia Libre', cursive;
-  background-image: url("../ui/fiche-milieu.png");
-  background-size: cover;
-  color: #fff;
-}
+}*/
 
 .roll-failure {
   color: red;
@@ -49,4 +28,11 @@
 
 .roll-success {
   color: green;
+}
+
+.chat-message .message-content {
+  background-image: url(../ui/cthack-green.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: $c-white;
 }

@@ -12,7 +12,7 @@
 }
 
 .noborder {
-  border: 0;
+  border: none;
 }
 
 input[type="text"],
@@ -21,6 +21,10 @@ input[type="password"],
 input[type="date"],
 input[type="time"] {
   color: $c-white;
+}
+
+input[type="text"] {
+  border: none;
 }
 
 input[type="checkbox"] {
@@ -78,3 +82,4 @@ nav.sheet-tabs {
   width: 75px;
   text-align: center;
 }
+

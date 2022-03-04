@@ -29,7 +29,7 @@
                 <input name="data.archetype" type="text" value="{{systemData.archetype}}" placeholder='{{localize "CTHACK.Archetype"}}' class="occupation-input"/>
               </div>                      
             </div>            
-            <div class="saves grid grid-3col">
+            <div class="grid grid-3col saves">
                 {{#each systemData.saves as |save key|}}
                   <div class="save flexrow flex-group-center" data-save="{{key}}">
                     <label class="resource-label save-name rollable">{{localize (getSaveLabel key)}}<em>{{localize (toDesc key)}}</em></label>
@@ -38,10 +38,10 @@
                   </div>
                 {{/each}}
               </div>
-            <div class="resources grid grid-4col">
+            <div class="grid grid-4col resources">
               {{> "systems/cthack/templates/actor/parts/actor-attributes-firstline.hbs"}}
             </div>
-            <div class="resources grid grid-4col">
+            <div class="grid grid-4col resources">
               {{> "systems/cthack/templates/actor/parts/actor-attributes-secondline.hbs"}}
             </div>
         </div>
