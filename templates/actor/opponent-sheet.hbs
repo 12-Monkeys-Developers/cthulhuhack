@@ -52,7 +52,7 @@
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs align-center">
         <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>
-        <a class="choice" data-tab="attributes">{{localize "CTHACK.Attributes"}}</a>
+        <a class="choice" data-tab="attacks">{{localize "CTHACK.OpponentAttacks"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -63,8 +63,8 @@
             {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
         </div>
 
-        {{!-- Attributes Tab --}}
-        <div class="tab" data-tab="attributes">            
+        {{!-- Attacks Tab --}}
+        <div class="tab" data-tab="attacks">            
              <ol class="items-list">
                 <li class=" item-header flexrow">
                   <div class="item-header-name">{{localize "CTHACK.Name"}}</div>

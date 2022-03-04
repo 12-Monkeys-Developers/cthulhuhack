@@ -5,7 +5,7 @@
             <h1 class="item-name"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>
             <div class="grid grid-2col item-weapon">
               <div class="resource">
-                <label class="resource-label select-wider">{{localize "CTHACK.Material"}}</label>
+                <label class="resource-label">{{localize "CTHACK.Material"}}</label>
                 <select name="data.dice" data-type="String" {{{getStyleForDice systemData.dice}}}>
                     {{#select systemData.dice}}
                         {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
@@ -13,7 +13,7 @@
                 </select>
               </div>
               <div class="resource">
-                <label class="resource-label select-wider">{{localize "CTHACK.ItemRangeName"}}</label>
+                <label class="resource-label">{{localize "CTHACK.ItemRangeName"}}</label>
                 <select name="data.range" data-type="String" class="select-range">
                     {{#select systemData.range}}
                         <option value="">{{localize "CTHACK.None"}}</option>

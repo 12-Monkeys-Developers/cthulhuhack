@@ -667,6 +667,7 @@ label:hover em {
   line-height: 16px;
   padding: 0.25em 0.5em;
   border-top: 1px solid #c9c7b8;
+  text-align: left;
 }
 
 .cthack .items-list .item-condition {
@@ -712,6 +713,30 @@ label:hover em {
 .cthack .item-weapon .select-range {
   color: white;
   width: 80px;
+}
+
+.cthack .item-attack {
+  padding-left: 10px;
+  margin: 0 10px 0 10px;
+}
+
+.cthack .item-attack label {
+  margin-right: 10px;
+}
+
+.cthack .item-attack .select-dice {
+  color: white;
+  width: 80px;
+}
+
+.cthack .item-attack .attack-damage {
+  height: 40px;
+}
+
+.cthack .item-attack .item-dice {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
 }
 
 .cthack .item-ability select {

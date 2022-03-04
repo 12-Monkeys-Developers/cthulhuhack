@@ -79,6 +79,7 @@
     line-height: 16px;
     padding: 0.25em 0.5em;
     border-top: 1px solid #c9c7b8;
+    text-align: left;
   }
   
   .item-condition {
@@ -124,6 +125,28 @@
   .select-range {
     color: white;
     width: 80px;
+  }
+}
+
+.item-attack {
+  padding-left: $padding-md;
+  margin: 0 10px 0 10px;
+
+  label {
+    margin-right: 10px;
+  }
+
+  .select-dice {
+    color: white;
+    width: 80px;
+  }
+
+  .attack-damage {
+    height: 40px;
+  }
+
+  .item-dice {
+    flex: 4;
   }
 }
 
