@@ -7,9 +7,9 @@
   "url": "https://github.com/Qaw/cthulhuhack",
   "license": "LICENSE.txt",
   "flags": {},
-  "version": "0.9.6",
+  "version": "0.9.7",
   "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9.245",
+  "compatibleCoreVersion": "9.251",
   "scripts": [],
   "esmodules": [
     "module/cthack.js"
@@ -115,7 +115,7 @@
   "dependencies": [],
   "socket": true,
   "manifest": "https://github.com/Qaw/cthulhuhack/releases/latest/download/system.json",
-  "download": "https://github.com/Qaw/cthulhuhack/releases/download/0.9.6/system.zip",
+  "download": "https://github.com/Qaw/cthulhuhack/releases/download/0.9.7/system.zip",
   "protected": false,
   "gridDistance": 5,
   "gridUnits": "ft",
