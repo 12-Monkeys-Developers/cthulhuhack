@@ -33,7 +33,7 @@
                 {{#each systemData.saves as |save key|}}
                   <div class="save flexrow flex-group-center" data-save="{{key}}">
                     <label class="resource-label save-name rollable">{{localize (getSaveLabel key)}}<em>{{localize (toDesc key)}}</em></label>
-                    <input type="text" name="data.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value cadre"/>
+                    <input type="text" name="data.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value frames"/>
                     <input type="checkbox" name="data.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}}/>
                   </div>
                 {{/each}}

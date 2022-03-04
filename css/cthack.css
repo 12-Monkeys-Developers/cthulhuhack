@@ -5,7 +5,7 @@
 }
 
 .window-app .window-content {
-  background-image: url("../ui/fond-blanc.png");
+  background-image: url("../ui/background-white.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -348,8 +348,8 @@ label:hover em {
   border-bottom: 0;
 }
 
-.cthack .cadre {
-  background-image: url("../ui/cadre.png");
+.cthack .frame {
+  background-image: url("../ui/frame.png");
   background-repeat: no-repeat;
   background-size: 50px;
   background-position: center;
@@ -505,8 +505,8 @@ label:hover em {
   padding-right: calc(25%);
 }
 
-.cthack .hitpoints-cadre {
-  background-image: url("../ui/cadre.png");
+.cthack .hitpoints-frame {
+  background-image: url("../ui/frame.png");
   background-repeat: no-repeat;
   background-size: 40px;
   background-position: center;
