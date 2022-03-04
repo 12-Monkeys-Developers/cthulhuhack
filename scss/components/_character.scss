@@ -73,3 +73,12 @@ input.save{
   margin-bottom: 2px;
   padding-top: $padding-sm;
 }
+
+.resource-content-archetype {
+  margin: 0;
+  padding: 0;
+
+  select {
+    color: $c-white;
+  }
+}

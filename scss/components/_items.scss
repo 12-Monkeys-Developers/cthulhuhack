@@ -11,7 +11,7 @@
   .item-header {
     line-height: 25px;
     padding: 0 $padding-sm 0 $padding-sm;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid $c-white;
     font-size:var(--font-size-16);
 
     .item-header-name {
@@ -123,7 +123,7 @@
   }
 
   .select-range {
-    color: white;
+    color: $c-white;
     width: 80px;
   }
 }
@@ -137,7 +137,7 @@
   }
 
   .select-dice {
-    color: white;
+    color: $c-white;
     width: 80px;
   }
 
@@ -152,7 +152,7 @@
 
 .item-ability {
   select {
-    color: white;
+    color: $c-white;
     font-weight: normal;
   }
 

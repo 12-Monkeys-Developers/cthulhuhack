@@ -552,6 +552,15 @@ label:hover em {
   padding-top: 5px;
 }
 
+.cthack .resource-content-archetype {
+  margin: 0;
+  padding: 0;
+}
+
+.cthack .resource-content-archetype select {
+  color: #fff;
+}
+
 .cthack .sheet-opponent {
   margin: 10px 20px;
 }
@@ -584,7 +593,7 @@ label:hover em {
 .cthack .items-list .item-header {
   line-height: 25px;
   padding: 0 5px 0 5px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #fff;
   font-size: var(--font-size-16);
 }
 
@@ -711,7 +720,7 @@ label:hover em {
 }
 
 .cthack .item-weapon .select-range {
-  color: white;
+  color: #fff;
   width: 80px;
 }
 
@@ -725,7 +734,7 @@ label:hover em {
 }
 
 .cthack .item-attack .select-dice {
-  color: white;
+  color: #fff;
   width: 80px;
 }
 
@@ -740,7 +749,7 @@ label:hover em {
 }
 
 .cthack .item-ability select {
-  color: white;
+  color: #fff;
   font-weight: normal;
 }
 
