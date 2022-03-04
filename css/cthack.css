@@ -405,11 +405,6 @@ label:hover em {
   width: auto;
 }
 
-.cthack .sheet-header .archetype-img {
-  height: auto;
-  width: 128px;
-}
-
 .cthack .sheet-header .definition-img {
   height: auto;
   width: 50px;
@@ -619,6 +614,16 @@ label:hover em {
   padding-top: 5px;
 }
 
+.cthack .sheet-header .archetype-image {
+  height: auto;
+  width: 128px;
+  margin: 20px 10px 0 20px;
+}
+
+.cthack .sarchetype-editor {
+  margin: 0 20px;
+}
+
 .cthack .sheet-header .item-image {
   min-height: 128px;
   width: auto;
@@ -647,7 +652,7 @@ label:hover em {
 
 .cthack .item-weapon .select-range {
   color: white;
-  width: 70px;
+  width: 80px;
 }
 
 .cthack .item-ability select {

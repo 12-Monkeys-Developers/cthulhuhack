@@ -1,8 +1,8 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="archetype-img" src="{{itemData.img}}" data-edit="img" title="{{itemData.name}}"/>
+        <img class="archetype-image" src="{{itemData.img}}" data-edit="img" title="{{itemData.name}}"/>
         <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>
+            <h1 class="item-name"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>
             {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
         </div>
     </header>
