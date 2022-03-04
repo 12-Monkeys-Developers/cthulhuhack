@@ -482,7 +482,6 @@ label:hover em {
 }
 
 .cthack .resource-label {
-  font-weight: bold;
   text-transform: uppercase;
   font-size: var(--font-size-16);
 }
@@ -623,6 +622,7 @@ label:hover em {
 .cthack .sheet-header .item-image {
   min-height: 128px;
   width: auto;
+  margin: 20px 0 0 20px;
 }
 
 .cthack .sheet-header .item-name {
@@ -635,6 +635,30 @@ label:hover em {
 
 .cthack .item-item label {
   margin-right: 10px;
+}
+
+.cthack .item-weapon {
+  padding-left: 15px;
+}
+
+.cthack .item-weapon label {
+  margin-right: 10px;
+}
+
+.cthack .item-weapon .select-range {
+  color: white;
+  width: 70px;
+}
+
+.cthack .item-ability select {
+  color: white;
+  font-weight: normal;
+}
+
+.cthack .item-ability label {
+  -webkit-box-flex: 8;
+      -ms-flex: 8;
+          flex: 8;
 }
 
 .cthack .sheet-actor {

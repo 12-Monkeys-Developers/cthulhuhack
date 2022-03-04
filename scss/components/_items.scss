@@ -91,10 +91,10 @@
   }
 }
 
-.sheet-header .item-image {
-  
+.sheet-header .item-image {  
   min-height: 128px;
   width: auto;
+  margin: 20px 0 0 20px;
 }
 
 .sheet-header .item-name {
@@ -106,5 +106,29 @@
 
   label {
     margin-right: 10px;
+  }
+}
+
+.item-weapon {
+  padding-left: 15px;
+
+  label {
+    margin-right: 10px;
+  }
+
+  .select-range {
+    color: white;
+    width: 70px;
+  }
+}
+
+.item-ability {
+  select {
+    color: white;
+    font-weight: normal;
+  }
+
+  label {
+    flex: 8;
   }
 }
