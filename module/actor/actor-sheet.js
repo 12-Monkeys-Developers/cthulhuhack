@@ -12,8 +12,8 @@ export class CtHackActorSheet extends ActorSheet {
 	static get defaultOptions() {
 		return mergeObject(super.defaultOptions, {
 			classes: [ 'cthack', 'sheet', 'actor', 'character' ],
-			width: 880,
-			height: 720,
+			width: 1100,
+			height: 860,
 			tabs: [ { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'items' } ],
 			dragDrop: [ { dragSelector: '.items-list .item', dropSelector: null } ]
 		});
@@ -56,7 +56,7 @@ export class CtHackActorSheet extends ActorSheet {
 		if (!this.options.editable) return;
 
 		// Item summaries
-		html.find('.item .item-name h4').click((event) => this._onItemSummary(event));
+		html.find('.item .item-name').click((event) => this._onItemSummary(event));
 
 		// Add, Edit or Delete Inventory
 		html.find('.item-create').click(this._onItemCreate.bind(this));
@@ -252,9 +252,7 @@ export class CtHackActorSheet extends ActorSheet {
 		const itemId = li.data('itemId');
 		const item = this.actor.items.find((item) => item.id === itemId);
 
-		if (CTHACK.debug) console.log(`${LOG_HEAD}Reset ability ${item.name}`);
-		const maxUse = item.data.data.uses.max;
-		item.update({ 'data.uses.value': maxUse, 'data.uses.last': '' });
+		this.actor.resetAbility(item);		
 	}
 
 	/**
@@ -487,11 +485,11 @@ export class CtHackActorSheet extends ActorSheet {
    */
 	_onItemSummary(event) {
 		event.preventDefault();
-		let li = $(event.currentTarget).parents('.item'),
-			item = this.actor.items.get(li.data('item-id'));
+		let li = $(event.currentTarget).parents('.item');
+		const item = this.actor.items.get(li.data('item-id'));
 
 		// Toggle summary
-		if (item.data.data.description !== undefined && item.data.data.description !== null) {
+		if (item?.data.data.description) {
 			if (li.hasClass('expanded')) {
 				let summary = li.children('.item-summary');
 				summary.slideUp(200, () => summary.remove());

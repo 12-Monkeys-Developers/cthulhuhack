@@ -1,11 +1,11 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="weapon-img" src="{{itemData.img}}" data-edit="img" title="{{itemData.name}}"/>
+        <img class="item-image" src="{{itemData.img}}" data-edit="img" title="{{itemData.name}}"/>
         <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>
-            <div class="grid grid-2col">
+            <h1 class="item-name"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>
+            <div class="grid grid-2col item-weapon">
               <div class="resource">
-                <label class="resource-label select-wider">{{localize "CTHACK.Material"}}</label>
+                <label class="resource-label">{{localize "CTHACK.Material"}}</label>
                 <select name="data.dice" data-type="String" {{{getStyleForDice systemData.dice}}}>
                     {{#select systemData.dice}}
                         {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
@@ -13,14 +13,14 @@
                 </select>
               </div>
               <div class="resource">
-                <label class="resource-label select-wider">{{localize "CTHACK.ItemRangeName"}}</label>
-                <select name="data.range" data-type="String" class="color-white" style="width: 70px;">
+                <label class="resource-label">{{localize "CTHACK.ItemRangeName"}}</label>
+                <select name="data.range" data-type="String" class="select-range">
                     {{#select systemData.range}}
                         <option value="">{{localize "CTHACK.None"}}</option>
-                        <option value="near">Proche</option>
-                        <option value="far">Loin</option>
-                        <option value="distant">Distant</option>
-                        <option value="3str">3*Force</option>
+                        <option value="near">{{localize "CTHACK.RangeNear"}}</option>
+                        <option value="far">{{localize "CTHACK.RangeFar"}}</option>
+                        <option value="distant">{{localize "CTHACK.RangeDistant"}}</option>
+                        <option value="3str">{{localize "CTHACK.RangeThreeStr"}}</option>
                     {{/select}}
                 </select>
               </div>

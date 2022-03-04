@@ -8,10 +8,11 @@
 
 .align-center {
   text-align: center;
+  vertical-align: middle;
 }
 
 .noborder {
-  border: 0;
+  border: none;
 }
 
 input[type="text"],
@@ -22,12 +23,22 @@ input[type="time"] {
   color: $c-white;
 }
 
+input[type="text"] {
+  border: none;
+}
+
+input[type="checkbox"] {
+  height: 12px;
+  width: 12px;
+}
+
 select {
   border: none;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 40px;
   background-position: center;
-  height: 35px;
+  height: 40px;
+  width: 40px;
   text-align: center;
   text-align-last: center;
   -moz-text-align-last: center;
@@ -51,12 +62,20 @@ option:checked, option:hover {
   display: none;
 }
 
-.dialog-button {
-  color: $c-white;
-}
-
 nav.sheet-tabs {
   height: 40px;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.frame {
+  background-image: url("../ui/frame.png");
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-position: center;
+  height: 50px;
+  border: none;
+  color: #fff;
 }
 
 .attack-damage {
@@ -64,74 +83,3 @@ nav.sheet-tabs {
   text-align: center;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptextleft {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -25px;
-}
-
-.tooltip .tooltiptextright {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -85px;
-}
-
-.tooltip:hover .tooltiptextleft,
-.tooltip:hover .tooltiptextright {
-  visibility: visible;
-}
-
-div.tip .tip-title {
-  color: #E77600 !important;
-  font-weight: bold;
-}
-
-label em {
-  visibility: hidden;
-  width: 400px;
-  background-color: black;
-  color: #fff;
-  text-align: left;
-  border-radius: 6px;
-  padding: 5px 0;
-  font-size: 14px;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: 0px;
-  left: 0px;
-}
-
-label:hover em {
-  visibility: visible;
-}
-
-.chat-message .message-header .message-sender {
-  font-weight: bold;
-}

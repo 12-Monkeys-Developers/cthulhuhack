@@ -1,47 +1,174 @@
 .items-list {
   list-style: none;
-  margin: 7px 0;
+  margin: 0;
   padding: 0;
 
+  div {
+    text-align: center;
+    vertical-align: middle;
+  }
+
   .item-header {
-    font-size: 16px;
+    line-height: 25px;
+    padding: 0 $padding-sm 0 $padding-sm;
+    border-bottom: 1px solid $c-white;
+    font-size:var(--font-size-16);
+
+    .item-header-name {
+      flex: 2;
+      text-align: left;
+      vertical-align: middle;
+    }
   }
 
   .item {
-    line-height: 24px;
-    padding: 3px 0;
-    border-bottom: 1px solid white;
-    font-size: 16px;
-
+    line-height: 25px;
+    padding: 0 $padding-sm 0 $padding-sm;
+    &:hover {
+      background-color:#59564c;
+    }
+    
     .item-image {
-      flex: 0 0 24px;
-      margin-right: 5px;
+      flex: 0 0 40px;
+      padding-top: $padding-sm;
+      margin-right: $padding-sm;
     }
 
-    img {
-      display: block;
+    .item-name {
+      padding-top: $padding-md;
+      text-align: left;
     }
+
+    .item-element {
+      padding-top: $padding-sm;
+      text-align: center;
+      vertical-align: middle;      
+    }
+
+    .item-element-text {
+      padding-top: $padding-md;
+      text-align: center;
+      vertical-align: middle;
+    }    
+  }
+
+  .item-bloc {
+    flex: 2;
+    margin: 0;
   }
 
   .item-name {
+    flex: 2;
     margin: 0;
+    padding-top: $padding-md;
   }
 
-  .item-ability-description {
-    margin: 0;
+  .item-controls-header {
+    flex: 0 0 86px;
+    text-align: right;
   }
 
   .item-controls {
     flex: 0 0 86px;
     text-align: right;
+    padding-top: $padding-md;
   }
   
   .item-summary {
     flex: 0 0 100%;
-    font-size: 12px;
     line-height: 16px;
     padding: 0.25em 0.5em;
     border-top: 1px solid #c9c7b8;
+    text-align: left;
   }
   
+  .item-condition {
+    padding-top: $padding-sm;
+  }
+}
+
+.sheet-header .archetype-image {
+  height: auto;
+  width: 128px;
+  margin: 20px 10px 0 20px;
+}
+
+.sarchetype-editor {
+    margin: 0 20px;
+}
+
+.sheet-header .item-image {  
+  min-height: 128px;
+  width: auto;
+  margin: 20px 0 0 20px;
+}
+
+.sheet-header .item-name {
+  margin: 0 10px 0 10px;
+}
+
+.item-item {
+  padding-left: 15px;
+
+  label {
+    margin-right: 10px;
+  }
+}
+
+.item-weapon {
+  padding-left: 15px;
+
+  label {
+    margin-right: 10px;
+  }
+
+  .select-range {
+    color: $c-white;
+    width: 80px;
+  }
+}
+
+.item-attack {
+  padding-left: $padding-md;
+  margin: 0 10px 0 10px;
+
+  label {
+    margin-right: 10px;
+  }
+
+  .select-dice {
+    color: $c-white;
+    width: 80px;
+  }
+
+  .attack-damage {
+    height: 40px;
+  }
+
+  .item-dice {
+    flex: 4;
+  }
+}
+
+.item-ability {
+  select {
+    color: $c-white;
+    font-weight: normal;
+  }
+
+  label {
+    flex: 8;
+  }
+
+  input {
+    text-align: center;
+  }
+  
+  label.advantage {
+    flex: 2;
+  }
+
+  .ability-checkbox {
+    justify-content: center;
+  }
 }

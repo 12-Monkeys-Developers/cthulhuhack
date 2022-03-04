@@ -1,11 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,700&family=Roboto:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=EBGaramond&display=swap");
 /* Global styles */
 .window-app {
-  font-family: "Roboto", sans-serif;
+  font-family: "EBGaramond", sans-serif;
 }
 
 .window-app .window-content {
-  background: url("../ui/fond.png") repeat #fff;
+  background-image: url("../ui/background-white.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.window-app .window-content .compendium.directory .directory-list .directory-item {
+  border: none;
+}
+
+.window-app .window-content .compendium.directory .directory-list .directory-item:hover {
+  background-color: #59564c;
+  color: #fff;
 }
 
 .rollable:hover, .rollable:focus {
@@ -15,78 +26,184 @@
 }
 
 .color-white {
-  color: white;
+  /*color: white;*/
+  color: #dfe2d5;
+}
+
+#logo {
+  content: url("../ui/cthack-logo.webp");
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+}
+
+#pause > img {
+  content: url("../ui/cthack-logo.webp");
+  height: 192px;
+  width: 192px;
+  top: -45px;
+  left: calc(50% - 96px);
+}
+
+.character-resume {
+  text-align: center;
+}
+
+.character-resume .adrenaline-img {
+  height: 25px;
+  width: 25px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptextleft {
+  visibility: hidden;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -45px;
+  left: -25px;
+}
+
+.tooltip .tooltiptextright {
+  visibility: hidden;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -45px;
+  left: -85px;
+}
+
+.tooltip:hover .tooltiptextleft,
+.tooltip:hover .tooltiptextright {
+  visibility: visible;
+}
+
+div.tip .tip-title {
+  color: #E77600 !important;
+  font-weight: bold;
+}
+
+label em {
+  visibility: hidden;
+  width: 400px;
+  background-color: black;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: var(--font-size-14);
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+}
+
+label:hover em {
+  visibility: visible;
+}
+
+.chat-message .message-header .message-sender {
+  font-weight: bold;
 }
 
 .grid,
 .grid-2col {
+  display: -ms-grid;
   display: grid;
   grid-column: span 2 / span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[2];
+      grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  margin: 10px 0;
+  margin: 0;
   padding: 0;
 }
 
 .grid-3col {
   grid-column: span 3 / span 3;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[3];
+      grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .grid-4col {
   grid-column: span 4 / span 4;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[4];
+      grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .grid-5col {
   grid-column: span 5 / span 5;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[5];
+      grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .grid-6col {
   grid-column: span 5 / span 5;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[5];
+      grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .grid-7col {
   grid-column: span 7 / span 7;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[7];
+      grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
 .grid-8col {
   grid-column: span 8 / span 8;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[8];
+      grid-template-columns: repeat(8, minmax(0, 1fr));
 }
 
 .grid-9col {
   grid-column: span 9 / span 9;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[9];
+      grid-template-columns: repeat(9, minmax(0, 1fr));
 }
 
 .grid-10col {
   grid-column: span 10 / span 10;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[10];
+      grid-template-columns: repeat(10, minmax(0, 1fr));
 }
 
 .grid-11col {
   grid-column: span 11 / span 11;
-  grid-template-columns: repeat(11, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[11];
+      grid-template-columns: repeat(11, minmax(0, 1fr));
 }
 
 .grid-12col {
   grid-column: span 12 / span 12;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[12];
+      grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
 .flex-group-center,
 .flex-group-left,
 .flex-group-right {
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   padding: 5px;
   border: 1px solid #999;
@@ -94,67 +211,43 @@
 
 .flex-group-left {
   -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   text-align: left;
 }
 
 .flex-group-right {
   -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   text-align: right;
 }
 
 .flex-center {
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
 }
 
 .flex-between {
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.actor-sheet-top {
-  background-image: url("../ui/fiche-haut.png");
-  background-size: cover;
-  background-position: top;
+.chat-message .message-content {
+  background-image: url(../ui/cthack-green.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   color: #fff;
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin: 0;
 }
 
-.actor-sheet-middle {
-  background-image: url("../ui/fiche-milieu.png");
-  background-size: cover;
-  color: #fff;
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin: 0;
-  border: 0;
-}
-
-.actor-sheet-bottom {
-  background-image: url("../ui/fiche-bas.png");
-  background-size: cover;
-  background-position: bottom;
-  color: #fff;
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 0;
-  padding-bottom: 0;
+.message-content .chat-save-roll, .message-content .chat-resource-roll, .message-content .chat-other-roll {
+  padding: 5px;
 }
 
 .dice-roll .dice-total.success {
@@ -169,12 +262,20 @@
   border: 1px solid #6e0000;
 }
 
+.roll-failure {
+  color: red;
+}
+
+.roll-success {
+  color: green;
+}
+
 /* Styles limited to cthack sheets */
 .cthack .window-content {
-  background: url("../ui/cthack-green.jpg");
-  background-size: cover;
+  background-image: url("../ui/sheet.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   color: #fff;
-  font-family: 'Averia Libre', cursive;
 }
 
 .cthack .align-left {
@@ -187,10 +288,11 @@
 
 .cthack .align-center {
   text-align: center;
+  vertical-align: middle;
 }
 
 .cthack .noborder {
-  border: 0;
+  border: none;
 }
 
 .cthack input[type="text"],
@@ -201,12 +303,22 @@
   color: #fff;
 }
 
+.cthack input[type="text"] {
+  border: none;
+}
+
+.cthack input[type="checkbox"] {
+  height: 12px;
+  width: 12px;
+}
+
 .cthack select {
   border: none;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 40px;
   background-position: center;
-  height: 35px;
+  height: 40px;
+  width: 40px;
   text-align: center;
   text-align-last: center;
   -moz-text-align-last: center;
@@ -230,12 +342,20 @@
   display: none;
 }
 
-.cthack .dialog-button {
-  color: #fff;
-}
-
 .cthack nav.sheet-tabs {
   height: 40px;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.cthack .frame {
+  background-image: url("../ui/frame.png");
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-position: center;
+  height: 50px;
+  border: none;
+  color: #fff;
 }
 
 .cthack .attack-damage {
@@ -249,46 +369,38 @@
 
 .cthack .sheet-header {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 360px;
-  flex: 0 0 360px;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .cthack .sheet-header .profile-img {
-  height: 150px;
+  height: calc(20%);
   width: auto;
+  margin: 0;
 }
 
-.cthack .sheet-header .weapon-img {
-  height: 150px;
+.cthack .sheet-header .opponent-img {
+  height: calc(10%);
   width: auto;
-}
-
-.cthack .sheet-header .attack-img {
-  height: 150px;
-  width: auto;
+  margin: 0;
 }
 
 .cthack .sheet-header .adrenaline-img {
   height: 30px;
   width: auto;
-}
-
-.cthack .sheet-header .archetype-img {
-  height: auto;
-  width: 128px;
 }
 
 .cthack .sheet-header .definition-img {
@@ -298,13 +410,13 @@
 
 .cthack .sheet-header .header-fields {
   -webkit-box-flex: 5;
-  -ms-flex: 5;
-  flex: 5;
+      -ms-flex: 5;
+          flex: 5;
 }
 
 .cthack .sheet-header h1.charname {
   height: 50px;
-  padding: 0px;
+  padding: 0px 20px 0px 20px;
   margin: 5px 0;
   border-bottom: 0;
 }
@@ -317,9 +429,9 @@
 
 .cthack .sheet-tabs {
   -webkit-box-flex: 0;
-  -ms-flex: 0;
-  flex: 0;
-  font-size: 18px;
+      -ms-flex: 0;
+          flex: 0;
+  font-size: var(--font-size-18);
 }
 
 .cthack .tox .tox-editor-container {
@@ -331,8 +443,10 @@
 }
 
 .cthack .sheet-body {
-  min-height: 150px;
   height: 100%;
+  min-height: 150px;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
 }
 
 .cthack .sheet-body .tab {
@@ -347,8 +461,6 @@
 
 .cthack .tabs {
   height: 40px;
-  border-top: 1px solid "Roboto", sans-serif;
-  border-bottom: 1px solid "Roboto", sans-serif;
 }
 
 .cthack .tabs .choice {
@@ -357,81 +469,310 @@
 }
 
 .cthack .tabs .choice.active {
-  text-decoration: underline;
-  text-shadow: none;
-}
-
-.cthack .
-
-{
+  color: darkgrey;
   font-weight: bold;
-  text-transform: uppercase;
+  text-shadow: 0 0 10px #851016;
 }
 
-.cthack .resource-content {
-  margin-top: 2px;
-  margin-bottom: 2px;
+.cthack .sheet-actor {
+  margin: 10px 20px;
+}
+
+.cthack .occupation, .cthack .archetype, .cthack .save, .cthack .resource {
+  border: none;
+}
+
+.cthack .character-notes {
+  color: #fff;
+}
+
+.cthack .input-hitpoints {
+  border-style: none;
+  font-size: 16px;
+}
+
+.cthack .occupation {
+  padding-right: 15px;
+  padding-bottom: 10px;
+}
+
+.cthack .occupation-input {
+  font-size: var(--font-size-16);
+}
+
+.cthack .hitpoints {
+  padding-left: calc(25%);
+  padding-right: calc(25%);
+}
+
+.cthack .hitpoints-frame {
+  background-image: url("../ui/frame.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center;
+  height: 40px;
+  width: 40px;
+  border: none;
+  color: #fff;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.cthack .saves {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 10px;
 }
 
 .cthack .save {
-  font-size: 18px;
+  font-size: var(--font-size-16);
+}
+
+.cthack .save-name {
+  -webkit-box-flex: 3;
+      -ms-flex-positive: 3;
+          flex-grow: 3;
 }
 
 .cthack input.save {
   color: #fff;
 }
 
-.cthack .items-list {
-  list-style: none;
-  margin: 7px 0;
+.cthack .resource-label {
+  text-transform: uppercase;
+  font-size: var(--font-size-16);
+}
+
+.cthack .resource-content {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-top: 5px;
+}
+
+.cthack .resource-content-archetype {
+  margin: 0;
   padding: 0;
 }
 
+.cthack .resource-content-archetype select {
+  color: #fff;
+}
+
+.cthack .sheet-opponent {
+  margin: 10px 20px;
+}
+
+.cthack .sheet-opponent .charname {
+  border: 0;
+}
+
+.cthack .sheet-opponent .flexrow {
+  border: 0;
+}
+
+.cthack .sheet-opponent label {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+.cthack .items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cthack .items-list div {
+  text-align: center;
+  vertical-align: middle;
+}
+
 .cthack .items-list .item-header {
-  font-size: 16px;
+  line-height: 25px;
+  padding: 0 5px 0 5px;
+  border-bottom: 1px solid #fff;
+  font-size: var(--font-size-16);
+}
+
+.cthack .items-list .item-header .item-header-name {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  text-align: left;
+  vertical-align: middle;
 }
 
 .cthack .items-list .item {
-  line-height: 24px;
-  padding: 3px 0;
-  border-bottom: 1px solid white;
-  font-size: 16px;
+  line-height: 25px;
+  padding: 0 5px 0 5px;
+}
+
+.cthack .items-list .item:hover {
+  background-color: #59564c;
 }
 
 .cthack .items-list .item .item-image {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 24px;
-  flex: 0 0 24px;
+      -ms-flex: 0 0 40px;
+          flex: 0 0 40px;
+  padding-top: 5px;
   margin-right: 5px;
 }
 
-.cthack .items-list .item img {
-  display: block;
+.cthack .items-list .item .item-name {
+  padding-top: 10px;
+  text-align: left;
+}
+
+.cthack .items-list .item .item-element {
+  padding-top: 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.cthack .items-list .item .item-element-text {
+  padding-top: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.cthack .items-list .item-bloc {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin: 0;
 }
 
 .cthack .items-list .item-name {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
   margin: 0;
+  padding-top: 10px;
 }
 
-.cthack .items-list .item-ability-description {
-  margin: 0;
+.cthack .items-list .item-controls-header {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 86px;
+          flex: 0 0 86px;
+  text-align: right;
 }
 
 .cthack .items-list .item-controls {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 86px;
-  flex: 0 0 86px;
+      -ms-flex: 0 0 86px;
+          flex: 0 0 86px;
   text-align: right;
+  padding-top: 10px;
 }
 
 .cthack .items-list .item-summary {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 100%;
-  flex: 0 0 100%;
-  font-size: 12px;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
   line-height: 16px;
   padding: 0.25em 0.5em;
   border-top: 1px solid #c9c7b8;
+  text-align: left;
+}
+
+.cthack .items-list .item-condition {
+  padding-top: 5px;
+}
+
+.cthack .sheet-header .archetype-image {
+  height: auto;
+  width: 128px;
+  margin: 20px 10px 0 20px;
+}
+
+.cthack .sarchetype-editor {
+  margin: 0 20px;
+}
+
+.cthack .sheet-header .item-image {
+  min-height: 128px;
+  width: auto;
+  margin: 20px 0 0 20px;
+}
+
+.cthack .sheet-header .item-name {
+  margin: 0 10px 0 10px;
+}
+
+.cthack .item-item {
+  padding-left: 15px;
+}
+
+.cthack .item-item label {
+  margin-right: 10px;
+}
+
+.cthack .item-weapon {
+  padding-left: 15px;
+}
+
+.cthack .item-weapon label {
+  margin-right: 10px;
+}
+
+.cthack .item-weapon .select-range {
+  color: #fff;
+  width: 80px;
+}
+
+.cthack .item-attack {
+  padding-left: 10px;
+  margin: 0 10px 0 10px;
+}
+
+.cthack .item-attack label {
+  margin-right: 10px;
+}
+
+.cthack .item-attack .select-dice {
+  color: #fff;
+  width: 80px;
+}
+
+.cthack .item-attack .attack-damage {
+  height: 40px;
+}
+
+.cthack .item-attack .item-dice {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+}
+
+.cthack .item-ability select {
+  color: #fff;
+  font-weight: normal;
+}
+
+.cthack .item-ability label {
+  -webkit-box-flex: 8;
+      -ms-flex: 8;
+          flex: 8;
+}
+
+.cthack .item-ability input {
+  text-align: center;
+}
+
+.cthack .item-ability label.advantage {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.cthack .item-ability .ability-checkbox {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .cthack .sheet-archetype .sheet-body {
@@ -440,155 +781,7 @@
 
 .cthack .sheet-archetype select {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 150px;
-  flex: 0 0 150px;
-  -moz-text-align-last: center;
+      -ms-flex: 0 0 150px;
+          flex: 0 0 150px;
   text-align-last: center;
-}
-
-.chat-save-roll-title {
-  font-weight: 400;
-}
-
-.chat-save-roll {
-  font-family: 'Averia Libre', cursive;
-  background-image: url("../ui/fiche-milieu.png");
-  background-size: cover;
-  color: #fff;
-}
-
-.chat-resource-roll-title {
-  font-weight: 400;
-}
-
-.chat-resource-roll {
-  font-family: 'Averia Libre', cursive;
-  background-image: url("../ui/fiche-milieu.png");
-  background-size: cover;
-  color: #fff;
-}
-
-.chat-other-roll-title {
-  font-weight: 400;
-}
-
-.chat-other-roll {
-  font-family: 'Averia Libre', cursive;
-  background-image: url("../ui/fiche-milieu.png");
-  background-size: cover;
-  color: #fff;
-}
-
-.roll-failure {
-  color: red;
-}
-
-.roll-success {
-  color: green;
-}
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptextleft {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -25px;
-}
-
-.tooltip .tooltiptextright {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -85px;
-}
-
-.tooltip:hover .tooltiptextleft,
-.tooltip:hover .tooltiptextright {
-  visibility: visible;
-}
-
-div.tip .tip-title {
-  color: #E77600 !important;
-  font-weight: bold;
-}
-
-label em {
-  /*display:none;*/
-  visibility: hidden;
-  width: 400px;
-  background-color: black;
-  color: #fff;
-  text-align: left;
-  border-radius: 6px;
-  padding: 5px 0;
-  font-size: 14px;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: 0px;
-  left: 0px;
-}
-/*label:hover em {display:block;}*/
-label:hover em {visibility: visible;}
-
-.chat-message .message-header .message-sender {
-  font-weight: bold;
-}
-
-
-.sheet .cthack-monitor {
-  flex: content;
-  min-width: 13rem !important;
-}
-
-#gm-manager div.cthack-monitor {
-  align-items: flex-start;
-  max-width: fit-content;
-}
-
-#logo {
-  content : url("../ui/cthack-logo.webp");
-  width: 50px;
-  height: 50px;
-  margin-left: 15px;
-}
-
-#pause > img {
-  content: url("../ui/cthack-logo.webp");
-  height: 192px;
-  width: 192px;
-  top: -45px;
-  left: calc(50% - 96px);
-}
-
-.character-resume {
-  text-align: center;
-}
-
-.character-resume .adrenaline-img {
-  height: 25px;
-  width: 25px;  
 }

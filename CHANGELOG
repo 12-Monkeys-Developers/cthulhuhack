@@ -1,3 +1,10 @@
+0.9.7
+- Add rollWeaponMacro : click for save with automatic choice, SHIFT + Click for material roll
+- Add modifier malus depending of target
+- Update chat message design for rolls : difficulty displayed and modifier applied on it, dice result is now displayed
+- Add notes tab
+- Global design improvement for all sheets
+
 0.9.6
 - Add customized dices and Dice So Nice configuration
 

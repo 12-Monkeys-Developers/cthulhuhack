@@ -12,6 +12,14 @@ export const registerHandlebarsHelpers = function() {
 		return outStr;
 	});
 
+	Handlebars.registerHelper('hasModifier', function(modifier) {
+		if (modifier !== null && modifier !== 0 ){
+			return true;
+		}
+		return false;
+	});
+
+
 	Handlebars.registerHelper('isModifierPositive', function(modifier) {
 		if (modifier !== null && modifier > 0 ){
 			return true;
@@ -36,6 +44,11 @@ export const registerHandlebarsHelpers = function() {
 
 	Handlebars.registerHelper('toAbbr', function(str) {
 		var outStr = 'CTHACK.Save' + str.substring(0, 1).toUpperCase() + str.substring(1) + 'Abbr';
+		return outStr;
+	});
+
+	Handlebars.registerHelper('getSaveLabel', function(str) {
+		var outStr = 'CTHACK.Save' + str.substring(0, 1).toUpperCase() + str.substring(1);
 		return outStr;
 	});
 

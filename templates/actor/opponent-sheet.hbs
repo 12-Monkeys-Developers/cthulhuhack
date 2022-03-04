@@ -1,15 +1,58 @@
-<form class="{{cssClass}}" autocomplete="off">
+<form class="{{cssClass}} flexcol sheet-opponent" autocomplete="off">
     <header class="sheet-header">
-        <img class="actor-img" src="{{opponentData.img}}" data-edit="img" title="{{opponentData.name}}"/>
-        <div class="header-fields">
+        <div class="flex-center">
+            <img class="opponent-img" src="{{opponentData.img}}" data-edit="img" title="{{opponentData.name}}"/>
+        </div>       
+        <div class="header-fields flex 5">
             <h1 class="charname"><input name="name" type="text" value="{{opponentData.name}}" placeholder="Name"/></h1>
+            <div class="grid grid-2col">
+                <div class="flexrow flex-group-center">
+                    <label for="data.hitDice" class="resource-label resource-name" title='{{localize "CTHACK.HitDice"}}'>{{localize "CTHACK.HitDice"}}</label>
+                    <select class="selectHitDice" name="data.hitDice" data-type="String" style="color: white;">
+                        {{#select systemData.hitDice}}
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="flexrow flex-group-center">
+                    <label for="data.hp.value" class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
+                    <div class="flexrow flex-center">
+                        <input type="text" name="data.hp.value" value="{{systemData.hp.value}}" data-dtype="Number"/>
+                        <span>/</span>
+                        <input type="text" name="data.hp.max" value="{{systemData.hp.max}}" data-dtype="Number"/>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-2col">
+                <div class="flexrow flex-group-center">
+                    <label class="resource-label">{{localize "CTHACK.OpponentArmor"}}</label>
+                    <input name="data.armor" type="text" value="{{systemData.armor}}"/>
+                </div>
+                <div class="flexrow flex-group-center">
+                    <label class="resource-label">{{localize "CTHACK.OpponentTouchMalus"}}</label>
+                    <input name="data.malus" type="text" value="{{systemData.malus}}"/>
+                </div>
+            </div>  
+            </div>
         </div>
+        
     </header>
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs align-center">
-        <a class="choice" data-tab="description">Description</a>
-        <a class="choice" data-tab="attributes">{{localize "CTHACK.Attributes"}}</a>
+        <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>
+        <a class="choice" data-tab="attacks">{{localize "CTHACK.OpponentAttacks"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -20,45 +63,14 @@
             {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
         </div>
 
-        {{!-- Attributes Tab --}}
-        <div class="tab" data-tab="attributes">            
-            <div class="flexrow flex-group-center noborder">
-                <label for="data.hitDice" class="resource-label resource-name" title='{{localize "CTHACK.HitDice"}}'>{{localize "CTHACK.HitDice"}}</label>
-                <select class="selectHitDice" name="data.hitDice" data-type="String" style="color: white;">
-                {{#select systemData.hitDice}}
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                {{/select}}
-                </select>
-                <label for="data.hp.value" class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
-                <div class="flexrow flex-center">
-                    <input type="text" name="data.hp.value" value="{{systemData.hp.value}}" data-dtype="Number"/>
-                    <span> / </span>
-                    <input type="text" name="data.hp.max" value="{{systemData.hp.max}}" data-dtype="Number"/>
-                </div>
-            </div>
-            <div class="flexrow flex-group-center noborder">
-                <label class="resource-label">{{localize "CTHACK.OpponentArmor"}}: </label>
-                <input name="data.armor" type="text" value="{{systemData.armor}}"/>
-                <label class="resource-label">{{localize "CTHACK.OpponentTouchMalus"}}: </label>
-                <input name="data.malus" type="text" value="{{systemData.malus}}"/>
-            </div>  
-            <ol class="items-list">
-                <li class="item flexrow item-header">
-                  <div class="item-name align-center">{{localize "CTHACK.Name"}}</div>
-                  <div class="item-damage align-center">{{localize "CTHACK.Damage"}}</div>
-                  <div class="item-damageDice align-center">{{localize "CTHACK.DamageDice"}}</div>
-                  <div class="item-controls">
+        {{!-- Attacks Tab --}}
+        <div class="tab" data-tab="attacks">            
+             <ol class="items-list">
+                <li class=" item-header flexrow">
+                  <div class="item-header-name">{{localize "CTHACK.Name"}}</div>
+                  <div>{{localize "CTHACK.Damage"}}</div>
+                  <div>{{localize "CTHACK.DamageDice"}}</div>
+                  <div class="item-controls-header">
                     <a class="item-control attack-create" title='{{localize "CTHACK.Add"}}' data-type="attack"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
                   </div>
                 </li>

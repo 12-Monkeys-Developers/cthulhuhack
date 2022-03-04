@@ -1,8 +1,8 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="profile-img" src="{{itemData.img}}" data-edit="img" title="{{itemData.name}}"/>
+        <img class="item-image" src="{{itemData.img}}" data-edit="img" title="{{itemData.name}}"/>
         <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>
+            <h1 class="item-name"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>
         </div>
     </header>
 
@@ -13,7 +13,7 @@
     </nav>
 
     {{!-- Sheet Body --}}
-    <section class="sheet-body">
+    <section class="sheet-body item-ability">
 
         {{!-- Description Tab --}}
         <div class="tab" data-group="primary" data-tab="description">
@@ -31,13 +31,13 @@
             <div class="form-group">
                 <label for="data.uses.per">{{localize "CTHACK.AbilityUsePer"}}</label>
                 <select name="data.uses.per" data-type="String">
-                {{#select systemData.uses.per}}
-                    <option value="Permanent">{{localize "CTHACK.AbilityUsePermanent"}}</option>
-                    <option value="Session">{{localize "CTHACK.AbilityUsePerSession"}}</option>
-                    <option value="Hour">{{localize "CTHACK.AbilityUsePerHour"}}</option>
-                    <option value="Scene">{{localize "CTHACK.AbilityUsePerScene"}}</option>
-                    <option value="Fight">{{localize "CTHACK.AbilityUsePerFight"}}</option>>
-                {{/select}}
+                    {{#select systemData.uses.per}}
+                        <option value="Permanent">{{localize "CTHACK.AbilityUsePermanent"}}</option>
+                        <option value="Session">{{localize "CTHACK.AbilityUsePerSession"}}</option>
+                        <option value="Hour">{{localize "CTHACK.AbilityUsePerHour"}}</option>
+                        <option value="Scene">{{localize "CTHACK.AbilityUsePerScene"}}</option>
+                        <option value="Fight">{{localize "CTHACK.AbilityUsePerFight"}}</option>>
+                    {{/select}}
                 </select>
             </div>
             <div class="form-group">
@@ -60,25 +60,25 @@
             </div>        
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityMultiple"}}</label>
-                <div class="form-fields">
+                <div class="form-fields ability-checkbox">
                     <input class="checkbox" name="data.multiple" type="checkbox" {{checked systemData.multiple}}>
                 </div>
             </div>
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityIsCustom"}}</label>
-                <div class="form-fields">
+                <div class="form-fields ability-checkbox">
                     <input class="checkbox" name="data.isCustom" type="checkbox" {{checked systemData.isCustom}}>
                 </div>
             </div>        
             <div class="form-group">
                 <label>{{localize "CTHACK.AbilityAdvantageGiven"}}</label>
-                <div class="form-fields">
+                <div class="form-fields ability-checkbox">
                     <input class="checkbox" name="data.advantageGiven" type="checkbox" {{checked systemData.advantageGiven}}>
                 </div>
             </div> 
              <div class="form-group">
-                <label>{{localize "CTHACK.AbilityAdvantageText"}}</label>
-                <div class="form-fields">
+                <label class="advantage">{{localize "CTHACK.AbilityAdvantageText"}}</label>
+                <div class="form-fields ability-checkbox">
                     <input class="field-value" name="data.advantageText" type="text" value="{{systemData.advantageText}}" data-dtype="String">
                 </div>
             </div>  

@@ -1,17 +1,19 @@
 <div class="chat-save-roll">
-    <h4 class="chat-save-roll-title">Jet de SAUVEGARDE de : {{rollId}}</h4>
+    <h4 class="chat-save-roll-title">{{ localize "CHAT.RollSave" save=rollId}}</h4>
     <div >
     {{#if advantageFromDialog}}<span>{{localize "CHAT.RollWithAdvantageFromDialog"}}<br></span>{{/if}}{{#if disadvantageFromDialog}}<span>{{localize "CHAT.RollWithDisadvantageFromDialog"}}<br></span>{{/if}}{{#if doubleAdvantageFromDialog}}<span>{{localize "CHAT.RollWithDoubleAdvantageFromDialog"}}<br></span>{{/if}}{{#if doubleDisadvantageFromDialog}}<span>{{localize "CHAT.RollWithDoubleDisadvantageFromDialog"}}<br></span>{{/if}}
     {{#if advantage}}<span>{{localize "CHAT.RollWithAdvantage"}}<br></span>{{/if}}{{#if disadvantage}}<span>{{localize "CHAT.RollWithDisadvantage"}}<br></span>{{/if}}
-    {{#if (isModifierPositive modifier)}}<span>{{ localize "CHAT.RollWithBonus" modifier=modifier }}<br></span>{{/if}}
-    {{#if (isModifierNegative modifier)}}<span>{{ localize "CHAT.RollWithMalus" modifier=modifier }}<br></span>{{/if}}
-    {{#if isSuccess}}C'est un succès !{{else}}C'est un échec !{{/if}}
+    <span>
+        {{#if (isModifierPositive modifier)}}{{ localize "CHAT.RollWithBonus" modifier=modifier }}<br>{{/if}}
+        {{#if (isModifierNegative modifier)}}{{ localize "CHAT.RollWithMalus" modifier=modifier }}<br>{{/if}}        
+    </span>    
+    <span>{{#if (hasModifier modifier)}}{{localize "CHAT.RollDifficulty" difficulty=realTargetValue}}{{else}}{{localize "CHAT.RollDifficulty" difficulty=targetValue}}{{/if}}</span>
+    <span><br><br>{{#if isSuccess}}{{ localize "CHAT.RollSuccess" }}{{else}}{{ localize "CHAT.RollFailure" }}{{/if}}</span>
     </div>
 </div>
-<div class="dice-roll chat-save-roll">
+<div class="dice-roll chat-save-roll-result">
         <div class="dice-result">
             <h4 class="dice-total">{{total}}</h4>
             {{> "systems/cthack/templates/chat/tooltip.hbs"}}
-            <div class="dice-formula">{{formula}}</div>                                                            
         </div>
 </div>

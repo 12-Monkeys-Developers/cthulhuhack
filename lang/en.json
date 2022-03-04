@@ -55,6 +55,7 @@
         "UnarmedDamage": "Unarmed damage",
         "Description": "Description",
         "Biography": "Biography",
+        "Notes": "Notes",
         "Condition": "Condition(s)",
         "Conditions": "Conditions",
         "Items": "Equipment",
@@ -77,6 +78,8 @@
         "AbilityIsCustom": "Custom",
         "AbilityAdvantageGiven": "Advantage given",
         "AbilityAdvantageText": "Advantage description",
+
+        "ConditionWhen": "Condition received",
 
         "DefinitionType": "Type",
         "DefinitionKey": "Key",
@@ -133,7 +136,7 @@
 
         "Fortune": "Fortune",
         "FortuneUse": "Spend",
-        "FortuneUseMessage": "One token of Fortune has been used by {name}. The remaining total is {total}.",
+        "FortuneUseMessage": "One token of Fortune has been used by {name}.<br>The remaining total is {total}.",
         "None": "---",
         "NO": "No",
         "YES": "Yes",
@@ -183,7 +186,6 @@
             "Div": "Dive",
             "Scr": "Scream"
         }
-
     },
 
     "SETTINGS": {
@@ -198,10 +200,11 @@
         "HitDiceResourceName": "Hit Dice Resource Option",
         "HitDiceResourceHint": "Handle hit dice as a resource",
         "MiscellaneousResourceName": "Miscellaneous Resource",
-        "MiscellaneousResourceHint": "Allow to choose a resource which replaces Wealth resource"
+        "MiscellaneousResourceHint": "Allow to have a additional resource"
     },
 
     "CHAT": {
+        "RollSave": "SAVE roll of {save}",
         "RollWithAdvantage": "You have an advantage.",
         "RollWithDisadvantage": "You have a disadvantage.",
         "ResourceLost": "You lost a resource !",
@@ -211,6 +214,7 @@
         "RollWithDoubleDisadvantageFromDialog": "You rolled with a Double Disadvantage.",
         "RollWithBonus": "With a bonus of {modifier}.",
         "RollWithMalus": "With a malus of {modifier}.",
+        "RollDifficulty": "Difficulty : {difficulty}.",
         "RollSuccess": "This is a Success !",
         "RollFailure": "This is a Failure !"
     },

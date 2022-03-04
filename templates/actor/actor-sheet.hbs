@@ -1,7 +1,5 @@
-<form class="{{cssClass}} flexcol" autocomplete="off">
-
-    {{!-- Sheet Header --}}
-    <header class="sheet-header actor-sheet-top">
+<form class="{{cssClass}} flexcol sheet-actor" autocomplete="off">
+    <header class="sheet-header">
         <div class="flex-center">
           <img class="profile-img" src="{{actorData.img}}" data-edit="img" title="{{actorData.name}}" height="100" width="100"/>
           {{#if (isEnabled "FortuneAvailable")}}
@@ -21,71 +19,59 @@
         </div>
         <div class="header-fields flex5">
             <h1 class="charname"><input name="name" type="text" value="{{actorData.name}}" placeholder="Name"/></h1>  
-            <div class="grid grid-2col">     
-              <div class="flexrow flex-group-center">
+            <div class="grid grid-2col occupation">     
+              <div class="flexrow flex-group-center occupation">
                 <label class="resource-label">{{localize "CTHACK.Occupation"}}</label>
-                <input name="data.occupation" type="text" value="{{systemData.occupation}}" placeholder="Occupation"/>
+                <input name="data.occupation" type="text" value="{{systemData.occupation}}" placeholder='{{localize "CTHACK.Occupation"}}' class="occupation-input"/>
               </div>     
-              <div class="flexrow flex-group-center">
+              <div class="flexrow flex-group-center archetype">
                 <label class="resource-label">{{localize "CTHACK.Archetype"}}</label>
-                <input name="data.archetype" type="text" value="{{systemData.archetype}}" placeholder='{{localize "CTHACK.Archetype"}}'/>
+                <input name="data.archetype" type="text" value="{{systemData.archetype}}" placeholder='{{localize "CTHACK.Archetype"}}' class="occupation-input"/>
               </div>                      
             </div>            
-            {{!-- The grid classes are defined in scss/global/_grid.scss. To use, use both the "grid" and "grid-Ncol" class where "N" can be any number from 1 to 12 and will create that number of columns.  --}}
-              <div class="saves grid grid-3col">
+            <div class="grid grid-3col saves">
                 {{#each systemData.saves as |save key|}}
-                  <div class="save flexrow flex-group-center" data-save="{{key}}">
-                    <label class="resource-label save-name rollable">{{localize (toAbbr key)}}<em>{{localize (toDesc key)}}</em></label>
-                    <input type="text" name="data.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value"/>
+                  <div class="flexrow flex-group-center save" data-save="{{key}}">
+                    <label class="resource-label save-name rollable">{{localize (getSaveLabel key)}}<em>{{localize (toDesc key)}}</em></label>
+                    <input type="text" name="data.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value frames"/>
                     <input type="checkbox" name="data.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}}/>
                   </div>
                 {{/each}}
               </div>
-            <div class="resources grid grid-4col">
+            <div class="grid grid-4col resources">
               {{> "systems/cthack/templates/actor/parts/actor-attributes-firstline.hbs"}}
             </div>
-            <div class="resources grid grid-4col">
+            <div class="grid grid-4col resources">
               {{> "systems/cthack/templates/actor/parts/actor-attributes-secondline.hbs"}}
             </div>
         </div>
     </header>
 
     {{!-- Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs align-center actor-sheet-middle" data-group="primary">
-        <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>
-        <a class="choice" data-tab="conditions">{{localize "CTHACK.Conditions"}}</a>
+    <nav class="sheet-tabs tabs align-center" data-group="primary">
+        <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>        
         <a class="choice" data-tab="items">{{localize "CTHACK.Items"}}</a>
         <a class="choice" data-tab="abilities">{{localize "CTHACK.Abilities"}}</a>
+        <a class="choice" data-tab="conditions">{{localize "CTHACK.Conditions"}}</a>
+        <a class="choice" data-tab="notes">{{localize "CTHACK.Notes"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}
-    <section class="sheet-body actor-sheet-bottom">
+    <section class="sheet-body">
 
         {{!-- Biography Tab --}}
         <div class="tab biography" data-group="primary" data-tab="description">
             {{editor content=systemData.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
-
-        {{!-- Conditions Tab --}}
-        <div class="tab items" data-group="primary" data-tab="conditions">
-            <ol class="items-list">
-                <li class="item flexrow item-header">
-                  <div class="item-name">{{localize "CTHACK.Name"}}</div>
-                </li>
-                {{#each conditions as |condition id|}}
-                  {{> "systems/cthack/templates/actor/parts/actor-condition.hbs" condition}}
-                {{/each}}           
-            </ol>
-        </div>
         
         {{!-- Owned Items Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">
             <ol class="items-list">
-                <li class="item flexrow item-header" draggable="true">
-                  <div class="item-name">{{localize "CTHACK.Name"}}</div>
-                  <div class="align-center">{{localize "CTHACK.ItemDiceName"}}</div>
-                  <div class="align-center">{{localize "CTHACK.ItemRangeName"}}</div>
-                  <div class="item-controls">
+                <li class="item-header flexrow" draggable="true">
+                  <div class="item-header-name">{{localize "CTHACK.Name"}}</div>
+                  <div>{{localize "CTHACK.ItemDiceName"}}</div>
+                  <div>{{localize "CTHACK.ItemRangeName"}}</div>
+                  <div class="item-controls-header">
                     <a class="item-control item-create" title="{{localize "CTHACK.Add"}}" data-type="item"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
                   </div>
                 </li>
@@ -101,44 +87,37 @@
         {{!-- Abilities Tab --}}
         <div class="tab abilities" data-group="primary" data-tab="abilities">
             <ol class="items-list">
-                <li class="item flexrow item-header">
-                  <div class="item-name">{{localize "CTHACK.Name"}}</div>
-                  <div class="item-usageType align-center">{{localize "CTHACK.AbilityUsePer"}}</div>
-                  <div class="item-usageRemaining align-center">{{localize "CTHACK.AbilityUseValue"}}</div>
-                  <div class="item-usageLastTime align-center">{{localize "CTHACK.AbilityUseLast"}}</div>
-                  <div class="item-usageMultiple align-center">{{localize "CTHACK.AbilityMultiple"}}</div>
-                  <div class="item-controls">
+                <li class="item-header flexrow">
+                  <div class="item-header-name">{{localize "CTHACK.Name"}}</div>
+                  <div>{{localize "CTHACK.AbilityUsePer"}}</div>
+                  <div>{{localize "CTHACK.AbilityUseValue"}}</div>
+                  <div>{{localize "CTHACK.AbilityUseLast"}}</div>
+                  <div>{{localize "CTHACK.AbilityMultiple"}}</div>
+                  <div class="item-controls-header">
                     <a class="item-control ability-create" title="{{localize "CTHACK.Add"}}" data-type="ability"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
                   </div>
                 </li>
                 {{#each abilities as |ability id|}}
-                    <li class="item flexrow" data-item-id="{{ability._id}}">
-                      <div class="item-name flexrow">
-                      <div class="item-image"><img src="{{ability.img}}" title="{{ability.name}}" width="24" height="24"/></div>
-                      <h4>{{ability.name}}</h4>
-                      </div>
-                      <div class="align-center">{{abilityPeriodToString ability.data.uses.per}}</div>
-                      <div class="align-center">
-                      {{#if (gt ability.data.uses.max 0)}}
-                      {{ability.data.uses.value}}/{{ability.data.uses.max}}
-                      {{/if}}
-                      </div>
-                      <div class="align-center">{{ability.data.uses.last}}</div>
-                      <div class="align-center">{{booleanToString ability.data.multiple}}</div>
-                      <div class="item-controls">
-                        {{#if (gt ability.data.uses.value 0) }}
-                        <a class="item-control ability-use" title="{{localize "CTHACK.Use"}}"><i class="fas fa-check"></i></a>
-                        {{else}}
-                          {{#if (gt ability.data.uses.max 0)}}
-                          <a class="item-control ability-reset" title="{{localize "CTHACK.Reset"}}"><i class="fas fa-times"></i></a>
-                          {{/if}}
-                        {{/if}}
-                        <a class="item-control ability-edit" title="{{localize "CTHACK.Edit"}}"><i class="fas fa-edit"></i></a>
-                        <a class="item-control ability-delete" title="{{localize "CTHACK.Delete"}}"><i class="fas fa-trash"></i></a>
-                      </div>
-                    </li>
+                  {{> "systems/cthack/templates/actor/parts/actor-ability.hbs" ability}}
                 {{/each}}
             </ol>
+        </div>
+
+        {{!-- Conditions Tab --}}
+        <div class="tab items" data-group="primary" data-tab="conditions">
+            <ol class="items-list">
+                <li class="item-header flexrow">
+                  <div class="item-header-name">{{localize "CTHACK.Name"}}</div>
+                </li>
+                {{#each conditions as |condition id|}}
+                  {{> "systems/cthack/templates/actor/parts/actor-condition.hbs" condition}}
+                {{/each}}           
+            </ol>
+        </div>      
+
+        {{!-- Notes Tab --}}
+        <div class="tab character-notes" data-group="primary" data-tab="notes">
+            {{editor content=systemData.notes target="data.notes" button=true owner=owner editable=editable}}
         </div>
 
     </section>

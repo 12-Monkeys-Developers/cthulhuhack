@@ -3,7 +3,7 @@
 }
 
 .sheet-header {
-  flex: 0 0 360px;
+  flex: 0 0 auto;
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -11,28 +11,20 @@
   justify-content: flex-start;
   
   .profile-img {
-    height: 150px;
+    height: calc(20%);
     width: auto;
+    margin: 0;
+  }
+
+  .opponent-img {
+    height: calc(10%);
+    width: auto;
+    margin: 0;
   }
   
-  .weapon-img {
-    height: 150px;
-    width: auto;
-  }
-
-  .attack-img {
-    height: 150px;
-    width: auto;
-  }
-
   .adrenaline-img {
     height: 30px;
     width: auto;
-  }
-
-  .archetype-img {
-    height: auto;
-    width: 128px;
   }
 
   .definition-img {
@@ -46,7 +38,7 @@
 
   h1.charname {
     height: 50px;
-    padding: 0px;
+    padding: 0px $padding-lg 0px $padding-lg;
     margin: 5px 0;
     border-bottom: 0;
     input {
@@ -59,7 +51,7 @@
 
 .sheet-tabs {
   flex: 0;
-  font-size: 18px
+  font-size: var(--font-size-18);
 }
 
 .tox {
@@ -72,9 +64,11 @@
   }
 }
 
-.sheet-body {
-  min-height: 150px;
+.sheet-body {  
   height: 100%;
+  min-height: 150px;
+  margin: 10px 0 10px 0;
+  padding: 0 $padding-md 0 $padding-md;
 
   .tab {
     min-height: 150px;
