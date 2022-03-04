@@ -239,6 +239,17 @@ label:hover em {
           justify-content: space-between;
 }
 
+.chat-message .message-content {
+  background-image: url(../ui/cthack-green.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+}
+
+.message-content .chat-save-roll, .message-content .chat-resource-roll, .message-content .chat-other-roll {
+  padding: 5px;
+}
+
 .dice-roll .dice-total.success {
   color: inherit;
   background: #c7d0c0;
@@ -251,29 +262,12 @@ label:hover em {
   border: 1px solid #6e0000;
 }
 
-/*.chat-save-roll-title, .chat-resource-roll-title, .chat-other-roll-title  {
-  font-weight: 400;
-}*/
-/*
-.chat-save-roll, .chat-resource-roll, .chat-other-roll {
-  font-family: 'Averia Libre', cursive;
-  background-image: url("../ui/fiche-milieu.png");
-  background-size: cover;
-  color: #fff;
-}*/
 .roll-failure {
   color: red;
 }
 
 .roll-success {
   color: green;
-}
-
-.chat-message .message-content {
-  background-image: url(../ui/cthack-green.jpg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  color: #fff;
 }
 
 /* Styles limited to cthack sheets */
@@ -393,13 +387,13 @@ label:hover em {
 }
 
 .cthack .sheet-header .profile-img {
-  height: calc(100%/5);
+  height: calc(20%);
   width: auto;
   margin: 0;
 }
 
 .cthack .sheet-header .opponent-img {
-  height: calc(100%/10);
+  height: calc(10%);
   width: auto;
   margin: 0;
 }
@@ -507,8 +501,8 @@ label:hover em {
 }
 
 .cthack .hitpoints {
-  padding-left: calc(100%/4);
-  padding-right: calc(100%/4);
+  padding-left: calc(25%);
+  padding-right: calc(25%);
 }
 
 .cthack .hitpoints-cadre {
