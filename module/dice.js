@@ -50,9 +50,6 @@ export async function diceRoll(
 	// Prepare Message Data
 	messageData.speaker = speaker || ChatMessage.getSpeaker();
 	let messageOptions = { rollMode: rollMode || game.settings.get('core', 'rollMode') };
-	/*if (rollType === 'Save') {
-		parts = parts.concat([ '@modifier' ]);
-	}*/
 
 	// adv is the choice on the Dialog Roll : from -2 to +2
 	let adv = 0;
@@ -100,18 +97,9 @@ export async function diceRoll(
 			modifier = form.modifier.value;
 			messageOptions.rollMode = form.rollMode.value;
 		}
-		// Remove the @modifier if there is no modifier
-		// if (rollType === 'Save' && !data['modifier']) parts.pop();
 
 		// Execute the roll
 		let roll = new Roll(parts.join(' + '), data);
-
-		// A malus is added to the dice result
-		/*if (rollType === 'Save' && form.modifier.value < 0 ) {			
-			roll = new Roll(parts.join(' + '), data);
-		}
-		else roll = new Roll(parts.join(' - '), data);
-		*/
 
 		try {
 			roll.evaluate({async: false});

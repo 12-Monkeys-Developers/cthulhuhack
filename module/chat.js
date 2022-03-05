@@ -12,7 +12,7 @@ export const highlightSuccessFailure = function(message, html, data) {
     const options = d.options;
   
     if ( options.target ) {
-        if ( roll.total < d.options.target + parseFloat(d.options.modifier)) html.find(".dice-total").addClass("roll-success");
+        if ( roll.total < d.options.target + (d.options.modifier !== undefined ? parseFloat(d.options.modifier) : 0)) html.find(".dice-total").addClass("roll-success");
         else html.find(".dice-total").addClass("roll-failure");
     }
 
