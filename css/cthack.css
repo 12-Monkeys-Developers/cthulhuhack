@@ -785,3 +785,11 @@ label:hover em {
           flex: 0 0 150px;
   text-align-last: center;
 }
+
+.chat-message .table-draw .table-description {
+  color: whitesmoke;
+}
+
+a.entity-link.content-link {
+  color: black;
+}

@@ -11,12 +11,17 @@ Les visuels utilisés sur Foundry VTT sont réalisés par Maxime Plasse (https:/
 
 Rejoignez la communauté Discord FR : <a href='https://discord.gg/pPSDNJk'>Foundry VTT Discord FR</a>
 
-Ce système est développé par Kristov, avec la contribution de Lightbringer pour les compendiums et les tests
+Ce système est développé par Kristov, avec la contribution de Lightbringer pour les compendiums et les tests.
+
 
 ----------------
 Fonctionnalités 
 ----------------
-version : 0.9.9
+version : 1.0.0
+
+Modules supportés avec une adaptation spécifique :
+- Token Action HUD
+- Dice So Nice
 
 Actor
 - Personnage
@@ -85,12 +90,17 @@ The visuals are those of the Cthulhu Hack version of the XII Monkeys.
 
 The original game is edited by <a href="http://www.justcrunch.com">Just Crunch Games</a>.
 
-This system is under development.
+This system is developed by Kristov, with the contribution of Lightbringer for the compendiums and tests.
+Thanks to Limpar for the English translation of the compendiums.
 
 ---------------
 Features
 ---------------
-version : 0.9.9
+version : 1.0.0
+
+Supported modules with specific adaptation:
+- Token Action HUD
+- Dice So Nice
 
 Actor
 - Character
@@ -123,8 +133,26 @@ Options
 - Miscellaneous option : if the field is filled, this is used as a resource and will replace Wealth resource
 
 Hotbar
-- Macro creation with Actor
-- Macro creation with Items
+- Drag and drop an actor: opens the form. Can only be created by the GM, but he can do it for a player and share the created macro with him.
+- Drag and drop an item: allows you to open it directly
+- Drag an item
+    - Character's equipment : if there are resources left, opens the corresponding dice roll window
+    - Opponent's attack : opens the damage window
+    - Ability : if it is an ability that has a limited number of uses only. Allows you to use the ability once. Put Maximum empty instead of 0 for non usable abilities
+- To use a macro you have to select the token that can use it
 
 Compendiums
-- Only in French right now
+- Standard archetypes (with variations for the scientist) : Drag and drop on the character sheet which replaces the values of the sheet by those of the archetype
+- Special weapons
+- Special abilities : contains all the standard abilities
+    - Drag and drop to add to the card (taking into account multiple abilities)
+    - Management of the number of uses and display of the last use date when clicking on the use
+    - A button to reset the number of uses and the last use date
+    - Click on the name to unfold the description
+- Out of action Table
+- Tomporary insanity table
+- Shock table
+- RollTable on the 3 tables
+- Presets : one preset per archetype with special abilities, just choose which one to delete
+- Creatures : the creatures of the basic book
+- Macros : Roll on each of the 3 tables, command to display the player status window

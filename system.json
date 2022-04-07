@@ -7,7 +7,7 @@
   "url": "https://github.com/Qaw/cthulhuhack",
   "license": "LICENSE.txt",
   "flags": {},
-  "version": "0.9.9",
+  "version": "1.0.0",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9.255",
   "scripts": [],
@@ -32,7 +32,7 @@
   "packs": [
     {
       "name": "archetypes",
-      "label": "Archetypes",
+      "label": "FR - Archetypes",
       "system": "cthack",
       "path": "packs/archetypes.db",
       "type": "Item",
@@ -40,15 +40,15 @@
     },
     {
       "name": "abilities",
-      "label": "Capacités spéciales",
+      "label": "FR - Capacités spéciales",
       "system": "cthack",
-      "path": "packs/capacities.db",
+      "path": "packs/special-abilities.db",
       "type": "Item",
       "private": false
     },
     {
       "name": "weapons",
-      "label": "Armes spéciales",
+      "label": "FR - Armes spéciales",
       "system": "cthack",
       "path": "packs/special-weapons.db",
       "type": "Item",
@@ -56,15 +56,15 @@
     },
     {
       "name": "gametables",
-      "label": "Tableaux",
+      "label": "FR - Tableaux",
       "system": "cthack",
-      "path": "packs/game-tables.db",
+      "path": "packs/tables.db",
       "type": "RollTable",
       "private": false
     },
     {
       "name": "outofaction",
-      "label": "Hors Jeu",
+      "label": "FR - Hors Jeu",
       "system": "cthack",
       "path": "packs/out-of-action.db",
       "type": "Item",
@@ -72,7 +72,7 @@
     },
     {
       "name": "temporaryinsanity",
-      "label": "Folie passagère",
+      "label": "FR - Folie passagère",
       "system": "cthack",
       "path": "packs/temporary-insanity.db",
       "type": "Item",
@@ -80,15 +80,15 @@
     },
     {
       "name": "pregenerated",
-      "label": "Prétirés",
+      "label": "FR - Prétirés",
       "system": "cthack",
-      "path": "packs/pregenerated.db",
+      "path": "packs/example-characters.db",
       "type": "Actor",
       "private": false
     },
     {
       "name": "shock",
-      "label": "Choc",
+      "label": "FR - Choc",
       "system": "cthack",
       "path": "packs/shock.db",
       "type": "Item",
@@ -96,7 +96,7 @@
     },
     {
       "name": "opponents",
-      "label": "Créatures",
+      "label": "FR - Créatures",
       "system": "cthack",
       "path": "packs/opponents.db",
       "type": "Actor",
@@ -104,18 +104,98 @@
     },
     {
       "name": "macros",
-      "label": "Macros",
+      "label": "FR - Macros",
       "system": "cthack",
       "path": "packs/macros.db",
       "type": "Macro",
       "private": false
-    }
+    },
+    {
+      "name": "archetypes-en",
+      "label": "EN - Archetypes",
+      "system": "cthack",
+      "path": "packs/archetypes-en.db",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "abilities-en",
+      "label": "EN - Special abilities",
+      "system": "cthack",
+      "path": "packs/special-abilities-en.db",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "weapons-en",
+      "label": "EN - Special weapons",
+      "system": "cthack",
+      "path": "packs/special-weapons-en.db",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "gametables-en",
+      "label": "EN - Tables",
+      "system": "cthack",
+      "path": "packs/tables-en.db",
+      "type": "RollTable",
+      "private": false
+    },
+    {
+      "name": "outofaction-en",
+      "label": "EN - Out of action",
+      "system": "cthack",
+      "path": "packs/out-of-action-en.db",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "temporaryinsanity-en",
+      "label": "EN - Temporary insanity",
+      "system": "cthack",
+      "path": "packs/temporary-insanity-en.db",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "pregenerated-en",
+      "label": "EN - Example characters",
+      "system": "cthack",
+      "path": "packs/example-characters-en.db",
+      "type": "Actor",
+      "private": false
+    },
+    {
+      "name": "shock-en",
+      "label": "EN - Shok",
+      "system": "cthack",
+      "path": "packs/shock-en.db",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "opponents-en",
+      "label": "EN - Creatures",
+      "system": "cthack",
+      "path": "packs/creatures-en.db",
+      "type": "Actor",
+      "private": false
+    },
+    {
+      "name": "macros-en",
+      "label": "EN - Macros",
+      "system": "cthack",
+      "path": "packs/macros-en.db",
+      "type": "Macro",
+      "private": false
+    }    
   ],
   "system": [],
   "dependencies": [],
   "socket": true,
   "manifest": "https://github.com/Qaw/cthulhuhack/releases/latest/download/system.json",
-  "download": "https://github.com/Qaw/cthulhuhack/releases/download/0.9.8/system.zip",
+  "download": "https://github.com/Qaw/cthulhuhack/releases/download/1.0.0/system.zip",
   "protected": false,
   "gridDistance": 5,
   "gridUnits": "ft",
