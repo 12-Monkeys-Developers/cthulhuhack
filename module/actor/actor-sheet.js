@@ -338,7 +338,7 @@ export class CtHackActorSheet extends ActorSheet {
 		const itemData = duplicate(data);
 
 		// Create the owned item
-		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
+		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: false });
 	}
 
 	/**
@@ -395,12 +395,12 @@ export class CtHackActorSheet extends ActorSheet {
 				abilitiesList.push({ key: key, id: id });
 				await this.actor.update({ 'data.abilities': abilitiesList });
 			}
-			return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
+			return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: false });
 		} else {
 			if (!this._hasAbility(key, abilitiesList)) {
 				abilitiesList.push({ key: key, id: id });
 				await this.actor.update({ 'data.abilities': abilitiesList });
-				return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
+				return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: false });
 			} else return;
 		}
 	}
