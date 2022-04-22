@@ -168,7 +168,7 @@
     },
     {
       "name": "shock-en",
-      "label": "EN - Shok",
+      "label": "EN - Shock",
       "system": "cthack",
       "path": "packs/shock-en.db",
       "type": "Item",

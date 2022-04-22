@@ -83,12 +83,13 @@ Compendiums
 -------------------------------------------------------------------------------------------------------------------------
 Cthulhu Hack System for Foundry VTT
 
-Cthulhu Hack is a role playing game created by Paul Baldowski.
+The Cthulhu Hack is a role playing game created by Paul Baldowski published by <a href="http://www.justcrunch.com">Just Crunch Games</a>. The Cthulhu Hack trademark, the Cthulhu Hack logo, the Just Crunch Games trademark and the Just Crunch Games logo are the property of Just Crunch Games.
 
-Cthulhu Hack is edited in French by <a href="https://www.les12singes.com">Les XII Singes</a>.
-The visuals are those of the Cthulhu Hack version of the XII Monkeys.
+The Cthulhu Hack is published in French by <a href="https://www.les12singes.com">Les XII Singes</a> under the name Cthulhu Hack VF. Cthulhu Hack VF is part of the Dark Monkeys collection. The Cthulhu Hack VF trademark, the Cthulhu Hack VF logo, the Dark Monkeys trademark, the Dark Monkeys logo, the XII Monkeys trademark and the XII Monkeys logo are the property of ReSpell.
 
-The original game is edited by <a href="http://www.justcrunch.com">Just Crunch Games</a>.
+The graphics used for Foundry VTT are produced by Maxime Plasse (https://www.maxsmaps.com/). They are provided for Foundry ATV use. Any other use or reproduction of images must obtain the agreement of ReSpell / Les XII Singes.
+
+Join the Discord FR community: <a href='https://discord.gg/pPSDNJk'>Foundry VTT Discord FR</a>
 
 This system is developed by Kristov, with the contribution of Lightbringer for the compendiums and tests.
 Thanks to Limpar for the English translation of the compendiums.
@@ -105,50 +106,52 @@ Supported modules with specific adaptation:
 Actor
 - Character
     - Add/modify/delete objects and special abilities
-    - Save roll with advantage/disadvantage/bonus/malus, display of the possible advantage given by a special ability
-    - Resource roll with advantage/disadvantage/bonus/malus and decrease management
+    - Save roll with advantage/disadvantage/bonus/penalty, display of the possible advantage given by a special ability
+    - Resource roll with advantage/disadvantage/bonus/penalty and reduction management
 - Opponent
-    - Attacks are items
+    - Attacks are in the form of an item with an integrated damage roll
 
 Item
 - Ability: special ability
+    - If the "Custom" and "Gives advantage" fields are activated, the advantage description field is used in the dice roll aid
 - Item : management of the supplies die with the possibility to make a roll
 - Weapon: for weapons, drag and drop on the character sheet
-- Attack: opponent's attacks, to be dragged on the opponent's card
-- Definition: used for Out of Game, Temporary Insanity and Shock table statuses; added to character via drag and drop
-    - Taking into account the disadvantage for certain Out-of-Game statuses
+- Attack: attacks to be dragged onto the opponent's sheet
+- Definition: used for Out of Play, Temporary Insanity and Shock table statuses; added to character via drag and drop
+    - Taking into account the disadvantage for certain Out-of-Play statuses
     - An icon appears on the token in case of condition
-- Click on name to display description
+- Click on the name to display the description
+- Ability to sort abilities and items (in Weapons or Equipment category) by dragging an item
 
 Options
 - Fortune: activates/deactivates the display on the form
     - The GM activates the option and makes the number of tokens available to the players.
     - Display of the number of tokens under the portrait
-    - Only a GM could spend a token
+    - Only a GM can spend a token
     - A message is displayed in the chat when a token is spent
 - Adrenaline: activates/deactivates the display on the card
-    - Under the portrait: lightning token for the player, skull and crossbones token for the GM.
-- Hit dice as a resource: activates/deactivates the display on the form
+    - Under the portrait: lightning token for the player, skull & crossbones token for the GM.
+- Hit Dice as a resource: activates/deactivates the display on the form
 - Wealth as a resource: enables/disables display on the form
-- Miscellaneous option : if the field is filled, this is used as a resource and will replace Wealth resource
+- Miscellaneous option : if the field is filled, this is used as a resource and will replace the Wealth resource
 
-Hotbar
-- Drag and drop an actor: opens the form. Can only be created by the GM, but he can do it for a player and share the created macro with him.
+Macro bar
+- Drag and drop an actor: opens the form. Can only be created by the GM, but he can do it for a player and share the created macro with the player.
 - Drag and drop an item: allows you to open it directly
-- Drag an item
+- Click on an item
     - Character's equipment : if there are resources left, opens the corresponding dice roll window
     - Opponent's attack : opens the damage window
-    - Ability : if it is an ability that has a limited number of uses only. Allows you to use the ability once. Put Maximum empty instead of 0 for non usable abilities
+    - Ability : if it is an ability that has a limited number of uses. Allows you to use the ability once. Sets the Maximum empty instead of 0 for non usable abilities
 - To use a macro you have to select the token that can use it
 
 Compendiums
-- Standard archetypes (with variations for the scientist) : Drag and drop on the character sheet which replaces the values of the sheet by those of the archetype
+- Standard archetypes (with variations for the Scholar) : Drag and drop on the character sheet which replaces the values of the sheet by those of the archetype
 - Special weapons
 - Special abilities : contains all the standard abilities
     - Drag and drop to add to the card (taking into account multiple abilities)
     - Management of the number of uses and display of the last use date when clicking on the use
     - A button to reset the number of uses and the last use date
-    - Click on the name to unfold the description
+    - Click on the name to display the description
 - Out of action Table
 - Tomporary insanity table
 - Shock table
