@@ -5,7 +5,7 @@
 export const highlightSuccessFailure = function(message, html, data) {
     if ( !message.isRoll || !message.isContentVisible ) return;
   
-    const roll = message.roll;
+    const roll = message.rolls[0];
     if ( !roll.dice.length ) return;
     const d = roll.dice[0];
   

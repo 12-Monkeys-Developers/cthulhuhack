@@ -27,21 +27,12 @@ export class CtHackActorSheet extends ActorSheet {
 	/** @override */
 	getData(options) {
 		const context = super.getData(options);
-		context.actorData = context.data;
-		context.systemData = context.actorData.data;
+		console.log('actor context',context);
 
-		context.abilities = context.items.filter(function(item) {
-			return item.type === 'ability';
-		});
-		context.weapons = context.items.filter(function(item) {
-			return item.type === 'weapon';
-		});
-		context.otheritems = context.items.filter(function(item) {
-			return item.type === 'item';
-		});
-		context.conditions = context.items.filter(function(item) {
-			return item.type === 'definition';
-		});
+		context.abilities = context.items.filter(function(item) { return item.type === 'ability';});
+		context.weapons = context.items.filter(function(item) { return item.type === 'weapon';});
+		context.otheritems = context.items.filter(function(item) { return item.type === 'item';});
+		context.conditions = context.items.filter(function(item) { return item.type === 'definition';});
 
 		context.isGm = game.user.isGM;
 
@@ -126,6 +117,7 @@ export class CtHackActorSheet extends ActorSheet {
 
 	/** @override */	
 	 async _onDropItemCreate(itemData) {
+		 console.log(itemData);
 		switch (itemData.type) {
 			case 'archetype':
 				return await this._onDropArchetypeItem(itemData);
@@ -160,17 +152,17 @@ export class CtHackActorSheet extends ActorSheet {
 		// Get the type of item to create.
 		const type = header.dataset.type;
 		// Grab any data associated with this control.
-		const data = duplicate(header.dataset);
+		const data = foundry.utils.deepClone(header.dataset);
 		// Initialize a default name.
-		const name = `New ${type.capitalize()}`;
+		const name = game.i18n.format("CTHACK.ItemNew", {type: game.i18n.localize(`CTHACK.ItemType${type.capitalize()}`)});
 		// Prepare the item object.
 		const itemData = {
 			name: name,
 			type: type,
-			data: data
+			system: data
 		};
 		// Remove the type from the dataset since it's in the itemData.type prop.
-		delete itemData.data['type'];
+		delete itemData.system.type;
 
 		// Finally, create the item!
 		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
@@ -191,10 +183,10 @@ export class CtHackActorSheet extends ActorSheet {
 		const li = $(event.currentTarget).parents('.item');
 		const itemId = li.data('itemId');
 		const item = this.actor.items.find((item) => item.id === itemId);
-		const key = item.data.data.key;
+		const key = item.system.key;
 		li.slideUp(200, () => this.render(false));
 
-		switch (item.data.type) {
+		switch (item.type) {
 			case 'item':
 				await this.actor.deleteEmbeddedDocuments("Item",[itemId]);
 				break;
@@ -226,7 +218,7 @@ export class CtHackActorSheet extends ActorSheet {
 		const li = $(event.currentTarget).parents('.item');
 		const itemId = li.data('itemId');
 		const item = this.actor.items.find((item) => item.id === itemId);
-		switch (item.data.type) {
+		switch (item.type) {
 			case 'ability':
 				this.actor.useAbility(item);
 				this.actor.sheet.render(true);
@@ -335,10 +327,8 @@ export class CtHackActorSheet extends ActorSheet {
 	async _onDropStandardItem(data) {
 		if (!this.actor.isOwner) return false;
 
-		const itemData = duplicate(data);
-
 		// Create the owned item
-		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: false });
+		return await this.actor.createEmbeddedDocuments('Item', [data], { renderSheet: false });
 	}
 
 	/**
@@ -350,8 +340,8 @@ export class CtHackActorSheet extends ActorSheet {
 	async _onDropDefinitionItem(data) {
 		if (!this.actor.isOwner) return false;
 
-		const itemData = duplicate(data);
-		itemData.data.creationDate = formatDate(new Date());
+		const itemData = foundry.utils.deepClone(data);
+		itemData.system.creationDate = formatDate(new Date());
 
 		return this.actor.createDefinitionItem(itemData);
 	}
@@ -365,14 +355,14 @@ export class CtHackActorSheet extends ActorSheet {
 	_onDropArchetypeItem(itemData) {
 		// Replace actor data
 		this.actor.update({
-			'data.archetype': itemData.name,
-			'data.attributes.flashlights': { value: itemData.data.flashlights, max: itemData.data.flashlights },
-			'data.attributes.smokes': { value: itemData.data.smokes, max: itemData.data.smokes },
-			'data.attributes.sanity': { value: itemData.data.sanity, max: itemData.data.sanity },
-			'data.attributes.hitDice': { value: itemData.data.hitdice },
-			'data.attributes.wealthDice': { value: itemData.data.wealthDice },
-			'data.attributes.armedDamage': { value: itemData.data.armeddamage },
-			'data.attributes.unarmedDamage': { value: itemData.data.unarmeddamage }
+			'system.archetype': itemData.name,
+			'system.attributes.flashlights': { value: itemData.system.flashlights, max: itemData.system.flashlights },
+			'system.attributes.smokes': { value: itemData.system.smokes, max: itemData.system.smokes },
+			'system.attributes.sanity': { value: itemData.system.sanity, max: itemData.system.sanity },
+			'system.attributes.hitDice': { value: itemData.system.hitdice },
+			'system.attributes.wealthDice': { value: itemData.system.wealthDice },
+			'system.attributes.armedDamage': { value: itemData.system.armeddamage },
+			'system.attributes.unarmedDamage': { value: itemData.system.unarmeddamage }
 		});
 		this.actor.sheet.render(true);
 	}
@@ -385,21 +375,21 @@ export class CtHackActorSheet extends ActorSheet {
    */
 	async _onDropAbilityItem(itemData) {
 		const id = itemData.id;
-		const key = itemData.data.key;
-		const multiple = itemData.data.multiple;
+		const key = itemData.system.key;
+		const multiple = itemData.system.multiple;
 
-		let abilitiesList = this.actor.data.data.abilities;
+		let abilitiesList = this.actor.system.abilities;
 
 		if (multiple) {
 			if (!this._hasAbility(key, abilitiesList)) {
 				abilitiesList.push({ key: key, id: id });
-				await this.actor.update({ 'data.abilities': abilitiesList });
+				await this.actor.update({ 'system.abilities': abilitiesList });
 			}
 			return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: false });
 		} else {
 			if (!this._hasAbility(key, abilitiesList)) {
 				abilitiesList.push({ key: key, id: id });
-				await this.actor.update({ 'data.abilities': abilitiesList });
+				await this.actor.update({ 'system.abilities': abilitiesList });
 				return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: false });
 			} else return;
 		}
@@ -462,14 +452,14 @@ export class CtHackActorSheet extends ActorSheet {
 		event.preventDefault();
 		const adr = event.currentTarget.id;
 		if (adr === 'adr1') {
-			const value = this.actor.data.data.attributes.adrenaline1.value;
+			const value = this.actor.system.attributes.adrenaline1.value;
 			let newData = { value: 'pj' };
 			if (value === 'pj') {
 				newData = { value: 'mj' };
 			}
 			this.actor.update({ 'data.attributes.adrenaline1': newData });
 		} else if (adr === 'adr2') {
-			const value = this.actor.data.data.attributes.adrenaline2.value;
+			const value = this.actor.system.attributes.adrenaline2.value;
 			let newData = { value: 'pj' };
 			if (value === 'pj') {
 				newData = { value: 'mj' };
@@ -489,12 +479,12 @@ export class CtHackActorSheet extends ActorSheet {
 		const item = this.actor.items.get(li.data('item-id'));
 
 		// Toggle summary
-		if (item?.data.data.description) {
+		if (item?.system.description) {
 			if (li.hasClass('expanded')) {
 				let summary = li.children('.item-summary');
 				summary.slideUp(200, () => summary.remove());
 			} else {
-				let div = $(`<div class="item-summary">${item.data.data.description}</div>`);
+				let div = $(`<div class="item-summary">${item.system.description}</div>`);
 				li.append(div.hide());
 				div.slideDown(200);
 			}

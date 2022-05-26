@@ -87,7 +87,7 @@ export function registerHooks() {
     
             // Ability
             else if (item.type === "ability") {
-                const maxUses = item.data.uses.max;
+                const maxUses = item.uses.max;
                 if (maxUses === null) {
                     return ui.notifications.warn(game.i18n.format('MACROS.AbilityWithoutUsage',{itemName: item.name}));
                 }
@@ -113,9 +113,9 @@ export function registerHooks() {
             let macro = game.macros.contents.find(m => (m.name === actor.name) && (m.data.command === command));
             if (!macro) {
                 macro = await Macro.create({
-                    name: actor.data.name,
+                    name: actor.name,
                     type: "script",
-                    img: actor.data.img,
+                    img: actor.img,
                     command: command
                 }, {displaySheet: false})
                 game.user.assignHotbarMacro(macro, slot);

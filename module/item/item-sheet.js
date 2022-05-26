@@ -19,15 +19,15 @@ export class CtHackItemSheet extends ItemSheet {
 	/** @override */
 	get template() {
 		const path = 'systems/cthack/templates/item';
-		return `${path}/${this.item.data.type}-sheet.hbs`;
+		return `${path}/${this.item.type}-sheet.hbs`;
 	}
 
 	/** @override */
 	getData(options) {
 		const context = super.getData(options);
 
-		context.itemData = context.data;
-		context.systemData = context.itemData.data;
+		//context.itemData = context.data;
+		//context.systemData = context.itemData.data;
 
 		return context;
 	}

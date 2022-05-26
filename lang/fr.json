@@ -105,6 +105,13 @@
         "ResourceRollFailure": "Perte de ressource",
         "DamageDiceRollPrompt": "Jet de dé(s) de dégâts avec {item}",
         "AttackDamageDiceRollPrompt": "Jet de dégâts avec l'attaque {item}",
+        "ItemNew": "Nouveau",
+        "ItemTypeItem": "Objet",
+        "ItemTypeWeapon": "Arme",
+        "ItemTypeAttack": "Attaque",
+        "ItemTypeArchetype": "Archetype",
+        "ItemTypeAbility": "Capacité",
+        "ItemTypeDefinition": "Définition",
 
         "HitPointsStart": "Points de Vie de départ",
         "WealthStart": "Richesse de départ",
