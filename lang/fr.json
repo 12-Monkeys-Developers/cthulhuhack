@@ -216,7 +216,9 @@
         "RollWithMalus": "Avec un malus de {modifier}.",
         "RollDifficulty": "Difficulté : {difficulty}.",
         "RollSuccess": "C'est un Succès !",
-        "RollFailure": "C'est un Echec !"
+        "RollFailure": "C'est un Echec !",
+        "AskRollForAll": "Merci de tous faire un jet de {resource}.",
+        "AskRollIndividual": "Merci {name} de faire un jet de {resource}."
     },
 
     "MACROS": {

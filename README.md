@@ -17,7 +17,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 1.0.0
+version : 1.1.0
 
 Modules supportés avec une adaptation spécifique :
 - Token Action HUD
@@ -97,7 +97,7 @@ Thanks to Limpar for the English translation of the compendiums.
 ---------------
 Features
 ---------------
-version : 1.0.0
+version : 1.1.0
 
 Supported modules with specific adaptation:
 - Token Action HUD

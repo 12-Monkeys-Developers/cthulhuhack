@@ -1,14 +1,21 @@
-<tr class="character-resume" data-character-id="{{character.id}}">
+{{log 'player' this}}
+<tr class="character-resume" data-user-id="{{data._id}}" data-character-name="{{character.name}}" data-character-id="{{character.id}}">
     <td>{{data.name}}</td>
     <td>{{character.name}}</td>
-    <td data-resource="flashlights">{{character.data.data.attributes.flashlights.value}}</td>
-    <td data-resource="smokes">{{character.data.data.attributes.smokes.value}}</td>
-    <td data-resource="sanity">{{character.data.data.attributes.sanity.value}}</td>
-    {{#if (isEnabled "MiscellaneousResource")}}<td data-resource="miscellaneous">{{character.data.data.attributes.miscellaneous.value}}</td>{{else}}<td data-resource="wealthDice">{{character.data.data.attributes.wealthDice.value}}</td>{{/if}}</td>
-    {{#if (isEnabled "HitDiceResource")}}<td data-resource="hitdice">{{character.data.data.attributes.hitDice.value}}</td>{{else}}<td data-resource="hp">{{character.data.data.hp.value}}</td>{{/if}}</td>
+    <td class="gm-resource-individual" data-resource="FlashLights">{{character.data.data.attributes.flashlights.value}}</td>
+    <td class="gm-resource-individual" data-resource="Smokes">{{character.data.data.attributes.smokes.value}}</td>
+    <td class="gm-resource-individual" data-resource="Sanity">{{character.data.data.attributes.sanity.value}}</td>
+    {{#if (isEnabled "MiscellaneousResource")}}<td class="gm-resource-individual" data-resource="Miscellaneous">{{character.data.data.attributes.miscellaneous.value}}</td>{{else}}<td data-resource="wealthDice">{{character.data.data.attributes.wealthDice.value}}</td>{{/if}}</td>
+    {{#if (isEnabled "HitDiceResource")}}<td class="gm-resource-individual" data-resource="HitDice">{{character.data.data.attributes.hitDice.value}}</td>{{else}}<td data-resource="hp">{{character.data.data.hp.value}}</td>{{/if}}</td>
     {{#if (isEnabled "Adrenaline")}}
-    <td data-resource="adrenaline">
+    <td class="gm-resource-individual" data-resource="Adrenaline">
         <img class="adrenaline-img" src="{{getAdrenalineImage character.data.data.attributes.adrenaline1.value}}"><img class="adrenaline-img" src="{{getAdrenalineImage character.data.data.attributes.adrenaline2.value}}">
     </td>
     {{/if}}
+    <td class="gm-save-individual" data-save="Str">{{character.data.data.saves.str.value}}</td>
+    <td class="gm-save-individual" data-save="Dex">{{character.data.data.saves.dex.value}}</td>
+    <td class="gm-save-individual" data-save="Con">{{character.data.data.saves.con.value}}</td>
+    <td class="gm-save-individual" data-save="Wis">{{character.data.data.saves.wis.value}}</td>
+    <td class="gm-save-individual" data-save="Int">{{character.data.data.saves.int.value}}</td>
+    <td class="gm-save-individual" data-save="Cha">{{character.data.data.saves.cha.value}}</td>
 </tr>

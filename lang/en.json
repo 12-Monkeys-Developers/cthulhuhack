@@ -216,7 +216,9 @@
         "RollWithMalus": "With a penalty of {modifier}.",
         "RollDifficulty": "Difficulty : {difficulty}.",
         "RollSuccess": "This is a Success !",
-        "RollFailure": "This is a Failure !"
+        "RollFailure": "This is a Failure !",
+        "AskRollForAll": "Thanks to all make a roll of {resource}.",
+        "AskRollIndividual": "Thanks {name} to make a roll of {resource}."
     },
 
     "MACROS": {

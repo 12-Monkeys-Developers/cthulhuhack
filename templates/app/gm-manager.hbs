@@ -12,12 +12,18 @@
       <tr>
         <th>{{localize "GMMANAGER.Player"}}</th>
         <th>{{localize "GMMANAGER.Character"}}</th>
-        <th>{{localize "CTHACK.FlashLights"}}</th>
-        <th>{{localize "CTHACK.Smokes"}}</th>
-        <th>{{localize "CTHACK.Sanity"}}</th>
-        <th>{{#if (isEnabled "MiscellaneousResource")}}{{getMiscellaneousValue}}{{else}}{{localize "CTHACK.Wealth"}}{{/if}}</th>
-        <th>{{#if (isEnabled "HitDiceResource")}}{{localize "CTHACK.HitDice"}}{{else}}{{localize "CTHACK.HitPoints"}}{{/if}}</th>
-        {{#if (isEnabled "Adrenaline")}}<th>{{localize "GMMANAGER.Adrenaline"}}</th>{{/if}}
+        <th class="gm-resource-all" data-resource="FlashLights">{{localize "CTHACK.FlashLights"}}</th>
+        <th class="gm-resource-all" data-resource="Smokes">{{localize "CTHACK.Smokes"}}</th>
+        <th class="gm-resource-all" data-resource="Sanity">{{localize "CTHACK.Sanity"}}</th>
+        <th class="gm-resource-all" data-resource="Miscellaneous">{{#if (isEnabled "MiscellaneousResource")}}{{getMiscellaneousValue}}{{else}}{{localize "CTHACK.Wealth"}}{{/if}}</th>
+        <th class="gm-resource-all" data-resource="HitDice">{{#if (isEnabled "HitDiceResource")}}{{localize "CTHACK.HitDice"}}{{else}}{{localize "CTHACK.HitPoints"}}{{/if}}</th>
+        {{#if (isEnabled "Adrenaline")}}<th class="gm-adr-all" data-resource="Adrenaline">{{localize "GMMANAGER.Adrenaline"}}</th>{{/if}}
+        <th class="gm-save-all" data-save="Str">{{localize "CTHACK.SaveStr"}}</th>
+        <th class="gm-save-all" data-save="Dex">{{localize "CTHACK.SaveDex"}}</th>
+        <th class="gm-save-all" data-save="Con">{{localize "CTHACK.SaveCon"}}</th>
+        <th class="gm-save-all" data-save="Wis">{{localize "CTHACK.SaveWis"}}</th>
+        <th class="gm-save-all" data-save="Int">{{localize "CTHACK.SaveInt"}}</th>
+        <th class="gm-save-all" data-save="Cha">{{localize "CTHACK.SaveCha"}}</th>
       </tr>
     </thead>
     <tbody>

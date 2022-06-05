@@ -26,7 +26,7 @@ export class GMManager extends Application {
         title:  game.i18n.localize('GMMANAGER.Title'),
         top: 100,
         left: 120,
-        width: game.settings.get('cthack', 'Adrenaline') ? 600 : 500,
+        width: game.settings.get('cthack', 'Adrenaline') ? 1000 : 900,
         height: "auto",
         resizable: true,
       });
@@ -43,5 +43,100 @@ export class GMManager extends Application {
         return super.render(force, options);
       }      
     }
+
+    activateListeners(html) {
+  
+      super.activateListeners(html);      
+      html.find('.gm-resource-all').click(this._onRessourceRollForAll.bind(this));
+      html.find('.gm-save-all').click(this._onSaveRollForAll.bind(this));
+      html.find('.gm-resource-individual').click(this._onRessourceRollIndividual.bind(this));
+      html.find('.gm-save-individual').click(this._onSaveRollIndividual.bind(this));
+    }
+
+    /**
+     * @description Ask all players to make a roll for the selected Resource
+     * @param {*} event 
+     * @returns 
+     */
+    async _onRessourceRollForAll(event) {
+      event.preventDefault(); 
+      const resource = event.currentTarget.dataset.resource;
+      if (resource == 'Adrenaline') return;
+      let label;
+      if (resource == 'Miscellaneous') {
+        label = game.settings.get('cthack', 'MiscellaneousResource');
+      }
+      else {
+        label = game.i18n.localize('CTHACK.' + resource);
+      }
+      
+      ChatMessage.create({
+        user: game.user.id,
+        content: game.i18n.format('CHAT.AskRollForAll', { resource: label })
+      });
+    }
+
+    /**
+     * @description Ask all players to make a roll for the selected Save
+     * @param {*} event 
+     * @returns 
+     */
+     async _onSaveRollForAll(event) {
+      event.preventDefault(); 
+      const save = event.currentTarget.dataset.save;
+
+      ChatMessage.create({
+        user: game.user.id,
+        content: game.i18n.format('CHAT.AskRollForAll', { resource: game.i18n.localize('CTHACK.Save' + save) }),
+        type: CONST.CHAT_MESSAGE_TYPES.OTHER
+      });
+    }
+
+    /**
+     * @description Ask a specific player to make a roll for the selected Resource
+     * @param {*} event 
+     * @returns 
+     */
+     async _onRessourceRollIndividual(event) {
+      event.preventDefault(); 
+      const resource = event.currentTarget.dataset.resource;
+      if (resource == 'Adrenaline') return;
+      let label;
+      if (resource == 'Miscellaneous') {
+        label = game.settings.get('cthack', 'MiscellaneousResource');
+      }
+      else {
+        label = game.i18n.localize('CTHACK.' + resource);
+      }
+
+      const recipient = event.currentTarget.parentElement.dataset.userId;
+      const name = event.currentTarget.parentElement.dataset.characterName;
+
+      ChatMessage.create({
+        user: game.user.id,
+        content: game.i18n.format('CHAT.AskRollIndividual', { name: name, resource: label }),
+        type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+        whisper: [recipient]
+      });
+    }    
+
+    /**
+     * @description Ask a specific player to make a roll for the selected Save
+     * @param {*} event 
+     * @returns 
+     */
+     async _onSaveRollIndividual(event) {
+      event.preventDefault(); 
+      const save = event.currentTarget.dataset.save;
+      const recipient = event.currentTarget.parentElement.dataset.userId;
+      const name = event.currentTarget.parentElement.dataset.characterName;
+
+      ChatMessage.create({
+        user: game.user.id,
+        content: game.i18n.format('CHAT.AskRollIndividual', { name: name, resource: game.i18n.localize('CTHACK.Save' + save) }),
+        type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+        whisper: [recipient]
+      });
+     }   
 
 }
