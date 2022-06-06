@@ -217,8 +217,8 @@
         "RollDifficulty": "Difficulté : {difficulty}.",
         "RollSuccess": "C'est un Succès !",
         "RollFailure": "C'est un Echec !",
-        "AskRollForAll": "Merci de tous faire un jet de {resource}.",
-        "AskRollIndividual": "Merci {name} de faire un jet de {resource}."
+        "AskRollForAll": "Jet de {resource} pour tous !",
+        "AskRollIndividual": "Jet de {resource} pour {name}"
     },
 
     "MACROS": {

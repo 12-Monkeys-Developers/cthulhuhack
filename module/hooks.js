@@ -144,4 +144,25 @@ export function registerHooks() {
         configureDiceSoNice(dice3d);		
     });
 
+    Hooks.on("renderChatMessage", (message, html, data) => {
+        if (game.user.isGM) {
+            html.find(".ask-roll-dice").each((i, btn) => {
+                btn.style.display = "none"
+              });
+        }
+        else {
+            html.find(".ask-roll-dice").click(event => {
+                const btn = $(event.currentTarget); 
+                const type = btn.data("type");
+                const resource = btn.data("resource"); 
+                const character = game.user.character;
+                if (type === "resource")
+                    character.rollResource(resource.toLowerCase());
+                else if (type === 'save')
+                    character.rollSave(resource.toLowerCase());
+            });
+        }
+		 
+    });
+
 }

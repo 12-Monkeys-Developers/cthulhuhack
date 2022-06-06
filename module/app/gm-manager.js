@@ -69,10 +69,16 @@ export class GMManager extends Application {
       else {
         label = game.i18n.localize('CTHACK.' + resource);
       }
+
+      const text = game.i18n.format('CHAT.AskRollForAll', { resource: label });
       
       ChatMessage.create({
         user: game.user.id,
-        content: game.i18n.format('CHAT.AskRollForAll', { resource: label })
+        content: await renderTemplate(`systems/cthack/templates/chat/askRoll.hbs`, {
+          text: text,
+          rollType: "resource",
+          resource: resource
+        })        
       });
     }
 
@@ -84,10 +90,15 @@ export class GMManager extends Application {
      async _onSaveRollForAll(event) {
       event.preventDefault(); 
       const save = event.currentTarget.dataset.save;
+      const text = game.i18n.format('CHAT.AskRollForAll', { resource: game.i18n.localize('CTHACK.Save' + save) });
 
       ChatMessage.create({
         user: game.user.id,
-        content: game.i18n.format('CHAT.AskRollForAll', { resource: game.i18n.localize('CTHACK.Save' + save) }),
+        content: await renderTemplate(`systems/cthack/templates/chat/askRoll.hbs`, {
+          text: text,
+          rollType: "save",
+          resource: save
+        }),
         type: CONST.CHAT_MESSAGE_TYPES.OTHER
       });
     }
@@ -111,10 +122,15 @@ export class GMManager extends Application {
 
       const recipient = event.currentTarget.parentElement.dataset.userId;
       const name = event.currentTarget.parentElement.dataset.characterName;
+      const text = game.i18n.format('CHAT.AskRollIndividual', { name: name, resource: label });
 
       ChatMessage.create({
         user: game.user.id,
-        content: game.i18n.format('CHAT.AskRollIndividual', { name: name, resource: label }),
+        content: await renderTemplate(`systems/cthack/templates/chat/askRoll.hbs`, {
+          text: text,
+          rollType: "resource",
+          resource: resource
+        }),
         type: CONST.CHAT_MESSAGE_TYPES.OTHER,
         whisper: [recipient]
       });
@@ -130,10 +146,15 @@ export class GMManager extends Application {
       const save = event.currentTarget.dataset.save;
       const recipient = event.currentTarget.parentElement.dataset.userId;
       const name = event.currentTarget.parentElement.dataset.characterName;
+      const text = game.i18n.format('CHAT.AskRollIndividual', { name: name, resource: game.i18n.localize('CTHACK.Save' + save) });
 
       ChatMessage.create({
         user: game.user.id,
-        content: game.i18n.format('CHAT.AskRollIndividual', { name: name, resource: game.i18n.localize('CTHACK.Save' + save) }),
+        content: await renderTemplate(`systems/cthack/templates/chat/askRoll.hbs`, {
+          text: text,
+          rollType: "save",
+          resource: save
+        }),
         type: CONST.CHAT_MESSAGE_TYPES.OTHER,
         whisper: [recipient]
       });

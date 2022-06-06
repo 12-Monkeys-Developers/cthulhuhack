@@ -793,3 +793,8 @@ label:hover em {
 a.entity-link.content-link {
   color: black;
 }
+
+.ask-roll-title .fa-dice-d20 {
+	padding-right: 5px;
+  padding-left: 5px;
+}

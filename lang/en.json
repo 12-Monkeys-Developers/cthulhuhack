@@ -217,8 +217,8 @@
         "RollDifficulty": "Difficulty : {difficulty}.",
         "RollSuccess": "This is a Success !",
         "RollFailure": "This is a Failure !",
-        "AskRollForAll": "Thanks to all make a roll of {resource}.",
-        "AskRollIndividual": "Thanks {name} to make a roll of {resource}."
+        "AskRollForAll": "Roll of {resource} for all !",
+        "AskRollIndividual": "Roll of {resource} for {name}"
     },
 
     "MACROS": {
