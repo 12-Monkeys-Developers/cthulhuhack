@@ -1,4 +1,11 @@
-Système Cthulhu Hack pour Foundry VTT
+# Système Cthulhu Hack pour Foundry VTT
+
+<div align="center">
+
+![Supported Foundry VTT versions](https://img.shields.io/endpoint?url=https%3A%2F%2Ffoundryshields.com%2Fversion%3Fstyle%3Dflat%26url%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2FQaw%2Fcthulhuhack%2Fmain%2Fsystem.json)
+![Latest Release](https://img.shields.io/github/v/release/Qaw/cthulhuhack?label=Latest%20release)
+
+</div>
 
 Cthulhu Hack est un jeu de rôle de Paul Baldowski édité par <a href="http://www.justcrunch.com">Just Crunch Games</a>.
 Cthulhu Hack est édité en version française par <a href="https://www.les12singes.com">Les XII Singes</a> sous le nom Cthulhu Hack VF.
