@@ -11,13 +11,6 @@ export class CtHackActor extends Actor {
 	/** @override */
 	prepareData() {
 		super.prepareData();
-
-		/*
-		const actorData = this.data;
-		const data = actorData.data;
-		const flags = actorData.flags;
-		*/
-
 	}
 
 	/** @override */
@@ -32,7 +25,7 @@ export class CtHackActor extends Actor {
 
 	/**
    * Prepare opponent type-specific data
-   * @param actorData
+   * @param systemData
    * @private
    */
 	_prepareOpponentDerivedData(systemData) {
@@ -278,7 +271,6 @@ export class CtHackActor extends Actor {
 	 * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
 	 */
 	async rollAttackDamageRoll(item, options = {}) {
-		const itemData = item.data;
 		if (CTHACK.debug) console.log(`${LOG_HEAD}Attack roll for ${item.name} with a ${item.system.damageDice} dice`);
 
 		const label = game.i18n.format('CTHACK.AttackDamageDiceRollPrompt', { item: item.name });

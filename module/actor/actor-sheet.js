@@ -27,7 +27,6 @@ export class CtHackActorSheet extends ActorSheet {
 	/** @override */
 	getData(options) {
 		const context = super.getData(options);
-		console.log('actor context',context);
 
 		context.abilities = context.items.filter(function(item) { return item.type === 'ability';});
 		context.weapons = context.items.filter(function(item) { return item.type === 'weapon';});
