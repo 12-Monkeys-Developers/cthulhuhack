@@ -99,26 +99,6 @@ div.tip .tip-title {
   font-weight: bold;
 }
 
-label em {
-  visibility: hidden;
-  width: 400px;
-  background-color: black;
-  color: #fff;
-  text-align: left;
-  border-radius: 6px;
-  padding: 5px 0;
-  font-size: var(--font-size-14);
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: 0px;
-  left: 0px;
-}
-
-label:hover em {
-  visibility: visible;
-}
-
 .chat-message .message-header .message-sender {
   font-weight: bold;
 }

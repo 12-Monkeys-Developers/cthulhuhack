@@ -1,4 +1,5 @@
 <form class="{{cssClass}} flexcol sheet-actor" autocomplete="off">
+  {{ log 'actor-sheet' this}}
     <header class="sheet-header">
         <div class="flex-center">
           <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" height="100" width="100"/>
@@ -32,7 +33,7 @@
             <div class="grid grid-3col saves">
                 {{#each data.system.saves as |save key|}}
                   <div class="flexrow flex-group-center save" data-save="{{key}}">
-                    <label class="resource-label save-name rollable">{{localize (getSaveLabel key)}}<em>{{localize (toDesc key)}}</em></label>
+                    <label class="resource-label save-name rollable" data-tooltip="{{localize (toDesc key)}}" data-tooltip-direction="UP">{{localize (getSaveLabel key)}}</label>
                     <input type="text" name="data.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value frames"/>
                     <input type="checkbox" name="data.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}}/>
                   </div>
