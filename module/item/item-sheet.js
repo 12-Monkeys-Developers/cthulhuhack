@@ -25,10 +25,6 @@ export class CtHackItemSheet extends ItemSheet {
 	/** @override */
 	getData(options) {
 		const context = super.getData(options);
-
-		//context.itemData = context.data;
-		//context.systemData = context.itemData.data;
-
 		return context;
 	}
 
