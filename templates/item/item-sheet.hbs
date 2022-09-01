@@ -7,7 +7,7 @@
                 <label class="resource-label">{{localize "CTHACK.ItemDiceName"}}</label>
                 <select name="system.dice" data-type="String" {{{getStyleForDice data.system.dice}}} >
                     {{#select data.system.dice}}
-                        {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+                        {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                     {{/select}}
                 </select>
             </div>

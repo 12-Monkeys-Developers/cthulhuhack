@@ -7,7 +7,7 @@
         {{#if (isDiceRollable system.dice)}} <i class="fas fa-dice-d20 rollable"></i> {{/if}}
         <select class="item-dice-select" name="{{_id}}" data-type="String" {{{getStyleForDice system.dice}}}>
             {{#select system.dice }}
-                {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+                {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
             {{/select}}
         </select>
     </div>
