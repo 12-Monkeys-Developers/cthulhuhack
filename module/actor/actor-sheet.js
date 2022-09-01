@@ -34,7 +34,9 @@ export class CtHackActorSheet extends ActorSheet {
 		context.conditions = context.items.filter(function(item) { return item.type === 'definition';});
 
 		context.isGm = game.user.isGM;
+		context.system = context.data.system;
 
+		console.log('getData', context);
 		return context;
 	}
 
@@ -116,7 +118,6 @@ export class CtHackActorSheet extends ActorSheet {
 
 	/** @override */	
 	 async _onDropItemCreate(itemData) {
-		 console.log(itemData);
 		switch (itemData.type) {
 			case 'archetype':
 				return await this._onDropArchetypeItem(itemData);

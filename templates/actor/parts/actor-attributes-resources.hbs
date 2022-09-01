@@ -2,15 +2,15 @@
 <div class="resource flex-group-center">
     <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.flashlights.value)}}rollable{{/if}}" data-resource="flashlights" data-tooltip="{{localize 'CTHACK.FlashLightsDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.FlashLights"}}</label>
     <div class="resource-content">
-        <select name="attributes.flashlights.value" data-type="String" {{{getStyleForDice system.attributes.flashlights.value}}} >
+        <select name="system.attributes.flashlights.value" data-type="String" {{{getStyleForDice system.attributes.flashlights.value}}} >
         {{#select system.attributes.flashlights.value}}
-            {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+            {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
         {{/select}}
         </select>
         <span>/</span>
-        <select name="attributes.flashlights.max" data-type="String" {{{getStyleForDice system.attributes.flashlights.max}}} >
+        <select name="system.attributes.flashlights.max" data-type="String" {{{getStyleForDice system.attributes.flashlights.max}}} >
         {{#select system.attributes.flashlights.max}}
-            {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+            {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
         {{/select}}
         </select>
     </div>
@@ -18,15 +18,15 @@
 <div class="resource flex-group-center">
     <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.smokes.value)}}rollable{{/if}}" data-resource="smokes" data-tooltip="{{localize 'CTHACK.SmokesDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Smokes"}}</label>
     <div class="resource-content">
-        <select name="attributes.smokes.value" data-type="String" {{{getStyleForDice system.attributes.smokes.value}}} >
+        <select name="system.attributes.smokes.value" data-type="String" {{{getStyleForDice system.attributes.smokes.value}}} >
         {{#select system.attributes.smokes.value}}
-            {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+            {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
         {{/select}}
         </select>
         <span>/</span>
-        <select name="attributes.smokes.max" data-type="String" {{{getStyleForDice system.attributes.smokes.max}}} >
+        <select name="system.attributes.smokes.max" data-type="String" {{{getStyleForDice system.attributes.smokes.max}}} >
         {{#select system.attributes.smokes.max}}
-            {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+            {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
         {{/select}}
         </select>
     </div>
@@ -34,15 +34,15 @@
 <div class="resource flex-group-center">
     <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.sanity.value)}}rollable{{/if}}" data-resource="sanity" data-tooltip="{{localize 'CTHACK.SanityDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Sanity"}}</label>
     <div class="resource-content">
-        <select name="attributes.sanity.value" data-type="String" {{{getStyleForDice system.attributes.sanity.value}}} >
+        <select name="system.attributes.sanity.value" data-type="String" {{{getStyleForDice system.attributes.sanity.value}}} >
         {{#select system.attributes.sanity.value}}
-            {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+            {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
         {{/select}}
         </select>
         <span>/</span>
-        <select name="attributes.sanity.max" data-type="String" {{{getStyleForDice system.attributes.sanity.max}}} >
+        <select name="system.attributes.sanity.max" data-type="String" {{{getStyleForDice system.attributes.sanity.max}}} >
         {{#select system.attributes.sanity.max}}
-            {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+            {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
         {{/select}}
         </select>
     </div>
@@ -53,14 +53,14 @@
     <div class="resource flex-group-center">
         <label for="wealthDice.value" class="resource-label wealth-name {{#if (isWealthAsResource)}}rollable{{/if}}" data-resource="wealthDice">{{localize "CTHACK.Wealth"}}</label>
         <div class="resource-content">
-            <select name="attributes.wealthDice.value" data-type="String" {{{getStyleForDice system.attributes.wealthDice.value}}} >
+            <select name="system.attributes.wealthDice.value" data-type="String" {{{getStyleForDice system.attributes.wealthDice.value}}} >
                 {{#select system.attributes.wealthDice.value}}
                     {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                 {{/select}}
             </select>
             {{#if (isWealthAsResource)}}
                 <span> / </span>
-                <select name="attributes.wealthDice.max" data-type="String" {{{getStyleForDice system.attributes.wealthDice.max}}}>
+                <select name="system.attributes.wealthDice.max" data-type="String" {{{getStyleForDice system.attributes.wealthDice.max}}}>
                     {{#select system.attributes.wealthDice.max}}
                         {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                     {{/select}}
@@ -75,13 +75,13 @@
         <div class="resource flex-group-center">
             <label for="miscellaneous.value" class="resource-label miscellaneous-name {{#if (isDiceRollable system.attributes.miscellaneous.value)}}rollable{{/if}}"  data-resource="miscellaneous">{{getMiscellaneousValue}}</label>
             <div class="resource-content">
-                <select name="attributes.miscellaneous.value" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.value}}} >
+                <select name="system.attributes.miscellaneous.value" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.value}}} >
                     {{#select system.attributes.miscellaneous.value}}
                         {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                     {{/select}}
                 </select>
                 <span> / </span>
-                <select name="attributes.miscellaneous.max" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.max}}}>
+                <select name="system.attributes.miscellaneous.max" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.max}}}>
                     {{#select system.attributes.miscellaneous.max}}
                         {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                     {{/select}}
