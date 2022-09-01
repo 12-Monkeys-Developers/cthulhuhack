@@ -56,13 +56,18 @@ export const registerSystemSettings = function() {
 	/**
      * Wealth as resource option
      */
-	game.settings.register('cthack', 'WealthResource', {
-		name: 'SETTINGS.WealthResourceName',
-		hint: 'SETTINGS.WealthResourceHint',
+	game.settings.register('cthack', 'Wealth', {
+		name: 'SETTINGS.WealthName',
+		hint: 'SETTINGS.WealthHint',
 		scope: 'world',
 		config: true,
-		type: Boolean,
-		default: false,
+		type: String,
+		choices: {
+            "none" : "SETTINGS.WealthNone",
+            "fixed" : "SETTINGS.WealthFixedValue",
+            "resource" : "SETTINGS.WealthResource"
+        },
+		default: "fixed",
 		onChange: () => refreshAllActorSheets()
 	});
 

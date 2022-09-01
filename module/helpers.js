@@ -90,7 +90,15 @@ export const registerHandlebarsHelpers = function() {
 	});
 
 	Handlebars.registerHelper('isEnabled', function(configKey) {
-		return game.settings.get('cthack', configKey);
+		const value = game.settings.get("cthack", configKey);
+		if (value === false || value == "none" || value == "") return false;
+        return true;
+
+	});
+
+	Handlebars.registerHelper('isWealthAsResource', function() {
+		const value = game.settings.get("cthack", "Wealth");
+		return value == 'resource';
 	});
 
 	Handlebars.registerHelper('getFortuneValue', function() {

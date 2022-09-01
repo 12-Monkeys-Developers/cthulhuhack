@@ -1,6 +1,5 @@
 <form class="{{cssClass}} flexcol sheet-actor" autocomplete="off">
-  {{ log 'actor-sheet' this}}
-    <header class="sheet-header">
+      <header class="sheet-header">
         <div class="flex-center">
           <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" height="100" width="100"/>
           {{#if (isEnabled "FortuneAvailable")}}
@@ -40,10 +39,10 @@
                 {{/each}}
               </div>
             <div class="grid grid-4col resources">
-              {{> "systems/cthack/templates/actor/parts/actor-attributes-firstline.hbs" data}}
+              {{> "systems/cthack/templates/actor/parts/actor-attributes-resources.hbs" data}}
             </div>
             <div class="grid grid-4col resources">
-              {{> "systems/cthack/templates/actor/parts/actor-attributes-secondline.hbs" data}}
+              {{> "systems/cthack/templates/actor/parts/actor-attributes-combat.hbs" data}}
             </div>
         </div>
     </header>

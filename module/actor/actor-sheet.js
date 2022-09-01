@@ -79,7 +79,7 @@ export class CtHackActorSheet extends ActorSheet {
 		html.find('.unarmed-damage-name').click(this._onDamagedRoll.bind(this));
 
 		// Wealth roll if the option is enabled
-		if (game.settings.get('cthack', 'WealthResource')) {
+		if (game.settings.get('cthack', 'Wealth') == "resource" ) {
 			html.find('.wealth-name').click(this._onResourceRoll.bind(this));
 		}
 
