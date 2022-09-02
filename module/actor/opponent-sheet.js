@@ -90,7 +90,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 			data: data
 		};
 		// Remove the type from the dataset since it's in the itemData.type prop.
-		delete itemData.data.type;
+		delete itemData.system.type;
 
 		// Finally, create the item!
 		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
