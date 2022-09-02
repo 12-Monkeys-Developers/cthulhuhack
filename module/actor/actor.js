@@ -413,9 +413,9 @@ export class CtHackActor extends Actor {
    * @param {*} itemData 
    */
 	async createDefinitionItem(itemData) {
-		if (itemData.data.key === 'OOA-CRB' || itemData.data.key === 'OOA-MIC' || itemData.data.key === 'OOA-STA' || itemData.data.key === 'OOA-WIN') {
+		if (itemData.system.key === 'OOA-CRB' || itemData.system.key === 'OOA-MIC' || itemData.system.key === 'OOA-STA' || itemData.system.key === 'OOA-WIN') {
 			this._createActiveEffect(itemData);
-		} else if (itemData.data.key.startsWith('OOA') || itemData.data.key.startsWith('TI') || itemData.data.key.startsWith('SK')) {
+		} else if (itemData.system.key.startsWith('OOA') || itemData.system.key.startsWith('TI') || itemData.system.key.startsWith('SK')) {
 			this._createActiveEffect(itemData);
 		}
 
@@ -432,7 +432,7 @@ export class CtHackActor extends Actor {
 
 		let effectData;
 
-		if (itemData.data.key === 'OOA-CRB') {
+		if (itemData.system.key === 'OOA-CRB') {
 			effectData = {
 				label: 'OOA-CRB',
 				icon: 'systems/cthack/ui/icons/first-aid-kit.png',
@@ -461,7 +461,7 @@ export class CtHackActor extends Actor {
 				},
 				tint: '#BB0022'
 			};
-		} else if (itemData.data.key === 'OOA-MIC') {
+		} else if (itemData.system.key === 'OOA-MIC') {
 			effectData = {
 				label: 'OOA-MIC',
 				icon: 'systems/cthack/ui/icons/first-aid-kit.png',
@@ -471,7 +471,7 @@ export class CtHackActor extends Actor {
 				tint: '#BB0022'
 			};
 			await this.setFlag('cthack', 'disadvantageOOA', true);
-		} else if (itemData.data.key === 'OOA-STA') {
+		} else if (itemData.system.key === 'OOA-STA') {
 			effectData = {
 				label: 'OOA-STA',
 				icon: 'systems/cthack/ui/icons/first-aid-kit.png',
@@ -481,7 +481,7 @@ export class CtHackActor extends Actor {
 				tint: '#BB0022'
 			};
 			await this.setFlag('cthack', 'disadvantageOOA', true);
-		} else if (itemData.data.key === 'OOA-WIN') {
+		} else if (itemData.system.key === 'OOA-WIN') {
 			effectData = {
 				label: 'OOA-WIN',
 				icon: 'systems/cthack/ui/icons/first-aid-kit.png',
@@ -491,27 +491,27 @@ export class CtHackActor extends Actor {
 				tint: '#BB0022'
 			};
 			await this.setFlag('cthack', 'disadvantageOOA', true);
-		} else if (itemData.data.key.startsWith('OOA')) {
+		} else if (itemData.system.key.startsWith('OOA')) {
 			effectData = {
-				label: itemData.data.key,
+				label: itemData.system.key,
 				icon: 'systems/cthack/ui/icons/first-aid-kit.png',
 				duration: {
 					seconds: 3600
 				},
 				tint: '#BB0022'
 			};
-		} else if (itemData.data.key.startsWith('TI')) {
+		} else if (itemData.system.key.startsWith('TI')) {
 			effectData = {
-				label: itemData.data.key,
+				label: itemData.system.key,
 				icon: 'systems/cthack/ui/icons/screaming.png',
 				duration: {
 					seconds: 3600
 				},
 				tint: '#BB0022'
 			};
-		} else if (itemData.data.key.startsWith('SK')) {
+		} else if (itemData.system.key.startsWith('SK')) {
 			effectData = {
-				label: itemData.data.key,
+				label: itemData.system.key,
 				icon: 'systems/cthack/ui/icons/dead-head.png',
 				duration: {
 					seconds: 3600
@@ -537,26 +537,26 @@ export class CtHackActor extends Actor {
 		const definitionKey = item.system.key;
 		if (CTHACK.debug) console.log('CTHACK | deleteDefinitionItem : definitionKey = ' + definitionKey);
 		if (definitionKey === 'OOA-CRB') {
-			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data._id);
-			await this.deleteEmbeddedDocuments('ActiveEffect', [effect.data._id]);
+			effect = this.effects.find((i) => i.label === definitionKey);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect._id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', [effect._id]);
 		} else if (definitionKey === 'OOA-MIC' || definitionKey === 'OOA-STA' || definitionKey === 'OOA-WIN') {
-			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data._id);
-			await this.deleteEmbeddedDocuments('ActiveEffect', [effect.data._id]);
+			effect = this.effects.find((i) => i.label === definitionKey);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect._id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', [effect._id]);
 			await this.unsetFlag('cthack', 'disadvantageOOA');
 		} else if (definitionKey.startsWith('OOA')) {
-			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data._id);
-			await this.deleteEmbeddedDocuments('ActiveEffect', [effect.data._id]);
+			effect = this.effects.find((i) => i.label === definitionKey);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect._id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', [effect._id]);
 		} else if (definitionKey.startsWith('TI')) {
-			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data._id);
-			await this.deleteEmbeddedDocuments('ActiveEffect', [effect.data._id]);
+			effect = this.effects.find((i) => i.label === definitionKey);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect._id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', [effect._id]);
 		} else if (definitionKey.startsWith('SK')) {
-			effect = this.effects.find((i) => i.data.label === definitionKey);
-			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect.data._id);
-			await this.deleteEmbeddedDocuments('ActiveEffect', [effect.data._id]);
+			effect = this.effects.find((i) => i.label === definitionKey);
+			if (CTHACK.debug) console.log('CTHACK | Delete Active Effect : ' + effect._id);
+			await this.deleteEmbeddedDocuments('ActiveEffect', [effect._id]);
 		}
 	}
 
