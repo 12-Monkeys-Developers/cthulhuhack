@@ -374,7 +374,7 @@ export class CtHackActorSheet extends ActorSheet {
    * @private
    */
 	async _onDropAbilityItem(itemData) {
-		const id = itemData.id;
+		const id = itemData._id;
 		const key = itemData.system.key;
 		const multiple = itemData.system.multiple;
 
