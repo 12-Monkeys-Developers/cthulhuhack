@@ -36,7 +36,6 @@ export class CtHackActorSheet extends ActorSheet {
 		context.isGm = game.user.isGM;
 		context.system = context.data.system;
 
-		console.log('getData', context);
 		return context;
 	}
 
