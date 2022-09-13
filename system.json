@@ -1,15 +1,17 @@
 {
-  "name": "cthack",
+  "id": "cthack",
   "title": "Cthulhu Hack",
   "description": "The Cthulhu Hack system for FoundryVTT <p>Rejoignez la communauté Discord FR : <a href='https://discord.gg/pPSDNJk'>https://discord.gg/pPSDNJk</a></p>",
-  "author": "Kristov",
-  "authors": [],
+  "authors": [{"name": "Kristov"}],
   "url": "https://github.com/Qaw/cthulhuhack",
   "license": "LICENSE.txt",
   "flags": {},
-  "version": "1.1.1",
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9.269",
+  "version": "1.2.0",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10.283",
+    "maximum": "10"
+  },
   "scripts": [],
   "esmodules": [
     "module/cthack.js"
@@ -192,10 +194,9 @@
     }    
   ],
   "system": [],
-  "dependencies": [],
   "socket": true,
   "manifest": "https://github.com/Qaw/cthulhuhack/releases/latest/download/system.json",
-  "download": "https://github.com/Qaw/cthulhuhack/releases/download/1.1.1/system.zip",
+  "download": "https://github.com/Qaw/cthulhuhack/releases/download/1.2.0/system.zip",
   "protected": false,
   "gridDistance": 5,
   "gridUnits": "ft",

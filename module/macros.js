@@ -22,13 +22,13 @@ export class Macros {
 
         // Check the actor has the item
         let item = actor.items.get(itemId);
-        if (!item) return ui.notifications.warn(game.i18n.format('MACROS.ObjectNotInInventory',{itemName:itemName, actorName: actor.data.name }));
+        if (!item) return ui.notifications.warn(game.i18n.format('MACROS.ObjectNotInInventory',{itemName:itemName, actorName: actor.name }));
 
         // Open the roll window if the item uses resource and is not at 0
-        if (item.data.data.dice === '') {
+        if (item.system.dice === '') {
             return ui.notifications.warn(game.i18n.format('MACROS.ObjectWithoutResource',{itemName:itemName }));
         }
-        if (item.data.data.dice === '0') {
+        if (item.system.dice === '0') {
             return ui.notifications.warn(game.i18n.format('MACROS.ObjectEmptyResource',{itemName:itemName }));
         }
         actor.rollMaterial(item);
@@ -56,10 +56,10 @@ export class Macros {
 
         // Check the actor has the item
         let item = actor.items.get(itemId);
-        if (!item) return ui.notifications.warn(game.i18n.format('MACROS.ObjectNotInInventory',{itemName:itemName, actorName: actor.data.name }));
+        if (!item) return ui.notifications.warn(game.i18n.format('MACROS.ObjectNotInInventory',{itemName:itemName, actorName: actor.name }));
 
         // Open the save window if the item uses resource and is not at 0, or if the item uses no resource
-        if (item.data.data.dice === '0') {
+        if (item.system.dice === '0') {
             return ui.notifications.warn(game.i18n.format('MACROS.ObjectEmptyResource',{itemName:itemName }));
         }
 
@@ -67,14 +67,14 @@ export class Macros {
         if ( game.user.targets.size > 0) {
             const target = [...game.user.targets][0];
             if (target.actor.type=="opponent") {
-                mod = target.actor.data.data.malus;
+                mod = target.actor.system.malus;
             }
         }
         if (mod < 0) {
-            item.data.data.range === "" ? actor.rollSave("str", {modifier: mod}) : actor.rollSave("dex", {modifier: mod}); 
+            item.system.range === "" ? actor.rollSave("str", {modifier: mod}) : actor.rollSave("dex", {modifier: mod}); 
         }
         else {
-            item.data.data.range === "" ? actor.rollSave("str") : actor.rollSave("dex"); 
+            item.system.range === "" ? actor.rollSave("str") : actor.rollSave("dex"); 
         }
       
 	}
@@ -101,7 +101,7 @@ export class Macros {
 
         // Check the actor has the item
         let item = actor.items.get(itemId);
-        if (!item) return ui.notifications.warn(game.i18n.format('MACROS.AttackNotFound',{opponentName:actor.data.name, itemName: itemName }));
+        if (!item) return ui.notifications.warn(game.i18n.format('MACROS.AttackNotFound',{opponentName:actor.name, itemName: itemName }));
 
         // Open the roll window
         actor.rollAttackDamageRoll(item);
@@ -129,10 +129,10 @@ export class Macros {
 
         // Check the actor has the item
         let item = actor.items.get(itemId);
-        if (!item) return ui.notifications.warn(game.i18n.format('MACROS.AbilityNotFound',{characterName:actor.data.name, itemName: itemName}));
+        if (!item) return ui.notifications.warn(game.i18n.format('MACROS.AbilityNotFound',{characterName:actor.name, itemName: itemName}));
 
         // Use the ability
-        if (item.data.data.uses.value === 0){
+        if (item.system.uses.value === 0){
             ui.notifications.warn(game.i18n.format('MACROS.AbilityUsesAtZero',{itemName: itemName}));
         }
         actor.useAbility(item);

@@ -1,21 +1,20 @@
-{{log 'player' this}}
-<tr class="character-resume" data-user-id="{{data._id}}" data-character-name="{{character.name}}" data-character-id="{{character.id}}">
-    <td>{{data.name}}</td>
+<tr class="character-resume" data-user-id="{{id}}" data-character-name="{{character.name}}" data-character-id="{{character.id}}">
+    <td>{{name}}</td>
     <td>{{character.name}}</td>
-    <td class="gm-resource-individual" data-resource="FlashLights">{{character.data.data.attributes.flashlights.value}}</td>
-    <td class="gm-resource-individual" data-resource="Smokes">{{character.data.data.attributes.smokes.value}}</td>
-    <td class="gm-resource-individual" data-resource="Sanity">{{character.data.data.attributes.sanity.value}}</td>
-    {{#if (isEnabled "MiscellaneousResource")}}<td class="gm-resource-individual" data-resource="Miscellaneous">{{character.data.data.attributes.miscellaneous.value}}</td>{{else}}<td data-resource="wealthDice">{{character.data.data.attributes.wealthDice.value}}</td>{{/if}}</td>
-    {{#if (isEnabled "HitDiceResource")}}<td class="gm-resource-individual" data-resource="HitDice">{{character.data.data.attributes.hitDice.value}}</td>{{else}}<td data-resource="hp">{{character.data.data.hp.value}}</td>{{/if}}</td>
+    <td class="gm-resource-individual" data-resource="FlashLights">{{character.system.attributes.flashlights.value}}</td>
+    <td class="gm-resource-individual" data-resource="Smokes">{{character.system.attributes.smokes.value}}</td>
+    <td class="gm-resource-individual" data-resource="Sanity">{{character.system.attributes.sanity.value}}</td>
+    {{#if (isEnabled "MiscellaneousResource")}}<td class="gm-resource-individual" data-resource="Miscellaneous">{{character.system.attributes.miscellaneous.value}}</td>{{else}}<td data-resource="wealthDice">{{character.system.attributes.wealthDice.value}}</td>{{/if}}</td>
+    {{#if (isEnabled "HitDiceResource")}}<td class="gm-resource-individual" data-resource="HitDice">{{character.system.attributes.hitDice.value}}</td>{{else}}<td data-resource="hp">{{character.system.hp.value}}</td>{{/if}}</td>
     {{#if (isEnabled "Adrenaline")}}
     <td class="gm-resource-individual" data-resource="Adrenaline">
-        <img class="adrenaline-img" src="{{getAdrenalineImage character.data.data.attributes.adrenaline1.value}}"><img class="adrenaline-img" src="{{getAdrenalineImage character.data.data.attributes.adrenaline2.value}}">
+        <img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline1.value}}"><img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline2.value}}">
     </td>
     {{/if}}
-    <td class="gm-save-individual" data-save="Str">{{character.data.data.saves.str.value}}</td>
-    <td class="gm-save-individual" data-save="Dex">{{character.data.data.saves.dex.value}}</td>
-    <td class="gm-save-individual" data-save="Con">{{character.data.data.saves.con.value}}</td>
-    <td class="gm-save-individual" data-save="Wis">{{character.data.data.saves.wis.value}}</td>
-    <td class="gm-save-individual" data-save="Int">{{character.data.data.saves.int.value}}</td>
-    <td class="gm-save-individual" data-save="Cha">{{character.data.data.saves.cha.value}}</td>
+    <td class="gm-save-individual" data-save="Str">{{character.system.saves.str.value}}</td>
+    <td class="gm-save-individual" data-save="Dex">{{character.system.saves.dex.value}}</td>
+    <td class="gm-save-individual" data-save="Con">{{character.system.saves.con.value}}</td>
+    <td class="gm-save-individual" data-save="Wis">{{character.system.saves.wis.value}}</td>
+    <td class="gm-save-individual" data-save="Int">{{character.system.saves.int.value}}</td>
+    <td class="gm-save-individual" data-save="Cha">{{character.system.saves.cha.value}}</td>
 </tr>

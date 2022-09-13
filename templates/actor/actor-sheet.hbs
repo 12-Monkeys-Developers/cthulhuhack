@@ -1,7 +1,7 @@
 <form class="{{cssClass}} flexcol sheet-actor" autocomplete="off">
-    <header class="sheet-header">
+      <header class="sheet-header">
         <div class="flex-center">
-          <img class="profile-img" src="{{actorData.img}}" data-edit="img" title="{{actorData.name}}" height="100" width="100"/>
+          <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" height="100" width="100"/>
           {{#if (isEnabled "FortuneAvailable")}}
           <div>
           <label class="resource-label">{{localize "CTHACK.Fortune"}} : {{getFortuneValue}}</label>
@@ -13,36 +13,36 @@
           </div>
           {{/if}}
           {{#if (isEnabled "Adrenaline")}}
-          <img class="adrenaline-img" id="adr1" src="{{getAdrenalineImage systemData.attributes.adrenaline1.value}}" >
-          <img class="adrenaline-img" id="adr2" src="{{getAdrenalineImage systemData.attributes.adrenaline2.value}}" >
+          <img class="adrenaline-img" id="adr1" src="{{getAdrenalineImage data.system.attributes.adrenaline1.value}}" >
+          <img class="adrenaline-img" id="adr2" src="{{getAdrenalineImage data.system.attributes.adrenaline2.value}}" >
           {{/if}}
         </div>
         <div class="header-fields flex5">
-            <h1 class="charname"><input name="name" type="text" value="{{actorData.name}}" placeholder="Name"/></h1>  
+            <h1 class="charname"><input name="name" type="text" value="{{data.name}}" placeholder="Name"/></h1>  
             <div class="grid grid-2col occupation">     
               <div class="flexrow flex-group-center occupation">
                 <label class="resource-label">{{localize "CTHACK.Occupation"}}</label>
-                <input name="data.occupation" type="text" value="{{systemData.occupation}}" placeholder='{{localize "CTHACK.Occupation"}}' class="occupation-input"/>
+                <input name="data.occupation" type="text" value="{{data.system.occupation}}" placeholder='{{localize "CTHACK.Occupation"}}' class="occupation-input"/>
               </div>     
               <div class="flexrow flex-group-center archetype">
                 <label class="resource-label">{{localize "CTHACK.Archetype"}}</label>
-                <input name="data.archetype" type="text" value="{{systemData.archetype}}" placeholder='{{localize "CTHACK.Archetype"}}' class="occupation-input"/>
+                <input name="data.archetype" type="text" value="{{data.system.archetype}}" placeholder='{{localize "CTHACK.Archetype"}}' class="occupation-input"/>
               </div>                      
             </div>            
             <div class="grid grid-3col saves">
-                {{#each systemData.saves as |save key|}}
+                {{#each data.system.saves as |save key|}}
                   <div class="flexrow flex-group-center save" data-save="{{key}}">
-                    <label class="resource-label save-name rollable">{{localize (getSaveLabel key)}}<em>{{localize (toDesc key)}}</em></label>
+                    <label class="resource-label save-name rollable" data-tooltip="{{localize (toDesc key)}}" data-tooltip-direction="UP">{{localize (getSaveLabel key)}}</label>
                     <input type="text" name="data.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value frames"/>
                     <input type="checkbox" name="data.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}}/>
                   </div>
                 {{/each}}
               </div>
             <div class="grid grid-4col resources">
-              {{> "systems/cthack/templates/actor/parts/actor-attributes-firstline.hbs"}}
+              {{> "systems/cthack/templates/actor/parts/actor-attributes-resources.hbs" data}}
             </div>
             <div class="grid grid-4col resources">
-              {{> "systems/cthack/templates/actor/parts/actor-attributes-secondline.hbs"}}
+              {{> "systems/cthack/templates/actor/parts/actor-attributes-combat.hbs" data}}
             </div>
         </div>
     </header>
@@ -61,7 +61,7 @@
 
         {{!-- Biography Tab --}}
         <div class="tab biography" data-group="primary" data-tab="description">
-            {{editor content=systemData.biography target="data.biography" button=true owner=owner editable=editable}}
+            {{editor data.system.biography target="system.biography" button=true owner=owner editable=editable}}
         </div>
         
         {{!-- Owned Items Tab --}}
@@ -117,7 +117,7 @@
 
         {{!-- Notes Tab --}}
         <div class="tab character-notes" data-group="primary" data-tab="notes">
-            {{editor content=systemData.notes target="data.notes" button=true owner=owner editable=editable}}
+            {{editor data.system.notes target="system.notes" button=true owner=owner editable=editable}}
         </div>
 
     </section>

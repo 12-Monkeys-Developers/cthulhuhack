@@ -1,3 +1,9 @@
+1.2.0
+- v10 compatible version
+- Use standard ToolTips
+- Change the option about Wealth to allow : no, fixed or resource
+- Change the order of displaying the character sheet depending of options : first line for resources, second line for combat
+
 1.1.1
 - Add button for players in the chat when a roll is asked
 

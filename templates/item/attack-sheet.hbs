@@ -1,17 +1,17 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="item-image" src="{{itemData.img}}" data-edit="img" title="{{itemData.name}}"/>
+        <img class="item-image" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
         <div class="header-fields">
-            <h1 class="item-name"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>      
+            <h1 class="item-name"><input name="name" type="text" value="{{data.name}}" placeholder="Name"/></h1>      
             <div class="grid grid-2col item-attack">
                 <div class="resource">
                     <label class="resource-label">{{localize "CTHACK.Damage"}}</label>
-                    <input class="field-value attack-damage" name="data.damage" type="text" value="{{systemData.damage}}" data-type="String">
+                    <input class="field-value attack-damage" name="system.damage" type="text" value="{{data.system.damage}}" data-type="String">
                 </div>
                 <div class="resource item-dice">
                     <label class="resource-label">{{localize "CTHACK.DamageDice"}}</label>
-                    <select class="color-white" name="data.damageDice" data-type="String">
-                        {{#select systemData.damageDice}}
+                    <select class="color-white" name="system.damageDice" data-type="String">
+                        {{#select data.system.damageDice}}
                             <option value="">{{localize "CTHACK.None"}}</option>
                             <option value="d4">1d4</option>
                             <option value="d6">1d6</option>
@@ -42,7 +42,7 @@
 
         {{!-- Description Tab --}}
         <div class="tab" data-group="primary" data-tab="description">
-            {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor data.system.description target="system.description" button=true owner=owner editable=editable}}
         </div>
 
     </section>

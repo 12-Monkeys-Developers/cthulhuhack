@@ -1,46 +1,46 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="archetype-image" src="{{itemData.img}}" data-edit="img" title="{{itemData.name}}"/>
+        <img class="archetype-image" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
         <div class="header-fields">
-            <h1 class="item-name"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>
-            {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
+            <h1 class="item-name"><input name="name" type="text" value="{{data.name}}" placeholder="Name"/></h1>
+            {{editor data.system.description target="system.description" button=true owner=owner editable=editable}}
         </div>
     </header>
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">          
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.flashlights.value" class="resource-label resource-name" title='{{localize "CTHACK.FlashLightsDesc"}}'>{{localize "CTHACK.FlashLights"}}</label>
-                <select name="data.flashlights" data-type="String">
-                {{#select systemData.flashlights}}
-                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                <label class="resource-label resource-name" title='{{localize "CTHACK.FlashLightsDesc"}}'>{{localize "CTHACK.FlashLights"}}</label>
+                <select name="system.flashlights" data-type="String">
+                {{#select data.system.flashlights}}
+                    {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
             </div>            
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.smokes.value" class="resource-label resource-name" title='{{localize "CTHACK.SmokesDesc"}}'>{{localize "CTHACK.Smokes"}}</label>
-                <select name="data.smokes" data-type="String">
-                {{#select systemData.smokes}}
-                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                <label class="resource-label resource-name" title='{{localize "CTHACK.SmokesDesc"}}'>{{localize "CTHACK.Smokes"}}</label>
+                <select name="system.smokes" data-type="String">
+                {{#select data.system.smokes}}
+                    {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
             </div>
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.hitdice.value" class="resource-label resource-name">{{localize "CTHACK.HitDice"}}</label>
-                <select name="data.hitdice" data-type="String">
-                {{#select systemData.hitdice}}
-                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                <label class="resource-label resource-name">{{localize "CTHACK.HitDice"}}</label>
+                <select name="system.hitdice" data-type="String">
+                {{#select data.system.hitdice}}
+                    {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
             </div>
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.hitpoints.value" class="resource-label resource-name">{{localize "CTHACK.HitPointsStart"}}</label>
-                <input class="field-value" type="text" name="data.hitpoints" data-type="String" value="{{systemData.hitpoints}}"> 
+                <label class="resource-label resource-name">{{localize "CTHACK.HitPointsStart"}}</label>
+                <input class="field-value" type="text" name="system.hitpoints" data-type="String" value="{{system.hitpoints}}"> 
             </div>
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.wealthStart.value" class="resource-label resource-name">{{localize "CTHACK.WealthStart"}}</label>
-                <select name="data.wealthStart" data-type="String">
-                {{#select systemData.wealthStart}}
+                <label class="resource-label resource-name">{{localize "CTHACK.WealthStart"}}</label>
+                <select name="system.wealthStart" data-type="String">
+                {{#select data.system.wealthStart}}
                     <option value="2">CHA*2</option>
                     <option value="3">CHA*3</option>
                     <option value="4">CHA*4</option>
@@ -49,41 +49,41 @@
                 </select>
             </div>            
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.wealthDice.value" class="resource-label resource-name">{{localize "CTHACK.Wealth"}}</label>
-                <select name="data.wealthDice" data-type="String">
-                {{#select systemData.wealthDice}}
-                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                <label class="resource-label resource-name">{{localize "CTHACK.Wealth"}}</label>
+                <select name="system.wealthDice" data-type="String">
+                {{#select data.system.wealthDice}}
+                    {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
             </div>
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.sanity.value" class="resource-label resource-name">{{localize "CTHACK.Sanity"}}</label>
-                <select name="data.sanity" data-type="String">
-                {{#select systemData.sanity}}
-                    {{> "systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                <label class="resource-label resource-name">{{localize "CTHACK.Sanity"}}</label>
+                <select name="system.sanity" data-type="String">
+                {{#select data.system.sanity}}
+                    {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
             </div>
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.armeddamage.value" class="resource-label resource-name">{{localize "CTHACK.ArmedDamage"}}</label>
-                <select name="data.armeddamage" data-type="String">
-                {{#select systemData.armeddamage}}
-                    {{> "systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
+                <label class="resource-label resource-name">{{localize "CTHACK.ArmedDamage"}}</label>
+                <select name="system.armeddamage" data-type="String">
+                {{#select data.system.armeddamage}}
+                    {{>"systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
                 {{/select}}
                 </select>
             </div>
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.unarmeddamage.value" class="resource-label resource-name">{{localize "CTHACK.UnarmedDamage"}}</label>
-                <select name="data.unarmeddamage" data-type="String">
-                {{#select systemData.unarmeddamage}}
-                    {{> "systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
+                <label class="resource-label resource-name">{{localize "CTHACK.UnarmedDamage"}}</label>
+                <select name="system.unarmeddamage" data-type="String">
+                {{#select data.system.unarmeddamage}}
+                    {{>"systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
                 {{/select}}
                 </select>
             </div>
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.primarysave.value" class="resource-label resource-name">{{localize "CTHACK.PrimarySave"}}</label>
-                <select name="data.primarysave" data-type="String">
-                {{#select systemData.primarysave}}
+                <label class="resource-label resource-name">{{localize "CTHACK.PrimarySave"}}</label>
+                <select name="system.primarysave" data-type="String">
+                {{#select data.system.primarysave}}
                     <option value="str">{{localize "CTHACK.SaveStr"}}</option>    
                     <option value="dex">{{localize "CTHACK.SaveDex"}}</option>
                     <option value="con">{{localize "CTHACK.SaveCon"}}</option>
@@ -94,9 +94,9 @@
                 </select>
             </div>
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.secondarysave1.value" class="resource-label resource-name">{{localize "CTHACK.SecondarySave1"}}</label>
-                <select name="data.secondarysave1" data-type="String">
-                {{#select systemData.secondarysave1}}
+                <label class="resource-label resource-name">{{localize "CTHACK.SecondarySave1"}}</label>
+                <select name="system.secondarysave1" data-type="String">
+                {{#select data.system.secondarysave1}}
                     <option value="str">{{localize "CTHACK.SaveStr"}}</option>    
                     <option value="dex">{{localize "CTHACK.SaveDex"}}</option>
                     <option value="con">{{localize "CTHACK.SaveCon"}}</option>
@@ -107,9 +107,9 @@
                 </select>
             </div>
             <div class="resource-content-archetype flexrow flex-center flex-between">
-                <label for="data.secondarysave2.value" class="resource-label resource-name">{{localize "CTHACK.SecondarySave2"}}</label>
-                <select name="data.secondarysave2" data-type="String">
-                {{#select systemData.secondarysave2}}
+                <label class="resource-label resource-name">{{localize "CTHACK.SecondarySave2"}}</label>
+                <select name="system.secondarysave2" data-type="String">
+                {{#select data.system.secondarysave2}}
                     <option value="str">{{localize "CTHACK.SaveStr"}}</option>    
                     <option value="dex">{{localize "CTHACK.SaveDex"}}</option>
                     <option value="con">{{localize "CTHACK.SaveCon"}}</option>

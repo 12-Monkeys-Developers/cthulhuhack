@@ -1,21 +1,21 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img class="item-image" src="{{itemData.img}}" data-edit="img" title="{{itemData.name}}"/>
+        <img class="item-image" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
         <div class="header-fields">
-            <h1 class="item-name"><input name="name" type="text" value="{{itemData.name}}" placeholder="Name"/></h1>
+            <h1 class="item-name"><input name="name" type="text" value="{{data.name}}" placeholder="Name"/></h1>
             <div class="grid grid-2col item-weapon">
               <div class="resource">
                 <label class="resource-label">{{localize "CTHACK.Material"}}</label>
-                <select name="data.dice" data-type="String" {{{getStyleForDice systemData.dice}}}>
-                    {{#select systemData.dice}}
-                        {{> "systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+                <select name="system.dice" data-type="String" {{{getStyleForDice system.dice}}}>
+                    {{#select data.system.dice}}
+                        {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                     {{/select}}
                 </select>
               </div>
               <div class="resource">
                 <label class="resource-label">{{localize "CTHACK.ItemRangeName"}}</label>
-                <select name="data.range" data-type="String" class="select-range">
-                    {{#select systemData.range}}
+                <select name="system.range" data-type="String" class="select-range">
+                    {{#select data.system.range}}
                         <option value="">{{localize "CTHACK.None"}}</option>
                         <option value="near">{{localize "CTHACK.RangeNear"}}</option>
                         <option value="far">{{localize "CTHACK.RangeFar"}}</option>
@@ -38,7 +38,7 @@
 
         {{!-- Description Tab --}}
         <div class="tab" data-group="primary" data-tab="description">
-            {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor data.system.description target="system.description" button=true owner=owner editable=editable}}
         </div>
 
     </section>

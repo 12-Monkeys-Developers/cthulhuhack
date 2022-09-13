@@ -24,9 +24,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 	/** @override */
 	getData(options) {
 		const context = super.getData(options);
-		context.opponentData = context.data;
-		context.systemData = context.opponentData.data;
-
+	
 		context.attacks = context.items.filter(function(item) {	return item.type === 'attack'; });
 
 		return context;
@@ -78,19 +76,13 @@ export class CtHackOpponentSheet extends ActorSheet {
 		const header = event.currentTarget;
 		// Get the type of item to create.
 		const type = header.dataset.type;
-		// Grab any data associated with this control.
-		const data = duplicate(header.dataset);
 		// Initialize a default name.
-		const name = `New ${type.capitalize()}`;
+		const name = game.i18n.format("CTHACK.ItemNew", {type: game.i18n.localize(`CTHACK.ItemType${type.capitalize()}`)});
 		// Prepare the item object.
 		const itemData = {
 			name: name,
-			type: type,
-			data: data
+			type: type
 		};
-		// Remove the type from the dataset since it's in the itemData.type prop.
-		delete itemData.data['type'];
-
 		// Finally, create the item!
 		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 	}
@@ -118,12 +110,12 @@ export class CtHackOpponentSheet extends ActorSheet {
 			item = this.actor.items.get(li.data('item-id'));
 
 		// Toggle summary
-		if (item.data.data.description !== undefined && item.data.data.description !== null) {
+		if (item.system.description !== undefined && item.system.description !== null) {
 			if (li.hasClass('expanded')) {
 				let summary = li.children('.item-summary');
 				summary.slideUp(200, () => summary.remove());
 			} else {
-				let div = $(`<div class="item-summary">${item.data.data.description}</div>`);
+				let div = $(`<div class="item-summary">${item.system.description}</div>`);
 				li.append(div.hide());
 				div.slideDown(200);
 			}

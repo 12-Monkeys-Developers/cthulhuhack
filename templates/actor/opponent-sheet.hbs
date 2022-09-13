@@ -1,15 +1,15 @@
 <form class="{{cssClass}} flexcol sheet-opponent" autocomplete="off">
     <header class="sheet-header">
         <div class="flex-center">
-            <img class="opponent-img" src="{{opponentData.img}}" data-edit="img" title="{{opponentData.name}}"/>
+            <img class="opponent-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
         </div>       
         <div class="header-fields flex 5">
-            <h1 class="charname"><input name="name" type="text" value="{{opponentData.name}}" placeholder="Name"/></h1>
+            <h1 class="charname"><input name="name" type="text" value="{{data.name}}" placeholder="Name"/></h1>
             <div class="grid grid-2col">
                 <div class="flexrow flex-group-center">
-                    <label for="data.hitDice" class="resource-label resource-name" title='{{localize "CTHACK.HitDice"}}'>{{localize "CTHACK.HitDice"}}</label>
-                    <select class="selectHitDice" name="data.hitDice" data-type="String" style="color: white;">
-                        {{#select systemData.hitDice}}
+                    <label for="system.hitDice" class="resource-label resource-name" title='{{localize "CTHACK.HitDice"}}'>{{localize "CTHACK.HitDice"}}</label>
+                    <select class="selectHitDice" name="system.hitDice" data-type="String" style="color: white;">
+                        {{#select data.system.hitDice}}
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -26,22 +26,22 @@
                     </select>
                 </div>
                 <div class="flexrow flex-group-center">
-                    <label for="data.hp.value" class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
+                    <label for="system.hp.value" class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
                     <div class="flexrow flex-center">
-                        <input type="text" name="data.hp.value" value="{{systemData.hp.value}}" data-dtype="Number"/>
+                        <input type="text" name="system.hp.value" value="{{data.system.hp.value}}" data-dtype="Number"/>
                         <span>/</span>
-                        <input type="text" name="data.hp.max" value="{{systemData.hp.max}}" data-dtype="Number"/>
+                        <input type="text" name="system.hp.max" value="{{data.system.hp.max}}" data-dtype="Number"/>
                     </div>
                 </div>
             </div>
             <div class="grid grid-2col">
                 <div class="flexrow flex-group-center">
                     <label class="resource-label">{{localize "CTHACK.OpponentArmor"}}</label>
-                    <input name="data.armor" type="text" value="{{systemData.armor}}"/>
+                    <input name="system.armor" type="text" value="{{data.system.armor}}"/>
                 </div>
                 <div class="flexrow flex-group-center">
                     <label class="resource-label">{{localize "CTHACK.OpponentTouchMalus"}}</label>
-                    <input name="data.malus" type="text" value="{{systemData.malus}}"/>
+                    <input name="system.malus" type="text" value="{{data.system.malus}}"/>
                 </div>
             </div>  
             </div>
@@ -60,7 +60,7 @@
 
         {{!-- Description Tab --}}
         <div class="tab" data-tab="description">
-            {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor data.system.description target="system.description" button=true owner=owner editable=editable}}
         </div>
 
         {{!-- Attacks Tab --}}
