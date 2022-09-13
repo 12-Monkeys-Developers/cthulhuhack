@@ -24,10 +24,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 	/** @override */
 	getData(options) {
 		const context = super.getData(options);
-		// FIXME Remove
-		// context.opponentData = context.data;
-		// context.systemData = context.opponentData.data;
-
+	
 		context.attacks = context.items.filter(function(item) {	return item.type === 'attack'; });
 
 		return context;
@@ -79,19 +76,13 @@ export class CtHackOpponentSheet extends ActorSheet {
 		const header = event.currentTarget;
 		// Get the type of item to create.
 		const type = header.dataset.type;
-		// Grab any data associated with this control.
-		const data = foundry.utils.deepClone(header.dataset);
 		// Initialize a default name.
 		const name = game.i18n.format("CTHACK.ItemNew", {type: game.i18n.localize(`CTHACK.ItemType${type.capitalize()}`)});
 		// Prepare the item object.
 		const itemData = {
 			name: name,
-			type: type,
-			data: data
+			type: type
 		};
-		// Remove the type from the dataset since it's in the itemData.type prop.
-		delete itemData.system.type;
-
 		// Finally, create the item!
 		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 	}
