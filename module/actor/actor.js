@@ -578,7 +578,7 @@ export class CtHackActor extends Actor {
 			if (a[0] === 'hitDice' && !game.settings.get('cthack', 'HitDiceResource')) {
 				return false;
 			}
-			if (a[0] === 'wealthDice' && (!game.settings.get('cthack', 'WealthResource') || game.settings.get('cthack', 'MiscellaneousResource') !== '')) {
+			if (a[0] === 'wealthDice' && (!game.settings.get('cthack', 'Wealth') || game.settings.get('cthack', 'MiscellaneousResource') !== '')) {
 				return false;
 			}
 			if (a[0] === 'miscellaneous' && game.settings.get('cthack', 'MiscellaneousResource') === '') {
