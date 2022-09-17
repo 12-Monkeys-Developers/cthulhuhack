@@ -22,19 +22,19 @@
             <div class="grid grid-2col occupation">     
               <div class="flexrow flex-group-center occupation">
                 <label class="resource-label">{{localize "CTHACK.Occupation"}}</label>
-                <input name="data.occupation" type="text" value="{{data.system.occupation}}" placeholder='{{localize "CTHACK.Occupation"}}' class="occupation-input"/>
+                <input name="system.occupation" type="text" value="{{system.occupation}}" placeholder='{{localize "CTHACK.Occupation"}}' class="occupation-input"/>
               </div>     
               <div class="flexrow flex-group-center archetype">
                 <label class="resource-label">{{localize "CTHACK.Archetype"}}</label>
-                <input name="data.archetype" type="text" value="{{data.system.archetype}}" placeholder='{{localize "CTHACK.Archetype"}}' class="occupation-input"/>
+                <input name="system.archetype" type="text" value="{{system.archetype}}" placeholder='{{localize "CTHACK.Archetype"}}' class="occupation-input"/>
               </div>                      
             </div>            
             <div class="grid grid-3col saves">
                 {{#each data.system.saves as |save key|}}
                   <div class="flexrow flex-group-center save" data-save="{{key}}">
                     <label class="resource-label save-name rollable" data-tooltip="{{localize (toDesc key)}}" data-tooltip-direction="UP">{{localize (getSaveLabel key)}}</label>
-                    <input type="text" name="data.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value frames"/>
-                    <input type="checkbox" name="data.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}}/>
+                    <input type="text" name="system.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" class="save-value frames"/>
+                    <input type="checkbox" name="system.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}}/>
                   </div>
                 {{/each}}
               </div>
