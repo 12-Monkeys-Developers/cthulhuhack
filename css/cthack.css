@@ -1,4 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=EBGaramond&display=swap");
+@font-face {
+  font-family: "EBGaramond";
+  src: url("../ui/fonts/EBGaramond-VariableFont_wght.ttf");
+}
+
 /* Global styles */
 .window-app {
   font-family: "EBGaramond", sans-serif;
@@ -256,6 +260,7 @@ div.tip .tip-title {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #fff;
+  font-size: var(--font-size-20);
 }
 
 .cthack .align-left {
@@ -275,7 +280,11 @@ div.tip .tip-title {
   border: none;
 }
 
-.cthack input[type="text"],
+.cthack input[type="text"] {
+  color: #fff;
+  font-size: var(--font-size-22);
+}
+
 .cthack input[type="number"],
 .cthack input[type="password"],
 .cthack input[type="date"],
@@ -409,9 +418,9 @@ div.tip .tip-title {
 
 .cthack .sheet-tabs {
   -webkit-box-flex: 0;
-      -ms-flex: 0;
-          flex: 0;
-  font-size: var(--font-size-18);
+  -ms-flex: 0;
+  flex: 0;
+  letter-spacing: 1px;
 }
 
 .cthack .tox .tox-editor-container {
@@ -477,7 +486,7 @@ div.tip .tip-title {
 }
 
 .cthack .occupation-input {
-  font-size: var(--font-size-16);
+  font-size: var(--font-size-18);
 }
 
 .cthack .hitpoints {
@@ -507,10 +516,6 @@ div.tip .tip-title {
   padding-bottom: 10px;
 }
 
-.cthack .save {
-  font-size: var(--font-size-16);
-}
-
 .cthack .save-name {
   -webkit-box-flex: 3;
       -ms-flex-positive: 3;
@@ -523,7 +528,7 @@ div.tip .tip-title {
 
 .cthack .resource-label {
   text-transform: uppercase;
-  font-size: var(--font-size-16);
+  font-size: var(--font-size-18);
 }
 
 .cthack .resource-content {
@@ -574,7 +579,6 @@ div.tip .tip-title {
   line-height: 25px;
   padding: 0 5px 0 5px;
   border-bottom: 1px solid #fff;
-  font-size: var(--font-size-16);
 }
 
 .cthack .items-list .item-header .item-header-name {
@@ -777,4 +781,12 @@ a.entity-link.content-link {
 .ask-roll-title .fa-dice-d20 {
 	padding-right: 5px;
   padding-left: 5px;
+}
+
+.items-list h4 {
+  font-size: var(--font-size-20);
+}
+
+#gm-manager {
+  font-size: var(--font-size-18);
 }

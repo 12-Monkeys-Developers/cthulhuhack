@@ -1,4 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=EBGaramond&display=swap");
+@font-face {
+    font-family: "EBGaramond";
+    src: url("../ui/fonts/EBGaramond-VariableFont_wght.ttf");
+  }
 
 $font-primary: 'EBGaramond', sans-serif;
 $font-secondary: 'EBGaramond', sans-serif;

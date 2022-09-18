@@ -149,7 +149,10 @@ export class CtHackActorSheet extends ActorSheet {
 		event.preventDefault();
 		const header = event.currentTarget;
 		// Get the type of item to create.
-		const type = header.dataset.type;
+		let type = header.dataset.type;
+		const altType = header.dataset.altType;
+		if (event?.shiftKey) type = altType;
+		
 		// Grab any data associated with this control.
 		const data = foundry.utils.deepClone(header.dataset);
 		// Initialize a default name.
@@ -163,7 +166,7 @@ export class CtHackActorSheet extends ActorSheet {
 		// Remove the type from the dataset since it's in the itemData.type prop.
 		delete itemData.system.type;
 
-		// Finally, create the item!
+		// Create the item
 		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 	}
 
