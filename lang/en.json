@@ -71,6 +71,7 @@
         "AbilityUseLast": "Last use",
         "AbilityMultiple": "Multiple",
         "AbilityUsePermanent": "Permanent",
+        "AbilityUseScenario": "Per scenario",
         "AbilityUsePerSession": "Per session",
         "AbilityUsePerHour": "Per hour",
         "AbilityUsePerScene": "Per scene",
