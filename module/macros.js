@@ -1,5 +1,85 @@
 export class Macros {
 
+    static createCthackMacro = async function(dropData, slot) {
+
+              // Create macro depending of the item dropped on the hotbar
+              if (dropData.type == "Item") {
+                const item = await fromUuid(dropData.uuid);
+                const actor = item.actor;
+    
+                let command = null;
+                let macroName = null;
+        
+                // Character's item
+                if (item.type === "item") {
+                    command = `game.cthack.macros.rollItemMacro("${item.id}", "${item.name}");`;
+                    macroName = item.name + " (" + game.actors.get(actor.id).name + ")";                
+                }
+        
+                // Character's weapon
+                else if (item.type === "weapon") {
+                    command = `if (event?.shiftKey) {\n game.cthack.macros.rollItemMacro("${item.id}", "${item.name}");\n }\n else game.cthack.macros.rollWeaponMacro("${item._id}", "${item.name}");`;
+                    macroName = item.name + " (" + game.actors.get(actor.id).name + ")";     
+                }
+        
+                // Attack for opponent
+                else if (item.type === "attack") {
+                    command = `game.cthack.macros.rollAttackMacro("${item.id}", "${item.name}");`;
+                    macroName = item.name + " (" + game.actors.get(actor.id).name + ")";    
+                }
+        
+                // Ability
+                else if (item.type === "ability") {
+                    const maxUses = item.system.uses.max;
+                    if (maxUses === null) {
+                        return ui.notifications.warn(game.i18n.format('MACROS.AbilityWithoutUsage',{itemName: item.name}));
+                    }
+        
+                    command = `game.cthack.macros.useAbilityMacro("${item.id}", "${item.name}");`;
+                    macroName = item.name + " (" + game.actors.get(actor.id).name + ")"; 
+                }
+    
+                if (command !== null) { this.createMacro(slot, macroName, command, item.img); } 
+            }
+        
+            // Creates a macro to open the actor sheet of the actor dropped on the hotbar
+            else if (data.type == "Actor") {
+                const actor = await fromUuid(data.uuid);
+                const command = `game.actors.get("${actor.id}").sheet.render(true)`
+                this.createMacro(slot, actor.name, command, actor.img);
+            }
+        
+            // Creates a macro to open the journal sheet of the journal dropped on the hotbar
+            else if (data.type == "JournalEntry") {
+                const journal = await fromUuid(data.uuid);
+                const command = `game.journal.get("${journal.id}").sheet.render(true)`
+                this.createMacro(slot, journal.name, command, (journal.img) ? journal.img : "icons/svg/book.svg");
+            }
+
+    }
+
+    /**
+     * @description Create a macro
+     *  All macros are flaged with a cleenmain.macro flag at true
+     * @param {*} slot 
+     * @param {*} name 
+     * @param {*} command 
+     * @param {*} img 
+     */
+     static createMacro = async function (slot, name, command, img) {
+        let macro = game.macros.contents.find(m => (m.name === name) && (m.command === command));
+        if (!macro) {
+            macro = await Macro.create({
+                name: name,
+                type: "script",
+                img: img,
+                command: command,
+                flags: {"cthack.macro": true}
+            }, {displaySheet: false});
+            game.user.assignHotbarMacro(macro, slot);
+        } 
+    }
+
     /**
      * @name rollItemMacro
      * @description Roll the item
