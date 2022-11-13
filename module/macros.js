@@ -66,7 +66,7 @@ export class Macros {
      * @param {*} command 
      * @param {*} img 
      */
-     static createMacro = async function (slot, name, command, img) {
+     static createMacro = async function(slot, name, command, img) {
         let macro = game.macros.contents.find(m => (m.name === name) && (m.command === command));
         if (!macro) {
             macro = await Macro.create({

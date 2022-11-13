@@ -1,4 +1,4 @@
-import { highlightSuccessFailure } from "./oldChat.js";
+import { highlightSuccessFailure } from "./chat.js";
 import { configureDiceSoNice } from './dice.js';
 import { Macros } from './macros.js';
 
