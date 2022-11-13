@@ -24,7 +24,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 1.2.0
+version : 1.2.3
 
 Modules supportés avec une adaptation spécifique :
 - Token Action HUD
@@ -41,7 +41,9 @@ Actor
 Item
 - Ability : capacité spéciale
     - Si les champs "Custom" et "Donne un avantage" sont activés, le champ Description avantage est utilisé dans l'aide au jet de dé
-- Item : gestion du dé de matériel avec possibilité de faire un jet
+- Item : 
+    - Gestion du dé de matériel avec possibilité de faire un jet
+    - Depuis la fiche : clic pour créer un objet et Shift + clic pour créer une arme
 - Weapon : pour les armes, à faire glisser sur la fiche de personnage
 - Attack : les attaques, à faire glisser sur la fiche d'opposant
 - Definition : utilisé pour les statuts des tables Hors Jeu, Folie temporaire et Choc ; ajouté au personnage via drag and drop
@@ -121,7 +123,9 @@ Actor
 Item
 - Ability: special ability
     - If the "Custom" and "Gives advantage" fields are activated, the advantage description field is used in the dice roll aid
-- Item : management of the supplies die with the possibility to make a roll
+- Item : 
+    - Management of the supplies die with the possibility to make a roll
+    - On the sheet : click to create an item and Shift + click to create a weapon
 - Weapon: for weapons, drag and drop on the character sheet
 - Attack: attacks to be dragged onto the opponent's sheet
 - Definition: used for Out of Play, Temporary Insanity and Shock table statuses; added to character via drag and drop
