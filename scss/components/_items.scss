@@ -3,6 +3,10 @@
   margin: 0;
   padding: 0;
 
+  h4 {
+    font-size: var(--font-size-20);
+  }
+  
   div {
     text-align: center;
     vertical-align: middle;
@@ -12,7 +16,6 @@
     line-height: 25px;
     padding: 0 $padding-sm 0 $padding-sm;
     border-bottom: 1px solid $c-white;
-    font-size:var(--font-size-16);
 
     .item-header-name {
       flex: 2;

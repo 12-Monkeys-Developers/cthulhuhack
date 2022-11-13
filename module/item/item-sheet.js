@@ -23,8 +23,11 @@ export class CtHackItemSheet extends ItemSheet {
 	}
 
 	/** @override */
-	getData(options) {
+	async getData(options) {
 		const context = super.getData(options);
+
+		context.enrichedDescription = await TextEditor.enrichHTML(this.object.system.description, {async: true});
+
 		return context;
 	}
 

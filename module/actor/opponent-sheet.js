@@ -22,10 +22,11 @@ export class CtHackOpponentSheet extends ActorSheet {
 	}
 
 	/** @override */
-	getData(options) {
+	async getData(options) {
 		const context = super.getData(options);
 	
 		context.attacks = context.items.filter(function(item) {	return item.type === 'attack'; });
+		context.enrichedDescription = await TextEditor.enrichHTML(this.object.system.description, {async: true});
 
 		return context;
 	}

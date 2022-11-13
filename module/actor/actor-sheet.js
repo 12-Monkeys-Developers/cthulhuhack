@@ -25,13 +25,16 @@ export class CtHackActorSheet extends ActorSheet {
 	}
 
 	/** @override */
-	getData(options) {
+	async getData(options) {
 		const context = super.getData(options);
 
 		context.abilities = context.items.filter(function(item) { return item.type === 'ability';});
 		context.weapons = context.items.filter(function(item) { return item.type === 'weapon';});
 		context.otheritems = context.items.filter(function(item) { return item.type === 'item';});
 		context.conditions = context.items.filter(function(item) { return item.type === 'definition';});
+
+		context.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, {async: true});
+		context.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, {async: true});
 
 		context.isGm = game.user.isGM;
 		context.system = context.data.system;
@@ -149,7 +152,10 @@ export class CtHackActorSheet extends ActorSheet {
 		event.preventDefault();
 		const header = event.currentTarget;
 		// Get the type of item to create.
-		const type = header.dataset.type;
+		let type = header.dataset.type;
+		const altType = header.dataset.altType;
+		if (event?.shiftKey) type = altType;
+		
 		// Grab any data associated with this control.
 		const data = foundry.utils.deepClone(header.dataset);
 		// Initialize a default name.
@@ -163,7 +169,7 @@ export class CtHackActorSheet extends ActorSheet {
 		// Remove the type from the dataset since it's in the itemData.type prop.
 		delete itemData.system.type;
 
-		// Finally, create the item!
+		// Create the item
 		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
 	}
 

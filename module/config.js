@@ -63,6 +63,7 @@ CTHACK.range = {
 
 CTHACK.abilityUsePeriod = {
 	Permanent: 'CTHACK.AbilityUsePermanent',
+	Scenario: 'CTHACK.AbilityUseScenario',
 	Session: 'CTHACK.AbilityUsePerSession',
 	Hour: 'CTHACK.AbilityUsePerHour',
 	Scene: 'CTHACK.AbilityUsePerScene',
