@@ -790,3 +790,8 @@ a.entity-link.content-link {
 #gm-manager {
   font-size: var(--font-size-18);
 }
+
+.cthack.sheet.actor a.inline-roll,
+.cthack.sheet.item a.inline-roll{
+  color: black;
+}

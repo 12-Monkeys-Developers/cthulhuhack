@@ -25,13 +25,16 @@ export class CtHackActorSheet extends ActorSheet {
 	}
 
 	/** @override */
-	getData(options) {
+	async getData(options) {
 		const context = super.getData(options);
 
 		context.abilities = context.items.filter(function(item) { return item.type === 'ability';});
 		context.weapons = context.items.filter(function(item) { return item.type === 'weapon';});
 		context.otheritems = context.items.filter(function(item) { return item.type === 'item';});
 		context.conditions = context.items.filter(function(item) { return item.type === 'definition';});
+
+		context.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, {async: true});
+		context.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, {async: true});
 
 		context.isGm = game.user.isGM;
 		context.system = context.data.system;
