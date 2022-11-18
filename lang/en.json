@@ -211,7 +211,11 @@
         "HitDiceResourceName": "Hit Dice Resource Option",
         "HitDiceResourceHint": "Handle hit dice as a resource",
         "MiscellaneousResourceName": "Miscellaneous Resource",
-        "MiscellaneousResourceHint": "Allow to have a additional resource"
+        "MiscellaneousResourceHint": "Allow to have a additional resource",
+        "CompendiumFRName": "Display french compendiums",
+		"CompendiumFRHint": "Display french compendiums",
+        "CompendiumENName": "Display english compendiums",
+		"CompendiumENHint": "Display english compendiums"
     },
 
     "CHAT": {

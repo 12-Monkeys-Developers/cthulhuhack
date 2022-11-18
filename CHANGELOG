@@ -1,9 +1,13 @@
+1.2.4
+- Two new options to hide FR or EN system compendiums
+
 1.2.3
 - Fix bug on archetype, occupation and saves updates
 - Update Font : font EBGaramond not available on Google
 - Update item creation from the sheet : click to create an item and Shift + click to create a weapon
 - New type of usage : per scenario
 - Fix macro creation on hotbar : no more duplicate creation, one for system, one for generic
+- Fix editor asynchronous enrichment since V10
 
 1.2.2
 - Fix bug on archetype, occupation and saves updates

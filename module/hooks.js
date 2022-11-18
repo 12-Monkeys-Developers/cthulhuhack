@@ -1,6 +1,7 @@
 import { highlightSuccessFailure } from "./chat.js";
 import { configureDiceSoNice } from './dice.js';
 import { Macros } from './macros.js';
+import { hideCompendium } from './utils.js';
 
 export function registerHooks() {
 
@@ -66,5 +67,9 @@ export function registerHooks() {
         }
 		 
     });
+
+    Hooks.on("renderCompendiumDirectory", (app, html, data) => {
+        hideCompendium();
+    })    
 
 }

@@ -80,3 +80,21 @@ export function refreshAllActorSheets() {
 	if (CTHACK.debug) console.log(LOG_HEAD + 'Refreshing all ActorSheets');
 	Object.values(ui.windows).filter((w) => w.constructor.name === 'CtHackActorSheet').forEach((w) => w.render(false));
 }
+
+export function hideCompendium() {
+    let compendiums = document.getElementsByClassName("pack-title");
+    	
+	let hiddingKeys = [];
+
+	if (!game.settings.get('cthack', 'CommpendiumFR')) hiddingKeys.push("FR");
+	if (!game.settings.get('cthack', 'CommpendiumEN')) hiddingKeys.push("EN");
+    
+    for (let key of hiddingKeys) {
+        for (let compendium of compendiums) {
+            let indexForeign = compendium.innerText.indexOf(key);
+            if (indexForeign !== -1) {
+                compendium.parentElement.style.display = "none";
+            }
+        }
+    }
+}

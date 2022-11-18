@@ -72,4 +72,5 @@ Hooks.once('init', async function() {
 	// Game Manager
 	game.cthack.gmManager = new GMManager();
 
+	console.log(LOG_HEAD + 'Cthulhu Hack Game System initialized');
 });

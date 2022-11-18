@@ -24,7 +24,7 @@ Ce système est développé par Kristov, avec la contribution de Lightbringer po
 ----------------
 Fonctionnalités 
 ----------------
-version : 1.2.3
+version : 1.2.4
 
 Modules supportés avec une adaptation spécifique :
 - Token Action HUD
@@ -53,6 +53,8 @@ Item
 - Possibilité de trier les capacités et les objets (dans la catégorie Armes ou Equipement) en faisant glisser un objet
 
 Options
+- Afficher les compendiums français : si cette option est désactivée, les compendiums qui commencent par FR sont cachés
+- Afficher les compendiums anglais : si cette option est désactivée, les compendiums qui commencent par EN sont cachés
 - Fortune : active/désactive l'affichage sur la fiche
     - Le MJ active l'option et met le nombre de jetons disponibles pour les joueurs
     - Affichage du nombre de jetons restant sous le portrait
@@ -106,7 +108,7 @@ Thanks to Limpar for the English translation of the compendiums.
 ---------------
 Features
 ---------------
-version : 1.1.0
+version : 1.2.4
 
 Supported modules with specific adaptation:
 - Token Action HUD
@@ -135,6 +137,8 @@ Item
 - Ability to sort abilities and items (in Weapons or Equipment category) by dragging an item
 
 Options
+- Display french compendiums : if this option is disabled, the compendiums which begin by FR are hidden
+- Display english compendiums : if this option is disabled, the compendiums which begin by EN are hidden
 - Fortune: activates/deactivates the display on the form
     - The GM activates the option and makes the number of tokens available to the players.
     - Display of the number of tokens under the portrait

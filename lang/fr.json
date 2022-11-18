@@ -211,7 +211,11 @@
         "HitDiceResourceName": "Dé de vie en tant que Ressource",
         "HitDiceResourceHint": "Au lieu d'une valeur fixe, vous pouvez gérer les points de vie d'un personnage avec le Dé de Vie",
         "MiscellaneousResourceName": "Ressource diverse",
-        "MiscellaneousResourceHint": "Permet de gérer une ressource supplémentaire"
+        "MiscellaneousResourceHint": "Permet de gérer une ressource supplémentaire",
+        "CompendiumFRName": "Afficher les compendiums français",
+		"CompendiumFRHint": "Affiche ou non les compendiums français du système",
+        "CompendiumENName": "Afficher les compendiums anglais",
+		"CompendiumENHint": "Affiche ou non les compendiums anglais du système"
     },
 
     "CHAT": {
