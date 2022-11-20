@@ -124,6 +124,8 @@ export class GMManager extends Application {
       const name = event.currentTarget.parentElement.dataset.characterName;
       const text = game.i18n.format('CHAT.AskRollIndividual', { name: name, resource: label });
 
+      game.socket.emit("system.cthack", { msg: "msg_ask_roll", data: {userId: recipient}});
+
       ChatMessage.create({
         user: game.user.id,
         content: await renderTemplate(`systems/cthack/templates/chat/askRoll.hbs`, {
@@ -148,6 +150,8 @@ export class GMManager extends Application {
       const name = event.currentTarget.parentElement.dataset.characterName;
       const text = game.i18n.format('CHAT.AskRollIndividual', { name: name, resource: game.i18n.localize('CTHACK.Save' + save) });
 
+      game.socket.emit("system.cthack", { msg: "msg_ask_roll", data: {userId: recipient}});
+      
       ChatMessage.create({
         user: game.user.id,
         content: await renderTemplate(`systems/cthack/templates/chat/askRoll.hbs`, {
