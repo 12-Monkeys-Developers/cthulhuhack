@@ -13,10 +13,11 @@ import { CtHackItem } from './item/item.js';
 import { CtHackItemSheet } from './item/item-sheet.js';
 import { CtHackArchetypeSheet } from './item/archetype-sheet.js';
 
-import { Macros } from "./macros.js";
-import { registerHooks } from "./hooks.js";
+import { Macros } from './macros.js';
+import { registerHooks } from './hooks.js';
 
 import { GMManager } from './app/gm-manager.js';
+import { initControlButtons } from './control-buttons.js';
 
 Hooks.once('init', async function() {
 	console.log(LOG_HEAD + 'Initializing the Cthulhu Hack Game System');
@@ -68,6 +69,9 @@ Hooks.once('init', async function() {
 
 	// Register Hooks
 	registerHooks();
+
+	// Init new buttons for the system
+	initControlButtons();
 
 	// Game Manager
 	game.cthack.gmManager = new GMManager();

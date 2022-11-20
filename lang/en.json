@@ -193,6 +193,10 @@
             "Fai": "Faint",
             "Div": "Dive",
             "Scr": "Scream"
+        },
+
+        "GMManager": {
+            "Title": "Players Status"
         }
     },
 

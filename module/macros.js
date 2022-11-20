@@ -217,4 +217,8 @@ export class Macros {
         }
         actor.useAbility(item);
 	};    
+
+    static launchGMManager = function() {
+        game.cthack.gmManager.render(true);
+    }
 }
