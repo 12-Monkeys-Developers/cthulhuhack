@@ -88,6 +88,7 @@
       "description": "",
       "hitDice": 1,
       "armor": 0,
+      "malus": 0,
       "abilities": []
     }
   },

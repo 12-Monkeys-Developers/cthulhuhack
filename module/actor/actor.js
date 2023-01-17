@@ -8,30 +8,6 @@ import { LOG_HEAD } from '../constants.js';
  * @extends {Actor}
  */
 export class CtHackActor extends Actor {
-	/** @override */
-	prepareData() {
-		super.prepareData();
-	}
-
-	/** @override */
-	prepareDerivedData() {
-		switch (this.type) {
-			case 'character':
-				return;
-			case 'opponent':
-				return this._prepareOpponentDerivedData(this.system);
-		}
-	}
-
-	/**
-   * Prepare opponent type-specific data
-   * @param systemData
-   * @private
-   */
-	_prepareOpponentDerivedData(systemData) {
-		systemData.malus = -1 * (systemData.hitDice - 1);
-	}
-
 	/**
      * @name rollSave
      * @description Roll a Saving Throw 

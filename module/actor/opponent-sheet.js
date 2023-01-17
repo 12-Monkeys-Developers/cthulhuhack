@@ -51,20 +51,28 @@ export class CtHackOpponentSheet extends ActorSheet {
 
 		html.find('.attack-delete').click(this._onAttackDelete.bind(this));
 
-		html.find('.selectHitDice').change((ev) => {
-			const newHitDiceValue = parseInt(ev.currentTarget.value);
-            const newHPValue = 4 * newHitDiceValue;
-            const newArmorMalusValue = -1 * (newHitDiceValue - 1);
-            this.actor.update({
-				'data.hitDice': newHitDiceValue,
-                'data.hp': { max: newHPValue },
-                'data.malus': newArmorMalusValue
-            })
-			this.actor.sheet.render(true);
-		});
+		html.find('.selectHitDice').change(this._onChangeHitDice.bind(this));
 
 		// Roll for item in inventory
 		html.find('.fa-dice-d20').click(this._onAttackDamageRoll.bind(this));
+	}
+
+
+	/**
+	 * Handles the change on the HitDice value
+	 * @param {*} event The originating change event
+	 */
+	async _onChangeHitDice(event) {
+		const newHitDiceValue = parseInt(event.currentTarget.value);		
+		const newHpMax = 4 * newHitDiceValue;
+		const newArmorMalusValue = -1 * (newHitDiceValue - 1);
+		await this.actor.update({
+			'system.hitDice': newHitDiceValue,
+			'system.hp.value': newHpMax,
+			'system.hp.max': newHpMax,
+			'system.malus': newArmorMalusValue
+		})
+		this.actor.sheet.render(true);
 	}
 
 	/**

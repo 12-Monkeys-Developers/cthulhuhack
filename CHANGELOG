@@ -1,3 +1,6 @@
+1.2.7
+- For opponent, don't calculate malus as a derived value. The malus' value is changed if the HitDice value is changed, but the malus'value could be manually changed
+
 1.2.6
 - Change github repository
 
