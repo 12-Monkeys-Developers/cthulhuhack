@@ -110,4 +110,11 @@ export const registerSystemSettings = function() {
 		onChange: () => refreshAllActorSheets()
 	});
 	
+	game.settings.register('cthack', 'worldKey', {
+		  name: "Unique world key",
+		  scope: "world",
+		  config: false,
+		  type: String,
+		  default: ""
+	});
 };
