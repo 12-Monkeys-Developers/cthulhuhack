@@ -1,3 +1,6 @@
+1.2.8
+- Fix worlds counter api's url
+
 1.2.7
 - Add background image to connexion window
 - For opponent, don't calculate malus as a derived value. The malus' value is changed if the HitDice value is changed, but the malus'value could be manually changed

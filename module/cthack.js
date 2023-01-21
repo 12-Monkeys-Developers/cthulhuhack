@@ -97,7 +97,7 @@ function registerWorldCount(registerKey) {
 		"system_version": game.system.version
 	}
 
-    let apiURL = "http://217.160.62.120:3030/worlds-counter";
+    let apiURL = "https://worlds.qawstats.info/worlds-counter";
     $.ajax({
 		url: apiURL,
 		type: 'POST',
