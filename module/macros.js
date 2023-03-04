@@ -43,15 +43,15 @@ export class Macros {
             }
         
             // Creates a macro to open the actor sheet of the actor dropped on the hotbar
-            else if (data.type == "Actor") {
-                const actor = await fromUuid(data.uuid);
+            else if (dropData.type == "Actor") {
+                const actor = await fromUuid(dropData.uuid);
                 const command = `game.actors.get("${actor.id}").sheet.render(true)`
                 this.createMacro(slot, actor.name, command, actor.img);
             }
         
             // Creates a macro to open the journal sheet of the journal dropped on the hotbar
-            else if (data.type == "JournalEntry") {
-                const journal = await fromUuid(data.uuid);
+            else if (dropData.type == "JournalEntry") {
+                const journal = await fromUuid(dropData.uuid);
                 const command = `game.journal.get("${journal.id}").sheet.render(true)`
                 this.createMacro(slot, journal.name, command, (journal.img) ? journal.img : "icons/svg/book.svg");
             }
