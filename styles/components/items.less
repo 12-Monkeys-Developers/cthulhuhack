@@ -14,8 +14,8 @@
 
   .item-header {
     line-height: 25px;
-    padding: 0 $padding-sm 0 $padding-sm;
-    border-bottom: 1px solid $c-white;
+    padding: 0 @padding-sm 0 @padding-sm;
+    border-bottom: 1px solid @c-white;
 
     .item-header-name {
       flex: 2;
@@ -26,30 +26,30 @@
 
   .item {
     line-height: 25px;
-    padding: 0 $padding-sm 0 $padding-sm;
+    padding: 0 @padding-sm 0 @padding-sm;
     &:hover {
       background-color:#59564c;
     }
     
     .item-image {
       flex: 0 0 40px;
-      padding-top: $padding-sm;
-      margin-right: $padding-sm;
+      padding-top: @padding-sm;
+      margin-right: @padding-sm;
     }
 
     .item-name {
-      padding-top: $padding-md;
+      padding-top: @padding-md;
       text-align: left;
     }
 
     .item-element {
-      padding-top: $padding-sm;
+      padding-top: @padding-sm;
       text-align: center;
       vertical-align: middle;      
     }
 
     .item-element-text {
-      padding-top: $padding-md;
+      padding-top: @padding-md;
       text-align: center;
       vertical-align: middle;
     }    
@@ -63,7 +63,7 @@
   .item-name {
     flex: 2;
     margin: 0;
-    padding-top: $padding-md;
+    padding-top: @padding-md;
   }
 
   .item-controls-header {
@@ -74,7 +74,7 @@
   .item-controls {
     flex: 0 0 86px;
     text-align: right;
-    padding-top: $padding-md;
+    padding-top: @padding-md;
   }
   
   .item-summary {
@@ -86,7 +86,7 @@
   }
   
   .item-condition {
-    padding-top: $padding-sm;
+    padding-top: @padding-sm;
   }
 }
 
@@ -126,13 +126,13 @@
   }
 
   .select-range {
-    color: $c-white;
+    color: @c-white;
     width: 80px;
   }
 }
 
 .item-attack {
-  padding-left: $padding-md;
+  padding-left: @padding-md;
   margin: 0 10px 0 10px;
 
   label {
@@ -140,7 +140,7 @@
   }
 
   .select-dice {
-    color: $c-white;
+    color: @c-white;
     width: 80px;
   }
 
@@ -155,7 +155,7 @@
 
 .item-ability {
   select {
-    color: $c-white;
+    color: @c-white;
     font-weight: normal;
   }
 
