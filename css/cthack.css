@@ -2,22 +2,6 @@
   font-family: "EBGaramond";
   src: url("../ui/fonts/EBGaramond-VariableFont_wght.ttf");
 }
-@font-face {
-  font-family: "AbrahamLincoln";
-  src: url("../ui/fonts/AbrahamLincoln.ttf");
-}
-@font-face {
-  font-family: "ACaslonProRegular";
-  src: url("../ui/fonts/ACaslonPro-Regular.ttf");
-}
-@font-face {
-  font-family: "ACaslonProBold";
-  src: url("../ui/fonts/ACaslonPro-Bold.ttf");
-}
-@font-face {
-  font-family: "HeadlineTwo";
-  src: url("../ui/fonts/Headline Two.ttf");
-}
 /* Global styles */
 .window-app {
   font-family: 'EBGaramond', sans-serif;
@@ -106,6 +90,18 @@ div.tip .tip-title {
 }
 .chat-message .message-header .message-sender {
   font-weight: bold;
+}
+i.cthack {
+  width: 36px;
+  height: 36px;
+  background-image: url(../ui/cthack-logo.webp);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  position: relative;
+  filter: grayscale(1);
+  transition: 0.3s;
 }
 .grid,
 .grid-2col {
@@ -298,18 +294,6 @@ div.tip .tip-title {
 .cthack .cthack.sheet.actor a.inline-roll,
 .cthack .cthack.sheet.item a.inline-roll {
   color: black;
-}
-.cthack i.cthack {
-  width: 36px;
-  height: 36px;
-  background-image: url(../ui/cthack-logo.webp);
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  position: relative;
-  filter: grayscale(1);
-  transition: 0.3s;
 }
 .cthack .item-form {
   color: #fff;
