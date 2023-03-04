@@ -2,45 +2,54 @@
   font-family: "EBGaramond";
   src: url("../ui/fonts/EBGaramond-VariableFont_wght.ttf");
 }
-
+@font-face {
+  font-family: "AbrahamLincoln";
+  src: url("../ui/fonts/AbrahamLincoln.ttf");
+}
+@font-face {
+  font-family: "ACaslonProRegular";
+  src: url("../ui/fonts/ACaslonPro-Regular.ttf");
+}
+@font-face {
+  font-family: "ACaslonProBold";
+  src: url("../ui/fonts/ACaslonPro-Bold.ttf");
+}
+@font-face {
+  font-family: "HeadlineTwo";
+  src: url("../ui/fonts/Headline Two.ttf");
+}
 /* Global styles */
 .window-app {
-  font-family: "EBGaramond", sans-serif;
+  font-family: 'EBGaramond', sans-serif;
 }
-
 .window-app .window-content {
   background-image: url("../ui/background-white.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-
 .window-app .window-content .compendium.directory .directory-list .directory-item {
   border: none;
 }
-
 .window-app .window-content .compendium.directory .directory-list .directory-item:hover {
   background-color: #59564c;
   color: #fff;
 }
-
-.rollable:hover, .rollable:focus {
+.rollable:hover,
+.rollable:focus {
   color: #d44d54;
   text-shadow: 0 0 10px #eea3a3;
   cursor: url("../ui/dice/d20-red.svg") 32 24, pointer;
 }
-
 .color-white {
   /*color: white;*/
   color: #dfe2d5;
 }
-
 #logo {
   content: url("../ui/cthack-logo.webp");
   width: 50px;
   height: 50px;
   margin-left: 15px;
 }
-
 #pause > img {
   content: url("../ui/cthack-logo.webp");
   height: 192px;
@@ -48,21 +57,17 @@
   top: -45px;
   left: calc(50% - 96px);
 }
-
 .character-resume {
   text-align: center;
 }
-
 .character-resume .adrenaline-img {
   height: 25px;
   width: 25px;
 }
-
 .tooltip {
   position: relative;
   display: inline-block;
 }
-
 .tooltip .tooltiptextleft {
   visibility: hidden;
   width: 140px;
@@ -77,7 +82,6 @@
   top: -45px;
   left: -25px;
 }
-
 .tooltip .tooltiptextright {
   visibility: hidden;
   width: 140px;
@@ -92,168 +96,118 @@
   top: -45px;
   left: -85px;
 }
-
 .tooltip:hover .tooltiptextleft,
 .tooltip:hover .tooltiptextright {
   visibility: visible;
 }
-
 div.tip .tip-title {
   color: #E77600 !important;
   font-weight: bold;
 }
-
 .chat-message .message-header .message-sender {
   font-weight: bold;
 }
-
 .grid,
 .grid-2col {
-  display: -ms-grid;
   display: grid;
   grid-column: span 2 / span 2;
-  -ms-grid-columns: (minmax(0, 1fr))[2];
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin: 0;
   padding: 0;
 }
-
 .grid-3col {
   grid-column: span 3 / span 3;
-  -ms-grid-columns: (minmax(0, 1fr))[3];
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-
 .grid-4col {
   grid-column: span 4 / span 4;
-  -ms-grid-columns: (minmax(0, 1fr))[4];
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
-
 .grid-5col {
   grid-column: span 5 / span 5;
-  -ms-grid-columns: (minmax(0, 1fr))[5];
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
-
 .grid-6col {
   grid-column: span 5 / span 5;
-  -ms-grid-columns: (minmax(0, 1fr))[5];
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
-
 .grid-7col {
   grid-column: span 7 / span 7;
-  -ms-grid-columns: (minmax(0, 1fr))[7];
-      grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
 }
-
 .grid-8col {
   grid-column: span 8 / span 8;
-  -ms-grid-columns: (minmax(0, 1fr))[8];
-      grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(8, minmax(0, 1fr));
 }
-
 .grid-9col {
   grid-column: span 9 / span 9;
-  -ms-grid-columns: (minmax(0, 1fr))[9];
-      grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-template-columns: repeat(9, minmax(0, 1fr));
 }
-
 .grid-10col {
   grid-column: span 10 / span 10;
-  -ms-grid-columns: (minmax(0, 1fr))[10];
-      grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-template-columns: repeat(10, minmax(0, 1fr));
 }
-
 .grid-11col {
   grid-column: span 11 / span 11;
-  -ms-grid-columns: (minmax(0, 1fr))[11];
-      grid-template-columns: repeat(11, minmax(0, 1fr));
+  grid-template-columns: repeat(11, minmax(0, 1fr));
 }
-
 .grid-12col {
   grid-column: span 12 / span 12;
-  -ms-grid-columns: (minmax(0, 1fr))[12];
-      grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
-
 .flex-group-center,
 .flex-group-left,
 .flex-group-right {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 5px;
   border: 1px solid #999;
 }
-
 .flex-group-left {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
   text-align: left;
 }
-
 .flex-group-right {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
   text-align: right;
 }
-
 .flex-center {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
-
 .flex-between {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
-
 .chat-message .message-content {
   background-image: url(../ui/cthack-green.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #fff;
 }
-
-.message-content .chat-save-roll, .message-content .chat-resource-roll, .message-content .chat-other-roll {
+.message-content .chat-save-roll,
+.message-content .chat-resource-roll,
+.message-content .chat-other-roll {
   padding: 5px;
 }
-
 .dice-roll .dice-total.success {
   color: inherit;
   background: #c7d0c0;
   border: 1px solid #006c00;
 }
-
 .dice-roll .dice-total.failure {
   color: inherit;
   background: #ffdddd;
   border: 1px solid #6e0000;
 }
-
 .roll-failure {
   color: red;
 }
-
 .roll-success {
   color: green;
 }
-
 /* Styles limited to cthack sheets */
 .cthack .window-content {
   background-image: url("../ui/sheet.webp");
@@ -262,45 +216,33 @@ div.tip .tip-title {
   color: #fff;
   font-size: var(--font-size-20);
 }
-
 .cthack .align-left {
   text-align: left;
 }
-
 .cthack .align-right {
   text-align: right;
 }
-
 .cthack .align-center {
   text-align: center;
   vertical-align: middle;
 }
-
 .cthack .noborder {
   border: none;
 }
-
-.cthack input[type="text"] {
-  color: #fff;
-  font-size: var(--font-size-22);
-}
-
+.cthack input[type="text"],
 .cthack input[type="number"],
 .cthack input[type="password"],
 .cthack input[type="date"],
 .cthack input[type="time"] {
   color: #fff;
 }
-
 .cthack input[type="text"] {
   border: none;
 }
-
 .cthack input[type="checkbox"] {
   height: 12px;
   width: 12px;
 }
-
 .cthack select {
   border: none;
   background-repeat: no-repeat;
@@ -316,27 +258,23 @@ div.tip .tip-title {
   background-color: transparent;
   font-weight: 800;
 }
-
 .cthack option {
   color: #fff;
   background: #37372d;
 }
-
-.cthack option:checked, .cthack option:hover {
+.cthack option:checked,
+.cthack option:hover {
   color: #fff;
   background: #37372d;
 }
-
 .cthack ::-webkit-scrollbar {
   display: none;
 }
-
 .cthack nav.sheet-tabs {
   height: 40px;
   border-top: 0;
   border-bottom: 0;
 }
-
 .cthack .frame {
   background-image: url("../ui/frame.png");
   background-repeat: no-repeat;
@@ -346,154 +284,138 @@ div.tip .tip-title {
   border: none;
   color: #fff;
 }
-
 .cthack .attack-damage {
   width: 75px;
   text-align: center;
 }
-
+.cthack .ask-roll-title .fa-dice-d20 {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.cthack #gm-manager {
+  font-size: var(--font-size-18);
+}
+.cthack .cthack.sheet.actor a.inline-roll,
+.cthack .cthack.sheet.item a.inline-roll {
+  color: black;
+}
+.cthack i.cthack {
+  width: 36px;
+  height: 36px;
+  background-image: url(../ui/cthack-logo.webp);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  position: relative;
+  filter: grayscale(1);
+  transition: 0.3s;
+}
 .cthack .item-form {
   color: #fff;
 }
-
 .cthack .sheet-header {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  flex: 0 0 auto;
   overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
-
 .cthack .sheet-header .profile-img {
   height: calc(20%);
   width: auto;
   margin: 0;
 }
-
 .cthack .sheet-header .opponent-img {
   height: calc(10%);
   width: auto;
   margin: 0;
 }
-
 .cthack .sheet-header .adrenaline-img {
   height: 30px;
   width: auto;
 }
-
 .cthack .sheet-header .definition-img {
   height: auto;
   width: 50px;
 }
-
 .cthack .sheet-header .header-fields {
-  -webkit-box-flex: 5;
-      -ms-flex: 5;
-          flex: 5;
+  flex: 5;
 }
-
 .cthack .sheet-header h1.charname {
   height: 50px;
   padding: 0px 20px 0px 20px;
   margin: 5px 0;
   border-bottom: 0;
 }
-
 .cthack .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
   margin: 0;
 }
-
 .cthack .sheet-tabs {
-  -webkit-box-flex: 0;
-  -ms-flex: 0;
   flex: 0;
-  letter-spacing: 1px;
 }
-
 .cthack .tox .tox-editor-container {
   background: #fff;
 }
-
 .cthack .tox .tox-edit-area {
   padding: 0 8px;
 }
-
 .cthack .sheet-body {
   height: 100%;
   min-height: 150px;
   margin: 10px 0 10px 0;
   padding: 0 10px 0 10px;
 }
-
 .cthack .sheet-body .tab {
   min-height: 150px;
   height: 100%;
 }
-
 .cthack .sheet-body .tab .editor {
   min-height: 150px;
   height: 100%;
 }
-
 .cthack .tabs {
   height: 40px;
 }
-
 .cthack .tabs .choice {
   line-height: 40px;
   font-weight: bold;
 }
-
 .cthack .tabs .choice.active {
   color: darkgrey;
   font-weight: bold;
   text-shadow: 0 0 10px #851016;
 }
-
 .cthack .sheet-actor {
   margin: 10px 20px;
 }
-
-.cthack .occupation, .cthack .archetype, .cthack .save, .cthack .resource {
+.cthack .occupation,
+.cthack .archetype,
+.cthack .save,
+.cthack .resource {
   border: none;
 }
-
 .cthack .character-notes {
   color: #fff;
 }
-
 .cthack .input-hitpoints {
   border-style: none;
   font-size: 16px;
 }
-
 .cthack .occupation {
   padding-right: 15px;
   padding-bottom: 10px;
 }
-
 .cthack .occupation-input {
   font-size: var(--font-size-18);
 }
-
 .cthack .hitpoints {
   padding-left: calc(25%);
   padding-right: calc(25%);
 }
-
 .cthack .hitpoints-frame {
   background-image: url("../ui/frame.png");
   background-repeat: no-repeat;
@@ -509,302 +431,193 @@ div.tip .tip-title {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
 .cthack .saves {
   padding-left: 100px;
   padding-right: 100px;
   padding-bottom: 10px;
 }
-
-.cthack .save-name {
-  -webkit-box-flex: 3;
-      -ms-flex-positive: 3;
-          flex-grow: 3;
+.cthack .save {
+  font-size: var(--font-size-16);
 }
-
+.cthack .save-name {
+  flex-grow: 3;
+}
 .cthack input.save {
   color: #fff;
 }
-
 .cthack .resource-label {
   text-transform: uppercase;
-  font-size: var(--font-size-18);
+  font-size: var(--font-size-16);
 }
-
 .cthack .resource-content {
   margin-top: 2px;
   margin-bottom: 2px;
   padding-top: 5px;
 }
-
 .cthack .resource-content-archetype {
   margin: 0;
   padding: 0;
 }
-
 .cthack .resource-content-archetype select {
   color: #fff;
 }
-
 .cthack .sheet-opponent {
   margin: 10px 20px;
 }
-
 .cthack .sheet-opponent .charname {
   border: 0;
 }
-
 .cthack .sheet-opponent .flexrow {
   border: 0;
 }
-
 .cthack .sheet-opponent label {
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
+  flex: 3;
 }
-
 .cthack .items-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
+.cthack .items-list h4 {
+  font-size: var(--font-size-20);
+}
 .cthack .items-list div {
   text-align: center;
   vertical-align: middle;
 }
-
 .cthack .items-list .item-header {
   line-height: 25px;
   padding: 0 5px 0 5px;
   border-bottom: 1px solid #fff;
 }
-
 .cthack .items-list .item-header .item-header-name {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  flex: 2;
   text-align: left;
   vertical-align: middle;
 }
-
 .cthack .items-list .item {
   line-height: 25px;
   padding: 0 5px 0 5px;
 }
-
 .cthack .items-list .item:hover {
   background-color: #59564c;
 }
-
 .cthack .items-list .item .item-image {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 40px;
-          flex: 0 0 40px;
+  flex: 0 0 40px;
   padding-top: 5px;
   margin-right: 5px;
 }
-
 .cthack .items-list .item .item-name {
   padding-top: 10px;
   text-align: left;
 }
-
 .cthack .items-list .item .item-element {
   padding-top: 5px;
   text-align: center;
   vertical-align: middle;
 }
-
 .cthack .items-list .item .item-element-text {
   padding-top: 10px;
   text-align: center;
   vertical-align: middle;
 }
-
 .cthack .items-list .item-bloc {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  flex: 2;
   margin: 0;
 }
-
 .cthack .items-list .item-name {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  flex: 2;
   margin: 0;
   padding-top: 10px;
 }
-
 .cthack .items-list .item-controls-header {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 86px;
-          flex: 0 0 86px;
+  flex: 0 0 86px;
   text-align: right;
 }
-
 .cthack .items-list .item-controls {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 86px;
-          flex: 0 0 86px;
+  flex: 0 0 86px;
   text-align: right;
   padding-top: 10px;
 }
-
 .cthack .items-list .item-summary {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
+  flex: 0 0 100%;
   line-height: 16px;
   padding: 0.25em 0.5em;
   border-top: 1px solid #c9c7b8;
   text-align: left;
 }
-
 .cthack .items-list .item-condition {
   padding-top: 5px;
 }
-
 .cthack .sheet-header .archetype-image {
   height: auto;
   width: 128px;
   margin: 20px 10px 0 20px;
 }
-
 .cthack .sarchetype-editor {
   margin: 0 20px;
 }
-
 .cthack .sheet-header .item-image {
   min-height: 128px;
   width: auto;
   margin: 20px 0 0 20px;
 }
-
 .cthack .sheet-header .item-name {
   margin: 0 10px 0 10px;
 }
-
 .cthack .item-item {
   padding-left: 15px;
 }
-
 .cthack .item-item label {
   margin-right: 10px;
 }
-
 .cthack .item-weapon {
   padding-left: 15px;
 }
-
 .cthack .item-weapon label {
   margin-right: 10px;
 }
-
 .cthack .item-weapon .select-range {
   color: #fff;
   width: 80px;
 }
-
 .cthack .item-attack {
   padding-left: 10px;
   margin: 0 10px 0 10px;
 }
-
 .cthack .item-attack label {
   margin-right: 10px;
 }
-
 .cthack .item-attack .select-dice {
   color: #fff;
   width: 80px;
 }
-
 .cthack .item-attack .attack-damage {
   height: 40px;
 }
-
 .cthack .item-attack .item-dice {
-  -webkit-box-flex: 4;
-      -ms-flex: 4;
-          flex: 4;
+  flex: 4;
 }
-
 .cthack .item-ability select {
   color: #fff;
   font-weight: normal;
 }
-
 .cthack .item-ability label {
-  -webkit-box-flex: 8;
-      -ms-flex: 8;
-          flex: 8;
+  flex: 8;
 }
-
 .cthack .item-ability input {
   text-align: center;
 }
-
 .cthack .item-ability label.advantage {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  flex: 2;
 }
-
 .cthack .item-ability .ability-checkbox {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 .cthack .sheet-archetype .sheet-body {
   height: 400px;
 }
-
 .cthack .sheet-archetype select {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 150px;
-          flex: 0 0 150px;
+  flex: 0 0 150px;
   text-align-last: center;
-}
-
-.chat-message .table-draw .table-description {
-  color: whitesmoke;
-}
-
-a.entity-link.content-link {
-  color: black;
-}
-
-.ask-roll-title .fa-dice-d20 {
-	padding-right: 5px;
-  padding-left: 5px;
-}
-
-.items-list h4 {
-  font-size: var(--font-size-20);
-}
-
-#gm-manager {
-  font-size: var(--font-size-18);
-}
-
-.cthack.sheet.actor a.inline-roll,
-.cthack.sheet.item a.inline-roll{
-  color: black;
-}
-
-i.cthack {
-  width: 36px;
-  height: 36px;
-  background-image: url(../ui/cthack-logo.webp);
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  position: relative;
-  filter: grayscale(1);
-  transition: 0.3s;
 }
