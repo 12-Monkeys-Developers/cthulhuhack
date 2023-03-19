@@ -60,7 +60,7 @@ export class Macros {
 
     /**
      * @description Create a macro
-     *  All macros are flaged with a cleenmain.macro flag at true
+     *  All macros are flaged with a cthack.macro flag at true
      * @param {*} slot 
      * @param {*} name 
      * @param {*} command 

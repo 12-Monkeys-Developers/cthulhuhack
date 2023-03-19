@@ -448,6 +448,11 @@ i.cthack {
 .cthack .sheet-opponent {
   margin: 10px 20px;
 }
+
+.cthack .sheet-opponent .editor {
+  min-height: 50px;
+}
+
 .cthack .sheet-opponent .charname {
   border: 0;
 }
