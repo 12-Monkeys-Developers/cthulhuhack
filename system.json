@@ -10,7 +10,7 @@
   ],
   "url": "https://github.com/12-Monkeys-Developers/cthulhuhack",
   "license": "LICENSE.txt",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "compatibility": {
     "minimum": "10",
     "verified": "10.291"
@@ -220,7 +220,7 @@
   "background": "systems/cthack/ui/accueil.png",
   "socket": true,
   "manifest": "https://github.com/12-Monkeys-Developers/cthulhuhack/releases/latest/download/system.json",
-  "download": "https://github.com/12-Monkeys-Developers/cthulhuhack/releases/download/1.2.8/system.zip",
+  "download": "https://github.com/12-Monkeys-Developers/cthulhuhack/releases/download/1.2.9/system.zip",
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "hp"

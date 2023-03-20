@@ -1,3 +1,8 @@
+1.2.9
+- Fix drop acteur ou journal
+- Display dice only if dice damage is defined
+- Opponent sheet rework : remove attacks'tab to have everything in the same page
+
 1.2.8
 - Fix worlds counter api's url
 
