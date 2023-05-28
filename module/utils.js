@@ -91,7 +91,7 @@ export function refreshAllActorSheets() {
 }
 
 export function hideCompendium() {
-    let compendiums = document.getElementsByClassName("pack-title");
+    var compendiums = document.querySelectorAll("li.compendium");
     	
 	let hiddingKeys = [];
 
@@ -102,7 +102,13 @@ export function hideCompendium() {
         for (let compendium of compendiums) {
             let indexForeign = compendium.innerText.indexOf(key);
             if (indexForeign !== -1) {
-                compendium.parentElement.style.display = "none";
+                // compendium.parentElement.style.display = "none";
+				//comp.style.maxHeight = "0px";
+                //comp.style.overflow = "hidden";
+                //comp.style.border = "none"
+				compendium.style.maxHeight = "0px";
+				compendium.style.overflow = "hidden";
+				compendium.style.border = "none";
             }
         }
     }
