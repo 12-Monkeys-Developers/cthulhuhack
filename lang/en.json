@@ -1,16 +1,17 @@
 {
-    "ACTOR": {
-        "TypeCharacter": "Character",
-        "TypeOpponent": "Opponent"
-    },
-
-    "ITEM": {
-        "TypeItem": "Item",
-        "TypeWeapon": "Weapon",
-        "TypeAttack": "Attack",
-        "TypeAbility": "Ability",
-        "TypeArchetype": "Archetype",
-        "TypeDefinition": "Definition"
+    "TYPES": {
+        "Actor": {
+            "character": "Character",
+            "opponent": "Opponent"
+        },
+        "Item": {
+            "item": "Item",
+            "weapon": "Weapon",
+            "attack": "Attack",
+            "archetype": "Ability",
+            "ability": "Archetype",
+            "definition": "Definition"
+        }
     },
 
     "CTHACK": {
