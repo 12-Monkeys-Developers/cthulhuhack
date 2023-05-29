@@ -4,8 +4,7 @@
   "description": "The Cthulhu Hack system for FoundryVTT <p>Rejoignez la communauté Discord FR : <a href=\"https://discord.gg/pPSDNJk\">https://discord.gg/pPSDNJk</a></p>",
   "authors": [
     {
-      "name": "Kristov",
-      "flags": {}
+      "name": "Kristov"
     }
   ],
   "url": "https://github.com/12-Monkeys-Developers/cthulhuhack",
@@ -25,14 +24,12 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json",
-      "flags": {}
+      "path": "lang/en.json"
     },
     {
       "lang": "fr",
       "name": "French",
-      "path": "lang/fr.json",
-      "flags": {}
+      "path": "lang/fr.json"
     }
   ],
   "packs": [
@@ -42,8 +39,7 @@
       "system": "cthack",
       "path": "packs/archetypes.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "abilities",
@@ -51,8 +47,7 @@
       "system": "cthack",
       "path": "packs/special-abilities.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "weapons",
@@ -60,8 +55,7 @@
       "system": "cthack",
       "path": "packs/special-weapons.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "gametables",
@@ -69,8 +63,7 @@
       "system": "cthack",
       "path": "packs/tables.db",
       "type": "RollTable",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "outofaction",
@@ -78,8 +71,7 @@
       "system": "cthack",
       "path": "packs/out-of-action.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "temporaryinsanity",
@@ -87,8 +79,7 @@
       "system": "cthack",
       "path": "packs/temporary-insanity.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "pregenerated",
@@ -96,8 +87,7 @@
       "system": "cthack",
       "path": "packs/example-characters.db",
       "type": "Actor",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "shock",
@@ -105,8 +95,7 @@
       "system": "cthack",
       "path": "packs/shock.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "opponents",
@@ -114,8 +103,7 @@
       "system": "cthack",
       "path": "packs/opponents.db",
       "type": "Actor",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "macros",
@@ -123,8 +111,7 @@
       "system": "cthack",
       "path": "packs/macros.db",
       "type": "Macro",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "archetypes-en",
@@ -132,8 +119,7 @@
       "system": "cthack",
       "path": "packs/archetypes-en.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "abilities-en",
@@ -141,8 +127,7 @@
       "system": "cthack",
       "path": "packs/special-abilities-en.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "weapons-en",
@@ -150,8 +135,7 @@
       "system": "cthack",
       "path": "packs/special-weapons-en.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "gametables-en",
@@ -159,8 +143,7 @@
       "system": "cthack",
       "path": "packs/tables-en.db",
       "type": "RollTable",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "outofaction-en",
@@ -168,8 +151,7 @@
       "system": "cthack",
       "path": "packs/out-of-action-en.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "temporaryinsanity-en",
@@ -177,8 +159,7 @@
       "system": "cthack",
       "path": "packs/temporary-insanity-en.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "pregenerated-en",
@@ -186,8 +167,7 @@
       "system": "cthack",
       "path": "packs/example-characters-en.db",
       "type": "Actor",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "shock-en",
@@ -195,8 +175,7 @@
       "system": "cthack",
       "path": "packs/shock-en.db",
       "type": "Item",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "opponents-en",
@@ -204,8 +183,7 @@
       "system": "cthack",
       "path": "packs/creatures-en.db",
       "type": "Actor",
-      "private": false,
-      "flags": {}
+      "private": false
     },
     {
       "name": "macros-en",
@@ -213,8 +191,7 @@
       "system": "cthack",
       "path": "packs/macros-en.db",
       "type": "Macro",
-      "private": false,
-      "flags": {}
+      "private": false
     }
   ],
   "background": "systems/cthack/ui/accueil.png",
