@@ -7,9 +7,9 @@
       "name": "Kristov"
     }
   ],
-  "url": "#{URL}#",
+  "url": "https://github.com/12-Monkeys-Developers/cthulhuhack",
   "license": "LICENSE.txt",
-  "version": "#{VERSION}#",
+  "version": "1.3.1",
   "compatibility": {
     "minimum": "10",
     "verified": "10.291",
@@ -197,8 +197,8 @@
   ],
   "background": "systems/cthack/ui/accueil.png",
   "socket": true,
-  "manifest": "#{MANIFEST}#",
-  "download": "#{DOWNLOAD}#",
+  "manifest":"https://raw.githubusercontent.com/12-Monkeys-Developers/cthulhuhack/v10/system.json",
+  "download": "https://github.com/12-Monkeys-Developers/cthulhuhack/releases/download/1.3.1/system.zip",
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "hp"
