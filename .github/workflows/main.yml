@@ -141,3 +141,14 @@ jobs:
           artifacts: './system.json, ./system.zip'
           tag: ${{ github.event.release.tag_name }}
           body: ${{ github.event.release.body }}
+
+      - name: Deploy Release
+        id: deploy_release
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://api.foundryvtt.com/_api/packages/release_version'
+          method: 'POST'
+          contentType: 'application/json'
+          customHeaders: '{"Authorization": "${{ secrets.FVTT_PACKAGE_RELEASE_TOKEN }}"}'
+          data: '{"id": "cthack","dry-run":false,"release":{"version":"${{github.event.release.tag_name}}","manifest":"https://github.com/12-Monkeys-Developers/cthulhuhack/releases/download/${{github.event.release.tag_name}}/system.json","notes":"https://github.com/12-Monkeys-Developers/cthulhuhack/blob/main/CHANGELOG","compatibility":{"minimum":"11","verified":"11"}}}'
+      
