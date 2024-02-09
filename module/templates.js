@@ -23,6 +23,7 @@ export const preloadHandlebarsTemplates = async function() {
 		'systems/cthack/templates/item/definition-sheet.hbs',
 		'systems/cthack/templates/item/item-sheet.hbs',
 		'systems/cthack/templates/item/weapon-sheet.hbs',
+		'systems/cthack/templates/item/magic-sheet.hbs',
 		
 		// DICE
 		'systems/cthack/templates/parts/dice-sides-options-value.hbs',

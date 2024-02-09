@@ -16,7 +16,7 @@
 }
 .window-app .window-content .compendium.directory .directory-list .directory-item:hover {
   background-color: #59564c;
-  color: #fff;
+  color: #ffffff;
 }
 .rollable:hover,
 .rollable:focus {
@@ -211,6 +211,7 @@ i.cthack {
   background-size: 100% 100%;
   color: #fff;
   font-size: var(--font-size-20);
+  scrollbar-width: thin;
 }
 .cthack .align-left {
   text-align: left;
@@ -414,6 +415,7 @@ i.cthack {
   -moz-text-align-last: center;
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
 }
 .cthack .saves {
   padding-left: 100px;
@@ -448,11 +450,9 @@ i.cthack {
 .cthack .sheet-opponent {
   margin: 10px 20px;
 }
-
 .cthack .sheet-opponent .editor {
   min-height: 50px;
 }
-
 .cthack .sheet-opponent .charname {
   border: 0;
 }
@@ -609,4 +609,86 @@ i.cthack {
 .cthack .sheet-archetype select {
   flex: 0 0 150px;
   text-align-last: center;
+}
+.cthack .magic-sheet .magic-title {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+}
+.cthack .magic-sheet .magic-title input {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 20px 0 0 10px;
+  color: #fff;
+}
+.cthack .magic-sheet .magic-title img {
+  border: 0px;
+  max-height: 50px;
+}
+.cthack .magic-sheet .magic-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+}
+.cthack .magic-sheet .magic-grid .data-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cthack .magic-sheet .magic-grid .data-group .field-name {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.cthack .magic-sheet .magic-grid .select-subtype {
+  min-width: 80px;
+  font-size: 1rem;
+  color: #fff;
+}
+.cthack .magic-sheet .magic-grid .input-incantation {
+  min-width: 100px;
+  font-size: 1rem;
+  height: 40px;
+}
+.cthack .magic-sheet .description-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 10px 15px 10px;
+  padding-top: 10px;
+  font-size: var(--font-size-16);
+}
+.cthack .magic-sheet .description-group .description {
+  text-align: center;
+  text-transform: uppercase;
+}
+.cthack .magic-sheet .description-group .description-content {
+  text-align: justify;
+}
+.cthack .magic-sheet .description-group .editor {
+  min-height: 160px;
+  scrollbar-width: thin;
+}
+.cthack .magic-sheet .description-group .editor-content {
+  min-height: 150px;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack .magic-sheet .description-group .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack .magic-sheet .description-group .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack .magic-sheet .description-group .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack .magic-sheet .description-group .prosemirror menu button {
+  background: var(--color-hover-bg);
 }

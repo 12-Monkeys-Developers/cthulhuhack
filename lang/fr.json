@@ -5,11 +5,12 @@
             "opponent": "Adversaire"
         },
         "Item": {
+            "ability": "Capacité",
             "item": "Objet",
             "weapon": "Arme",
             "attack": "Attaque",
-            "archetype": "Archétype",
-            "ability": "Capacité",
+            "magic": "Magie",
+            "archetype": "Archétype",            
             "definition": "Définition"
         }
     },
@@ -62,7 +63,12 @@
         "Items": "Equipement",
         "Abilities": "Capacités spéciales",
         "Damage": "Dégâts",
-        "DamageDice": "Dé(s) de Dégâts",
+        "DamageDice": "Dé(s) de Dégâts",        
+        "Type": "Type",
+        "Sanitation": "Sanité",
+        "Incantation": "Incantation",
+        "Ritual": "Rituel",
+        "Spell": "Sortilège",
 
         "AbilityKey": "Clé",
         "AbilityUsePer": "Type d'usage",

@@ -1,0 +1,42 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{log "magie" this}}
+    <div class="magic-sheet">
+        <div class="magic-title">
+            <img src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+            <input name="name" type="text" value="{{item.name}}" />
+        </div>
+        <div class="magic-content">
+            <div class="magic-grid">
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.Type"}}</div>
+                    <select class="select-subtype" name="system.subtype" data-type="String">
+                        {{#select system.subtype}}
+                        <option value="spell">{{localize "CTHACK.Spell"}}</option>
+                        <option value="ritual">{{localize "CTHACK.Ritual"}}</option>
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.Sanitation"}}</div>
+                    <select class="select-sanitation" name="system.sanitation" data-type="String" {{{getStyleForDice item.system.sanitation}}}>
+                        {{#select item.system.sanitation}}
+                        {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.Incantation"}}</div>
+                    <input class="input-incantation" name="system.incantation" type="text"
+                        value="{{item.system.incantation}}" />
+                </div>
+            </div>
+            <div class="description-group">
+                <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+                <div class="description-content">
+                    {{editor enrichedDescription target="system.description" button=true engine="prosemirror"
+                    owner=owner editable=editable}}
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

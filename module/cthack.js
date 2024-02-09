@@ -12,6 +12,7 @@ import { CtHackOpponentSheet } from "./actor/opponent-sheet.js";
 import { CtHackItem } from "./item/item.js";
 import { CtHackItemSheet } from "./item/item-sheet.js";
 import { CtHackArchetypeSheet } from "./item/archetype-sheet.js";
+import { CtHackMagicSheet } from "./item/magic-sheet.js";
 
 import { Macros } from "./macros.js";
 import { registerHooks } from "./hooks.js";
@@ -57,6 +58,7 @@ Hooks.once("init", async function () {
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet(SYSTEM_NAME, CtHackItemSheet, { types: ["item", "weapon", "attack", "ability", "definition"], makeDefault: true, label: "CTHACK.SheetClassItem" });
   Items.registerSheet(SYSTEM_NAME, CtHackArchetypeSheet, { types: ["archetype"], makeDefault: true, label: "CTHACK.SheetClassItem" });
+  Items.registerSheet(SYSTEM_NAME, CtHackMagicSheet, { types: ["magic"], makeDefault: true, label: "CTHACK.SheetClassItem" });
 
   // Preload Handlebars Templates
   preloadHandlebarsTemplates();

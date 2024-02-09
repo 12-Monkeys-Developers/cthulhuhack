@@ -5,10 +5,11 @@
             "opponent": "Opponent"
         },
         "Item": {
+            "archetype": "Ability",
             "item": "Item",
             "weapon": "Weapon",
             "attack": "Attack",
-            "archetype": "Ability",
+            "magic": "Magic",           
             "ability": "Archetype",
             "definition": "Definition"
         }
@@ -63,6 +64,11 @@
         "Abilities": "Special abilities",
         "Damage": "Damage",
         "DamageDice": "Damage Dice",
+        "Type": "Type",
+        "Sanitation": "Sanitation",
+        "Incantation": "Incantation",
+        "Ritual": "Ritual",
+        "Spell": "Spell",
 
         "AbilityKey": "Key",
         "AbilityUsePer": "Use Type",
