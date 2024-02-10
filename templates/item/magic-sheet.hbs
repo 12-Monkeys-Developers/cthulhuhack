@@ -18,8 +18,8 @@
                 </div>
                 <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.Sanitation"}}</div>
-                    <select class="select-sanitation" name="system.sanitation" data-type="String" {{{getStyleForDice item.system.sanitation}}}>
-                        {{#select item.system.sanitation}}
+                    <select class="select-sanitation" name="system.dice" data-type="String" {{{getStyleForDice item.system.dice}}}>
+                        {{#select item.system.dice}}
                         {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                         {{/select}}
                     </select>

@@ -153,8 +153,7 @@
       "templates": ["base"],
       "subtype": "",
       "dice": "",    
-      "incantation": "",
-      "sanitation": "d6"
+      "incantation": ""
     }
   }
 }

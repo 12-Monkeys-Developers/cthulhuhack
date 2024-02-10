@@ -164,6 +164,11 @@ export const registerHandlebarsHelpers = function() {
 		return game.i18n.localize(period);
 	});
 
+	Handlebars.registerHelper('magicTypeToString', function(str) {
+		const period = CTHACK.magicType[str];
+		return game.i18n.localize(period);
+	});
+
 	Handlebars.registerHelper('isAbilityKeyReadOnly', function(key) {
 		if (isAbilityKeyReserved(key)) {
 			return 'readonly';

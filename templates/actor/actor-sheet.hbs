@@ -1,13 +1,14 @@
+{{log 'actor-sheet' this}}
 <form class="{{cssClass}} flexcol sheet-actor" autocomplete="off">
       <header class="sheet-header">
         <div class="flex-center">
-          <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" height="100" width="100"/>
+          <img class="profile-img" src="{{data.img}}" data-edit="img" data-tooltip="{{data.name}}" height="100" width="100"/>
           {{#if (isEnabled "FortuneAvailable")}}
           <div>
           <label class="resource-label">{{localize "CTHACK.Fortune"}} : {{getFortuneValue}}</label>
             {{#if isGm}}
               {{#if (shouldDisplayFortuneUse)}}
-              <a class="fortune-use" title="{{localize "CTHACK.FortuneUse"}}"><i class="fa fa-check-circle"></i></a>
+              <a class="fortune-use" data-tooltip="{{localize "CTHACK.FortuneUse"}}"><i class="fa fa-check-circle"></i></a>
               {{/if}}
             {{/if}}
           </div>
@@ -51,7 +52,7 @@
     <nav class="sheet-tabs tabs align-center" data-group="primary">
         <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>        
         <a class="choice" data-tab="items">{{localize "CTHACK.Items"}}</a>
-        <a class="choice" data-tab="abilities">{{localize "CTHACK.Abilities"}}</a>
+        <a class="choice" data-tab="abilities">{{localize "CTHACK.AbilitiesAndMagic"}}</a>
         <a class="choice" data-tab="conditions">{{localize "CTHACK.Conditions"}}</a>
         <a class="choice" data-tab="notes">{{localize "CTHACK.Notes"}}</a>
     </nav>
@@ -72,7 +73,7 @@
                   <div>{{localize "CTHACK.ItemDiceName"}}</div>
                   <div>{{localize "CTHACK.ItemRangeName"}}</div>
                   <div class="item-controls-header">
-                    <a class="item-control item-create" title="{{localize "CTHACK.Add"}}" data-type="item" data-alt-type="weapon"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
+                    <a class="item-control item-create" data-tooltip="{{localize "CTHACK.Add"}}" data-type="item" data-alt-type="weapon"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
                   </div>
                 </li>
                 {{#each weapons as |item id|}}
@@ -84,23 +85,51 @@
             </ol>
         </div>
 
-        {{!-- Abilities Tab --}}
+        {{!-- Abilities and Magics Tab --}}
         <div class="tab abilities" data-group="primary" data-tab="abilities">
-            <ol class="items-list">
-                <li class="item-header flexrow">
-                  <div class="item-header-name">{{localize "CTHACK.Name"}}</div>
-                  <div>{{localize "CTHACK.AbilityUsePer"}}</div>
-                  <div>{{localize "CTHACK.AbilityUseValue"}}</div>
-                  <div>{{localize "CTHACK.AbilityUseLast"}}</div>
-                  <div>{{localize "CTHACK.AbilityMultiple"}}</div>
-                  <div class="item-controls-header">
-                    <a class="item-control ability-create" title="{{localize "CTHACK.Add"}}" data-type="ability"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
-                  </div>
-                </li>
+          {{!-- Abilities--}}
+          <div class="entete-tableau">
+              <div class="entete-titre">{{localize "CTHACK.Abilities"}}</div>
+              <div class="item-controls-header">
+                <a class="item-control ability-create" data-tooltip="{{localize "CTHACK.AddAbility"}}" data-type="ability"><i class="fas fa-plus"></i></a>
+              </div>
+          </div>
+          
+          {{#if (gt abilities.length 0)}}            
+            <div class="grid-abilities">
+                <div class="entete">{{localize "CTHACK.Name"}}</div>
+                <div class="entete">{{localize "CTHACK.AbilityUsePer"}}</div>
+                <div class="entete">{{localize "CTHACK.AbilityUseValue"}}</div>
+                <div class="entete">{{localize "CTHACK.AbilityUseLast"}}</div>
+                <div class="entete">{{localize "CTHACK.AbilityMultiple"}}</div>
+                <div></div>
                 {{#each abilities as |ability id|}}
-                  {{> "systems/cthack/templates/actor/parts/actor-ability.hbs" ability}}
-                {{/each}}
-            </ol>
+                      {{> "systems/cthack/templates/actor/parts/actor-ability.hbs" ability}}
+                {{/each}}      
+            </div>
+          {{/if}}
+
+          {{!-- Magic --}}
+          <div class="entete-tableau">
+                <div class="entete-titre">{{localize "CTHACK.Magic"}}</div>
+                <div class="item-controls-header">
+                    <a class="item-control item-create" data-tooltip="{{localize "CTHACK.AddMagic"}}" data-type="magic"><i class="fas fa-plus"></i></a>
+                </div>
+          </div>
+
+          {{#if (gt magics.length 0)}}   
+           <div class="grid-magics">
+                <div class="entete">{{localize "CTHACK.Name"}}</div>
+                <div class="entete">{{localize "CTHACK.MagicType"}}</div>
+                <div class="entete">{{localize "CTHACK.MagicSanity"}}</div>
+                <div class="entete">{{localize "CTHACK.MagicIncantation"}}</div>
+                <div></div>
+                {{#each magics as |item id|}}
+                    {{> "systems/cthack/templates/actor/parts/actor-magic.hbs" item}}
+                {{/each}}       
+            </div>
+          {{/if}}
+
         </div>
 
         {{!-- Conditions Tab --}}

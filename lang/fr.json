@@ -62,6 +62,8 @@
         "Conditions": "Conditions",
         "Items": "Equipement",
         "Abilities": "Capacités spéciales",
+        "AbilitiesAndMagic": "Capacités spéciales & Magie",
+        "Magic": "Magie",
         "Damage": "Dégâts",
         "DamageDice": "Dé(s) de Dégâts",        
         "Type": "Type",
@@ -86,6 +88,10 @@
         "AbilityIsCustom": "Custom",
         "AbilityAdvantageGiven": "Donne un avantage",
         "AbilityAdvantageText": "Description avantage",
+
+        "MagicType": "Type",
+        "MagicSanity": "Sanité",
+        "MagicIncantation": "Incantation",
 
         "ConditionWhen": "Condition reçue",
 
@@ -133,6 +139,9 @@
         "Delete": "Supprimer",
         "Use": "Utiliser",
         "Reset": "Réinitialiser",
+
+        "AddAbitity": "Ajouter une capacité",
+        "AddMagic": "Ajouter un sortilège ou un rituel",
 
         "Attributes": "Attributs",
 

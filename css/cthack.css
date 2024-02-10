@@ -447,6 +447,87 @@ i.cthack {
 .cthack .resource-content-archetype select {
   color: #fff;
 }
+.cthack .entete-tableau {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 5px;
+}
+.cthack .entete-tableau .entete-titre {
+  font-size: 1em;
+}
+.cthack .grid-abilities {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  row-gap: 5px;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.cthack .grid-abilities .entete {
+  text-transform: uppercase;
+}
+.cthack .grid-abilities .item-bloc {
+  display: flex;
+  text-align: left;
+}
+.cthack .grid-abilities .item-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+.cthack .grid-abilities .item-controls {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 5px;
+}
+.cthack .grid-abilities .item-name,
+.cthack .grid-abilities .item-element-text {
+  display: flex;
+  justify-content: center;
+  /* Centrer horizontalement */
+  align-items: center;
+  /* Centrer verticalement */
+  height: 100%;
+}
+.cthack .grid-magics {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 5px;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.cthack .grid-magics .entete {
+  text-transform: uppercase;
+}
+.cthack .grid-magics .item-bloc {
+  display: flex;
+  text-align: left;
+}
+.cthack .grid-magics .item-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+.cthack .grid-magics .item-controls {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 5px;
+}
+.cthack .grid-magics .item-name,
+.cthack .grid-magics .item-element-text {
+  display: flex;
+  justify-content: center;
+  /* Centrer horizontalement */
+  align-items: center;
+  /* Centrer verticalement */
+  height: 100%;
+}
 .cthack .sheet-opponent {
   margin: 10px 20px;
 }

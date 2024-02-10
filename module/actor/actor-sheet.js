@@ -30,6 +30,7 @@ export class CtHackActorSheet extends ActorSheet {
 
 		context.abilities = context.items.filter(function(item) { return item.type === 'ability';});
 		context.weapons = context.items.filter(function(item) { return item.type === 'weapon';});
+		context.magics = context.items.filter(function(item) { return item.type === 'magic';});
 		context.otheritems = context.items.filter(function(item) { return item.type === 'item';});
 		context.conditions = context.items.filter(function(item) { return item.type === 'definition';});
 
@@ -128,6 +129,7 @@ export class CtHackActorSheet extends ActorSheet {
 			case 'attack':
 			case 'item':
 			case 'weapon':
+			case 'magic':
 				return await this._onDropStandardItem(itemData);
 			case 'definition':
 				return await this._onDropDefinitionItem(itemData);

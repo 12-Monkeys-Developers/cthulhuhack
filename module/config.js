@@ -70,6 +70,11 @@ CTHACK.abilityUsePeriod = {
 	Fight: 'CTHACK.AbilityUsePerFight'
 };
 
+CTHACK.magicType = {
+	spell: 'CTHACK.Spell',
+	ritual: 'CTHACK.Ritual',
+}
+
 CTHACK.outofaction = {
 	'OOA-DEA': 'CTHACK.OutOfAction.Dea',
 	'OOA-BRO': 'CTHACK.OutOfAction.Bro',

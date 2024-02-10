@@ -62,6 +62,8 @@
         "Conditions": "Conditions",
         "Items": "Equipment",
         "Abilities": "Special abilities",
+        "AbilitiesAndMagic": "Special abilities & Magic",
+        "Magic": "Magic",
         "Damage": "Damage",
         "DamageDice": "Damage Dice",
         "Type": "Type",
@@ -86,6 +88,9 @@
         "AbilityIsCustom": "Custom",
         "AbilityAdvantageGiven": "Advantage given",
         "AbilityAdvantageText": "Advantage description",
+        "MagicType": "Type",
+        "MagicSanity": "Sanity",
+        "MagicIncantation": "Incantation",
 
         "ConditionWhen": "Condition received",
 
@@ -132,7 +137,9 @@
         "Edit": "Edit",
         "Delete": "Delete",
         "Use": "Use",
-        "Reset": "Reset",
+        "Reset": "Reset", 
+        "AddAbitity": "Add an ability",
+        "AddMagic": "Add a spell or a ritual",
 
         "Attributes": "Attributes",
 
