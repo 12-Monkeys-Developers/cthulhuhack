@@ -7,7 +7,7 @@ export class CtHackArchetypeSheet extends ItemSheet {
 	static get defaultOptions() {
 		let width = 600;
 		let height = 860;
-		return mergeObject(super.defaultOptions, {
+		return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: [ 'cthack', 'sheet', 'item', 'sheet-archetype' ],
 			width: width,
 			height: height

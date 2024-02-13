@@ -565,4 +565,9 @@ export class CtHackActor extends Actor {
 
 		return availableAttributes;
 	}
+
+	get isUnlocked() {
+		if (this.getFlag(game.system.id, "SheetUnlocked")) return true;
+		return false;
+	}
 }

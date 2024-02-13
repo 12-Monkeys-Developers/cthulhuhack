@@ -20,6 +20,8 @@ import { registerHooks } from "./hooks.js";
 import { GMManager } from "./app/gm-manager.js";
 import { initControlButtons } from "./control-buttons.js";
 
+import { CtHackOpponentSheetV2 } from "./actor/opponent-sheet-2.js";
+
 Hooks.once("init", async function () {
   console.log(LOG_HEAD + 'Initialisation du système Cthulhu Hack');
   console.log(CTHACK.ASCII);
@@ -55,6 +57,8 @@ Hooks.once("init", async function () {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet(SYSTEM_NAME, CtHackActorSheet, { types: ["character"], makeDefault: true, label: "CTHACK.SheetClassCharacter" });
   Actors.registerSheet(SYSTEM_NAME, CtHackOpponentSheet, { types: ["opponent"], makeDefault: true, label: "CTHACK.SheetClassOpponent" });
+  Actors.registerSheet(SYSTEM_NAME, CtHackOpponentSheetV2, { types: ["opponent"], label: "PNJ v2" });
+
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet(SYSTEM_NAME, CtHackItemSheet, { types: ["item", "weapon", "attack", "ability", "definition"], makeDefault: true, label: "CTHACK.SheetClassItem" });
   Items.registerSheet(SYSTEM_NAME, CtHackArchetypeSheet, { types: ["archetype"], makeDefault: true, label: "CTHACK.SheetClassItem" });

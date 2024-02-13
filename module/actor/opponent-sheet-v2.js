@@ -2,13 +2,13 @@
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class CtHackOpponentSheet extends ActorSheet {
+export class CtHackOpponentSheetV2 extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["cthack", "sheet", "actor", "opponent"],
-      width: 700,
-      height: 480,
+      classes: ["cthack", "sheet", "actor", "opponentv2"],
+      width: 430,
+      height: 700,
       dragDrop: [{ dragSelector: ".items-list .item", dropSelector: null }],
     });
   }
@@ -17,14 +17,16 @@ export class CtHackOpponentSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    return "systems/cthack/templates/actor/opponent-sheet.hbs";
+    return "systems/cthack/templates/actor/opponent-sheet-2.hbs";
   }
 
   /** @override */
   async getData(options) {
     const context = super.getData(options);
 
-    context.attacks = context.items.filter(i=>i.type === "attack");
+    context.editable = this.isEditable && this.actor.isUnlocked;
+    context.attacks = this.actor.items.filter((i) => i.type === "attack");
+    context.magics = this.actor.items.filter((i) => i.type === "magic");
     context.enrichedDescription = await TextEditor.enrichHTML(this.actor.system.description, { async: true });
 
     return context;
@@ -41,6 +43,8 @@ export class CtHackOpponentSheet extends ActorSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
+
+    html.find(".sheet-lock").click(this._onSheetLock.bind(this));
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
@@ -62,6 +66,81 @@ export class CtHackOpponentSheet extends ActorSheet {
 
     // Roll for item in inventory
     html.find(".fa-dice-d20").click(this._onAttackDamageRoll.bind(this));
+
+    // Activate context menu
+    this._contextOpponentMenu(html);
+
+    html.find(".share").click(this._onShareImage.bind(this));
+    html.find(".share").on("contextmenu", this._onSearchActor.bind(this));
+  }
+
+  _contextOpponentMenu(html) {
+    ContextMenu.create(this, html, ".opponent-contextmenu", this._getEntryContextOptions());
+  }
+
+  _getEntryContextOptions() {
+    return [
+      {
+        name: game.i18n.localize("CTHACK.ContextMenuEdit"),
+        icon: '<i class="fas fa-edit"></i>',
+        condition: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          return item.isOwner;
+        },
+        callback: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          item.sheet.render(true);
+        },
+      },
+      {
+        name: game.i18n.localize("CTHACK.ContextMenuDelete"),
+        icon: '<i class="fas fa-trash"></i>',
+        condition: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          return item.isOwner;
+        },
+        callback: async (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
+        },
+      },
+    ];
+  }
+
+  _onShareImage(event) {
+    event.preventDefault();
+    const imagePath = event.currentTarget.dataset.image;
+    const characterName = event.currentTarget.dataset.name;
+
+    const ip = new ImagePopout(imagePath, { title: characterName });
+
+    // Display the image popout
+    ip.render(true);
+  }
+
+  async  _onSearchActor(event) {
+ event.preventDefault();
+    const characterName = event.currentTarget.dataset.name;
+    await this.patternSearch(characterName);
+  }
+
+  async patternSearch(searchPattern) {
+
+    let resultCollection = [];
+    game.journal.forEach((doc) => {
+      resultCollection.push(...doc.pages.search({ query: searchPattern }));
+    });
+
+    const htmlChat = await renderTemplate("systems/cthack/templates/chat/search-result.hbs", {
+      resultCollection: resultCollection,
+      pattern: searchPattern,
+    });
+    const chatData = {
+      content: htmlChat,
+      whisper: [game.user],
+    };
+    ChatMessage.create(chatData);
+    return;
   }
 
   /**
@@ -149,5 +228,13 @@ export class CtHackOpponentSheet extends ActorSheet {
     let item = this.actor.items.get(itemId);
 
     this.actor.rollAttackDamageRoll(item, { event: event });
+  }
+
+  async _onSheetLock(event) {
+    event.preventDefault();
+    let flagData = await this.actor.getFlag(game.system.id, "SheetUnlocked");
+    if (flagData) await this.actor.unsetFlag(game.system.id, "SheetUnlocked");
+    else await this.actor.setFlag(game.system.id, "SheetUnlocked", "SheetUnlocked");
+    this.actor.sheet.render(true);
   }
 }

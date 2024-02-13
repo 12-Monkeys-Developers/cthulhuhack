@@ -21,7 +21,7 @@ export class GMManager extends Application {
     }
 
     static get defaultOptions() {
-      return mergeObject(super.defaultOptions, {
+      return foundry.utils.mergeObject(super.defaultOptions, {
         template: GM_MANAGER_TEMPLATE,
         title:  game.i18n.localize('GMMANAGER.Title'),
         top: 100,

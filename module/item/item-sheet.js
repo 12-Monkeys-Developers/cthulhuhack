@@ -5,21 +5,17 @@
 export class CtHackItemSheet extends ItemSheet {
 	/** @override */
 	static get defaultOptions() {
-		let width = 520;
-		let height = 580;
-		let tabs = [ { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' } ];
-		return mergeObject(super.defaultOptions, {
+		return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: [ 'cthack', 'sheet', 'item' ],
-			width: width,
-			height: height,
-			tabs: tabs
+			width: 520,
+			height: 580,
+			tabs: [ { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' } ]
 		});
 	}
 
 	/** @override */
 	get template() {
-		const path = 'systems/cthack/templates/item';
-		return `${path}/${this.item.type}-sheet.hbs`;
+		return `systems/cthack/templates/item/${this.item.type}-sheet.hbs`;
 	}
 
 	/** @override */
@@ -31,13 +27,13 @@ export class CtHackItemSheet extends ItemSheet {
 		return context;
 	}
 
-	/** @override */
+	/** @override
 	setPosition(options = {}) {
 		const position = super.setPosition(options);
 		const sheetBody = this.element.find('.sheet-body');
 		const bodyHeight = position.height - 52;
 		sheetBody.css('height', bodyHeight);
 		return position;
-	}
+	} */
 
 }

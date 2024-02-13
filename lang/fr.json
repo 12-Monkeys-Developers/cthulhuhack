@@ -48,8 +48,10 @@
         "Sanity": "Santé mentale",
         "SanityDesc": "Eviter de sombrer dans la folie",
         "HitPoints": "Points de Vie",    
+        "HitPointsShort": "PV",
         "Hit": "Dé de Vie",  
         "HitDice": "Dé de Vie",
+        "HitDiceShort": "DV",
         "Wealth": "Richesse",
         "WealthDice": "Dé de richesse",
         "Misc": "Divers",
@@ -177,7 +179,9 @@
         "MaterialRollDetails": "Jet pour {material}",
 
         "OpponentArmor": "Points d'Armure",
+        "OpponentArmorShort": "PA",
         "OpponentTouchMalus": "Malus au toucher",
+        "OpponentTouchMalusShort": "Malus",
         "OpponentAttacks": "Attaques",
         "OpponentAbilities": "Capacités spéciales",
 
@@ -212,7 +216,9 @@
         },
         "GMManager": {
             "Title": "Statut des joueurs"
-        }
+        },
+        "ContextMenuEdit": "Editer",
+        "ContextMenuDelete": "Supprimer"
     },
 
     "SETTINGS": {

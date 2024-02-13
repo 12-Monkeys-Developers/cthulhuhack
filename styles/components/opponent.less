@@ -1,20 +1,199 @@
 .sheet-opponent {
-    margin: 10px 20px;
-    
-    .editor {
-        min-height: 50px;
-    }
+  margin: 10px 20px;
 
-    .charname {
-        border: 0;
-    }
-
-    .flexrow {
-        border: 0;
-    }
-
-    label {
-        flex: 3;
-    }
-
+  .editor {
+    min-height: 50px;
   }
+
+  .charname {
+    border: 0;
+  }
+
+  .flexrow {
+    border: 0;
+  }
+
+  label {
+    flex: 3;
+  }
+}
+
+&.sheet.actor.opponentv2 {
+  display: flex;
+  flex-direction: column;
+  .sheet-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    .opponent-image {
+      grid-row-start: 1;
+      grid-row-end: 2;
+      grid-column-start: 1;
+      grid-column-end: 5;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      img {
+        height: 300px;
+        width: auto;
+        margin: 0;
+        margin: 10px 0 10px 0;
+      }
+    }
+    .sheet-lock {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 15px;
+      font-size: 0.8em;
+    }
+    .character {
+      grid-row-start: 2;
+      grid-row-end: 3;
+      grid-column-start: 1;
+      grid-column-end: 5;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      text-transform: uppercase;
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+      padding: 5px 0 5px 0;
+    }
+    .data-group {
+      border: none;
+      font-size: 1rem;
+      label {
+        padding-right: 5px;
+      }
+      .input-editable {
+        border: 1px solid #782e22;
+        width: 30px;
+        text-align: center;
+      }
+    }
+    .short-description {
+      grid-row-start: 3;
+      grid-row-end: 4;
+      grid-column-start: 1;
+      grid-column-end: 5;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      padding: 5px 0 5px 0;
+      font-style: italic;
+    }
+    .hitdice {
+      grid-row-start: 4;
+      grid-row-end: 5;
+      grid-column-start: 1;
+      grid-column-end: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      select {
+        color: #fff;
+      }
+      .selectHitDice {
+        border: 1px solid #782e22;
+        width: 30px;
+        height: var(--form-field-height);
+        text-align: center;
+      }
+    }
+    .hp {
+      grid-row-start: 4;
+      grid-row-end: 5;
+      grid-column-start: 2;
+      grid-column-end: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .hp-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .hp-max-editable {
+          width: 30px;
+          text-align: center;
+        }
+        .hp-max {
+          width: 30px;
+          text-align: center;
+        }
+      }
+    }
+    .armor {
+      grid-row-start: 4;
+      grid-row-end: 5;
+      grid-column-start: 3;
+      grid-column-end: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      input {
+        width: 20px;
+      }
+    }
+    .malus {
+      grid-row-start: 4;
+      grid-row-end: 5;
+      grid-column-start: 4;
+      grid-column-end: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      label {
+        text-transform: lowercase;
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+      input {
+        width: 20px;
+      }
+    }
+  }
+
+  .sheet-body {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    .description {
+      border: none;
+      font-size: 1rem;
+    }
+    .attacks {
+      display: flex;
+      flex-direction: column;
+      .title {
+        border: none;
+        font-size: 1em;
+        font-weight: bold;
+        padding: 5px 0 5px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+          padding-left: 10px;
+          font-size: 0.8em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      .grid-attacks {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        font-size: var(--font-size-16);
+      }
+      .grid-attacks-editable {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  }
+  #context-menu {
+    width: 50px;
+  }
+}

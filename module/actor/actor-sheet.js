@@ -10,7 +10,7 @@ export class CtHackActorSheet extends ActorSheet {
 	//#region Overrided methods
 	/** @override */
 	static get defaultOptions() {
-		return mergeObject(super.defaultOptions, {
+		return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: [ 'cthack', 'sheet', 'actor', 'character' ],
 			width: 1100,
 			height: 860,
@@ -126,7 +126,6 @@ export class CtHackActorSheet extends ActorSheet {
 				return await this._onDropArchetypeItem(itemData);
 			case 'ability':
 				return await this._onDropAbilityItem(itemData);
-			case 'attack':
 			case 'item':
 			case 'weapon':
 			case 'magic':
@@ -328,8 +327,8 @@ export class CtHackActorSheet extends ActorSheet {
 	 * @private
 	 * 
 	 * @param {Object} data   The data transfer extracted from the event
-	 * 
-	 * @return {Object}       EmbeddedDocument Item data to create
+	 * Item of type 'attack' for npc, 'item', 'weapon', 'magic'for pc
+	 * @return {Object} EmbeddedDocument Item data to create
 	 */	  
 	async _onDropStandardItem(data) {
 		if (!this.actor.isOwner) return false;

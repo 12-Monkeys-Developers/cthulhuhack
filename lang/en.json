@@ -48,8 +48,10 @@
         "Sanity": "Sanity",
         "SanityDesc": "Avoid falling into madness",
         "HitPoints": "Hit Points",  
+        "HitPointsShort": "HP",
         "Hit": "Hit",
         "HitDice": "Hit Dice",
+        "HitDiceShort": "HD",
         "Wealth": "Wealth",
         "WealthDice": "Wealth Dice",     
         "Misc": "Miscellaneous",   
@@ -175,9 +177,11 @@
         "MaterialRollDetails": "Roll for {material}",
         
         "OpponentArmor": "Armor Points",
+        "OpponentArmorShort": "AP",
         "OpponentTouchMalus": "Touch Penalty",
+        "OpponentTouchMalusShort": "Penalty",
         "OpponentAttacks": "Attacks",
-        "OpponentAbilities": "Special Abilities",
+        "OpponentAbilities": "Special Abilities",        
 
         "OutOfAction": {
             "Dea": "Dead",
@@ -211,7 +215,9 @@
 
         "GMManager": {
             "Title": "Players Status"
-        }
+        },
+        "ContextMenuEdit": "Edit",
+        "ContextMenuDelete": "Delete"
     },
 
     "SETTINGS": {

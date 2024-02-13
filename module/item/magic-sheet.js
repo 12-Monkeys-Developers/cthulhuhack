@@ -5,7 +5,7 @@
 export class CtHackMagicSheet extends ItemSheet {
 	/** @override */
 	static get defaultOptions() {
-		return mergeObject(super.defaultOptions, {
+		return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: [ 'cthack', 'sheet', 'item', 'magic' ],
 			width: 400,
 			height: 400
