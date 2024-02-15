@@ -9,7 +9,7 @@ export class CtHackItem extends Item {
         details += `${this.system.damage} (dégâts)&nbsp;&nbsp;`;
       }
       if (this.system.damageDice !== "") {
-        details += `<i class="fas fa-dice-d20 rollable">&nbsp;&nbsp;</i>  ${this.system.damageDice} (dégâts)`;
+        details += `<i class="fas fa-dice-d20 attack rollable">&nbsp;&nbsp;</i>  ${this.system.damageDice} (dégâts)`;
       }
       return details;
     }

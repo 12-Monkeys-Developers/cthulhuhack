@@ -58,6 +58,7 @@
         "ArmedDamage": "Dégât(s) armé",
         "UnarmedDamage": "Dégât(s) sans arme",
         "Description": "Description",
+        "ShortDescription": "Description courte",
         "Biography": "Biographie",
         "Notes": "Notes",
         "Condition": "Condition(s)",
@@ -144,6 +145,7 @@
 
         "AddAbitity": "Ajouter une capacité",
         "AddMagic": "Ajouter un sortilège ou un rituel",
+        "AddAttack": "Ajouter une attaque",
 
         "Attributes": "Attributs",
 
@@ -183,6 +185,7 @@
         "OpponentTouchMalus": "Malus au toucher",
         "OpponentTouchMalusShort": "Malus",
         "OpponentAttacks": "Attaques",
+        "OpponentMagics": "Magie",
         "OpponentAbilities": "Capacités spéciales",
 
         "OutOfAction": {

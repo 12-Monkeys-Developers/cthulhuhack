@@ -28,6 +28,8 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     context.attacks = this.actor.items.filter((i) => i.type === "attack");
     context.magics = this.actor.items.filter((i) => i.type === "magic");
     context.enrichedDescription = await TextEditor.enrichHTML(this.actor.system.description, { async: true });
+    context.hasImage = this.actor.img && this.actor.img !== "icons/svg/mystery-man.svg";
+    context.hasShortDescription = !!this.actor.system.description;
 
     return context;
   }
@@ -64,14 +66,16 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
 
     html.find(".selectHitDice").change(this._onChangeHitDice.bind(this));
 
-    // Roll for item in inventory
-    html.find(".fa-dice-d20").click(this._onAttackDamageRoll.bind(this));
+    // Roll for attack
+    html.find(".fa-dice-d20.attack").click(this._onAttackDamageRoll.bind(this));
+    // Roll for magic
+    html.find(".fa-dice-d20.magic").click(this._onMagicRoll.bind(this));
 
     // Activate context menu
     this._contextOpponentMenu(html);
 
     html.find(".share").click(this._onShareImage.bind(this));
-    html.find(".share").on("contextmenu", this._onSearchActor.bind(this));
+    html.find(".name").on("contextmenu", this._onSearchActor.bind(this));
   }
 
   _contextOpponentMenu(html) {
@@ -107,6 +111,19 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     ];
   }
 
+  async _onMagicRoll(event) {
+    event.preventDefault();
+
+    const li = $(event.currentTarget).parents(".item-dice");
+    const itemId = li.data("item-id");
+    let item = this.actor.items.get(itemId);
+
+    await this.actor.rollMaterial(item, { event: event });
+
+    // Render to refresh in case of resource lost
+    this.actor.sheet.render(true);
+  }
+
   _onShareImage(event) {
     event.preventDefault();
     const imagePath = event.currentTarget.dataset.image;
@@ -118,14 +135,13 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     ip.render(true);
   }
 
-  async  _onSearchActor(event) {
- event.preventDefault();
+  async _onSearchActor(event) {
+    event.preventDefault();
     const characterName = event.currentTarget.dataset.name;
     await this.patternSearch(characterName);
   }
 
   async patternSearch(searchPattern) {
-
     let resultCollection = [];
     game.journal.forEach((doc) => {
       resultCollection.push(...doc.pages.search({ query: searchPattern }));
@@ -223,13 +239,17 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
    * @private
    */
   _onAttackDamageRoll(event) {
-    const li = $(event.currentTarget).parents(".item");
+    const li = $(event.currentTarget).parents(".item-details");
     const itemId = li.data("itemId");
     let item = this.actor.items.get(itemId);
 
     this.actor.rollAttackDamageRoll(item, { event: event });
   }
 
+  /**
+   * Lock or unlock the sheet
+   * @param {*} event
+   */
   async _onSheetLock(event) {
     event.preventDefault();
     let flagData = await this.actor.getFlag(game.system.id, "SheetUnlocked");

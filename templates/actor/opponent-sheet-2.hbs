@@ -1,19 +1,21 @@
 <form class="{{cssClass}}" autocomplete="off">
   {{log "opponent-v2" this}}
   <header class="sheet-header">
-    
+
     <div class="opponent-image">
-         {{#if editable}}
-            <img src="{{data.img}}" data-edit="img" data-tooltip="Clic gauche pour sélectionner une image"/>
-        {{else}}
-            <img class="share" src="{{actor.img}}" data-tooltip="Clic gauche pour montrer l'image, clic droit pour rechercher le nom dans les journaux" data-image="{{actor.img}}" data-name="{{actor.name}}"/>
+      {{#if editable}}
+        <img src="{{data.img}}" data-edit="img" data-tooltip="Clic gauche pour sélectionner une image" />
+      {{else}}
+        {{#if hasImage}}
+          <img class="share" src="{{actor.img}}" data-tooltip="Clic gauche pour montrer l'image" data-image="{{actor.img}}" />
         {{/if}}
+      {{/if}}
     </div>
 
     <div class="character">
       <div class="name">
         {{#if editable}}
-          <input name="name" type="text" value="{{actor.name}}" />
+          <input name="name" type="text" value="{{actor.name}}" data-name="{{actor.name}}" />
         {{else}}
           <div>{{actor.name}}</div>
         {{/if}}
@@ -28,7 +30,13 @@
     </div>
 
     <div class="short-description">
-      {{#if editable}}<input name="system.shortDescription" type="text" value="{{actor.system.shortDescription}}" />{{else}}{{actor.system.shortDescription}}{{/if}}
+      {{#if editable}}<input
+          class="input-editable"
+          name="system.shortDescription"
+          type="text"
+          value="{{actor.system.shortDescription}}"
+          placeholder="{{localize 'CTHACK.HitDiceShort'}}"
+        />{{else}}{{actor.system.shortDescription}}{{/if}}
     </div>
 
     <div class="data-group hitdice">
@@ -56,12 +64,12 @@
     </div>
 
     <div class="data-group hp">
-      <label for="system.hp.value" class="resource-label" data-tooltip="{{localize 'CTHACK.HitPointsShort'}}">{{localize "CTHACK.HitPointsShort"}} :</label>
+      <label for="system.hp.value" class="resource-label" data-tooltip="{{localize 'CTHACK.HitPoints'}}">{{localize "CTHACK.HitPointsShort"}} :</label>
       <div class="hp-input">
         <input class="input-editable" type="text" name="system.hp.value" value="{{actor.system.hp.value}}" data-dtype="Number" />
         /
         {{#if editable}}
-          <input class="hp-max-editable" type="text" name="system.hp.max" value="{{actor.system.hp.max}}" data-dtype="Number" />
+          <input class="input-editable" type="text" name="system.hp.max" value="{{actor.system.hp.max}}" data-dtype="Number" />
         {{else}}
           <div class="hp-max">
             {{actor.system.hp.max}}
@@ -91,34 +99,63 @@
 
   {{! Sheet Body }}
   <section class="sheet-body">
-    <div class="description">
-      {{editor enrichedDescription target="system.description" button=true owner=owner editable=editable}}
-    </div>
+
+    {{#if editable}}
+      <div class="description-editable">
+        <div class="title">{{localize "CTHACK.Description"}}</div>
+        {{editor enrichedDescription target="system.description" engine="prosemirror" button=true owner=owner editable=editable}}
+      </div>
+    {{else}}
+      <div class="description">
+        {{editor enrichedDescription target="system.description" engine="prosemirror" button=true owner=owner editable=editable}}
+      </div>
+    {{/if}}
 
     {{#if editable}}
       <div class="attacks">
         <div class="title">{{localize "CTHACK.OpponentAttacks"}}
-          <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.Add'}}" data-type="attack"><i class="fas fa-plus"></i></a></div>
-        <div class="grid-attacks-editable">
+          <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.AddAttack'}}" data-type="attack"><i class="fas fa-plus"></i></a></div>
+        <div class="grid-attacks">
           {{#each attacks as |attack id|}}
-            <div class="item-name">{{name}}</div>
-            <input name="system.damage" type="text" value="{{attack.system.damage}}" />
-            <div class="item-element-text attack-dice" data-resource="attackDamage" data-item-id="{{_id}}">
-              {{#if (ne system.damageDice "")}}<i class="fas fa-dice-d20 rollable">&nbsp;&nbsp;</i>{{system.damageDice}}
-              {{/if}}
-            </div>
+            <div class="item-name opponent-contextmenu" data-item-id="{{attack._id}}">{{attack.name}}</div>
+            <div class="item-details opponent-contextmenu" data-item-id="{{attack._id}}">{{{attack.details}}}</div>
           {{/each}}
         </div>
       </div>
     {{else}}
       {{#if (gt attacks.length 0)}}
-        {{log "attacks" attacks}}
         <div class="attacks">
           <div class="title">{{localize "CTHACK.OpponentAttacks"}}</div>
           <div class="grid-attacks">
             {{#each attacks as |attack id|}}
               <div class="item-name opponent-contextmenu" data-item-id="{{attack._id}}">{{attack.name}}</div>
-              <div class="item-element-text opponent-contextmenu" data-item-id="{{attack._id}}">{{{attack.details}}}</div>
+              <div class="item-details opponent-contextmenu" data-item-id="{{attack._id}}">{{{attack.details}}}</div>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+    {{/if}}
+
+    {{#if editable}}
+      <div class="magics">
+        <div class="title">{{localize "CTHACK.OpponentMagics"}}
+          <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.AddMagic'}}" data-type="magic"><i class="fas fa-plus"></i></a></div>
+        <div class="grid-magics">
+          {{#each magics as |magic id|}}
+            <div class="item-name opponent-contextmenu" data-item-id="{{magic._id}}">{{magic.name}}</div>
+          {{/each}}
+        </div>
+      </div>
+    {{else}}
+      {{#if (gt magics.length 0)}}
+        <div class="magics">
+          <div class="title">{{localize "CTHACK.OpponentMagics"}}</div>
+          <div class="grid-magics">
+            {{#each magics as |magic id|}}
+              <div class="item-name opponent-contextmenu" data-item-id="{{magic._id}}">{{{magic.name}}}</div>
+              <div class="item-subtype opponent-contextmenu" data-item-id="{{magic._id}}">{{magic.system.subtype}}</div>
+              <div class="item-dice opponent-contextmenu" data-item-id="{{magic._id}}"><i class="fas fa-dice-d20 magic rollable">&nbsp;&nbsp;</i>{{magic.system.dice}}</div>
+              <div class="item-incantation opponent-contextmenu" data-item-id="{{magic._id}}">{{magic.system.incantation}}</div>
             {{/each}}
           </div>
         </div>

@@ -57,7 +57,7 @@ Hooks.once("init", async function () {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet(SYSTEM_NAME, CtHackActorSheet, { types: ["character"], makeDefault: true, label: "CTHACK.SheetClassCharacter" });
   Actors.registerSheet(SYSTEM_NAME, CtHackOpponentSheet, { types: ["opponent"], makeDefault: true, label: "CTHACK.SheetClassOpponent" });
-  Actors.registerSheet(SYSTEM_NAME, CtHackOpponentSheetV2, { types: ["opponent"], label: "PNJ v2" });
+  Actors.registerSheet(SYSTEM_NAME, CtHackOpponentSheetV2, { types: ["opponent"], label: "Adversaire v2" });
 
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet(SYSTEM_NAME, CtHackItemSheet, { types: ["item", "weapon", "attack", "ability", "definition"], makeDefault: true, label: "CTHACK.SheetClassItem" });

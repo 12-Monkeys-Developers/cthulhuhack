@@ -1,0 +1,9 @@
+<div class="cabinet-chat {{cssClass}}">
+  <h3>{{localize "CDM.SEARCHTOOL.chat_intro"}}</h3>
+  <div class="motif">{{localize "CDM.SEARCHTOOL.chat_text"}}{{pattern}}</div>
+  <div>
+    {{#each resultCollection as |page|}}
+      @UUID[JournalEntry.{{page.parent._id}}.JournalEntryPage.{{page._id}}]<br />
+    {{/each}}
+  </div>
+</div>

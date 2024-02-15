@@ -58,6 +58,7 @@
         "ArmedDamage": "Armed damage",
         "UnarmedDamage": "Unarmed damage",
         "Description": "Description",
+        "ShortDescription": "ShortDescription",
         "Biography": "Biography",
         "Notes": "Notes",
         "Condition": "Condition(s)",
@@ -140,8 +141,10 @@
         "Delete": "Delete",
         "Use": "Use",
         "Reset": "Reset", 
+        
         "AddAbitity": "Add an ability",
         "AddMagic": "Add a spell or a ritual",
+        "AddAttack": "Add an attack",
 
         "Attributes": "Attributes",
 
@@ -181,6 +184,7 @@
         "OpponentTouchMalus": "Touch Penalty",
         "OpponentTouchMalusShort": "Penalty",
         "OpponentAttacks": "Attacks",
+        "OpponentMagics": "Magic",
         "OpponentAbilities": "Special Abilities",        
 
         "OutOfAction": {
