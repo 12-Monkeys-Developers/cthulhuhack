@@ -22,8 +22,11 @@ import { initControlButtons } from "./control-buttons.js";
 
 import { CtHackOpponentSheetV2 } from "./actor/opponent-sheet-2.js";
 
+// Import modules
+import * as models from "./data/_module.mjs";
+
 Hooks.once("init", async function () {
-  console.log(LOG_HEAD + 'Initialisation du système Cthulhu Hack');
+  console.log(LOG_HEAD + "Initialisation du système Cthulhu Hack");
   console.log(CTHACK.ASCII);
 
   game.cthack = {
@@ -51,7 +54,17 @@ Hooks.once("init", async function () {
 
   // Define custom Entity classes
   CONFIG.Actor.documentClass = CtHackActor;
+
   CONFIG.Item.documentClass = CtHackItem;
+  CONFIG.Item.dataModels = {
+    ability: models.CtHackAbility,
+    archetype: models.CtHackArchetype,
+    attack: models.CtHackAttack,
+    definition: models.CtHackDefinition,
+    item: models.CtHackItem,
+    magic: models.CtHackMagic,
+    weapon: models.CtHackWeapon,
+  };
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
@@ -82,43 +95,43 @@ Hooks.once("init", async function () {
   // Game Manager
   game.cthack.gmManager = new GMManager();
 
-  console.log(LOG_HEAD + 'Système Cthulhu Hack initialisé');
+  console.log(LOG_HEAD + "Système Cthulhu Hack initialisé");
 });
 
 // Register world usage statistics
 function registerWorldCount(registerKey) {
   if (game.user.isGM) {
-    let worldKey = game.settings.get(registerKey,"worldKey");
+    let worldKey = game.settings.get(registerKey, "worldKey");
     if (worldKey == undefined || worldKey == "") {
       worldKey = randomID(32);
       game.settings.set(registerKey, "worldKey", worldKey);
     }
 
     // Simple API counter
-	const worldData = {
-		"register_key": registerKey,
-		"world_key": worldKey,
-		"foundry_version": `${game.release.generation}.${game.release.build}`,
-		"system_name": game.system.id,
-		"system_version": game.system.version
-	}
+    const worldData = {
+      register_key: registerKey,
+      world_key: worldKey,
+      foundry_version: `${game.release.generation}.${game.release.build}`,
+      system_name: game.system.id,
+      system_version: game.system.version,
+    };
 
     let apiURL = "https://worlds.qawstats.info/worlds-counter";
     $.ajax({
-		url: apiURL,
-		type: 'POST',
-		data: JSON.stringify(worldData),
-		contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-		async: false
-	  });
+      url: apiURL,
+      type: "POST",
+      data: JSON.stringify(worldData),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      async: false,
+    });
   }
 }
 
-Hooks.once("ready", async function() {
+Hooks.once("ready", async function () {
   // console.log(LOG_HEAD + 'Système Cthulhu Hack Ready - Start');
   if (!DEV_MODE) {
-    registerWorldCount('cthack');
+    registerWorldCount("cthack");
   }
-  console.log(LOG_HEAD + 'Système Cthulhu Hack Ready - Finished');
+  console.log(LOG_HEAD + "Système Cthulhu Hack Ready - Finished");
 });
