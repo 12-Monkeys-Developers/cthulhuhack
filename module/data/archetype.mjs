@@ -1,8 +1,10 @@
-export default class CtHackArchetype extends foundry.abstract.DataModel {
+import CommonItem from "./common-item.mjs";
+
+export default class CtHackArchetype extends CommonItem {
   static defineSchema() {
     const fields = foundry.data.fields;
-    const schema = {};
-    schema.description = new fields.HTMLField({ required: false, blank: true, textSearch: true });
+    const common = super.defineSchema();
+    const schema = { ...common };
     schema.flashlights = new fields.StringField({ required: true, nullable: false, initial: "d6" });
     schema.smokes = new fields.StringField({ required: true, nullable: false, initial: "d6" });
     schema.hitdice = new fields.StringField({ required: true, nullable: false, initial: "d6" });

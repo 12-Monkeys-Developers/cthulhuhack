@@ -19,13 +19,13 @@ export const preloadHandlebarsTemplates = async function() {
 		'systems/cthack/templates/actor/parts/opponent-attack.hbs',
 
 		// ITEM
-		'systems/cthack/templates/item/ability-sheet.hbs',
-		'systems/cthack/templates/item/archetype-sheet.hbs',
-		'systems/cthack/templates/item/attack-sheet.hbs',
-		'systems/cthack/templates/item/definition-sheet.hbs',
-		'systems/cthack/templates/item/item-sheet.hbs',
-		'systems/cthack/templates/item/weapon-sheet.hbs',
-		'systems/cthack/templates/item/magic-sheet.hbs',
+		'systems/cthack/templates/sheets/ability.hbs',
+		'systems/cthack/templates/sheets/archetype.hbs',
+		'systems/cthack/templates/sheets/attack.hbs',
+		'systems/cthack/templates/sheets/definition.hbs',
+		'systems/cthack/templates/sheets/item.hbs',
+		'systems/cthack/templates/sheets/weapon.hbs',
+		'systems/cthack/templates/sheets/magic.hbs',
 		
 		// DICE
 		'systems/cthack/templates/parts/dice-sides-options-value.hbs',

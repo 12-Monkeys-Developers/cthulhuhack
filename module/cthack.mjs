@@ -9,10 +9,7 @@ import { CthackUtils } from "./utils.js";
 import { CtHackActor } from "./actor/actor.js";
 import { CtHackActorSheet } from "./actor/actor-sheet.js";
 import { CtHackOpponentSheet } from "./actor/opponent-sheet.js";
-import { CtHackItem } from "./item/item.js";
-import { CtHackItemSheet } from "./item/item-sheet.js";
-import { CtHackArchetypeSheet } from "./item/archetype-sheet.js";
-import { CtHackMagicSheet } from "./item/magic-sheet.js";
+import { CtHackItem } from "./documents/item.mjs";
 
 import { Macros } from "./macros.js";
 import { registerHooks } from "./hooks.js";
@@ -24,6 +21,7 @@ import { CtHackOpponentSheetV2 } from "./actor/opponent-sheet-2.js";
 
 // Import modules
 import * as models from "./data/_module.mjs";
+import * as applications from "./applications/_module.mjs";
 
 Hooks.once("init", async function () {
   console.log(LOG_HEAD + "Initialisation du système Cthulhu Hack");
@@ -73,9 +71,13 @@ Hooks.once("init", async function () {
   Actors.registerSheet(SYSTEM_NAME, CtHackOpponentSheetV2, { types: ["opponent"], label: "Adversaire v2" });
 
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet(SYSTEM_NAME, CtHackItemSheet, { types: ["item", "weapon", "attack", "ability", "definition"], makeDefault: true, label: "CTHACK.SheetClassItem" });
-  Items.registerSheet(SYSTEM_NAME, CtHackArchetypeSheet, { types: ["archetype"], makeDefault: true, label: "CTHACK.SheetClassItem" });
-  Items.registerSheet(SYSTEM_NAME, CtHackMagicSheet, { types: ["magic"], makeDefault: true, label: "CTHACK.SheetClassItem" });
+  Items.registerSheet(SYSTEM_NAME, applications.ObjetSheet, { types: ["item"], makeDefault: true });
+  Items.registerSheet(SYSTEM_NAME, applications.ArmeSheet, { types: ["weapon"], makeDefault: true });
+  Items.registerSheet(SYSTEM_NAME, applications.AttaqueSheet, { types: ["attack"], makeDefault: true });
+  Items.registerSheet(SYSTEM_NAME, applications.CapaciteSheet, { types: ["ability"], makeDefault: true });
+  Items.registerSheet(SYSTEM_NAME, applications.DefinitionSheet, { types: ["definition"], makeDefault: true });
+  Items.registerSheet(SYSTEM_NAME, applications.ArchetypeSheet, { types: ["archetype"], makeDefault: true });
+  Items.registerSheet(SYSTEM_NAME, applications.MagieSheet, { types: ["magic"], makeDefault: true });
 
   // Preload Handlebars Templates
   preloadHandlebarsTemplates();

@@ -1,8 +1,16 @@
 <form class="{{cssClass}}" autocomplete="off">
+    {{log 'item' this}}
     <header class="sheet-header">
         <img class="item-image" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
         <div class="header-fields">
             <h1 class="item-name"><input name="name" type="text" value="{{data.name}}" placeholder="Name"/></h1>
+            <div class="sheet-lock">
+                {{#if editable}}
+                    <i class="fas fa-lock-open" data-tooltip="Verrouiller la fiche"></i>
+                {{else}}
+                    <i class="fas fa-lock" data-tooltip="Déverrouiller la fiche"></i>
+                {{/if}}
+            </div>
             <div class="item-item resource">
                 <label class="resource-label">{{localize "CTHACK.ItemDiceName"}}</label>
                 <select name="system.dice" data-type="String" {{{getStyleForDice data.system.dice}}} >
@@ -14,12 +22,6 @@
         </div>
     </header>
 
-    {{!-- Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">{{localize "CTHACK.Description"}}</a>
-    </nav>
-
-    {{!-- Sheet Body --}}
     <section class="sheet-body">
 
         {{!-- Description Tab --}}

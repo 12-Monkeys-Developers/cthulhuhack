@@ -15,7 +15,7 @@
     "verified": "11"
   },
   "esmodules": [
-    "module/cthack.js"
+    "module/cthack.mjs"
   ],
   "styles": [
     "css/cthack.css"

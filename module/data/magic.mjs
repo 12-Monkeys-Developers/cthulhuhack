@@ -1,8 +1,10 @@
-export default class CtHackMagic extends foundry.abstract.DataModel {
+import CommonItem from "./common-item.mjs";
+
+export default class CtHackMagic extends CommonItem {
   static defineSchema() {
     const fields = foundry.data.fields;
-    const schema = {};
-    schema.description = new fields.HTMLField({ required: false, blank: true, textSearch: true });
+    const common = super.defineSchema();
+    const schema = { ...common };
     schema.subtype = new fields.StringField({ required: true, nullable: false, initial: "" });
     schema.dice = new fields.StringField({ required: true, nullable: false, initial: "" });
     schema.incantation = new fields.StringField({ required: true, nullable: false, initial: "" });
