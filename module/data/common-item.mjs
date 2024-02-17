@@ -6,4 +6,8 @@ export default class CommonItem extends foundry.abstract.DataModel {
         schema.locked = new fields.BooleanField({ required: true, nullable: false, initial: false });
         return schema;
     }
+
+    get hasDescription() {
+        return !!this.description;
+    }
 }

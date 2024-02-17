@@ -1,23 +1,44 @@
-.magic-sheet {
+&.sheet.item.magic {
+  .editable {
+    input, select-subtype {
+      border: 1px solid #782e22;
+    }
+  }
+  .locked {
+    input {
+      border: none;
+    }
+  }
   .magic-title {
     display: flex;
     flex-direction: row;
     margin: 10px 0 10px 0;
     padding: 0 10px 0 10px;
+    img {
+      border: 0px;
+      max-height: 50px;
+    }
     input {
       width: 20rem;
       font-size: 1.2rem;
       text-align: left;
       border: 0px;
-      margin: 20px 0 0 10px;
+      margin: 10px 0 0 10px;
+      padding: 0;
       color: #fff;
     }
-    img {
+    .name {
+      width: 20rem;
+      font-size: 1.2rem;
+      text-align: left;
       border: 0px;
-      max-height: 50px;
-    }
+      margin: 10px 0 0 10px;
+      color: #fff;
+    }    
+    .sheet-lock {
+      margin-left: auto;
+  }   
   }
-
   .magic-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -25,7 +46,7 @@
     padding-right: 10px;
     font-size: 1rem;
     text-align: center;
-    color: #fff;
+    color: #fff;    
     .data-group {
       display: flex;
       flex-direction: column;
@@ -34,12 +55,20 @@
       .field-name {
         text-transform: uppercase;
         margin-bottom: 5px;
-      }
+      }      
     }
     .select-subtype {
       min-width: 80px;
       font-size: 1rem;
       color: #fff;
+      opacity: 1;
+    }
+    .select-sanitation {
+      color: #111;
+      .select:disabled {
+        color: #111;
+        opacity: 1;
+      }
     }
     .input-incantation {
       min-width: 100px;
@@ -47,7 +76,7 @@
       height: 40px;
     }
   }
-  .description-group {
+  .magic-description {
     display: flex;
     flex-direction: column;
     margin: 0px 10px 15px 10px;

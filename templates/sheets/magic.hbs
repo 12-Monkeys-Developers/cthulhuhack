@@ -1,9 +1,23 @@
 <form class="{{cssClass}}" autocomplete="off">
-    {{!log "magie" this}}
-    <div class="magic-sheet">
+    {{log "magie" this}}
         <div class="magic-title">
-            <img src="{{item.img}}" data-edit="img" title="{{item.name}}" />
-            <input name="name" type="text" value="{{item.name}}" />
+            {{#if editable}}
+                <img src="{{item.img}}" data-edit="img" data-tooltip="Clic gauche pour sélectionner une image" />
+            {{else}}
+                <img src="{{item.img}}" />
+            {{/if}}
+            {{#if editable}}
+                <input name="name" type="text" value="{{item.name}}" />
+            {{else}}
+                <div class="name">{{item.name}}</div>
+            {{/if}}
+            <div class="sheet-lock">
+                {{#if editable}}
+                    <i class="fas fa-lock-open" data-tooltip="Verrouiller la fiche"></i>
+                {{else}}
+                    <i class="fas fa-lock" data-tooltip="Déverrouiller la fiche"></i>
+                {{/if}}
+            </div>
         </div>
         <div class="magic-content">
             <div class="magic-grid">
@@ -30,13 +44,18 @@
                         value="{{item.system.incantation}}" />
                 </div>
             </div>
-            <div class="description-group">
-                <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+            <div class="magic-description">
+                {{#if editable}}
+                    <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+                {{else}}
+                    {{#if hasDescription}}
+                        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+                    {{/if}}
+                {{/if}}                
                 <div class="description-content">
                     {{editor enrichedDescription target="system.description" button=true engine="prosemirror"
                     owner=owner editable=editable}}
                 </div>
             </div>
         </div>
-    </div>
 </form>

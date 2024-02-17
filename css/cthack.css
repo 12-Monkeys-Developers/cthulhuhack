@@ -207,7 +207,7 @@ i.cthack {
 /* Styles limited to cthack sheets */
 .cthack .window-content {
   background-image: url("../ui/sheet.webp");
-  /* background-repeat: no-repeat; */
+  background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #fff;
   font-size: var(--font-size-20);
@@ -866,13 +866,13 @@ i.cthack {
   width: auto;
   margin: 20px 0 0 20px;
 }
-.cthack .sheet-header .item-name {
+.cthack .sheet-header .item-image .item-name {
   margin: 0 10px 0 10px;
 }
-.cthack .item-item {
+.cthack.sheet.item.item .item-item {
   padding-left: 15px;
 }
-.cthack .item-item label {
+.cthack.sheet.item.item .item-item label {
   margin-right: 10px;
 }
 .cthack .item-weapon {
@@ -925,25 +925,44 @@ i.cthack {
   flex: 0 0 150px;
   text-align-last: center;
 }
-.cthack .magic-sheet .magic-title {
+.cthack.sheet.item.magic .editable input,
+.cthack.sheet.item.magic .editable select-subtype {
+  border: 1px solid #782e22;
+}
+.cthack.sheet.item.magic .locked input {
+  border: none;
+}
+.cthack.sheet.item.magic .magic-title {
   display: flex;
   flex-direction: row;
   margin: 10px 0 10px 0;
   padding: 0 10px 0 10px;
 }
-.cthack .magic-sheet .magic-title input {
+.cthack.sheet.item.magic .magic-title img {
+  border: 0px;
+  max-height: 50px;
+}
+.cthack.sheet.item.magic .magic-title input {
   width: 20rem;
   font-size: 1.2rem;
   text-align: left;
   border: 0px;
-  margin: 20px 0 0 10px;
+  margin: 10px 0 0 10px;
+  padding: 0;
   color: #fff;
 }
-.cthack .magic-sheet .magic-title img {
+.cthack.sheet.item.magic .magic-title .name {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
   border: 0px;
-  max-height: 50px;
+  margin: 10px 0 0 10px;
+  color: #fff;
 }
-.cthack .magic-sheet .magic-grid {
+.cthack.sheet.item.magic .magic-title .sheet-lock {
+  margin-left: auto;
+}
+.cthack.sheet.item.magic .magic-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding-left: 10px;
@@ -952,58 +971,66 @@ i.cthack {
   text-align: center;
   color: #fff;
 }
-.cthack .magic-sheet .magic-grid .data-group {
+.cthack.sheet.item.magic .magic-grid .data-group {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.cthack .magic-sheet .magic-grid .data-group .field-name {
+.cthack.sheet.item.magic .magic-grid .data-group .field-name {
   text-transform: uppercase;
   margin-bottom: 5px;
 }
-.cthack .magic-sheet .magic-grid .select-subtype {
+.cthack.sheet.item.magic .magic-grid .select-subtype {
   min-width: 80px;
   font-size: 1rem;
   color: #fff;
+  opacity: 1;
 }
-.cthack .magic-sheet .magic-grid .input-incantation {
+.cthack.sheet.item.magic .magic-grid .select-sanitation {
+  color: #111;
+}
+.cthack.sheet.item.magic .magic-grid .select-sanitation .select:disabled {
+  color: #111;
+  opacity: 1;
+}
+.cthack.sheet.item.magic .magic-grid .input-incantation {
   min-width: 100px;
   font-size: 1rem;
   height: 40px;
 }
-.cthack .magic-sheet .description-group {
+.cthack.sheet.item.magic .magic-description {
   display: flex;
   flex-direction: column;
   margin: 0px 10px 15px 10px;
   padding-top: 10px;
   font-size: var(--font-size-16);
 }
-.cthack .magic-sheet .description-group .description {
+.cthack.sheet.item.magic .magic-description .description {
   text-align: center;
   text-transform: uppercase;
 }
-.cthack .magic-sheet .description-group .description-content {
+.cthack.sheet.item.magic .magic-description .description-content {
   text-align: justify;
 }
-.cthack .magic-sheet .description-group .editor {
+.cthack.sheet.item.magic .magic-description .editor {
   min-height: 160px;
   scrollbar-width: thin;
 }
-.cthack .magic-sheet .description-group .editor-content {
+.cthack.sheet.item.magic .magic-description .editor-content {
   min-height: 150px;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack .magic-sheet .description-group .prosemirror menu {
+.cthack.sheet.item.magic .magic-description .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack .magic-sheet .description-group .prosemirror menu li {
+.cthack.sheet.item.magic .magic-description .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack .magic-sheet .description-group .prosemirror menu li:hover {
+.cthack.sheet.item.magic .magic-description .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack .magic-sheet .description-group .prosemirror menu button {
+.cthack.sheet.item.magic .magic-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }
