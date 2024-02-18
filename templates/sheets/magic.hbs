@@ -1,6 +1,6 @@
 <form class="{{cssClass}}" autocomplete="off">
     {{log "magie" this}}
-        <div class="magic-title">
+        <div class="item-header">
             {{#if editable}}
                 <img src="{{item.img}}" data-edit="img" data-tooltip="Clic gauche pour sélectionner une image" />
             {{else}}
@@ -19,7 +19,7 @@
                 {{/if}}
             </div>
         </div>
-        <div class="magic-content">
+        <div class="magic-body">
             <div class="magic-grid">
                 <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.Type"}}</div>
@@ -34,7 +34,7 @@
                     <div class="field-name">{{localize "CTHACK.Sanitation"}}</div>
                     <select class="select-sanitation" name="system.dice" data-type="String" {{{getStyleForDice item.system.dice}}}>
                         {{#select item.system.dice}}
-                        {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+                            {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                         {{/select}}
                     </select>
                 </div>
@@ -44,7 +44,7 @@
                         value="{{item.system.incantation}}" />
                 </div>
             </div>
-            <div class="magic-description">
+            <div class="item-description">
                 {{#if editable}}
                     <div class="field-name description">{{localize "CTHACK.Description"}}</div>
                 {{else}}

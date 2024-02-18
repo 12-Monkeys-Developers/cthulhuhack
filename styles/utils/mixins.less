@@ -14,3 +14,83 @@
 .hide() {
   display: none;
 }
+
+.item-common-header() {
+  .editable {
+    input,
+    select-subtype {
+      border: 1px solid #782e22;
+    }
+  }
+  .locked {
+    input {
+      border: none;
+    }
+  }
+  .item-header {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0 10px 0;
+    padding: 0 10px 0 10px;
+    img {
+      border: 0px;
+      max-height: 50px;
+    }
+    input {
+      width: 20rem;
+      font-size: 1.2rem;
+      text-align: left;
+      border: 0px;
+      margin: 10px 0 0 10px;
+      padding: 0;
+      color: #fff;
+    }
+    .name {
+      width: 20rem;
+      font-size: 1.2rem;
+      text-align: left;
+      border: 0px;
+      margin: 10px 0 0 10px;
+      color: #fff;
+    }
+    .sheet-lock {
+      margin-left: auto;
+    }
+  }
+}
+
+.item-common-description() {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 10px 15px 10px;
+  padding-top: 10px;
+  font-size: var(--font-size-16);
+  .description {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .description-content {
+    text-align: justify;
+  }
+  .editor {
+    min-height: 160px;
+    scrollbar-width: thin;
+  }
+  .editor-content {
+    min-height: 150px;
+    margin: 0px 5px;
+    font-weight: normal;
+  }
+  .prosemirror menu {
+    font-size: 0.8em;
+    li {
+      margin: 0px 0px;
+      &:hover {
+        border: 2px solid #eea3a3;
+      }
+    }
+    button {
+      background: var(--color-hover-bg);
+    }
+  }
+}

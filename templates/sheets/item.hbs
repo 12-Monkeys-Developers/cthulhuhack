@@ -1,9 +1,16 @@
 <form class="{{cssClass}}" autocomplete="off">
-    {{log 'item' this}}
-    <header class="sheet-header">
-        <img class="item-image" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
-        <div class="header-fields">
-            <div class="item-name"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></div>
+    {{log 'objet' this}}
+        <div class="item-header">
+            {{#if editable}}
+                <img src="{{item.img}}" data-edit="img" data-tooltip="Clic gauche pour sélectionner une image" />
+            {{else}}
+                <img src="{{item.img}}" />
+            {{/if}}
+            {{#if editable}}
+                <input name="name" type="text" value="{{item.name}}" />
+            {{else}}
+                <div class="name">{{item.name}}</div>
+            {{/if}}
             <div class="sheet-lock">
                 {{#if editable}}
                     <i class="fas fa-lock-open" data-tooltip="Verrouiller la fiche"></i>
@@ -11,23 +18,31 @@
                     <i class="fas fa-lock" data-tooltip="Déverrouiller la fiche"></i>
                 {{/if}}
             </div>
-            <div class="item-item resource">
-                <label class="resource-label">{{localize "CTHACK.ItemDiceName"}}</label>
-                <select name="system.dice" data-type="String" {{{getStyleForDice item.system.dice}}} >
-                    {{#select item.system.dice}}
+        </div>
+        <div class="item-body">
+            <div class="item-grid">
+                  <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.ItemDiceName"}}</div>
+                    <select class="select-dice-material" name="system.dice" data-type="String" {{{getStyleForDice item.system.dice}}}>
+                        {{#select item.system.dice}}
                         {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
-                    {{/select}}
-                </select>
+                        {{/select}}
+                    </select>
+                </div>
+            </div>
+            <div class="item-description">
+                       {{#if editable}}
+                    <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+                {{else}}
+                    {{#if hasDescription}}
+                        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+                    {{/if}}
+                {{/if}}                
+                <div class="description-content">
+                    {{editor enrichedDescription target="system.description" button=true engine="prosemirror"
+                    owner=owner editable=editable}}
+                </div>
             </div>
         </div>
-    </header>
-
-    <section class="sheet-body">
-
-        {{!-- Description Tab --}}
-        <div class="tab" data-group="primary" data-tab="description">
-            {{editor enrichedDescription target="system.description" button=true owner=owner editable=editable}}
-        </div>
-
-    </section>
+    </div>
 </form>

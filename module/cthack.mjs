@@ -19,6 +19,10 @@ import { initControlButtons } from "./control-buttons.js";
 
 import { CtHackOpponentSheetV2 } from "./actor/opponent-sheet-2.js";
 
+import { SYSTEM } from "./config/system.mjs";
+
+globalThis.SYSTEM = SYSTEM;
+
 // Import modules
 import * as models from "./data/_module.mjs";
 import * as applications from "./applications/_module.mjs";
@@ -27,6 +31,8 @@ Hooks.once("init", async function () {
   console.log(LOG_HEAD + "Initialisation du système Cthulhu Hack");
   console.log(CTHACK.ASCII);
 
+  game.system.CONST = SYSTEM;
+  
   game.cthack = {
     CtHackActor,
     CtHackItem,

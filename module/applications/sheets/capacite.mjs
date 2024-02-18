@@ -14,4 +14,11 @@ export default class CtHackCapaciteSheet extends CtHackItemSheet {
    * @type {string}
    */
   static itemType = "ability";
+
+  /** @override */
+  async getData(options) {
+    const context = await super.getData(options);
+    context.usage = SYSTEM.ABILITY_USAGE;
+    return context;
+  }
 }

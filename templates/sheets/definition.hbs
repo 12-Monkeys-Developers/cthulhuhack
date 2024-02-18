@@ -1,39 +1,48 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <header class="sheet-header">
-        <img class="definition-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
-        <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{data.name}}" placeholder="Name"/></h1>
-        </div>
-    </header>
+  {{log "definition" this}}
+  <div class="item-header">
+    {{#if editable}}
+      <img src="{{item.img}}" data-edit="img" data-tooltip="Clic gauche pour sélectionner une image" />
+    {{else}}
+      <img src="{{item.img}}" />
+    {{/if}}
+    {{#if editable}}
+      <input name="name" type="text" value="{{item.name}}" />
+    {{else}}
+      <div class="name">{{item.name}}</div>
+    {{/if}}
+    <div class="sheet-lock">
+      {{#if editable}}
+        <i class="fas fa-lock-open" data-tooltip="Verrouiller la fiche"></i>
+      {{else}}
+        <i class="fas fa-lock" data-tooltip="Déverrouiller la fiche"></i>
+      {{/if}}
+    </div>
+  </div>
 
-    {{!-- Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">{{localize "CTHACK.Description"}}</a>
-        <a class="item" data-tab="attributes">{{localize "CTHACK.Attributes"}}</a>
-    </nav>
+  <div class="definition-body">
+    <div class="definition-grid">
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.DefinitionType"}}</div>
+        <input class="field-value" name="system.definitionType" type="text" value="{{item.system.definitionType}}" data-dtype="String" readonly />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.DefinitionKey"}}</div>
+        <input class="field-value" name="system.key" type="text" value="{{item.system.key}}" data-dtype="String" readonly />
+      </div>
 
-    {{!-- Sheet Body --}}
-    <section class="sheet-body">
-
-        {{!-- Description Tab --}}
-        <div class="tab" data-group="primary" data-tab="description">
-            {{editor enrichedDescription target="system.description" button=true owner=owner editable=editable}}
-        </div>
-
-        {{!-- Attributes Tab --}}
-        <div class="tab attributes" data-group="primary" data-tab="attributes">
-            <div class="form-group">
-                <label>{{localize "CTHACK.DefinitionType"}}</label>
-                <div class="form-fields">
-                    <input class="field-value" name="data.definitionType" type="text" value="{{system.definitionType}}" data-dtype="String" readonly>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>{{localize "CTHACK.DefinitionKey"}}</label>
-                <div class="form-fields">
-                    <input class="field-value" name="data.key" type="text" value="{{system.key}}" data-dtype="String" readonly>
-                </div>
-            </div>   
-        </div>
-    </section>
+    </div>
+    <div class="item-description">
+      {{#if editable}}
+        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+      {{else}}
+        {{#if hasDescription}}
+          <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+        {{/if}}
+      {{/if}}
+      <div class="description-content">
+        {{editor enrichedDescription target="system.description" button=true engine="prosemirror" owner=owner editable=editable}}
+      </div>
+    </div>
+  </div>
 </form>

@@ -1,8 +1,8 @@
-&.sheet.item.ability {
+&.sheet.item.weapon {
   .item-common-header();
-  .ability-grid {
+  .weapon-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     padding-left: 10px;
     padding-right: 10px;
     font-size: 1rem;
@@ -18,14 +18,18 @@
         margin-bottom: 5px;
       }
     }
-    .select-usage {
-      min-width: 100px;
+    .select-dice-material {
+      color: #fff;
+      .select:disabled {
+        color: #fff;
+        opacity: 1;
+      }
+    }
+    .select-range {
+      min-width: 80px;
       font-size: 1rem;
       color: #fff;
       opacity: 1;
-    }
-    .readonly {
-      border: none;
     }
   }
   .item-common-description();

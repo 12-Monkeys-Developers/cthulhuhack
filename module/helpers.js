@@ -171,8 +171,9 @@ export const registerHandlebarsHelpers = function() {
 
 	Handlebars.registerHelper('isAbilityKeyReadOnly', function(key) {
 		if (isAbilityKeyReserved(key)) {
-			return 'readonly';
+			return true;
 		}
+		return false;
 	});
 
 	Handlebars.registerHelper('getStyleForDice', function(value) {
