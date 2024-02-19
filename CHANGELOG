@@ -1,3 +1,6 @@
+1.5.1
+- Fix type select in item of type magic
+
 1.5.0
 - Add new item type : magic item for spell and ritual
 - Display magic on abilities tab
