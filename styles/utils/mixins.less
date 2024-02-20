@@ -15,16 +15,12 @@
   display: none;
 }
 
+// Mixin for items
 .item-common-header() {
   .editable {
     input,
-    select-subtype {
+    select {
       border: 1px solid #782e22;
-    }
-  }
-  .locked {
-    input {
-      border: none;
     }
   }
   .item-header {
@@ -55,42 +51,67 @@
     }
     .sheet-lock {
       margin-left: auto;
+      padding: 0 10px 0 10px;
+    }
+  }
+}
+
+.item-common-grid(@nbcolumns) {
+  display: grid;
+  grid-template-columns: repeat(@nbcolumns, 1fr);
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  .data-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .field-name {
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    input, select {
+      height: 40px;
     }
   }
 }
 
 .item-common-description() {
-  display: flex;
-  flex-direction: column;
-  margin: 0px 10px 15px 10px;
-  padding-top: 10px;
-  font-size: var(--font-size-16);
-  .description {
-    text-align: center;
-    text-transform: uppercase;
-  }
-  .description-content {
-    text-align: justify;
-  }
-  .editor {
-    min-height: 160px;
-    scrollbar-width: thin;
-  }
-  .editor-content {
-    min-height: 150px;
-    margin: 0px 5px;
-    font-weight: normal;
-  }
-  .prosemirror menu {
-    font-size: 0.8em;
-    li {
-      margin: 0px 0px;
-      &:hover {
-        border: 2px solid #eea3a3;
-      }
+  .item-description {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 0px 10px;
+    font-size: var(--font-size-16);
+    .description {
+      text-align: center;
+      text-transform: uppercase;
     }
-    button {
-      background: var(--color-hover-bg);
+    .description-content {
+      text-align: justify;
+    }
+    .editor {
+      min-height: 160px;
+      scrollbar-width: thin;
+    }
+    .editor-content {
+      min-height: 150px;
+      margin: 0px 5px;
+      font-weight: normal;
+    }
+    .prosemirror menu {
+      font-size: 0.8em;
+      li {
+        margin: 0px 0px;
+        &:hover {
+          border: 2px solid #eea3a3;
+        }
+      }
+      button {
+        background: var(--color-hover-bg);
+      }
     }
   }
 }

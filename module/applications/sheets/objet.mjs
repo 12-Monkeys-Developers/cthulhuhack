@@ -4,12 +4,12 @@ export default class CtHackObjetSheet extends CtHackItemSheet {
   static get defaultOptions() {
     const options = super.defaultOptions;
     return Object.assign(options, {
-      height: 600,
-      width: 800,
+      height: 250,
+      width: 250,
       resizable: true,
     });
   }
-  
+
   /**
    * The item type displayed in the sheet
    * @type {string}

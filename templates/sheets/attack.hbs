@@ -1,49 +1,64 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <header class="sheet-header">
-        <img class="item-image" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
-        <div class="header-fields">
-            <h1 class="item-name"><input name="name" type="text" value="{{data.name}}" placeholder="Name"/></h1>      
-            <div class="grid grid-2col item-attack">
-                <div class="resource">
-                    <label class="resource-label">{{localize "CTHACK.Damage"}}</label>
-                    <input class="field-value attack-damage" name="system.damage" type="text" value="{{data.system.damage}}" data-type="String">
-                </div>
-                <div class="resource item-dice">
-                    <label class="resource-label">{{localize "CTHACK.DamageDice"}}</label>
-                    <select class="color-white" name="system.damageDice" data-type="String">
-                        {{#select data.system.damageDice}}
-                            <option value="">{{localize "CTHACK.None"}}</option>
-                            <option value="d4">1d4</option>
-                            <option value="d6">1d6</option>
-                            <option value="d8">1d8</option>
-                            <option value="d10">1d10</option>
-                            <option value="d12">1d12</option>
-                            <option value="2d6">2d6</option>
-                            <option value="d6+d8">d6+d8</option>
-                            <option value="2d8">2d8</option>
-                            <option value="d8+d10">d8+d10</option>
-                            <option value="2d10">2d10</option>
-                            <option value="d10+d12">d10+d12</option>
-                            <option value="2d12">2d12</option>
-                        {{/select}}
-                    </select>
-                </div>
-            </div>  
-        </div>
-    </header>
+  {{log "attack" this}}
+  <div class="item-header">
+    {{#if editable}}
+      <img src="{{item.img}}" data-edit="img" data-tooltip="Clic gauche pour sélectionner une image" />
+    {{else}}
+      <img src="{{item.img}}" />
+    {{/if}}
+    {{#if editable}}
+      <input name="name" type="text" value="{{item.name}}" />
+    {{else}}
+      <div class="name">{{item.name}}</div>
+    {{/if}}
+    <div class="sheet-lock">
+      {{#if editable}}
+        <i class="fas fa-lock-open" data-tooltip="Verrouiller la fiche"></i>
+      {{else}}
+        <i class="fas fa-lock" data-tooltip="Déverrouiller la fiche"></i>
+      {{/if}}
+    </div>
+  </div>
 
-    {{!-- Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">{{localize "CTHACK.Description"}}</a>
-    </nav>
+  <div class="attack-body">
+    <div class="attack-grid">
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.Damage"}}</div>
+        <input class="input-damage" name="system.damage" type="text" value="{{data.system.damage}}" data-type="String" />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.DamageDice"}}</div>
+        <select class="select-damageDice" name="system.damageDice" data-type="String">
+          {{#select data.system.damageDice}}
+            <option value="">{{localize "CTHACK.None"}}</option>
+            <option value="d4">1d4</option>
+            <option value="d6">1d6</option>
+            <option value="d8">1d8</option>
+            <option value="d10">1d10</option>
+            <option value="d12">1d12</option>
+            <option value="2d6">2d6</option>
+            <option value="d6+d8">d6+d8</option>
+            <option value="2d8">2d8</option>
+            <option value="d8+d10">d8+d10</option>
+            <option value="2d10">2d10</option>
+            <option value="d10+d12">d10+d12</option>
+            <option value="2d12">2d12</option>
+          {{/select}}
+        </select>
+      </div>
+    </div>
+    <div class="item-description">
+      {{#if editable}}
+        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+      {{else}}
+        {{#if hasDescription}}
+          <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+        {{/if}}
+      {{/if}}
+      <div class="description-content">
+        {{editor enrichedDescription target="system.description" button=true engine="prosemirror" owner=owner editable=editable}}
+      </div>
+    </div>
+  </div>
 
-    {{!-- Sheet Body --}}
-    <section class="sheet-body">
-
-        {{!-- Description Tab --}}
-        <div class="tab" data-group="primary" data-tab="description">
-            {{editor enrichedDescription target="system.description" button=true owner=owner editable=editable}}
-        </div>
-
-    </section>
 </form>

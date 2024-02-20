@@ -1,23 +1,8 @@
 &.sheet.item.ability {
   .item-common-header();
   .ability-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 1rem;
-    text-align: center;
-    color: #fff;
-    .data-group {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      .field-name {
-        text-transform: uppercase;
-        margin-bottom: 5px;
-      }
-    }
+    .item-common-grid(3);
+    gap: 10px;
     .select-usage {
       min-width: 100px;
       font-size: 1rem;

@@ -1,23 +1,7 @@
 &.sheet.item.item {
   .item-common-header();
   .item-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 1rem;
-    text-align: center;
-    color: #fff;
-    .data-group {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      .field-name {
-        text-transform: uppercase;
-        margin-bottom: 5px;
-      }
-    }
+    .item-common-grid(1);
     .select-dice-material {
       color: #111;
       .select:disabled {

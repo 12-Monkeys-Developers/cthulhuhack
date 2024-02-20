@@ -23,7 +23,7 @@
     <div class="ability-grid">
       <div class="data-group">
         <div class="field-name">{{localize "CTHACK.AbilityKey"}}</div>
-        <input class="field-value input-key {{#if (isAbilityKeyReadOnly item.system.key)}}readonly{{/if}}" name="system.key" type="text" value="{{item.system.key}}" data-dtype="String" {{#if (isAbilityKeyReadOnly item.system.key)}}readonly{{/if}} />
+        <input class="field-value input-key input-small {{#if (isAbilityKeyReadOnly item.system.key)}}readonly{{/if}}" name="system.key" type="text" value="{{item.system.key}}" data-dtype="String" {{#if (isAbilityKeyReadOnly item.system.key)}}readonly{{/if}} />
       </div>
       <div class="data-group">
         <div class="field-name">{{localize "CTHACK.AbilityUsePer"}}</div>
@@ -37,11 +37,11 @@
       </div>
       <div class="data-group">
         <div class="field-name">{{localize "CTHACK.AbilityUseValueDtl"}}</div>
-        <input class="field-value" name="system.uses.value" type="text" value="{{item.system.uses.value}}" data-dtype="Number" />
+        <input class="field-value input-small" name="system.uses.value" type="text" value="{{item.system.uses.value}}" data-dtype="Number" />
       </div>
       <div class="data-group">
         <div class="field-name">{{localize "CTHACK.AbilityUseMax"}}</div>
-        <input class="field-value" name="system.uses.max" type="text" value="{{item.system.uses.max}}" data-dtype="Number" />   
+        <input class="field-value input-small" name="system.uses.max" type="text" value="{{item.system.uses.max}}" data-dtype="Number" />   
       </div>
       <div class="data-group">
         <div class="field-name">{{localize "CTHACK.AbilityUseLast"}}</div>

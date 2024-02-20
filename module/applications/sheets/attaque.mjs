@@ -4,8 +4,8 @@ export default class CtHackAttaqueSheet extends CtHackItemSheet {
   static get defaultOptions() {
     const options = super.defaultOptions;
     return Object.assign(options, {
-      height: 600,
-      width: 800,
+      height: 300,
+      width: 300,
       resizable: true,
     });
   }
