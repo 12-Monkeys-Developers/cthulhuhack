@@ -77,20 +77,13 @@
                   <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.ArmedDamage"}}</div>
                     <select name="system.armeddamage" data-type="String">
-                    {{#select item.system.armeddamage}}
-                        {{>"systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
-                    {{/select}}
+                        {{selectOptions dicesDamage selected=item.system.armeddamage}}
                     </select>
                 </div>
                 <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.WealthStart"}}</div>
                     <select class="select-large" name="system.wealthStart" data-type="String">
-                    {{#select item.system.wealthStart}}
-                        <option value="2">CHA*2</option>
-                        <option value="3">CHA*3</option>
-                        <option value="4">CHA*4</option>
-                        <option value="sp">{{localize "CTHACK.WealthStartSpecial"}}</option>
-                    {{/select}}
+                        {{selectOptions wealthStart selected=item.system.wealthStart localize=true}}
                     </select>
                 </div>            
                 <div class="data-group">
@@ -104,48 +97,25 @@
                 <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.UnarmedDamage"}}</div>
                     <select name="system.unarmeddamage" data-type="String">
-                    {{#select item.system.unarmeddamage}}
-                        {{>"systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
-                    {{/select}}
+                        {{selectOptions dicesDamage selected=item.system.unarmeddamage}}
                     </select>
                 </div>
                 <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.PrimarySave"}}</div>
                     <select class="select-large" name="system.primarysave" data-type="String">
-                    {{#select item.system.primarysave}}
-                        <option value="str">{{localize "CTHACK.SaveStr"}}</option>    
-                        <option value="dex">{{localize "CTHACK.SaveDex"}}</option>
-                        <option value="con">{{localize "CTHACK.SaveCon"}}</option>
-                        <option value="int">{{localize "CTHACK.SaveInt"}}</option>
-                        <option value="wis">{{localize "CTHACK.SaveWis"}}</option>
-                        <option value="cha">{{localize "CTHACK.SaveCha"}}</option>
-                    {{/select}}
+                        {{selectOptions saves selected=item.system.primarysave labelAttr="label" localize=true}}
                     </select>
                 </div>
                 <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.SecondarySave1"}}</div>
                     <select class="select-large" name="system.secondarysave1" data-type="String">
-                    {{#select item.system.secondarysave1}}
-                        <option value="str">{{localize "CTHACK.SaveStr"}}</option>    
-                        <option value="dex">{{localize "CTHACK.SaveDex"}}</option>
-                        <option value="con">{{localize "CTHACK.SaveCon"}}</option>
-                        <option value="int">{{localize "CTHACK.SaveInt"}}</option>
-                        <option value="wis">{{localize "CTHACK.SaveWis"}}</option>
-                        <option value="cha">{{localize "CTHACK.SaveCha"}}</option>
-                    {{/select}}
+                        {{selectOptions saves selected=item.system.secondarysave1 labelAttr="label" localize=true}}
                     </select>
                 </div>
                 <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.SecondarySave2"}}</div>
                     <select class="select-large" name="system.secondarysave2" data-type="String">
-                    {{#select item.system.secondarysave2}}
-                        <option value="str">{{localize "CTHACK.SaveStr"}}</option>    
-                        <option value="dex">{{localize "CTHACK.SaveDex"}}</option>
-                        <option value="con">{{localize "CTHACK.SaveCon"}}</option>
-                        <option value="int">{{localize "CTHACK.SaveInt"}}</option>
-                        <option value="wis">{{localize "CTHACK.SaveWis"}}</option>
-                        <option value="cha">{{localize "CTHACK.SaveCha"}}</option>
-                    {{/select}}
+                        {{selectOptions saves selected=item.system.secondarysave2 labelAttr="label" localize=true}}
                     </select>
                 </div>  
         </div>

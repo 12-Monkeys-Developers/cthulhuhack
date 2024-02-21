@@ -1,3 +1,4 @@
+import { SYSTEM } from "../../config/system.mjs";
 import CtHackItemSheet from "./item.mjs";
 
 export default class CtHackArchetypeSheet extends CtHackItemSheet {
@@ -14,4 +15,13 @@ export default class CtHackArchetypeSheet extends CtHackItemSheet {
    * @type {string}
    */
   static itemType = "archetype";
+
+  /** @override */
+  async getData(options) {
+    const context = await super.getData(options);
+    context.dicesDamage = SYSTEM.DICES_DAMAGE;
+    context.wealthStart = SYSTEM.WEALTH_START;
+    context.saves = SYSTEM.SAVES;
+    return context;
+  }
 }
