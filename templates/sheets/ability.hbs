@@ -2,7 +2,7 @@
   {{log "ability" this}}
   <div class="item-header">
     {{#if editable}}
-      <img src="{{item.img}}" data-edit="img" data-tooltip="Clic gauche pour sélectionner une image" />
+      <img src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
     {{else}}
       <img src="{{item.img}}" />
     {{/if}}
@@ -13,9 +13,9 @@
     {{/if}}
     <div class="sheet-lock">
       {{#if editable}}
-        <i class="fas fa-lock-open" data-tooltip="Verrouiller la fiche"></i>
+        <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
       {{else}}
-        <i class="fas fa-lock" data-tooltip="Déverrouiller la fiche"></i>
+        <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
       {{/if}}
     </div>
   </div>

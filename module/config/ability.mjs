@@ -24,5 +24,3 @@ export const USE = Object.freeze({
     label: "CTHACK.AbilityUsePerFight",
   },
 });
-
-

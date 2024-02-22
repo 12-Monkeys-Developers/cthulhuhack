@@ -14,4 +14,13 @@ export default class CtHackMagieSheet extends CtHackItemSheet {
    * @type {string}
    */
   static itemType = "magic";
+
+  
+  /** @override */
+  async getData(options) {
+    const context = await super.getData(options);
+    context.magicTypes = SYSTEM.MAGIC_TYPE;
+
+    return context;
+  }
 }

@@ -1,3 +1,4 @@
+import { SYSTEM } from "../config/system.mjs";
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -20,22 +21,28 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     return "systems/cthack/templates/actor/opponent-sheet-2.hbs";
   }
 
+  get isEditable() {
+    return super.isEditable && this.actor.isUnlocked;
+  }
+
   /** @override */
   async getData(options) {
     const context = super.getData(options);
 
-    context.editable = this.isEditable && this.actor.isUnlocked;
+    context.editable = this.isEditable;
     context.attacks = this.actor.items.filter((i) => i.type === "attack");
     context.magics = this.actor.items.filter((i) => i.type === "magic");
     context.enrichedDescription = await TextEditor.enrichHTML(this.actor.system.description, { async: true });
     context.hasImage = this.actor.img && this.actor.img !== "icons/svg/mystery-man.svg";
     context.hasShortDescription = !!this.actor.system.description;
+    context.opponentHitDice = SYSTEM.OPPONENT_HIT_DICE;
 
     return context;
   }
 
   /** @override */
   async _onDropItem(event, data) {
+    if (!this.isEditable) return false;
     const item = await fromUuid(data.uuid);
     // Only magic and attack items can be dropped
     if (["archetype", "ability", "item", "weapon", "definition"].includes(item.type)) return false;
@@ -74,7 +81,8 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     // Activate context menu
     this._contextOpponentMenu(html);
 
-    html.find(".share").click(this._onShareImage.bind(this));
+    html.find(".image").click(this._onShareImage.bind(this));
+    html.find(".editable-image").on("contextmenu", this._resetImage.bind(this));
     html.find(".name").on("contextmenu", this._onSearchActor.bind(this));
   }
 
@@ -111,6 +119,11 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     ];
   }
 
+  /**
+   * Handles the event when a magic roll is triggered.
+   * @param {Event} event - The event object.
+   * @returns {Promise<void>} - A promise that resolves when the function finishes executing.
+   */
   async _onMagicRoll(event) {
     event.preventDefault();
 
@@ -124,6 +137,12 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     this.actor.sheet.render(true);
   }
 
+  /**
+   * Handles the event when sharing an image.
+   * 
+   * @param {Event} event - The event object.
+   * @returns {void}
+   */
   _onShareImage(event) {
     event.preventDefault();
     const imagePath = event.currentTarget.dataset.image;
@@ -135,12 +154,32 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     ip.render(true);
   }
 
+  /**
+   * Handles the search event for an actor.
+   * @param {Event} event - The search event.
+   * @returns {Promise<void>} - A promise that resolves when the search is complete.
+   */
   async _onSearchActor(event) {
     event.preventDefault();
     const characterName = event.currentTarget.dataset.name;
     await this.patternSearch(characterName);
   }
 
+  /**
+   * Resets the image of the opponent sheet.
+   * @param {Event} event - The event object.
+   * @returns {Promise<void>} - A promise that resolves when the image is reset.
+   */
+  async _resetImage(event) {
+    event.preventDefault();
+    await this.actor.update({ 'img': "icons/svg/mystery-man.svg" });
+  }
+
+  /**
+   * Searches for a pattern in the game journal and displays the search result in the chat.
+   * @param {string} searchPattern - The pattern to search for.
+   * @returns {Promise<void>} - A promise that resolves when the search result is displayed in the chat.
+   */
   async patternSearch(searchPattern) {
     let resultCollection = [];
     game.journal.forEach((doc) => {
@@ -173,7 +212,6 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
       "system.hp.max": newHpMax,
       "system.malus": newArmorMalusValue,
     });
-    this.actor.sheet.render(true);
   }
 
   /**

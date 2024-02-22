@@ -2,7 +2,7 @@
   {{log "attack" this}}
   <div class="item-header">
     {{#if editable}}
-      <img src="{{item.img}}" data-edit="img" data-tooltip="Clic gauche pour sélectionner une image" />
+      <img src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
     {{else}}
       <img src="{{item.img}}" />
     {{/if}}
@@ -13,9 +13,9 @@
     {{/if}}
     <div class="sheet-lock">
       {{#if editable}}
-        <i class="fas fa-lock-open" data-tooltip="Verrouiller la fiche"></i>
+        <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
       {{else}}
-        <i class="fas fa-lock" data-tooltip="Déverrouiller la fiche"></i>
+        <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
       {{/if}}
     </div>
   </div>
@@ -24,26 +24,12 @@
     <div class="attack-grid">
       <div class="data-group">
         <div class="field-name">{{localize "CTHACK.Damage"}}</div>
-        <input class="input-damage" name="system.damage" type="text" value="{{data.system.damage}}" data-type="String" />
+        <input class="input-damage" name="system.damage" type="text" value="{{item.system.damage}}" data-type="String" />
       </div>
       <div class="data-group">
         <div class="field-name">{{localize "CTHACK.DamageDice"}}</div>
         <select class="select-damageDice" name="system.damageDice" data-type="String">
-          {{#select data.system.damageDice}}
-            <option value="">{{localize "CTHACK.None"}}</option>
-            <option value="d4">1d4</option>
-            <option value="d6">1d6</option>
-            <option value="d8">1d8</option>
-            <option value="d10">1d10</option>
-            <option value="d12">1d12</option>
-            <option value="2d6">2d6</option>
-            <option value="d6+d8">d6+d8</option>
-            <option value="2d8">2d8</option>
-            <option value="d8+d10">d8+d10</option>
-            <option value="2d10">2d10</option>
-            <option value="d10+d12">d10+d12</option>
-            <option value="2d12">2d12</option>
-          {{/select}}
+          {{selectOptions dicesDamage selected=item.system.damageDice empty="None"}}
         </select>
       </div>
     </div>
