@@ -5,3 +5,4 @@ export { default as CtHackDefinition } from "./definition.mjs";
 export { default as CtHackItem } from "./item.mjs";
 export { default as CtHackMagic } from "./magic.mjs";
 export { default as CtHackWeapon } from "./weapon.mjs";
+export { default as CtHackOpponentkAbility } from "./opponent-ability.mjs";

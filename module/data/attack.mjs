@@ -5,7 +5,7 @@ export default class CtHackAttack extends CommonItem {
     const fields = foundry.data.fields;
     const common = super.defineSchema();
     const schema = { ...common };
-    //schema.damage = new fields.StringField({ required: true, nullable: false, initial: "" });
+    schema.nb = new fields.NumberField({ required: true, nullable: false, initial: 1, min: 1 });
     schema.damage = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 });
     schema.damageDice = new fields.StringField({ required: true, nullable: false, initial: "" });
     return schema;
@@ -23,6 +23,10 @@ export default class CtHackAttack extends CommonItem {
     if (this.damageDice !== "0") {
       details += `<i class="fas fa-dice-d20 attack rollable">&nbsp;&nbsp;</i>  ${this.damageDice} (${game.i18n.localize('CTHACK.Damage')})`;
     }
+    if (this.nb > 1) {
+      details += `x ${this.nb}`;
+    }
+
     return details;
   }
 }

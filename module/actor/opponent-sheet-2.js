@@ -32,6 +32,7 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     context.editable = this.isEditable;
     context.attacks = this.actor.items.filter((i) => i.type === "attack");
     context.magics = this.actor.items.filter((i) => i.type === "magic");
+    context.opponentAbilities = this.actor.items.filter((i) => i.type === "opponentAbility");
     context.enrichedDescription = await TextEditor.enrichHTML(this.actor.system.description, { async: true });
     context.hasImage = this.actor.img && this.actor.img !== "icons/svg/mystery-man.svg";
     context.hasShortDescription = !!this.actor.system.description;
@@ -93,6 +94,45 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
   _getEntryContextOptions() {
     return [
       {
+        name: game.i18n.localize("CTHACK.ContextMenuUse"),
+        icon: '<i class="fas fa-check"></i>',
+        condition: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          return item.isOwner && item.type === "opponentAbility" && item.system.isUsable;
+        },
+        callback: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          item.system.use();
+          this.render();
+        },
+      },
+      {
+        name: game.i18n.localize("CTHACK.ContextMenuResetUse"),
+        icon: '<i class="fa-solid fa-0"></i>',
+        condition: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          return item.isOwner && item.type === "opponentAbility" && item.system.isResetable;
+        },
+        callback: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          item.system.resetUse();
+          this.render();
+        },
+      },
+      {
+        name: game.i18n.localize("CTHACK.ContextMenuDecreaseUse"),
+        icon: '<i class="fa-solid fa-minus"></i>',
+        condition: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          return item.isOwner && item.type === "opponentAbility" && item.system.isDecreaseable;
+        },
+        callback: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          item.system.decrease();
+          this.render();
+        },
+      },      
+      {
         name: game.i18n.localize("CTHACK.ContextMenuEdit"),
         icon: '<i class="fas fa-edit"></i>',
         condition: (li) => {
@@ -115,7 +155,7 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
           const item = this.actor.items.get(li.data("item-id"));
           await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
         },
-      },
+      }
     ];
   }
 

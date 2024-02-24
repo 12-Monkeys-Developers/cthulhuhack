@@ -108,7 +108,7 @@ i.cthack {
   display: grid;
   grid-column: span 2 / span 2;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  grid-gap: 10px;
   margin: 0;
   padding: 0;
 }
@@ -528,8 +528,8 @@ i.cthack {
 }
 .cthack.sheet.actor.opponentv2 .sheet-header {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 5px;
+  grid-template-columns: 1fr 2fr 1fr 1.5fr;
+  grid-gap: 5px;
 }
 .cthack.sheet.actor.opponentv2 .sheet-header .opponent-image {
   grid-row-start: 1;
@@ -698,6 +698,9 @@ i.cthack {
 .cthack.sheet.actor.opponentv2 .sheet-body .description-editable .prosemirror menu button {
   background: var(--color-hover-bg);
 }
+.cthack.sheet.actor.opponentv2 .sheet-body .description {
+  padding: 0 10px 0 10px;
+}
 .cthack.sheet.actor.opponentv2 .sheet-body .attacks {
   display: flex;
   flex-direction: column;
@@ -749,6 +752,40 @@ i.cthack {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   font-size: var(--font-size-16);
   padding-left: 10px;
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .abilities {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .abilities .title {
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .abilities .title a {
+  padding-left: 10px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 5px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities .item-name {
+  font-weight: bold;
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities .item-description {
+  grid-column: 1 / span 2;
 }
 .cthack .items-list {
   list-style: none;
@@ -884,7 +921,7 @@ i.cthack {
 }
 .cthack.sheet.item.archetype .archetype-body-header {
   display: flex;
-  gap: 10px;
+  grid-gap: 10px;
   padding: 0 20px 0 20px;
 }
 .cthack.sheet.item.archetype .archetype-body-header img {
@@ -1106,7 +1143,7 @@ i.cthack {
   font-size: 1rem;
   text-align: center;
   color: #fff;
-  gap: 10px;
+  grid-gap: 10px;
 }
 .cthack.sheet.item.ability .ability-grid .data-group {
   display: flex;
@@ -1494,12 +1531,13 @@ i.cthack {
 }
 .cthack.sheet.item.attack .attack-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   padding-left: 10px;
   padding-right: 10px;
   font-size: 1rem;
   text-align: center;
   color: #fff;
+  padding: 0;
 }
 .cthack.sheet.item.attack .attack-grid .data-group {
   display: flex;
@@ -1513,6 +1551,9 @@ i.cthack {
 }
 .cthack.sheet.item.attack .attack-grid .data-group input,
 .cthack.sheet.item.attack .attack-grid .data-group select {
+  height: 40px;
+}
+.cthack.sheet.item.attack .attack-grid .field-name {
   height: 40px;
 }
 .cthack.sheet.item.attack .attack-grid .input-damage {
@@ -1556,5 +1597,113 @@ i.cthack {
   border: 2px solid #eea3a3;
 }
 .cthack.sheet.item.attack .item-description .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.cthack.sheet.item.opponentAbility .editable input,
+.cthack.sheet.item.opponentAbility .editable select {
+  border: 1px solid #782e22;
+}
+.cthack.sheet.item.opponentAbility .item-header {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.opponentAbility .item-header img {
+  border: 0px;
+  max-height: 50px;
+}
+.cthack.sheet.item.opponentAbility .item-header input {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  padding: 0;
+  color: #fff;
+}
+.cthack.sheet.item.opponentAbility .item-header .name {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  color: #fff;
+}
+.cthack.sheet.item.opponentAbility .item-header .sheet-lock {
+  margin-left: auto;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.opponentAbility .ability-body {
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.opponentAbility .ability-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  grid-gap: 10px;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .data-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .data-group .field-name {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .data-group input,
+.cthack.sheet.item.opponentAbility .ability-grid .data-group select {
+  height: 40px;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .field-name {
+  height: 40px;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .select-usage {
+  min-width: 100px;
+  font-size: 1rem;
+  color: #fff;
+  opacity: 1;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .readonly {
+  border: none;
+}
+.cthack.sheet.item.opponentAbility .item-description {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0px 10px;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.item.opponentAbility .item-description .description {
+  text-align: center;
+  text-transform: uppercase;
+}
+.cthack.sheet.item.opponentAbility .item-description .description-content {
+  text-align: justify;
+}
+.cthack.sheet.item.opponentAbility .item-description .editor {
+  min-height: 160px;
+  scrollbar-width: thin;
+}
+.cthack.sheet.item.opponentAbility .item-description .editor-content {
+  min-height: 150px;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack.sheet.item.opponentAbility .item-description .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack.sheet.item.opponentAbility .item-description .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.item.opponentAbility .item-description .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.item.opponentAbility .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }

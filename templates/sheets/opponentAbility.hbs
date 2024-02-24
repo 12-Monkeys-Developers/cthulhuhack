@@ -1,5 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-  {{!log "attack" this}}
+  {{log "ability" this}}
   <div class="item-header">
     {{#if editable}}
       <img src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
@@ -19,22 +19,25 @@
       {{/if}}
     </div>
   </div>
-
-  <div class="attack-body">
-    <div class="attack-grid">
+  <div class="ability-body">
+    <div class="ability-grid">
       <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.Damage"}}</div>
-        <input class="input-damage" name="system.damage" type="text" value="{{item.system.damage}}" data-type="Number" />
-      </div>
-      <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.DamageDice"}}</div>
-        <select class="select-damageDice" name="system.damageDice" data-type="String">
-          {{selectOptions dicesDamage selected=item.system.damageDice empty="None"}}
+        <div class="field-name">{{localize "CTHACK.AbilityUsePer"}}</div>
+        <select class="select-usage" name="system.uses.per" data-type="String">
+            {{selectOptions usage selected=item.system.uses.per labelAttr="label" localize=true}}
         </select>
       </div>
       <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.NbAttacks"}}</div>
-        <input class="input-damage" name="system.nb" type="text" value="{{item.system.nb}}" data-type="Number" />
+        <div class="field-name">{{localize "CTHACK.AbilityUseValueDtl"}}</div>
+        <input class="field-value input-small" name="system.uses.value" type="text" value="{{item.system.uses.value}}" data-dtype="Number" />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityUseMax"}}</div>
+        <input class="field-value input-small" name="system.uses.max" type="text" value="{{item.system.uses.max}}" data-dtype="Number" />   
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityUseLast"}}</div>
+        <input class="field-value" name="system.uses.last" type="text" value="{{item.system.uses.last}}" data-dtype="String" />   
       </div>
     </div>
     <div class="item-description">

@@ -108,12 +108,29 @@
       {{/if}}
       <div class="grid-attacks">
         {{#each attacks as |attack id|}}
-          {{log 'attack' this}}
             <div class="item-name opponent-contextmenu" data-item-id="{{attack._id}}">{{attack.name}}</div>
             <div class="item-details opponent-contextmenu" data-item-id="{{attack._id}}">{{{attack.system.details}}}</div>
           {{/each}}
         </div>
-      </div>
+    </div>
+
+    <div class="abilities">
+      {{#if editable}}
+        <div class="title">{{localize "CTHACK.OpponentAbilities"}}
+          <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.AddOpponentAbility'}}" data-type="opponentAbility"><i class="fas fa-plus"></i></a>
+        </div>
+      {{else}}
+        {{#if (gt opponentAbilities.length 0)}}<div class="title">{{localize "CTHACK.OpponentAbilities"}}</div>{{/if}}
+      {{/if}}
+      <div class="grid-opponent-abilities">
+        {{#each opponentAbilities as |ability id|}}
+          {{log 'opponent-ability' ability}}
+            <div class="item-name opponent-contextmenu" data-item-id="{{ability._id}}">{{ability.name}}</div>
+            <div class="item-details opponent-contextmenu" data-item-id="{{ability._id}}">{{{ability.system.details}}}</div>
+            <div class="item-description opponent-contextmenu" data-item-id="{{ability._id}}">{{{ability.system.description}}}</div>
+        {{/each}}
+        </div>
+    </div>
 
     <div class="magics">
         {{#if editable}}

@@ -1,7 +1,13 @@
-&.sheet.item.ability {
+&.sheet.item.opponentAbility {
   .item-common-header();
+  .ability-body {
+    padding: 0 10px 0 10px;
+  }
   .ability-grid {
-    .item-common-grid(3);
+    .item-common-grid(4);
+    .field-name {
+      height: 40px;;
+    }
     grid-gap: 10px;
     .select-usage {
       min-width: 100px;

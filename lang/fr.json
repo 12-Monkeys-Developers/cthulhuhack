@@ -11,7 +11,8 @@
       "attack": "Attaque",
       "magic": "Magie",
       "archetype": "Archétype",
-      "definition": "Définition"
+      "definition": "Définition",
+      "opponentAbility": "Capacité adversaire"
     }
   },
 
@@ -146,6 +147,7 @@
     "AddAbitity": "Ajouter une capacité",
     "AddMagic": "Ajouter un sortilège ou un rituel",
     "AddAttack": "Ajouter une attaque",
+    "AddOpponentAbility": "Ajouter une capacité d'adversaire",
 
     "Attributes": "Attributs",
 
@@ -187,6 +189,7 @@
     "OpponentAttacks": "Attaques",
     "OpponentMagics": "Magie",
     "OpponentAbilities": "Capacités spéciales",
+    "NbAttacks": "Nombre d'attaques",
 
     "OutOfAction": {
       "Dea": "Mort",
@@ -221,7 +224,10 @@
       "Title": "Statut des joueurs"
     },
     "ContextMenuEdit": "Editer",
-    "ContextMenuDelete": "Supprimer"
+    "ContextMenuDelete": "Supprimer",
+    "ContextMenuUse": "Utiliser",
+    "ContextMenuResetUse": "Réinitialiser",
+    "ContextMenuDecreaseUse": "Diminuer"
   },
 
   "SETTINGS": {

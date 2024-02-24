@@ -11,7 +11,8 @@
       "attack": "Attack",
       "magic": "Magic",
       "ability": "Archetype",
-      "definition": "Definition"
+      "definition": "Definition",
+      "opponentAbility": "Opponent Ability"
     }
   },
 
@@ -145,6 +146,7 @@
     "AddAbitity": "Add an ability",
     "AddMagic": "Add a spell or a ritual",
     "AddAttack": "Add an attack",
+    "AddOpponentAbility": "Add an Opponent Ability",
 
     "Attributes": "Attributes",
 
@@ -186,6 +188,7 @@
     "OpponentAttacks": "Attacks",
     "OpponentMagics": "Magic",
     "OpponentAbilities": "Special Abilities",
+    "NbAttacks": "Number of attacks",
 
     "OutOfAction": {
       "Dea": "Dead",
@@ -221,7 +224,10 @@
       "Title": "Players Status"
     },
     "ContextMenuEdit": "Edit",
-    "ContextMenuDelete": "Delete"
+    "ContextMenuDelete": "Delete",
+    "ContextMenuUse": "Use",
+    "ContextMenuResetUse": "Reset",
+    "ContextMenuDecreaseUse": "Decrease"
   },
 
   "SETTINGS": {

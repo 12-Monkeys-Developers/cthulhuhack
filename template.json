@@ -94,13 +94,14 @@
     }
   },
   "Item": {
-    "types": ["archetype", "ability", "item", "weapon", "magic", "definition", "attack"],
+    "types": ["archetype", "ability", "item", "weapon", "magic", "definition", "attack", "opponentAbility"],
     "archetype": {},
     "ability": {},
     "item": {},
     "weapon": {},
     "magic": {},
     "definition": {},
-    "attack": {}
+    "attack": {},
+    "opponentAbility": {}
   }
 }

@@ -68,6 +68,7 @@ Hooks.once("init", async function () {
     item: models.CtHackItem,
     magic: models.CtHackMagic,
     weapon: models.CtHackWeapon,
+    opponentAbility: models.CtHackOpponentkAbility
   };
 
   // Register sheet application classes
@@ -84,6 +85,7 @@ Hooks.once("init", async function () {
   Items.registerSheet(SYSTEM_NAME, applications.DefinitionSheet, { types: ["definition"], makeDefault: true });
   Items.registerSheet(SYSTEM_NAME, applications.ArchetypeSheet, { types: ["archetype"], makeDefault: true });
   Items.registerSheet(SYSTEM_NAME, applications.MagieSheet, { types: ["magic"], makeDefault: true });
+  Items.registerSheet(SYSTEM_NAME, applications.AdversaireCapaciteSheet, { types: ["opponentAbility"], makeDefault: true });
 
   // Preload Handlebars Templates
   preloadHandlebarsTemplates();
