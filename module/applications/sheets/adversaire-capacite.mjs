@@ -17,8 +17,8 @@ export default class CtHackAdversaireCapaciteSheet extends CtHackItemSheet {
 
   /** @override */
   async getData(options) {
-    const context = await super.getData(options);  
-    context.usage = SYSTEM.ABILITY_USAGE;  
+    const context = await super.getData(options);
+    context.usage = SYSTEM.ABILITY_USAGE;
     return context;
   }
 }

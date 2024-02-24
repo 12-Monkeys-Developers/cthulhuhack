@@ -131,6 +131,7 @@
     "ItemTypeAbility": "Capacité",
     "ItemTypeDefinition": "Définition",
     "ItemTypeMagic": "Magie",
+    "ItemTypeOpponentAbility": "Capacité d'adversaire",
 
     "HitPointsStart": "Points de Vie de départ",
     "WealthStart": "Richesse de départ",

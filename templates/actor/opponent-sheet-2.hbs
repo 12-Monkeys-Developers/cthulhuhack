@@ -125,9 +125,9 @@
       <div class="grid-opponent-abilities">
         {{#each opponentAbilities as |ability id|}}
           {{log 'opponent-ability' ability}}
-            <div class="item-name opponent-contextmenu" data-item-id="{{ability._id}}">{{ability.name}}</div>
-            <div class="item-details opponent-contextmenu" data-item-id="{{ability._id}}">{{{ability.system.details}}}</div>
-            <div class="item-description opponent-contextmenu" data-item-id="{{ability._id}}">{{{ability.system.description}}}</div>
+            <div class="item-name opponent-contextmenu" data-item-id="{{ability.item._id}}">{{ability.item.name}}</div>
+            <div class="item-details opponent-contextmenu" data-item-id="{{ability.item._id}}">{{ability.item.system.details}}</div>
+            <div class="item-description opponent-contextmenu" data-item-id="{{ability.item._id}}">{{{ability.desc}}}</div>
         {{/each}}
         </div>
     </div>
@@ -142,10 +142,11 @@
         {{/if}}
         <div class="grid-magics">
           {{#each magics as |magic id|}}
-            <div class="item-name opponent-contextmenu" data-item-id="{{magic._id}}">{{{magic.name}}}</div>
-            <div class="item-subtype opponent-contextmenu" data-item-id="{{magic._id}}">{{magic.system.subtypeLabel}}</div>
-            <div class="item-dice opponent-contextmenu" data-item-id="{{magic._id}}"><i class="fas fa-dice-d20 magic rollable">&nbsp;&nbsp;</i>{{magic.system.dice}}</div>
-            <div class="item-incantation opponent-contextmenu" data-item-id="{{magic._id}}">{{magic.system.incantation}}</div>
+            <div class="item-name opponent-contextmenu" data-item-id="{{magic.item._id}}">{{{magic.item.name}}}</div>
+            <div class="item-subtype opponent-contextmenu" data-item-id="{{magic.item._id}}">{{magic.item.system.subtypeLabel}}</div>
+            <div class="item-dice opponent-contextmenu" data-item-id="{{magic.item._id}}"><i class="fas fa-dice-d20 magic rollable">&nbsp;&nbsp;</i>{{magic.item.system.dice}}</div>
+            <div class="item-incantation opponent-contextmenu" data-item-id="{{magic.item._id}}">{{magic.item.system.incantation}}</div>
+            <div class="item-description opponent-contextmenu" data-item-id="{{magic.item._id}}">{{{magic.desc}}}</div>
           {{/each}}
         </div>
   </section>

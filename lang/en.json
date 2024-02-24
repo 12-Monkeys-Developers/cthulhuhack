@@ -130,6 +130,7 @@
     "ItemTypeAbility": "Ability",
     "ItemTypeDefinition": "Definition",
     "ItemTypeMagic": "Magic",
+    "ItemTypeOpponentAbility": "Opponent Ability",
 
     "HitPointsStart": "Starting Hit Points",
     "WealthStart": "Starting Wealth",

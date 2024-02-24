@@ -753,6 +753,12 @@ i.cthack {
   font-size: var(--font-size-16);
   padding-left: 10px;
 }
+.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics .item-name {
+  font-weight: bold;
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics .item-description {
+  grid-column: 1 / span 4;
+}
 .cthack.sheet.actor.opponentv2 .sheet-body .abilities {
   display: flex;
   flex-direction: column;

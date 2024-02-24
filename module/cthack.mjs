@@ -68,7 +68,7 @@ Hooks.once("init", async function () {
     item: models.CtHackItem,
     magic: models.CtHackMagic,
     weapon: models.CtHackWeapon,
-    opponentAbility: models.CtHackOpponentkAbility
+    opponentAbility: models.CtHackOpponentAbility
   };
 
   // Register sheet application classes

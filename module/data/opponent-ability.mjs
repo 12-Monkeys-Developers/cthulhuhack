@@ -1,7 +1,7 @@
 import CommonItem from "./common-item.mjs";
 import { formatDate } from "../utils.js";
 
-export default class CtHackOpponentkAbility extends CommonItem {
+export default class CtHackOpponentAbility extends CommonItem {
   static defineSchema() {
     const fields = foundry.data.fields;
     const common = super.defineSchema();
@@ -80,4 +80,5 @@ export default class CtHackOpponentkAbility extends CommonItem {
       return this.parent.update({ "system.uses.value": this.uses.value - 1 });
     }
   }
+
 }

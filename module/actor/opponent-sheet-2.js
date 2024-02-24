@@ -30,9 +30,21 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     const context = super.getData(options);
 
     context.editable = this.isEditable;
-    context.attacks = this.actor.items.filter((i) => i.type === "attack");
-    context.magics = this.actor.items.filter((i) => i.type === "magic");
-    context.opponentAbilities = this.actor.items.filter((i) => i.type === "opponentAbility");
+    context.attacks = this.actor.itemTypes.attack;
+    context.magics = [];
+    const magicsRaw = this.actor.itemTypes.magic;
+    for (const magic of magicsRaw) {
+      const desc = await TextEditor.enrichHTML(magic.system.description, { async: true });
+      context.magics.push({desc: desc, item: magic});
+    }
+
+    context.opponentAbilities = [];
+    const opponentAbilitiesRaw = this.actor.itemTypes.opponentAbility;
+    for (const ability of opponentAbilitiesRaw) {
+      const desc = await TextEditor.enrichHTML(ability.system.description, { async: true });
+      context.opponentAbilities.push({desc: desc, item: ability});
+    }
+
     context.enrichedDescription = await TextEditor.enrichHTML(this.actor.system.description, { async: true });
     context.hasImage = this.actor.img && this.actor.img !== "icons/svg/mystery-man.svg";
     context.hasShortDescription = !!this.actor.system.description;
