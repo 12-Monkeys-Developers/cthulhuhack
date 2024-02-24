@@ -20,7 +20,7 @@ export default class CtHackAttack extends CommonItem {
     if (this.damage !== 0) {
       details += `${this.damage} (${game.i18n.localize('CTHACK.Damage')})&nbsp;&nbsp;`;
     }
-    if (this.damageDice !== "0") {
+    if (this.damageDice !== "0" && this.damageDice !== "") {
       details += `<i class="fas fa-dice-d20 attack rollable">&nbsp;&nbsp;</i>  ${this.damageDice} (${game.i18n.localize('CTHACK.Damage')})`;
     }
     if (this.nb > 1) {

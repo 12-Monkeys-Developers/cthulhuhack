@@ -142,8 +142,8 @@ export class CtHackActorSheet extends ActorSheet {
 
 	/**
 	 * @name _onItemCreate
-	 * @description Callback on delete item actions
-	 * 				Creates a new Owned Item for the actor using initial data defined in the HTML dataset
+	 * @description Creates a new Owned Item for the actor using type defined in the HTML dataset
+	 * 				
 	 * @private
 	 * 
 	 * @param {Event} event   The originating click event
@@ -151,24 +151,18 @@ export class CtHackActorSheet extends ActorSheet {
 	 */
 	async _onItemCreate(event) {
 		event.preventDefault();
-		const header = event.currentTarget;
+		const li = event.currentTarget;
 		// Get the type of item to create.
-		let type = header.dataset.type;
-		const altType = header.dataset.altType;
-		if (event?.shiftKey) type = altType;
+		let type;
+		event?.shiftKey ? type = li.dataset.altType : type = li.dataset.type;
 		
-		// Grab any data associated with this control.
-		const data = foundry.utils.deepClone(header.dataset);
 		// Initialize a default name.
 		const name = game.i18n.format("CTHACK.ItemNew", {type: game.i18n.localize(`CTHACK.ItemType${type.capitalize()}`)});
-		// Prepare the item object.
+		// Prepare the item object
 		const itemData = {
 			name: name,
-			type: type,
-			system: data
+			type: type
 		};
-		// Remove the type from the dataset since it's in the itemData.type prop.
-		delete itemData.system.type;
 
 		// Create the item
 		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
