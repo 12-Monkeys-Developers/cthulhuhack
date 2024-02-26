@@ -93,25 +93,27 @@
       text-align: justify;
     }
     .editor {
-      min-height: 160px;
+      min-height: 200px;
       scrollbar-width: thin;
-    }
-    .editor-content {
-      min-height: 150px;
-      margin: 0px 5px;
-      font-weight: normal;
-    }
-    .prosemirror menu {
-      font-size: 0.8em;
-      li {
-        margin: 0px 0px;
-        &:hover {
-          border: 2px solid #eea3a3;
+      .editor-content {
+        min-height: 150px;
+        margin: 0px 5px;
+        font-weight: normal;
+      }
+      .prosemirror menu {
+        font-size: 0.8em;
+        li {
+          margin: 0px 0px;
+          &:hover {
+            border: 2px solid #eea3a3;
+          }
+        }
+        button {
+          background: var(--color-hover-bg);
         }
       }
-      button {
-        background: var(--color-hover-bg);
-      }
     }
+
   }
 }
+

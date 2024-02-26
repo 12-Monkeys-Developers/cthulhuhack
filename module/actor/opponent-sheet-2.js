@@ -30,19 +30,28 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     const context = super.getData(options);
 
     context.editable = this.isEditable;
+
     context.attacks = this.actor.itemTypes.attack;
+
+    context.attacks = [];
+    const attacksRaw = this.actor.itemTypes.attack;
+    for (const attack of attacksRaw) {
+      attack.enrichedDescription = await TextEditor.enrichHTML(attack.system.description, { async: true });
+      context.attacks.push(attack);
+    }
+
     context.magics = [];
     const magicsRaw = this.actor.itemTypes.magic;
     for (const magic of magicsRaw) {
-      const desc = await TextEditor.enrichHTML(magic.system.description, { async: true });
-      context.magics.push({desc: desc, item: magic});
+      magic.enrichedDescription = await TextEditor.enrichHTML(magic.system.description, { async: true });
+      context.magics.push(magic);
     }
 
     context.opponentAbilities = [];
     const opponentAbilitiesRaw = this.actor.itemTypes.opponentAbility;
     for (const ability of opponentAbilitiesRaw) {
-      const desc = await TextEditor.enrichHTML(ability.system.description, { async: true });
-      context.opponentAbilities.push({desc: desc, item: ability});
+      ability.enrichedDescription = await TextEditor.enrichHTML(ability.system.description, { async: true });
+      context.opponentAbilities.push(ability);
     }
 
     context.enrichedDescription = await TextEditor.enrichHTML(this.actor.system.description, { async: true });
@@ -70,9 +79,6 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
-
-    // Item summaries
-    html.find(".item .item-name h4").click((event) => this._onItemSummary(event));
 
     html.find(".attack-create").click(this._onAttackCreate.bind(this));
 
@@ -143,7 +149,7 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
           item.system.decrease();
           this.render();
         },
-      },      
+      },
       {
         name: game.i18n.localize("CTHACK.ContextMenuEdit"),
         icon: '<i class="fas fa-edit"></i>',
@@ -167,31 +173,13 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
           const item = this.actor.items.get(li.data("item-id"));
           await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
         },
-      }
+      },
     ];
   }
 
   /**
-   * Handles the event when a magic roll is triggered.
-   * @param {Event} event - The event object.
-   * @returns {Promise<void>} - A promise that resolves when the function finishes executing.
-   */
-  async _onMagicRoll(event) {
-    event.preventDefault();
-
-    const li = $(event.currentTarget).parents(".item-dice");
-    const itemId = li.data("item-id");
-    let item = this.actor.items.get(itemId);
-
-    await this.actor.rollMaterial(item, { event: event });
-
-    // Render to refresh in case of resource lost
-    this.actor.sheet.render(true);
-  }
-
-  /**
    * Handles the event when sharing an image.
-   * 
+   *
    * @param {Event} event - The event object.
    * @returns {void}
    */
@@ -224,7 +212,7 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
    */
   async _resetImage(event) {
     event.preventDefault();
-    await this.actor.update({ 'img': "icons/svg/mystery-man.svg" });
+    await this.actor.update({ img: "icons/svg/mystery-man.svg" });
   }
 
   /**
@@ -283,7 +271,7 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
       name: name,
       type: type,
     };
-    // Finally, create the item!
+    // Finally, create the item
     return await this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: true });
   }
 
@@ -301,39 +289,40 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
   }
 
   /**
-   * Handle toggling of an item from the Opponent sheet
-   * @private
-   */
-  _onItemSummary(event) {
-    event.preventDefault();
-    let li = $(event.currentTarget).parents(".item"),
-      item = this.actor.items.get(li.data("item-id"));
-
-    // Toggle summary
-    if (item.system.description !== undefined && item.system.description !== null) {
-      if (li.hasClass("expanded")) {
-        let summary = li.children(".item-summary");
-        summary.slideUp(200, () => summary.remove());
-      } else {
-        let div = $(`<div class="item-summary">${item.system.description}</div>`);
-        li.append(div.hide());
-        div.slideDown(200);
-      }
-      li.toggleClass("expanded");
-    }
-  }
-
-  /**
    * Handle clickable Damaged roll.
    * @param {Event} event   The originating click event
    * @private
    */
   _onAttackDamageRoll(event) {
-    const li = $(event.currentTarget).parents(".item-details");
+    // Stop propagation to avoid expanding the item
+    event.preventDefault();
+    event.stopPropagation();
+    
+    const li = $(event.currentTarget).parents(".item");
     const itemId = li.data("itemId");
     let item = this.actor.items.get(itemId);
 
     this.actor.rollAttackDamageRoll(item, { event: event });
+  }
+
+  /**
+   * Handles the event when a magic roll is triggered.
+   * @param {Event} event - The event object.
+   * @returns {Promise<void>} - A promise that resolves when the function finishes executing.
+   */
+  async _onMagicRoll(event) {
+    // Stop propagation to avoid expanding the item
+    event.preventDefault();
+    event.stopPropagation();
+
+    const li = $(event.currentTarget).parents(".item");
+    const itemId = li.data("item-id");
+    let item = this.actor.items.get(itemId);
+
+    await this.actor.rollMaterial(item, { event: event });
+
+    // Render to refresh in case of resource lost
+    this.actor.sheet.render(true);
   }
 
   /**

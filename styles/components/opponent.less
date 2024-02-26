@@ -179,11 +179,11 @@
         text-align: center;
       }
       .editor {
-        min-height: 160px;
-        scrollbar-width: none;
+        min-height: 200px;
       }
       .editor-content {
         min-height: 150px;
+        height: auto;
         margin: 0px 5px;
         font-weight: normal;
       }
@@ -224,9 +224,21 @@
       }
       .grid-attacks {
         display: grid;
-        grid-template-columns: 1fr 3fr;
-        font-size: var(--font-size-16);
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
         padding-left: 10px;
+        align-items: center;
+        font-size: var(--font-size-16);
+        .item-line {
+          display: grid;
+          grid-template-columns: 1fr 3fr;
+          .item-name {
+            font-weight: bold;
+          }
+        } 
+        .has-description {
+          font-style: italic;
+        }
       }
     }
     .magics {
@@ -250,14 +262,20 @@
       }
       .grid-magics {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        font-size: var(--font-size-16);
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
         padding-left: 10px;
-        .item-name {
-          font-weight: bold;
+        align-items: center;
+        font-size: var(--font-size-16);
+        .item-line {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          .item-name {
+            font-weight: bold;
+          }
         }
-        .item-description {
-          grid-column: 1 / span 4;        
+        .has-description {
+          font-style: italic;
         }
       }
     }
@@ -282,17 +300,21 @@
       }
       .grid-opponent-abilities {
         display: grid;
-        grid-template-columns: 1fr 3fr;
+        grid-template-columns: 1fr;
         grid-gap: 5px;
         padding-left: 10px;
         align-items: center;
         font-size: var(--font-size-16);
-        .item-name {
-          font-weight: bold;
+        .item-line {
+          display: grid;
+          grid-template-columns: 1fr 3fr;
+          .item-name {
+            font-weight: bold;
+          }
         }
-        .item-description{
-          grid-column: 1 / span 2;
-        }        
+        .has-description {
+          font-style: italic;
+        }   
       }
     }
   }

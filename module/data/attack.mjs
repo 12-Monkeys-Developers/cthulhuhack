@@ -17,16 +17,23 @@ export default class CtHackAttack extends CommonItem {
    */
   get details() {
     let details = "";
+    if (this.hasDamageDice) {
+      details += ` ${this.damageDice} (${game.i18n.localize('CTHACK.Damage')})`;
+    }    
     if (this.damage !== 0) {
       details += `${this.damage} (${game.i18n.localize('CTHACK.Damage')})&nbsp;&nbsp;`;
-    }
-    if (this.damageDice !== "0" && this.damageDice !== "") {
-      details += `<i class="fas fa-dice-d20 attack rollable">&nbsp;&nbsp;</i>  ${this.damageDice} (${game.i18n.localize('CTHACK.Damage')})`;
     }
     if (this.nb > 1) {
       details += `x ${this.nb}`;
     }
-
     return details;
+  }
+
+  /**
+   * Checks if the attack has damage dice.
+   * @returns {boolean} True if the attack has damage dice, false otherwise.
+   */
+  get hasDamageDice() {
+    return this.damageDice !== "0" && this.damageDice !== "";
   }
 }

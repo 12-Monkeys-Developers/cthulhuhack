@@ -103,6 +103,9 @@ i.cthack {
   filter: grayscale(1);
   transition: 0.3s;
 }
+.editor.prosemirror.editing-source textarea {
+  color: #fff;
+}
 .grid,
 .grid-2col {
   display: grid;
@@ -678,11 +681,11 @@ i.cthack {
   text-align: center;
 }
 .cthack.sheet.actor.opponentv2 .sheet-body .description-editable .editor {
-  min-height: 160px;
-  scrollbar-width: none;
+  min-height: 200px;
 }
 .cthack.sheet.actor.opponentv2 .sheet-body .description-editable .editor-content {
   min-height: 150px;
+  height: auto;
   margin: 0px 5px;
   font-weight: normal;
 }
@@ -723,9 +726,21 @@ i.cthack {
 }
 .cthack.sheet.actor.opponentv2 .sheet-body .attacks .grid-attacks {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  font-size: var(--font-size-16);
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
   padding-left: 10px;
+  align-items: center;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .attacks .grid-attacks .item-line {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .attacks .grid-attacks .item-line .item-name {
+  font-weight: bold;
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .attacks .grid-attacks .has-description {
+  font-style: italic;
 }
 .cthack.sheet.actor.opponentv2 .sheet-body .magics {
   display: flex;
@@ -749,15 +764,21 @@ i.cthack {
 }
 .cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  font-size: var(--font-size-16);
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
   padding-left: 10px;
+  align-items: center;
+  font-size: var(--font-size-16);
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics .item-name {
+.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics .item-line {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics .item-line .item-name {
   font-weight: bold;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics .item-description {
-  grid-column: 1 / span 4;
+.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics .has-description {
+  font-style: italic;
 }
 .cthack.sheet.actor.opponentv2 .sheet-body .abilities {
   display: flex;
@@ -781,17 +802,21 @@ i.cthack {
 }
 .cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr;
   grid-gap: 5px;
   padding-left: 10px;
   align-items: center;
   font-size: var(--font-size-16);
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities .item-name {
+.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities .item-line {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities .item-line .item-name {
   font-weight: bold;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities .item-description {
-  grid-column: 1 / span 2;
+.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities .has-description {
+  font-style: italic;
 }
 .cthack .items-list {
   list-style: none;
@@ -976,24 +1001,24 @@ i.cthack {
   text-align: justify;
 }
 .cthack.sheet.item.archetype .item-description .editor {
-  min-height: 160px;
+  min-height: 200px;
   scrollbar-width: thin;
 }
-.cthack.sheet.item.archetype .item-description .editor-content {
+.cthack.sheet.item.archetype .item-description .editor .editor-content {
   min-height: 150px;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack.sheet.item.archetype .item-description .prosemirror menu {
+.cthack.sheet.item.archetype .item-description .editor .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack.sheet.item.archetype .item-description .prosemirror menu li {
+.cthack.sheet.item.archetype .item-description .editor .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack.sheet.item.archetype .item-description .prosemirror menu li:hover {
+.cthack.sheet.item.archetype .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.archetype .item-description .prosemirror menu button {
+.cthack.sheet.item.archetype .item-description .editor .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.magic .editable input,
@@ -1086,24 +1111,24 @@ i.cthack {
   text-align: justify;
 }
 .cthack.sheet.item.magic .item-description .editor {
-  min-height: 160px;
+  min-height: 200px;
   scrollbar-width: thin;
 }
-.cthack.sheet.item.magic .item-description .editor-content {
+.cthack.sheet.item.magic .item-description .editor .editor-content {
   min-height: 150px;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack.sheet.item.magic .item-description .prosemirror menu {
+.cthack.sheet.item.magic .item-description .editor .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack.sheet.item.magic .item-description .prosemirror menu li {
+.cthack.sheet.item.magic .item-description .editor .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack.sheet.item.magic .item-description .prosemirror menu li:hover {
+.cthack.sheet.item.magic .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.magic .item-description .prosemirror menu button {
+.cthack.sheet.item.magic .item-description .editor .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.ability .editable input,
@@ -1188,24 +1213,24 @@ i.cthack {
   text-align: justify;
 }
 .cthack.sheet.item.ability .item-description .editor {
-  min-height: 160px;
+  min-height: 200px;
   scrollbar-width: thin;
 }
-.cthack.sheet.item.ability .item-description .editor-content {
+.cthack.sheet.item.ability .item-description .editor .editor-content {
   min-height: 150px;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack.sheet.item.ability .item-description .prosemirror menu {
+.cthack.sheet.item.ability .item-description .editor .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack.sheet.item.ability .item-description .prosemirror menu li {
+.cthack.sheet.item.ability .item-description .editor .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack.sheet.item.ability .item-description .prosemirror menu li:hover {
+.cthack.sheet.item.ability .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.ability .item-description .prosemirror menu button {
+.cthack.sheet.item.ability .item-description .editor .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.item .editable input,
@@ -1287,24 +1312,24 @@ i.cthack {
   text-align: justify;
 }
 .cthack.sheet.item.item .item-description .editor {
-  min-height: 160px;
+  min-height: 200px;
   scrollbar-width: thin;
 }
-.cthack.sheet.item.item .item-description .editor-content {
+.cthack.sheet.item.item .item-description .editor .editor-content {
   min-height: 150px;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack.sheet.item.item .item-description .prosemirror menu {
+.cthack.sheet.item.item .item-description .editor .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack.sheet.item.item .item-description .prosemirror menu li {
+.cthack.sheet.item.item .item-description .editor .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack.sheet.item.item .item-description .prosemirror menu li:hover {
+.cthack.sheet.item.item .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.item .item-description .prosemirror menu button {
+.cthack.sheet.item.item .item-description .editor .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.definition .editable input,
@@ -1379,24 +1404,24 @@ i.cthack {
   text-align: justify;
 }
 .cthack.sheet.item.definition .item-description .editor {
-  min-height: 160px;
+  min-height: 200px;
   scrollbar-width: thin;
 }
-.cthack.sheet.item.definition .item-description .editor-content {
+.cthack.sheet.item.definition .item-description .editor .editor-content {
   min-height: 150px;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack.sheet.item.definition .item-description .prosemirror menu {
+.cthack.sheet.item.definition .item-description .editor .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack.sheet.item.definition .item-description .prosemirror menu li {
+.cthack.sheet.item.definition .item-description .editor .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack.sheet.item.definition .item-description .prosemirror menu li:hover {
+.cthack.sheet.item.definition .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.definition .item-description .prosemirror menu button {
+.cthack.sheet.item.definition .item-description .editor .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.weapon .editable input,
@@ -1480,24 +1505,24 @@ i.cthack {
   text-align: justify;
 }
 .cthack.sheet.item.weapon .item-description .editor {
-  min-height: 160px;
+  min-height: 200px;
   scrollbar-width: thin;
 }
-.cthack.sheet.item.weapon .item-description .editor-content {
+.cthack.sheet.item.weapon .item-description .editor .editor-content {
   min-height: 150px;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack.sheet.item.weapon .item-description .prosemirror menu {
+.cthack.sheet.item.weapon .item-description .editor .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack.sheet.item.weapon .item-description .prosemirror menu li {
+.cthack.sheet.item.weapon .item-description .editor .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack.sheet.item.weapon .item-description .prosemirror menu li:hover {
+.cthack.sheet.item.weapon .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.weapon .item-description .prosemirror menu button {
+.cthack.sheet.item.weapon .item-description .editor .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.attack .editable input,
@@ -1585,24 +1610,24 @@ i.cthack {
   text-align: justify;
 }
 .cthack.sheet.item.attack .item-description .editor {
-  min-height: 160px;
+  min-height: 200px;
   scrollbar-width: thin;
 }
-.cthack.sheet.item.attack .item-description .editor-content {
+.cthack.sheet.item.attack .item-description .editor .editor-content {
   min-height: 150px;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack.sheet.item.attack .item-description .prosemirror menu {
+.cthack.sheet.item.attack .item-description .editor .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack.sheet.item.attack .item-description .prosemirror menu li {
+.cthack.sheet.item.attack .item-description .editor .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack.sheet.item.attack .item-description .prosemirror menu li:hover {
+.cthack.sheet.item.attack .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.attack .item-description .prosemirror menu button {
+.cthack.sheet.item.attack .item-description .editor .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.opponentAbility .editable input,
@@ -1693,23 +1718,23 @@ i.cthack {
   text-align: justify;
 }
 .cthack.sheet.item.opponentAbility .item-description .editor {
-  min-height: 160px;
+  min-height: 200px;
   scrollbar-width: thin;
 }
-.cthack.sheet.item.opponentAbility .item-description .editor-content {
+.cthack.sheet.item.opponentAbility .item-description .editor .editor-content {
   min-height: 150px;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu {
+.cthack.sheet.item.opponentAbility .item-description .editor .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu li {
+.cthack.sheet.item.opponentAbility .item-description .editor .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu li:hover {
+.cthack.sheet.item.opponentAbility .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu button {
+.cthack.sheet.item.opponentAbility .item-description .editor .prosemirror menu button {
   background: var(--color-hover-bg);
 }
