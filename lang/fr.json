@@ -299,5 +299,16 @@
     "UnlockSheet": "Déverrouiller la fiche",
     "SelectImage": "Clic gauche pour sélectionner une image, clic droit pour supprimer l'image",
     "ShowImage": "Montrer l'image"
+  },
+  "SEARCHTOOL": {
+    "WindowTitle": "Rechercher",
+    "ButtonSearch": "Rechercher",
+    "ButtonCancel": "Annuler",
+    "DialogTitle": "Recherche de Texte dans les Journaux, Personnages, Objets...",
+    "DialogInput": "Entrez ici le texte à rechercher :",
+    "ChatIntro": "Résultat de la recherche",
+    "ChatText": "Texte recherché : ",
+    "NoResults": "Aucun résultat",
+    "TooMuchResults": "Plus de 20 résultats, affinez votre recherche."
   }
 }

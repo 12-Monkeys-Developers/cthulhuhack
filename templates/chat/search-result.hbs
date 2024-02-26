@@ -1,9 +1,36 @@
-<div class="cabinet-chat {{cssClass}}">
-  <h3>{{localize "CDM.SEARCHTOOL.chat_intro"}}</h3>
-  <div class="motif">{{localize "CDM.SEARCHTOOL.chat_text"}}{{pattern}}</div>
-  <div>
-    {{#each resultCollection as |page|}}
-      @UUID[JournalEntry.{{page.parent._id}}.JournalEntryPage.{{page._id}}]<br />
-    {{/each}}
-  </div>
+<div class="search-chat {{cssClass}}">
+  <h3>{{localize "SEARCHTOOL.ChatIntro"}}</h3>
+  <div class="motif">{{localize "SEARCHTOOL.ChatText"}}{{searchPattern}}</div>
+  {{#if hasresults}}
+    {{#if tooMuchResults}}
+      {{localize "SEARCHTOOL.TooMuchResults"}}
+    {{else}}
+      {{#if pageresults}}
+        <h4>{{localize "DOCUMENT.JournalEntryPages"}}</h4>
+        <div>
+          {{#each pageResultCollection as |page|}}
+          <div class="btn-search"><button id="ouvrirpage" class="ouvrir-page" data-journal-id="{{page.journalId}}" data-page-id="{{page.id}}" data-tooltip='Visualiser la page'>{{page.journalName}} - {{page.name}}</button></div>
+          {{/each}}
+        </div>
+      {{/if}}
+      {{#if actorresults}}
+        <h4>{{localize "DOCUMENT.Actors"}}</h4>
+        <div>
+          {{#each actorResultCollection as |actor|}}
+            @UUID[Actor.{{actor._id}}]<br />
+          {{/each}}
+        </div>
+      {{/if}}
+      {{#if itemresults}}
+        <h4>{{localize "DOCUMENT.Items"}}</h4>
+        <div>
+          {{#each itemResultCollection as |item|}}
+            @UUID[Item.{{item._id}}]<br />
+          {{/each}}
+        </div>
+      {{/if}}
+    {{/if}}
+  {{else}}
+    {{localize "SEARCHTOOL.NoResults"}}
+  {{/if}}
 </div>

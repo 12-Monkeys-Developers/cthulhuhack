@@ -13,9 +13,9 @@
     </div>
 
     <div class="character">
-      <div class="name">
+      <div class="name" data-name="{{actor.name}}">
         {{#if editable}}
-          <input name="name" type="text" value="{{actor.name}}" data-name="{{actor.name}}" />
+          <input name="name" type="text" value="{{actor.name}}" />
         {{else}}
           <div data-tooltip="Clic droit pour rechercher le nom">{{actor.name}}</div>
         {{/if}}

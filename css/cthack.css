@@ -148,17 +148,6 @@ i.cthack {
 .flex-between {
   justify-content: space-between;
 }
-.chat-message .message-content {
-  background-image: url(../ui/cthack-green.jpg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  color: #fff;
-}
-.message-content .chat-save-roll,
-.message-content .chat-resource-roll,
-.message-content .chat-other-roll {
-  padding: 5px;
-}
 .dice-roll .dice-total.success {
   color: inherit;
   background: #c7d0c0;
@@ -174,6 +163,20 @@ i.cthack {
 }
 .roll-success {
   color: green;
+}
+.chat-message .message-content .chat-save-roll,
+.chat-message .message-content .chat-resource-roll,
+.chat-message .message-content .chat-other-roll {
+  padding: 5px;
+}
+.chat-message .message-content {
+  background-image: url(../ui/cthack-green.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+}
+.chat-message a.content-link {
+  background: none;
 }
 /* Styles limited to cthack sheets */
 .cthack {
@@ -915,6 +918,10 @@ i.cthack {
 .cthack .select-large {
   width: 100px;
 }
+.cthack .input-extralarge,
+.cthack .select-extralarge {
+  width: 150px;
+}
 .cthack.sheet.item.archetype .editable input,
 .cthack.sheet.item.archetype .editable select {
   border: 1px solid #782e22;
@@ -967,8 +974,8 @@ i.cthack {
   padding-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1rem;
   text-align: center;
   color: #fff;
@@ -986,6 +993,10 @@ i.cthack {
 .cthack.sheet.item.archetype .archetype-grid .data-group input,
 .cthack.sheet.item.archetype .archetype-grid .data-group select {
   height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.archetype .archetype-grid .data-group input[type="checkbox"] {
+  flex: none;
 }
 .cthack.sheet.item.archetype .item-description {
   display: flex;
@@ -1059,8 +1070,8 @@ i.cthack {
 .cthack.sheet.item.magic .magic-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1rem;
   text-align: center;
   color: #fff;
@@ -1078,6 +1089,10 @@ i.cthack {
 .cthack.sheet.item.magic .magic-grid .data-group input,
 .cthack.sheet.item.magic .magic-grid .data-group select {
   height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.magic .magic-grid .data-group input[type="checkbox"] {
+  flex: none;
 }
 .cthack.sheet.item.magic .magic-grid .select-subtype {
   min-width: 80px;
@@ -1169,8 +1184,8 @@ i.cthack {
 .cthack.sheet.item.ability .ability-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1rem;
   text-align: center;
   color: #fff;
@@ -1189,6 +1204,10 @@ i.cthack {
 .cthack.sheet.item.ability .ability-grid .data-group input,
 .cthack.sheet.item.ability .ability-grid .data-group select {
   height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.ability .ability-grid .data-group input[type="checkbox"] {
+  flex: none;
 }
 .cthack.sheet.item.ability .ability-grid .select-usage {
   min-width: 100px;
@@ -1271,8 +1290,8 @@ i.cthack {
 .cthack.sheet.item.item .item-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1rem;
   text-align: center;
   color: #fff;
@@ -1290,6 +1309,10 @@ i.cthack {
 .cthack.sheet.item.item .item-grid .data-group input,
 .cthack.sheet.item.item .item-grid .data-group select {
   height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.item .item-grid .data-group input[type="checkbox"] {
+  flex: none;
 }
 .cthack.sheet.item.item .item-grid .select-dice-material {
   color: #111;
@@ -1370,8 +1393,8 @@ i.cthack {
 .cthack.sheet.item.definition .definition-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1rem;
   text-align: center;
   color: #fff;
@@ -1389,6 +1412,10 @@ i.cthack {
 .cthack.sheet.item.definition .definition-grid .data-group input,
 .cthack.sheet.item.definition .definition-grid .data-group select {
   height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.definition .definition-grid .data-group input[type="checkbox"] {
+  flex: none;
 }
 .cthack.sheet.item.definition .item-description {
   display: flex;
@@ -1462,8 +1489,8 @@ i.cthack {
 .cthack.sheet.item.weapon .weapon-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1rem;
   text-align: center;
   color: #fff;
@@ -1481,6 +1508,10 @@ i.cthack {
 .cthack.sheet.item.weapon .weapon-grid .data-group input,
 .cthack.sheet.item.weapon .weapon-grid .data-group select {
   height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.weapon .weapon-grid .data-group input[type="checkbox"] {
+  flex: none;
 }
 .cthack.sheet.item.weapon .weapon-grid .select-dice-material {
   color: #fff;
@@ -1563,8 +1594,8 @@ i.cthack {
 .cthack.sheet.item.attack .attack-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1rem;
   text-align: center;
   color: #fff;
@@ -1583,6 +1614,10 @@ i.cthack {
 .cthack.sheet.item.attack .attack-grid .data-group input,
 .cthack.sheet.item.attack .attack-grid .data-group select {
   height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.attack .attack-grid .data-group input[type="checkbox"] {
+  flex: none;
 }
 .cthack.sheet.item.attack .attack-grid .field-name {
   height: 40px;
@@ -1671,8 +1706,8 @@ i.cthack {
 .cthack.sheet.item.opponentAbility .ability-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1rem;
   text-align: center;
   color: #fff;
@@ -1691,6 +1726,10 @@ i.cthack {
 .cthack.sheet.item.opponentAbility .ability-grid .data-group input,
 .cthack.sheet.item.opponentAbility .ability-grid .data-group select {
   height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .data-group input[type="checkbox"] {
+  flex: none;
 }
 .cthack.sheet.item.opponentAbility .ability-grid .field-name {
   height: 40px;
@@ -1737,4 +1776,59 @@ i.cthack {
 }
 .cthack.sheet.item.opponentAbility .item-description .editor .prosemirror menu button {
   background: var(--color-hover-bg);
+}
+.cthack .search-dialog {
+  background-color: #394e55;
+  background: var(--background_chat);
+  font: 1em "garamondpro";
+}
+.cthack .search-dialog label {
+  padding: 5px 0 5px 10px;
+}
+.cthack .search-dialog input {
+  height: 30px;
+  margin-top: 10px;
+  border: 1px solid var(--color-underline-header);
+}
+.cthack .search-dialog h3 {
+  margin: 10px;
+  font: 1.2em "garamondpro";
+  font-weight: bold;
+  text-align: center;
+}
+.cthack .search-dialog .dialog-buttons {
+  padding-top: 15px;
+}
+.cthack .search-dialog .dialog-buttons button {
+  color: #fff;
+}
+.cthack .search-chat {
+  background-color: #394e55;
+  background: var(--background_chat);
+  font-family: "garamondpro";
+  font-size: 1.2em;
+}
+.cthack .search-chat h3 {
+  margin: 10px;
+  font: 1em "garamondpro";
+  font-weight: bold;
+  text-align: center;
+}
+.cthack .search-chat h4 {
+  margin: 10px;
+  font: 1.3em "garamondpro";
+  font-weight: bold;
+  text-align: center;
+}
+.cthack .search-chat .motif {
+  margin: 10px;
+}
+.cthack .search-chat .content-link {
+  background: none;
+  border: 0px;
+}
+.cthack .search-chat .btn-search button {
+  padding: 5px;
+  margin: 5px;
+  line-height: 18px;
 }

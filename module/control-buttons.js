@@ -1,3 +1,5 @@
+import { SearchDialog } from "./applications/search/research.mjs";
+
 export function initControlButtons() {
 
   CONFIG.Canvas.layers.cthack = { layerClass: ControlsLayer, group: "primary" };
@@ -12,6 +14,16 @@ export function initControlButtons() {
         icon: "fa-solid fa-users",
         button: true,
         onClick: () => { game.cthack.macros.launchGMManager(); }
+      });
+
+      menu.push({
+        name: "search",
+        title: "Recherche",
+        icon: "fas fa-magnifying-glass",
+        button: true,
+        onClick: async () => {
+          let searchDialog = await new SearchDialog().render(true);
+        },
       });
 
       btns.push({

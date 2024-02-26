@@ -299,5 +299,17 @@
     "UnlockSheet": "Unlock the sheet",
     "SelectImage": "Left click to select an image, right click to remove the image",
     "ShowImage": "Show the image"
+  },
+
+  "SEARCHTOOL": {
+    "WindowTitle": "Search Tool",
+    "ButtonSearch": "Search",
+    "ButtonCancel": "Cancel",
+    "DialogTitle": "Search for Text in Journals, Characters, Items...",
+    "DialogInput": "Enter the text to search here:",
+    "ChatIntro": "Search result", 
+    "ChatText": "Searched text: ",
+    "NoResults": "No result",
+    "TooMuchResults": "More than 20 results, refine your search."
   }
 }
