@@ -1,0 +1,21 @@
+{
+  "_id": "bE6J5phXRLBiQMr7",
+  "name": "Inconscience",
+  "type": "definition",
+  "img": "systems/cthack/ui/icons/dead-head.png",
+  "data": {
+    "description": "<p>Un autre personnage doit consacrer un Moment pour r&eacute;veiller le personnage.</p>\n<p>Apr&egrave;s le r&eacute;veil, le personnage subit un D&eacute;savantage pour les Sauvegardes de Force, Dext&eacute;rit&eacute;, Intelligence durant [[/roll 1d3]] Moments.</p>",
+    "definitionType": "Shock",
+    "key": "SK-FAI",
+    "creationDate": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "xuaXKQ8wuA7GQpBm": 3
+  },
+  "flags": {},
+  "_key": "!items!bE6J5phXRLBiQMr7"
+}

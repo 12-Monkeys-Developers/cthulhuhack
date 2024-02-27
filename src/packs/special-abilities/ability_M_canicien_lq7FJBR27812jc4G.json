@@ -1,0 +1,28 @@
+{
+  "_id": "lq7FJBR27812jc4G",
+  "name": "Mécanicien",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p>Le personnage b&eacute;n&eacute;ficie d&rsquo;un <strong>Avantage</strong> lorsqu&rsquo;il r&eacute;pare des machines ou des&nbsp; v&eacute;hicules endommag&eacute;s.</p>",
+    "key": "MEC",
+    "uses": {
+      "value": 0,
+      "max": 0,
+      "per": "Permanent",
+      "last": ""
+    },
+    "multiple": false
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.TeHLpbRoKyOSsq63"
+    }
+  },
+  "img": "systems/cthack/ui/icons/auto-repair.png",
+  "effects": [],
+  "_key": "!items!lq7FJBR27812jc4G"
+}

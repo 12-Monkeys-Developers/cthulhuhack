@@ -1,0 +1,25 @@
+{
+  "_id": "XQ0OIdqWqXYO2XOj",
+  "name": "Faint",
+  "type": "definition",
+  "img": "systems/cthack/ui/icons/dead-head.png",
+  "data": {
+    "description": "<p>Takes another character a Moment to revive. STR/DEX/INT are at&nbsp;Disadvantage for an additional <span style=\"font-family: var(--font-primary); font-size: var(--font-size-14);\">[[/roll 1d3]] Moments.</span></p>",
+    "definitionType": "Shock",
+    "key": "SK-FAI",
+    "creationDate": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.cthack.shock.bE6J5phXRLBiQMr7"
+    }
+  },
+  "_key": "!items!XQ0OIdqWqXYO2XOj"
+}

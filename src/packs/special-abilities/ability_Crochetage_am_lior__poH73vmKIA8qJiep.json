@@ -1,0 +1,28 @@
+{
+  "_id": "poH73vmKIA8qJiep",
+  "name": "Crochetage amélioré",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p><em>N&eacute;cessite d&rsquo;avoir la Capacit&eacute; sp&eacute;ciale &laquo; Crochetage &raquo;</em>. Lorsque vous effectuez un test de <strong>Torche</strong> afin que votre personnage d&eacute;verrouille une serrure ou un cadenas, vous b&eacute;n&eacute;ficiez d&rsquo;un <strong>Avantage</strong>.</p>",
+    "key": "IMPLOC",
+    "uses": {
+      "value": 0,
+      "max": 0,
+      "per": "Permanent",
+      "last": ""
+    },
+    "multiple": false
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.JW7U8F3Rg1c6cbzS"
+    }
+  },
+  "img": "systems/cthack/ui/icons/lockpicks.png",
+  "effects": [],
+  "_key": "!items!poH73vmKIA8qJiep"
+}

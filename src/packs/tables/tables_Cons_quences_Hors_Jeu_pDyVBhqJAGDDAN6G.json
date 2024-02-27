@@ -1,0 +1,165 @@
+{
+  "_id": "pDyVBhqJAGDDAN6G",
+  "name": "Conséquences Hors Jeu",
+  "permission": {
+    "default": 0,
+    "Nf5osQkK29WIwE1I": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "RollTable.5OIbc46btiEnvLnk"
+    }
+  },
+  "img": "systems/cthack/ui/icons/first-aid-kit.png",
+  "description": "Un personnage sans Point de Vie est Hors Jeu (HJ). Il titube, chancelle, tant il souffre. Une fois hors de danger (généralement à la fin du combat), lancez 1d10 et appliquez le résultat du tableau Conséquences du Hors-Jeu ci-contre. Si le personnage survit, il récupère 1d4 Points de Vie.",
+  "results": [
+    {
+      "_id": "NVCZamYeDAbzBBX2",
+      "flags": {},
+      "type": 2,
+      "text": "Mort",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.outofaction",
+      "resultId": "pQpJYVfWUohHG2qI",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_key": "!tables.results!pDyVBhqJAGDDAN6G.NVCZamYeDAbzBBX2"
+    },
+    {
+      "_id": "K6YKhEN5L1g98eZQ",
+      "flags": {},
+      "type": 2,
+      "text": "Détruit",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.outofaction",
+      "resultId": "d9gGogbPjsoxPZdd",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_key": "!tables.results!pDyVBhqJAGDDAN6G.K6YKhEN5L1g98eZQ"
+    },
+    {
+      "_id": "ELFT1MHWBQTSuJnc",
+      "flags": {},
+      "type": 2,
+      "text": "Ravagé",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.outofaction",
+      "resultId": "cOLUvZQEBpxLe6nO",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_key": "!tables.results!pDyVBhqJAGDDAN6G.ELFT1MHWBQTSuJnc"
+    },
+    {
+      "_id": "gw0epEWsd9rBGLw2",
+      "flags": {},
+      "type": 2,
+      "text": "Estropié",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.outofaction",
+      "resultId": "mopCKEb3LSXW8Kny",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_key": "!tables.results!pDyVBhqJAGDDAN6G.gw0epEWsd9rBGLw2"
+    },
+    {
+      "_id": "HqMMvNrLrrqSdXRu",
+      "flags": {},
+      "type": 2,
+      "text": "Os brisés",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.outofaction",
+      "resultId": "sceWvPFsfg4c28b5",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_key": "!tables.results!pDyVBhqJAGDDAN6G.HqMMvNrLrrqSdXRu"
+    },
+    {
+      "_id": "6AWGx8pNxtvWb3fZ",
+      "flags": {},
+      "type": 2,
+      "text": "Inconscient",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.outofaction",
+      "resultId": "NgFBuHXy7oitRCU3",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_key": "!tables.results!pDyVBhqJAGDDAN6G.6AWGx8pNxtvWb3fZ"
+    },
+    {
+      "_id": "z09GZpQUsu4yAqkW",
+      "flags": {},
+      "type": 2,
+      "text": "Commotion",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.outofaction",
+      "resultId": "AQvEfj1kobLUitfE",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_key": "!tables.results!pDyVBhqJAGDDAN6G.z09GZpQUsu4yAqkW"
+    },
+    {
+      "_id": "zQIvvwZbjTDzKXOe",
+      "flags": {},
+      "type": 2,
+      "text": "Titubant",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.outofaction",
+      "resultId": "hBVC8iSQfK4UV6mL",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_key": "!tables.results!pDyVBhqJAGDDAN6G.zQIvvwZbjTDzKXOe"
+    },
+    {
+      "_id": "XOMBpgbA8dDWp5hJ",
+      "flags": {},
+      "type": 2,
+      "text": "Essouflé",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.outofaction",
+      "resultId": "p8voNlbr7HCFDKxS",
+      "weight": 1,
+      "range": [
+        9,
+        10
+      ],
+      "drawn": false,
+      "_key": "!tables.results!pDyVBhqJAGDDAN6G.XOMBpgbA8dDWp5hJ"
+    }
+  ],
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "_key": "!tables!pDyVBhqJAGDDAN6G"
+}

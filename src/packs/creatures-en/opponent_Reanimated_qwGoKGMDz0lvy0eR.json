@@ -1,0 +1,111 @@
+{
+  "_id": "qwGoKGMDz0lvy0eR",
+  "name": "Reanimated",
+  "type": "opponent",
+  "img": "icons/svg/mystery-man.svg",
+  "data": {
+    "hp": {
+      "value": 4,
+      "min": 0,
+      "max": 4
+    },
+    "description": "<h3>Often found as minions and servants to those who practice the Dark Arts, though they might equally arise from the abuse of technology or drugs. Certain ceremonies and hoary rituals are said to raise them from the essential salts constituent of their living form; else, others might spring up from the leaden repose of carcasses given semblance of vitality through chemicals and driven by fractured memories and a longing for living flesh.</h3>\n<h2>Special Abilities</h2>\n<ul>\n<li>\n<h3>Anyone defending against them has Advantage, due to slow movement.</h3>\n</li>\n<li>\n<h3>Immunity vs pain, charm,&nbsp;hypnotism.</h3>\n</li>\n</ul>",
+    "hitDice": "1",
+    "armor": "3",
+    "abilities": [],
+    "malus": "0"
+  },
+  "token": {
+    "flags": {},
+    "name": "Mort-vivant",
+    "displayName": 0,
+    "img": "icons/svg/mystery-man.svg",
+    "tint": null,
+    "width": 1,
+    "height": 1,
+    "scale": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "vision": false,
+    "dimSight": 0,
+    "brightSight": 0,
+    "dimLight": 0,
+    "brightLight": 0,
+    "sightAngle": 0,
+    "lightAngle": 360,
+    "lightAlpha": 1,
+    "lightAnimation": {
+      "speed": 5,
+      "intensity": 5
+    },
+    "actorId": "SF4irgVkVskExosF",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": null
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "randomImg": false,
+    "mirrorX": false,
+    "mirrorY": false,
+    "alpha": 1,
+    "light": {
+      "alpha": 0.5,
+      "angle": 0,
+      "bright": 0,
+      "coloration": 1,
+      "dim": 0,
+      "gradual": true,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  },
+  "items": [
+    {
+      "_id": "dGtQRcT2Ya5kYyqr",
+      "name": "Fists",
+      "type": "attack",
+      "data": {
+        "description": "",
+        "damage": "2",
+        "damageDice": "d4"
+      },
+      "sort": 100000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "folder": null,
+      "permission": {
+        "default": 0
+      },
+      "_key": "!actors.items!qwGoKGMDz0lvy0eR.dGtQRcT2Ya5kYyqr"
+    }
+  ],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.cthack.opponents.SF4irgVkVskExosF"
+    }
+  },
+  "_key": "!actors!qwGoKGMDz0lvy0eR"
+}

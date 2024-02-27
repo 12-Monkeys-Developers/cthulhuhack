@@ -1,0 +1,28 @@
+{
+  "_id": "DsQXBv0vpyZg6grk",
+  "name": "Robuste",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p>Le personnage b&eacute;n&eacute;ficie d&rsquo;une protection naturelle dans les combats de m&ecirc;l&eacute;e, r&eacute;duisant les d&eacute;g&acirc;ts des armes de m&ecirc;l&eacute;e contre lui d&rsquo;1 point (ou d&rsquo;un niveau si vous jetez les d&eacute;s pour les d&eacute;g&acirc;ts). Vous pouvez choisir cette Capacit&eacute; sp&eacute;ciale plusieurs fois.</p>",
+    "key": "ROB",
+    "uses": {
+      "value": 0,
+      "max": 0,
+      "per": "Permanent",
+      "last": ""
+    },
+    "multiple": true
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.f4dATUWL4aoO23r6"
+    }
+  },
+  "img": "systems/cthack/ui/icons/surrounded-shield.png",
+  "effects": [],
+  "_key": "!items!DsQXBv0vpyZg6grk"
+}

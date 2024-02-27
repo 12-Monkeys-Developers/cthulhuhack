@@ -1,0 +1,33 @@
+{
+  "_id": "dyBKA8mVM6AE8fJ1",
+  "name": "Surprise Attack",
+  "type": "ability",
+  "img": "systems/cthack/ui/icons/sword-slice.png",
+  "data": {
+    "description": "<p>In the first&nbsp;moment of any combat, you can&nbsp;inflict twice the normal damage&nbsp;with the weapon in hand.</p>",
+    "key": "SURATT",
+    "uses": {
+      "value": 1,
+      "max": 1,
+      "per": "Fight",
+      "last": ""
+    },
+    "multiple": false,
+    "isCustom": false,
+    "advantageGiven": false,
+    "advantageText": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.AdJlgmeWNawV2hgM"
+    }
+  },
+  "_key": "!items!dyBKA8mVM6AE8fJ1"
+}

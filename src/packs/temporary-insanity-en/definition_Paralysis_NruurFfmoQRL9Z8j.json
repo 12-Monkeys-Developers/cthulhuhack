@@ -1,0 +1,25 @@
+{
+  "_id": "NruurFfmoQRL9Z8j",
+  "name": "Paralysis",
+  "type": "definition",
+  "img": "systems/cthack/ui/icons/screaming.png",
+  "data": {
+    "description": "<p>The character freezes, gripped by fear. They cannot move of&nbsp;their own accord for a Minute. Other characters can attempt to carry them&nbsp;or drag them, but they're deadweight until they recover - which requires a&nbsp;successful CON Save. Failing leaves them statue-like and imperiled.</p>",
+    "definitionType": "TemporaryInsanity",
+    "key": "TI-PAS",
+    "creationDate": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.cthack.temporaryinsanity.BirQY4IBaMrgrMja"
+    }
+  },
+  "_key": "!items!NruurFfmoQRL9Z8j"
+}

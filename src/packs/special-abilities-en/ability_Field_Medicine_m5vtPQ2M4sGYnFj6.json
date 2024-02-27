@@ -1,0 +1,33 @@
+{
+  "_id": "m5vtPQ2M4sGYnFj6",
+  "name": "Field Medicine",
+  "type": "ability",
+  "img": "systems/cthack/ui/icons/first-aid-kit.png",
+  "data": {
+    "description": "<p>Once per gaming&nbsp;hour, outside combat, you can heal&nbsp;another character d6 lost Hit Points&nbsp;(or one Hit Die step, if using the&nbsp;optional rules).</p>",
+    "key": "FIEMED",
+    "uses": {
+      "value": 1,
+      "max": 1,
+      "per": "Hour",
+      "last": ""
+    },
+    "multiple": false,
+    "isCustom": false,
+    "advantageGiven": false,
+    "advantageText": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.S94zzLx010PIENcN"
+    }
+  },
+  "_key": "!items!m5vtPQ2M4sGYnFj6"
+}

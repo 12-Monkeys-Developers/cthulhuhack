@@ -1,0 +1,28 @@
+{
+  "_id": "7kjDhjZtUN2U7aX3",
+  "name": "Débrouillard",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p>Une fois par session de jeu, le personnage peut improviser une solution &agrave; un probl&egrave;me avec ce qu&rsquo;il a sous la main (objets, outils, machines).</p>",
+    "key": "MAC",
+    "uses": {
+      "value": 1,
+      "max": 1,
+      "per": "Session",
+      "last": ""
+    },
+    "multiple": false
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.9sPrm3D6UrCrW8pa"
+    }
+  },
+  "img": "systems/cthack/ui/icons/swiss-army-knife.png",
+  "effects": [],
+  "_key": "!items!7kjDhjZtUN2U7aX3"
+}

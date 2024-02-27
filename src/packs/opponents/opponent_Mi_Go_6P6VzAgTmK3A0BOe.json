@@ -1,0 +1,71 @@
+{
+  "_id": "6P6VzAgTmK3A0BOe",
+  "name": "Mi-Go",
+  "permission": {
+    "default": 0,
+    "nbNihQhmxdH1Xo1p": 3
+  },
+  "type": "opponent",
+  "data": {
+    "hp": {
+      "value": 12,
+      "min": 0,
+      "max": 12
+    },
+    "description": "<h3>Accumulateurs d&rsquo;artefacts en tout genre et de technologie, les Mi-Go ont une apparence fonci&egrave;rement inhumaine. Ils vivent pour poss&eacute;der. Ils r&eacute;duisent en esclavage les populations locales pour les aider &agrave; acqu&eacute;rir toute technologie ou ressource qu&rsquo;ils d&eacute;couvrent. Les Mi-Go se livrent &agrave; d&rsquo;immondes exp&eacute;rimentations sur leurs prisonniers.</h3>\n<h2>Capacit&eacute;s sp&eacute;ciales</h2>\n<ul>\n<li>\n<h3>Attaque : Projecteur de brume</h3>\n</li>\n<li>\n<h3>Peut jeter 3 sortil&egrave;ges choisis par le MJ.</h3>\n</li>\n<li>\n<h3>Vol.</h3>\n</li>\n</ul>",
+    "hitDice": "3",
+    "armor": "3",
+    "abilities": [],
+    "malus": "-2"
+  },
+  "sort": 100001,
+  "flags": {},
+  "token": {
+    "flags": {},
+    "name": "Mi-GO",
+    "displayName": 0,
+    "img": "icons/svg/mystery-man.svg",
+    "tint": null,
+    "width": 1,
+    "height": 1,
+    "scale": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "vision": false,
+    "dimSight": 0,
+    "brightSight": 0,
+    "dimLight": 0,
+    "brightLight": 0,
+    "sightAngle": 360,
+    "lightAngle": 360,
+    "lightAlpha": 1,
+    "lightAnimation": {
+      "speed": 5,
+      "intensity": 5
+    },
+    "actorId": "6P6VzAgTmK3A0BOe",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {},
+    "bar2": {},
+    "randomImg": false
+  },
+  "items": [
+    {
+      "_id": "YUOYhJyJXNbphBYx",
+      "name": "Projecteur de brume",
+      "type": "attack",
+      "data": {
+        "damage": "6"
+      },
+      "sort": 100000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "_key": "!actors.items!6P6VzAgTmK3A0BOe.YUOYhJyJXNbphBYx"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!6P6VzAgTmK3A0BOe"
+}

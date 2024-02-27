@@ -1,0 +1,84 @@
+{
+  "_id": "UigXgEHS6hcTZ7nW",
+  "name": "Goule",
+  "permission": {
+    "default": 0,
+    "nbNihQhmxdH1Xo1p": 3
+  },
+  "type": "opponent",
+  "data": {
+    "hp": {
+      "value": 8,
+      "min": 0,
+      "max": 8
+    },
+    "description": "<h3>Habitants immortels de royaumes souterrains, les goules sont en torpeur et n&rsquo;&eacute;mergent que pour chercher de la nourriture. Aucune goule ne ressemble &agrave; une autre. Elles ont quelquefois des ressemblances avec les &ecirc;tres humains et des similitudes avec les anc&ecirc;tres des homo sapiens. Omnivores, elles se nourrissent de morts ou de vivants. Leur apparence engourdit tant l&rsquo;esprit et les sens que leurs victimes consentent &agrave; se faire d&eacute;vorer.</h3>\n<h2>Capacit&eacute;s sp&eacute;ciales</h2>\n<ul>\n<li>\n<h3>Leur visage est si horrible que, &agrave; moins de d&eacute;tourner le regard ou de se bander les yeux (ce qui octroie un D&eacute;savantage), il est n&eacute;cessaire de r&eacute;ussir une Sauvegarde de Sagesse au d&eacute;but de chaque Moment afin d&rsquo;&eacute;viter de subir un Choc.</h3>\n</li>\n</ul>",
+    "hitDice": "2",
+    "armor": "1",
+    "abilities": [],
+    "malus": "-1"
+  },
+  "sort": 100001,
+  "flags": {},
+  "token": {
+    "flags": {},
+    "name": "Goule",
+    "displayName": 0,
+    "img": "icons/svg/mystery-man.svg",
+    "tint": null,
+    "width": 1,
+    "height": 1,
+    "scale": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "vision": false,
+    "dimSight": 0,
+    "brightSight": 0,
+    "dimLight": 0,
+    "brightLight": 0,
+    "sightAngle": 360,
+    "lightAngle": 360,
+    "lightAlpha": 1,
+    "lightAnimation": {
+      "speed": 5,
+      "intensity": 5
+    },
+    "actorId": "UigXgEHS6hcTZ7nW",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {},
+    "bar2": {},
+    "randomImg": false
+  },
+  "items": [
+    {
+      "_id": "QDTf3YQkv5I0KhcC",
+      "name": "Griffe",
+      "type": "attack",
+      "data": {
+        "damage": "2"
+      },
+      "sort": 100000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "_key": "!actors.items!UigXgEHS6hcTZ7nW.QDTf3YQkv5I0KhcC"
+    },
+    {
+      "_id": "ZJ62bQgRgbhncNJi",
+      "name": "Morsure",
+      "type": "attack",
+      "data": {
+        "damage": "2"
+      },
+      "sort": 200000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "_key": "!actors.items!UigXgEHS6hcTZ7nW.ZJ62bQgRgbhncNJi"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!UigXgEHS6hcTZ7nW"
+}

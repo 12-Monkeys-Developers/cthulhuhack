@@ -1,0 +1,35 @@
+{
+  "_id": "qRo71cfSDSQjJYtI",
+  "name": "Philanthropist",
+  "type": "archetype",
+  "img": "systems/cthack/ui/archetypes/cthack-philanthrope.png",
+  "data": {
+    "description": "<p><em>Alienist, Doctor, Dilettante, Clergyman,&nbsp;</em><em>Dot Com Frontman</em></p>\n<p>&nbsp;</p>\n<p><strong>Special Abilities</strong></p>\n<p><strong>Indomitable: </strong>Roll with Advantage&nbsp;when making a Save against&nbsp;deception, mind control or attempts to cloud perception.</p>\n<p>Choose <strong>two </strong>from the following:</p>\n<ul>\n<li><strong>Field Medicine:</strong> Once per gaming hour, outside combat, a Philanthropist can heal another character d6 lost Hit&nbsp;Points (or one Hit Die step, if using the&nbsp;optional rules).</li>\n<li><strong>Grim Determination:</strong> Once per gaming session, you can re-roll any&nbsp;check for Out of the Action or&nbsp;Sanity/Shock &ndash; choose the preferred&nbsp;result.</li>\n<li><strong>Withering Words:</strong> You can use CHA for attacks (instead of STR or DEX), providing your opponent can hear and understand you. Roll damage as if Armed; if reduced to 0hp (or no Hit Dice), he is Out of Action but is not killed.</li>\n</ul>\n<p>&nbsp;</p>",
+    "flashlights": "d6",
+    "smokes": "d10",
+    "hitdice": "d8",
+    "hitpoints": "1d8 + 8",
+    "wealthStart": "4",
+    "wealthDice": "d10",
+    "sanity": "d10",
+    "armeddamage": "d6",
+    "unarmeddamage": "1",
+    "primarysave": "wis",
+    "secondarysave1": "cha",
+    "secondarysave2": "con",
+    "capacities": []
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.cthack.archetypes.FuHEDpMebo2YxNf6"
+    }
+  },
+  "_key": "!items!qRo71cfSDSQjJYtI"
+}

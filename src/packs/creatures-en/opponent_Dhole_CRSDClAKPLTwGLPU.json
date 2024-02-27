@@ -1,0 +1,130 @@
+{
+  "_id": "CRSDClAKPLTwGLPU",
+  "name": "Dhole",
+  "type": "opponent",
+  "img": "icons/svg/mystery-man.svg",
+  "data": {
+    "hp": {
+      "value": 46,
+      "min": 0,
+      "max": 46
+    },
+    "description": "<h3>Massive and monstrous entities, part-leech, part-mole; Dhole have a natural talent to burrow through everything, not least the fabric of reality or dream stuff. Our world seems anathema to the heightened sentience seen in their presence elsewhere, reducing them to thrashing mindless entities when summoned or lured into our world.</h3>\n<h2>Special Abilities</h2>\n<ul>\n<li>\n<h3>Attack: Bite.</h3>\n</li>\n<li>\n<h3>If defence fails by 4+ Swallow (6/Moment), fight at Disadvantage to escape.</h3>\n</li>\n<li>\n<h3>All: DEX Save at start of each Moment, else Tremor (Fall Prone).&nbsp;</h3>\n</li>\n<li>\n<h3>Immunity vs fire.</h3>\n</li>\n</ul>",
+    "hitDice": "10",
+    "armor": "8",
+    "abilities": [],
+    "malus": "-9"
+  },
+  "token": {
+    "flags": {},
+    "name": "Dhole",
+    "displayName": 0,
+    "img": "icons/svg/mystery-man.svg",
+    "tint": null,
+    "width": 1,
+    "height": 1,
+    "scale": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "vision": false,
+    "dimSight": 0,
+    "brightSight": 0,
+    "dimLight": 0,
+    "brightLight": 0,
+    "sightAngle": 0,
+    "lightAngle": 360,
+    "lightAlpha": 1,
+    "lightAnimation": {
+      "speed": 5,
+      "intensity": 5
+    },
+    "actorId": "j5vfR36Cex3OQV7k",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": null
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "randomImg": false,
+    "mirrorX": false,
+    "mirrorY": false,
+    "alpha": 1,
+    "light": {
+      "alpha": 0.5,
+      "angle": 0,
+      "bright": 0,
+      "coloration": 1,
+      "dim": 0,
+      "gradual": true,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  },
+  "items": [
+    {
+      "_id": "00xqaLkI39wQ7ZWS",
+      "name": "Bite",
+      "type": "attack",
+      "data": {
+        "description": "",
+        "damage": "8",
+        "damageDice": "2d8"
+      },
+      "sort": 100000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "folder": null,
+      "permission": {
+        "default": 0
+      },
+      "_key": "!actors.items!CRSDClAKPLTwGLPU.00xqaLkI39wQ7ZWS"
+    },
+    {
+      "_id": "7GBLOfTXroQfFRlQ",
+      "name": "Swallow",
+      "type": "attack",
+      "data": {
+        "description": "",
+        "damage": "6",
+        "damageDice": "2d6"
+      },
+      "sort": 200000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "folder": null,
+      "permission": {
+        "default": 0
+      },
+      "_key": "!actors.items!CRSDClAKPLTwGLPU.7GBLOfTXroQfFRlQ"
+    }
+  ],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.cthack.opponents.j5vfR36Cex3OQV7k"
+    }
+  },
+  "_key": "!actors!CRSDClAKPLTwGLPU"
+}

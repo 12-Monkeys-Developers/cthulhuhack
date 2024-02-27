@@ -1,0 +1,137 @@
+{
+  "_id": "exQuOApAPlETC2ck",
+  "name": "Byakhee",
+  "permission": {
+    "default": 0,
+    "nbNihQhmxdH1Xo1p": 3
+  },
+  "type": "opponent",
+  "data": {
+    "hp": {
+      "value": 16,
+      "min": 0,
+      "max": 16
+    },
+    "description": "<h3>Le Byakhee ressemble &agrave; un croisement entre une taupe &agrave; nez &eacute;toil&eacute;, une chauve-souris vampire, un grizzly, un vautour, un cheval et un primate zombi. Il peut se d&eacute;placer facilement dans n&rsquo;importe quel milieu (l&rsquo;air, la mer et m&ecirc;me le vide de l&rsquo;espace) et y survivre. Lorsqu&rsquo;il n&rsquo;est pas invoqu&eacute; pour servir de monture, il voyage &agrave; travers l&rsquo;espace pour atteindre ses propres buts. La survie des chevaucheurs de Byakhee d&eacute;pend de leur propre pr&eacute;paration : les Byakhee ne se pr&eacute;occupent pas du bien-&ecirc;tre de ceux qui voyagent sur leur dos.</h3>\n<h2>Capacit&eacute;s sp&eacute;ciales</h2>\n<ul>\n<li>\n<h3>Si les deux attaques Griffer touchent, ajouter une attaque D&eacute;chirer (3 d&eacute;g&acirc;ts).</h3>\n</li>\n<li>\n<h3>Si le d&eacute; de Sauvegarde indique 1 ou 2, ajouter une attaque Chute (6 d&eacute;g&acirc;ts).</h3>\n</li>\n</ul>",
+    "hitDice": "4",
+    "armor": "2",
+    "abilities": [],
+    "attributes": {
+      "flashlights": {
+        "value": "",
+        "max": ""
+      },
+      "smokes": {
+        "value": "",
+        "max": ""
+      },
+      "sanity": {
+        "value": "",
+        "max": ""
+      },
+      "hitDice": {
+        "value": ""
+      },
+      "armedDamage": {
+        "value": ""
+      },
+      "unarmedDamage": {
+        "value": ""
+      },
+      "wealthDice": {
+        "value": ""
+      }
+    },
+    "malus": "-3"
+  },
+  "sort": 100001,
+  "flags": {},
+  "img": "icons/svg/mystery-man.svg",
+  "token": {
+    "flags": {},
+    "name": "byakhee",
+    "displayName": 0,
+    "img": "icons/svg/mystery-man.svg",
+    "tint": null,
+    "width": 1,
+    "height": 1,
+    "scale": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "vision": false,
+    "dimSight": 0,
+    "brightSight": 0,
+    "dimLight": 0,
+    "brightLight": 0,
+    "sightAngle": 360,
+    "lightAngle": 360,
+    "lightAlpha": 1,
+    "lightAnimation": {
+      "speed": 5,
+      "intensity": 5
+    },
+    "actorId": "exQuOApAPlETC2ck",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {},
+    "bar2": {},
+    "randomImg": false
+  },
+  "items": [
+    {
+      "_id": "Vaza1rkiepitUOG7",
+      "name": "Griffer",
+      "type": "attack",
+      "data": {
+        "damage": "2"
+      },
+      "sort": 100000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "_key": "!actors.items!exQuOApAPlETC2ck.Vaza1rkiepitUOG7"
+    },
+    {
+      "_id": "CzPEM3uXneDNTx0s",
+      "name": "Mordre",
+      "type": "attack",
+      "data": {
+        "damage": "2"
+      },
+      "sort": 200000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "_key": "!actors.items!exQuOApAPlETC2ck.CzPEM3uXneDNTx0s"
+    },
+    {
+      "_id": "4j13vHONSTg35Tga",
+      "name": "Déchirer",
+      "type": "attack",
+      "data": {
+        "damage": "3"
+      },
+      "sort": 300000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "_key": "!actors.items!exQuOApAPlETC2ck.4j13vHONSTg35Tga"
+    },
+    {
+      "_id": "6dmuT73rWHPkjYWo",
+      "name": "Chute",
+      "type": "attack",
+      "data": {
+        "damage": "6"
+      },
+      "sort": 400000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "_key": "!actors.items!exQuOApAPlETC2ck.6dmuT73rWHPkjYWo"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!exQuOApAPlETC2ck"
+}

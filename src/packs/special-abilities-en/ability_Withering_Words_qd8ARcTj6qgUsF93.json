@@ -1,0 +1,33 @@
+{
+  "_id": "qd8ARcTj6qgUsF93",
+  "name": "Withering Words",
+  "type": "ability",
+  "img": "systems/cthack/ui/icons/talk.png",
+  "data": {
+    "description": "<p>You can use&nbsp;CHA for attacks (instead of STR or&nbsp;DEX), providing your opponent can&nbsp;hear and understand you. Roll&nbsp;damage as if Armed; if you reduce&nbsp;an opponent to 0 hp (or no Hit Dice),&nbsp;they become incapacitated.</p>",
+    "key": "WITWOR",
+    "uses": {
+      "value": 0,
+      "max": 0,
+      "per": "Permanent",
+      "last": ""
+    },
+    "multiple": false,
+    "isCustom": false,
+    "advantageGiven": false,
+    "advantageText": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.s6rNHTpDHe15QGJt"
+    }
+  },
+  "_key": "!items!qd8ARcTj6qgUsF93"
+}

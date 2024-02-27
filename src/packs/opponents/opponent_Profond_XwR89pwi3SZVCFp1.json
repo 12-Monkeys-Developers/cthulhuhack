@@ -1,0 +1,72 @@
+{
+  "_id": "XwR89pwi3SZVCFp1",
+  "name": "Profond",
+  "permission": {
+    "default": 0,
+    "nbNihQhmxdH1Xo1p": 3
+  },
+  "type": "opponent",
+  "data": {
+    "hp": {
+      "value": 8,
+      "min": 0,
+      "max": 8
+    },
+    "description": "<h3>Pr&eacute;d&eacute;cesseurs aquatiques de l&rsquo;humanit&eacute;, les Profonds sont des explorateurs et des conqu&eacute;rants plong&eacute;s en torpeur sous les oc&eacute;ans. Ils souhaitent r&eacute;pandre leur patrimoine g&eacute;n&eacute;tique en subjuguant et en asservissant les autres esp&egrave;ces, car ils peuvent m&eacute;langer leur ADN avec les autres esp&egrave;ces. Ils sont peut-&ecirc;tre &agrave; l&rsquo;origine des mythes concernant les changelins. Les signes visibles de leur esp&egrave;ce deviennent en effet visibles &agrave; l&rsquo;adolescence. Bien que dou&eacute;s de sentiments, ils sont violemment x&eacute;nophobes.</h3>\n<h2>Capacit&eacute;s sp&eacute;ciales</h2>\n<ul>\n<li>\n<h3>D&eacute;s de vie : 2+</h3>\n</li>\n<li>\n<h3>Armure : D&eacute; de Vie +2</h3>\n</li>\n<li>\n<h3>Amphibie.</h3>\n</li>\n<li>\n<h3>Se d&eacute;fendre contre un Profond sous l&rsquo;eau octroie un D&eacute;savantage.</h3>\n</li>\n<li>\n<h3>Le Profond peut liqu&eacute;fier et mouler le m&eacute;tal avec ses mains.</h3>\n</li>\n</ul>",
+    "hitDice": "2",
+    "armor": "4",
+    "abilities": [],
+    "malus": "-1"
+  },
+  "sort": 100001,
+  "flags": {},
+  "img": "icons/svg/mystery-man.svg",
+  "token": {
+    "flags": {},
+    "name": "Profond",
+    "displayName": 0,
+    "img": "icons/svg/mystery-man.svg",
+    "tint": null,
+    "width": 1,
+    "height": 1,
+    "scale": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "vision": false,
+    "dimSight": 0,
+    "brightSight": 0,
+    "dimLight": 0,
+    "brightLight": 0,
+    "sightAngle": 360,
+    "lightAngle": 360,
+    "lightAlpha": 1,
+    "lightAnimation": {
+      "speed": 5,
+      "intensity": 5
+    },
+    "actorId": "XwR89pwi3SZVCFp1",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {},
+    "bar2": {},
+    "randomImg": false
+  },
+  "items": [
+    {
+      "_id": "ewV905Xi7Bax9j4f",
+      "name": "Griffes",
+      "type": "attack",
+      "data": {
+        "damage": "3"
+      },
+      "sort": 100000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "_key": "!actors.items!XwR89pwi3SZVCFp1.ewV905Xi7Bax9j4f"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!XwR89pwi3SZVCFp1"
+}

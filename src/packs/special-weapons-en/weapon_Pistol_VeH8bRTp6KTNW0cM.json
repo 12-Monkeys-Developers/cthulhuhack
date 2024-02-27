@@ -1,0 +1,24 @@
+{
+  "_id": "VeH8bRTp6KTNW0cM",
+  "name": "Pistol",
+  "type": "weapon",
+  "img": "systems/cthack/ui/weapons/colt-m1911.png",
+  "data": {
+    "description": "",
+    "dice": "d8",
+    "range": "near"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.cthack.weapons.DiEGFbcbJ6YjicUe"
+    }
+  },
+  "_key": "!items!VeH8bRTp6KTNW0cM"
+}

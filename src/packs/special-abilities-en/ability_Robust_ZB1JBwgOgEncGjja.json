@@ -1,0 +1,33 @@
+{
+  "_id": "ZB1JBwgOgEncGjja",
+  "name": "Robust",
+  "type": "ability",
+  "img": "systems/cthack/ui/icons/surrounded-shield.png",
+  "data": {
+    "description": "<p>You benefit from natural&nbsp;protection in Melee combat,&nbsp;reducing weapon damage against&nbsp;you by one step. You can select this&nbsp;Ability multiple times.</p>",
+    "key": "ROB",
+    "uses": {
+      "value": 0,
+      "max": 0,
+      "per": "Permanent",
+      "last": ""
+    },
+    "multiple": true,
+    "isCustom": false,
+    "advantageGiven": false,
+    "advantageText": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.f4dATUWL4aoO23r6"
+    }
+  },
+  "_key": "!items!ZB1JBwgOgEncGjja"
+}
