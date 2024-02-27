@@ -6,26 +6,26 @@
       {{localize "SEARCHTOOL.TooMuchResults"}}
     {{else}}
       {{#if pageresults}}
-        <h4>{{localize "DOCUMENT.JournalEntryPages"}}</h4>
+        <h4 class="search-header">{{localize "DOCUMENT.JournalEntryPages"}}</h4>
         <div>
           {{#each pageResultCollection as |page|}}
-          <div class="btn-search"><button id="ouvrirpage" class="ouvrir-page" data-journal-id="{{page.journalId}}" data-page-id="{{page.id}}" data-tooltip='Visualiser la page'>{{page.journalName}} - {{page.name}}</button></div>
+            <div class="btn-search"><button id="ouvrirpage" class="ouvrir-page" data-journal-id="{{page.journalId}}" data-page-id="{{page.id}}" data-tooltip='Visualiser la page'>{{page.journalName}} - {{page.name}}</button></div>
           {{/each}}
         </div>
       {{/if}}
       {{#if actorresults}}
-        <h4>{{localize "DOCUMENT.Actors"}}</h4>
+        <h4 class="search-header">{{localize "DOCUMENT.Actors"}}</h4>
         <div>
           {{#each actorResultCollection as |actor|}}
-            @UUID[Actor.{{actor._id}}]<br />
+            <div class="search-result">@UUID[Actor.{{actor._id}}]</div>
           {{/each}}
         </div>
       {{/if}}
       {{#if itemresults}}
-        <h4>{{localize "DOCUMENT.Items"}}</h4>
+        <h4 class="search-header">{{localize "DOCUMENT.Items"}}</h4>
         <div>
           {{#each itemResultCollection as |item|}}
-            @UUID[Item.{{item._id}}]<br />
+            <div class="search-result">@UUID[Item.{{item._id}}]</div>
           {{/each}}
         </div>
       {{/if}}
