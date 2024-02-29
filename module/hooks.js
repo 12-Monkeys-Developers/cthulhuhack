@@ -1,7 +1,6 @@
 import { highlightSuccessFailure } from "./chat.js";
 import { configureDiceSoNice } from "./dice.js";
 import { Macros } from "./macros.js";
-import { hideCompendium } from "./utils.js";
 import { SearchChat } from "./applications/search/research.mjs";
 
 export function registerHooks() {
@@ -62,15 +61,11 @@ export function registerHooks() {
       });
     }
 
-    // ******  CODE FOR SEARCH
+    // Search feature
     const typeMessage = data.message.flags.world?.type;
     if (typeMessage === "searchPage") {
       html.find("#ouvrirpage").click((event) => SearchChat.onOpenJournalPage(event, data.message.flags.world?.searchPattern));
     }
-    // ******  END OF CODE FOR SEARCH
-  });
 
-  Hooks.on("renderCompendiumDirectory", (app, html, data) => {
-    hideCompendium();
   });
 }

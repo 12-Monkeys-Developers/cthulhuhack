@@ -14,12 +14,8 @@
     "minimum": "11",
     "verified": "11"
   },
-  "esmodules": [
-    "module/cthack.mjs"
-  ],
-  "styles": [
-    "css/cthack.css"
-  ],
+  "esmodules": ["module/cthack.mjs"],
+  "styles": ["css/cthack.css"],
   "languages": [
     {
       "lang": "en",
@@ -32,7 +28,49 @@
       "path": "lang/fr.json"
     }
   ],
+  "packFolders": [
+    {
+      "name": "Cthulhu Hack",
+      "sorting": "m",
+      "color": "#59564c",
+      "folders": [
+        {
+          "name": "FR",
+          "sorting": "m",
+          "color": "#59564c",
+          "packs": ["pregenerated", "archetypes", "abilities", "weapons", "opponents", "gametables", "outofaction", "temporaryinsanity", "shock", "macros"],
+          "folders": []
+        },
+        {
+          "name": "EN",
+          "sorting": "m",
+          "color": "#59564c",
+          "packs": [
+            "pregenerated-en",
+            "archetypes-en",
+            "abilities-en",
+            "weapons-en",
+            "opponents-en",
+            "gametables-en",
+            "outofaction-en",
+            "temporaryinsanity-en",
+            "shock-en",
+            "macros-en"
+          ],
+          "folders": []
+        }
+      ]
+    }
+  ],
   "packs": [
+    {
+      "name": "pregenerated",
+      "label": "FR - Prétirés",
+      "system": "cthack",
+      "path": "packs/example-characters",
+      "type": "Actor",
+      "private": false
+    },
     {
       "name": "archetypes",
       "label": "FR - Archetypes",
@@ -55,6 +93,14 @@
       "system": "cthack",
       "path": "packs/special-weapons",
       "type": "Item",
+      "private": false
+    },
+    {
+      "name": "opponents",
+      "label": "FR - Créatures",
+      "system": "cthack",
+      "path": "packs/opponents",
+      "type": "Actor",
       "private": false
     },
     {
@@ -82,27 +128,11 @@
       "private": false
     },
     {
-      "name": "pregenerated",
-      "label": "FR - Prétirés",
-      "system": "cthack",
-      "path": "packs/example-characters",
-      "type": "Actor",
-      "private": false
-    },
-    {
       "name": "shock",
       "label": "FR - Choc",
       "system": "cthack",
       "path": "packs/shock",
       "type": "Item",
-      "private": false
-    },
-    {
-      "name": "opponents",
-      "label": "FR - Créatures",
-      "system": "cthack",
-      "path": "packs/opponents",
-      "type": "Actor",
       "private": false
     },
     {
