@@ -20,16 +20,13 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
   get template() {
     return "systems/cthack/templates/actor/opponent-sheet-2.hbs";
   }
-
-  get isEditable() {
-    return super.isEditable && this.actor.isUnlocked;
-  }
-
+  
   /** @override */
   async getData(options) {
     const context = super.getData(options);
 
-    context.editable = this.isEditable;
+    // By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
+    context.editable = this.actor.isUnlocked;
 
     context.attacks = this.actor.itemTypes.attack;
 
@@ -66,7 +63,7 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
   async _onDropItem(event, data) {
     if (!this.isEditable) return false;
     const item = await fromUuid(data.uuid);
-    // Only magic and attack items can be dropped
+    // Only magic, attack and opponent-ability items can be dropped
     if (["archetype", "ability", "item", "weapon", "definition"].includes(item.type)) return false;
     else return super._onDropItem(event, data);
   }
@@ -297,7 +294,7 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     // Stop propagation to avoid expanding the item
     event.preventDefault();
     event.stopPropagation();
-    
+
     const li = $(event.currentTarget).parents(".item");
     const itemId = li.data("itemId");
     let item = this.actor.items.get(itemId);

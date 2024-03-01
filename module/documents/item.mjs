@@ -11,4 +11,8 @@ export class CtHackItem extends Item {
     }
     return { img: this.DEFAULT_ICON };
   }
+
+  get isUnlocked() {
+    return !this.system.locked;
+  }
 }

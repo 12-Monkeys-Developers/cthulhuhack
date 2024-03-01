@@ -13,14 +13,16 @@ export default class CtHackItemSheet extends ItemSheet {
     });
   }
 
-  /** @override */
-  get isEditable() {
-    return super.isEditable && !this.item.system.locked;
+   /** @override */
+   get isEditable() {    
+    return super.isEditable && this.item.isUnlocked;
   }
 
   /** @override */
   async getData(options) {
     const context = super.getData(options);
+    // By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
+    context.editable = this.isEditable;
     context.enrichedDescription = await TextEditor.enrichHTML(context.item.system.description, { async: true });
     return context;
   }
