@@ -1051,7 +1051,7 @@ i.cthack {
 .cthack.sheet.item.archetype .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.archetype .item-description .editor .prosemirror menu button {
+.cthack.sheet.item.archetype .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.magic .editable input,
@@ -1165,7 +1165,7 @@ i.cthack {
 .cthack.sheet.item.magic .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.magic .item-description .editor .prosemirror menu button {
+.cthack.sheet.item.magic .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.ability .editable input,
@@ -1271,7 +1271,7 @@ i.cthack {
 .cthack.sheet.item.ability .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.ability .item-description .editor .prosemirror menu button {
+.cthack.sheet.item.ability .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.item .editable input,
@@ -1374,7 +1374,7 @@ i.cthack {
 .cthack.sheet.item.item .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.item .item-description .editor .prosemirror menu button {
+.cthack.sheet.item.item .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.definition .editable input,
@@ -1470,7 +1470,7 @@ i.cthack {
 .cthack.sheet.item.definition .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.definition .item-description .editor .prosemirror menu button {
+.cthack.sheet.item.definition .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.weapon .editable input,
@@ -1575,7 +1575,7 @@ i.cthack {
 .cthack.sheet.item.weapon .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.weapon .item-description .editor .prosemirror menu button {
+.cthack.sheet.item.weapon .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.attack .editable input,
@@ -1684,7 +1684,7 @@ i.cthack {
 .cthack.sheet.item.attack .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.attack .item-description .editor .prosemirror menu button {
+.cthack.sheet.item.attack .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }
 .cthack.sheet.item.opponentAbility .editable input,
@@ -1796,6 +1796,6 @@ i.cthack {
 .cthack.sheet.item.opponentAbility .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.item.opponentAbility .item-description .editor .prosemirror menu button {
+.cthack.sheet.item.opponentAbility .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }

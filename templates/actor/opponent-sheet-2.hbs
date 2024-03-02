@@ -108,6 +108,7 @@
       {{/if}}
       <div class="grid-attacks">
         {{#each attacks as |attack id|}}
+        {{log 'opponent-attack' attack}}
           <div class="item opponent-contextmenu" data-item-id="{{attack._id}}">
             <details>
               <summary class="item-line">
@@ -155,12 +156,13 @@
         {{/if}}
         <div class="grid-magics">
           {{#each magics as |magic id|}}
+          {{log 'opponent-magic' magic}}
             <div class="item opponent-contextmenu" data-item-id="{{magic._id}}">
               <details>
                 <summary class="item-line">
                   <div class="item-name {{#if magic.system.hasDescription}}has-description{{/if}}">{{{magic.name}}}</div>
                   <div class="item-subtype">{{magic.system.subtypeLabel}}</div>
-                  <div class="item-dice"><i class="fas fa-dice-d20 magic rollable">&nbsp;&nbsp;</i>{{magic.system.dice}}</div>
+                  <div class="item-dice">{{#if magic.system.hasDice}}<i class="fas fa-dice-d20 magic rollable">&nbsp;&nbsp;</i>{{magic.system.dice}}{{/if}}</div>
                   <div class="item-incantation">{{magic.system.incantation}}</div>
                 </summary>                  
                   <div class="item-description">{{{magic.enrichedDescription}}}</div>

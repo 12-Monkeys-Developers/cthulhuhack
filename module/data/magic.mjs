@@ -15,4 +15,8 @@ export default class CtHackMagic extends CommonItem {
   get subtypeLabel() {
     return game.i18n.localize(SYSTEM.MAGIC_TYPE[this.subtype].label);
   }
+
+  get hasDice() {
+    return this.dice !== "0" && this.dice !== "";
+  }
 }
