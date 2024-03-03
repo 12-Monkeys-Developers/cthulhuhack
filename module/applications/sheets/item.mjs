@@ -13,8 +13,8 @@ export default class CtHackItemSheet extends ItemSheet {
     });
   }
 
-   /** @override */
-   get isEditable() {    
+  /** @override */
+  get isEditable() {
     return super.isEditable && this.item.isUnlocked;
   }
 
@@ -31,6 +31,7 @@ export default class CtHackItemSheet extends ItemSheet {
   activateListeners(html) {
     super.activateListeners(html);
     html.find(".sheet-lock").click(this._onSheetLock.bind(this));
+    html.find(".editable-image").on("contextmenu", this._resetImage.bind(this));
   }
 
   /**
@@ -41,5 +42,16 @@ export default class CtHackItemSheet extends ItemSheet {
     event.preventDefault();
     await this.item.update({ "system.locked": !this.item.system.locked });
     this.render(true);
+  }
+
+  /**
+   * Resets the image of the opponent sheet.
+   * @param {Event} event - The event object.
+   * @returns {Promise<void>} - A promise that resolves when the image is reset.
+   */
+  async _resetImage(event) {
+    event.preventDefault();
+    if (this.item.type === "magic") await this.item.update({ img: "/systems/cthack/ui/icons/spell-book.png" });
+    else await this.item.update({ img: "icons/svg/item-bag.svg"});
   }
 }

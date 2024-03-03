@@ -15,4 +15,9 @@ export class CtHackItem extends Item {
   get isUnlocked() {
     return !this.system.locked;
   }
+
+  get hasImage(){
+    if (this.type === "magic")  return this.img && this.img !== "/systems/cthack/ui/icons/spell-book.png";
+    else return this.img && this.img !== "icons/svg/item-bag.svg";
+  }
 }

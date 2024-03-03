@@ -8,8 +8,8 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["cthack", "sheet", "actor", "opponentv2"],
-      width: 430,
-      height: 700,
+      width: 600,
+      height: 500,
       dragDrop: [{ dragSelector: ".items-list .item", dropSelector: null }],
     });
   }
@@ -52,7 +52,7 @@ export class CtHackOpponentSheetV2 extends ActorSheet {
     }
 
     context.enrichedDescription = await TextEditor.enrichHTML(this.actor.system.description, { async: true });
-    context.hasImage = this.actor.img && this.actor.img !== "icons/svg/mystery-man.svg";
+    context.hasImage = this.actor.hasImage;
     context.hasShortDescription = !!this.actor.system.description;
     context.opponentHitDice = SYSTEM.OPPONENT_HIT_DICE;
 

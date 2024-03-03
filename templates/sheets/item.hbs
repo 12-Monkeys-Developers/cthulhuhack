@@ -2,7 +2,7 @@
     {{log 'objet' this}}
         <div class="item-header">
             {{#if editable}}
-                <img src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+                <img class="editable-image" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
             {{else}}
                 <img src="{{item.img}}" />
             {{/if}}

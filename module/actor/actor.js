@@ -570,4 +570,8 @@ export class CtHackActor extends Actor {
     if (this.getFlag(game.system.id, "SheetUnlocked")) return true;
     return false;
   }
+
+  get hasImage(){
+    return this.img && this.img !== "icons/svg/mystery-man.svg";
+  }
 }
