@@ -531,112 +531,97 @@ i.cthack {
   /* Centrer verticalement */
   height: 100%;
 }
-.cthack .sheet-opponent {
-  margin: 10px 20px;
-}
-.cthack .sheet-opponent .editor {
-  min-height: 50px;
-}
-.cthack .sheet-opponent .charname {
-  border: 0;
-}
-.cthack .sheet-opponent .flexrow {
-  border: 0;
-}
-.cthack .sheet-opponent label {
-  flex: 3;
-}
-.cthack.sheet.actor.opponentv2 {
+.cthack.sheet.actor.opponent {
   display: flex;
   flex-direction: column;
 }
-.cthack.sheet.actor.opponentv2 #context-menu {
+.cthack.sheet.actor.opponent #context-menu {
   width: 50px;
   text-align: left;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header {
+.cthack.sheet.actor.opponent .sheet-header {
   display: grid;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-image {
+.cthack.sheet.actor.opponent .sheet-header.grid-image {
   grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 0.5fr 1fr;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-image .character {
+.cthack.sheet.actor.opponent .sheet-header.grid-image .character {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 2;
   grid-column-end: 6;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-image .short-description {
+.cthack.sheet.actor.opponent .sheet-header.grid-image .short-description {
   grid-row-start: 2;
   grid-row-end: 3;
   grid-column-start: 2;
   grid-column-end: 6;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-image .hitdice {
+.cthack.sheet.actor.opponent .sheet-header.grid-image .hitdice {
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 2;
   grid-column-end: 3;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-image .hp {
+.cthack.sheet.actor.opponent .sheet-header.grid-image .hp {
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 3;
   grid-column-end: 4;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-image .armor {
+.cthack.sheet.actor.opponent .sheet-header.grid-image .armor {
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 4;
   grid-column-end: 5;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-image .malus {
+.cthack.sheet.actor.opponent .sheet-header.grid-image .malus {
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 5;
   grid-column-end: 6;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-noimage {
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-noimage .character {
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .character {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 5;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-noimage .short-description {
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .short-description {
   grid-row-start: 2;
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 5;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-noimage .hitdice {
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .hitdice {
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 2;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-noimage .hp {
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .hp {
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 2;
   grid-column-end: 3;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-noimage .armor {
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .armor {
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 3;
   grid-column-end: 4;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header.grid-noimage .malus {
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .malus {
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 4;
   grid-column-end: 5;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .opponent-image {
+.cthack.sheet.actor.opponent .sheet-header .opponent-image {
   grid-row-start: 1;
   grid-row-end: 4;
   grid-column-start: 1;
@@ -645,18 +630,18 @@ i.cthack {
   justify-content: center;
   text-align: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .opponent-image img {
+.cthack.sheet.actor.opponent .sheet-header .opponent-image img {
   height: 200px;
   width: auto;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .sheet-lock {
+.cthack.sheet.actor.opponent .sheet-header .sheet-lock {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-left: 15px;
   font-size: 0.8em;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .character {
+.cthack.sheet.actor.opponent .sheet-header .character {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -665,80 +650,80 @@ i.cthack {
   padding: 5px 0 5px 0;
   margin-right: 20px;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .data-group {
+.cthack.sheet.actor.opponent .sheet-header .data-group {
   border: none;
   font-size: 1rem;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .data-group label {
-  /* padding-right: 5px; */
+.cthack.sheet.actor.opponent .sheet-header .data-group label {
+  padding-right: 5px;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .data-group .input-editable {
+.cthack.sheet.actor.opponent .sheet-header .data-group .input-editable {
   border: 1px solid #782e22;
   width: 30px;
   text-align: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .short-description {
+.cthack.sheet.actor.opponent .sheet-header .short-description {
   display: flex;
   justify-content: center;
   text-align: center;
   padding: 5px 0 10px 0;
   font-style: italic;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .short-description .input-editable {
+.cthack.sheet.actor.opponent .sheet-header .short-description .input-editable {
   border: 1px solid #782e22;
   margin-right: 20px;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .hitdice {
+.cthack.sheet.actor.opponent .sheet-header .hitdice {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .hitdice select {
+.cthack.sheet.actor.opponent .sheet-header .hitdice select {
   color: #fff;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .hitdice .selectHitDice {
+.cthack.sheet.actor.opponent .sheet-header .hitdice .selectHitDice {
   border: 1px solid #782e22;
   width: 30px;
   height: var(--form-field-height);
   text-align: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .hp {
+.cthack.sheet.actor.opponent .sheet-header .hp {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .hp .hp-input {
+.cthack.sheet.actor.opponent .sheet-header .hp .hp-input {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .hp .hp-input .hp-max {
+.cthack.sheet.actor.opponent .sheet-header .hp .hp-input .hp-max {
   width: 30px;
   text-align: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .armor {
+.cthack.sheet.actor.opponent .sheet-header .armor {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .armor input {
+.cthack.sheet.actor.opponent .sheet-header .armor input {
   width: 20px;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .malus {
+.cthack.sheet.actor.opponent .sheet-header .malus {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .malus label {
+.cthack.sheet.actor.opponent .sheet-header .malus label {
   text-transform: lowercase;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .malus label::first-letter {
+.cthack.sheet.actor.opponent .sheet-header .malus label::first-letter {
   text-transform: uppercase;
 }
-.cthack.sheet.actor.opponentv2 .sheet-header .malus input {
+.cthack.sheet.actor.opponent .sheet-header .malus input {
   width: 20px;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body {
+.cthack.sheet.actor.opponent .sheet-body {
   height: 100%;
   min-height: 0;
   margin: 10px 0 10px 0;
@@ -747,45 +732,45 @@ i.cthack {
   flex-direction: column;
   height: auto;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .description-editable {
+.cthack.sheet.actor.opponent .sheet-body .description-editable {
   border: none;
   font-size: 1rem;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .description-editable .title {
+.cthack.sheet.actor.opponent .sheet-body .description-editable .title {
   font-size: 1em;
   font-weight: bold;
   padding: 10px 0 10px 0;
   text-align: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .description-editable .editor {
+.cthack.sheet.actor.opponent .sheet-body .description-editable .editor {
   min-height: 150px;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .description-editable .editor-content {
+.cthack.sheet.actor.opponent .sheet-body .description-editable .editor-content {
   min-height: 100px;
   height: auto;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .description-editable .prosemirror menu {
+.cthack.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .description-editable .prosemirror menu li {
+.cthack.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .description-editable .prosemirror menu li:hover {
+.cthack.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .description-editable .prosemirror menu button {
+.cthack.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu button {
   background: var(--color-hover-bg);
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .description {
+.cthack.sheet.actor.opponent .sheet-body .description {
   padding: 0 10px 0 10px;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .attacks {
+.cthack.sheet.actor.opponent .sheet-body .attacks {
   display: flex;
   flex-direction: column;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .attacks .title {
+.cthack.sheet.actor.opponent .sheet-body .attacks .title {
   border: none;
   font-size: 1em;
   font-weight: bold;
@@ -794,14 +779,14 @@ i.cthack {
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .attacks .title a {
+.cthack.sheet.actor.opponent .sheet-body .attacks .title a {
   padding-left: 10px;
   font-size: 0.8em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .attacks .grid-attacks {
+.cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 5px;
@@ -809,28 +794,28 @@ i.cthack {
   align-items: center;
   font-size: var(--font-size-16);
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .attacks .grid-attacks .item-line {
+.cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line {
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .attacks .grid-attacks .item-line .item-name {
+.cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line .item-name {
   font-weight: bold;
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .attacks .grid-attacks .item-line .item-name img {
+.cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line .item-name img {
   width: 30px;
   height: 30px;
   margin-right: 5px;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .attacks .grid-attacks .has-description {
+.cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .has-description {
   font-style: italic;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .magics {
+.cthack.sheet.actor.opponent .sheet-body .magics {
   display: flex;
   flex-direction: column;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .magics .title {
+.cthack.sheet.actor.opponent .sheet-body .magics .title {
   border: none;
   font-size: 1em;
   font-weight: bold;
@@ -839,14 +824,14 @@ i.cthack {
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .magics .title a {
+.cthack.sheet.actor.opponent .sheet-body .magics .title a {
   padding-left: 10px;
   font-size: 0.8em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics {
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 5px;
@@ -854,28 +839,28 @@ i.cthack {
   align-items: center;
   font-size: var(--font-size-16);
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics .item-line {
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics .item-line .item-name {
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line .item-name {
   font-weight: bold;
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics .item-line .item-name img {
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line .item-name img {
   width: 30px;
   height: 30px;
   margin-right: 5px;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .magics .grid-magics .has-description {
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .has-description {
   font-style: italic;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .abilities {
+.cthack.sheet.actor.opponent .sheet-body .abilities {
   display: flex;
   flex-direction: column;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .abilities .title {
+.cthack.sheet.actor.opponent .sheet-body .abilities .title {
   border: none;
   font-size: 1em;
   font-weight: bold;
@@ -884,14 +869,14 @@ i.cthack {
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .abilities .title a {
+.cthack.sheet.actor.opponent .sheet-body .abilities .title a {
   padding-left: 10px;
   font-size: 0.8em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities {
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 5px;
@@ -899,21 +884,21 @@ i.cthack {
   align-items: center;
   font-size: var(--font-size-16);
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities .item-line {
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line {
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities .item-line .item-name {
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-name {
   font-weight: bold;
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities .item-line .item-name img {
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-name img {
   width: 30px;
   height: 30px;
   margin-right: 5px;
 }
-.cthack.sheet.actor.opponentv2 .sheet-body .abilities .grid-opponent-abilities .has-description {
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .has-description {
   font-style: italic;
 }
 .cthack .items-list {

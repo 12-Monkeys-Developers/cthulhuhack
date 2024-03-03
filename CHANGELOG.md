@@ -1,3 +1,10 @@
+2.0.0
+- Rework on all items : DataModels usage and new sheet organization
+- Add Sheet locked/unlocked feature
+- Rework of NPC Character sheet
+- Add search feature : to be able to search in journals and items
+- Use packFolders to display compendiums in directories
+ 
 1.5.2
 - Fix expand ability on actor sheet
 

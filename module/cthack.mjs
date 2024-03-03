@@ -17,8 +17,6 @@ import { registerHooks } from "./hooks.js";
 import { GMManager } from "./app/gm-manager.js";
 import { initControlButtons } from "./control-buttons.js";
 
-import { CtHackOpponentSheetV2 } from "./actor/opponent-sheet-2.js";
-
 import { SYSTEM } from "./config/system.mjs";
 
 globalThis.SYSTEM = SYSTEM;
@@ -75,7 +73,6 @@ Hooks.once("init", async function () {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet(SYSTEM_NAME, CtHackActorSheet, { types: ["character"], makeDefault: true, label: "CTHACK.SheetClassCharacter" });
   Actors.registerSheet(SYSTEM_NAME, CtHackOpponentSheet, { types: ["opponent"], makeDefault: true, label: "CTHACK.SheetClassOpponent" });
-  Actors.registerSheet(SYSTEM_NAME, CtHackOpponentSheetV2, { types: ["opponent"], label: "Adversaire v2" });
 
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet(SYSTEM_NAME, applications.ObjetSheet, { types: ["item"], makeDefault: true });

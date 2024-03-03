@@ -15,7 +15,6 @@ export const preloadHandlebarsTemplates = async function() {
 		'systems/cthack/templates/actor/parts/actor-condition.hbs',
 		'systems/cthack/templates/actor/parts/actor-ability.hbs',
 		'systems/cthack/templates/actor/opponent-sheet.hbs',
-		'systems/cthack/templates/actor/opponent-sheet-2.hbs',
 		'systems/cthack/templates/actor/parts/opponent-attack.hbs',
 
 		// ITEM
