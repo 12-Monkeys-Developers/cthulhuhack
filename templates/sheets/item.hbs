@@ -1,0 +1,48 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{log 'objet' this}}
+        <div class="item-header">
+            {{#if editable}}
+                <img class="editable-image" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+            {{else}}
+                <img src="{{item.img}}" />
+            {{/if}}
+            {{#if editable}}
+                <input name="name" type="text" value="{{item.name}}" />
+            {{else}}
+                <div class="name">{{item.name}}</div>
+            {{/if}}
+            <div class="sheet-lock">
+                {{#if editable}}
+                    <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
+                {{else}}
+                    <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
+                {{/if}}
+            </div>
+        </div>
+        <div class="item-body">
+            <div class="item-grid">
+                  <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.ItemDiceName"}}</div>
+                    <select class="select-dice-material" name="system.dice" data-type="String" {{{getStyleForDice item.system.dice}}}>
+                        {{#select item.system.dice}}
+                            {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+                        {{/select}}
+                    </select>
+                </div>
+            </div>
+            <div class="item-description">
+                       {{#if editable}}
+                    <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+                {{else}}
+                    {{#if hasDescription}}
+                        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+                    {{/if}}
+                {{/if}}                
+                <div class="description-content">
+                    {{editor enrichedDescription target="system.description" button=true engine="prosemirror"
+                    owner=owner editable=editable}}
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

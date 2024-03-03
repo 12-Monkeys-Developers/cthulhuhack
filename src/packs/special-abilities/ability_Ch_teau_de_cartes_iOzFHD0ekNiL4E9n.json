@@ -1,0 +1,28 @@
+{
+  "_id": "iOzFHD0ekNiL4E9n",
+  "name": "Château de cartes",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p>Une fois par partie, le&nbsp;personnage peut trahir (vous devez expliquer ce qui se passe) un alli&eacute;, PJ ou non, afin d&rsquo;&eacute;viter les cons&eacute;quences d&rsquo;une <strong>Sauvegarde de Sagesse</strong> ou <strong>Charisme</strong> rat&eacute;e.</p>",
+    "key": "HOUCAR",
+    "uses": {
+      "value": 1,
+      "max": 1,
+      "per": "Session",
+      "last": ""
+    },
+    "multiple": false
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.kaXCmKcYmqa0bXRh"
+    }
+  },
+  "img": "systems/cthack/ui/icons/backstab.png",
+  "effects": [],
+  "_key": "!items!iOzFHD0ekNiL4E9n"
+}

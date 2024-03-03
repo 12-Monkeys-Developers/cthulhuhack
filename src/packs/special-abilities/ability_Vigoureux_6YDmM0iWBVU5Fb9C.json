@@ -1,0 +1,28 @@
+{
+  "_id": "6YDmM0iWBVU5Fb9C",
+  "name": "Vigoureux",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p>Vous b&eacute;n&eacute;ficiez d&rsquo;un <strong>Avantage</strong> lorsque vous testez une <strong>Sauvegarde</strong> pour &eacute;viter les effets de poisons, de drogues ou de l&rsquo;alcool.</p>",
+    "key": "HAR",
+    "uses": {
+      "value": 0,
+      "max": 0,
+      "per": "Permanent",
+      "last": ""
+    },
+    "multiple": false
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.zbiF1fX3xFUQBURa"
+    }
+  },
+  "img": "systems/cthack/ui/icons/heart-plus.png",
+  "effects": [],
+  "_key": "!items!6YDmM0iWBVU5Fb9C"
+}

@@ -1,31 +1,6 @@
 import { refreshAllActorSheets } from './utils.js';
 
 export const registerSystemSettings = function() {
-	/**
-     * Display FRench Compendium
-     */
-	 game.settings.register('cthack', 'CommpendiumFR', {
-		name: 'SETTINGS.CompendiumFRName',
-		hint: 'SETTINGS.CompendiumFRHint',
-		scope: 'world',
-		config: true,
-		type: Boolean,
-		default: true,
-		requiresReload: true
-	});
-
-	/**
-     * Display ENglish Compendium
-     */
-	 game.settings.register('cthack', 'CommpendiumEN', {
-		name: 'SETTINGS.CompendiumENName',
-		hint: 'SETTINGS.CompendiumENHint',
-		scope: 'world',
-		config: true,
-		type: Boolean,
-		default: true,
-		requiresReload: true
-	});
 
 	/**
      * Fortune option

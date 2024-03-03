@@ -1,0 +1,19 @@
+{
+  "_id": "V6f4gfK3GmdJyHRj",
+  "name": "Os brisés",
+  "permission": {
+    "default": 0,
+    "ElkdkfLFg9aO1OqA": 3
+  },
+  "type": "definition",
+  "data": {
+    "description": "<p>Toutes les valeurs de Sauvegardes de Physique sont r&eacute;duites de 4 points jusqu&rsquo;&agrave; la fin de la prochaine journ&eacute;e, ou jusqu&rsquo;&agrave; la fin de cette session de jeu (le plus t&ocirc;t des deux).</p>",
+    "definitionType": "OutOfAction",
+    "key": "OOA-CRB",
+    "creationDate": ""
+  },
+  "flags": {},
+  "img": "systems/cthack/ui/icons/first-aid-kit.png",
+  "effects": [],
+  "_key": "!items!V6f4gfK3GmdJyHRj"
+}

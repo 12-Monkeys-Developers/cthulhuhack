@@ -1,0 +1,72 @@
+{
+  "_id": "a603g9o6yt8cvh21",
+  "name": "Grande race de Yith",
+  "permission": {
+    "default": 0,
+    "nbNihQhmxdH1Xo1p": 3
+  },
+  "type": "opponent",
+  "data": {
+    "hp": {
+      "value": 36,
+      "min": 0,
+      "max": 36
+    },
+    "description": "<h3>La grande race de Yith est form&eacute;e de voyageurs temporels de forme conique, venus d&rsquo;un lointain pass&eacute; et ayant une grande soif de connaissance, qu&rsquo;ils acqui&egrave;rent en changeant de corps. Gardiens de biblioth&egrave;ques-villes cach&eacute;es dans le temps au commencement de notre univers, ils tentent de cataloguer toutes les choses et tous les moments. La grande race recherche la la v&eacute;rit&eacute; &agrave; propos de leur propre destruction &agrave; venir et les moyens de l&rsquo;emp&ecirc;cher.</h3>\n<h2>Capacit&eacute;s sp&eacute;ciales</h2>\n<ul>\n<li>\n<h3>Leur forme changeante octroie un D&eacute;savantage pour les Sauvegardes de Dext&eacute;rit&eacute;.</h3>\n</li>\n<li>\n<h3>Peut jeter 1d3 sortil&egrave;ges choisis de mani&egrave;re al&eacute;atoire.</h3>\n</li>\n<li>\n<h3>Peut voyager dans le temps.</h3>\n</li>\n</ul>",
+    "hitDice": "9",
+    "armor": "4",
+    "abilities": [],
+    "malus": "-8"
+  },
+  "sort": 100001,
+  "flags": {},
+  "img": "icons/svg/mystery-man.svg",
+  "token": {
+    "flags": {},
+    "name": "Grande race de Yith",
+    "displayName": 0,
+    "img": "icons/svg/mystery-man.svg",
+    "tint": null,
+    "width": 1,
+    "height": 1,
+    "scale": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "vision": false,
+    "dimSight": 0,
+    "brightSight": 0,
+    "dimLight": 0,
+    "brightLight": 0,
+    "sightAngle": 360,
+    "lightAngle": 360,
+    "lightAlpha": 1,
+    "lightAnimation": {
+      "speed": 5,
+      "intensity": 5
+    },
+    "actorId": "a603g9o6yt8cvh21",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {},
+    "bar2": {},
+    "randomImg": false
+  },
+  "items": [
+    {
+      "_id": "Fz2pjYRjs5N16a3T",
+      "name": "Rayon laser",
+      "type": "attack",
+      "data": {
+        "damage": "3"
+      },
+      "sort": 100000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "_key": "!actors.items!a603g9o6yt8cvh21.Fz2pjYRjs5N16a3T"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!a603g9o6yt8cvh21"
+}

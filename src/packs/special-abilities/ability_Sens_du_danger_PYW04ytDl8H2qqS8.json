@@ -1,0 +1,28 @@
+{
+  "_id": "PYW04ytDl8H2qqS8",
+  "name": "Sens du danger",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p>Le personnage b&eacute;n&eacute;ficie d&rsquo;un Avantage lors des Sauvegardes visant &agrave; &eacute;viter les pi&egrave;ges ou les machines pouvant le blesser ou l&rsquo;entraver.</p>",
+    "key": "SELPRE",
+    "uses": {
+      "value": 0,
+      "max": 0,
+      "per": "Permanent",
+      "last": ""
+    },
+    "multiple": false
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.XKKv6w1z3wP0b208"
+    }
+  },
+  "img": "systems/cthack/ui/icons/extra-lucid.png",
+  "effects": [],
+  "_key": "!items!PYW04ytDl8H2qqS8"
+}

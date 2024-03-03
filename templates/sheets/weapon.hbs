@@ -1,0 +1,59 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{log "weapon" this}}
+        <div class="item-header">
+            {{#if editable}}
+                <img class="editable-image" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+            {{else}}
+                <img src="{{item.img}}" />
+            {{/if}}
+            {{#if editable}}
+                <input name="name" type="text" value="{{item.name}}" />
+            {{else}}
+                <div class="name">{{item.name}}</div>
+            {{/if}}
+            <div class="sheet-lock">
+                {{#if editable}}
+                    <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
+                {{else}}
+                    <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
+                {{/if}}
+            </div>
+        </div>
+        <div class="weapon-body">
+            <div class="weapon-grid">
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.Material"}}</div>
+                    <select class="select-dice-material" name="system.dice" data-type="String" {{{getStyleForDice system.dice}}}>
+                        {{#select data.system.dice}}
+                            {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.ItemRangeName"}}</div>
+                    <select class="select-range" name="system.range" data-type="String">
+                        {{#select data.system.range}}
+                            <option value="">{{localize "CTHACK.None"}}</option>
+                            <option value="near">{{localize "CTHACK.RangeNear"}}</option>
+                            <option value="far">{{localize "CTHACK.RangeFar"}}</option>
+                            <option value="distant">{{localize "CTHACK.RangeDistant"}}</option>
+                            <option value="3str">{{localize "CTHACK.RangeThreeStr"}}</option>
+                        {{/select}}
+                    </select>
+                </div>
+            </div>
+            <div class="item-description">
+                {{#if editable}}
+                    <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+                {{else}}
+                    {{#if hasDescription}}
+                        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+                    {{/if}}
+                {{/if}}                
+                <div class="description-content">
+                    {{editor enrichedDescription target="system.description" button=true engine="prosemirror"
+                    owner=owner editable=editable}}
+                </div>
+            </div>
+        </div>
+</form>

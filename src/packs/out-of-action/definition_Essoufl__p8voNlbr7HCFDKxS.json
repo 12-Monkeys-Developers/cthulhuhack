@@ -1,0 +1,19 @@
+{
+  "_id": "p8voNlbr7HCFDKxS",
+  "name": "Essouflé",
+  "permission": {
+    "default": 0,
+    "Nf5osQkK29WIwE1I": 3
+  },
+  "type": "definition",
+  "data": {
+    "description": "<p>Vous avez un D&eacute;savantage pour tous les tests que vous effectuez durant la prochaine minute de jeu.</p>",
+    "definitionType": "OutOfAction",
+    "key": "OOA-WIN",
+    "creationDate": ""
+  },
+  "flags": {},
+  "img": "systems/cthack/ui/icons/first-aid-kit.png",
+  "effects": [],
+  "_key": "!items!p8voNlbr7HCFDKxS"
+}

@@ -1,8 +1,21 @@
-  .sheet-archetype .sheet-body{
-    height: 400px;
+&.sheet.item.archetype {
+  .item-common-header();
+  .archetype-body-header {
+    display: flex;
+    grid-gap: 10px;
+    padding: 0 20px 0 20px;;
+    img {
+      height: 350px;
+      width:  150px;
+    }
   }
-  
-  .sheet-archetype select{
-    flex: 0 0 150px;
-    text-align-last: center;
+  .archetype-body-header-right {
+    display: flex;
+    flex-direction: column;
   }
+  .archetype-grid {
+    padding-top: 20px;    
+    .item-common-grid(3);
+  }
+  .item-common-description();
+}

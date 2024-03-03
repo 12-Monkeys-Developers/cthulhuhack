@@ -1,0 +1,19 @@
+{
+  "_id": "hBVC8iSQfK4UV6mL",
+  "name": "Titubant",
+  "permission": {
+    "default": 0,
+    "Nf5osQkK29WIwE1I": 3
+  },
+  "type": "definition",
+  "data": {
+    "description": "<p>Vous avez un D&eacute;savantage pour tous les tests que vous effectuez durant les 10 prochaines minutes de jeu.</p>",
+    "definitionType": "OutOfAction",
+    "key": "OOA-STA",
+    "creationDate": ""
+  },
+  "flags": {},
+  "img": "systems/cthack/ui/icons/first-aid-kit.png",
+  "effects": [],
+  "_key": "!items!hBVC8iSQfK4UV6mL"
+}

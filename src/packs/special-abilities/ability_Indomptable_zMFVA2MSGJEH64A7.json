@@ -1,0 +1,28 @@
+{
+  "_id": "zMFVA2MSGJEH64A7",
+  "name": "Indomptable",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p>Vous b&eacute;n&eacute;ficiez d&rsquo;un <strong>Avantage</strong> pour les <strong>Sauvegardes</strong> contre la tromperie,le contr&ocirc;le mental ou lorsque votre investigateur tente de tromper son interlocuteur.</p>",
+    "key": "IND",
+    "uses": {
+      "value": 0,
+      "max": 0,
+      "per": "Permanent",
+      "last": ""
+    },
+    "multiple": false
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.3SfNP7zMMWMUgboC"
+    }
+  },
+  "img": "systems/cthack/ui/icons/lion.png",
+  "effects": [],
+  "_key": "!items!zMFVA2MSGJEH64A7"
+}

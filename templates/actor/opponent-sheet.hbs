@@ -1,78 +1,174 @@
-<form class="{{cssClass}} flexcol sheet-opponent" autocomplete="off">
-    {{!log 'opponent' this}}
-    <header class="sheet-header">
-        <div class="flex-center">
-            <img class="opponent-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
-        </div>       
-        <div class="header-fields flex 5">
-            <h1 class="charname"><input name="name" type="text" value="{{data.name}}" placeholder="Name"/></h1>
-            <div class="grid grid-2col">
-                <div class="flexrow flex-group-center">
-                    <label for="system.hitDice" class="resource-label resource-name" title='{{localize "CTHACK.HitDice"}}'>{{localize "CTHACK.HitDice"}}</label>
-                    <select class="selectHitDice" name="system.hitDice" data-type="String" style="color: white;">
-                        {{#select data.system.hitDice}}
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                        {{/select}}
-                    </select>
-                </div>
-                <div class="flexrow flex-group-center">
-                    <label for="system.hp.value" class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
-                    <div class="flexrow flex-center">
-                        <input type="text" name="system.hp.value" value="{{data.system.hp.value}}" data-dtype="Number"/>
-                        <span>/</span>
-                        <input type="text" name="system.hp.max" value="{{data.system.hp.max}}" data-dtype="Number"/>
-                    </div>
-                </div>
-            </div>
-            <div class="grid grid-2col">
-                <div class="flexrow flex-group-center">
-                    <label class="resource-label">{{localize "CTHACK.OpponentArmor"}}</label>
-                    <input name="system.armor" type="text" value="{{data.system.armor}}" data-dtype="Number"/>
-                </div>
-                <div class="flexrow flex-group-center">
-                    <label class="resource-label">{{localize "CTHACK.OpponentTouchMalus"}}</label>
-                    <input name="system.malus" type="text" value="{{data.system.malus}}" data-dtype="Number"/>
-                </div>
-            </div>  
-            </div>
-        </div>
-        
-    </header>
-    {{!-- Sheet Body --}}
-    <section class="sheet-body">
+<form class="{{cssClass}}" autocomplete="off">
+  {{!log "opponent" this}}
+  <header class="sheet-header {{#if (or hasImage editable)}}grid-image{{else}}grid-noimage{{/if}}">
 
-        <h2>Description</h2>
-        <div>
-            {{editor enrichedDescription target="system.description" button=true owner=owner editable=editable}}
-        </div>
+    <div class="opponent-image">
+      {{#if editable}}
+        <img class="editable-image" src="{{data.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+      {{else}}
+        {{#if hasImage}}
+          <img class="image" src="{{actor.img}}" data-tooltip="{{localize 'TOOLTIPS.ShowImage'}}" data-image="{{actor.img}}" data-name="{{actor.name}}"/>
+        {{/if}}
+      {{/if}}
+    </div>
 
-        <h2>Attaques</h2>
-        <div>            
-             <ol class="items-list">
-                <li class=" item-header flexrow">
-                  <div class="item-header-name">{{localize "CTHACK.Name"}}</div>
-                  <div>{{localize "CTHACK.Damage"}}</div>
-                  <div>{{localize "CTHACK.DamageDice"}}</div>
-                  <div class="item-controls-header">
-                    <a class="item-control attack-create" title='{{localize "CTHACK.Add"}}' data-type="attack"><i class="fas fa-plus"></i> {{localize "CTHACK.Add"}}</a>
-                  </div>
-                </li>
-                {{#each attacks as |attack id|}}
-                  {{> "systems/cthack/templates/actor/parts/opponent-attack.hbs" attack}}
-                {{/each}}
-            </ol>
+    <div class="character">
+      <div class="name" data-name="{{actor.name}}">
+        {{#if editable}}
+          <input name="name" type="text" value="{{actor.name}}" />
+        {{else}}
+          <div data-tooltip="Clic droit pour rechercher le nom">{{actor.name}}</div>
+        {{/if}}
+      </div>
+      <div class="sheet-lock">
+        {{#if editable}}
+          <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
+        {{else}}
+          <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="short-description">
+      {{#if editable}}<input
+          class="input-editable"
+          name="system.shortDescription"
+          type="text"
+          value="{{actor.system.shortDescription}}"
+          placeholder="{{localize 'CTHACK.ShortDescription'}}"
+        />{{else}}{{actor.system.shortDescription}}{{/if}}
+    </div>
+
+    <div class="data-group hitdice">
+      <label for="system.hitDice" class="resource-label resource-name" data-tooltip="{{localize 'CTHACK.HitDice'}}">{{localize "CTHACK.HitDiceShort"}} :</label>
+      {{#if editable}}
+        <select class="selectHitDice" name="system.hitDice" data-type="String">
+          {{selectOptions opponentHitDice selected=actor.system.hitDice}}
+        </select>
+      {{else}}
+        <div>{{actor.system.hitDice}}</div>
+      {{/if}}
+    </div>
+
+    <div class="data-group hp">
+      <label for="system.hp.value" class="resource-label" data-tooltip="{{localize 'CTHACK.HitPoints'}}">{{localize "CTHACK.HitPointsShort"}} :</label>
+      <div class="hp-input">
+        <input class="input-editable" type="text" name="system.hp.value" value="{{actor.system.hp.value}}" data-dtype="Number" />
+        /
+        {{#if editable}}
+          <input class="input-editable" type="text" name="system.hp.max" value="{{actor.system.hp.max}}" data-dtype="Number" />
+        {{else}}
+          <div class="hp-max">
+            {{actor.system.hp.max}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="data-group armor">
+      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentArmor'}}">{{localize "CTHACK.OpponentArmorShort"}} :</label>
+      {{#if editable}}
+        <input class="input-editable" name="system.armor" type="text" value="{{actor.system.armor}}" data-dtype="Number" />
+      {{else}}
+        <div>{{actor.system.armor}}</div>
+      {{/if}}
+    </div>
+
+    <div class="data-group malus">
+      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentTouchMalus'}}">{{localize "CTHACK.OpponentTouchMalusShort"}} :</label>
+      {{#if editable}}
+        <input class="input-editable" name="system.malus" type="text" value="{{actor.system.malus}}" data-dtype="Number" />
+      {{else}}
+        <div>{{actor.system.malus}}</div>
+      {{/if}}
+    </div>
+  </header>
+
+  {{! Sheet Body }}
+  <section class="sheet-body {{#if hasImage}}grid-image{{else}}grid-noimage{{/if}}">
+
+    {{#if editable}}
+      <div class="description-editable">
+        <div class="title">{{localize "CTHACK.Description"}}</div>
+        {{editor enrichedDescription target="system.description" engine="prosemirror" button=true owner=owner editable=editable}}
+      </div>
+    {{else}}
+      <div class="description">
+        {{editor enrichedDescription target="system.description" engine="prosemirror" button=true owner=owner editable=editable}}
+      </div>
+    {{/if}}
+    
+    <div class="attacks">
+      {{#if editable}}
+        <div class="title">{{localize "CTHACK.OpponentAttacks"}}
+          <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.AddAttack'}}" data-type="attack"><i class="fas fa-plus"></i></a>
         </div>
-        
-    </section>
+      {{else}}
+        {{#if (gt attacks.length 0)}}<div class="title">{{localize "CTHACK.OpponentAttacks"}}</div>{{/if}}
+      {{/if}}
+      <div class="grid-attacks">
+        {{#each attacks as |attack id|}}
+        {{log 'opponent-attack' attack}}
+          <div class="item opponent-contextmenu" data-item-id="{{attack._id}}">
+            <details>
+              <summary class="item-line">
+                <div class="item-name {{#if attack.system.hasDescription}}has-description{{/if}}">{{#if attack.hasImage}}<img src="{{attack.img}}"/>{{/if}}{{attack.name}}</div>
+                <div class="item-details">{{#if attack.system.hasDamageDice}}<i class="fas fa-dice-d20 attack rollable">&nbsp;&nbsp;</i> {{/if}}{{{attack.system.details}}}</div>
+              </summary>
+              <div class="item-description">{{{attack.enrichedDescription}}}</div>
+            </details>    
+          </div>
+        {{/each}}
+        </div>
+    </div>
+
+    <div class="abilities">
+      {{#if editable}}
+        <div class="title">{{localize "CTHACK.OpponentAbilities"}}
+          <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.AddOpponentAbility'}}" data-type="opponentAbility"><i class="fas fa-plus"></i></a>
+        </div>
+      {{else}}
+        {{#if (gt opponentAbilities.length 0)}}<div class="title">{{localize "CTHACK.OpponentAbilities"}}</div>{{/if}}
+      {{/if}}
+      <div class="grid-opponent-abilities">
+        {{#each opponentAbilities as |ability id|}}    
+          {{log 'opponent-ability' ability}}   
+            <div class="item opponent-contextmenu" data-item-id="{{ability._id}}">
+              <details>
+                <summary class="item-line">
+                  <div class="item-name {{#if ability.system.hasDescription}}has-description{{/if}}">{{#if ability.hasImage}}<img src="{{ability.img}}"/>{{/if}}{{ability.name}}</div>
+                  <div class="item-details">{{ability.system.details}}</div>
+                </summary>                  
+                  <div class="item-description">{{{ability.enrichedDescription}}}</div>
+              </details>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+
+    <div class="magics">
+        {{#if editable}}
+          <div class="title">{{localize "CTHACK.OpponentMagics"}}
+            <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.AddMagic'}}" data-type="magic"><i class="fas fa-plus"></i></a>
+          </div>
+        {{else}}  
+          {{#if (gt magics.length 0)}}<div class="title">{{localize "CTHACK.OpponentMagics"}}</div>{{/if}}
+        {{/if}}
+        <div class="grid-magics">
+          {{#each magics as |magic id|}}
+          {{log 'opponent-magic' magic}}
+            <div class="item opponent-contextmenu" data-item-id="{{magic._id}}">
+              <details>
+                <summary class="item-line">
+                  <div class="item-name {{#if magic.system.hasDescription}}has-description{{/if}}">{{#if magic.hasImage}}<img src="{{magic.img}}"/>{{/if}}{{{magic.name}}}</div>
+                  <div class="item-subtype">{{magic.system.subtypeLabel}}</div>
+                  <div class="item-dice">{{#if magic.system.hasDice}}<i class="fas fa-dice-d20 magic rollable">&nbsp;&nbsp;</i>{{magic.system.dice}}{{/if}}</div>
+                  <div class="item-incantation">{{magic.system.incantation}}</div>
+                </summary>                  
+                  <div class="item-description">{{{magic.enrichedDescription}}}</div>
+              </details>
+            </div>
+          {{/each}}
+        </div>
+  </section>
 </form>

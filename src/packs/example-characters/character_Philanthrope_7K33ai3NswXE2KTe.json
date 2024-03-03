@@ -1,0 +1,236 @@
+{
+  "_id": "7K33ai3NswXE2KTe",
+  "name": "Philanthrope",
+  "permission": {
+    "default": 0,
+    "ElkdkfLFg9aO1OqA": 3
+  },
+  "type": "character",
+  "data": {
+    "hp": {
+      "value": 10,
+      "min": 0,
+      "max": 10
+    },
+    "occupation": "",
+    "archetype": "Philanthrope",
+    "description": "",
+    "biography": "",
+    "attributes": {
+      "flashlights": {
+        "value": "d6",
+        "max": "d6"
+      },
+      "smokes": {
+        "value": "d10",
+        "max": "d10"
+      },
+      "sanity": {
+        "value": "d10",
+        "max": "d10"
+      },
+      "hitDice": {
+        "value": "d8",
+        "max": "d6"
+      },
+      "wealthDice": {
+        "value": "d10",
+        "max": "d6"
+      },
+      "armedDamage": {
+        "value": "d6"
+      },
+      "unarmedDamage": {
+        "value": "1"
+      },
+      "adrenaline1": {
+        "value": "pj"
+      },
+      "adrenaline2": {
+        "value": "pj"
+      }
+    },
+    "saves": {
+      "str": {
+        "value": 10,
+        "advantage": false
+      },
+      "dex": {
+        "value": 10,
+        "advantage": false
+      },
+      "con": {
+        "value": 10,
+        "advantage": false
+      },
+      "wis": {
+        "value": 10,
+        "advantage": false
+      },
+      "int": {
+        "value": 10,
+        "advantage": false
+      },
+      "cha": {
+        "value": 10,
+        "advantage": false
+      }
+    },
+    "abilities": [
+      {
+        "key": "GRIDET",
+        "id": "YFtYn4DDZbMYAAND"
+      },
+      {
+        "key": "FIEMED",
+        "id": "pr90ChM2w5FA0Jnt"
+      },
+      {
+        "key": "WITWOR",
+        "id": "oe7xEp4xOtGmVpXu"
+      },
+      {
+        "key": "IND",
+        "id": "zMFVA2MSGJEH64A7"
+      }
+    ]
+  },
+  "sort": 100001,
+  "flags": {},
+  "img": "systems/cthack/ui/pregenerated/philanthrope.webp",
+  "token": {
+    "flags": {},
+    "name": "Philanthrope",
+    "displayName": 0,
+    "img": "systems/cthack/ui/pregenerated/philanthrope.webp",
+    "tint": null,
+    "width": 1,
+    "height": 1,
+    "scale": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "vision": false,
+    "dimSight": 0,
+    "brightSight": 0,
+    "dimLight": 0,
+    "brightLight": 0,
+    "sightAngle": 360,
+    "lightAngle": 360,
+    "lightAlpha": 1,
+    "lightAnimation": {
+      "speed": 5,
+      "intensity": 5
+    },
+    "actorId": "7K33ai3NswXE2KTe",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {},
+    "bar2": {},
+    "randomImg": false
+  },
+  "items": [
+    {
+      "_id": "NHajuR7Eki5dGHl5",
+      "name": "Force de caractère",
+      "type": "ability",
+      "data": {
+        "description": "<p>Une fois par session de jeu, vous pouvez relancer les d&eacute;s pour un test de <strong>Hors Jeu</strong> ou de <strong>Sant&eacute; mentale</strong> / <strong>Choc</strong>. Choisissez le r&eacute;sultat de votre choix.</p>",
+        "key": "GRIDET",
+        "uses": {
+          "value": 1,
+          "max": 1,
+          "per": "Session",
+          "last": ""
+        },
+        "multiple": false
+      },
+      "sort": 100000,
+      "flags": {
+        "core": {
+          "sourceId": "Item.gr9uKkcjxExM1rZr"
+        }
+      },
+      "img": "systems/cthack/ui/icons/meditation.png",
+      "effects": [],
+      "_key": "!actors.items!7K33ai3NswXE2KTe.NHajuR7Eki5dGHl5"
+    },
+    {
+      "_id": "m6mezzASZye27VzN",
+      "name": "Médecin de terrain",
+      "type": "ability",
+      "data": {
+        "description": "<p>Une fois par heure de jeu, en dehors d&rsquo;un combat vous pouvez soigner la perte de 1d6 Points de Vie perdus.</p>",
+        "key": "FIEMED",
+        "uses": {
+          "value": 1,
+          "max": 1,
+          "per": "Hour",
+          "last": ""
+        },
+        "multiple": false
+      },
+      "sort": 200000,
+      "flags": {
+        "core": {
+          "sourceId": "Item.S94zzLx010PIENcN"
+        }
+      },
+      "img": "systems/cthack/ui/icons/first-aid-kit.png",
+      "effects": [],
+      "_key": "!actors.items!7K33ai3NswXE2KTe.m6mezzASZye27VzN"
+    },
+    {
+      "_id": "G7gzUcgxUog3INkk",
+      "name": "Verbe blessant",
+      "type": "ability",
+      "data": {
+        "description": "<p>Vous pouvez utiliser Charisme pour les attaques (au lieu de Force ou Dext&eacute;rit&eacute;), du moment que les adversaires peuvent entendre votre personnage et le comprendre. Lancez les d&eacute;g&acirc;ts comme si le personnage &eacute;tait arm&eacute;. Si la victime tombe &agrave; 0 Point de Vie, elle est Hors Jeu mais n&rsquo;est pas tu&eacute;e.</p>",
+        "key": "WITWOR",
+        "uses": {
+          "value": 0,
+          "max": 0,
+          "per": "Permanent",
+          "last": ""
+        },
+        "multiple": false
+      },
+      "sort": 300000,
+      "flags": {
+        "core": {
+          "sourceId": "Item.s6rNHTpDHe15QGJt"
+        }
+      },
+      "img": "systems/cthack/ui/icons/talk.png",
+      "effects": [],
+      "_key": "!actors.items!7K33ai3NswXE2KTe.G7gzUcgxUog3INkk"
+    },
+    {
+      "_id": "ke0io33aWFJ1WO3L",
+      "name": "Indomptable",
+      "type": "ability",
+      "data": {
+        "description": "<p>Vous b&eacute;n&eacute;ficiez d&rsquo;un <strong>Avantage</strong> pour les <strong>Sauvegardes</strong> contre la tromperie,le contr&ocirc;le mental ou lorsque votre investigateur tente de tromper son interlocuteur.</p>",
+        "key": "IND",
+        "uses": {
+          "value": 0,
+          "max": 0,
+          "per": "Permanent",
+          "last": ""
+        },
+        "multiple": false
+      },
+      "sort": 400000,
+      "flags": {
+        "core": {
+          "sourceId": "Item.3SfNP7zMMWMUgboC"
+        }
+      },
+      "img": "systems/cthack/ui/icons/lion.png",
+      "effects": [],
+      "_key": "!actors.items!7K33ai3NswXE2KTe.ke0io33aWFJ1WO3L"
+    }
+  ],
+  "effects": [],
+  "_key": "!actors!7K33ai3NswXE2KTe"
+}

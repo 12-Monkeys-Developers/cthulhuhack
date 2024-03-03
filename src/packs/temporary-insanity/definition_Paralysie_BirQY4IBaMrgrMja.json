@@ -1,0 +1,19 @@
+{
+  "name": "Paralysie",
+  "permission": {
+    "default": 0,
+    "ElkdkfLFg9aO1OqA": 3
+  },
+  "type": "definition",
+  "data": {
+    "description": "<p>Le personnage se fige, paralys&eacute; de peur. Il ne peut plus se d&eacute;placer de lui-m&ecirc;me durant une Minute.</p>\n<p>Les autres personnages peuvent tenter de le d&eacute;placer ou de le porter, mais le personnage est un poids mort jusqu&rsquo;&agrave; ce qu&rsquo;il retrouve ses esprits - ce qui implique de devoir r&eacute;ussir un test de Sauvegarde de Constitution.</p>\n<p>Un &eacute;chec indique que le personnage paralys&eacute; est laiss&eacute; dans une situation dangereuse.</p>",
+    "definitionType": "TemporaryInsanity",
+    "key": "TI-PAS",
+    "creationDate": ""
+  },
+  "flags": {},
+  "img": "systems/cthack/ui/icons/screaming.png",
+  "effects": [],
+  "_id": "BirQY4IBaMrgrMja",
+  "_key": "!items!BirQY4IBaMrgrMja"
+}

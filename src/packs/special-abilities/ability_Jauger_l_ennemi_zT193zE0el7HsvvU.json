@@ -1,0 +1,28 @@
+{
+  "_id": "zT193zE0el7HsvvU",
+  "name": "Jauger l'ennemi",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p>Le personnage a l&rsquo;oeil pour rep&eacute;rer les faiblesses. Il a un bonus de + 1 pour toucher et pour calculer ses d&eacute;g&acirc;ts contre un adversaire &agrave; condition d&rsquo;effectuer un test de Torche apr&egrave;s l&rsquo;attaque.</p>",
+    "key": "SIZIUP",
+    "uses": {
+      "value": 0,
+      "max": 0,
+      "per": "Permanent",
+      "last": ""
+    },
+    "multiple": false
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.LJbnjsdMSYJn5mDJ"
+    }
+  },
+  "img": "systems/cthack/ui/icons/eye-target.png",
+  "effects": [],
+  "_key": "!items!zT193zE0el7HsvvU"
+}

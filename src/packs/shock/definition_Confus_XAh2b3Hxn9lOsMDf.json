@@ -1,0 +1,21 @@
+{
+  "_id": "XAh2b3Hxn9lOsMDf",
+  "name": "Confus",
+  "type": "definition",
+  "img": "systems/cthack/ui/icons/dead-head.png",
+  "data": {
+    "description": "<p>Les Sauvegardes mentales ont un D&eacute;savantage durant [[/roll 1d6]] Moment.</p>",
+    "definitionType": "Shock",
+    "key": "SK-VAG",
+    "creationDate": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "xuaXKQ8wuA7GQpBm": 3
+  },
+  "flags": {},
+  "_key": "!items!XAh2b3Hxn9lOsMDf"
+}

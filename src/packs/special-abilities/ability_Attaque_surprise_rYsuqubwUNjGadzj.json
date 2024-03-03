@@ -1,0 +1,28 @@
+{
+  "_id": "rYsuqubwUNjGadzj",
+  "name": "Attaque surprise",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p>Si votre investigateur est arm&eacute; lorsqu&rsquo;un combat commence, il inflige deux fois les d&eacute;g&acirc;ts habituels avec l&rsquo;arme qu&rsquo;il a en main lors de sa premi&egrave;re action si elle vise &agrave; blesser quelqu&rsquo;un.</p>",
+    "key": "SURATT",
+    "uses": {
+      "value": 1,
+      "max": 1,
+      "per": "Fight",
+      "last": ""
+    },
+    "multiple": false
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.AdJlgmeWNawV2hgM"
+    }
+  },
+  "img": "systems/cthack/ui/icons/sword-slice.png",
+  "effects": [],
+  "_key": "!items!rYsuqubwUNjGadzj"
+}

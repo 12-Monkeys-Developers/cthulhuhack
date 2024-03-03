@@ -1,0 +1,28 @@
+{
+  "_id": "Utk8XlUhz3p7sZIr",
+  "name": "Loup solitaire",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p>Lorsque le personnage combat sans alli&eacute; (PJ ou PNJ), il gagne temporairement 2 points d&rsquo;Armure et inflige + 2 D&eacute;g&acirc;ts arm&eacute; avec les armes de m&ecirc;l&eacute;e.</p>",
+    "key": "BETALO",
+    "uses": {
+      "value": 0,
+      "max": 0,
+      "per": "Permanent",
+      "last": ""
+    },
+    "multiple": false
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.bIrS3hqMdPBtHt3V"
+    }
+  },
+  "img": "systems/cthack/ui/icons/wolf-head.png",
+  "effects": [],
+  "_key": "!items!Utk8XlUhz3p7sZIr"
+}

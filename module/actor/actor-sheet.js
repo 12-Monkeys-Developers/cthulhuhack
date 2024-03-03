@@ -10,7 +10,7 @@ export class CtHackActorSheet extends ActorSheet {
 	//#region Overrided methods
 	/** @override */
 	static get defaultOptions() {
-		return mergeObject(super.defaultOptions, {
+		return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: [ 'cthack', 'sheet', 'actor', 'character' ],
 			width: 1100,
 			height: 860,
@@ -27,12 +27,11 @@ export class CtHackActorSheet extends ActorSheet {
 	/** @override */
 	async getData(options) {
 		const context = super.getData(options);
-
-		context.abilities = context.items.filter(function(item) { return item.type === 'ability';});
-		context.weapons = context.items.filter(function(item) { return item.type === 'weapon';});
-		context.magics = context.items.filter(function(item) { return item.type === 'magic';});
-		context.otheritems = context.items.filter(function(item) { return item.type === 'item';});
-		context.conditions = context.items.filter(function(item) { return item.type === 'definition';});
+		context.abilities = this.actor.itemTypes.ability;
+		context.weapons = this.actor.itemTypes.weapon;
+		context.magics = this.actor.itemTypes.magic;
+		context.otheritems = this.actor.itemTypes.item;
+		context.conditions = this.actor.itemTypes.definition;
 
 		context.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, {async: true});
 		context.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, {async: true});
@@ -126,7 +125,6 @@ export class CtHackActorSheet extends ActorSheet {
 				return await this._onDropArchetypeItem(itemData);
 			case 'ability':
 				return await this._onDropAbilityItem(itemData);
-			case 'attack':
 			case 'item':
 			case 'weapon':
 			case 'magic':
@@ -143,8 +141,8 @@ export class CtHackActorSheet extends ActorSheet {
 
 	/**
 	 * @name _onItemCreate
-	 * @description Callback on delete item actions
-	 * 				Creates a new Owned Item for the actor using initial data defined in the HTML dataset
+	 * @description Creates a new Owned Item for the actor using type defined in the HTML dataset
+	 * 				
 	 * @private
 	 * 
 	 * @param {Event} event   The originating click event
@@ -152,24 +150,18 @@ export class CtHackActorSheet extends ActorSheet {
 	 */
 	async _onItemCreate(event) {
 		event.preventDefault();
-		const header = event.currentTarget;
+		const li = event.currentTarget;
 		// Get the type of item to create.
-		let type = header.dataset.type;
-		const altType = header.dataset.altType;
-		if (event?.shiftKey) type = altType;
+		let type;
+		event?.shiftKey ? type = li.dataset.altType : type = li.dataset.type;
 		
-		// Grab any data associated with this control.
-		const data = foundry.utils.deepClone(header.dataset);
 		// Initialize a default name.
 		const name = game.i18n.format("CTHACK.ItemNew", {type: game.i18n.localize(`CTHACK.ItemType${type.capitalize()}`)});
-		// Prepare the item object.
+		// Prepare the item object
 		const itemData = {
 			name: name,
-			type: type,
-			system: data
+			type: type
 		};
-		// Remove the type from the dataset since it's in the itemData.type prop.
-		delete itemData.system.type;
 
 		// Create the item
 		return await this.actor.createEmbeddedDocuments('Item', [itemData], { renderSheet: true });
@@ -328,8 +320,8 @@ export class CtHackActorSheet extends ActorSheet {
 	 * @private
 	 * 
 	 * @param {Object} data   The data transfer extracted from the event
-	 * 
-	 * @return {Object}       EmbeddedDocument Item data to create
+	 * Item of type 'attack' for npc, 'item', 'weapon', 'magic'for pc
+	 * @return {Object} EmbeddedDocument Item data to create
 	 */	  
 	async _onDropStandardItem(data) {
 		if (!this.actor.isOwner) return false;

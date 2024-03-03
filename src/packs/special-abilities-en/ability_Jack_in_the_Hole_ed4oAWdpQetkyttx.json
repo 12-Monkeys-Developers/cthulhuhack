@@ -1,0 +1,33 @@
+{
+  "_id": "ed4oAWdpQetkyttx",
+  "name": "Jack in the Hole",
+  "type": "ability",
+  "img": "systems/cthack/ui/icons/human-pyramid.png",
+  "data": {
+    "description": "<p>Once per game&nbsp;session, you can sidestep a failed&nbsp;CHA or WIS Save by leveraging your network of friends, associates&nbsp;and unspent favours.</p>",
+    "key": "JACHOL",
+    "uses": {
+      "value": 1,
+      "max": 1,
+      "per": "Session",
+      "last": ""
+    },
+    "multiple": false,
+    "isCustom": false,
+    "advantageGiven": false,
+    "advantageText": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.S0huQaEA2SyvDP8y"
+    }
+  },
+  "_key": "!items!ed4oAWdpQetkyttx"
+}

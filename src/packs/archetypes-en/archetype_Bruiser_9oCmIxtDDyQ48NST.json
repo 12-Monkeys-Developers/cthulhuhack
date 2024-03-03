@@ -1,0 +1,36 @@
+{
+  "_id": "9oCmIxtDDyQ48NST",
+  "name": "Bruiser",
+  "type": "archetype",
+  "img": "systems/cthack/ui/archetypes/cthack-brute.png",
+  "data": {
+    "description": "<p><em>Executioner, Assassin, Boxer, Bounty Hunter.<br /></em></p>\n<p>&nbsp;</p>\n<p><strong>Special Abilities</strong></p>\n<p><strong>Tactical Advantage:</strong> You can make an additional attack against the same&nbsp;or a different target.</p>\n<p>Choose <strong>two</strong> from the following:</p>\n<ul>\n<li><strong>Ripped:</strong> Roll with Advantage when making a Save to lift, drag, snap,&nbsp;break, wrestle or exert your strength.</li>\n<li><strong>Narrow Escape:</strong> Once per game session, you can break a piece of&nbsp;equipment - and narrate what happens - to avoid damage from a&nbsp;failed STR or DEX Save.</li>\n<li><strong>Adrenalin Rush:</strong> Once per game hour, while in combat, recover a Hit Die of&nbsp;lost HP.</li>\n</ul>\n<p>&nbsp;</p>\n<p><strong>Wealth&nbsp;</strong>: roll 1d6 on the Starting Wealh following table</p>\n<table style=\"width: 79.9517%; height: 68px;\" border=\"1\">\n<tbody>\n<tr style=\"height: 17px;\">\n<td style=\"width: 19.0114%; height: 17px;\">Die</td>\n<td style=\"width: 39.1635%; height: 17px;\">Standard cash</td>\n<td style=\"width: 41.8251%; height: 17px;\">Wealth die value</td>\n</tr>\n<tr style=\"height: 17px;\">\n<td style=\"width: 19.0114%; height: 17px;\">1</td>\n<td style=\"width: 39.1635%; height: 17px;\"><span style=\"background-color: rgba(0, 0, 0, 0.05);\">CHA * 1</span></td>\n<td style=\"width: 41.8251%; height: 17px;\">D4</td>\n</tr>\n<tr style=\"height: 17px;\">\n<td style=\"width: 19.0114%; height: 17px;\">2-3</td>\n<td style=\"width: 39.1635%; height: 17px;\">CHA * 2</td>\n<td style=\"width: 41.8251%; height: 17px;\">D6</td>\n</tr>\n<tr style=\"height: 17px;\">\n<td style=\"width: 19.0114%; height: 17px;\">4-5</td>\n<td style=\"width: 39.1635%; height: 17px;\"><span style=\"background-color: rgba(0, 0, 0, 0.05);\">CHA * 3</span></td>\n<td style=\"width: 41.8251%; height: 17px;\">D8</td>\n</tr>\n<tr>\n<td style=\"width: 19.0114%;\">6</td>\n<td style=\"width: 39.1635%;\">CHA * 4</td>\n<td style=\"width: 41.8251%;\">D10 and owes a debt</td>\n</tr>\n</tbody>\n</table>",
+    "flashlights": "d4",
+    "smokes": "d4",
+    "hitdice": "d10",
+    "hitpoints": "1d10+8",
+    "wealthStart": "sp",
+    "wealthDice": "d6",
+    "sanity": "d8",
+    "armeddamage": "d8",
+    "unarmeddamage": "d6",
+    "primarysave": "str",
+    "secondarysave1": "dex",
+    "secondarysave2": "con",
+    "capacities": [],
+    "hitdice ": "d10"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.cthack.archetypes.mLWnfAYVtXq0sEMK"
+    }
+  },
+  "_key": "!items!9oCmIxtDDyQ48NST"
+}

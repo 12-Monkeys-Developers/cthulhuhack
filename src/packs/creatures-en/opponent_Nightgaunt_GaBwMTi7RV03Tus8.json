@@ -1,0 +1,130 @@
+{
+  "_id": "GaBwMTi7RV03Tus8",
+  "name": "Nightgaunt",
+  "type": "opponent",
+  "img": "icons/svg/mystery-man.svg",
+  "data": {
+    "hp": {
+      "value": 20,
+      "min": 0,
+      "max": 20
+    },
+    "description": "<h3>Shadow-coloured entities of glistening&nbsp;membrane and sinew, with horned&nbsp;heads, smooth and otherwise without&nbsp;feature. At the beck of spell or mastery,&nbsp;they serve as unquestioning guardians</h3>\n<h2>Special Abilities</h2>\n<ul>\n<li>\n<h3>Attack: Sting and Horns.</h3>\n</li>\n<li>\n<h3>Any single target who fails to attack, STR Save (Carried, Disadvantage to act). Will drop anyone who struggles, causing (2 x Moments since hold started) in damage from falling.</h3>\n</li>\n<li>\n<h3>Flying.</h3>\n</li>\n</ul>",
+    "hitDice": "5",
+    "armor": "4",
+    "abilities": [],
+    "malus": "-4"
+  },
+  "token": {
+    "flags": {},
+    "name": "Maigre bête de la nuit",
+    "displayName": 0,
+    "img": "icons/svg/mystery-man.svg",
+    "tint": null,
+    "width": 1,
+    "height": 1,
+    "scale": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "vision": false,
+    "dimSight": 0,
+    "brightSight": 0,
+    "dimLight": 0,
+    "brightLight": 0,
+    "sightAngle": 0,
+    "lightAngle": 360,
+    "lightAlpha": 1,
+    "lightAnimation": {
+      "speed": 5,
+      "intensity": 5
+    },
+    "actorId": "dc51M5Io0fboXIF2",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": null
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "randomImg": false,
+    "mirrorX": false,
+    "mirrorY": false,
+    "alpha": 1,
+    "light": {
+      "alpha": 0.5,
+      "angle": 0,
+      "bright": 0,
+      "coloration": 1,
+      "dim": 0,
+      "gradual": true,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  },
+  "items": [
+    {
+      "_id": "1adnJikVnTVSBSNV",
+      "name": "Sting",
+      "type": "attack",
+      "data": {
+        "description": "",
+        "damage": "3",
+        "damageDice": "d6"
+      },
+      "sort": 100000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "folder": null,
+      "permission": {
+        "default": 0
+      },
+      "_key": "!actors.items!GaBwMTi7RV03Tus8.1adnJikVnTVSBSNV"
+    },
+    {
+      "_id": "g5IPlmQSezN5j7lD",
+      "name": "Horns",
+      "type": "attack",
+      "data": {
+        "description": "",
+        "damage": "3",
+        "damageDice": "d6"
+      },
+      "sort": 200000,
+      "flags": {},
+      "img": "icons/svg/mystery-man.svg",
+      "effects": [],
+      "folder": null,
+      "permission": {
+        "default": 0
+      },
+      "_key": "!actors.items!GaBwMTi7RV03Tus8.g5IPlmQSezN5j7lD"
+    }
+  ],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.cthack.opponents.dc51M5Io0fboXIF2"
+    }
+  },
+  "_key": "!actors!GaBwMTi7RV03Tus8"
+}

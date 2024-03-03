@@ -103,12 +103,15 @@ i.cthack {
   filter: grayscale(1);
   transition: 0.3s;
 }
+.editor.prosemirror.editing-source textarea {
+  color: #fff;
+}
 .grid,
 .grid-2col {
   display: grid;
   grid-column: span 2 / span 2;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  grid-gap: 10px;
   margin: 0;
   padding: 0;
 }
@@ -119,38 +122,6 @@ i.cthack {
 .grid-4col {
   grid-column: span 4 / span 4;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-.grid-5col {
-  grid-column: span 5 / span 5;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-.grid-6col {
-  grid-column: span 5 / span 5;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-.grid-7col {
-  grid-column: span 7 / span 7;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-}
-.grid-8col {
-  grid-column: span 8 / span 8;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-}
-.grid-9col {
-  grid-column: span 9 / span 9;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
-}
-.grid-10col {
-  grid-column: span 10 / span 10;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
-}
-.grid-11col {
-  grid-column: span 11 / span 11;
-  grid-template-columns: repeat(11, minmax(0, 1fr));
-}
-.grid-12col {
-  grid-column: span 12 / span 12;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 .flex-group-center,
 .flex-group-left,
@@ -177,17 +148,6 @@ i.cthack {
 .flex-between {
   justify-content: space-between;
 }
-.chat-message .message-content {
-  background-image: url(../ui/cthack-green.jpg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  color: #fff;
-}
-.message-content .chat-save-roll,
-.message-content .chat-resource-roll,
-.message-content .chat-other-roll {
-  padding: 5px;
-}
 .dice-roll .dice-total.success {
   color: inherit;
   background: #c7d0c0;
@@ -204,14 +164,53 @@ i.cthack {
 .roll-success {
   color: green;
 }
+.chat-message .message-content .chat-save-roll,
+.chat-message .message-content .chat-resource-roll,
+.chat-message .message-content .chat-other-roll {
+  padding: 5px;
+}
+.chat-message .message-content {
+  background-image: url(../ui/cthack-green.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+  padding: 0 5px 0 5px;
+}
+.chat-message .message-content .btn-search button {
+  margin: 5px 0 0 0;
+  line-height: 15px;
+}
+.chat-message .message-content .search-chat {
+  padding: 0 0 5px 0;
+}
+.chat-message .message-content .search-chat h3 {
+  padding-top: 10px;
+}
+.chat-message .message-content .search-chat a.content-link {
+  background: none;
+  margin: 5px 0 0 0;
+  padding: 5px;
+}
+.chat-message .message-content .search-chat .motif {
+  padding-bottom: 5px;
+}
+.chat-message .message-content .search-chat .search-header {
+  padding-top: 10px;
+}
+.chat-message .message-content .search-chat .search-result {
+  padding: 5px 0 5px 0;
+}
 /* Styles limited to cthack sheets */
+.cthack {
+  /*** Refactor ***/
+}
 .cthack .window-content {
   background-image: url("../ui/sheet.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #fff;
   font-size: var(--font-size-20);
-  scrollbar-width: thin;
+  scrollbar-width: none;
 }
 .cthack .align-left {
   text-align: left;
@@ -254,6 +253,10 @@ i.cthack {
   -moz-appearance: none;
   background-color: transparent;
   font-weight: 800;
+  color: #fff;
+}
+.cthack select:disabled {
+  opacity: 1;
 }
 .cthack option {
   color: #fff;
@@ -374,34 +377,34 @@ i.cthack {
   font-weight: bold;
   text-shadow: 0 0 10px #851016;
 }
-.cthack .sheet-actor {
+.cthack.sheet.actor.character .sheet-actor {
   margin: 10px 20px;
 }
-.cthack .occupation,
-.cthack .archetype,
-.cthack .save,
-.cthack .resource {
+.cthack.sheet.actor.character .occupation,
+.cthack.sheet.actor.character .archetype,
+.cthack.sheet.actor.character .save,
+.cthack.sheet.actor.character .resource {
   border: none;
 }
-.cthack .character-notes {
+.cthack.sheet.actor.character .character-notes {
   color: #fff;
 }
-.cthack .input-hitpoints {
+.cthack.sheet.actor.character .input-hitpoints {
   border-style: none;
   font-size: 16px;
 }
-.cthack .occupation {
+.cthack.sheet.actor.character .occupation {
   padding-right: 15px;
   padding-bottom: 10px;
 }
-.cthack .occupation-input {
+.cthack.sheet.actor.character .occupation-input {
   font-size: var(--font-size-18);
 }
-.cthack .hitpoints {
+.cthack.sheet.actor.character .hitpoints {
   padding-left: calc(25%);
   padding-right: calc(25%);
 }
-.cthack .hitpoints-frame {
+.cthack.sheet.actor.character .hitpoints-frame {
   background-image: url("../ui/frame.png");
   background-repeat: no-repeat;
   background-size: 40px;
@@ -417,46 +420,46 @@ i.cthack {
   -moz-appearance: none;
   appearance: none;
 }
-.cthack .saves {
+.cthack.sheet.actor.character .saves {
   padding-left: 100px;
   padding-right: 100px;
   padding-bottom: 10px;
 }
-.cthack .save {
+.cthack.sheet.actor.character .save {
   font-size: var(--font-size-16);
 }
-.cthack .save-name {
+.cthack.sheet.actor.character .save-name {
   flex-grow: 3;
 }
-.cthack input.save {
+.cthack.sheet.actor.character input.save {
   color: #fff;
 }
-.cthack .resource-label {
+.cthack.sheet.actor.character .resource-label {
   text-transform: uppercase;
   font-size: var(--font-size-16);
 }
-.cthack .resource-content {
+.cthack.sheet.actor.character .resource-content {
   margin-top: 2px;
   margin-bottom: 2px;
   padding-top: 5px;
 }
-.cthack .resource-content-archetype {
+.cthack.sheet.actor.character .resource-content-archetype {
   margin: 0;
   padding: 0;
 }
-.cthack .resource-content-archetype select {
+.cthack.sheet.actor.character .resource-content-archetype select {
   color: #fff;
 }
-.cthack .entete-tableau {
+.cthack.sheet.actor.character .entete-tableau {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #fff;
   margin-bottom: 5px;
 }
-.cthack .entete-tableau .entete-titre {
+.cthack.sheet.actor.character .entete-tableau .entete-titre {
   font-size: 1em;
 }
-.cthack .grid-abilities {
+.cthack.sheet.actor.character .grid-abilities {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   row-gap: 5px;
@@ -465,26 +468,26 @@ i.cthack {
   margin-bottom: 20px;
   text-align: center;
 }
-.cthack .grid-abilities .entete {
+.cthack.sheet.actor.character .grid-abilities .entete {
   text-transform: uppercase;
 }
-.cthack .grid-abilities .item-bloc {
+.cthack.sheet.actor.character .grid-abilities .item-bloc {
   display: flex;
   text-align: left;
 }
-.cthack .grid-abilities .item-image {
+.cthack.sheet.actor.character .grid-abilities .item-image {
   width: 40px;
   height: 40px;
   margin-right: 5px;
 }
-.cthack .grid-abilities .item-controls {
+.cthack.sheet.actor.character .grid-abilities .item-controls {
   display: flex;
   align-items: center;
   justify-content: right;
   gap: 5px;
 }
-.cthack .grid-abilities .item-name,
-.cthack .grid-abilities .item-element-text {
+.cthack.sheet.actor.character .grid-abilities .item-name,
+.cthack.sheet.actor.character .grid-abilities .item-element-text {
   display: flex;
   justify-content: center;
   /* Centrer horizontalement */
@@ -492,7 +495,7 @@ i.cthack {
   /* Centrer verticalement */
   height: 100%;
 }
-.cthack .grid-magics {
+.cthack.sheet.actor.character .grid-magics {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   row-gap: 5px;
@@ -501,26 +504,26 @@ i.cthack {
   margin-bottom: 20px;
   text-align: center;
 }
-.cthack .grid-magics .entete {
+.cthack.sheet.actor.character .grid-magics .entete {
   text-transform: uppercase;
 }
-.cthack .grid-magics .item-bloc {
+.cthack.sheet.actor.character .grid-magics .item-bloc {
   display: flex;
   text-align: left;
 }
-.cthack .grid-magics .item-image {
+.cthack.sheet.actor.character .grid-magics .item-image {
   width: 40px;
   height: 40px;
   margin-right: 5px;
 }
-.cthack .grid-magics .item-controls {
+.cthack.sheet.actor.character .grid-magics .item-controls {
   display: flex;
   align-items: center;
   justify-content: right;
   gap: 5px;
 }
-.cthack .grid-magics .item-name,
-.cthack .grid-magics .item-element-text {
+.cthack.sheet.actor.character .grid-magics .item-name,
+.cthack.sheet.actor.character .grid-magics .item-element-text {
   display: flex;
   justify-content: center;
   /* Centrer horizontalement */
@@ -528,20 +531,375 @@ i.cthack {
   /* Centrer verticalement */
   height: 100%;
 }
-.cthack .sheet-opponent {
-  margin: 10px 20px;
+.cthack.sheet.actor.opponent {
+  display: flex;
+  flex-direction: column;
 }
-.cthack .sheet-opponent .editor {
-  min-height: 50px;
+.cthack.sheet.actor.opponent #context-menu {
+  width: 50px;
+  text-align: left;
 }
-.cthack .sheet-opponent .charname {
-  border: 0;
+.cthack.sheet.actor.opponent .sheet-header {
+  display: grid;
 }
-.cthack .sheet-opponent .flexrow {
-  border: 0;
+.cthack.sheet.actor.opponent .sheet-header.grid-image {
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 0.5fr 1fr;
 }
-.cthack .sheet-opponent label {
-  flex: 3;
+.cthack.sheet.actor.opponent .sheet-header.grid-image .character {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 6;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-image .short-description {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 6;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-image .hitdice {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-image .hp {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-image .armor {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-image .malus {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .character {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .short-description {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .hitdice {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .hp {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .armor {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+.cthack.sheet.actor.opponent .sheet-header.grid-noimage .malus {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+.cthack.sheet.actor.opponent .sheet-header .opponent-image {
+  grid-row-start: 1;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.cthack.sheet.actor.opponent .sheet-header .opponent-image img {
+  height: 200px;
+  width: auto;
+}
+.cthack.sheet.actor.opponent .sheet-header .sheet-lock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 15px;
+  font-size: 0.8em;
+}
+.cthack.sheet.actor.opponent .sheet-header .character {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  padding: 5px 0 5px 0;
+  margin-right: 20px;
+}
+.cthack.sheet.actor.opponent .sheet-header .data-group {
+  border: none;
+  font-size: 1rem;
+}
+.cthack.sheet.actor.opponent .sheet-header .data-group label {
+  padding-right: 5px;
+}
+.cthack.sheet.actor.opponent .sheet-header .data-group .input-editable {
+  border: 1px solid #782e22;
+  width: 30px;
+  text-align: center;
+}
+.cthack.sheet.actor.opponent .sheet-header .short-description {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 5px 0 10px 0;
+  font-style: italic;
+}
+.cthack.sheet.actor.opponent .sheet-header .short-description .input-editable {
+  border: 1px solid #782e22;
+  margin-right: 20px;
+}
+.cthack.sheet.actor.opponent .sheet-header .hitdice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-header .hitdice select {
+  color: #fff;
+}
+.cthack.sheet.actor.opponent .sheet-header .hitdice .selectHitDice {
+  border: 1px solid #782e22;
+  width: 30px;
+  height: var(--form-field-height);
+  text-align: center;
+}
+.cthack.sheet.actor.opponent .sheet-header .hp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-header .hp .hp-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-header .hp .hp-input .hp-max {
+  width: 30px;
+  text-align: center;
+}
+.cthack.sheet.actor.opponent .sheet-header .armor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-header .armor input {
+  width: 20px;
+}
+.cthack.sheet.actor.opponent .sheet-header .malus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-header .malus label {
+  text-transform: lowercase;
+}
+.cthack.sheet.actor.opponent .sheet-header .malus label::first-letter {
+  text-transform: uppercase;
+}
+.cthack.sheet.actor.opponent .sheet-header .malus input {
+  width: 20px;
+}
+.cthack.sheet.actor.opponent .sheet-body {
+  height: 100%;
+  min-height: 0;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+.cthack.sheet.actor.opponent .sheet-body .description-editable {
+  border: none;
+  font-size: 1rem;
+}
+.cthack.sheet.actor.opponent .sheet-body .description-editable .title {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+  text-align: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .description-editable .editor {
+  min-height: 150px;
+}
+.cthack.sheet.actor.opponent .sheet-body .description-editable .editor-content {
+  min-height: 100px;
+  height: auto;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.cthack.sheet.actor.opponent .sheet-body .description {
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.actor.opponent .sheet-body .attacks {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.actor.opponent .sheet-body .attacks .title {
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0 0 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .attacks .title a {
+  padding-left: 10px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line .item-name {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line .item-name img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+.cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .has-description {
+  font-style: italic;
+}
+.cthack.sheet.actor.opponent .sheet-body .magics {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.actor.opponent .sheet-body .magics .title {
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .magics .title a {
+  padding-left: 10px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line .item-name {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line .item-name img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .has-description {
+  font-style: italic;
+}
+.cthack.sheet.actor.opponent .sheet-body .abilities {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.actor.opponent .sheet-body .abilities .title {
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .abilities .title a {
+  padding-left: 10px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-name {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-name img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .has-description {
+  font-style: italic;
 }
 .cthack .items-list {
   list-style: none;
@@ -624,152 +982,878 @@ i.cthack {
   width: 128px;
   margin: 20px 10px 0 20px;
 }
-.cthack .sarchetype-editor {
-  margin: 0 20px;
-}
 .cthack .sheet-header .item-image {
   min-height: 128px;
   width: auto;
   margin: 20px 0 0 20px;
 }
-.cthack .sheet-header .item-name {
+.cthack .sheet-header .item-image .item-name {
   margin: 0 10px 0 10px;
 }
-.cthack .item-item {
-  padding-left: 15px;
+.cthack .input-small,
+.cthack .select-small {
+  width: 50px;
 }
-.cthack .item-item label {
-  margin-right: 10px;
+.cthack .input-large,
+.cthack .select-large {
+  width: 100px;
 }
-.cthack .item-weapon {
-  padding-left: 15px;
+.cthack .input-extralarge,
+.cthack .select-extralarge {
+  width: 150px;
 }
-.cthack .item-weapon label {
-  margin-right: 10px;
+.cthack.sheet.item.archetype .editable input,
+.cthack.sheet.item.archetype .editable select {
+  border: 1px solid #782e22;
 }
-.cthack .item-weapon .select-range {
-  color: #fff;
-  width: 80px;
-}
-.cthack .item-attack {
-  padding-left: 10px;
-  margin: 0 10px 0 10px;
-}
-.cthack .item-attack label {
-  margin-right: 10px;
-}
-.cthack .item-attack .select-dice {
-  color: #fff;
-  width: 80px;
-}
-.cthack .item-attack .attack-damage {
-  height: 40px;
-}
-.cthack .item-attack .item-dice {
-  flex: 4;
-}
-.cthack .item-ability select {
-  color: #fff;
-  font-weight: normal;
-}
-.cthack .item-ability label {
-  flex: 8;
-}
-.cthack .item-ability input {
-  text-align: center;
-}
-.cthack .item-ability label.advantage {
-  flex: 2;
-}
-.cthack .item-ability .ability-checkbox {
-  justify-content: center;
-}
-.cthack .sheet-archetype .sheet-body {
-  height: 400px;
-}
-.cthack .sheet-archetype select {
-  flex: 0 0 150px;
-  text-align-last: center;
-}
-.cthack .magic-sheet .magic-title {
+.cthack.sheet.item.archetype .item-header {
   display: flex;
   flex-direction: row;
   margin: 10px 0 10px 0;
   padding: 0 10px 0 10px;
 }
-.cthack .magic-sheet .magic-title input {
+.cthack.sheet.item.archetype .item-header img {
+  border: 0px;
+  max-height: 50px;
+}
+.cthack.sheet.item.archetype .item-header input {
   width: 20rem;
   font-size: 1.2rem;
   text-align: left;
   border: 0px;
-  margin: 20px 0 0 10px;
+  margin: 10px 0 0 10px;
+  padding: 0;
   color: #fff;
 }
-.cthack .magic-sheet .magic-title img {
+.cthack.sheet.item.archetype .item-header .name {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
   border: 0px;
-  max-height: 50px;
+  margin: 10px 0 0 10px;
+  color: #fff;
 }
-.cthack .magic-sheet .magic-grid {
+.cthack.sheet.item.archetype .item-header .sheet-lock {
+  margin-left: auto;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.archetype .archetype-body-header {
+  display: flex;
+  grid-gap: 10px;
+  padding: 0 20px 0 20px;
+}
+.cthack.sheet.item.archetype .archetype-body-header img {
+  height: 350px;
+  width: 150px;
+}
+.cthack.sheet.item.archetype .archetype-body-header-right {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.archetype .archetype-grid {
+  padding-top: 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding-left: 10px;
-  padding-right: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1rem;
   text-align: center;
   color: #fff;
 }
-.cthack .magic-sheet .magic-grid .data-group {
+.cthack.sheet.item.archetype .archetype-grid .data-group {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.cthack .magic-sheet .magic-grid .data-group .field-name {
+.cthack.sheet.item.archetype .archetype-grid .data-group .field-name {
   text-transform: uppercase;
   margin-bottom: 5px;
 }
-.cthack .magic-sheet .magic-grid .select-subtype {
-  min-width: 80px;
-  font-size: 1rem;
-  color: #fff;
-}
-.cthack .magic-sheet .magic-grid .input-incantation {
-  min-width: 100px;
-  font-size: 1rem;
+.cthack.sheet.item.archetype .archetype-grid .data-group input,
+.cthack.sheet.item.archetype .archetype-grid .data-group select {
   height: 40px;
+  padding: 0;
 }
-.cthack .magic-sheet .description-group {
+.cthack.sheet.item.archetype .archetype-grid .data-group input[type="checkbox"] {
+  flex: none;
+}
+.cthack.sheet.item.archetype .item-description {
   display: flex;
   flex-direction: column;
-  margin: 0px 10px 15px 10px;
-  padding-top: 10px;
+  padding: 10px 10px 0px 10px;
   font-size: var(--font-size-16);
 }
-.cthack .magic-sheet .description-group .description {
+.cthack.sheet.item.archetype .item-description .description {
   text-align: center;
   text-transform: uppercase;
 }
-.cthack .magic-sheet .description-group .description-content {
+.cthack.sheet.item.archetype .item-description .description-content {
   text-align: justify;
 }
-.cthack .magic-sheet .description-group .editor {
-  min-height: 160px;
+.cthack.sheet.item.archetype .item-description .editor {
+  min-height: 200px;
   scrollbar-width: thin;
 }
-.cthack .magic-sheet .description-group .editor-content {
+.cthack.sheet.item.archetype .item-description .editor .editor-content {
   min-height: 150px;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack .magic-sheet .description-group .prosemirror menu {
+.cthack.sheet.item.archetype .item-description .editor .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack .magic-sheet .description-group .prosemirror menu li {
+.cthack.sheet.item.archetype .item-description .editor .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack .magic-sheet .description-group .prosemirror menu li:hover {
+.cthack.sheet.item.archetype .item-description .editor .prosemirror menu li:hover {
   border: 2px solid #eea3a3;
 }
-.cthack .magic-sheet .description-group .prosemirror menu button {
+.cthack.sheet.item.archetype .item-description .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.cthack.sheet.item.magic .editable input,
+.cthack.sheet.item.magic .editable select {
+  border: 1px solid #782e22;
+}
+.cthack.sheet.item.magic .item-header {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.magic .item-header img {
+  border: 0px;
+  max-height: 50px;
+}
+.cthack.sheet.item.magic .item-header input {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  padding: 0;
+  color: #fff;
+}
+.cthack.sheet.item.magic .item-header .name {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  color: #fff;
+}
+.cthack.sheet.item.magic .item-header .sheet-lock {
+  margin-left: auto;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.magic .magic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+}
+.cthack.sheet.item.magic .magic-grid .data-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.magic .magic-grid .data-group .field-name {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.cthack.sheet.item.magic .magic-grid .data-group input,
+.cthack.sheet.item.magic .magic-grid .data-group select {
+  height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.magic .magic-grid .data-group input[type="checkbox"] {
+  flex: none;
+}
+.cthack.sheet.item.magic .magic-grid .select-subtype {
+  min-width: 80px;
+  font-size: 1rem;
+  color: #fff;
+  opacity: 1;
+}
+.cthack.sheet.item.magic .magic-grid .select-sanitation {
+  color: #111;
+}
+.cthack.sheet.item.magic .magic-grid .select-sanitation .select:disabled {
+  color: #111;
+  opacity: 1;
+}
+.cthack.sheet.item.magic .magic-grid .input-incantation {
+  min-width: 100px;
+  font-size: 1rem;
+  height: 40px;
+}
+.cthack.sheet.item.magic .item-description {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0px 10px;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.item.magic .item-description .description {
+  text-align: center;
+  text-transform: uppercase;
+}
+.cthack.sheet.item.magic .item-description .description-content {
+  text-align: justify;
+}
+.cthack.sheet.item.magic .item-description .editor {
+  min-height: 200px;
+  scrollbar-width: thin;
+}
+.cthack.sheet.item.magic .item-description .editor .editor-content {
+  min-height: 150px;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack.sheet.item.magic .item-description .editor .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack.sheet.item.magic .item-description .editor .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.item.magic .item-description .editor .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.item.magic .item-description .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.cthack.sheet.item.ability .editable input,
+.cthack.sheet.item.ability .editable select {
+  border: 1px solid #782e22;
+}
+.cthack.sheet.item.ability .item-header {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.ability .item-header img {
+  border: 0px;
+  max-height: 50px;
+}
+.cthack.sheet.item.ability .item-header input {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  padding: 0;
+  color: #fff;
+}
+.cthack.sheet.item.ability .item-header .name {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  color: #fff;
+}
+.cthack.sheet.item.ability .item-header .sheet-lock {
+  margin-left: auto;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.ability .ability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  grid-gap: 10px;
+}
+.cthack.sheet.item.ability .ability-grid .data-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.ability .ability-grid .data-group .field-name {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.cthack.sheet.item.ability .ability-grid .data-group input,
+.cthack.sheet.item.ability .ability-grid .data-group select {
+  height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.ability .ability-grid .data-group input[type="checkbox"] {
+  flex: none;
+}
+.cthack.sheet.item.ability .ability-grid .select-usage {
+  min-width: 100px;
+  font-size: 1rem;
+  color: #fff;
+  opacity: 1;
+}
+.cthack.sheet.item.ability .ability-grid .readonly {
+  border: none;
+}
+.cthack.sheet.item.ability .item-description {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0px 10px;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.item.ability .item-description .description {
+  text-align: center;
+  text-transform: uppercase;
+}
+.cthack.sheet.item.ability .item-description .description-content {
+  text-align: justify;
+}
+.cthack.sheet.item.ability .item-description .editor {
+  min-height: 200px;
+  scrollbar-width: thin;
+}
+.cthack.sheet.item.ability .item-description .editor .editor-content {
+  min-height: 150px;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack.sheet.item.ability .item-description .editor .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack.sheet.item.ability .item-description .editor .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.item.ability .item-description .editor .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.item.ability .item-description .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.cthack.sheet.item.item .editable input,
+.cthack.sheet.item.item .editable select {
+  border: 1px solid #782e22;
+}
+.cthack.sheet.item.item .item-header {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.item .item-header img {
+  border: 0px;
+  max-height: 50px;
+}
+.cthack.sheet.item.item .item-header input {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  padding: 0;
+  color: #fff;
+}
+.cthack.sheet.item.item .item-header .name {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  color: #fff;
+}
+.cthack.sheet.item.item .item-header .sheet-lock {
+  margin-left: auto;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.item .item-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+}
+.cthack.sheet.item.item .item-grid .data-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.item .item-grid .data-group .field-name {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.cthack.sheet.item.item .item-grid .data-group input,
+.cthack.sheet.item.item .item-grid .data-group select {
+  height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.item .item-grid .data-group input[type="checkbox"] {
+  flex: none;
+}
+.cthack.sheet.item.item .item-grid .select-dice-material {
+  color: #111;
+}
+.cthack.sheet.item.item .item-grid .select-dice-material .select:disabled {
+  color: #111;
+  opacity: 1;
+}
+.cthack.sheet.item.item .item-description {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0px 10px;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.item.item .item-description .description {
+  text-align: center;
+  text-transform: uppercase;
+}
+.cthack.sheet.item.item .item-description .description-content {
+  text-align: justify;
+}
+.cthack.sheet.item.item .item-description .editor {
+  min-height: 200px;
+  scrollbar-width: thin;
+}
+.cthack.sheet.item.item .item-description .editor .editor-content {
+  min-height: 150px;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack.sheet.item.item .item-description .editor .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack.sheet.item.item .item-description .editor .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.item.item .item-description .editor .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.item.item .item-description .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.cthack.sheet.item.definition .editable input,
+.cthack.sheet.item.definition .editable select {
+  border: 1px solid #782e22;
+}
+.cthack.sheet.item.definition .item-header {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.definition .item-header img {
+  border: 0px;
+  max-height: 50px;
+}
+.cthack.sheet.item.definition .item-header input {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  padding: 0;
+  color: #fff;
+}
+.cthack.sheet.item.definition .item-header .name {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  color: #fff;
+}
+.cthack.sheet.item.definition .item-header .sheet-lock {
+  margin-left: auto;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.definition .definition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+}
+.cthack.sheet.item.definition .definition-grid .data-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.definition .definition-grid .data-group .field-name {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.cthack.sheet.item.definition .definition-grid .data-group input,
+.cthack.sheet.item.definition .definition-grid .data-group select {
+  height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.definition .definition-grid .data-group input[type="checkbox"] {
+  flex: none;
+}
+.cthack.sheet.item.definition .item-description {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0px 10px;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.item.definition .item-description .description {
+  text-align: center;
+  text-transform: uppercase;
+}
+.cthack.sheet.item.definition .item-description .description-content {
+  text-align: justify;
+}
+.cthack.sheet.item.definition .item-description .editor {
+  min-height: 200px;
+  scrollbar-width: thin;
+}
+.cthack.sheet.item.definition .item-description .editor .editor-content {
+  min-height: 150px;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack.sheet.item.definition .item-description .editor .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack.sheet.item.definition .item-description .editor .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.item.definition .item-description .editor .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.item.definition .item-description .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.cthack.sheet.item.weapon .editable input,
+.cthack.sheet.item.weapon .editable select {
+  border: 1px solid #782e22;
+}
+.cthack.sheet.item.weapon .item-header {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.weapon .item-header img {
+  border: 0px;
+  max-height: 50px;
+}
+.cthack.sheet.item.weapon .item-header input {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  padding: 0;
+  color: #fff;
+}
+.cthack.sheet.item.weapon .item-header .name {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  color: #fff;
+}
+.cthack.sheet.item.weapon .item-header .sheet-lock {
+  margin-left: auto;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.weapon .weapon-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+}
+.cthack.sheet.item.weapon .weapon-grid .data-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.weapon .weapon-grid .data-group .field-name {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.cthack.sheet.item.weapon .weapon-grid .data-group input,
+.cthack.sheet.item.weapon .weapon-grid .data-group select {
+  height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.weapon .weapon-grid .data-group input[type="checkbox"] {
+  flex: none;
+}
+.cthack.sheet.item.weapon .weapon-grid .select-dice-material {
+  color: #fff;
+  opacity: inherit;
+}
+.cthack.sheet.item.weapon .weapon-grid .select-range {
+  min-width: 80px;
+  color: #fff;
+  opacity: 1;
+}
+.cthack.sheet.item.weapon .item-description {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0px 10px;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.item.weapon .item-description .description {
+  text-align: center;
+  text-transform: uppercase;
+}
+.cthack.sheet.item.weapon .item-description .description-content {
+  text-align: justify;
+}
+.cthack.sheet.item.weapon .item-description .editor {
+  min-height: 200px;
+  scrollbar-width: thin;
+}
+.cthack.sheet.item.weapon .item-description .editor .editor-content {
+  min-height: 150px;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack.sheet.item.weapon .item-description .editor .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack.sheet.item.weapon .item-description .editor .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.item.weapon .item-description .editor .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.item.weapon .item-description .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.cthack.sheet.item.attack .editable input,
+.cthack.sheet.item.attack .editable select {
+  border: 1px solid #782e22;
+}
+.cthack.sheet.item.attack .item-header {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.attack .item-header img {
+  border: 0px;
+  max-height: 50px;
+}
+.cthack.sheet.item.attack .item-header input {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  padding: 0;
+  color: #fff;
+}
+.cthack.sheet.item.attack .item-header .name {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  color: #fff;
+}
+.cthack.sheet.item.attack .item-header .sheet-lock {
+  margin-left: auto;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.attack .attack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  padding: 0;
+}
+.cthack.sheet.item.attack .attack-grid .data-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.attack .attack-grid .data-group .field-name {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.cthack.sheet.item.attack .attack-grid .data-group input,
+.cthack.sheet.item.attack .attack-grid .data-group select {
+  height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.attack .attack-grid .data-group input[type="checkbox"] {
+  flex: none;
+}
+.cthack.sheet.item.attack .attack-grid .field-name {
+  height: 40px;
+}
+.cthack.sheet.item.attack .attack-grid .input-damage {
+  color: #fff;
+  opacity: inherit;
+}
+.cthack.sheet.item.attack .attack-grid .select-damageDice {
+  min-width: 80px;
+  color: #fff;
+  opacity: 1;
+}
+.cthack.sheet.item.attack .item-description {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0px 10px;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.item.attack .item-description .description {
+  text-align: center;
+  text-transform: uppercase;
+}
+.cthack.sheet.item.attack .item-description .description-content {
+  text-align: justify;
+}
+.cthack.sheet.item.attack .item-description .editor {
+  min-height: 200px;
+  scrollbar-width: thin;
+}
+.cthack.sheet.item.attack .item-description .editor .editor-content {
+  min-height: 150px;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack.sheet.item.attack .item-description .editor .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack.sheet.item.attack .item-description .editor .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.item.attack .item-description .editor .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.item.attack .item-description .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.cthack.sheet.item.opponentAbility .editable input,
+.cthack.sheet.item.opponentAbility .editable select {
+  border: 1px solid #782e22;
+}
+.cthack.sheet.item.opponentAbility .item-header {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.opponentAbility .item-header img {
+  border: 0px;
+  max-height: 50px;
+}
+.cthack.sheet.item.opponentAbility .item-header input {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  padding: 0;
+  color: #fff;
+}
+.cthack.sheet.item.opponentAbility .item-header .name {
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0px;
+  margin: 10px 0 0 10px;
+  color: #fff;
+}
+.cthack.sheet.item.opponentAbility .item-header .sheet-lock {
+  margin-left: auto;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.opponentAbility .ability-body {
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.item.opponentAbility .ability-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  grid-gap: 10px;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .data-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .data-group .field-name {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .data-group input,
+.cthack.sheet.item.opponentAbility .ability-grid .data-group select {
+  height: 40px;
+  padding: 0;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .data-group input[type="checkbox"] {
+  flex: none;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .field-name {
+  height: 40px;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .select-usage {
+  min-width: 100px;
+  font-size: 1rem;
+  color: #fff;
+  opacity: 1;
+}
+.cthack.sheet.item.opponentAbility .ability-grid .readonly {
+  border: none;
+}
+.cthack.sheet.item.opponentAbility .item-description {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0px 10px;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.item.opponentAbility .item-description .description {
+  text-align: center;
+  text-transform: uppercase;
+}
+.cthack.sheet.item.opponentAbility .item-description .description-content {
+  text-align: justify;
+}
+.cthack.sheet.item.opponentAbility .item-description .editor {
+  min-height: 200px;
+  scrollbar-width: thin;
+}
+.cthack.sheet.item.opponentAbility .item-description .editor .editor-content {
+  min-height: 150px;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack.sheet.item.opponentAbility .item-description .editor .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack.sheet.item.opponentAbility .item-description .editor .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.item.opponentAbility .item-description .editor .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.item.opponentAbility .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }

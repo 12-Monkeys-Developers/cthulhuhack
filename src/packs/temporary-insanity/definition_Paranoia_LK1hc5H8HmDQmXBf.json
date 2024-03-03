@@ -1,0 +1,19 @@
+{
+  "name": "Paranoia",
+  "permission": {
+    "default": 0,
+    "ElkdkfLFg9aO1OqA": 3
+  },
+  "type": "definition",
+  "data": {
+    "description": "<p>L&rsquo;investigateur ne croit plus rien ni personne. Tout le monde a un plan contre lui. La moindre action, le moindre mot ont des significations cach&eacute;es.</p>",
+    "definitionType": "TemporaryInsanity",
+    "key": "TI-PAA",
+    "creationDate": ""
+  },
+  "flags": {},
+  "img": "systems/cthack/ui/icons/screaming.png",
+  "effects": [],
+  "_id": "LK1hc5H8HmDQmXBf",
+  "_key": "!items!LK1hc5H8HmDQmXBf"
+}

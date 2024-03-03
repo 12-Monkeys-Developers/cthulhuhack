@@ -14,3 +14,109 @@
 .hide() {
   display: none;
 }
+
+// Mixin for items
+.item-common-header() {
+  .editable {
+    input,
+    select {
+      border: 1px solid #782e22;
+    }
+  }
+  .item-header {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0 10px 0;
+    padding: 0 10px 0 10px;
+    img {
+      border: 0px;
+      max-height: 50px;
+    }
+    input {
+      width: 20rem;
+      font-size: 1.2rem;
+      text-align: left;
+      border: 0px;
+      margin: 10px 0 0 10px;
+      padding: 0;
+      color: #fff;
+    }
+    .name {
+      width: 20rem;
+      font-size: 1.2rem;
+      text-align: left;
+      border: 0px;
+      margin: 10px 0 0 10px;
+      color: #fff;
+    }
+    .sheet-lock {
+      margin-left: auto;
+      padding: 0 10px 0 10px;
+    }
+  }
+}
+
+.item-common-grid(@nbcolumns) {
+  display: grid;
+  grid-template-columns: repeat(@nbcolumns, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  .data-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .field-name {
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    input, select {
+      height: 40px;
+      padding: 0;
+    }
+    input[type="checkbox"] {
+      flex: none;
+    }
+  }
+}
+
+.item-common-description() {
+  .item-description {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 0px 10px;
+    font-size: var(--font-size-16);
+    .description {
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .description-content {
+      text-align: justify;
+    }
+    .editor {
+      min-height: 200px;
+      scrollbar-width: thin;
+      .editor-content {
+        min-height: 150px;
+        margin: 0px 5px;
+        font-weight: normal;
+      }
+      .prosemirror menu {
+        font-size: 0.8em;
+        li {
+          margin: 0px 0px;
+          &:hover {
+            border: 2px solid #eea3a3;
+          }
+        }
+      }
+    }
+    .prosemirror menu button {
+      background: var(--color-hover-bg);
+    }
+  }
+}
+

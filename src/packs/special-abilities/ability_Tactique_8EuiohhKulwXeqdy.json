@@ -1,0 +1,28 @@
+{
+  "_id": "8EuiohhKulwXeqdy",
+  "name": "Tactique",
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "type": "ability",
+  "data": {
+    "description": "<p>Lorsqu&rsquo;il effectue une action, le personnage peut faire une attaque suppl&eacute;mentaire contre la m&ecirc;me cible ou une autre. Vous pouvez choisir cette Capacit&eacute; sp&eacute;ciale&nbsp; plusieurs fois.</p>",
+    "key": "TACADV",
+    "uses": {
+      "value": 1,
+      "max": 1,
+      "per": "Fight",
+      "last": ""
+    },
+    "multiple": true
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Item.ErZ1mNKx7pdQAn8I"
+    }
+  },
+  "img": "systems/cthack/ui/icons/swords-power.png",
+  "effects": [],
+  "_key": "!items!8EuiohhKulwXeqdy"
+}

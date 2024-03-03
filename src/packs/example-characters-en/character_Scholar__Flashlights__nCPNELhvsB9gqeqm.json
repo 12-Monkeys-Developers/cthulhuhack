@@ -1,0 +1,298 @@
+{
+  "_id": "nCPNELhvsB9gqeqm",
+  "name": "Scholar (Flashlights)",
+  "type": "character",
+  "img": "systems/cthack/ui/pregenerated/savant-torche.webp",
+  "data": {
+    "hp": {
+      "value": 10,
+      "min": 0,
+      "max": 10
+    },
+    "occupation": "",
+    "archetype": "Scholar (Flashlights)",
+    "description": "",
+    "biography": "",
+    "attributes": {
+      "flashlights": {
+        "value": "d12",
+        "max": "d12"
+      },
+      "smokes": {
+        "value": "d8",
+        "max": "d8"
+      },
+      "sanity": {
+        "value": "d8",
+        "max": "d8"
+      },
+      "hitDice": {
+        "value": "d4",
+        "max": "d6"
+      },
+      "wealthDice": {
+        "value": "d6",
+        "max": "d6"
+      },
+      "armedDamage": {
+        "value": "d4"
+      },
+      "unarmedDamage": {
+        "value": "1"
+      },
+      "adrenaline1": {
+        "value": "pj"
+      },
+      "adrenaline2": {
+        "value": "pj"
+      },
+      "miscellaneous": {
+        "value": "d6",
+        "max": "d6"
+      }
+    },
+    "saves": {
+      "str": {
+        "value": 10,
+        "advantage": false
+      },
+      "dex": {
+        "value": 10,
+        "advantage": false
+      },
+      "con": {
+        "value": 10,
+        "advantage": false
+      },
+      "wis": {
+        "value": 10,
+        "advantage": false
+      },
+      "int": {
+        "value": 10,
+        "advantage": false
+      },
+      "cha": {
+        "value": 10,
+        "advantage": false
+      }
+    },
+    "abilities": [
+      {
+        "key": "DED"
+      },
+      {
+        "key": "MAC"
+      },
+      {
+        "key": "ERU"
+      },
+      {
+        "key": "IROMIN"
+      }
+    ],
+    "notes": ""
+  },
+  "token": {
+    "flags": {},
+    "name": "Savant (torche)",
+    "displayName": 0,
+    "img": "systems/cthack/ui/pregenerated/savant-torche.webp",
+    "tint": null,
+    "width": 1,
+    "height": 1,
+    "scale": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "vision": false,
+    "dimSight": 0,
+    "brightSight": 0,
+    "dimLight": 0,
+    "brightLight": 0,
+    "sightAngle": 0,
+    "lightAngle": 360,
+    "lightAlpha": 1,
+    "lightAnimation": {
+      "speed": 5,
+      "intensity": 5
+    },
+    "actorId": "SQZ34gyvdVQVsvJs",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": null
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "randomImg": false,
+    "mirrorX": false,
+    "mirrorY": false,
+    "alpha": 1,
+    "light": {
+      "alpha": 0.5,
+      "angle": 0,
+      "bright": 0,
+      "coloration": 1,
+      "dim": 0,
+      "gradual": true,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  },
+  "items": [
+    {
+      "_id": "iLV0CX5izcmKL2UU",
+      "name": "Deduction",
+      "type": "ability",
+      "img": "systems/cthack/ui/icons/sherlock-holmes.png",
+      "data": {
+        "description": "<p>Once per game session,&nbsp;you can apply your powers of&nbsp;deduction and reasoning to reach an apposite conclusion - and require&nbsp;the GM to provide a hint to the next&nbsp;best step.</p>",
+        "key": "DED",
+        "uses": {
+          "value": 1,
+          "max": 1,
+          "per": "Session",
+          "last": ""
+        },
+        "multiple": false,
+        "isCustom": false,
+        "advantageGiven": false,
+        "advantageText": ""
+      },
+      "effects": [],
+      "folder": "x5cwoPpfEO0BU9YX",
+      "sort": 300000,
+      "permission": {
+        "59G26I43j4RYqfKX": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Item.KvYOPcNjiXaaNrdO"
+        }
+      },
+      "_key": "!actors.items!nCPNELhvsB9gqeqm.iLV0CX5izcmKL2UU"
+    },
+    {
+      "_id": "BGB2LfcgZcGeHGHZ",
+      "name": "MacGyver",
+      "type": "ability",
+      "img": "systems/cthack/ui/icons/swiss-army-knife.png",
+      "data": {
+        "description": "<p>Once per session, you&nbsp;can improvise a solution to a&nbsp;situation using available tools,&nbsp;devices, and uncommon lore.</p>",
+        "key": "MAC",
+        "uses": {
+          "value": 1,
+          "max": 1,
+          "per": "Session",
+          "last": ""
+        },
+        "multiple": false,
+        "isCustom": false,
+        "advantageGiven": false,
+        "advantageText": ""
+      },
+      "effects": [],
+      "folder": "x5cwoPpfEO0BU9YX",
+      "sort": 400000,
+      "permission": {
+        "59G26I43j4RYqfKX": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Item.9sPrm3D6UrCrW8pa"
+        }
+      },
+      "_key": "!actors.items!nCPNELhvsB9gqeqm.BGB2LfcgZcGeHGHZ"
+    },
+    {
+      "_id": "NXu4bliRjuodpxLO",
+      "name": "Erudite",
+      "type": "ability",
+      "img": "systems/cthack/ui/icons/inspiration.png",
+      "data": {
+        "description": "<p>Once per gaming hour, you&nbsp;can automatically succeed with a&nbsp;single INT or WIS Save.</p>",
+        "key": "ERU",
+        "uses": {
+          "value": 1,
+          "max": 1,
+          "per": "Hour",
+          "last": ""
+        },
+        "multiple": false,
+        "isCustom": false,
+        "advantageGiven": false,
+        "advantageText": ""
+      },
+      "effects": [],
+      "folder": "x5cwoPpfEO0BU9YX",
+      "sort": 700000,
+      "permission": {
+        "59G26I43j4RYqfKX": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Item.uLeoN6S4r5DWyxoR"
+        }
+      },
+      "_key": "!actors.items!nCPNELhvsB9gqeqm.NXu4bliRjuodpxLO"
+    },
+    {
+      "_id": "lUHYIjXfNbVTLq33",
+      "name": "Iron Mind",
+      "type": "ability",
+      "img": "systems/cthack/ui/icons/psychic-waves.png",
+      "data": {
+        "description": "<p>Roll with Advantage on&nbsp;Saves when resisting magic, occult&nbsp;ritual, hexes, curses, or possession&nbsp;by alien influences.</p>",
+        "key": "IROMIN",
+        "uses": {
+          "value": 0,
+          "max": 0,
+          "per": "Permanent",
+          "last": ""
+        },
+        "multiple": false,
+        "isCustom": false,
+        "advantageGiven": false,
+        "advantageText": ""
+      },
+      "effects": [],
+      "folder": "x5cwoPpfEO0BU9YX",
+      "sort": 2900000,
+      "permission": {
+        "59G26I43j4RYqfKX": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Item.5EPFMD7c5SsFflAb"
+        }
+      },
+      "_key": "!actors.items!nCPNELhvsB9gqeqm.lUHYIjXfNbVTLq33"
+    }
+  ],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.cthack.pregenerated.SQZ34gyvdVQVsvJs"
+    }
+  },
+  "_key": "!actors!nCPNELhvsB9gqeqm"
+}

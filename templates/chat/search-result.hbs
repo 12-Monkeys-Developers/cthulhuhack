@@ -1,0 +1,36 @@
+<div class="search-chat {{cssClass}}">
+  <h3>{{localize "SEARCHTOOL.ChatIntro"}}</h3>
+  <div class="motif">{{localize "SEARCHTOOL.ChatText"}}{{searchPattern}}</div>
+  {{#if hasresults}}
+    {{#if tooMuchResults}}
+      {{localize "SEARCHTOOL.TooMuchResults"}}
+    {{else}}
+      {{#if pageresults}}
+        <h4 class="search-header">{{localize "DOCUMENT.JournalEntryPages"}}</h4>
+        <div>
+          {{#each pageResultCollection as |page|}}
+            <div class="btn-search"><button id="ouvrirpage" class="ouvrir-page" data-journal-id="{{page.journalId}}" data-page-id="{{page.id}}" data-tooltip='Visualiser la page'>{{page.journalName}} - {{page.name}}</button></div>
+          {{/each}}
+        </div>
+      {{/if}}
+      {{#if actorresults}}
+        <h4 class="search-header">{{localize "DOCUMENT.Actors"}}</h4>
+        <div>
+          {{#each actorResultCollection as |actor|}}
+            <div class="search-result">@UUID[Actor.{{actor._id}}]</div>
+          {{/each}}
+        </div>
+      {{/if}}
+      {{#if itemresults}}
+        <h4 class="search-header">{{localize "DOCUMENT.Items"}}</h4>
+        <div>
+          {{#each itemResultCollection as |item|}}
+            <div class="search-result">@UUID[Item.{{item._id}}]</div>
+          {{/each}}
+        </div>
+      {{/if}}
+    {{/if}}
+  {{else}}
+    {{localize "SEARCHTOOL.NoResults"}}
+  {{/if}}
+</div>

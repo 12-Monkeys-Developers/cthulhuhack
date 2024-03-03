@@ -1,0 +1,31 @@
+{
+  "_id": "9o47l8SwvXUR94Yu",
+  "name": "Voyou",
+  "type": "archetype",
+  "img": "systems/cthack/ui/archetypes/cthack-voyou.png",
+  "data": {
+    "description": "<p><em>Charlatan, criminel, esclavagiste, contrebandier, trafiquant d&rsquo;armes</em></p>\n<p>&nbsp;</p>\n<p><strong>Capacit&eacute;s sp&eacute;ciales</strong></p>\n<p><strong>Sens du danger</strong> : Vous b&eacute;n&eacute;ficiez d&rsquo;un Avantage lors des Sauvegardes visant &agrave; &eacute;viter les pi&egrave;ges ou les machines pouvant vous blesser ou vous entraver.</p>\n<p>Choisissez en <strong>deux</strong> parmi les suivantes :</p>\n<p><strong>Ch&acirc;teau de cartes</strong> : une fois par partie, le personnage peut trahir (vous devez expliquer ce qui se passe) un alli&eacute;, PJ ou non, afin d&rsquo;&eacute;viter les cons&eacute;quences d&rsquo;une Sauvegarde de Sagesse ou Charisme rat&eacute;e.</p>\n<p><strong>Jauger l&rsquo;ennemi</strong> : le personnage a l&rsquo;oeil pour rep&eacute;rer les faiblesses. Il a un bonus de + 1 pour toucher et pour calculer ses d&eacute;g&acirc;ts contre un adversaire &agrave; condition d&rsquo;effectuer un test de Torche apr&egrave;s l&rsquo;attaque.</p>\n<p><strong>Loup solitaire</strong> : lorsque le personnage combat sans alli&eacute; (PJ ou PNJ), il gagne temporairement 2 points d&rsquo;Armure et inflige + 2 en D&eacute;g&acirc;t(s) arm&eacute; avec les armes de m&ecirc;l&eacute;e.</p>",
+    "flashlights": "d6",
+    "smokes": "d10",
+    "hitdice": "d6",
+    "hitpoints": "1d6 + 8",
+    "wealthStart": "sp",
+    "wealthDice": "d6",
+    "sanity": "d8",
+    "armeddamage": "d6",
+    "unarmeddamage": "d4",
+    "primarysave": "cha",
+    "secondarysave1": "wis",
+    "secondarysave2": "dex",
+    "capacities": []
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "Q9eXSbNsJCeaMOSw": 3
+  },
+  "flags": {},
+  "_key": "!items!9o47l8SwvXUR94Yu"
+}

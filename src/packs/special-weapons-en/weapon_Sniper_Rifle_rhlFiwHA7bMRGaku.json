@@ -1,0 +1,24 @@
+{
+  "_id": "rhlFiwHA7bMRGaku",
+  "name": "Sniper Rifle",
+  "type": "weapon",
+  "img": "systems/cthack/ui/weapons/lee-enfield.png",
+  "data": {
+    "description": "<p>Miss an action to auto-hit next action.</p>\n<p>1D12 Armed Damage.</p>",
+    "dice": "d6",
+    "range": "distant"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.cthack.weapons.ll7m0RSGEpDsWN6I"
+    }
+  },
+  "_key": "!items!rhlFiwHA7bMRGaku"
+}

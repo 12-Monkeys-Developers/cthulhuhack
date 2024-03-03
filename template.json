@@ -86,6 +86,7 @@
     "opponent": {
       "templates": ["base"],
       "description": "",
+      "shortDescription": "",
       "hitDice": 1,
       "armor": 0,
       "malus": 0,
@@ -93,67 +94,14 @@
     }
   },
   "Item": {
-    "types": ["item", "weapon", "attack", "archetype", "ability", "definition", "magic"],
-    "templates": {
-      "base": {
-        "description": ""
-      }
-    },
-    "item": {
-      "templates": ["base"],
-      "dice": ""
-    },
-    "weapon": {
-      "templates": ["base"],
-      "dice": "",
-      "range": ""
-    },
-    "attack": {
-      "templates": ["base"],
-      "damage": "2",
-      "damageDice": "d4"
-    },
-    "archetype": {
-      "templates": ["base"],
-      "flashlights": "d6",
-      "smokes": "d6",
-      "hitdice": "d6",
-      "hitpoints": "d6",
-      "wealthStart": "3",
-      "wealthDice": "d8",
-      "sanity": "d6",
-      "armeddamage": "d6",
-      "unarmeddamage": "d6",
-      "primarysave": "dex",
-      "secondarysave1": "con",
-      "secondarysave2": "for",
-      "capacities": []
-    },
-    "ability": {
-      "templates": ["base"],
-      "key": "",
-      "uses": {
-        "value": 1,
-        "max": 1,
-        "per": "Permanent",
-        "last": ""
-      },
-      "multiple": false,
-      "isCustom": false,
-      "advantageGiven": false,
-      "advantageText": ""
-    },
-    "definition": {
-      "templates": ["base"],
-      "definitionType": "",
-      "key": "",
-      "creationDate": ""
-    },
-    "magic": {
-      "templates": ["base"],
-      "subtype": "",
-      "dice": "",    
-      "incantation": ""
-    }
+    "types": ["archetype", "ability", "item", "weapon", "magic", "definition", "attack", "opponentAbility"],
+    "archetype": {},
+    "ability": {},
+    "item": {},
+    "weapon": {},
+    "magic": {},
+    "definition": {},
+    "attack": {},
+    "opponentAbility": {}
   }
 }

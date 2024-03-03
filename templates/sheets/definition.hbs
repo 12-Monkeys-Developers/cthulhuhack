@@ -1,0 +1,48 @@
+<form class="{{cssClass}}" autocomplete="off">
+  {{log "definition" this}}
+  <div class="item-header">
+    {{#if editable}}
+      <img class="editable-image" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+    {{else}}
+      <img src="{{item.img}}" />
+    {{/if}}
+    {{#if editable}}
+      <input name="name" type="text" value="{{item.name}}" />
+    {{else}}
+      <div class="name">{{item.name}}</div>
+    {{/if}}
+    <div class="sheet-lock">
+      {{#if editable}}
+        <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
+      {{else}}
+        <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="definition-body">
+    <div class="definition-grid">
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.DefinitionType"}}</div>
+        <input name="system.definitionType" type="text" value="{{item.system.definitionType}}" data-dtype="String" readonly />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.DefinitionKey"}}</div>
+        <input name="system.key" type="text" value="{{item.system.key}}" data-dtype="String" readonly />
+      </div>
+
+    </div>
+    <div class="item-description">
+      {{#if editable}}
+        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+      {{else}}
+        {{#if hasDescription}}
+          <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+        {{/if}}
+      {{/if}}
+      <div class="description-content">
+        {{editor enrichedDescription target="system.description" button=true engine="prosemirror" owner=owner editable=editable}}
+      </div>
+    </div>
+  </div>
+</form>

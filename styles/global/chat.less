@@ -1,20 +1,9 @@
-.chat-message .message-content {
-  background-image: url(../ui/cthack-green.jpg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  color: @c-white;
-}
-
-.message-content .chat-save-roll, .message-content .chat-resource-roll, .message-content .chat-other-roll {
-  padding: @padding-sm;
-}
-
 .dice-roll .dice-total.success {
-    color: inherit;
-    background: #c7d0c0;
-    border: 1px solid #006c00;
-  }
-  
+  color: inherit;
+  background: #c7d0c0;
+  border: 1px solid #006c00;
+}
+
 .dice-roll .dice-total.failure {
   color: inherit;
   background: #ffdddd;
@@ -27,4 +16,45 @@
 
 .roll-success {
   color: green;
+}
+
+.chat-message {
+  .message-content .chat-save-roll,
+  .message-content .chat-resource-roll,
+  .message-content .chat-other-roll {
+    padding: @padding-sm;
+  }
+  .message-content {
+    background-image: url(../ui/cthack-green.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: @c-white;
+    padding: 0 5px 0 5px;
+    .btn-search {
+      button {
+        margin: 5px 0 0 0;
+        line-height: 15px;
+      }
+    }
+    .search-chat {
+      padding: 0 0 5px 0;
+      h3 {
+        padding-top: 10px;
+      }
+      a.content-link {
+        background: none;
+        margin: 5px 0 0 0;
+        padding: 5px;
+      }
+      .motif {
+        padding-bottom: 5px;
+      }
+      .search-header {
+        padding-top: 10px;
+      }
+      .search-result {
+        padding: 5px 0 5px 0;
+      }
+    }
+  }
 }

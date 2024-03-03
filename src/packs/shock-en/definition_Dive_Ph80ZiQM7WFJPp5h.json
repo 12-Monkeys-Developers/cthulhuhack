@@ -1,0 +1,25 @@
+{
+  "_id": "Ph80ZiQM7WFJPp5h",
+  "name": "Dive",
+  "type": "definition",
+  "img": "systems/cthack/ui/icons/dead-head.png",
+  "data": {
+    "description": "<p>No action possible, other than to hide for the next [[1d3]] Moments.</p>",
+    "definitionType": "Shock",
+    "key": "SK-DIV",
+    "creationDate": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "permission": {
+    "default": 0,
+    "59G26I43j4RYqfKX": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.cthack.shock.I2p2PtGzmCWJuLxx"
+    }
+  },
+  "_key": "!items!Ph80ZiQM7WFJPp5h"
+}

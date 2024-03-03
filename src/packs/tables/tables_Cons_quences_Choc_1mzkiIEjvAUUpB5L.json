@@ -1,0 +1,117 @@
+{
+  "name": "Conséquences Choc",
+  "permission": {
+    "default": 0,
+    "xuaXKQ8wuA7GQpBm": 3
+  },
+  "flags": {
+    "core": {
+      "sourceId": "RollTable.BJlo63GaK2GoxqGo"
+    }
+  },
+  "img": "systems/cthack/ui/icons/dead-head.png",
+  "description": "La règle de Santé mentale frappe les investigateurs de plein fouet et les affecte durablement. L’existence cosmique du Mythe en elle-même devrait défier la Santé mentale à chaque rebondissement.\nCependant, la folie peut sembler une punition extrême. Dans ce cas, utilisez les règles de Choc. Lorsqu’un test de Santé mentale donne un « 1 » ou un « 2 », la table Chocs est consulté au lieu de celle de Folie passagère.",
+  "results": [
+    {
+      "_id": "xx4gZYpF3neK80iG",
+      "flags": {},
+      "type": 2,
+      "text": "Confus",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.shock",
+      "resultId": "XAh2b3Hxn9lOsMDf",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_key": "!tables.results!1mzkiIEjvAUUpB5L.xx4gZYpF3neK80iG"
+    },
+    {
+      "_id": "SkWHxcZ5BsrVwxVB",
+      "flags": {},
+      "type": 2,
+      "text": "Frayeur",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.shock",
+      "resultId": "I2p2PtGzmCWJuLxx",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_key": "!tables.results!1mzkiIEjvAUUpB5L.SkWHxcZ5BsrVwxVB"
+    },
+    {
+      "_id": "RzO5PNAuNmXJfLOT",
+      "flags": {},
+      "type": 2,
+      "text": "Hurlement",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.shock",
+      "resultId": "23IXCbEI5pPIBoBP",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_key": "!tables.results!1mzkiIEjvAUUpB5L.RzO5PNAuNmXJfLOT"
+    },
+    {
+      "_id": "ABm5n9NfD0uX9eAx",
+      "flags": {},
+      "type": 2,
+      "text": "Immobile",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.shock",
+      "resultId": "E6WnmZ1GnYbtYLsA",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_key": "!tables.results!1mzkiIEjvAUUpB5L.ABm5n9NfD0uX9eAx"
+    },
+    {
+      "_id": "rWXR7TkDaDRl5e0M",
+      "flags": {},
+      "type": 2,
+      "text": "Inconscience",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.shock",
+      "resultId": "bE6J5phXRLBiQMr7",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_key": "!tables.results!1mzkiIEjvAUUpB5L.rWXR7TkDaDRl5e0M"
+    },
+    {
+      "_id": "4v2yBWWqunsSWBtF",
+      "flags": {},
+      "type": 2,
+      "text": "Tremblements",
+      "img": "icons/svg/book.svg",
+      "collection": "cthack.shock",
+      "resultId": "hETYbMjsQTSNb7rf",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_key": "!tables.results!1mzkiIEjvAUUpB5L.4v2yBWWqunsSWBtF"
+    }
+  ],
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "_id": "1mzkiIEjvAUUpB5L",
+  "_key": "!tables!1mzkiIEjvAUUpB5L"
+}

@@ -1,0 +1,124 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{log 'archetype' this}}
+    <div class="item-header">
+        {{#if editable}}
+        <input name="name" type="text" value="{{item.name}}" />
+        {{else}}
+        <div class="name">{{item.name}}</div>
+        {{/if}}
+        <div class="sheet-lock">
+        {{#if editable}}
+            <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
+        {{else}}
+            <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
+        {{/if}}
+        </div>
+    </div>
+
+    <div class="archetype-body">
+        <div class="archetype-body-header">
+            {{#if editable}}
+                <img class="editable-image" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+            {{else}}
+                <img src="{{item.img}}" />
+            {{/if}}
+            <div class="archetype-body-header-right">
+                <div class="item-description">
+                    {{#if editable}}
+                        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+                    {{else}}
+                        {{#if hasDescription}}
+                        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+                        {{/if}}
+                    {{/if}}
+                </div>
+                <div class="description-content">
+                    {{editor enrichedDescription target="system.description" button=true engine="prosemirror" owner=owner editable=editable}}
+                </div>                
+            </div>
+        </div>
+        <div class="archetype-grid">
+            <div class="data-group">
+                    <div class="field-name" data-tooltip='{{localize "CTHACK.FlashLightsDesc"}}'>{{localize "CTHACK.FlashLights"}}</div>
+                    <select name="system.flashlights" data-type="String">
+                    {{#select item.system.flashlights}}
+                        {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                    {{/select}}
+                    </select>
+                </div>            
+                <div class="data-group">
+                    <div class="field-name" data-tooltip='{{localize "CTHACK.SmokesDesc"}}'>{{localize "CTHACK.Smokes"}}</div>
+                    <select name="system.smokes" data-type="String">
+                    {{#select item.system.smokes}}
+                        {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                    {{/select}}
+                    </select>
+                </div>
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.Sanity"}}</div>
+                    <select name="system.sanity" data-type="String">
+                    {{#select item.system.sanity}}
+                        {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                    {{/select}}
+                    </select>
+                </div>
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.HitPointsStart"}}</div>
+                    <input class="field-value input-small" type="text" name="system.hitpoints" data-type="String" value="{{item.system.hitpoints}}"> 
+                </div>
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.HitDice"}}</div>
+                    <select name="system.hitdice" data-type="String">
+                    {{#select item.system.hitdice}}
+                        {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                    {{/select}}
+                    </select>
+                </div>
+                  <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.ArmedDamage"}}</div>
+                    <select name="system.armeddamage" data-type="String">
+                        {{selectOptions dicesDamage selected=item.system.armeddamage}}
+                    </select>
+                </div>
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.WealthStart"}}</div>
+                    <select class="select-large" name="system.wealthStart" data-type="String">
+                        {{selectOptions wealthStart selected=item.system.wealthStart localize=true}}
+                    </select>
+                </div>            
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.Wealth"}}</div>
+                    <select name="system.wealthDice" data-type="String">
+                    {{#select item.system.wealthDice}}
+                        {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
+                    {{/select}}
+                    </select>
+                </div>
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.UnarmedDamage"}}</div>
+                    <select name="system.unarmeddamage" data-type="String">
+                        {{selectOptions dicesDamage selected=item.system.unarmeddamage}}
+                    </select>
+                </div>
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.PrimarySave"}}</div>
+                    <select class="select-large" name="system.primarysave" data-type="String">
+                        {{selectOptions saves selected=item.system.primarysave labelAttr="label" localize=true}}
+                    </select>
+                </div>
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.SecondarySave1"}}</div>
+                    <select class="select-large" name="system.secondarysave1" data-type="String">
+                        {{selectOptions saves selected=item.system.secondarysave1 labelAttr="label" localize=true}}
+                    </select>
+                </div>
+                <div class="data-group">
+                    <div class="field-name">{{localize "CTHACK.SecondarySave2"}}</div>
+                    <select class="select-large" name="system.secondarysave2" data-type="String">
+                        {{selectOptions saves selected=item.system.secondarysave2 labelAttr="label" localize=true}}
+                    </select>
+                </div>  
+        </div>
+    </div>
+
+</form>

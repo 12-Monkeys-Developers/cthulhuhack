@@ -1,0 +1,77 @@
+<form class="{{cssClass}}" autocomplete="off">
+  {{log "ability" this}}
+  <div class="item-header">
+    {{#if editable}}
+      <img class="editable-image" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+    {{else}}
+      <img src="{{item.img}}" />
+    {{/if}}
+    {{#if editable}}
+      <input name="name" type="text" value="{{item.name}}" />
+    {{else}}
+      <div class="name">{{item.name}}</div>
+    {{/if}}
+    <div class="sheet-lock">
+      {{#if editable}}
+        <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
+      {{else}}
+        <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
+      {{/if}}
+    </div>
+  </div>
+  <div class="ability-body">
+    <div class="ability-grid">
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityKey"}}</div>
+        <input class="field-value input-key input-extralarge {{#if (isAbilityKeyReadOnly item.system.key)}}readonly{{/if}}" name="system.key" type="text" value="{{item.system.key}}" data-dtype="String" {{#if (isAbilityKeyReadOnly item.system.key)}}readonly{{/if}} />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityUsePer"}}</div>
+        <select class="select-usage" name="system.uses.per" data-type="String">
+            {{selectOptions usage selected=item.system.uses.per labelAttr="label" localize=true}}
+        </select>
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityMultiple"}}</div>
+        <input class="checkbox" name="system.multiple" type="checkbox" {{checked item.system.multiple}} />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityUseValueDtl"}}</div>
+        <input class="field-value input-small" name="system.uses.value" type="text" value="{{item.system.uses.value}}" data-dtype="Number" />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityUseMax"}}</div>
+        <input class="field-value input-small" name="system.uses.max" type="text" value="{{item.system.uses.max}}" data-dtype="Number" />   
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityUseLast"}}</div>
+        <input class="field-value" name="system.uses.last" type="text" value="{{item.system.uses.last}}" data-dtype="String" />   
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityIsCustom"}}</div>
+        <input class="checkbox" name="system.isCustom" type="checkbox" {{checked item.system.isCustom}} />      
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityAdvantageGiven"}}</div>
+        <input class="checkbox" name="system.advantageGiven" type="checkbox" {{checked item.system.advantageGiven}} />    
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityAdvantageText"}}</div>
+        <input class="field-value" name="system.advantageText" type="text" value="{{item.system.advantageText}}" data-dtype="String" />     
+      </div>
+    </div>
+    <div class="item-description">
+      {{#if editable}}
+        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+      {{else}}
+        {{#if hasDescription}}
+          <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+        {{/if}}
+      {{/if}}
+      <div class="description-content">
+        {{editor enrichedDescription target="system.description" button=true engine="prosemirror" owner=owner editable=editable}}
+      </div>
+    </div>
+  </div>
+
+</form>
