@@ -6,9 +6,10 @@ import { preloadHandlebarsTemplates } from "./templates.js";
 import { registerSystemSettings } from "./settings.js";
 import { CthackUtils } from "./utils.js";
 
-import { CtHackActor } from "./actor/actor.js";
+import { CtHackActor } from "./documents/actor.js";
 import { CtHackActorSheet } from "./actor/actor-sheet.js";
 import { CtHackOpponentSheet } from "./actor/opponent-sheet.js";
+
 import { CtHackItem } from "./documents/item.mjs";
 
 import { Macros } from "./macros.js";
@@ -56,6 +57,10 @@ Hooks.once("init", async function () {
 
   // Define custom Entity classes
   CONFIG.Actor.documentClass = CtHackActor;
+  CONFIG.Actor.dataModels = {
+    character: models.CtHackCharacter,
+    opponent: models.CtHackOpponent
+  }
 
   CONFIG.Item.documentClass = CtHackItem;
   CONFIG.Item.dataModels = {
