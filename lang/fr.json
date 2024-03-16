@@ -309,6 +309,8 @@
     "ChatIntro": "Résultat de la recherche",
     "ChatText": "Texte recherché : ",
     "NoResults": "Aucun résultat",
-    "TooMuchResults": "Plus de 20 résultats, affinez votre recherche."
+    "TooManyResults": "Plus de 20 résultats, affinez votre recherche.",
+    "HighlightButton": "Surligner on/off",
+    "HighlightTooltip": "Basculer le surlignage du texte recherché dans les documents"
   }
 }

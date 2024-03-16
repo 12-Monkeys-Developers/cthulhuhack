@@ -6,7 +6,7 @@ import { preloadHandlebarsTemplates } from "./templates.js";
 import { registerSystemSettings } from "./settings.js";
 import { CthackUtils } from "./utils.js";
 
-import { CtHackActor } from "./documents/actor.js";
+import { CtHackActor } from "./documents/actor.mjs";
 import { CtHackActorSheet } from "./actor/actor-sheet.js";
 import { CtHackOpponentSheet } from "./actor/opponent-sheet.js";
 
@@ -25,6 +25,8 @@ globalThis.SYSTEM = SYSTEM;
 // Import modules
 import * as models from "./data/_module.mjs";
 import * as applications from "./applications/_module.mjs";
+
+export default class FullsearchJournalSheet extends JournalSheet {}
 
 Hooks.once("init", async function () {
   console.log(LOG_HEAD + "Initialisation du système Cthulhu Hack");
@@ -106,6 +108,9 @@ Hooks.once("init", async function () {
 
   // Game Manager
   game.cthack.gmManager = new GMManager();
+
+  // Search
+  Journal.registerSheet(game.system.id, FullsearchJournalSheet, { makeDefault: false });
 
   console.log(LOG_HEAD + "Système Cthulhu Hack initialisé");
 });

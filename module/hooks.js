@@ -64,7 +64,8 @@ export function registerHooks() {
     // Search feature
     const typeMessage = data.message.flags.world?.type;
     if (typeMessage === "searchPage") {
-      html.find("#ouvrirpage").click((event) => SearchChat.onOpenJournalPage(event, data.message.flags.world?.searchPattern));
+      html.find("#ouvrirpage").click(async (event) => await SearchChat.onOpenJournalPage(event, data.message.flags.world?.searchPattern));
+      html.find("#highlight").click(async (event) => await SearchChat.toggleEnricher(event, data.message.flags.world?.searchPattern));
     }
 
   });

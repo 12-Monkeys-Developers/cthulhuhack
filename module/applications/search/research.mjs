@@ -9,6 +9,7 @@ export class SearchChat {
     this.searchPattern = null;
     this.content = null;
     this.template = null;
+    this.highlighted = false;
     this.data = {
       pageResultCollection: [],
       itemResultCollection: [],
@@ -40,6 +41,7 @@ export class SearchChat {
     const data = duplicate(this.data);
 
     data.searchPattern = this.searchPattern;
+    data.highlighted = this.highlighted;
     // Call the template renderer.
     return await renderTemplate(this.template, data);
   }
@@ -79,47 +81,39 @@ export class SearchChat {
     this.data.actorResultCollection = await game.actors.search({ query: this.searchPattern });
     this.data.actorresults = this.data.actorResultCollection.length;
     this.data.hasresults = this.data.pageresults + this.data.itemresults + this.data.actorresults;
-    this.data.tooMuchResults = (this.data.hasresults > 20);
+    this.data.TooManyResults = (this.data.hasresults > 20);
     return;
   }
 
   /**
-   * @description Display the journal page with hilighted pattern
+   * @description Toggle highlighting of pattern in documents
    */
-  static async onOpenJournalPage(event, searchPattern) {
+  static async toggleEnricher(event, searchPattern) {
     event.preventDefault();
     const element = event.currentTarget;
+    const regexPattern = await new RegExp("(" + searchPattern + ")(?![^<]*>)", "gim"); //g pour global, remplacement multiples, i pour case insensitive ; le reste est pour ne pas remplacer le contenu des balises quand le pattern y apparait
 
-    const journalId = element.dataset.journalId;
-    const journal = game.journal.get(journalId);
-    const pageId = element.dataset.pageId;
-    const journalPage = await journal.pages.get(pageId);
-    if (!journalPage || !searchPattern) return;
-
-    //cas image
-    if (journalPage.type === "image") {
-      const imgPopout = new ImagePopout(journalPage.src);
-      imgPopout.render(true);
-      return;
+    let isAlreadyHighlighted = CONFIG.TextEditor.enrichers.findIndex((element) => element.namePattern === searchPattern);
+    if (isAlreadyHighlighted >= 0) {
+      //remove
+      CONFIG.TextEditor.enrichers.splice(isAlreadyHighlighted, 1);
+    } else {
+      //add
+      CONFIG.TextEditor.enrichers = await CONFIG.TextEditor.enrichers.concat([
+        {
+          pattern: regexPattern,
+          namePattern: searchPattern,
+          enricher: async (match, options) => {
+            const awdoc = document.createElement("mark");
+            awdoc.innerHTML = `${match[1]}`;
+            return awdoc;
+          },
+        },
+      ]);
     }
-    //cas texte
-    let originalText = journalPage.text.content;
-    const regexPattern = new RegExp("("+searchPattern+")(?![^<]*>)", "gi"); //g pour global, remplacement multiples, i pour case insensitive ; le reste est pour ne pas remplacer le contenu des balises quand le pattern y apparait
-    const modifiedText = await originalText.replace(regexPattern, "<mark>$1</mark>");
-
-    const modifiedTexthtml = await TextEditor.enrichHTML(modifiedText, { async: false });
-
-    let highlightedPage = new Dialog({
-      content: modifiedTexthtml,
-      submitOnChange: false,
-      resizable: true,
-      buttons: {
-        Cancel: { label: `Fermer` },
-      },
-    });
-
-    highlightedPage.position.width = 800;
-    highlightedPage.render(true);
+    for (const appId in ui.windows) {
+      ui.windows[appId].render(true);
+    }
   }
 }
 

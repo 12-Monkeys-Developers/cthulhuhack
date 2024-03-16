@@ -1,15 +1,17 @@
 <div class="search-chat {{cssClass}}">
   <h3>{{localize "SEARCHTOOL.ChatIntro"}}</h3>
   <div class="motif">{{localize "SEARCHTOOL.ChatText"}}{{searchPattern}}</div>
+  <div class="btn-highlight"><button id="highlight" data-tooltip="SEARCHTOOL.HighlightTooltip">{{localize "SEARCHTOOL.HighlightButton"}}</button></div>
   {{#if hasresults}}
-    {{#if tooMuchResults}}
-      {{localize "SEARCHTOOL.TooMuchResults"}}
+    {{#if TooManyResults}}
+      {{localize "SEARCHTOOL.TooManyResults"}}
     {{else}}
       {{#if pageresults}}
         <h4 class="search-header">{{localize "DOCUMENT.JournalEntryPages"}}</h4>
         <div>
           {{#each pageResultCollection as |page|}}
-            <div class="btn-search"><button id="ouvrirpage" class="ouvrir-page" data-journal-id="{{page.journalId}}" data-page-id="{{page.id}}" data-tooltip='Visualiser la page'>{{page.journalName}} - {{page.name}}</button></div>
+            {{page.journalName}}
+            - @UUID[JournalEntry.{{page.journalId}}.JournalEntryPage.{{page.id}}]<br />
           {{/each}}
         </div>
       {{/if}}

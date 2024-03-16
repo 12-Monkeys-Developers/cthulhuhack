@@ -9,7 +9,7 @@ export function initControlButtons() {
 
     if (game.user.isGM) {
       menu.push({
-        name: game.i18n.localize("CTHACK.GMManager.Title"),
+        name: "gm-manager",
         title: game.i18n.localize("CTHACK.GMManager.Title"),
         icon: "fa-solid fa-users",
         button: true,
@@ -18,7 +18,7 @@ export function initControlButtons() {
 
       menu.push({
         name: "search",
-        title: "Recherche",
+        title: game.i18n.localize("SEARCHTOOL.WindowTitle"),
         icon: "fas fa-magnifying-glass",
         button: true,
         onClick: async () => {

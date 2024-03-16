@@ -310,6 +310,8 @@
     "ChatIntro": "Search result", 
     "ChatText": "Searched text: ",
     "NoResults": "No result",
-    "TooMuchResults": "More than 20 results, refine your search."
+    "TooManyResults": "More than 20 results, refine your search.",
+    "HighlightButton": "Highlight on/off",
+    "HighlightTooltip": "Toggle highlighting of pattern in documents"
   }
 }
