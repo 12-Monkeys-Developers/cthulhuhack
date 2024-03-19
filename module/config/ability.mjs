@@ -11,6 +11,14 @@ export const USE = Object.freeze({
     id: "Session",
     label: "CTHACK.AbilityUsePerSession",
   },
+  Day: {
+    id: "Day",
+    label: "CTHACK.AbilityUsePerDay",
+  },
+  Night: {
+    id: "Night",
+    label: "CTHACK.AbilityUsePerNight",
+  },
   Hour: {
     id: "Hour",
     label: "CTHACK.AbilityUsePerHour",
@@ -22,5 +30,9 @@ export const USE = Object.freeze({
   Fight: {
     id: "Fight",
     label: "CTHACK.AbilityUsePerFight",
+  },
+  Moment: {
+    id: "Moment",
+    label: "CTHACK.AbilityUsePerMoment",
   },
 });
