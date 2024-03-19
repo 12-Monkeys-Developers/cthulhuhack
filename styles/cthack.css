@@ -176,38 +176,6 @@ i.cthack {
   color: #fff;
   padding: 0 5px 0 5px;
 }
-.chat-message .message-content .btn-search button {
-  margin: 5px 0 0 0;
-  line-height: 15px;
-}
-.chat-message .message-content .search-chat {
-  padding: 0 0 5px 0;
-}
-.chat-message .message-content .search-chat h3 {
-  padding-top: 10px;
-  margin: 10px;
-  font-weight: bold;
-  text-align: center;
-}
-.chat-message .message-content .search-chat h4 {
-  margin: 10px;
-  font-weight: bold;
-  text-align: center;
-}
-.chat-message .message-content .search-chat a.content-link {
-  background: none;
-  margin: 5px 0 0 0;
-  padding: 5px;
-}
-.chat-message .message-content .search-chat .motif {
-  padding-bottom: 5px;
-}
-.chat-message .message-content .search-chat .search-header {
-  padding-top: 10px;
-}
-.chat-message .message-content .search-chat .search-result {
-  padding: 5px 0 5px 0;
-}
 /* Styles limited to cthack sheets */
 .cthack {
   /*** Refactor ***/
@@ -1864,4 +1832,44 @@ i.cthack {
 }
 .cthack.sheet.item.opponentAbility .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
+}
+.cthack .search-chat {
+  padding: 0 0 5px 0;
+}
+.cthack .search-chat h3 {
+  padding-top: 10px;
+  margin: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.cthack .search-chat h4 {
+  margin: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.cthack .search-chat a.content-link {
+  background: none;
+  margin: 5px 0 0 0;
+  padding: 5px;
+}
+.cthack .search-chat .motif {
+  padding-bottom: 5px;
+}
+.cthack .search-chat .search-header {
+  padding-top: 10px;
+}
+.cthack .search-chat .search-result {
+  padding: 5px 0 5px 0;
+}
+.cthack .search-dialog h3 {
+  margin: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.cthack .search-dialog .dialog-buttons button {
+  color: #fff;
+}
+.cthack .search-dialog input {
+  border: 1px solid #6e0000;
+  margin: 10px 0 10px 0;
 }

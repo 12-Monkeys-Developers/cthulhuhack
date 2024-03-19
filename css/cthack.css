@@ -186,7 +186,7 @@ i.cthack {
   background-size: 100% 100%;
   color: #fff;
   font-size: var(--font-size-20);
-  scrollbar-width: none;
+  scrollbar-width: thin;
 }
 .cthack .align-left {
   text-align: left;
@@ -327,17 +327,17 @@ i.cthack {
 .cthack .tox .tox-edit-area {
   padding: 0 8px;
 }
-.cthack .sheet-body {
+.cthack .character-sheet-body {
   height: 100%;
   min-height: 150px;
   margin: 10px 0 10px 0;
   padding: 0 10px 0 10px;
 }
-.cthack .sheet-body .tab {
+.cthack .character-sheet-body .tab {
   min-height: 150px;
-  height: 100%;
+  height: 400px;
 }
-.cthack .sheet-body .tab .editor {
+.cthack .character-sheet-body .tab .editor {
   min-height: 150px;
   height: 100%;
 }
@@ -506,6 +506,165 @@ i.cthack {
   align-items: center;
   /* Centrer verticalement */
   height: 100%;
+}
+.cthack.sheet.actor.character-v2 select {
+  color: black;
+}
+.cthack.sheet.actor.character-v2 .sidebar {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 20px 0 20px;
+  padding: 0 0 0 10px;
+  flex: 180px 0 0;
+  height: 400px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+}
+.cthack.sheet.actor.character-v2 .sidebar .image-container {
+  border: 1px solid var(--color-border-dark);
+  height: 225px;
+}
+.cthack.sheet.actor.character-v2 .sidebar .image-container img.actor-image {
+  border: none;
+  min-width: 150px;
+  border-radius: 10px;
+}
+.cthack.sheet.actor.character-v2 .sidebar .image-container .hover-icon {
+  visibility: hidden;
+  position: absolute;
+  top: 70px;
+  left: 40px;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.actor.character-v2 .sidebar .image-container:hover .hover-icon {
+  visibility: visible;
+}
+.cthack.sheet.actor.character-v2 .sidebar .sidebar-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2px;
+}
+.cthack.sheet.actor.character-v2 .sidebar .sidebar-section .save-value {
+  flex: 1;
+  text-align: left;
+  margin-right: 10px;
+}
+.cthack.sheet.actor.character-v2 .sidebar .sidebar-section .save-value {
+  flex: 2;
+  text-align: right;
+}
+.cthack.sheet.actor.character-v2 .main {
+  margin: 30px 20px 0 0;
+  padding: 0 20px 10px 0;
+}
+.cthack.sheet.actor.character-v2 .main .sheet-body {
+  width: 100%;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.actor.character-v2 .main .sheet-body .tab {
+  width: 100%;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .name {
+  margin-left: 10px;
+  font-size: 1.3em;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .header-occupation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .header-occupation .occupation-archetype {
+  text-align: left;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .occupation {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0 10px 0;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .occupation label {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .occupation input {
+  border: 1px solid;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .archetype {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0 10px 0;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .archetype label {
+  margin-right: 20px;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .archetype input {
+  border: 1px solid;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .resources {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin: 5px 0 5px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  border-radius: 10px;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .resources-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .resources-4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .resources-5 {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .fight {
+  margin-top: 10px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .resource {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .resource .resource-content {
+  padding: 5px 0 5px 0;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .resource .hitpoints input {
+  height: 40px;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .resource .hitpoints .hitpoints-value {
+  text-align: right;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .resource .hitpoints .hitpoints-max {
+  text-align: left;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header nav {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 40px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header nav .choice {
+  font-weight: normal;
 }
 .cthack.sheet.actor.opponent {
   display: flex;

@@ -1,7 +1,7 @@
 /**
  * @extends {Item}
  */
-export class CtHackItem extends Item {
+export default class CtHackItem extends Item {
   static DEFAULT_ICON_MAGIC = "/systems/cthack/ui/icons/spell-book.png";
   static DEFAULT_ICON = "icons/svg/item-bag.svg";
 

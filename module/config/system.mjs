@@ -10,6 +10,10 @@ export const DICES_DAMAGE = { 0: "0", 1: "1", d4: "4", d6: "6", d8: "8", d10: "1
 
 export const WEALTH_START = { 2: "CHA*2", 3: "CHA*3", 4: "CHA*4", sp: "CTHACK.WealthStartSpecial" };
 
+export const DICES_VALUE = { 0: "0", d4: "4", d6: "6", d8: "8", d10: "10", d12: "12" };
+
+export const DICES_MAX = { 0: "0", d4: "4", d6: "6", d8: "8", d10: "10", d12: "12" };
+
 /**
  * Include all constant definitions within the SYSTEM global export
  * @type {Object}
@@ -18,6 +22,8 @@ export const SYSTEM = {
   id: SYSTEM_ID,
   ABILITY_USAGE: ABILITY.USE,
   DICES_DAMAGE,
+  DICES_VALUE,
+  DICES_MAX,
   WEALTH_START,
   SAVES: CHARACTER.SAVES,
   RESOURCES: CHARACTER.RESOURCES,

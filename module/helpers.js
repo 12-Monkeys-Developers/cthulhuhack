@@ -1,16 +1,9 @@
 import { isDice, isAbilityKeyReserved } from './utils.js';
 import { CTHACK } from './config.js';
 
+import { SAVES } from './config/character.mjs';
+
 export const registerHandlebarsHelpers = function() {
-	Handlebars.registerHelper('concat', function() {
-		var outStr = '';
-		for (var arg in arguments) {
-			if (typeof arguments[arg] != 'object') {
-				outStr += arguments[arg];
-			}
-		}
-		return outStr;
-	});
 
 	Handlebars.registerHelper('hasModifier', function(modifier) {
 		if (modifier !== null && modifier !== 0 ){
@@ -18,7 +11,6 @@ export const registerHandlebarsHelpers = function() {
 		}
 		return false;
 	});
-
 
 	Handlebars.registerHelper('isModifierPositive', function(modifier) {
 		if (modifier !== null && modifier > 0 ){
@@ -34,27 +26,24 @@ export const registerHandlebarsHelpers = function() {
 		return false;
 	});
 
-	Handlebars.registerHelper('toLowerCase', function(str) {
-		return str.toLowerCase();
-	});
-
-	Handlebars.registerHelper('toUpperCase', function(str) {
-		return str.toUpperCase();
-	});
-
-	Handlebars.registerHelper('toAbbr', function(str) {
-		var outStr = 'CTHACK.Save' + str.substring(0, 1).toUpperCase() + str.substring(1) + 'Abbr';
-		return outStr;
-	});
-
 	Handlebars.registerHelper('getSaveLabel', function(str) {
 		var outStr = 'CTHACK.Save' + str.substring(0, 1).toUpperCase() + str.substring(1);
 		return outStr;
 	});
 
+	Handlebars.registerHelper('getSaveLabel2', function(key, save) {
+		let label = game.i18n.localize(SAVES[key].label);
+		if (save.advantage) label = label.concat(' *');
+		return label;
+	});
+
 	Handlebars.registerHelper('toDesc', function(str) {
 		var outStr = 'CTHACK.Save' + str.substring(0, 1).toUpperCase() + str.substring(1) + 'Desc';
 		return outStr;
+	});
+
+	Handlebars.registerHelper('toDesc2', function(save) {
+		return SAVES[save].description;
 	});
 
 	// Return the dice from a value
@@ -68,14 +57,6 @@ export const registerHandlebarsHelpers = function() {
 
 	Handlebars.registerHelper('equals', function(val1, val2) {
 		return val1 === val2;
-	});
-
-	Handlebars.registerHelper('notEquals', function(val1, val2) {
-		return val1 !== val2;
-	});
-
-	Handlebars.registerHelper('stringNotEmpty', function(str) {
-		return str !== '';
 	});
 
 	Handlebars.registerHelper('stringNeitherNullEmpty', function(str) {
@@ -181,4 +162,13 @@ export const registerHandlebarsHelpers = function() {
 		if (value === "" || value == 0 || value == 1) return `style="color:white;"`;
 		return `style="background-image:url('systems/cthack/ui/dice/${value}-grey.svg');"`;
 	});
+
+	Handlebars.registerHelper('getNbRessources', function() {
+		const wealthEnabled = game.settings.get("cthack","Wealth") !== "none" ? true : false;
+		const miscellaneousEnabled = game.settings.get("cthack","MiscellaneousResource") !== "" ? true : false;
+        if (wealthEnabled && miscellaneousEnabled) return "resources-5";
+		if (wealthEnabled || miscellaneousEnabled) return "resources-4";
+		return "resources-3";
+	});
+	
 };

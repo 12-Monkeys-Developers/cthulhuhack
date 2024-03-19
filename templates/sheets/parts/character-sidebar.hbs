@@ -1,0 +1,18 @@
+<div class="sidebar">
+  <div class="image-container">
+    <img class="actor-image" src="{{actor.img}}" data-edit="img" data-tooltip="{{actor.name}}" height="auto" width="100%" style="margin: 0 auto" />
+    <a class="hover-icon" data-action="show-image" data-tooltip="{{localize "TOOLTIPS.ShowImage"}}"><i class="fas fa-image fa-fw"></i></a>
+  </div>
+  {{#each actor.system.saves as |save key|}}
+    {{log 'save' save key}}
+    <div class="sidebar-section" data-save="{{key}}">
+        <label class="save-name rollable" data-tooltip="{{localize (toDesc2 key)}}" data-tooltip-direction="UP">{{getSaveLabel2 key save}}</label>               
+        {{#if @root.editable}}
+            <input class="save-value" type="text" name="system.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number"/>
+            <input type="checkbox" name="system.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}}/>
+        {{else}}
+            {{save.value}}
+        {{/if}}
+    </div>
+  {{/each}}
+</div>

@@ -5,6 +5,8 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
     const fields = foundry.data.fields;
     const schema = {};
 
+    schema.locked = new fields.BooleanField({ required: true, nullable: false, initial: false });
+    
     // Saves
     const saveField = (label) => {
       const schema = {
@@ -64,7 +66,7 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
     schema.notes = new fields.HTMLField({ required: false, blank: true, textSearch: true });
     schema.archetype = new fields.StringField({ required: false, blank: true });
     schema.occupation = new fields.StringField({ required: false, blank: true });
-    schema.capacities = new fields.ArrayField(
+    schema.abilities = new fields.ArrayField(
       new fields.SchemaField({
         id: new fields.StringField({ required: true, blank: false, nullable: false }),
         key: new fields.StringField({ required: true, blank: false, nullable: false }),

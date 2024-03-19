@@ -6,7 +6,7 @@ import { LOG_HEAD } from "../constants.js";
 /**
  * @extends {Actor}
  */
-export class CtHackActor extends Actor {
+export default class CtHackActor extends Actor {
   /**
    * @name rollSave
    * @description Roll a Saving Throw

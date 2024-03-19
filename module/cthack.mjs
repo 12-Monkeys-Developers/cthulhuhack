@@ -5,17 +5,9 @@ import { registerHandlebarsHelpers } from "./helpers.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { registerSystemSettings } from "./settings.js";
 import { CthackUtils } from "./utils.js";
-
-import { CtHackActor } from "./documents/actor.mjs";
-import { CtHackActorSheet } from "./actor/actor-sheet.js";
-import { CtHackOpponentSheet } from "./actor/opponent-sheet.js";
-
-import { CtHackItem } from "./documents/item.mjs";
-
 import { Macros } from "./macros.js";
 import { registerHooks } from "./hooks.js";
-
-import { GMManager } from "./app/gm-manager.js";
+import { GMManager } from "./applications/gm/gm-manager.js";
 import { initControlButtons } from "./control-buttons.js";
 
 import { SYSTEM } from "./config/system.mjs";
@@ -25,6 +17,7 @@ globalThis.SYSTEM = SYSTEM;
 // Import modules
 import * as models from "./data/_module.mjs";
 import * as applications from "./applications/_module.mjs";
+import * as documents from "./documents/_module.mjs";
 
 export default class FullsearchJournalSheet extends JournalSheet {}
 
@@ -35,8 +28,6 @@ Hooks.once("init", async function () {
   game.system.CONST = SYSTEM;
   
   game.cthack = {
-    CtHackActor,
-    CtHackItem,
     config: CTHACK,
     macros: Macros,
   };
@@ -58,13 +49,13 @@ Hooks.once("init", async function () {
   CONFIG.CTHACK = CTHACK;
 
   // Define custom Entity classes
-  CONFIG.Actor.documentClass = CtHackActor;
+  CONFIG.Actor.documentClass = documents.CtHackActor;
   CONFIG.Actor.dataModels = {
     character: models.CtHackCharacter,
     opponent: models.CtHackOpponent
   }
 
-  CONFIG.Item.documentClass = CtHackItem;
+  CONFIG.Item.documentClass = documents.CtHackItem;
   CONFIG.Item.dataModels = {
     ability: models.CtHackAbility,
     archetype: models.CtHackArchetype,
@@ -78,8 +69,9 @@ Hooks.once("init", async function () {
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet(SYSTEM_NAME, CtHackActorSheet, { types: ["character"], makeDefault: true, label: "CTHACK.SheetClassCharacter" });
-  Actors.registerSheet(SYSTEM_NAME, CtHackOpponentSheet, { types: ["opponent"], makeDefault: true, label: "CTHACK.SheetClassOpponent" });
+  Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheet, { types: ["character"], makeDefault: true, label: "CTHACK.SheetClassCharacter" });
+  Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheetV2, { types: ["character"], label: "PJ V2" });
+  Actors.registerSheet(SYSTEM_NAME, applications.AdversaireSheet, { types: ["opponent"], makeDefault: true, label: "CTHACK.SheetClassOpponent" });
 
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet(SYSTEM_NAME, applications.ObjetSheet, { types: ["item"], makeDefault: true });

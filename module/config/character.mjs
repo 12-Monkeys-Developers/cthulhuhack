@@ -17,17 +17,17 @@ export const SAVES = Object.freeze({
     abbreviation: "CTHACK.SaveConAbbr",
     description: "CTHACK.SaveConDesc",
   },
-  int: {
-    id: "int",
-    label: "CTHACK.SaveInt",
-    abbreviation: "CTHACK.SaveIntAbbr",
-    description: "CTHACK.SaveIntDesc",
-  },
   wis: {
     id: "wis",
     label: "CTHACK.SaveWis",
     abbreviation: "CTHACK.SaveWisAbbr",
     description: "CTHACK.SaveWisDesc",
+  },
+  int: {
+    id: "int",
+    label: "CTHACK.SaveInt",
+    abbreviation: "CTHACK.SaveIntAbbr",
+    description: "CTHACK.SaveIntDesc",
   },
   cha: {
     id: "cha",

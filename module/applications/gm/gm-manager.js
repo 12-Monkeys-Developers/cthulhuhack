@@ -1,9 +1,10 @@
-const GM_MANAGER = "gm-manager";
-const GM_MANAGER_TEMPLATE = 'systems/cthack/templates/app/gm-manager.hbs';
 export class GMManager extends Application {
 
+  static GM_MANAGER = "gm-manager";
+  static GM_MANAGER_TEMPLATE = "systems/cthack/templates/app/gm-manager.hbs";
+
     constructor() {
-        super({id: GM_MANAGER});
+        super({id: GMManager.GM_MANAGER});
         Hooks.on('updateSetting', async (setting, update, options, id) => this.updateManager(setting, update, options, id));
         Hooks.on('updateActor', async (setting, update, options, id) => this.updateManager(setting, update, options, id));
         Hooks.on('renderPlayerList', async (setting, update, options, id) => this.updateManager(setting, update, options, id));                
@@ -22,7 +23,7 @@ export class GMManager extends Application {
 
     static get defaultOptions() {
       return foundry.utils.mergeObject(super.defaultOptions, {
-        template: GM_MANAGER_TEMPLATE,
+        template: GMManager.GM_MANAGER_TEMPLATE,
         title:  game.i18n.localize('GMMANAGER.Title'),
         top: 100,
         left: 120,

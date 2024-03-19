@@ -1,17 +1,14 @@
-import { formatDate } from '../utils.js';
-import { CTHACK } from '../config.js';
-import { LOG_HEAD } from '../constants.js';
+import { formatDate } from '../../utils.js';
 
 /**
- * Extend the basic ActorSheet
  * @extends {ActorSheet}
  */
-export class CtHackActorSheet extends ActorSheet {
+export default class CtHackCharacterSheetV2 extends ActorSheet {
 	//#region Overrided methods
 	/** @override */
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
-			classes: [ 'cthack', 'sheet', 'actor', 'character' ],
+			classes: [ 'cthack', 'sheet', 'actor', 'character-v2' ],
 			width: 1100,
 			height: 860,
 			tabs: [ { navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'items' } ],
@@ -21,12 +18,17 @@ export class CtHackActorSheet extends ActorSheet {
 
 	/** @override */
 	get template() {
-		return 'systems/cthack/templates/actor/actor-sheet.hbs';
+		return 'systems/cthack/templates/sheets/actor-sheet-v2.hbs';
 	}
 
 	/** @override */
 	async getData(options) {
 		const context = super.getData(options);
+    
+		// By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
+    	context.editable = this.actor.isUnlocked;
+		context.uneditable = !this.actor.isUnlocked;
+
 		context.abilities = this.actor.itemTypes.ability;
 		context.weapons = this.actor.itemTypes.weapon;
 		context.magics = this.actor.itemTypes.magic;
@@ -37,7 +39,12 @@ export class CtHackActorSheet extends ActorSheet {
 		context.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, {async: true});
 
 		context.isGm = game.user.isGM;
-		context.system = context.data.system;
+
+		context.system = this.actor.system;
+
+		context.dicesDamage = SYSTEM.DICES_DAMAGE;
+		context.dicesValue = SYSTEM.DICES_VALUE;
+		context.dicesMax = SYSTEM.DICES_MAX;
 
 		return context;
 	}
@@ -46,8 +53,7 @@ export class CtHackActorSheet extends ActorSheet {
 	activateListeners(html) {
 		super.activateListeners(html);
 
-		// Everything below here is only needed if the sheet is editable
-		if (!this.options.editable) return;
+		html.find(".sheet-lock").click(this._onSheetLock.bind(this));
 
 		// Item summaries
 		html.find('.item .item-name').click((event) => this._onItemSummary(event));
@@ -492,4 +498,16 @@ export class CtHackActorSheet extends ActorSheet {
 	}
 
 	//#endregion
+
+	  /**
+   * Lock or unlock the sheet
+   * @param {*} event
+   */
+	  async _onSheetLock(event) {
+		event.preventDefault();
+		let flagData = await this.actor.getFlag(game.system.id, "SheetUnlocked");
+		if (flagData) await this.actor.unsetFlag(game.system.id, "SheetUnlocked");
+		else await this.actor.setFlag(game.system.id, "SheetUnlocked", "SheetUnlocked");
+		this.actor.sheet.render(true);
+	  }
 }

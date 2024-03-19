@@ -1,0 +1,138 @@
+.sheet.actor.character-v2 .sidebar {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 20px;
+  padding: 0 0 0 10px;
+  flex: 180px 0 0;
+  height: 400px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+}
+.sheet.actor.character-v2 .sidebar .image-container {
+  border: 1px solid var(--color-border-dark);
+}
+.sheet.actor.character-v2 .sidebar .image-container img.actor-image {
+  border: none;
+  min-width: 152px;
+}
+.sheet.actor.character-v2 .sidebar .image-container .hover-icon {
+  visibility: hidden;
+  position: absolute;
+  top: 35px;
+  left: 3px;
+  font-size: var(--font-size-16);
+}
+.sheet.actor.character-v2 .sidebar .image-container:hover .hover-icon {
+  visibility: visible;
+}
+.sheet.actor.character-v2 .sidebar .sidebar-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2px;
+}
+.sheet.actor.character-v2 .sidebar .sidebar-section .save-value {
+  flex: 1;
+  text-align: left;
+  margin-right: 10px;
+}
+.sheet.actor.character-v2 .sidebar .sidebar-section .save-value {
+  flex: 2;
+  text-align: right;
+}
+.sheet.actor.character-v2 .main {
+  padding: 10px 20px 10px 10px;
+  height: 540px;
+}
+.sheet.actor.character-v2 .main .sheet-body {
+  width: 100%;
+  padding: 0 10px 0 10px;
+}
+.sheet.actor.character-v2 .main .sheet-body .tab {
+  width: 100%;
+}
+.sheet.actor.character-v2 .character-sheet-header {
+  height: 270px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.sheet.actor.character-v2 .character-sheet-header .name {
+  margin-left: 20px;
+}
+.sheet.actor.character-v2 .character-sheet-header .header-occupation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.sheet.actor.character-v2 .character-sheet-header .header-occupation .occupation-archetype {
+  text-align: left;
+}
+.sheet.actor.character-v2 .character-sheet-header .occupation {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0 10px 0;
+}
+.sheet.actor.character-v2 .character-sheet-header .occupation label {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.sheet.actor.character-v2 .character-sheet-header .occupation input {
+  border: 1px solid;
+}
+.sheet.actor.character-v2 .character-sheet-header .archetype {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0 10px 0;
+}
+.sheet.actor.character-v2 .character-sheet-header .archetype label {
+  margin-right: 20px;
+}
+.sheet.actor.character-v2 .character-sheet-header .archetype input {
+  border: 1px solid;
+}
+.sheet.actor.character-v2 .character-sheet-header .resources {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.sheet.actor.character-v2 .character-sheet-header .fight {
+  margin-top: 10px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.sheet.actor.character-v2 .character-sheet-header .fight .hitpoints input .value {
+  text-align: right;
+}
+.sheet.actor.character-v2 .character-sheet-header .fight .hitpoints input .max {
+  text-align: left;
+}
+.sheet.actor.character-v2 .character-sheet-header .resource {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.sheet.actor.character-v2 .character-sheet-header nav {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 40px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+.sheet.actor.character-v2 .character-sheet-header nav .choice {
+  font-weight: normal;
+}

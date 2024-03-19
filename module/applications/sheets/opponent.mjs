@@ -1,9 +1,9 @@
-import { SYSTEM } from "../config/system.mjs";
+import { SYSTEM } from "../../config/system.mjs";
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class CtHackOpponentSheet extends ActorSheet {
+export default class CtHackOpponentSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
