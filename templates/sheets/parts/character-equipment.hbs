@@ -1,0 +1,17 @@
+
+<div class="equipment flexrow">
+    <div class="misc">
+        {{editor enrichedEquipment target="system.equipment"  engine="prosemirror" button=true owner=owner}}
+    </div>
+    <div class="items">
+        {{#each weapons as |item id|}}
+            {{> "systems/cthack/templates/sheets/parts/character-item.hbs" item}}
+        {{/each}}
+        {{#each otheritems as |item id|}}
+            {{> "systems/cthack/templates/sheets/parts/character-item.hbs" item}}
+        {{/each}}            
+    </div>
+</div>
+
+
+

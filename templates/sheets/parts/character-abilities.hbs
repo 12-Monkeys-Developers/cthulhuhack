@@ -1,0 +1,42 @@
+{{!-- Abilities--}}
+<div class="entete-tableau">
+    <div class="entete-titre">{{localize "CTHACK.Abilities"}}</div>
+    <div class="item-controls-header">
+    <a class="item-control ability-create" data-tooltip="{{localize "CTHACK.AddAbility"}}" data-type="ability"><i class="fas fa-plus"></i></a>
+    </div>
+</div>
+
+{{#if (gt abilities.length 0)}}            
+<div class="grid-abilities">
+    <div class="entete">{{localize "CTHACK.Name"}}</div>
+    <div class="entete">{{localize "CTHACK.AbilityUsePer"}}</div>
+    <div class="entete">{{localize "CTHACK.AbilityUseValue"}}</div>
+    <div class="entete">{{localize "CTHACK.AbilityUseLast"}}</div>
+    <div class="entete">{{localize "CTHACK.AbilityMultiple"}}</div>
+    <div></div>
+    {{#each abilities as |ability id|}}
+            {{> "systems/cthack/templates/actor/parts/actor-ability.hbs" ability}}
+    {{/each}}      
+</div>
+{{/if}}
+
+{{!-- Magic --}}
+<div class="entete-tableau">
+    <div class="entete-titre">{{localize "CTHACK.Magic"}}</div>
+    <div class="item-controls-header">
+        <a class="item-control item-create" data-tooltip="{{localize "CTHACK.AddMagic"}}" data-type="magic"><i class="fas fa-plus"></i></a>
+    </div>
+</div>
+
+{{#if (gt magics.length 0)}}   
+<div class="grid-magics">
+    <div class="entete">{{localize "CTHACK.Name"}}</div>
+    <div class="entete">{{localize "CTHACK.MagicType"}}</div>
+    <div class="entete">{{localize "CTHACK.MagicSanity"}}</div>
+    <div class="entete">{{localize "CTHACK.MagicIncantation"}}</div>
+    <div></div>
+    {{#each magics as |item id|}}
+        {{> "systems/cthack/templates/actor/parts/actor-magic.hbs" item}}
+    {{/each}}       
+</div>
+{{/if}}

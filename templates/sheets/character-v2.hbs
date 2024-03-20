@@ -2,7 +2,7 @@
 <form class="{{cssClass}} flexrow" autocomplete="off">
 {{log "character" this}}
   {{> "systems/cthack/templates/sheets/parts/character-sidebar.hbs"}}
-  <div class="main">
+  <div class="main flexcol">
     <header class="character-sheet-header">
       <div class="name" data-name="{{actor.name}}">
         {{#if editable}}
@@ -53,7 +53,7 @@
         <div class="resource">
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.flashlights.value)}}rollable{{/if}}" data-resource="flashlights" data-tooltip="{{localize 'CTHACK.FlashLightsDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.FlashLights"}}</label>
             <div class="resource-content">
-                <select name="system.attributes.flashlights.value" data-type="String" {{{getStyleForDice system.attributes.flashlights.value}}} {{disabled uneditable}}>
+                <select class="resource-value" name="system.attributes.flashlights.value" data-type="String" {{{getStyleForDice system.attributes.flashlights.value}}} {{disabled uneditable}}>
                   {{selectOptions dicesValue selected=system.attributes.flashlights.value}}                  
                 </select>
                 (
@@ -66,7 +66,7 @@
         <div class="resource">
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.smokes.value)}}rollable{{/if}}" data-resource="smokes" data-tooltip="{{localize 'CTHACK.SmokesDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Smokes"}}</label>
             <div class="resource-content">
-                <select name="system.attributes.smokes.value" data-type="String" {{{getStyleForDice system.attributes.smokes.value}}} {{disabled uneditable}}>
+                <select class="resource-value" name="system.attributes.smokes.value" data-type="String" {{{getStyleForDice system.attributes.smokes.value}}} {{disabled uneditable}}>
                 {{#select system.attributes.smokes.value}}
                     {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                 {{/select}}
@@ -83,7 +83,7 @@
         <div class="resource">
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.sanity.value)}}rollable{{/if}}" data-resource="sanity" data-tooltip="{{localize 'CTHACK.SanityDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Sanity"}}</label>
             <div class="resource-content">
-                <select name="system.attributes.sanity.value" data-type="String" {{{getStyleForDice system.attributes.sanity.value}}} {{disabled uneditable}}>
+                <select class="resource-value"  name="system.attributes.sanity.value" data-type="String" {{{getStyleForDice system.attributes.sanity.value}}} {{disabled uneditable}}>
                 {{#select system.attributes.sanity.value}}
                     {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                 {{/select}}
@@ -102,7 +102,7 @@
           <div class="resource">
               <label for="wealthDice.value" class="resource-label wealth-name {{#if (isWealthAsResource)}}rollable{{/if}}" data-resource="wealthDice">{{localize "CTHACK.Wealth"}}</label>
               <div class="resource-content">
-                  <select name="system.attributes.wealthDice.value" data-type="String" {{{getStyleForDice system.attributes.wealthDice.value}}} {{disabled uneditable}}>
+                  <select class="resource-value" name="system.attributes.wealthDice.value" data-type="String" {{{getStyleForDice system.attributes.wealthDice.value}}} {{disabled uneditable}}>
                       {{#select system.attributes.wealthDice.value}}
                           {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                       {{/select}}
@@ -152,19 +152,20 @@
         </div>
 
         <div class="resource">
-              <label for="hitDice.value" class="resource-label hit-name {{#if (isEnabled "HitDiceResource")}}rollable{{/if}}" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</label>
+              <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.hitDice.value)}}rollable{{/if}}" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</label>
               <div class="resource-content">
                   <select name="system.attributes.hitDice.value" data-type="String" {{{getStyleForDice system.attributes.hitDice.value}}} {{disabled uneditable}}>
                       {{#select system.attributes.hitDice.value}}
                           {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                       {{/select}}
                   </select>
-                  <span>/</span>
+                  (
                   <select name="system.attributes.hitDice.max" data-type="String" {{{getStyleForDice system.attributes.hitDice.max}}} {{disabled uneditable}}>
                       {{#select system.attributes.hitDice.max}}
                           {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                       {{/select}}
                   </select>
+                  )
               </div>
         </div>
 
@@ -192,89 +193,34 @@
 
       </div>
     </header>
-           {{!-- Sheet Tab Navigation --}}
-          <nav class="sheet-tabs tabs" data-group="primary">
-              <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>        
-              <a class="choice" data-tab="items">{{localize "CTHACK.Items"}}</a>
-              <a class="choice" data-tab="abilities">{{localize "CTHACK.AbilitiesAndMagic"}}</a>
-              <a class="choice" data-tab="notes">{{localize "CTHACK.Notes"}}</a>
-          </nav>
+      
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>        
+        <a class="choice" data-tab="equipment">{{localize "CTHACK.Items"}}</a>
+        <a class="choice" data-tab="abilities">{{localize "CTHACK.AbilitiesAndMagic"}}</a>
+        <a class="choice" data-tab="notes">{{localize "CTHACK.Notes"}}</a>
+    </nav>
+   
     <section class="sheet-body">
             {{!-- Biography Tab --}}
             <div class="tab biography" data-group="primary" data-tab="description">
-                {{editor enrichedBiography target="system.biography" button=true owner=owner editable=editable}}
+                {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true owner=owner}}
             </div>
             
             {{!-- Owned Items Tab --}}
-            <div class="tab items" data-group="primary" data-tab="items">
-                <ol class="items-list">
-                    <li class="item-header flexrow" draggable="true">
-                      <div class="item-header-name">{{localize "CTHACK.Name"}}</div>
-                      <div>{{localize "CTHACK.ItemDiceName"}}</div>
-                      <div>{{localize "CTHACK.ItemRangeName"}}</div>
-                      <div class="item-controls-header">
-                        <a class="item-control item-create" data-tooltip="{{localize "CTHACK.AddItemOrWeapon"}}" data-type="item" data-alt-type="weapon"><i class="fas fa-plus"></i></a>
-                      </div>
-                    </li>
-                    {{#each weapons as |item id|}}
-                      {{> "systems/cthack/templates/actor/parts/actor-item.hbs" item}}
-                    {{/each}}
-                    {{#each otheritems as |item id|}}
-                      {{> "systems/cthack/templates/actor/parts/actor-item.hbs" item}}
-                    {{/each}}            
-                </ol>
+            <div class="tab items" data-group="primary" data-tab="equipment">
+              {{> "systems/cthack/templates/sheets/parts/character-equipment.hbs"}}
             </div>
 
             {{!-- Abilities and Magics Tab --}}
             <div class="tab abilities" data-group="primary" data-tab="abilities">
-              {{!-- Abilities--}}
-              <div class="entete-tableau">
-                  <div class="entete-titre">{{localize "CTHACK.Abilities"}}</div>
-                  <div class="item-controls-header">
-                    <a class="item-control ability-create" data-tooltip="{{localize "CTHACK.AddAbility"}}" data-type="ability"><i class="fas fa-plus"></i></a>
-                  </div>
-              </div>
-              
-              {{#if (gt abilities.length 0)}}            
-                <div class="grid-abilities">
-                    <div class="entete">{{localize "CTHACK.Name"}}</div>
-                    <div class="entete">{{localize "CTHACK.AbilityUsePer"}}</div>
-                    <div class="entete">{{localize "CTHACK.AbilityUseValue"}}</div>
-                    <div class="entete">{{localize "CTHACK.AbilityUseLast"}}</div>
-                    <div class="entete">{{localize "CTHACK.AbilityMultiple"}}</div>
-                    <div></div>
-                    {{#each abilities as |ability id|}}
-                          {{> "systems/cthack/templates/actor/parts/actor-ability.hbs" ability}}
-                    {{/each}}      
-                </div>
-              {{/if}}
-
-              {{!-- Magic --}}
-              <div class="entete-tableau">
-                    <div class="entete-titre">{{localize "CTHACK.Magic"}}</div>
-                    <div class="item-controls-header">
-                        <a class="item-control item-create" data-tooltip="{{localize "CTHACK.AddMagic"}}" data-type="magic"><i class="fas fa-plus"></i></a>
-                    </div>
-              </div>
-
-              {{#if (gt magics.length 0)}}   
-              <div class="grid-magics">
-                    <div class="entete">{{localize "CTHACK.Name"}}</div>
-                    <div class="entete">{{localize "CTHACK.MagicType"}}</div>
-                    <div class="entete">{{localize "CTHACK.MagicSanity"}}</div>
-                    <div class="entete">{{localize "CTHACK.MagicIncantation"}}</div>
-                    <div></div>
-                    {{#each magics as |item id|}}
-                        {{> "systems/cthack/templates/actor/parts/actor-magic.hbs" item}}
-                    {{/each}}       
-                </div>
-              {{/if}}
-
+              {{> "systems/cthack/templates/sheets/parts/character-abilities.hbs"}}
             </div>  
 
             {{!-- Notes Tab --}}
             <div class="tab character-notes" data-group="primary" data-tab="notes">
-                {{editor enrichedNotes target="system.notes" button=true owner=owner editable=editable}}
+                {{editor enrichedNotes target="system.notes" engine="prosemirror" button=true owner=owner}}
             </div>  
     </section>
   </div>

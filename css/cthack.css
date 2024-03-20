@@ -511,6 +511,9 @@ i.cthack {
   /* Centrer verticalement */
   height: 100%;
 }
+.cthack.sheet.actor.character-v2 {
+  min-width: 960px;
+}
 .cthack.sheet.actor.character-v2 select {
   color: black;
 }
@@ -518,7 +521,7 @@ i.cthack {
   color: white;
 }
 .cthack.sheet.actor.character-v2 .dice-d4 {
-  background-image: url('systems/cthack/ui/dice/d4-grey.svg');
+  background-image: url("systems/cthack/ui/dice/d4-grey.svg");
 }
 .cthack.sheet.actor.character-v2 .dice-d6 {
   background-image: url("systems/cthack/ui/dice/d6-grey.svg");
@@ -535,7 +538,7 @@ i.cthack {
 .cthack.sheet.actor.character-v2 .sidebar {
   display: flex;
   flex-direction: column;
-  margin: 30px 20px 0 20px;
+  margin: 30px 10px 0 20px;
   padding: 0 0 0 10px;
   flex: 180px 0 0;
   height: 400px;
@@ -580,7 +583,8 @@ i.cthack {
 }
 .cthack.sheet.actor.character-v2 .main {
   margin: 30px 20px 0 0;
-  padding: 0 20px 10px 0;
+  padding: 0 10px 10px 0;
+  min-width: 550px;
 }
 .cthack.sheet.actor.character-v2 .main .sheet-body {
   width: 100%;
@@ -590,6 +594,7 @@ i.cthack {
   width: 100%;
 }
 .cthack.sheet.actor.character-v2 .character-sheet-header {
+  max-height: 300px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -691,15 +696,142 @@ i.cthack {
 .cthack.sheet.actor.character-v2 .character-sheet-header .resource .hitpoints .hitpoints-max {
   text-align: left;
 }
-.cthack.sheet.actor.character-v2 .character-sheet-header nav {
+.cthack.sheet.actor.character-v2 .character-sheet-header .resource-value {
+  color: black;
+  text-shadow: 0 0 10px red;
+}
+.cthack.sheet.actor.character-v2 nav {
   grid-column-start: 1;
   grid-column-end: 3;
   height: 40px;
-  border-top: 1px solid white;
   border-bottom: 1px solid white;
+  margin-top: 5px;
 }
-.cthack.sheet.actor.character-v2 .character-sheet-header nav .choice {
+.cthack.sheet.actor.character-v2 nav .choice {
   font-weight: normal;
+}
+.cthack.sheet.actor.character-v2 nav .choice.active {
+  font-weight: bold;
+  border-top: 1px solid white;
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+  border-radius: 10px 10px 0 0;
+  padding: 0 5px 0 5px;
+  text-shadow: 0 0 10px red;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .editor {
+  min-height: 150px;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .editor-content {
+  min-height: 100px;
+  height: auto;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .items {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .items .item-line {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .items .item-line .item-name {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .items .item-line .item-name img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-abilities {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  row-gap: 5px;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-abilities .entete {
+  text-transform: uppercase;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-abilities .item-bloc {
+  display: flex;
+  text-align: left;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-abilities .item-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-abilities .item-controls {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 5px;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-abilities .item-name,
+.cthack.sheet.actor.character-v2 .sheet-body .grid-abilities .item-element-text {
+  display: flex;
+  justify-content: center;
+  /* Centrer horizontalement */
+  align-items: center;
+  /* Centrer verticalement */
+  height: 100%;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-magics {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 5px;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-magics .entete {
+  text-transform: uppercase;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-magics .item-bloc {
+  display: flex;
+  text-align: left;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-magics .item-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-magics .item-controls {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 5px;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .grid-magics .item-name,
+.cthack.sheet.actor.character-v2 .sheet-body .grid-magics .item-element-text {
+  display: flex;
+  justify-content: center;
+  /* Centrer horizontalement */
+  align-items: center;
+  /* Centrer verticalement */
+  height: 100%;
 }
 .cthack.sheet.actor.opponent {
   display: flex;

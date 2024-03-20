@@ -9,4 +9,8 @@ export default class CtHackWeapon extends CommonItem {
     schema.range = new fields.StringField({ required: true, nullable: false, initial: "" });
     return schema;
   }
+
+  get hasRange(){
+    return this.range !== "";
+  }
 }

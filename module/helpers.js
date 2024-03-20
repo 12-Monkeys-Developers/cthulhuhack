@@ -55,10 +55,6 @@ export const registerHandlebarsHelpers = function() {
 		if (CTHACK.debug) (`{{value}} is not a valid dice value`);
 	});
 
-	Handlebars.registerHelper('equals', function(val1, val2) {
-		return val1 === val2;
-	});
-
 	Handlebars.registerHelper('stringNeitherNullEmpty', function(str) {
 		return str !== null && str !== '';
 	});
@@ -160,7 +156,7 @@ export const registerHandlebarsHelpers = function() {
 	Handlebars.registerHelper('getStyleForDice', function(value) {
 		if (value === undefined) return;
 		if (value === "" || value == 0 || value == 1) return `style="color:white;"`;
-		return `style="background-image:url('systems/cthack/ui/dice/${value}-grey.svg');"`;
+		return `style="background-image:url('systems/cthack/ui/dice/${value}-grey.svg');padding: 5px;"`;
 	});
 
 	Handlebars.registerHelper('getStyleForDiceV2', function(value) {

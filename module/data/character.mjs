@@ -62,9 +62,10 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
 
     schema.attributes = new fields.SchemaField(attributes);
 
-    schema.shortDescription = new fields.HTMLField({ required: false, blank: true, textSearch: false });
+    schema.shortDescription = new fields.HTMLField({ required: false, blank: true, textSearch: true });
     schema.biography = new fields.HTMLField({ required: false, blank: true, textSearch: true });
     schema.notes = new fields.HTMLField({ required: false, blank: true, textSearch: true });
+    schema.equipment = new fields.HTMLField({ required: false, blank: true, textSearch: true });
     schema.archetype = new fields.StringField({ required: false, blank: true });
     schema.occupation = new fields.StringField({ required: false, blank: true });
     schema.abilities = new fields.ArrayField(
