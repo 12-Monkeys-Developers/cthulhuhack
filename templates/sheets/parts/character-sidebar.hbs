@@ -6,7 +6,7 @@
   {{#each actor.system.saves as |save key|}}
     {{log 'save' save key}}
     <div class="sidebar-section" data-save="{{key}}">
-        <label class="save-name rollable" data-tooltip="{{localize (toDesc2 key)}}" data-tooltip-direction="UP">{{getSaveLabel2 key save}}</label>               
+        <label class="save-name rollable" data-tooltip="{{localize (toDesc2 key)}}" data-tooltip-direction="UP" data-tooltip-class="tooltip-save">{{getSaveLabel2 key save}}</label>               
         {{#if @root.editable}}
             <input class="save-value" type="text" name="system.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number"/>
             <input type="checkbox" name="system.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}}/>

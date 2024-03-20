@@ -106,6 +106,10 @@ i.cthack {
 .editor.prosemirror.editing-source textarea {
   color: #fff;
 }
+#tooltip.tooltip-save {
+  max-width: 500px;
+  text-align: left;
+}
 .grid,
 .grid-2col {
   display: grid;
@@ -510,6 +514,24 @@ i.cthack {
 .cthack.sheet.actor.character-v2 select {
   color: black;
 }
+.cthack.sheet.actor.character-v2 .no-dice {
+  color: white;
+}
+.cthack.sheet.actor.character-v2 .dice-d4 {
+  background-image: url('systems/cthack/ui/dice/d4-grey.svg');
+}
+.cthack.sheet.actor.character-v2 .dice-d6 {
+  background-image: url("systems/cthack/ui/dice/d6-grey.svg");
+}
+.cthack.sheet.actor.character-v2 .dice-d8 {
+  background-image: url("systems/cthack/ui/dice/d8-grey.svg");
+}
+.cthack.sheet.actor.character-v2 .dice-d10 {
+  background-image: url("systems/cthack/ui/dice/d10-grey.svg");
+}
+.cthack.sheet.actor.character-v2 .dice-d12 {
+  background-image: url("systems/cthack/ui/dice/d12-grey.svg");
+}
 .cthack.sheet.actor.character-v2 .sidebar {
   display: flex;
   flex-direction: column;
@@ -594,6 +616,7 @@ i.cthack {
 }
 .cthack.sheet.actor.character-v2 .character-sheet-header .occupation input {
   border: 1px solid;
+  width: 250px;
 }
 .cthack.sheet.actor.character-v2 .character-sheet-header .archetype {
   display: flex;
@@ -605,6 +628,18 @@ i.cthack {
 }
 .cthack.sheet.actor.character-v2 .character-sheet-header .archetype input {
   border: 1px solid;
+  width: 250px;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .short-description {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-style: italic;
+  padding-left: 50px;
+}
+.cthack.sheet.actor.character-v2 .character-sheet-header .short-description-editable {
+  border: 1px solid;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 .cthack.sheet.actor.character-v2 .character-sheet-header .resources {
   grid-column-start: 1;

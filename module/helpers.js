@@ -163,6 +163,12 @@ export const registerHandlebarsHelpers = function() {
 		return `style="background-image:url('systems/cthack/ui/dice/${value}-grey.svg');"`;
 	});
 
+	Handlebars.registerHelper('getStyleForDiceV2', function(value) {
+		if (value === undefined) return;
+		if (value === "" || value == 0 || value == 1) return "no-dice";
+		return `dice-${value}`;
+	});
+
 	Handlebars.registerHelper('getNbRessources', function() {
 		const wealthEnabled = game.settings.get("cthack","Wealth") !== "none" ? true : false;
 		const miscellaneousEnabled = game.settings.get("cthack","MiscellaneousResource") !== "" ? true : false;

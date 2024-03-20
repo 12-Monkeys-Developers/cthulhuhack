@@ -62,6 +62,7 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
 
     schema.attributes = new fields.SchemaField(attributes);
 
+    schema.shortDescription = new fields.HTMLField({ required: false, blank: true, textSearch: false });
     schema.biography = new fields.HTMLField({ required: false, blank: true, textSearch: true });
     schema.notes = new fields.HTMLField({ required: false, blank: true, textSearch: true });
     schema.archetype = new fields.StringField({ required: false, blank: true });
@@ -80,5 +81,17 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
     });
 
     return schema;
+  }
+
+  get hasShortDescription() {
+    return this.shortDescription !== null && this.shortDescription !== '';
+  }
+
+  get hasOccupation() {
+    return this.occupation !== null && this.occupation !== '';
+  }
+
+  get hasArchetype() {
+    return this.archetype !== null && this.archetype !== '';
   }
 }

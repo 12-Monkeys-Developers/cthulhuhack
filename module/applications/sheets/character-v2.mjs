@@ -18,7 +18,7 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
 
 	/** @override */
 	get template() {
-		return 'systems/cthack/templates/sheets/actor-sheet-v2.hbs';
+		return 'systems/cthack/templates/sheets/character-v2.hbs';
 	}
 
 	/** @override */

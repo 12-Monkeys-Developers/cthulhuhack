@@ -233,8 +233,8 @@
   "primaryTokenAttribute": "hp",
   "flags": {
     "hotReload": {
-      "extensions": ["css", "json", "hbs"],
-      "path": ["lang", "module", "styles", "templates", "css/cthack.css"]
+      "extensions": ["css", "html", "hbs", "json"],
+      "path": ["css", "templates", "lang"]
     }
   }
 }

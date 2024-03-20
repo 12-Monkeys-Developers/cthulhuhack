@@ -4,6 +4,30 @@
     color: black;
   }
 
+  .no-dice {
+    color:white;
+  }
+
+  .dice-d4 {
+    background-image: url('systems/cthack/ui/dice/d4-grey.svg');
+  }
+
+  .dice-d6 {
+    background-image: url("systems/cthack/ui/dice/d6-grey.svg");
+  }
+
+  .dice-d8 {
+    background-image: url("systems/cthack/ui/dice/d8-grey.svg");
+  }
+
+  .dice-d10 {
+    background-image: url("systems/cthack/ui/dice/d10-grey.svg");
+  }
+
+  .dice-d12 {
+    background-image: url("systems/cthack/ui/dice/d12-grey.svg");
+  }
+
   .sidebar {
     display: flex;
     flex-direction: column;
@@ -92,7 +116,8 @@
         margin-right: 20px;
       }
       input {
-        border: 1px solid;;
+        border: 1px solid;
+        width: 250px;
       }
     }
     .archetype {
@@ -103,8 +128,20 @@
         margin-right: 20px;
       }
       input {
-        border: 1px solid;;
+        border: 1px solid;
+        width: 250px;
       }
+    }
+    .short-description {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      font-style: italic;
+      padding-left: 50px;
+  }
+    .short-description-editable {
+        border: 1px solid;
+        grid-column-start: 1;
+        grid-column-end: 3;
     }
     .resources {
       grid-column-start: 1;

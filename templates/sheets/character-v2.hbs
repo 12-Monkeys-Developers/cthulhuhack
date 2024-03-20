@@ -13,7 +13,7 @@
       </div>
       <div class="header-occupation"> 
         <div class="occupation-archetype">
-          {{system.occupation}} (Archetype {{system.archetype}})
+          {{#if system.hasOccupation}}{{system.occupation}}{{/if}}{{#if system.hasArchetype}} (Archetype {{system.archetype}}){{/if}}
         </div>
         <div class="sheet-lock">
           {{#if editable}}
@@ -23,23 +23,31 @@
           {{/if}}
         </div>
       </div>
+      
+      {{#unless editable}}
+          <div class="short-description">
+            {{system.shortDescription}}
+          </div>
+      {{/unless}}
+
       {{#if editable}}
-      <div class="occupation">
-        <label>{{localize "CTHACK.Occupation"}}</label>
-        {{#if editable}}
-          <input name="system.occupation" type="text" value="{{system.occupation}}" placeholder='{{localize "CTHACK.Occupation"}}' class="occupation-input"/>
-        {{else}}
-          {{system.occupation}}
-        {{/if}}
-      </div>
-      <div class="archetype">
-        <label>{{localize "CTHACK.Archetype"}}</label>
-        {{#if editable}}
-          <input name="system.archetype" type="text" value="{{system.archetype}}" placeholder='{{localize "CTHACK.Archetype"}}' class="occupation-input"/>
-        {{else}}
-          {{system.archetype}}
-        {{/if}}                
-      </div>
+        <div class="occupation">
+          <label>{{localize "CTHACK.Occupation"}}</label>
+          {{#if editable}}
+            <input name="system.occupation" type="text" value="{{system.occupation}}" class="occupation-input"/>
+          {{else}}
+            {{system.occupation}}
+          {{/if}}
+        </div>
+        <div class="archetype">
+          <label>{{localize "CTHACK.Archetype"}}</label>
+          {{#if editable}}
+            <input name="system.archetype" type="text" value="{{system.archetype}}" class="occupation-input"/>
+          {{else}}
+            {{system.archetype}}
+          {{/if}}                
+        </div>
+        <input class="short-description-editable" name="system.shortDescription" type="text" value="{{system.shortDescription}}"/>
       {{/if}}
       <div class="resources {{getNbRessources}}">
         <div class="resource">
@@ -48,10 +56,11 @@
                 <select name="system.attributes.flashlights.value" data-type="String" {{{getStyleForDice system.attributes.flashlights.value}}} {{disabled uneditable}}>
                   {{selectOptions dicesValue selected=system.attributes.flashlights.value}}                  
                 </select>
-                <span>/</span>
+                (
                 <select name="system.attributes.flashlights.max" data-type="String" {{{getStyleForDice system.attributes.flashlights.max}}} {{disabled uneditable}}>
                   {{selectOptions dicesMax selected=system.attributes.flashlights.max}}
                 </select>
+               )
             </div>
         </div>                  
         <div class="resource">
@@ -62,12 +71,13 @@
                     {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                 {{/select}}
                 </select>
-                <span>/</span>
+                (
                 <select name="system.attributes.smokes.max" data-type="String" {{{getStyleForDice system.attributes.smokes.max}}} {{disabled uneditable}}>
                 {{#select system.attributes.smokes.max}}
                     {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
+                )
             </div>
         </div>
         <div class="resource">
@@ -78,12 +88,13 @@
                     {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                 {{/select}}
                 </select>
-                <span>/</span>
+                (
                 <select name="system.attributes.sanity.max" data-type="String" {{{getStyleForDice system.attributes.sanity.max}}} {{disabled uneditable}}>
                 {{#select system.attributes.sanity.max}}
                     {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                 {{/select}}
                 </select>
+                )
             </div>
         </div>
         
@@ -97,12 +108,13 @@
                       {{/select}}
                   </select>
                   {{#if (isWealthAsResource)}}
-                      <span> / </span>
+                      (
                       <select name="system.attributes.wealthDice.max" data-type="String" {{{getStyleForDice system.attributes.wealthDice.max}}} {{disabled uneditable}}>
                           {{#select system.attributes.wealthDice.max}}
                               {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                           {{/select}}
                       </select>
+                      )
                   {{/if}}
               </div>
           </div>
@@ -117,12 +129,13 @@
                             {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                         {{/select}}
                     </select>
-                    <span> / </span>
+                    (
                     <select name="system.attributes.miscellaneous.max" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.max}}} {{disabled uneditable}}>
                         {{#select system.attributes.miscellaneous.max}}
                             {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
                         {{/select}}
                     </select>
+                    )
                 </div>
             </div>
         {{/if}}
