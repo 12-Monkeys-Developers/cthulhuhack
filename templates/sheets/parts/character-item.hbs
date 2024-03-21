@@ -1,8 +1,8 @@
 {{log 'weapon' this}}
-<div class="item flexrow character-contextmenu" data-item-id="{{_id}}">
+<div class="item character-contextmenu" data-item-id="{{_id}}">
     <details>
         <summary class="item-line">
-            <div class="item-name">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
+            <div class="item-name {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
             <div class="item-element">
                 {{#if (isDiceRollable system.dice)}} <i class="fas fa-dice-d20 rollable"></i> {{/if}}
                 <select class="item-dice-select" name="{{_id}}" data-type="String" {{{getStyleForDice system.dice}}} {{disabled @root.uneditable}}>

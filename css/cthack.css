@@ -711,6 +711,7 @@ i.cthack {
   font-weight: normal;
 }
 .cthack.sheet.actor.character-v2 nav .choice.active {
+  color: white;
   font-weight: bold;
   border-top: 1px solid white;
   border-right: 1px solid white;
@@ -719,47 +720,57 @@ i.cthack {
   padding: 0 5px 0 5px;
   text-shadow: 0 0 10px red;
 }
+.cthack.sheet.actor.character-v2 .sheet-body .editor {
+  min-height: 150px;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .editor-container {
+  flex: 1;
+  position: relative;
+  margin: 0;
+  min-height: 200px;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .editor-content {
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .prosemirror menu {
+  font-size: 0.8em;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
 .cthack.sheet.actor.character-v2 .sheet-body .equipment {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .editor {
-  min-height: 150px;
-}
-.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .editor-content {
-  min-height: 100px;
-  height: auto;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .prosemirror menu li:hover {
-  border: 2px solid #eea3a3;
-}
-.cthack.sheet.actor.character-v2 .sheet-body .equipment .misc .prosemirror menu button {
-  background: var(--color-hover-bg);
-}
-.cthack.sheet.actor.character-v2 .sheet-body .equipment .items {
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .items-list {
   display: flex;
   flex-direction: column;
 }
-.cthack.sheet.actor.character-v2 .sheet-body .equipment .items .item-line {
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .items-list .item-line {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
 }
-.cthack.sheet.actor.character-v2 .sheet-body .equipment .items .item-line .item-name {
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .items-list .item-line .item-name {
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.character-v2 .sheet-body .equipment .items .item-line .item-name img {
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .items-list .item-line .item-name img {
   width: 30px;
   height: 30px;
   margin-right: 5px;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .items-list .item-line .has-description {
+  font-style: italic;
+}
+.cthack.sheet.actor.character-v2 .sheet-body .equipment .items-list .item-summary {
+  font-size: 0.9em;
 }
 .cthack.sheet.actor.character-v2 .sheet-body .grid-abilities {
   display: grid;

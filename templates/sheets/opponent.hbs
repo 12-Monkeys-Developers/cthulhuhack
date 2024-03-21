@@ -108,7 +108,6 @@
       {{/if}}
       <div class="grid-attacks">
         {{#each attacks as |attack id|}}
-        {{log 'opponent-attack' attack}}
           <div class="item opponent-contextmenu" data-item-id="{{attack._id}}">
             <details>
               <summary class="item-line">
@@ -119,7 +118,7 @@
             </details>    
           </div>
         {{/each}}
-        </div>
+      </div>
     </div>
 
     <div class="abilities">

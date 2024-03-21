@@ -17,7 +17,7 @@ export default class CtHackOpponentSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    return "systems/cthack/templates/actor/opponent-sheet.hbs";
+    return "systems/cthack/templates/sheets/opponent.hbs";
   }
   
   /** @override */

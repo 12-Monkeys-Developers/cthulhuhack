@@ -212,6 +212,7 @@
     .choice {
       font-weight: normal;      
       &.active {
+        color: white;
         font-weight: bold;
         border-top : 1px solid white;
         border-right: 1px solid white;
@@ -224,33 +225,35 @@
   }
 
   .sheet-body {
+    .editor {
+      min-height: 150px;
+    }
+    .editor-container {
+      flex: 1;
+      position: relative;
+      margin: 0;
+      min-height: 200px;
+    }
+    .editor-content {
+      margin: 0px 5px;
+      font-weight: normal;
+    }
+    .prosemirror menu {
+      font-size: 0.8em;
+      li {
+        margin: 0px 0px;
+        &:hover {
+          border: 2px solid #eea3a3;
+        }
+      }
+      button {
+        background: var(--color-hover-bg);
+      }
+    }
     .equipment {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      .misc {
-        .editor {
-          min-height: 150px;
-        }
-        .editor-content {
-          min-height: 100px;
-          height: auto;
-          margin: 0px 5px;
-          font-weight: normal;
-        }
-        .prosemirror menu {
-          font-size: 0.8em;
-          li {
-            margin: 0px 0px;
-            &:hover {
-              border: 2px solid #eea3a3;
-            }
-          }
-          button {
-            background: var(--color-hover-bg);
-          }
-        }
-      }
-      .items {
+      .items-list {
         display: flex;
         flex-direction: column;
         .item-line {
@@ -265,7 +268,13 @@
               margin-right: 5px;               
             }
           }
-        } 
+          .has-description {
+            font-style: italic;
+          }
+        }
+        .item-summary {
+          font-size: 0.9em;
+        }
       }
     }
 

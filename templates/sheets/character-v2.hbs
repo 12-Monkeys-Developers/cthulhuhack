@@ -124,7 +124,7 @@
             <div class="resource">
                 <label for="miscellaneous.value" class="resource-label miscellaneous-name {{#if (isDiceRollable system.attributes.miscellaneous.value)}}rollable{{/if}}"  data-resource="miscellaneous">{{getMiscellaneousValue}}</label>
                 <div class="resource-content">
-                    <select name="system.attributes.miscellaneous.value" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.value}}} {{disabled uneditable}}>
+                    <select class="resource-value" name="system.attributes.miscellaneous.value" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.value}}} {{disabled uneditable}}>
                         {{#select system.attributes.miscellaneous.value}}
                             {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                         {{/select}}
@@ -154,7 +154,7 @@
         <div class="resource">
               <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.hitDice.value)}}rollable{{/if}}" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</label>
               <div class="resource-content">
-                  <select name="system.attributes.hitDice.value" data-type="String" {{{getStyleForDice system.attributes.hitDice.value}}} {{disabled uneditable}}>
+                  <select class="resource-value" name="system.attributes.hitDice.value" data-type="String" {{{getStyleForDice system.attributes.hitDice.value}}} {{disabled uneditable}}>
                       {{#select system.attributes.hitDice.value}}
                           {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
                       {{/select}}
@@ -172,7 +172,7 @@
         <div class="resource">
             <label for="armedDamage.value" class="resource-label armed-damage-name rollable" data-resource="armedDamage">{{localize "CTHACK.ArmedDamage"}}</label>
             <div class="resource-content">
-                <select name="system.attributes.armedDamage.value" data-type="String" {{{getStyleForDice system.attributes.armedDamage.value}}} {{disabled uneditable}}>
+                <select class="resource-value" name="system.attributes.armedDamage.value" data-type="String" {{{getStyleForDice system.attributes.armedDamage.value}}} {{disabled uneditable}}>
                 {{#select system.attributes.armedDamage.value}}
                     {{>"systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
                 {{/select}}
@@ -183,7 +183,7 @@
         <div class="resource">
             <label for="unarmedDamage.value" class="resource-label unarmed-damage-name rollable" data-resource="unarmedDamage">{{localize "CTHACK.UnarmedDamage"}}</label>
             <div class="resource-content">
-                <select name="system.attributes.unarmedDamage.value" data-type="String" {{{getStyleForDice system.attributes.unarmedDamage.value}}} {{disabled uneditable}}>
+                <select class="resource-value" name="system.attributes.unarmedDamage.value" data-type="String" {{{getStyleForDice system.attributes.unarmedDamage.value}}} {{disabled uneditable}}>
                 {{#select system.attributes.unarmedDamage.value}}
                     {{>"systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
                 {{/select}}

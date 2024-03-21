@@ -30,8 +30,8 @@ export default class CtHackCharacterSheet extends ActorSheet {
 		context.otheritems = this.actor.itemTypes.item;
 		context.conditions = this.actor.itemTypes.definition;
 
-		context.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, {async: true});
-		context.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, {async: true});
+		context.enrichedBiography = await TextEditor.enrichHTML(this.actor.system.biography, {async: true});
+		context.enrichedNotes = await TextEditor.enrichHTML(this.actor.system.notes, {async: true});
 
 		context.isGm = game.user.isGM;
 		context.system = context.data.system;
