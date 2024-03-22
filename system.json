@@ -233,8 +233,8 @@
   "primaryTokenAttribute": "hp",
   "flags": {
     "hotReload": {
-      "extensions": ["css", "html", "hbs", "json"],
-      "path": ["css", "templates", "lang"]
+      "extensions": ["css", "html", "hbs", "json", "mjs"],
+      "path": ["css", "templates", "lang", "module"]
     }
   }
 }

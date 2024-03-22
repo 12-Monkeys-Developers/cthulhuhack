@@ -208,36 +208,40 @@
     grid-column-end: 3;
     height: 40px;
     border-bottom: 1px solid white;
-    margin-top: 5px;
+    margin-top: 10px;
     .choice {
-      font-weight: normal;      
+      font-weight: normal;
       &.active {
         color: white;
         font-weight: bold;
-        border-top : 1px solid white;
+        border-top: 1px solid white;
         border-right: 1px solid white;
         border-left: 1px solid white;
-        border-radius: 10px 10px 0 0;     
+        border-radius: 10px 10px 0 0;
         padding: 0 5px 0 5px;
         text-shadow: 0 0 10px red;
       }
-    }
+    }    
   }
 
   .sheet-body {
     .editor {
       min-height: 150px;
     }
+
     .editor-container {
       flex: 1;
       position: relative;
       margin: 0;
       min-height: 200px;
     }
+
     .editor-content {
       margin: 0px 5px;
       font-weight: normal;
+      font-size: var(--font-size-18);
     }
+
     .prosemirror menu {
       font-size: 0.8em;
       li {
@@ -250,6 +254,7 @@
         background: var(--color-hover-bg);
       }
     }
+
     .equipment {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -259,18 +264,33 @@
         .item-line {
           display: grid;
           grid-template-columns: 2fr 1fr 2fr;
-          .item-name {
+          .item-name-img {
             display: flex;
             align-items: center;
             img {
               width: 30px;
-              height: 30px;        
-              margin-right: 5px;               
+              height: 30px;
+              margin-right: 5px;
             }
+          }
+          .item-dice {
+            display: flex;
+            align-items: center;
+          }
+          .item-range {
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
           .has-description {
             font-style: italic;
           }
+        }
+        .item-description {
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          text-align: left;
         }
         .item-summary {
           font-size: 0.9em;
@@ -278,54 +298,128 @@
       }
     }
 
-    .grid-common() {
-      .entete {
-        text-transform: uppercase;
-      }
-      .item-bloc {
+    .abilities-magic {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      .abilities {
         display: flex;
-        text-align: left;
+        flex-direction: column;
+        .title {
+          border: none;
+          font-size: 1em;
+          font-weight: bold;
+          padding: 10px 0 0 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          a {
+            padding-left: 10px;
+            font-size: 0.8em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
       }
-      .item-image {
-        width: 40px;
-        height: 40px;
-        margin-right: 5px;
-      }
-      .item-controls {
+
+      .magics {
         display: flex;
+        flex-direction: column;
+        .title {
+          border: none;
+          font-size: 1em;
+          font-weight: bold;
+          padding: 10px 0 10px 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          a {
+            padding-left: 10px;
+            font-size: 0.8em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+
+      .entete-tableau {
+        display: flex;
+      }
+
+      .grid-abilities {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
+        padding-left: 10px;
         align-items: center;
-        justify-content: right;
-        gap: 5px;
+        font-size: var(--font-size-16);
+        .item-line {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          height: 30px;
+          .item-name {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            img {
+              width: 30px;
+              height: 30px;
+              margin-right: 5px;
+            }
+          }
+          .item-use {
+            display: flex;
+            align-items: center;
+          }
+          .item-use-last {
+            display: flex;
+            align-items: center;
+          }
+        }
+        .has-description {
+          font-style: italic;
+        }
       }
-      .item-name,
-      .item-element-text {
-        display: flex;
-        justify-content: center; /* Centrer horizontalement */
-        align-items: center; /* Centrer verticalement */
-        height: 100%;
+
+      .grid-magics {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
+        padding-left: 10px;
+        align-items: center;
+        font-size: var(--font-size-16);
+        .item-line {
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr 1fr;
+          height: 40px;
+          select {
+            height: 40px;
+          }
+          .item-name {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            img {
+              width: 30px;
+              height: 30px;
+              margin-right: 5px;
+            }
+          }
+          .item-subtype {
+            display: flex;
+            align-items: center;
+          }
+          .item-incantation {
+            display: flex;
+            align-items: center;
+          }
+        }
+        .has-description {
+          font-style: italic;
+        }
       }
-    }
-
-    .grid-abilities {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      row-gap: 5px;
-      font-size: 1rem;
-      color: #fff;
-      margin-bottom: 20px;
-      text-align: center;
-      .grid-common();
-    }
-
-    .grid-magics {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      row-gap: 5px;
-      font-size: 1rem;
-      color: #fff;
-      margin-bottom: 20px;
-      text-align: center;
-      .grid-common();
     }
   }
 }

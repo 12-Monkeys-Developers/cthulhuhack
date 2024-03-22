@@ -1,0 +1,20 @@
+{{log 'ability' this}}
+<div class="item character-contextmenu" data-item-id="{{_id}}">
+  <details>
+    <summary class="item-line">
+      <div class="item-name {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}"/>{{/if}}{{{name}}}</div>
+      <div class="item-use">
+        {{#if system.hasUse}}
+          {{localize 'CTHACK.AbilityUseValue'}} ({{abilityPeriodToString system.uses.per}}) : {{system.uses.value}}/{{system.uses.max}} &nbsp;&nbsp;&nbsp;
+        {{/if}}
+      </div>
+      <div class="item-use-last">
+        {{#if system.hasLastUse}}
+           {{localize 'CTHACK.AbilityUseLast'}} : {{system.uses.last}}
+        {{/if}}
+      </div>
+    </summary>
+     <div class="item-description">{{{enrichedDescription}}}</div>
+  </details>
+</div>
+

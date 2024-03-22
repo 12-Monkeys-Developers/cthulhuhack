@@ -20,6 +20,8 @@ export const preloadHandlebarsTemplates = async function() {
 		'systems/cthack/templates/sheets/parts/character-equipment.hbs',
 		'systems/cthack/templates/sheets/parts/character-abilities.hbs',
 		'systems/cthack/templates/sheets/parts/character-item.hbs',
+		'systems/cthack/templates/sheets/parts/character-ability.hbs',
+		'systems/cthack/templates/sheets/parts/character-magic.hbs',
 
 		// ITEM
 		'systems/cthack/templates/sheets/ability.hbs',

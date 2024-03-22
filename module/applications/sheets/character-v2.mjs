@@ -29,10 +29,34 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
     context.editable = this.actor.isUnlocked;
     context.uneditable = !this.actor.isUnlocked;
 
-    context.abilities = this.actor.itemTypes.ability;
-    context.magics = this.actor.itemTypes.magic;
-    context.weapons = this.actor.itemTypes.weapon;
-    context.otheritems = this.actor.itemTypes.item;
+    context.abilities = [];
+    const abilitiesRaw = this.actor.itemTypes.ability;
+    for (const item of abilitiesRaw) {
+      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true });
+      context.abilities.push(item);
+    }
+
+    context.magics = [];
+    const magicsRaw = this.actor.itemTypes.magic;
+    for (const item of magicsRaw) {
+      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true });
+      context.magics.push(item);
+    }
+
+    context.weapons = [];
+    const weaponsRaw = this.actor.itemTypes.weapon;
+    for (const item of weaponsRaw) {
+      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true });
+      context.weapons.push(item);
+    }
+  
+    context.otheritems = [];
+    const otheritemsRaw = this.actor.itemTypes.item;
+    for (const item of otheritemsRaw) {
+      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true });
+      context.otheritems.push(item);
+    }
+
     context.conditions = this.actor.itemTypes.definition;
 
     context.enrichedBiography = await TextEditor.enrichHTML(this.actor.system.biography, { async: true });
@@ -40,6 +64,7 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
     context.enrichedEquipment = await TextEditor.enrichHTML(this.actor.system.equipment, { async: true });
 
     context.isGm = game.user.isGM;
+    context.hasImage = this.actor.hasImage;
 
     context.system = this.actor.system;
 
@@ -56,9 +81,6 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
 
     html.find(".sheet-lock").click(this._onSheetLock.bind(this));
 
-    // Item summaries
-    html.find(".item .item-name").click((event) => this._onItemSummary(event));
-
     // Add, Edit or Delete Inventory
     html.find(".item-create").click(this._onItemCreate.bind(this));
     html.find(".item-edit").click((ev) => {
@@ -70,14 +92,6 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
 
     // Add, Edit, Delete or Use Ability Item
     html.find(".ability-create").click(this._onItemCreate.bind(this));
-    html.find(".ability-edit").click((ev) => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-      item.sheet.render(true);
-    });
-    html.find(".ability-delete").click(this._onItemDelete.bind(this));
-    html.find(".ability-use").click(this._onItemUse.bind(this));
-    html.find(".ability-reset").click(this._onAbilityReset.bind(this));
 
     // Saving throws
     html.find(".save-name").click(this._onSaveRoll.bind(this));
@@ -196,7 +210,20 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
         },
         callback: async (li) => {
           const item = this.actor.items.get(li.data("item-id"));
-          await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
+          const key = item.system.key;
+          switch (item.type) {
+            case "ability":
+              await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
+              await this.actor.deleteAbility(key, item.id);
+              break;
+            case "definition":
+              await this.actor.deleteEffectFromItem(item);
+              await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
+              break;
+            default:
+              await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
+              break;
+          }
         },
       },
     ];
@@ -302,49 +329,6 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
         await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
         break;
     }
-  }
-
-  /**
-   * @name _onItemUse
-   * @description Callback on use item actions
-   * 				Only ability type is managed
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
-   */
-  _onItemUse(event) {
-    event.preventDefault();
-    const li = $(event.currentTarget).parents(".item");
-    const itemId = li.data("itemId");
-    const item = this.actor.items.find((item) => item.id === itemId);
-    switch (item.type) {
-      case "ability":
-        this.actor.useAbility(item);
-        this.actor.sheet.render(true);
-        break;
-      default:
-        break;
-    }
-  }
-
-  /**
-   * @name _onAbilityReset
-   * @description Callback on ability reset action
-   * 				Resets the uses number to max
-   * 				Rester the last used datetime
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
-   */
-  _onAbilityReset(event) {
-    event.preventDefault();
-    const li = $(event.currentTarget).parents(".item");
-    const itemId = li.data("itemId");
-    const item = this.actor.items.find((item) => item.id === itemId);
-
-    this.actor.resetAbility(item);
   }
 
   /**
@@ -567,29 +551,6 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
       this.actor.update({ "data.attributes.adrenaline2": newData });
     }
     this.actor.sheet.render(true);
-  }
-
-  /**
-   * Handle toggling of an item from the Actor sheet
-   * @private
-   */
-  _onItemSummary(event) {
-    event.preventDefault();
-    let li = $(event.currentTarget).parents(".item");
-    const item = this.actor.items.get(li.data("item-id"));
-
-    // Toggle summary
-    if (item?.system.description) {
-      if (li.hasClass("expanded")) {
-        let summary = li.children(".item-summary");
-        summary.slideUp(200, () => summary.remove());
-      } else {
-        let div = $(`<div class="item-summary">${item.system.description}</div>`);
-        li.append(div.hide());
-        div.slideDown(200);
-      }
-      li.toggleClass("expanded");
-    }
   }
 
   //#endregion

@@ -58,8 +58,7 @@ export default class CtHackCharacterSheet extends ActorSheet {
 		});
 		html.find('.item-delete').click(this._onItemDelete.bind(this));
 
-		// Add, Edit, Delete or Use Ability Item
-		html.find('.ability-create').click(this._onItemCreate.bind(this));
+		// Edit, Delete or Use Ability Item
 		html.find('.ability-edit').click((ev) => {
 			const li = $(ev.currentTarget).parents('.item');
 			const item = this.actor.items.get(li.data('itemId'));

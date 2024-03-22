@@ -65,9 +65,12 @@ CTHACK.abilityUsePeriod = {
 	Permanent: 'CTHACK.AbilityUsePermanent',
 	Scenario: 'CTHACK.AbilityUseScenario',
 	Session: 'CTHACK.AbilityUsePerSession',
+	Day: 'CTHACK.AbilityUsePerDay',
+	Night: 'CTHACK.AbilityUsePerNight',
 	Hour: 'CTHACK.AbilityUsePerHour',
 	Scene: 'CTHACK.AbilityUsePerScene',
-	Fight: 'CTHACK.AbilityUsePerFight'
+	Fight: 'CTHACK.AbilityUsePerFight',
+	Moment: 'CTHACK.AbilityUsePerMoment'
 };
 
 CTHACK.magicType = {

@@ -307,6 +307,7 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 	};
 	const html = await renderTemplate(template, dialogData);
 
+	// TODO Virer les tooltips et utiliser le fonctionnement standard de Foundry
 	if (rollType !== 'Damage' && rollType !== 'AttackDamage') {
 		// Create the Dialog window
 		return new Promise((resolve) => {
