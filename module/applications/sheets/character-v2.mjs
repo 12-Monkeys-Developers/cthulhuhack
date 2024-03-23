@@ -57,7 +57,12 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
       context.otheritems.push(item);
     }
 
-    context.conditions = this.actor.itemTypes.definition;
+    context.conditions = [];
+    const conditionsRaw = this.actor.itemTypes.definition;
+    for (const item of conditionsRaw) {
+      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true });
+      context.conditions.push(item);
+    }
 
     context.enrichedBiography = await TextEditor.enrichHTML(this.actor.system.biography, { async: true });
     context.enrichedNotes = await TextEditor.enrichHTML(this.actor.system.notes, { async: true });

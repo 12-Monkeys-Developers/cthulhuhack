@@ -512,24 +512,24 @@ export default class CtHackActor extends Actor {
     const definitionKey = item.system.key;
     if (CTHACK.debug) console.log("CTHACK | deleteDefinitionItem : definitionKey = " + definitionKey);
     if (definitionKey === "OOA-CRB") {
-      effect = this.effects.find((i) => i.label === definitionKey);
+      effect = this.effects.find((i) => i.name === definitionKey);
       if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id);
       await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
     } else if (definitionKey === "OOA-MIC" || definitionKey === "OOA-STA" || definitionKey === "OOA-WIN") {
-      effect = this.effects.find((i) => i.label === definitionKey);
+      effect = this.effects.find((i) => i.name === definitionKey);
       if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id);
       await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
       await this.unsetFlag("cthack", "disadvantageOOA");
     } else if (definitionKey.startsWith("OOA")) {
-      effect = this.effects.find((i) => i.label === definitionKey);
+      effect = this.effects.find((i) => i.name === definitionKey);
       if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id);
       await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
     } else if (definitionKey.startsWith("TI")) {
-      effect = this.effects.find((i) => i.label === definitionKey);
+      effect = this.effects.find((i) => i.name === definitionKey);
       if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id);
       await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
     } else if (definitionKey.startsWith("SK")) {
-      effect = this.effects.find((i) => i.label === definitionKey);
+      effect = this.effects.find((i) => i.name === definitionKey);
       if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id);
       await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
     }

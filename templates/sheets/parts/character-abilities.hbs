@@ -10,7 +10,7 @@
             {{#if (gt abilities.length 0)}}<div class="title">{{localize "CTHACK.Abilities"}}</div>{{/if}}
         {{/if}}
                   
-        <div class="grid-abilities">
+        <div class="grid-abilities items-list">
             {{#each abilities as |item id|}}
                     {{> "systems/cthack/templates/sheets/parts/character-ability.hbs" item}}
             {{/each}}      
@@ -27,7 +27,7 @@
             {{#if (gt magics.length 0)}}<div class="title">{{localize "CTHACK.Magic"}}</div>{{/if}}
          {{/if}}
 
-        <div class="grid-magics">
+        <div class="grid-magics items-list">
             {{#each magics as |item id|}}
                 {{> "systems/cthack/templates/sheets/parts/character-magic.hbs" item}}
             {{/each}}       

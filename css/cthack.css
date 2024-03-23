@@ -110,6 +110,10 @@ i.cthack {
   max-width: 500px;
   text-align: left;
 }
+a.inline-roll {
+  background: none;
+  border: 1px solid white;
+}
 .grid,
 .grid-2col {
   display: grid;
@@ -577,6 +581,54 @@ i.cthack {
 .cthack.sheet.actor.character-v2 .sidebar .sidebar-section .save-value {
   flex: 2;
   text-align: right;
+}
+.cthack.sheet.actor.character-v2 .sidebar .fortune {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.cthack.sheet.actor.character-v2 .sidebar .adrenaline {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.cthack.sheet.actor.character-v2 .sidebar .adrenaline .adrenaline-img {
+  height: 30px;
+  width: 30px;
+}
+.cthack.sheet.actor.character-v2 .sidebar .conditions {
+  display: flex;
+  flex-direction: column ;
+  margin-top: 10px;
+}
+.cthack.sheet.actor.character-v2 .sidebar .conditions .conditions-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.character-v2 .sidebar .conditions .items-list {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.actor.character-v2 .sidebar .conditions .items-list .item-line {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.cthack.sheet.actor.character-v2 .sidebar .conditions .items-list .item-line .item-name-img {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character-v2 .sidebar .conditions .items-list .item-line .item-name-img img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+.cthack.sheet.actor.character-v2 .sidebar .conditions .items-list .item-line .has-description {
+  font-style: italic;
+}
+.cthack.sheet.actor.character-v2 .sidebar .conditions .items-list .item-summary {
+  font-size: 0.9em;
 }
 .cthack.sheet.actor.character-v2 .main {
   margin: 30px 20px 0 0;

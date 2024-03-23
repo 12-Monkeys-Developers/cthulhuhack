@@ -131,7 +131,7 @@
       {{/if}}
       <div class="grid-opponent-abilities">
         {{#each opponentAbilities as |ability id|}}    
-          {{log 'opponent-ability' ability}}   
+          {{!log 'opponent-ability' ability}}   
             <div class="item opponent-contextmenu" data-item-id="{{ability._id}}">
               <details>
                 <summary class="item-line">
@@ -155,7 +155,7 @@
         {{/if}}
         <div class="grid-magics">
           {{#each magics as |magic id|}}
-          {{log 'opponent-magic' magic}}
+          {{!log 'opponent-magic' magic}}
             <div class="item opponent-contextmenu" data-item-id="{{magic._id}}">
               <details>
                 <summary class="item-line">

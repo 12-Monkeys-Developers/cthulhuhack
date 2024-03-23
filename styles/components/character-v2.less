@@ -78,6 +78,56 @@
         text-align: right;
       }
     }
+
+    .fortune {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .adrenaline {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      .adrenaline-img {
+        height: 30px;
+        width: 30px;
+      }
+    }
+    .conditions {
+      display: flex;
+      flex-direction: column ;
+      margin-top: 10px;
+      .conditions-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .items-list {
+        display: flex;
+        flex-direction: column;
+        .item-line {
+          display: grid;
+          grid-template-columns: 1fr;
+          .item-name-img {
+            display: flex;
+            align-items: center;
+            img {
+              width: 30px;
+              height: 30px;
+              margin-right: 5px;
+            }
+          }
+          .has-description {
+            font-style: italic;
+          }
+        }
+        .item-summary {
+          font-size: 0.9em;
+        }
+      }
+    }
   }
 
   .main {
@@ -221,7 +271,7 @@
         padding: 0 5px 0 5px;
         text-shadow: 0 0 10px red;
       }
-    }    
+    }
   }
 
   .sheet-body {
