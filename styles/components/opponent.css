@@ -1,0 +1,382 @@
+.sheet.actor.opponent {
+  display: flex;
+  flex-direction: column;
+}
+.sheet.actor.opponent #context-menu {
+  width: 50px;
+  text-align: left;
+}
+.sheet.actor.opponent .sheet-header {
+  display: grid;
+}
+.sheet.actor.opponent .sheet-header.grid-image {
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 0.5fr 1fr;
+}
+.sheet.actor.opponent .sheet-header.grid-image .character {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 6;
+}
+.sheet.actor.opponent .sheet-header.grid-image .short-description {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 6;
+}
+.sheet.actor.opponent .sheet-header.grid-image .hitdice {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.sheet.actor.opponent .sheet-header.grid-image .hp {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+.sheet.actor.opponent .sheet-header.grid-image .armor {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+.sheet.actor.opponent .sheet-header.grid-image .malus {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+.sheet.actor.opponent .sheet-header.grid-noimage {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.sheet.actor.opponent .sheet-header.grid-noimage .character {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+.sheet.actor.opponent .sheet-header.grid-noimage .short-description {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+.sheet.actor.opponent .sheet-header.grid-noimage .hitdice {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.sheet.actor.opponent .sheet-header.grid-noimage .hp {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.sheet.actor.opponent .sheet-header.grid-noimage .armor {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+.sheet.actor.opponent .sheet-header.grid-noimage .malus {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+.sheet.actor.opponent .sheet-header .opponent-image {
+  grid-row-start: 1;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.sheet.actor.opponent .sheet-header .opponent-image img.actor-image {
+  border: none;
+  height: 200px;
+  min-width: 200px;
+  border-radius: 10px;
+}
+.sheet.actor.opponent .sheet-header .opponent-image .hover-icon {
+  visibility: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-16);
+}
+.sheet.actor.opponent .sheet-header .opponent-image:hover .hover-icon {
+  visibility: visible;
+}
+.sheet.actor.opponent .sheet-header .sheet-lock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 15px;
+  font-size: 0.8em;
+}
+.sheet.actor.opponent .sheet-header .character {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  padding: 5px 0 5px 0;
+  margin-right: 20px;
+}
+.sheet.actor.opponent .sheet-header .data-group {
+  border: none;
+  font-size: 1rem;
+}
+.sheet.actor.opponent .sheet-header .data-group label {
+  padding-right: 5px;
+}
+.sheet.actor.opponent .sheet-header .data-group .input-editable {
+  border: 1px solid #782e22;
+  width: 30px;
+  text-align: center;
+}
+.sheet.actor.opponent .sheet-header .short-description {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 5px 0 10px 0;
+  font-style: italic;
+}
+.sheet.actor.opponent .sheet-header .short-description .input-editable {
+  border: 1px solid #782e22;
+  margin-right: 20px;
+}
+.sheet.actor.opponent .sheet-header .hitdice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-header .hitdice select {
+  color: #fff;
+}
+.sheet.actor.opponent .sheet-header .hitdice .selectHitDice {
+  border: 1px solid #782e22;
+  width: 30px;
+  height: var(--form-field-height);
+  text-align: center;
+}
+.sheet.actor.opponent .sheet-header .hp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-header .hp .hp-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-header .hp .hp-input .hp-max {
+  width: 30px;
+  text-align: center;
+}
+.sheet.actor.opponent .sheet-header .armor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-header .armor input {
+  width: 20px;
+}
+.sheet.actor.opponent .sheet-header .malus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-header .malus label {
+  text-transform: lowercase;
+}
+.sheet.actor.opponent .sheet-header .malus label::first-letter {
+  text-transform: uppercase;
+}
+.sheet.actor.opponent .sheet-header .malus input {
+  width: 20px;
+}
+.sheet.actor.opponent .sheet-body {
+  height: 100%;
+  min-height: 0;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+.sheet.actor.opponent .sheet-body .description-editable {
+  border: none;
+  font-size: 1rem;
+}
+.sheet.actor.opponent .sheet-body .description-editable .title {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+  text-align: center;
+}
+.sheet.actor.opponent .sheet-body .description-editable .editor {
+  min-height: 150px;
+}
+.sheet.actor.opponent .sheet-body .description-editable .editor-content {
+  min-height: 100px;
+  height: auto;
+  margin: 0px 5px;
+  font-weight: normal;
+}
+.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu {
+  font-size: 0.8em;
+}
+.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu li {
+  margin: 0px 0px;
+}
+.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.sheet.actor.opponent .sheet-body .description {
+  padding: 0 10px 0 10px;
+}
+.sheet.actor.opponent .sheet-body .attacks {
+  display: flex;
+  flex-direction: column;
+}
+.sheet.actor.opponent .sheet-body .attacks .title {
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0 0 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-body .attacks .title a {
+  padding-left: 10px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-body .attacks .grid-attacks {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: var(--font-size-16);
+}
+.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line .item-name {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line .item-name img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+.sheet.actor.opponent .sheet-body .attacks .grid-attacks .has-description {
+  font-style: italic;
+}
+.sheet.actor.opponent .sheet-body .magics {
+  display: flex;
+  flex-direction: column;
+}
+.sheet.actor.opponent .sheet-body .magics .title {
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-body .magics .title a {
+  padding-left: 10px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-body .magics .grid-magics {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: var(--font-size-16);
+}
+.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line .item-name {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line .item-name img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+.sheet.actor.opponent .sheet-body .magics .grid-magics .has-description {
+  font-style: italic;
+}
+.sheet.actor.opponent .sheet-body .abilities {
+  display: flex;
+  flex-direction: column;
+}
+.sheet.actor.opponent .sheet-body .abilities .title {
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-body .abilities .title a {
+  padding-left: 10px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: var(--font-size-16);
+}
+.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-name {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-name img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .has-description {
+  font-style: italic;
+}

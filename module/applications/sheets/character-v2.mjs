@@ -49,7 +49,7 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
       item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true });
       context.weapons.push(item);
     }
-  
+
     context.otheritems = [];
     const otheritemsRaw = this.actor.itemTypes.item;
     for (const item of otheritemsRaw) {
@@ -143,7 +143,8 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
       this.actor.updateEmbeddedDocuments("Item", [update]);
     });
 
-	html.find(".share-image").click(this._onShareImage.bind(this));
+    html.find(".share-image").click(this._onShareImage.bind(this));
+    html.find(".editable-image").on("contextmenu", this._resetImage.bind(this));
 
     // Activate context menu
     this._contextCharacterMenu(html);
@@ -234,23 +235,33 @@ export default class CtHackCharacterSheetV2 extends ActorSheet {
     ];
   }
 
-    /**
+  /**
    * Handles the event when sharing an image.
    *
    * @param {Event} event - The event object.
    * @returns {void}
    */
-	_onShareImage(event) {
-		event.preventDefault();
-		const imagePath = event.currentTarget.dataset.image;
-		const characterName = event.currentTarget.dataset.name;
-	
-		const ip = new ImagePopout(imagePath, { title: characterName });
-	
-		// Display the image popout
-		ip.render(true);
-	  }
-	  
+  _onShareImage(event) {
+    event.preventDefault();
+    const imagePath = event.currentTarget.dataset.image;
+    const characterName = event.currentTarget.dataset.name;
+
+    const ip = new ImagePopout(imagePath, { title: characterName });
+
+    // Display the image popout
+    ip.render(true);
+  }
+
+  /**
+   * Resets the image of the opponent sheet.
+   * @param {Event} event - The event object.
+   * @returns {Promise<void>} - A promise that resolves when the image is reset.
+   */
+  async _resetImage(event) {
+    event.preventDefault();
+    await this.actor.update({ img: "icons/svg/mystery-man.svg" });
+  }
+
   /** @override */
   async _onDropItemCreate(itemData) {
     switch (itemData.type) {

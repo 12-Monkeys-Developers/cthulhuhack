@@ -559,7 +559,7 @@ a.inline-roll {
   visibility: hidden;
   position: absolute;
   top: 70px;
-  left: 40px;
+  left: 45px;
   font-size: var(--font-size-16);
 }
 .cthack.sheet.actor.character-v2 .sidebar .image-container:hover .hover-icon {
@@ -1054,9 +1054,21 @@ a.inline-roll {
   justify-content: center;
   text-align: center;
 }
-.cthack.sheet.actor.opponent .sheet-header .opponent-image img {
+.cthack.sheet.actor.opponent .sheet-header .opponent-image img.actor-image {
+  border: none;
   height: 200px;
-  width: auto;
+  min-width: 200px;
+  border-radius: 10px;
+}
+.cthack.sheet.actor.opponent .sheet-header .opponent-image .hover-icon {
+  visibility: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.actor.opponent .sheet-header .opponent-image:hover .hover-icon {
+  visibility: visible;
 }
 .cthack.sheet.actor.opponent .sheet-header .sheet-lock {
   display: flex;

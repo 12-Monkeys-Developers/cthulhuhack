@@ -4,12 +4,11 @@
 
     <div class="opponent-image">
       {{#if editable}}
-        <img class="editable-image" src="{{data.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+        <img class="editable-image" src="{{data.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}"/>
       {{else}}
-        {{#if hasImage}}
-          <img class="image" src="{{actor.img}}" data-tooltip="{{localize 'TOOLTIPS.ShowImage'}}" data-image="{{actor.img}}" data-name="{{actor.name}}"/>
-        {{/if}}
-      {{/if}}
+        <img class="actor-image" src="{{actor.img}}" data-tooltip="{{actor.name}}"/>
+        <a class="hover-icon share-image" data-tooltip="{{localize 'TOOLTIPS.ShowImage'}}" data-image="{{actor.img}}" data-name="{{actor.name}}"><i class="fas fa-image fa-fw"></i></a>
+      {{/if}}    
     </div>
 
     <div class="character">

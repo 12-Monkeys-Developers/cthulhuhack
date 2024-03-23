@@ -73,9 +73,6 @@ export default class CtHackOpponentSheet extends ActorSheet {
 
     html.find(".sheet-lock").click(this._onSheetLock.bind(this));
 
-    // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
-
     html.find(".attack-create").click(this._onAttackCreate.bind(this));
 
     html.find(".attack-edit").click((ev) => {
@@ -96,7 +93,7 @@ export default class CtHackOpponentSheet extends ActorSheet {
     // Activate context menu
     this._contextOpponentMenu(html);
 
-    html.find(".image").click(this._onShareImage.bind(this));
+    html.find(".share-image").click(this._onShareImage.bind(this));
     html.find(".editable-image").on("contextmenu", this._resetImage.bind(this));
     html.find(".name").on("contextmenu", this._onSearchActor.bind(this));
   }
