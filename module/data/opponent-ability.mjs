@@ -15,15 +15,12 @@ export default class CtHackOpponentAbility extends CommonItem {
     return schema;
   }
 
-  /**
-   * Get the details of the opponent's ability.
-   * @returns {string} The details of the opponent's ability.
-   */
-  get details() {
-    if (this.uses.per === "Permanent") {
-      return "";
-    }
-    return `${this.uses.value}/${this.uses.max} ${game.i18n.localize(SYSTEM.ABILITY_USAGE[this.uses.per].label)} (${this.uses.last})`;
+  get hasUse() {
+    return this.uses.per !== "Permanent";
+  }
+
+  get hasLastUse() {
+    return this.uses.last !== "";
   }
 
   get isUsable() {

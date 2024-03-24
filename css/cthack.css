@@ -134,7 +134,7 @@ a.inline-roll {
   background-repeat: no-repeat;
   background-size: 40px;
   background-position: center;
-  /* height: 40px; */
+  height: 40px;
   width: 40px;
   text-align: center;
   text-align-last: center;
@@ -1010,7 +1010,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   height: 40px;
 }
 .cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-name {

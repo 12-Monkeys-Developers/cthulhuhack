@@ -383,7 +383,7 @@
 }
 .sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   height: 40px;
 }
 .sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-name {

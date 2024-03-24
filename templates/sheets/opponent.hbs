@@ -135,7 +135,11 @@
               <details>
                 <summary class="item-line">
                   <div class="item-name {{#if ability.system.hasDescription}}has-description{{/if}}">{{#if ability.hasImage}}<img src="{{ability.img}}"/>{{/if}}{{ability.name}}</div>
-                  <div class="item-details">{{ability.system.details}}</div>
+                  <div class="item-use">
+                    {{#if ability.system.hasUse}}
+                      {{localize 'CTHACK.AbilityUseValue'}} ({{abilityPeriodToString ability.system.uses.per}}) : {{ability.system.uses.value}}/{{ability.system.uses.max}}
+                    {{/if}}
+                  </div>
                 </summary>                  
                   <div class="item-description">{{{ability.enrichedDescription}}}</div>
               </details>
