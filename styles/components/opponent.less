@@ -96,6 +96,12 @@
       display: flex;
       justify-content: center;
       text-align: center;
+      .editable-image {
+        border: none;
+        height: 200px;
+        min-width: 200px;
+        border-radius: 10px;
+      }
       img.actor-image {
         border: none;
         height: 200px;
@@ -104,10 +110,11 @@
       }
       .hover-icon {
         visibility: hidden;
-        position: relative;
-        top: 0;
-        left: 0;
+        position: absolute;
+        top: 40px;
+        left: 15px;
         font-size: var(--font-size-16);
+        color: black;
       }
       &:hover {
         .hover-icon {

@@ -233,6 +233,7 @@ a.inline-roll {
   top: 70px;
   left: 45px;
   font-size: var(--font-size-16);
+  color: black;
 }
 .cthack.sheet.actor.character .sidebar .image-container:hover .hover-icon {
   visibility: visible;
@@ -724,6 +725,12 @@ a.inline-roll {
   justify-content: center;
   text-align: center;
 }
+.cthack.sheet.actor.opponent .sheet-header .opponent-image .editable-image {
+  border: none;
+  height: 200px;
+  min-width: 200px;
+  border-radius: 10px;
+}
 .cthack.sheet.actor.opponent .sheet-header .opponent-image img.actor-image {
   border: none;
   height: 200px;
@@ -732,10 +739,11 @@ a.inline-roll {
 }
 .cthack.sheet.actor.opponent .sheet-header .opponent-image .hover-icon {
   visibility: hidden;
-  position: relative;
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: 40px;
+  left: 15px;
   font-size: var(--font-size-16);
+  color: black;
 }
 .cthack.sheet.actor.opponent .sheet-header .opponent-image:hover .hover-icon {
   visibility: visible;

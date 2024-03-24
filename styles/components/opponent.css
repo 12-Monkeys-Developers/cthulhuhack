@@ -97,6 +97,12 @@
   justify-content: center;
   text-align: center;
 }
+.sheet.actor.opponent .sheet-header .opponent-image .editable-image {
+  border: none;
+  height: 200px;
+  min-width: 200px;
+  border-radius: 10px;
+}
 .sheet.actor.opponent .sheet-header .opponent-image img.actor-image {
   border: none;
   height: 200px;
@@ -105,10 +111,11 @@
 }
 .sheet.actor.opponent .sheet-header .opponent-image .hover-icon {
   visibility: hidden;
-  position: relative;
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: 40px;
+  left: 15px;
   font-size: var(--font-size-16);
+  color: black;
 }
 .sheet.actor.opponent .sheet-header .opponent-image:hover .hover-icon {
   visibility: visible;
