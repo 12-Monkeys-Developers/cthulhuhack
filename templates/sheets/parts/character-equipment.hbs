@@ -1,12 +1,12 @@
 
-{{log 'equipment' this}}
+{{!log 'equipment' this}}
 <div class="equipment flexrow">
     <div class="misc">
         {{editor enrichedEquipment target="system.equipment"  engine="prosemirror" button=true owner=owner}}
     </div>
     <div class="items-list">
         {{#each weapons as |item id|}}
-            {{log 'weapon' item id}}
+            {{!log 'weapon' item id}}
             <div class="item character-contextmenu" data-item-id="{{_id}}">
                 <details>
                     <summary class="item-line">

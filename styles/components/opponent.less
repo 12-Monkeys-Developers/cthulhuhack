@@ -278,6 +278,7 @@
         .item-line {
           display: grid;
           grid-template-columns: 1fr 2fr;
+          height: 40px;
           .item-name {
             font-weight: bold;
             display: flex;
@@ -285,8 +286,12 @@
             img {
               width: 30px;
               height: 30px;
-              margin-right: 5px;
+              margin: 0 5px 0 5px;
             }
+          }
+          .item-details {
+            display: flex;
+            align-items: center;
           }
         }
         .has-description {
@@ -323,6 +328,7 @@
         .item-line {
           display: grid;
           grid-template-columns: 2fr 1fr 1fr 1fr;
+          height: 40px;
           .item-name {
             font-weight: bold;
             display: flex;
@@ -330,8 +336,20 @@
             img {
               width: 30px;
               height: 30px;
-              margin-right: 5px;
+              margin: 0 5px 0 5px;
             }
+          }
+          .item-subtype {
+            display: flex;
+            align-items: center;
+          }
+          .item-dice {
+            display: flex;
+            align-items: center;
+          }
+          .item-incantation {
+            display: flex;
+            align-items: center;
           }
         }
         .has-description {
@@ -367,7 +385,8 @@
         font-size: var(--font-size-16);
         .item-line {
           display: grid;
-          grid-template-columns: 1fr 3fr;
+          grid-template-columns: 1fr 2fr;
+          height: 40px;
           .item-name {
             font-weight: bold;
             display: flex;
@@ -375,8 +394,12 @@
             img {
               width: 30px;
               height: 30px;
-              margin-right: 5px;
+              margin: 0 5px 0 5px;
             }
+          }
+          .item-details {
+            display: flex;
+            align-items: center;
           }
         }
         .has-description {

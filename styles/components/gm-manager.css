@@ -1,3 +1,6 @@
+#gm-manager {
+  font-size: var(--font-size-18);
+}
 .character-resume {
   text-align: center;
 }
