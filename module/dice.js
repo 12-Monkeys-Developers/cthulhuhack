@@ -293,7 +293,7 @@ function _calculateNumberOfDices(dialogChoice, advantage, disadvantage) {
  */
 async function _diceRollDialog({ template, title, parts, data, rollMode, dialogOptions, rollType, modifier, advantage, disadvantage, abilitiesAdvantages, roll } = {}) {
 	// Render modal dialog
-	template = template || 'systems/cthack/templates/chat/roll-dialog.html';
+	template = template || 'systems/cthack/templates/chat/roll-dialog.hbs';
 	let dialogData = {
 		formula: parts.join(' + '),
 		data: data,
@@ -317,27 +317,23 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 					content: html,
 					buttons: {
 						doubleDisadvantageBtn: {
-							icon: `<div class="tooltip"><i class="fas fa-minus"></i> <i class="fas fa-minus"></i><span class="tooltiptextleft">${game.i18n.localize(
-								'CTHACK.DoubleDisadvantage'
-							)}</span></div>`,
+							icon: `<div data-tooltip="${game.i18n.localize('CTHACK.DoubleDisadvantage')}"><i class="fas fa-minus"></i> <i class="fas fa-minus"></i>`,
 							callback: (html) => resolve(roll(parts, -2, html[0].querySelector('form'), advantage, disadvantage))
 						},
 						disadvantageBtn: {
-							icon: `<div class="tooltip"><i class="fas fa-minus"></i><span class="tooltiptextleft">${game.i18n.localize('CTHACK.Disadvantage')}</span></div>`,
+							icon: `<div data-tooltip="${game.i18n.localize('CTHACK.Disadvantage')}"><i class="fas fa-minus"></i>`,
 							callback: (html) => resolve(roll(parts, -1, html[0].querySelector('form'), advantage, disadvantage))
 						},
 						normalBtn: {
-							icon: `<div class="tooltip"><i class="fas fa-check"></i><span class="tooltiptextleft">${game.i18n.localize('CTHACK.Normal')}</span></div>`,
+							icon: `<div data-tooltip="${game.i18n.localize('CTHACK.Normal')}"><i class="fas fa-check"></i>`,
 							callback: (html) => resolve(roll(parts, 0, html[0].querySelector('form'), advantage, disadvantage))
 						},
 						advantageBtn: {
-							icon: `<div class="tooltip"><i class="fas fa-plus"></i><span class="tooltiptextright">${game.i18n.localize('CTHACK.Advantage')}</span></div>`,
+							icon: `<div data-tooltip="${game.i18n.localize('CTHACK.Advantage')}"><i class="fas fa-plus"></i>`,
 							callback: (html) => resolve(roll(parts, 1, html[0].querySelector('form'), advantage, disadvantage))
 						},
 						doubleAdvantageBtn: {
-							icon: `<div class="tooltip"><i class="fas fa-plus"></i> <i class="fas fa-plus"></i><span class="tooltiptextright">${game.i18n.localize(
-								'CTHACK.DoubleAdvantage'
-							)}</span></div>`,
+							icon: `<div data-tooltip="${game.i18n.localize('CTHACK.DoubleAdvantage')}"><i class="fas fa-plus"></i> <i class="fas fa-plus"></i>`,
 							callback: (html) => resolve(roll(parts, 2, html[0].querySelector('form'), advantage, disadvantage))
 						}
 					},
@@ -356,15 +352,15 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 					content: html,
 					buttons: {
 						disadvantageBtn: {
-							icon: `<div class="tooltip"><i class="fas fa-minus"></i><span class="tooltiptextleft">${game.i18n.localize('CTHACK.Disadvantage')}</span></div>`,
+							icon: `<div data-tooltip="${game.i18n.localize('CTHACK.Disadvantage')}"><i class="fas fa-minus"></i>`,
 							callback: (html) => resolve(roll(parts, -1, html[0].querySelector('form'), advantage, disadvantage))
 						},
 						normalBtn: {
-							icon: `<div class="tooltip"><i class="fas fa-check"></i><span class="tooltiptextleft">${game.i18n.localize('CTHACK.Normal')}</span></div>`,
+							icon: `<div data-tooltip="${game.i18n.localize('CTHACK.Normal')}"><i class="fas fa-check"></i>`,
 							callback: (html) => resolve(roll(parts, 0, html[0].querySelector('form'), advantage, disadvantage))
 						},
 						advantageBtn: {
-							icon: `<div class="tooltip"><i class="fas fa-plus"></i><span class="tooltiptextright">${game.i18n.localize('CTHACK.Advantage')}</span></div>`,
+							icon: `<div data-tooltip="${game.i18n.localize('CTHACK.Advantage')}"><i class="fas fa-plus"></i>`,
 							callback: (html) => resolve(roll(parts, 1, html[0].querySelector('form'), advantage, disadvantage))
 						}
 					},
