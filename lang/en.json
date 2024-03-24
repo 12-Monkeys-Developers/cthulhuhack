@@ -313,12 +313,16 @@
     "ButtonSearch": "Search",
     "ButtonCancel": "Cancel",
     "DialogTitle": "Search for Text in Journals, Characters, Items...",
-    "DialogInput": "Enter the text to search here:",
+    "DialogInput": "Text to search :",
     "ChatIntro": "Search result", 
     "ChatText": "Searched text: ",
     "NoResults": "No result",
     "TooManyResults": "More than 20 results, refine your search.",
     "HighlightButton": "Highlight on/off",
-    "HighlightTooltip": "Toggle highlighting of pattern in documents"
+    "HighlightTooltip": "Toggle highlighting of pattern in documents",
+    "HighlightedButton": "Highlight Off",
+    "HighlightedTooltip": "Toggle off highlighting of pattern in documents",
+    "UnhighlightedButton": "Highlight On",
+    "UnhighlightedTooltip": "Toggle on highlighting of pattern in documents"
   }
 }

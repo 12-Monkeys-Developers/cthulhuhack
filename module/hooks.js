@@ -4,10 +4,6 @@ import { Macros } from "./macros.js";
 import { SearchChat } from "./applications/search/research.mjs";
 
 export function registerHooks() {
-  Hooks.on("renderChatMessage", async (app, html, data) => {
-    highlightSuccessFailure(app, html, data);
-  });
-
   Hooks.once("setup", function () {
     // Localize CONFIG objects once up-front
     const toLocalize = ["saves", "attributes"];
@@ -45,7 +41,9 @@ export function registerHooks() {
     configureDiceSoNice(dice3d);
   });
 
-  Hooks.on("renderChatMessage", (message, html, data) => {
+  Hooks.on("renderChatMessage", (app, html, data) => {
+    highlightSuccessFailure(app, html, data);
+
     if (game.user.isGM) {
       html.find(".ask-roll-dice").each((i, btn) => {
         btn.style.display = "none";
@@ -64,8 +62,10 @@ export function registerHooks() {
     // Search feature
     const typeMessage = data.message.flags.world?.type;
     if (typeMessage === "searchPage") {
-      html.find("#ouvrirpage").click(async (event) => await SearchChat.onOpenJournalPage(event, data.message.flags.world?.searchPattern));
-      html.find("#highlight").click(async (event) => await SearchChat.toggleEnricher(event, data.message.flags.world?.searchPattern));
+      //html.find("#ouvrirpage").click(async (event) => await SearchChat.onOpenJournalPage(event, data.message.flags.world?.searchPattern));
+      //html.find("#highlight").click(async (event) => await SearchChat.toggleEnricher(event, data.message.flags.world?.searchPattern));
+      const messageId = data.message._id;
+      html.find("#highlight").click(async (event) => await SearchChat.toggleEnricher(event, data.message.flags.world?.searchPattern, messageId));
     }
 
   });

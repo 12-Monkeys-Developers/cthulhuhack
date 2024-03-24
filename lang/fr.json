@@ -312,12 +312,17 @@
     "ButtonSearch": "Rechercher",
     "ButtonCancel": "Annuler",
     "DialogTitle": "Recherche de Texte dans les Journaux, Personnages, Objets...",
-    "DialogInput": "Entrez ici le texte à rechercher :",
+    "DialogInput": "Texte à rechercher :",
     "ChatIntro": "Résultat de la recherche",
     "ChatText": "Texte recherché : ",
     "NoResults": "Aucun résultat",
     "TooManyResults": "Plus de 20 résultats, affinez votre recherche.",
     "HighlightButton": "Surligner on/off",
-    "HighlightTooltip": "Basculer le surlignage du texte recherché dans les documents"
+    "HighlightTooltip": "Basculer le surlignage du texte recherché dans les documents",
+    "HighlightedButton": "Surligner Off",
+    "HighlightedTooltip": "Ne plus surligner le texte recherché dans les documents",
+    "UnhighlightedButton": "Surligner On",
+    "UnhighlightedTooltip": "Surligner le texte recherché dans les documents"
   }
 }
+

@@ -102,12 +102,17 @@ a.inline-roll {
   margin: 10px;
   font-weight: bold;
   text-align: center;
-  border: none;
 }
 .search-chat h4 {
   margin: 10px;
   font-weight: bold;
   text-align: center;
+}
+.search-chat a.content-link {
+  height: 10px;
+  background: none;
+  margin: 5px 0 0 0;
+  padding: 5px;
 }
 .search-chat .motif {
   padding-bottom: 5px;
@@ -120,15 +125,6 @@ a.inline-roll {
 }
 .search-chat .journal {
   margin: 10px 0 10px 0;
-}
-.search-chat .result {
-  margin-top: 5px;
-  border: none;
-  background: none;
-}
-.search-chat .result .content-link {
-  background: none;
-  border: none;
 }
 .search-chat .btn-highlight button {
   padding: 5px;
