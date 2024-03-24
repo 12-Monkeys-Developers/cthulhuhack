@@ -29,6 +29,7 @@ export default class CtHackCharacterSheet extends ActorSheet {
     context.editable = this.actor.isUnlocked;
     context.uneditable = !this.actor.isUnlocked;
 
+    // For all items, we enrich the description
     context.abilities = [];
     const abilitiesRaw = this.actor.itemTypes.ability;
     for (const item of abilitiesRaw) {
@@ -86,19 +87,14 @@ export default class CtHackCharacterSheet extends ActorSheet {
 
     html.find(".sheet-lock").click(this._onSheetLock.bind(this));
 
-    // Add, Edit or Delete Inventory
+    // Add Item
     html.find(".item-create").click(this._onItemCreate.bind(this));
-    html.find(".item-edit").click((ev) => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-      item.sheet.render(true);
-    });
-    html.find(".item-delete").click(this._onItemDelete.bind(this));
 
-    // Add, Edit, Delete or Use Ability Item
-    html.find(".ability-create").click(this._onItemCreate.bind(this));
+    // Image actions
+    html.find(".share-image").click(this._onShareImage.bind(this));
+    html.find(".editable-image").on("contextmenu", this._resetImage.bind(this));
 
-    // Saving throws
+    // Saving roll
     html.find(".save-name").click(this._onSaveRoll.bind(this));
 
     // Resource roll
@@ -107,6 +103,9 @@ export default class CtHackCharacterSheet extends ActorSheet {
     // Armed and unarmed damage rolls
     html.find(".armed-damage-name").click(this._onDamagedRoll.bind(this));
     html.find(".unarmed-damage-name").click(this._onDamagedRoll.bind(this));
+
+    // Roll for item in inventory
+    html.find(".fa-dice-d20").click(this._onMaterialRoll.bind(this));
 
     // Wealth roll if the option is enabled
     if (game.settings.get("cthack", "Wealth") == "resource") {
@@ -130,30 +129,26 @@ export default class CtHackCharacterSheet extends ActorSheet {
     html.find("#adr1").click(this._onAdrenalineUse.bind(this));
     html.find("#adr2").click(this._onAdrenalineUse.bind(this));
 
-    // Roll for item in inventory
-    html.find(".fa-dice-d20").click(this._onMaterialRoll.bind(this));
-
-    // Change item dice value in inventory
-    html.find(".item-dice").change((ev) => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-      const selectName = "[name='" + item.id + "']";
-      const newValue = html.find(selectName)[0].value;
-      const update = { _id: item.id, "data.dice": newValue };
-      this.actor.updateEmbeddedDocuments("Item", [update]);
-    });
-
-    html.find(".share-image").click(this._onShareImage.bind(this));
-    html.find(".editable-image").on("contextmenu", this._resetImage.bind(this));
-
     // Activate context menu
     this._contextCharacterMenu(html);
   }
 
+  //#endregion
+
+  //#region Private methods
+
+  /**
+   * Create the context menu for the character sheet.
+   * @param {*} html
+   */
   _contextCharacterMenu(html) {
     ContextMenu.create(this, html, ".character-contextmenu", this._getEntryContextOptions());
   }
 
+  /**
+   * Add the context menu options for the character sheet.
+   * @returns
+   */
   _getEntryContextOptions() {
     return [
       {
@@ -219,8 +214,8 @@ export default class CtHackCharacterSheet extends ActorSheet {
           const key = item.system.key;
           switch (item.type) {
             case "ability":
-              await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
               await this.actor.deleteAbility(key, item.id);
+              await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
               break;
             case "definition":
               await this.actor.deleteEffectFromItem(item);
@@ -253,7 +248,7 @@ export default class CtHackCharacterSheet extends ActorSheet {
   }
 
   /**
-   * Resets the image of the opponent sheet.
+   * Resets the image of the character sheet.
    * @param {Event} event - The event object.
    * @returns {Promise<void>} - A promise that resolves when the image is reset.
    */
@@ -264,154 +259,23 @@ export default class CtHackCharacterSheet extends ActorSheet {
 
   /** @override */
   async _onDropItemCreate(itemData) {
+    // Only if the sheet is unlocked
+    if (!this.actor.isUnlocked) return;
+
     switch (itemData.type) {
       case "archetype":
         return await this._onDropArchetypeItem(itemData);
       case "ability":
         return await this._onDropAbilityItem(itemData);
+      case "definition":
+        return await this._onDropDefinitionItem(itemData);
       case "item":
       case "weapon":
       case "magic":
         return await this._onDropStandardItem(itemData);
-      case "definition":
-        return await this._onDropDefinitionItem(itemData);
       default:
         return;
     }
-  }
-  //#endregion
-
-  //#region Private methods
-
-  /**
-   * @name _onItemCreate
-   * @description Creates a new Owned Item for the actor using type defined in the HTML dataset
-   *
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
-   */
-  async _onItemCreate(event) {
-    event.preventDefault();
-    const li = event.currentTarget;
-    // Get the type of item to create.
-    let type;
-    event?.shiftKey ? (type = li.dataset.altType) : (type = li.dataset.type);
-
-    // Initialize a default name.
-    const name = game.i18n.format("CTHACK.ItemNew", { type: game.i18n.localize(`CTHACK.ItemType${type.capitalize()}`) });
-    // Prepare the item object
-    const itemData = {
-      name: name,
-      type: type,
-    };
-
-    // Create the item
-    return await this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: true });
-  }
-
-  /**
-   * @name _onItemDelete
-   * @description Callback on delete item actions
-   * 				The result depends on the data type
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
-   */
-
-  async _onItemDelete(event) {
-    event.preventDefault();
-    const li = $(event.currentTarget).parents(".item");
-    const itemId = li.data("itemId");
-    const item = this.actor.items.find((item) => item.id === itemId);
-    const key = item.system.key;
-    li.slideUp(200, () => this.render(false));
-
-    switch (item.type) {
-      case "item":
-        await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
-        break;
-      case "ability":
-        await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
-        await this.actor.deleteAbility(key, itemId);
-        break;
-      case "definition":
-        await this.actor.deleteEffectFromItem(item);
-        await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
-        break;
-      default:
-        await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
-        break;
-    }
-  }
-
-  /**
-   * @name _onSaveRoll
-   * @description Callback on Save roll
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
-   */
-  _onSaveRoll(event) {
-    event.preventDefault();
-    let save = event.currentTarget.parentElement.dataset.save;
-    this.actor.rollSave(save, { event: event });
-  }
-
-  /**
-   * @name _onResourceRoll
-   * @description Callback on Resource roll
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
-   */
-  async _onResourceRoll(event) {
-    event.preventDefault();
-    let resource = event.currentTarget.dataset.resource;
-
-    await this.actor.rollResource(resource, { event: event });
-
-    // Render to refresh in case of resource lost
-    this.actor.sheet.render(true);
-  }
-
-  /**
-   * @name _onMaterialRoll
-   * @description Callback on Material roll
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
-   */
-  async _onMaterialRoll(event) {
-    event.preventDefault();
-
-    const li = $(event.currentTarget).parents(".item");
-    const itemId = li.data("item-id");
-    let item = this.actor.items.get(itemId);
-
-    await this.actor.rollMaterial(item, { event: event });
-
-    // Render to refresh in case of resource lost
-    this.actor.sheet.render(true);
-  }
-
-  /**
-   * @name _onDamagedRoll
-   * @description Callback on Damaged roll
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
-   */
-  _onDamagedRoll(event) {
-    event.preventDefault();
-    const damage = event.currentTarget.dataset.resource;
-    this.actor.rollDamageRoll(damage, { event: event });
   }
 
   /**
@@ -421,7 +285,7 @@ export default class CtHackCharacterSheet extends ActorSheet {
    * @private
    *
    * @param {Object} data   The data transfer extracted from the event
-   * Item of type 'attack' for npc, 'item', 'weapon', 'magic'for pc
+   * Item of type 'attack' for npc, 'item', 'weapon', 'magic' for pc
    * @return {Object} EmbeddedDocument Item data to create
    */
   async _onDropStandardItem(data) {
@@ -491,7 +355,10 @@ export default class CtHackCharacterSheet extends ActorSheet {
         abilitiesList.push({ key: key, id: id });
         await this.actor.update({ "system.abilities": abilitiesList });
         return await this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: false });
-      } else return;
+      } else {
+        ui.notifications.warn(game.i18n.format("CTHACK.Notifications.AbilityHasAlready", { abilityName: itemData.name }));
+        return;
+      }
     }
   }
 
@@ -511,6 +378,96 @@ export default class CtHackCharacterSheet extends ActorSheet {
   }
 
   /**
+   * @name _onItemCreate
+   * @description Creates a new Owned Item for the actor using type defined in the HTML dataset
+   *
+   * @private
+   *
+   * @param {Event} event   The originating click event
+   *
+   */
+  async _onItemCreate(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const li = event.currentTarget;
+    // Get the type of item to create.
+    let type;
+    event?.shiftKey ? (type = li.dataset.altType) : (type = li.dataset.type);
+
+    // Initialize a default name.
+    const name = game.i18n.format("CTHACK.ItemNew", { type: game.i18n.localize(`CTHACK.ItemType${type.capitalize()}`) });
+    // Prepare the item object
+    const itemData = {
+      name: name,
+      type: type,
+    };
+
+    // Create the item
+    return await this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: true });
+  }
+
+  /**
+   * @name _onSaveRoll
+   * @description Callback on Save roll
+   * @private
+   *
+   * @param {Event} event   The originating click event
+   *
+   */
+  _onSaveRoll(event) {
+    event.preventDefault();
+    let save = event.currentTarget.parentElement.dataset.save;
+    this.actor.rollSave(save, { event: event });
+  }
+
+  /**
+   * @name _onResourceRoll
+   * @description Callback on Resource roll
+   * @private
+   *
+   * @param {Event} event   The originating click event
+   *
+   */
+  async _onResourceRoll(event) {
+    event.preventDefault();
+    let resource = event.currentTarget.dataset.resource;
+
+    await this.actor.rollResource(resource, { event: event });
+  }
+
+  /**
+   * @name _onMaterialRoll
+   * @description Callback on Material roll
+   * @private
+   *
+   * @param {Event} event   The originating click event
+   *
+   */
+  async _onMaterialRoll(event) {
+    event.preventDefault();
+
+    const li = $(event.currentTarget).parents(".item");
+    const itemId = li.data("item-id");
+    let item = this.actor.items.get(itemId);
+
+    await this.actor.rollMaterial(item, { event: event });
+  }
+
+  /**
+   * @name _onDamagedRoll
+   * @description Callback on Damaged roll
+   * @private
+   *
+   * @param {Event} event   The originating click event
+   *
+   */
+  _onDamagedRoll(event) {
+    event.preventDefault();
+    const damage = event.currentTarget.dataset.resource;
+    this.actor.rollDamageRoll(damage, { event: event });
+  }
+
+  /**
    * Reduce the Fortune value by 1 (GM only)
    * @param {Event} event   The originating click event
    * @private
@@ -523,23 +480,11 @@ export default class CtHackCharacterSheet extends ActorSheet {
 
       if (currentValue > 0) {
         game.settings.set("cthack", "FortuneValue", newValue);
-        //this.actor.sheet.render(true);
         ChatMessage.create({
           user: game.user.id,
-          //speaker: ChatMessage.getSpeaker({user: game.user}),
           content: game.i18n.format("CTHACK.FortuneUseMessage", { name: this.actor.name, total: newValue }),
         });
       }
-
-      /*
-			if (currentValue > 0) {
-				const newValue = currentValue - 1;
-				let data = {
-					value: newValue
-				};
-				game.socket.emit("system.cthack", { msg: "msg_use_fortune", data: data});
-			}
-			*/
     }
   }
 
@@ -553,23 +498,14 @@ export default class CtHackCharacterSheet extends ActorSheet {
     const adr = event.currentTarget.id;
     if (adr === "adr1") {
       const value = this.actor.system.attributes.adrenaline1.value;
-      let newData = { value: "pj" };
-      if (value === "pj") {
-        newData = { value: "mj" };
-      }
-      this.actor.update({ "data.attributes.adrenaline1": newData });
+      const newValue = value === "pj" ? "mj" : "pj";
+      this.actor.update({ "system.attributes.adrenaline1.value": newValue });
     } else if (adr === "adr2") {
       const value = this.actor.system.attributes.adrenaline2.value;
-      let newData = { value: "pj" };
-      if (value === "pj") {
-        newData = { value: "mj" };
-      }
-      this.actor.update({ "data.attributes.adrenaline2": newData });
+      const newValue = value === "pj" ? "mj" : "pj";
+      this.actor.update({ "system.attributes.adrenaline2.value": newValue });
     }
-    this.actor.sheet.render(true);
   }
-
-  //#endregion
 
   /**
    * Lock or unlock the sheet
@@ -582,4 +518,6 @@ export default class CtHackCharacterSheet extends ActorSheet {
     else await this.actor.setFlag(game.system.id, "SheetUnlocked", "SheetUnlocked");
     this.actor.sheet.render(true);
   }
+
+  //#endregion
 }

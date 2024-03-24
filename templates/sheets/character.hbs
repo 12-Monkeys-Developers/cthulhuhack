@@ -199,7 +199,7 @@
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>        
-        <a class="choice" data-tab="equipment">{{localize "CTHACK.Items"}}{{#if editable}}&nbsp;&nbsp;<i class="fas fa-plus equipment-create" data-tooltip="{{localize "CTHACK.AddEquipment"}}" data-tooltip-direction="RIGHT"></i>{{/if}}</a>
+        <a class="choice" data-tab="equipment">{{localize "CTHACK.Items"}}{{#if editable}}&nbsp;&nbsp;<i class="fas fa-plus item-create" data-tooltip="{{localize "CTHACK.AddEquipment"}}" data-tooltip-direction="RIGHT" data-type="weapon" data-alt-type="item"></i>{{/if}}</a>
         <a class="choice" data-tab="abilities">{{localize "CTHACK.AbilitiesAndMagic"}}</a>
         <a class="choice" data-tab="notes">{{localize "CTHACK.Notes"}}</a>
     </nav>
@@ -210,7 +210,7 @@
                 {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true owner=owner}}
             </div>
             
-            {{!-- Owned Items Tab --}}
+            {{!-- Equipment and Owned Items Tab --}}
             <div class="tab items" data-group="primary" data-tab="equipment">
               {{> "systems/cthack/templates/sheets/parts/character-equipment.hbs"}}
             </div>

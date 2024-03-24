@@ -154,7 +154,7 @@
     "AddMagic": "Add a spell or a ritual",
     "AddAttack": "Add an attack",
     "AddOpponentAbility": "Add an Opponent Ability",
-    "AddEquipment": "Left click to add a weapon, right click to add an object",
+    "AddEquipment": "Left click to add a weapon, SHIFT + left click to add an object",
 
     "Attributes": "Attributes",
 
@@ -235,7 +235,10 @@
     "ContextMenuDelete": "Delete",
     "ContextMenuUse": "Use",
     "ContextMenuResetUse": "Reset",
-    "ContextMenuDecreaseUse": "Decrease"
+    "ContextMenuDecreaseUse": "Decrease",
+    "Notifications": {
+      "AbilityHasAlready": "The ability {abilityName} has not the multiple property and already exists."
+    }
   },
 
   "SETTINGS": {

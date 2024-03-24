@@ -155,7 +155,7 @@
     "AddMagic": "Ajouter un sortilège ou un rituel",
     "AddAttack": "Ajouter une attaque",
     "AddOpponentAbility": "Ajouter une capacité d'adversaire",
-    "AddEquipment": "Clic gauche pour ajouter une arme, clic droit pour ajouter un objet",
+    "AddEquipment": "Clic gauche pour ajouter une arme, SHIFT + clic gauche pour ajouter un objet",
 
     "Attributes": "Attributs",
 
@@ -235,7 +235,10 @@
     "ContextMenuDelete": "Supprimer",
     "ContextMenuUse": "Utiliser",
     "ContextMenuResetUse": "Réinitialiser",
-    "ContextMenuDecreaseUse": "Diminuer"
+    "ContextMenuDecreaseUse": "Diminuer",
+    "Notifications": {
+      "AbilityHasAlready": "La capacité {abilityName} n'a pas la propriété multiple et est déjà présente."
+    }
   },
 
   "SETTINGS": {
