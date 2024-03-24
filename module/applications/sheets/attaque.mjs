@@ -17,8 +17,8 @@ export default class CtHackAttaqueSheet extends CtHackItemSheet {
 
     /** @override */
     async getData(options) {
-      const context = await super.getData(options);
-      context.dicesDamage = SYSTEM.ATTACK_DAMAGE_DICE;
+      const context = await super.getData(options);     
+      context.diceAttackDamageValues = SYSTEM.ATTACK_DAMAGE_DICE;
       return context;
     }
 }

@@ -6,10 +6,8 @@
             <div class="item-subtype">{{magicTypeToString system.subtype}}</div>
             <div class="item-dice item" data-item-id="{{_id}}">
                 {{#if (isDiceRollable system.dice)}} <i class="fas fa-dice-d20 rollable"></i> {{/if}}
-                <select class="item-dice-select" name="{{_id}}" data-type="String" {{{getStyleForDice system.dice}}} {{disabled @root.uneditable}}>
-                    {{#select system.dice }}
-                        {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
-                    {{/select}}
+                <select class="item-dice-select" name="system.dice" data-type="String" {{{getStyleForDice system.dice}}} disabled>
+                    {{selectOptions @root.diceValues selected=system.dice blank="CTHACK.None" localize=true}}
                 </select>
             </div>
             <div class="item-incantation">{{system.incantation}}</div>

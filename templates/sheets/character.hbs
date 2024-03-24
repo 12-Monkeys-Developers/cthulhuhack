@@ -56,11 +56,11 @@
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.flashlights.value)}}rollable{{/if}}" data-resource="flashlights" data-tooltip="{{localize 'CTHACK.FlashLightsDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.FlashLights"}}</label>
             <div class="resource-content">
                 <select class="resource-value" name="system.attributes.flashlights.value" data-type="String" {{{getStyleForDice system.attributes.flashlights.value}}} {{disabled uneditable}}>
-                  {{selectOptions dicesValue selected=system.attributes.flashlights.value}}                  
+                  {{selectOptions diceValues selected=system.attributes.flashlights.value}}                  
                 </select>
                 (
                 <select name="system.attributes.flashlights.max" data-type="String" {{{getStyleForDice system.attributes.flashlights.max}}} {{disabled uneditable}}>
-                  {{selectOptions dicesMax selected=system.attributes.flashlights.max}}
+                  {{selectOptions diceMaxValues selected=system.attributes.flashlights.max}}
                 </select>
                )
             </div>
@@ -69,15 +69,11 @@
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.smokes.value)}}rollable{{/if}}" data-resource="smokes" data-tooltip="{{localize 'CTHACK.SmokesDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Smokes"}}</label>
             <div class="resource-content">
                 <select class="resource-value" name="system.attributes.smokes.value" data-type="String" {{{getStyleForDice system.attributes.smokes.value}}} {{disabled uneditable}}>
-                {{#select system.attributes.smokes.value}}
-                    {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
-                {{/select}}
+                  {{selectOptions diceValues selected=system.attributes.smokes.value}}
                 </select>
                 (
                 <select name="system.attributes.smokes.max" data-type="String" {{{getStyleForDice system.attributes.smokes.max}}} {{disabled uneditable}}>
-                {{#select system.attributes.smokes.max}}
-                    {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
-                {{/select}}
+                  {{selectOptions diceMaxValues selected=system.attributes.smokes.max}}
                 </select>
                 )
             </div>
@@ -86,15 +82,11 @@
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.sanity.value)}}rollable{{/if}}" data-resource="sanity" data-tooltip="{{localize 'CTHACK.SanityDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Sanity"}}</label>
             <div class="resource-content">
                 <select class="resource-value"  name="system.attributes.sanity.value" data-type="String" {{{getStyleForDice system.attributes.sanity.value}}} {{disabled uneditable}}>
-                {{#select system.attributes.sanity.value}}
-                    {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
-                {{/select}}
+                  {{selectOptions diceValues selected=system.attributes.sanity.value}}
                 </select>
                 (
                 <select name="system.attributes.sanity.max" data-type="String" {{{getStyleForDice system.attributes.sanity.max}}} {{disabled uneditable}}>
-                {{#select system.attributes.sanity.max}}
-                    {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
-                {{/select}}
+                  {{selectOptions diceMaxValues selected=system.attributes.sanity.max}}
                 </select>
                 )
             </div>
@@ -105,16 +97,12 @@
               <label for="wealthDice.value" class="resource-label wealth-name {{#if (isWealthAsResource)}}rollable{{/if}}" data-resource="wealthDice">{{localize "CTHACK.Wealth"}}</label>
               <div class="resource-content">
                   <select class="resource-value" name="system.attributes.wealthDice.value" data-type="String" {{{getStyleForDice system.attributes.wealthDice.value}}} {{disabled uneditable}}>
-                      {{#select system.attributes.wealthDice.value}}
-                          {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
-                      {{/select}}
+                      {{selectOptions diceValues selected=system.attributes.wealthDice.value}}
                   </select>
                   {{#if (isWealthAsResource)}}
                       (
                       <select name="system.attributes.wealthDice.max" data-type="String" {{{getStyleForDice system.attributes.wealthDice.max}}} {{disabled uneditable}}>
-                          {{#select system.attributes.wealthDice.max}}
-                              {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
-                          {{/select}}
+                      {{selectOptions diceMaxValues selected=system.attributes.wealthDice.max}}
                       </select>
                       )
                   {{/if}}
@@ -127,15 +115,11 @@
                 <label for="miscellaneous.value" class="resource-label miscellaneous-name {{#if (isDiceRollable system.attributes.miscellaneous.value)}}rollable{{/if}}"  data-resource="miscellaneous">{{getMiscellaneousValue}}</label>
                 <div class="resource-content">
                     <select class="resource-value" name="system.attributes.miscellaneous.value" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.value}}} {{disabled uneditable}}>
-                        {{#select system.attributes.miscellaneous.value}}
-                            {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
-                        {{/select}}
+                        {{selectOptions diceValues selected=system.attributes.miscellaneous.value}}
                     </select>
                     (
                     <select name="system.attributes.miscellaneous.max" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.max}}} {{disabled uneditable}}>
-                        {{#select system.attributes.miscellaneous.max}}
-                            {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
-                        {{/select}}
+                        {{selectOptions diceMaxValues selected=system.attributes.miscellaneous.max}}
                     </select>
                     )
                 </div>
@@ -157,38 +141,30 @@
               <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.hitDice.value)}}rollable{{/if}}" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</label>
               <div class="resource-content">
                   <select class="resource-value" name="system.attributes.hitDice.value" data-type="String" {{{getStyleForDice system.attributes.hitDice.value}}} {{disabled uneditable}}>
-                      {{#select system.attributes.hitDice.value}}
-                          {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
-                      {{/select}}
+                      {{selectOptions diceValues selected=system.attributes.hitDice.value}}
                   </select>
                   (
                   <select name="system.attributes.hitDice.max" data-type="String" {{{getStyleForDice system.attributes.hitDice.max}}} {{disabled uneditable}}>
-                      {{#select system.attributes.hitDice.max}}
-                          {{>"systems/cthack/templates/parts/dice-sides-options-max.hbs"}}
-                      {{/select}}
+                       {{selectOptions diceMaxValues selected=system.attributes.hitDice.max}}
                   </select>
                   )
               </div>
         </div>
 
         <div class="resource">
-            <label for="armedDamage.value" class="resource-label armed-damage-name rollable" data-resource="armedDamage">{{localize "CTHACK.ArmedDamage"}}</label>
+            <label for="armedDamage.value" class="resource-label damage {{#if (isDiceRollable system.attributes.armedDamage.value)}}rollable{{/if}}" data-resource="armedDamage">{{localize "CTHACK.ArmedDamage"}}</label>
             <div class="resource-content">
                 <select class="resource-value" name="system.attributes.armedDamage.value" data-type="String" {{{getStyleForDice system.attributes.armedDamage.value}}} {{disabled uneditable}}>
-                {{#select system.attributes.armedDamage.value}}
-                    {{>"systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
-                {{/select}}
+                  {{selectOptions diceDamageValues selected=system.attributes.armedDamage.value}}
                 </select>
             </div>
         </div>
 
         <div class="resource">
-            <label for="unarmedDamage.value" class="resource-label unarmed-damage-name rollable" data-resource="unarmedDamage">{{localize "CTHACK.UnarmedDamage"}}</label>
+            <label for="unarmedDamage.value" class="resource-label damage {{#if (isDiceRollable system.attributes.unarmedDamage.value)}}rollable{{/if}}" data-resource="unarmedDamage">{{localize "CTHACK.UnarmedDamage"}}</label>
             <div class="resource-content">
                 <select class="resource-value" name="system.attributes.unarmedDamage.value" data-type="String" {{{getStyleForDice system.attributes.unarmedDamage.value}}} {{disabled uneditable}}>
-                {{#select system.attributes.unarmedDamage.value}}
-                    {{>"systems/cthack/templates/parts/dice-sides-options-damage.hbs"}}
-                {{/select}}
+                  {{selectOptions diceDamageValues selected=system.attributes.unarmedDamage.value}}
                 </select>
             </div>
         </div>

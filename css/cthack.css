@@ -1394,6 +1394,12 @@ a.inline-roll {
 .cthack.sheet.item.archetype .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }
+.cthack.sheet.item.archetype .data-group .select-dice {
+  color: black;
+}
+.cthack.sheet.item.archetype .data-group .wealth-start {
+  width: 80px;
+}
 .cthack.sheet.item.magic .editable input,
 .cthack.sheet.item.magic .editable select {
   border: 1px solid #782e22;

@@ -1,14 +1,44 @@
 
+{{log 'equipment' this}}
 <div class="equipment flexrow">
     <div class="misc">
         {{editor enrichedEquipment target="system.equipment"  engine="prosemirror" button=true owner=owner}}
     </div>
     <div class="items-list">
         {{#each weapons as |item id|}}
-            {{> "systems/cthack/templates/sheets/parts/character-item.hbs" item}}
+            {{log 'weapon' item id}}
+            <div class="item character-contextmenu" data-item-id="{{_id}}">
+                <details>
+                    <summary class="item-line">
+                        <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
+                        <div class="item-dice">
+                            {{#if (isDiceRollable system.dice)}} <i class="fas fa-dice-d20 rollable"></i> {{/if}}
+                            <select class="item-dice-select" name="system.dice" data-type="String" {{{getStyleForDice system.dice}}} disabled>
+                                {{selectOptions @root.diceValues selected=system.dice blank="CTHACK.None" localize=true}}
+                            </select>
+                        </div>
+                        <div class="item-range">{{#if (and (eq type "weapon")(eq system.hasRange true))}}{{localize "CTHACK.ItemRangeName"}} : {{localize (rangeDesc system.range)}}{{/if}}</div>                      
+                    </summary>
+                    <div class="item-description">{{{enrichedDescription}}}</div>
+                </details>  
+            </div>
         {{/each}}
         {{#each otheritems as |item id|}}
-            {{> "systems/cthack/templates/sheets/parts/character-item.hbs" item}}
+            <div class="item character-contextmenu" data-item-id="{{_id}}">
+                <details>
+                    <summary class="item-line">
+                        <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
+                        <div class="item-dice">
+                            {{#if (isDiceRollable system.dice)}} <i class="fas fa-dice-d20 rollable"></i> {{/if}}
+                            <select class="item-dice-select" name="system.dice" data-type="String" {{{getStyleForDice system.dice}}} disabled>
+                                {{selectOptions @root.diceValues selected=system.dice blank="CTHACK.None" localize=true}}
+                            </select>
+                        </div>
+                        <div class="item-range">{{#if (and (eq type "weapon")(eq system.hasRange true))}}{{localize "CTHACK.ItemRangeName"}} : {{localize (rangeDesc system.range)}}{{/if}}</div>                      
+                    </summary>
+                    <div class="item-description">{{{enrichedDescription}}}</div>
+                </details>  
+            </div>
         {{/each}}            
     </div>
 </div>

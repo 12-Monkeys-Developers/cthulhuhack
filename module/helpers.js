@@ -110,7 +110,7 @@ export const registerHandlebarsHelpers = function() {
 	});
 
 	Handlebars.registerHelper('isDiceRollable', function(dice) {
-		return dice !== "" && dice !== "0";
+		return dice !== "" && dice !== "0" && dice !== "1";
 	});
 
 	Handlebars.registerHelper('timeSince', function(timeStamp) {

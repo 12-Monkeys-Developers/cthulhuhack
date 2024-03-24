@@ -11,7 +11,6 @@ export const preloadHandlebarsTemplates = async function() {
 		'systems/cthack/templates/sheets/parts/character-sidebar.hbs',
 		'systems/cthack/templates/sheets/parts/character-equipment.hbs',
 		'systems/cthack/templates/sheets/parts/character-abilities.hbs',
-		'systems/cthack/templates/sheets/parts/character-item.hbs',
 		'systems/cthack/templates/sheets/parts/character-ability.hbs',
 		'systems/cthack/templates/sheets/parts/character-magic.hbs',
 		'systems/cthack/templates/sheets/opponent.hbs',
@@ -24,11 +23,6 @@ export const preloadHandlebarsTemplates = async function() {
 		'systems/cthack/templates/sheets/item.hbs',
 		'systems/cthack/templates/sheets/weapon.hbs',
 		'systems/cthack/templates/sheets/magic.hbs',
-		
-		// DICE
-		'systems/cthack/templates/parts/dice-sides-options-value.hbs',
-		'systems/cthack/templates/parts/dice-sides-options-max.hbs',
-		'systems/cthack/templates/parts/dice-sides-options-damage.hbs',
 
 		// CHAT
 		'systems/cthack/templates/chat/rollSave.hbs',

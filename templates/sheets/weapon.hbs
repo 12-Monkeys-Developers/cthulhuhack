@@ -1,5 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-    {{!log "weapon" this}}
+    {{log "weapon" this}}
         <div class="item-header">
             {{#if editable}}
                 <img class="editable-image" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
@@ -24,21 +24,13 @@
                 <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.Material"}}</div>
                     <select class="select-dice-material" name="system.dice" data-type="String" {{{getStyleForDice system.dice}}}>
-                        {{#select data.system.dice}}
-                            {{>"systems/cthack/templates/parts/dice-sides-options-value.hbs"}}
-                        {{/select}}
+                        {{selectOptions diceValues selected=system.dice blank="CTHACK.None" localize=true}}
                     </select>
                 </div>
                 <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.ItemRangeName"}}</div>
                     <select class="select-range" name="system.range" data-type="String">
-                        {{#select data.system.range}}
-                            <option value="">{{localize "CTHACK.None"}}</option>
-                            <option value="near">{{localize "CTHACK.RangeNear"}}</option>
-                            <option value="far">{{localize "CTHACK.RangeFar"}}</option>
-                            <option value="distant">{{localize "CTHACK.RangeDistant"}}</option>
-                            <option value="3str">{{localize "CTHACK.RangeThreeStr"}}</option>
-                        {{/select}}
+                        {{selectOptions rangeValues selected=system.range labelAttr="label" localize=true blank="CTHACK.None"}}
                     </select>
                 </div>
             </div>

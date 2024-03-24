@@ -73,10 +73,10 @@ export default class CtHackCharacterSheet extends ActorSheet {
     context.hasImage = this.actor.hasImage;
 
     context.system = this.actor.system;
-
-    context.dicesDamage = SYSTEM.DICES_DAMAGE;
-    context.dicesValue = SYSTEM.DICES_VALUE;
-    context.dicesMax = SYSTEM.DICES_MAX;
+    
+    context.diceValues = SYSTEM.DICE_VALUES;
+    context.diceMaxValues = SYSTEM.DICE_MAX_VALUES;
+    context.diceDamageValues = SYSTEM.DICE_DAMAGE_VALUES;
 
     return context;
   }
@@ -101,8 +101,7 @@ export default class CtHackCharacterSheet extends ActorSheet {
     html.find(".resource-name").click(this._onResourceRoll.bind(this));
 
     // Armed and unarmed damage rolls
-    html.find(".armed-damage-name").click(this._onDamagedRoll.bind(this));
-    html.find(".unarmed-damage-name").click(this._onDamagedRoll.bind(this));
+    html.find(".damage.rollable").click(this._onDamagedRoll.bind(this));
 
     // Roll for item in inventory
     html.find(".fa-dice-d20").click(this._onMaterialRoll.bind(this));
