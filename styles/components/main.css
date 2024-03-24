@@ -1,20 +1,16 @@
 .align-left {
-    text-align: left;
-  }
-  
+  text-align: left;
+}
 .align-right {
   text-align: right;
 }
-
 .align-center {
   text-align: center;
   vertical-align: middle;
 }
-
 .noborder {
   border: none;
 }
-
 input[type="text"],
 input[type="number"],
 input[type="password"],
@@ -22,16 +18,13 @@ input[type="date"],
 input[type="time"] {
   color: #fff;
 }
-
 input[type="text"] {
   border: none;
 }
-
 input[type="checkbox"] {
   height: 12px;
   width: 12px;
 }
-
 select {
   border: none;
   background-repeat: no-repeat;
@@ -47,31 +40,27 @@ select {
   background-color: transparent;
   font-weight: 800;
   color: #fff;
-  &:disabled {
-    opacity: 1;
-  }
 }
-
+select:disabled {
+  opacity: 1;
+}
 option {
   color: #fff;
-  background: rgb(55,55,45);
+  background: #37372d;
 }
-
-option:checked, option:hover {
+option:checked,
+option:hover {
   color: #fff;
-  background: rgb(55,55,45);
+  background: #37372d;
 }
-
 ::-webkit-scrollbar {
   display: none;
 }
-
 nav.sheet-tabs {
   height: 40px;
   border-top: 0;
   border-bottom: 0;
 }
-
 .frame {
   background-image: url("../ui/frame.png");
   background-repeat: no-repeat;
@@ -81,21 +70,17 @@ nav.sheet-tabs {
   border: none;
   color: #fff;
 }
-
 .attack-damage {
   width: 75px;
   text-align: center;
 }
-
 .ask-roll-title .fa-dice-d20 {
-	padding-right: 5px;
+  padding-right: 5px;
   padding-left: 5px;
 }
-
 #gm-manager {
   font-size: var(--font-size-18);
 }
-
 .cthack.sheet.actor a.inline-roll,
 .cthack.sheet.item a.inline-roll {
   color: black;

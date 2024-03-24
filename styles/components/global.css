@@ -1,0 +1,12 @@
+.window-content {
+  background-image: url("../ui/sheet.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+  font-size: var(--font-size-20);
+  scrollbar-width: thin;
+}
+.item-line:hover {
+  background-color: #59564c;
+  color: #ffffff;
+}

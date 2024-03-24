@@ -176,6 +176,7 @@
     "FortuneUse": "Dépenser",
     "FortuneUseMessage": "Un jeton de Fortune a été dépensé par {name}.<br>Le total restant est de {total}.",
     "None": "---",
+    "Empty": "",
     "NO": "Non",
     "YES": "Oui",
 

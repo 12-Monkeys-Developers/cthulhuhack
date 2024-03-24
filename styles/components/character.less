@@ -28,6 +28,25 @@
     background-image: url("systems/cthack/ui/dice/d12-grey.svg");
   }
 
+  nav {
+    &#context-menu {
+      text-align: left;
+      width: 100px;
+    }
+    &.sheet-tabs {
+      flex: 0;
+      .choice {
+        line-height: 40px;
+        font-weight: bold;
+      }
+    
+      .choice.active {
+        color: darkgrey;
+        font-weight: bold;
+        text-shadow: 0 0 10px #851016;
+      }
+    }
+  }
   .sidebar {
     display: flex;
     flex-direction: column;
@@ -116,7 +135,7 @@
             img {
               width: 30px;
               height: 30px;
-              margin-right: 5px;
+              margin: 0 5px 0 5px;
             }
           }
           .has-description {
@@ -253,7 +272,7 @@
     }
   }
 
-  nav {
+  nav.sheet-tabs {
     grid-column-start: 1;
     grid-column-end: 3;
     height: 40px;
@@ -320,7 +339,7 @@
             img {
               width: 30px;
               height: 30px;
-              margin-right: 5px;
+              margin: 0 5px 0 5px;
             }
           }
           .item-dice {
@@ -349,8 +368,8 @@
     }
 
     .abilities-magic {
-      display: grid;
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
 
       .abilities {
         display: flex;
@@ -359,7 +378,7 @@
           border: none;
           font-size: 1em;
           font-weight: bold;
-          padding: 10px 0 0 0;
+          margin: 5px 0 5px 0;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -380,7 +399,7 @@
           border: none;
           font-size: 1em;
           font-weight: bold;
-          padding: 10px 0 10px 0;
+          margin: 5px 0 5px 0;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -394,10 +413,6 @@
         }
       }
 
-      .entete-tableau {
-        display: flex;
-      }
-
       .grid-abilities {
         display: grid;
         grid-template-columns: 1fr;
@@ -408,7 +423,7 @@
         .item-line {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
-          height: 30px;
+          height: 40px;
           .item-name {
             font-weight: bold;
             display: flex;
@@ -416,7 +431,7 @@
             img {
               width: 30px;
               height: 30px;
-              margin-right: 5px;
+              margin: 0 5px 0 5px;
             }
           }
           .item-use {
@@ -454,7 +469,7 @@
             img {
               width: 30px;
               height: 30px;
-              margin-right: 5px;
+              margin: 0 5px 0 5px;
             }
           }
           .item-subtype {

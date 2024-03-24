@@ -2,6 +2,11 @@
   font-family: "EBGaramond";
   src: url("../ui/fonts/EBGaramond-VariableFont_wght.ttf");
 }
+.flex-center {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 /* Global styles */
 .window-app {
   font-family: 'EBGaramond', sans-serif;
@@ -24,10 +29,6 @@
   text-shadow: 0 0 10px #eea3a3;
   cursor: url("../ui/dice/d20-red.svg") 32 24, pointer;
 }
-.color-white {
-  /*color: white;*/
-  color: #dfe2d5;
-}
 #logo {
   content: url("../ui/cthack-logo.webp");
   width: 50px;
@@ -41,55 +42,12 @@
   top: -45px;
   left: calc(50% - 96px);
 }
-.character-resume {
-  text-align: center;
-}
-.character-resume .adrenaline-img {
-  height: 25px;
-  width: 25px;
-}
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-.tooltip .tooltiptextleft {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -25px;
-}
-.tooltip .tooltiptextright {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -85px;
-}
-.tooltip:hover .tooltiptextleft,
-.tooltip:hover .tooltiptextright {
-  visibility: visible;
-}
-div.tip .tip-title {
-  color: #E77600 !important;
-  font-weight: bold;
-}
 .chat-message .message-header .message-sender {
   font-weight: bold;
+}
+#tooltip.tooltip-save {
+  max-width: 500px;
+  text-align: left;
 }
 i.cthack {
   width: 36px;
@@ -103,65 +61,21 @@ i.cthack {
   filter: grayscale(1);
   transition: 0.3s;
 }
-.editor.prosemirror.editing-source textarea {
-  color: #fff;
-}
-#tooltip.tooltip-save {
-  max-width: 500px;
-  text-align: left;
-}
 a.inline-roll {
   background: none;
   border: 1px solid white;
 }
-.grid,
-.grid-2col {
-  display: grid;
-  grid-column: span 2 / span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-gap: 10px;
-  margin: 0;
-  padding: 0;
+.input-small,
+.select-small {
+  width: 50px;
 }
-.grid-3col {
-  grid-column: span 3 / span 3;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.input-large,
+.select-large {
+  width: 100px;
 }
-.grid-4col {
-  grid-column: span 4 / span 4;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-.flex-group-center,
-.flex-group-left,
-.flex-group-right {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 5px;
-  border: 1px solid #999;
-}
-.flex-group-left {
-  justify-content: flex-start;
-  text-align: left;
-}
-.flex-group-right {
-  justify-content: flex-end;
-  text-align: right;
-}
-.flex-center {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.dice-roll .dice-total.success {
-  color: inherit;
-  background: #c7d0c0;
-  border: 1px solid #006c00;
-}
-.dice-roll .dice-total.failure {
-  color: inherit;
-  background: #ffdddd;
-  border: 1px solid #6e0000;
+.input-extralarge,
+.select-extralarge {
+  width: 150px;
 }
 .roll-failure {
   color: red;
@@ -181,10 +95,15 @@ a.inline-roll {
   color: #fff;
   padding: 0 5px 0 5px;
 }
-/* Styles limited to cthack sheets */
-.cthack {
-  /*** Refactor ***/
+/* App styles*/
+.character-resume {
+  text-align: center;
 }
+.character-resume .adrenaline-img {
+  height: 25px;
+  width: 25px;
+}
+/* Styles limited to cthack sheets */
 .cthack .window-content {
   background-image: url("../ui/sheet.webp");
   background-repeat: no-repeat;
@@ -192,6 +111,10 @@ a.inline-roll {
   color: #fff;
   font-size: var(--font-size-20);
   scrollbar-width: thin;
+}
+.cthack .item-line:hover {
+  background-color: #59564c;
+  color: #ffffff;
 }
 .cthack .align-left {
   text-align: left;
@@ -280,84 +203,6 @@ a.inline-roll {
 .cthack .cthack.sheet.item a.inline-roll {
   color: black;
 }
-.cthack .item-form {
-  color: #fff;
-}
-.cthack .sheet-header {
-  flex: 0 0 auto;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-.cthack .sheet-header .profile-img {
-  height: calc(20%);
-  width: auto;
-  margin: 0;
-}
-.cthack .sheet-header .opponent-img {
-  height: calc(10%);
-  width: auto;
-  margin: 0;
-}
-.cthack .sheet-header .adrenaline-img {
-  height: 30px;
-  width: auto;
-}
-.cthack .sheet-header .definition-img {
-  height: auto;
-  width: 50px;
-}
-.cthack .sheet-header .header-fields {
-  flex: 5;
-}
-.cthack .sheet-header h1.charname {
-  height: 50px;
-  padding: 0px 20px 0px 20px;
-  margin: 5px 0;
-  border-bottom: 0;
-}
-.cthack .sheet-header h1.charname input {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
-.cthack .sheet-tabs {
-  flex: 0;
-}
-.cthack .tox .tox-editor-container {
-  background: #fff;
-}
-.cthack .tox .tox-edit-area {
-  padding: 0 8px;
-}
-.cthack .character-sheet-body {
-  height: 100%;
-  min-height: 150px;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-}
-.cthack .character-sheet-body .tab {
-  min-height: 150px;
-  height: 400px;
-}
-.cthack .character-sheet-body .tab .editor {
-  min-height: 150px;
-  height: 100%;
-}
-.cthack .tabs {
-  height: 40px;
-}
-.cthack .tabs .choice {
-  line-height: 40px;
-  font-weight: bold;
-}
-.cthack .tabs .choice.active {
-  color: darkgrey;
-  font-weight: bold;
-  text-shadow: 0 0 10px #851016;
-}
 .cthack.sheet.actor.character {
   min-width: 960px;
 }
@@ -381,6 +226,22 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .dice-d12 {
   background-image: url("systems/cthack/ui/dice/d12-grey.svg");
+}
+.cthack.sheet.actor.character nav#context-menu {
+  text-align: left;
+  width: 100px;
+}
+.cthack.sheet.actor.character nav.sheet-tabs {
+  flex: 0;
+}
+.cthack.sheet.actor.character nav.sheet-tabs .choice {
+  line-height: 40px;
+  font-weight: bold;
+}
+.cthack.sheet.actor.character nav.sheet-tabs .choice.active {
+  color: darkgrey;
+  font-weight: bold;
+  text-shadow: 0 0 10px #851016;
 }
 .cthack.sheet.actor.character .sidebar {
   display: flex;
@@ -468,7 +329,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .sidebar .conditions .items-list .item-line .item-name-img img {
   width: 30px;
   height: 30px;
-  margin-right: 5px;
+  margin: 0 5px 0 5px;
 }
 .cthack.sheet.actor.character .sidebar .conditions .items-list .item-line .has-description {
   font-style: italic;
@@ -595,17 +456,17 @@ a.inline-roll {
   color: black;
   text-shadow: 0 0 10px red;
 }
-.cthack.sheet.actor.character nav {
+.cthack.sheet.actor.character nav.sheet-tabs {
   grid-column-start: 1;
   grid-column-end: 3;
   height: 40px;
   border-bottom: 1px solid white;
   margin-top: 10px;
 }
-.cthack.sheet.actor.character nav .choice {
+.cthack.sheet.actor.character nav.sheet-tabs .choice {
   font-weight: normal;
 }
-.cthack.sheet.actor.character nav .choice.active {
+.cthack.sheet.actor.character nav.sheet-tabs .choice.active {
   color: white;
   font-weight: bold;
   border-top: 1px solid white;
@@ -660,7 +521,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-name-img img {
   width: 30px;
   height: 30px;
-  margin-right: 5px;
+  margin: 0 5px 0 5px;
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-dice {
   display: flex;
@@ -684,8 +545,8 @@ a.inline-roll {
   font-size: 0.9em;
 }
 .cthack.sheet.actor.character .sheet-body .abilities-magic {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
 }
 .cthack.sheet.actor.character .sheet-body .abilities-magic .abilities {
   display: flex;
@@ -695,7 +556,7 @@ a.inline-roll {
   border: none;
   font-size: 1em;
   font-weight: bold;
-  padding: 10px 0 0 0;
+  margin: 5px 0 5px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -715,7 +576,7 @@ a.inline-roll {
   border: none;
   font-size: 1em;
   font-weight: bold;
-  padding: 10px 0 10px 0;
+  margin: 5px 0 5px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -726,9 +587,6 @@ a.inline-roll {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.cthack.sheet.actor.character .sheet-body .abilities-magic .entete-tableau {
-  display: flex;
 }
 .cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities {
   display: grid;
@@ -741,7 +599,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  height: 30px;
+  height: 40px;
 }
 .cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line .item-name {
   font-weight: bold;
@@ -751,7 +609,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line .item-name img {
   width: 30px;
   height: 30px;
-  margin-right: 5px;
+  margin: 0 5px 0 5px;
 }
 .cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line .item-use {
   display: flex;
@@ -788,7 +646,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-name img {
   width: 30px;
   height: 30px;
-  margin-right: 5px;
+  margin: 0 5px 0 5px;
 }
 .cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-subtype {
   display: flex;
@@ -1182,107 +1040,6 @@ a.inline-roll {
 }
 .cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .has-description {
   font-style: italic;
-}
-.cthack .items-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.cthack .items-list h4 {
-  font-size: var(--font-size-20);
-}
-.cthack .items-list div {
-  text-align: center;
-  vertical-align: middle;
-}
-.cthack .items-list .item-header {
-  line-height: 25px;
-  padding: 0 5px 0 5px;
-  border-bottom: 1px solid #fff;
-}
-.cthack .items-list .item-header .item-header-name {
-  flex: 2;
-  text-align: left;
-  vertical-align: middle;
-}
-.cthack .items-list .item {
-  line-height: 25px;
-  padding: 0 5px 0 5px;
-}
-.cthack .items-list .item:hover {
-  background-color: #59564c;
-}
-.cthack .items-list .item .item-image {
-  flex: 0 0 40px;
-  padding-top: 5px;
-  margin-right: 5px;
-}
-.cthack .items-list .item .item-name {
-  padding-top: 10px;
-  text-align: left;
-}
-.cthack .items-list .item .item-element {
-  padding-top: 5px;
-  text-align: center;
-  vertical-align: middle;
-}
-.cthack .items-list .item .item-element-text {
-  padding-top: 10px;
-  text-align: center;
-  vertical-align: middle;
-}
-.cthack .items-list .item-bloc {
-  flex: 2;
-  margin: 0;
-}
-.cthack .items-list .item-name {
-  flex: 2;
-  margin: 0;
-  padding-top: 10px;
-}
-.cthack .items-list .item-controls-header {
-  flex: 0 0 86px;
-  text-align: right;
-}
-.cthack .items-list .item-controls {
-  flex: 0 0 86px;
-  text-align: right;
-  padding-top: 10px;
-}
-.cthack .items-list .item-summary {
-  flex: 0 0 100%;
-  line-height: 16px;
-  padding: 0.25em 0.5em;
-  border-top: 1px solid #c9c7b8;
-  text-align: left;
-}
-.cthack .items-list .item-condition {
-  padding-top: 5px;
-}
-.cthack .sheet-header .archetype-image {
-  height: auto;
-  width: 128px;
-  margin: 20px 10px 0 20px;
-}
-.cthack .sheet-header .item-image {
-  min-height: 128px;
-  width: auto;
-  margin: 20px 0 0 20px;
-}
-.cthack .sheet-header .item-image .item-name {
-  margin: 0 10px 0 10px;
-}
-.cthack .input-small,
-.cthack .select-small {
-  width: 50px;
-}
-.cthack .input-large,
-.cthack .select-large {
-  width: 100px;
-}
-.cthack .input-extralarge,
-.cthack .select-extralarge {
-  width: 150px;
 }
 .cthack.sheet.item.archetype .editable input,
 .cthack.sheet.item.archetype .editable select {
