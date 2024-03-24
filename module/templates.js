@@ -7,21 +7,14 @@ export const preloadHandlebarsTemplates = async function() {
 	// Define template paths to load
 	const templatePaths = [
 		// ACTOR		
-		'systems/cthack/templates/actor/actor-sheet.hbs',
-		'systems/cthack/templates/sheets/character-v2.hbs',
-		'systems/cthack/templates/actor/parts/actor-attributes-resources.hbs',
-		'systems/cthack/templates/actor/parts/actor-attributes-combat.hbs',
-		'systems/cthack/templates/actor/parts/actor-item.hbs',
-		'systems/cthack/templates/actor/parts/actor-magic.hbs',
-		'systems/cthack/templates/actor/parts/actor-condition.hbs',
-		'systems/cthack/templates/actor/parts/actor-ability.hbs',
-		'systems/cthack/templates/sheets/opponent.hbs',
+		'systems/cthack/templates/sheets/character.hbs',
 		'systems/cthack/templates/sheets/parts/character-sidebar.hbs',
 		'systems/cthack/templates/sheets/parts/character-equipment.hbs',
 		'systems/cthack/templates/sheets/parts/character-abilities.hbs',
 		'systems/cthack/templates/sheets/parts/character-item.hbs',
 		'systems/cthack/templates/sheets/parts/character-ability.hbs',
 		'systems/cthack/templates/sheets/parts/character-magic.hbs',
+		'systems/cthack/templates/sheets/opponent.hbs',
 
 		// ITEM
 		'systems/cthack/templates/sheets/ability.hbs',

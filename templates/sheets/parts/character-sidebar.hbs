@@ -1,4 +1,4 @@
-{{log 'sidebar' this}}
+{{!log 'sidebar' this}}
 <div class="sidebar flexcol">
   <div class="image-container">
     {{#if editable}}
@@ -42,7 +42,7 @@
       <div class="conditions-title">{{localize "CTHACK.Conditions"}}</div>
       <div class="items-list">
         {{#each conditions as |condition id|}}
-          {{log 'condition' condition id}}
+          {{!log 'condition' condition id}}
           <div class="item-line item character-contextmenu" data-item-id="{{condition._id}}">
             <div class="item-name-img {{#if condition.system.hasDescription}}has-description{{/if}}" data-tooltip="{{condition.enrichedDescription}}">{{#if condition.hasImage}}<img src="{{condition.img}}"/>{{/if}}{{condition.name}}</div>
           </div>

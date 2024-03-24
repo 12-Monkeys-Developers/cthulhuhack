@@ -70,7 +70,6 @@ Hooks.once("init", async function () {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheet, { types: ["character"], makeDefault: true, label: "CTHACK.SheetClassCharacter" });
-  Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheetV2, { types: ["character"], label: "PJ V2" });
   Actors.registerSheet(SYSTEM_NAME, applications.AdversaireSheet, { types: ["opponent"], makeDefault: true, label: "CTHACK.SheetClassOpponent" });
 
   Items.unregisterSheet("core", ItemSheet);
