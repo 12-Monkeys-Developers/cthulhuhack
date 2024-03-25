@@ -41,7 +41,7 @@
     </div>
 
     <div class="data-group hitdice">
-      <label for="system.hitDice" class="resource-label resource-name" data-tooltip="{{localize 'CTHACK.HitDice'}}">{{localize "CTHACK.HitDiceShort"}} :</label>
+      <label for="system.hitDice" class="resource-label resource-name" data-tooltip="{{localize 'CTHACK.HitDice'}}">{{localize "CTHACK.HitDiceShort"}}</label>
       {{#if editable}}
         <select class="selectHitDice" name="system.hitDice" data-type="String">
           {{selectOptions opponentHitDice selected=actor.system.hitDice}}
@@ -52,7 +52,7 @@
     </div>
 
     <div class="data-group hp">
-      <label for="system.hp.value" class="resource-label" data-tooltip="{{localize 'CTHACK.HitPoints'}}">{{localize "CTHACK.HitPointsShort"}} :</label>
+      <label for="system.hp.value" class="resource-label" data-tooltip="{{localize 'CTHACK.HitPoints'}}">{{localize "CTHACK.HitPointsShort"}}</label>
       <div class="hp-input">
         <input class="input-editable" type="text" name="system.hp.value" value="{{actor.system.hp.value}}" data-dtype="Number" />
         /
@@ -67,7 +67,7 @@
     </div>
 
     <div class="data-group armor">
-      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentArmor'}}">{{localize "CTHACK.OpponentArmorShort"}} :</label>
+      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentArmor'}}">{{localize "CTHACK.OpponentArmorShort"}}</label>
       {{#if editable}}
         <input class="input-editable" name="system.armor" type="text" value="{{actor.system.armor}}" data-dtype="Number" />
       {{else}}
@@ -76,7 +76,7 @@
     </div>
 
     <div class="data-group malus">
-      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentTouchMalus'}}">{{localize "CTHACK.OpponentTouchMalusShort"}} :</label>
+      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentTouchMalus'}}">{{localize "CTHACK.OpponentTouchMalusShort"}}</label>
       {{#if editable}}
         <input class="input-editable" name="system.malus" type="text" value="{{actor.system.malus}}" data-dtype="Number" />
       {{else}}

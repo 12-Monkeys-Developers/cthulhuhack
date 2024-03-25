@@ -7,8 +7,8 @@ export default class CtHackOpponentAbility extends CommonItem {
     const common = super.defineSchema();
     const schema = { ...common };
     schema.uses = new fields.SchemaField({
-      value: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0, label: "Valeur" }),
-      max: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0, label: "Valeur" }),
+      value: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0}),
+      max: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0}),
       per: new fields.StringField({ required: true, choices: SYSTEM.ABILITY_USAGE, initial: "Permanent" }),
       last: new fields.StringField({ required: true, nullable: false, initial: "" }),
     });

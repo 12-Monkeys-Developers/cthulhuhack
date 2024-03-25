@@ -94,26 +94,21 @@
   grid-column-start: 1;
   grid-column-end: 2;
   display: flex;
-  justify-content: center;
-  text-align: center;
+  padding-left: 10px;
 }
 .sheet.actor.opponent .sheet-header .opponent-image .editable-image {
   border: none;
   height: 200px;
-  min-width: 200px;
-  border-radius: 10px;
 }
 .sheet.actor.opponent .sheet-header .opponent-image img.actor-image {
   border: none;
-  height: 200px;
-  min-width: 200px;
-  border-radius: 10px;
+  height: 150px;
 }
 .sheet.actor.opponent .sheet-header .opponent-image .hover-icon {
   visibility: hidden;
   position: absolute;
   top: 40px;
-  left: 15px;
+  left: 20px;
   font-size: var(--font-size-16);
   color: black;
 }

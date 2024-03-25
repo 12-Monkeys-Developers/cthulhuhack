@@ -6,7 +6,7 @@ export default class CtHackAttack extends CommonItem {
     const common = super.defineSchema();
     const schema = { ...common };
     schema.nb = new fields.NumberField({ required: true, nullable: false, initial: 1, min: 1 });
-    schema.damage = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 });
+    schema.damage = new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 });
     schema.damageDice = new fields.StringField({ required: true, nullable: false, initial: "" });
     return schema;
   }

@@ -6,11 +6,11 @@ export default class CtHackOpponent extends foundry.abstract.DataModel {
     schema.shortDescription = new fields.HTMLField({ required: false, blank: true, textSearch: true });
     schema.locked = new fields.BooleanField({ required: true, nullable: false, initial: false });
     schema.hitDice = new fields.NumberField({ required: true, nullable: false, integer: true, positive: true, initial: 1, min: 1 });
-    schema.armor = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 });
-    schema.malus = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 });
+    schema.armor = new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 });
+    schema.malus = new fields.NumberField({ required: true, nullable: false, initial: 0 });
     schema.hp = new fields.SchemaField({
-        value: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
-        min: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
+        value: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 }),
+        min: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 }),
         max: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 })
     });
 
