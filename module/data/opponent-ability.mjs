@@ -24,27 +24,27 @@ export default class CtHackOpponentAbility extends CommonItem {
   }
 
   get isUsable() {
-    return this.uses.per !== "Permanent" && this.uses.value < this.uses.max;
+    return this.uses.per !== "Permanent"  && this.uses.value > 0;
   }
 
   get isResetable() {
-    return this.uses.per !== "Permanent" && this.uses.value === this.uses.max;
+    return this.uses.per !== "Permanent" && this.uses.max !== 0 && this.uses.value === 0;
   }
 
-  get isDecreaseable() {
-    return this.uses.per !== "Permanent" && this.uses.value > 0;
+  get isIncreaseable() {
+    return this.uses.per !== "Permanent" && this.uses.value < this.uses.max;
   }
 
   /**
-   * Uses the opponent's ability.
+   * Uses the opponent's ability : decrease the remaining use by 1
    * @returns {Promise<void>} A promise that resolves when the ability is used.
    */
   async use() {
     if (this.uses.per === "Permanent") {
       return;
     }
-    if (this.uses.value < this.uses.max) {
-      return this.parent.update({ "system.uses.value": this.uses.value + 1, "system.uses.last": formatDate(new Date()) });
+    if (this.uses.value > 0) {
+      return this.parent.update({ "system.uses.value": this.uses.value - 1, "system.uses.last": formatDate(new Date()) });
     }
   }
 
@@ -58,8 +58,8 @@ export default class CtHackOpponentAbility extends CommonItem {
     if (this.uses.per === "Permanent") {
       return;
     }
-    if (this.uses.value === this.uses.max) {
-      return this.parent.update({ "system.uses.value": 0, "system.uses.last": "" });
+    if (this.uses.value === 0) {
+      return this.parent.update({ "system.uses.value": this.uses.max, "system.uses.last": "" });
     }
   }
 
@@ -69,12 +69,12 @@ export default class CtHackOpponentAbility extends CommonItem {
    * If the usage value is greater than 0, it updates the parent object with the decreased value.
    * @returns {Promise<void>} A promise that resolves once the decrease is performed.
    */
-  async decrease() {
+  async increase() {
     if (this.uses.per === "Permanent") {
       return;
     }
-    if (this.uses.value > 0) {
-      return this.parent.update({ "system.uses.value": this.uses.value - 1 });
+    if (this.uses.value < this.uses.max) {
+      return this.parent.update({ "system.uses.value": this.uses.value + 1 });
     }
   }
 

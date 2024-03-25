@@ -1084,6 +1084,10 @@ a.inline-roll {
   display: flex;
   align-items: center;
 }
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-use {
+  display: flex;
+  align-items: center;
+}
 .cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .has-description {
   font-style: italic;
 }

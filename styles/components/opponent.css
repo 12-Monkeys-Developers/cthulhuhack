@@ -402,6 +402,10 @@
   display: flex;
   align-items: center;
 }
+.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-use {
+  display: flex;
+  align-items: center;
+}
 .sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .has-description {
   font-style: italic;
 }

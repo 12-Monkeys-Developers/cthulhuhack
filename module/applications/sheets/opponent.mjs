@@ -131,15 +131,15 @@ export default class CtHackOpponentSheet extends ActorSheet {
         },
       },
       {
-        name: game.i18n.localize("CTHACK.ContextMenuDecreaseUse"),
-        icon: '<i class="fa-solid fa-minus"></i>',
+        name: game.i18n.localize("CTHACK.ContextMenuIncreaseUse"),
+        icon: '<i class="fa-solid fa-plus"></i>',
         condition: (li) => {
           const item = this.actor.items.get(li.data("item-id"));
-          return item.isOwner && item.type === "opponentAbility" && item.system.isDecreaseable;
+          return item.isOwner && item.type === "opponentAbility" && item.system.isIncreaseable;
         },
         callback: (li) => {
           const item = this.actor.items.get(li.data("item-id"));
-          item.system.decrease();
+          item.system.increase();
           this.render();
         },
       },

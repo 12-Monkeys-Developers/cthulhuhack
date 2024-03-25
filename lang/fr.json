@@ -78,7 +78,7 @@
 
     "AbilityKey": "Clé",
     "AbilityUsePer": "Type d'usage",
-    "AbilityUseValue": "Utilisations",
+    "AbilityUseValue": "Utilisations restantes",
     "AbilityUseMax": "Maximum",
     "AbilityUseLast": "Dernier usage",
     "AbilityMultiple": "Multiple",
@@ -235,7 +235,7 @@
     "ContextMenuDelete": "Supprimer",
     "ContextMenuUse": "Utiliser",
     "ContextMenuResetUse": "Réinitialiser",
-    "ContextMenuDecreaseUse": "Diminuer",
+    "ContextMenuIncreaseUse": "Augmenter",
     "Notifications": {
       "AbilityHasAlready": "La capacité {abilityName} n'a pas la propriété multiple et est déjà présente."
     }

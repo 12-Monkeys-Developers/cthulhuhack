@@ -78,7 +78,7 @@
 
     "AbilityKey": "Key",
     "AbilityUsePer": "Use Type",
-    "AbilityUseValue": "Uses",
+    "AbilityUseValue": "Remaining uses",
     "AbilityUseMax": "Maximum",
     "AbilityUseLast": "Last use",
     "AbilityMultiple": "Multiple",
@@ -235,7 +235,7 @@
     "ContextMenuDelete": "Delete",
     "ContextMenuUse": "Use",
     "ContextMenuResetUse": "Reset",
-    "ContextMenuDecreaseUse": "Decrease",
+    "ContextMenuIncreaseUse": "Increase",
     "Notifications": {
       "AbilityHasAlready": "The ability {abilityName} has not the multiple property and already exists."
     }
