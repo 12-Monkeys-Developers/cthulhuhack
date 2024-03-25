@@ -144,7 +144,7 @@ a.inline-roll {
   color: #fff;
   padding-top: 15px;
 }
-.search-dialog input {
+.search-dialog input[type="text"].searchtext {
   border: 1px solid #6e0000;
   margin: 10px 0 10px 0;
 }

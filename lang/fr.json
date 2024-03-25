@@ -311,7 +311,7 @@
     "WindowTitle": "Rechercher",
     "ButtonSearch": "Rechercher",
     "ButtonCancel": "Annuler",
-    "DialogTitle": "Recherche de Texte dans les Journaux, Personnages, Objets...",
+    "DialogTitle": "Recherche de texte dans les Journaux, Personnages et Objets",
     "DialogInput": "Texte à rechercher :",
     "ChatIntro": "Résultat de la recherche",
     "ChatText": "Texte recherché : ",

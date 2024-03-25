@@ -85,14 +85,14 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
   }
 
   get hasShortDescription() {
-    return this.shortDescription !== null && this.shortDescription !== '';
+    return !!this.shortDescription;
   }
 
   get hasOccupation() {
-    return this.occupation !== null && this.occupation !== '';
+    return !!this.occupation;
   }
 
   get hasArchetype() {
-    return this.archetype !== null && this.archetype !== '';
+    return !!this.archetype;
   }
 }
