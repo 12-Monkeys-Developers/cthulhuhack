@@ -1,4 +1,6 @@
 import { SYSTEM } from "../../config/system.mjs";
+import { SearchChat } from "../search/research.mjs";
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -75,14 +77,6 @@ export default class CtHackOpponentSheet extends ActorSheet {
 
     html.find(".attack-create").click(this._onAttackCreate.bind(this));
 
-    html.find(".attack-edit").click((ev) => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-      item.sheet.render(true);
-    });
-
-    html.find(".attack-delete").click(this._onAttackDelete.bind(this));
-
     html.find(".selectHitDice").change(this._onChangeHitDice.bind(this));
 
     // Roll for attack
@@ -95,7 +89,7 @@ export default class CtHackOpponentSheet extends ActorSheet {
 
     html.find(".share-image").click(this._onShareImage.bind(this));
     html.find(".editable-image").on("contextmenu", this._resetImage.bind(this));
-    html.find(".name").on("contextmenu", this._onSearchActor.bind(this));
+    html.find(".search-name").on("contextmenu", this._onSearchActor.bind(this));
   }
 
   _contextOpponentMenu(html) {
@@ -195,7 +189,9 @@ export default class CtHackOpponentSheet extends ActorSheet {
   async _onSearchActor(event) {
     event.preventDefault();
     const characterName = event.currentTarget.dataset.name;
-    await this.patternSearch(characterName);
+    let search = await new SearchChat().create(characterName);
+    await search.searchWorld();
+    await search.display();
   }
 
   /**

@@ -102,7 +102,7 @@ export class SearchChat {
     this.data.actorresults = this.data.actorResultCollection.length;
     
     this.data.hasresults = this.data.pageresults + this.data.itemresults + this.data.actorresults;
-    this.data.tooMuchResults = this.data.hasresults > 20;
+    this.data.tooMuchResults = this.data.hasresults > SYSTEM.SEARCH_MAX_RESULTS;
     return;
   }
 

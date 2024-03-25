@@ -13,6 +13,8 @@ export const DICE_MAX_VALUES = { d4: "4", d6: "6", d8: "8", d10: "10", d12: "12"
 
 export const WEALTH_START = { 2: "CHA*2", 3: "CHA*3", 4: "CHA*4", sp: "CTHACK.WealthStartSpecial" };
 
+export const SEARCH_MAX_RESULTS = 20;
+
 /**
  * Include all constant definitions within the SYSTEM global export
  * @type {Object}
@@ -31,5 +33,6 @@ export const SYSTEM = {
   MAGIC_TYPE: MAGIC.MAGIC_TYPE,
   OPPONENT_HIT_DICE: OPPONENT.HIT_DICE,
   ATTACK_DAMAGE_DICE: ATTACK.DAMAGE_DICE,
-  RANGE: WEAPON.RANGE
+  RANGE: WEAPON.RANGE,
+  SEARCH_MAX_RESULTS
 };
