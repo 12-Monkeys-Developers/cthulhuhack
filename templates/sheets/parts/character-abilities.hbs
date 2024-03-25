@@ -1,0 +1,37 @@
+<div class="abilities-magic flexrow">
+
+    {{!-- Abilities--}}
+    <div class="abilities">
+        {{#if editable}}
+            <div class="title">{{localize "CTHACK.Abilities"}}
+                <a class="item-control item-create" data-tooltip="{{localize "CTHACK.AddAbility"}}" data-type="ability"><i class="fas fa-plus"></i></a>
+            </div>
+        {{else}}
+            {{#if (gt abilities.length 0)}}<div class="title">{{localize "CTHACK.Abilities"}}</div>{{/if}}
+        {{/if}}
+                  
+        <div class="grid-abilities">
+            {{#each abilities as |item id|}}
+                    {{> "systems/cthack/templates/sheets/parts/character-ability.hbs" item}}
+            {{/each}}      
+        </div>
+    </div>
+
+    {{!-- Magic --}}
+    <div class="magics">
+         {{#if editable}}
+            <div class="title">{{localize "CTHACK.Magic"}}
+                <a class="item-control item-create" data-tooltip="{{localize "CTHACK.AddMagic"}}" data-type="magic"><i class="fas fa-plus"></i></a>
+            </div>
+         {{else}}
+            {{#if (gt magics.length 0)}}<div class="title">{{localize "CTHACK.Magic"}}</div>{{/if}}
+         {{/if}}
+
+        <div class="grid-magics">
+            {{#each magics as |item id|}}
+                {{> "systems/cthack/templates/sheets/parts/character-magic.hbs" item}}
+            {{/each}}       
+        </div>
+    </div>
+
+</div>

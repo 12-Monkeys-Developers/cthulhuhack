@@ -4,20 +4,21 @@
 
     <div class="opponent-image">
       {{#if editable}}
-        <img class="editable-image" src="{{data.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+        <img class="editable-image" src="{{data.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}"/>
       {{else}}
-        {{#if hasImage}}
-          <img class="image" src="{{actor.img}}" data-tooltip="{{localize 'TOOLTIPS.ShowImage'}}" data-image="{{actor.img}}" data-name="{{actor.name}}"/>
-        {{/if}}
-      {{/if}}
+        {{#if actor.hasImage}}
+          <img class="actor-image" src="{{actor.img}}" data-tooltip="{{actor.name}}"/>
+          <a class="hover-icon share-image" data-tooltip="{{localize 'TOOLTIPS.ShowImage'}}" data-image="{{actor.img}}" data-name="{{actor.name}}"><i class="fas fa-image fa-fw"></i></a>
+        {{/if}}        
+      {{/if}}    
     </div>
 
     <div class="character">
-      <div class="name" data-name="{{actor.name}}">
+      <div class="name">
         {{#if editable}}
           <input name="name" type="text" value="{{actor.name}}" />
         {{else}}
-          <div data-tooltip="Clic droit pour rechercher le nom">{{actor.name}}</div>
+          <div class="search-name" data-name="{{actor.name}}" data-tooltip="Clic droit pour rechercher le nom">{{actor.name}}</div>
         {{/if}}
       </div>
       <div class="sheet-lock">
@@ -40,7 +41,7 @@
     </div>
 
     <div class="data-group hitdice">
-      <label for="system.hitDice" class="resource-label resource-name" data-tooltip="{{localize 'CTHACK.HitDice'}}">{{localize "CTHACK.HitDiceShort"}} :</label>
+      <label for="system.hitDice" class="resource-label resource-name" data-tooltip="{{localize 'CTHACK.HitDice'}}">{{localize "CTHACK.HitDiceShort"}}</label>
       {{#if editable}}
         <select class="selectHitDice" name="system.hitDice" data-type="String">
           {{selectOptions opponentHitDice selected=actor.system.hitDice}}
@@ -51,7 +52,7 @@
     </div>
 
     <div class="data-group hp">
-      <label for="system.hp.value" class="resource-label" data-tooltip="{{localize 'CTHACK.HitPoints'}}">{{localize "CTHACK.HitPointsShort"}} :</label>
+      <label for="system.hp.value" class="resource-label" data-tooltip="{{localize 'CTHACK.HitPoints'}}">{{localize "CTHACK.HitPointsShort"}}</label>
       <div class="hp-input">
         <input class="input-editable" type="text" name="system.hp.value" value="{{actor.system.hp.value}}" data-dtype="Number" />
         /
@@ -66,7 +67,7 @@
     </div>
 
     <div class="data-group armor">
-      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentArmor'}}">{{localize "CTHACK.OpponentArmorShort"}} :</label>
+      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentArmor'}}">{{localize "CTHACK.OpponentArmorShort"}}</label>
       {{#if editable}}
         <input class="input-editable" name="system.armor" type="text" value="{{actor.system.armor}}" data-dtype="Number" />
       {{else}}
@@ -75,7 +76,7 @@
     </div>
 
     <div class="data-group malus">
-      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentTouchMalus'}}">{{localize "CTHACK.OpponentTouchMalusShort"}} :</label>
+      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentTouchMalus'}}">{{localize "CTHACK.OpponentTouchMalusShort"}}</label>
       {{#if editable}}
         <input class="input-editable" name="system.malus" type="text" value="{{actor.system.malus}}" data-dtype="Number" />
       {{else}}
@@ -101,14 +102,13 @@
     <div class="attacks">
       {{#if editable}}
         <div class="title">{{localize "CTHACK.OpponentAttacks"}}
-          <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.AddAttack'}}" data-type="attack"><i class="fas fa-plus"></i></a>
+         <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.AddAttack'}}" data-type="attack"><i class="fas fa-plus"></i></a>
         </div>
       {{else}}
         {{#if (gt attacks.length 0)}}<div class="title">{{localize "CTHACK.OpponentAttacks"}}</div>{{/if}}
       {{/if}}
       <div class="grid-attacks">
         {{#each attacks as |attack id|}}
-        {{log 'opponent-attack' attack}}
           <div class="item opponent-contextmenu" data-item-id="{{attack._id}}">
             <details>
               <summary class="item-line">
@@ -119,7 +119,7 @@
             </details>    
           </div>
         {{/each}}
-        </div>
+      </div>
     </div>
 
     <div class="abilities">
@@ -137,7 +137,11 @@
               <details>
                 <summary class="item-line">
                   <div class="item-name {{#if ability.system.hasDescription}}has-description{{/if}}">{{#if ability.hasImage}}<img src="{{ability.img}}"/>{{/if}}{{ability.name}}</div>
-                  <div class="item-details">{{ability.system.details}}</div>
+                  <div class="item-use">
+                    {{#if ability.system.hasUse}}
+                      {{localize 'CTHACK.AbilityUseValue'}} ({{abilityPeriodToString ability.system.uses.per}}) : {{ability.system.uses.value}}/{{ability.system.uses.max}}
+                    {{/if}}
+                  </div>
                 </summary>                  
                   <div class="item-description">{{{ability.enrichedDescription}}}</div>
               </details>
@@ -156,7 +160,7 @@
         {{/if}}
         <div class="grid-magics">
           {{#each magics as |magic id|}}
-          {{log 'opponent-magic' magic}}
+          {{!log 'opponent-magic' magic}}
             <div class="item opponent-contextmenu" data-item-id="{{magic._id}}">
               <details>
                 <summary class="item-line">

@@ -8,7 +8,7 @@
   flex-direction: column;
 
   .sheet-header {
-    display: grid;   
+    display: grid;
     &.grid-image {
       grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 0.5fr 1fr;
@@ -94,11 +94,27 @@
       grid-column-start: 1;
       grid-column-end: 2;
       display: flex;
-      justify-content: center;
-      text-align: center;
-      img {
+      padding-left: 10px;
+      .editable-image {
+        border: none;
         height: 200px;
-        width: auto;
+      }
+      img.actor-image {
+        border: none;
+        height: 150px;
+      }
+      .hover-icon {
+        visibility: hidden;
+        position: absolute;
+        top: 40px;
+        left: 20px;
+        font-size: var(--font-size-16);
+        color: black;
+      }
+      &:hover {
+        .hover-icon {
+          visibility: visible;
+        }
       }
     }
     .sheet-lock {
@@ -137,7 +153,7 @@
       font-style: italic;
       .input-editable {
         border: 1px solid #782e22;
-        margin-right: 20px;;
+        margin-right: 20px;
       }
     }
     .hitdice {
@@ -264,17 +280,22 @@
         .item-line {
           display: grid;
           grid-template-columns: 1fr 2fr;
+          height: 40px;
           .item-name {
             font-weight: bold;
             display: flex;
             align-items: center;
             img {
               width: 30px;
-              height: 30px;        
-              margin-right: 5px;               
+              height: 30px;
+              margin: 0 5px 0 5px;
             }
           }
-        } 
+          .item-details {
+            display: flex;
+            align-items: center;
+          }
+        }
         .has-description {
           font-style: italic;
         }
@@ -309,15 +330,28 @@
         .item-line {
           display: grid;
           grid-template-columns: 2fr 1fr 1fr 1fr;
+          height: 40px;
           .item-name {
             font-weight: bold;
             display: flex;
             align-items: center;
             img {
               width: 30px;
-              height: 30px;  
-              margin-right: 5px;                     
+              height: 30px;
+              margin: 0 5px 0 5px;
             }
+          }
+          .item-subtype {
+            display: flex;
+            align-items: center;
+          }
+          .item-dice {
+            display: flex;
+            align-items: center;
+          }
+          .item-incantation {
+            display: flex;
+            align-items: center;
           }
         }
         .has-description {
@@ -353,21 +387,30 @@
         font-size: var(--font-size-16);
         .item-line {
           display: grid;
-          grid-template-columns: 1fr 3fr;
+          grid-template-columns: 1fr 1fr;
+          height: 40px;
           .item-name {
             font-weight: bold;
             display: flex;
             align-items: center;
             img {
               width: 30px;
-              height: 30px; 
-              margin-right: 5px;           
+              height: 30px;
+              margin: 0 5px 0 5px;
             }
+          }
+          .item-details {
+            display: flex;
+            align-items: center;
+          }
+          .item-use {
+            display: flex;
+            align-items: center;
           }
         }
         .has-description {
           font-style: italic;
-        }   
+        }
       }
     }
   }

@@ -28,8 +28,8 @@
       </div>
       <div class="data-group">
         <div class="field-name">{{localize "CTHACK.DamageDice"}}</div>
-        <select class="select-damageDice" name="system.damageDice" data-type="String">
-          {{selectOptions dicesDamage selected=item.system.damageDice empty="None"}}
+        <select class="select-damageDice" name="system.damageDice" data-type="String" >
+          {{selectOptions diceAttackDamageValues selected=item.system.damageDice}}
         </select>
       </div>
       <div class="data-group">

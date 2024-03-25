@@ -9,6 +9,7 @@ export class SearchChat {
     this.searchPattern = null;
     this.content = null;
     this.template = null;
+    this.highlighted = false;
     this.data = {
       pageResultCollection: [],
       itemResultCollection: [],
@@ -25,7 +26,7 @@ export class SearchChat {
     this.searchPattern = searchPattern;
     this.data.user = game.user.id;
 
-    //GM only
+    // GM only
     this.data.whisper = ChatMessage.getWhisperRecipients("GM").map((u) => u.id);
     // Create the chat
     return this;
@@ -40,6 +41,7 @@ export class SearchChat {
     const data = duplicate(this.data);
 
     data.searchPattern = this.searchPattern;
+    data.highlighted = this.highlighted;
     // Call the template renderer.
     return await renderTemplate(this.template, data);
   }
@@ -56,71 +58,108 @@ export class SearchChat {
     const chatData = duplicate(this.data);
     chatData.user = game.user.id;
     chatData.content = this.content;
-    chatData.flags = { world: { type: "searchPage", searchPattern: this.searchPattern } };
+    chatData.flags = { world: { type: "searchPage", searchPattern: this.searchPattern, searchData: this.data, highlighted: this.highlighted } };
 
     this.chat = await ChatMessage.create(chatData);
     return this;
   }
 
   /**
-   * @description Search the pattern
+   * @description Search the pattern and update data with the results
    * @returns this instance
    */
   async searchWorld() {
+    let pages = [];
     game.journal.forEach(async (doc) => {
       let pagesArray = doc.pages.search({ query: this.searchPattern });
       pagesArray.forEach((page) => {
-        this.data.pageResultCollection.push({ name: page.name, id: page._id, journalId: doc._id, journalName: doc.name });
+        pages.push({ name: page.name, id: page._id, journalId: doc._id, journalName: doc.name });
       });
     });
-    this.data.pageresults = this.data.pageResultCollection.length;
-    this.data.itemResultCollection = await game.items.search({ query: this.searchPattern });
+
+    // Group by journal
+    const groupedByJournal = pages.reduce((acc, page) => {
+      // Create a new group for the journal if it doesn't exist
+      acc[page.journalId] = acc[page.journalId] || {
+        journalName: page.journalName,
+        journalId: page.journalId,
+        pages: [],
+      };
+      // Add the page to the journal's group
+      acc[page.journalId].pages.push({ pageId: page.id });
+      return acc;
+    }, {});
+
+    this.data.pageResultCollection = groupedByJournal;
+    this.data.pageresults = pages.length;
+
+    const itemResults = await game.items.search({ query: this.searchPattern });
+    this.data.itemResultCollection = itemResults.map(item => item._id);
     this.data.itemresults = this.data.itemResultCollection.length;
-    this.data.actorResultCollection = await game.actors.search({ query: this.searchPattern });
+
+    const actorResults = await game.actors.search({ query: this.searchPattern });    
+    this.data.actorResultCollection = actorResults.map(actor => actor._id);
     this.data.actorresults = this.data.actorResultCollection.length;
+    
     this.data.hasresults = this.data.pageresults + this.data.itemresults + this.data.actorresults;
-    this.data.tooMuchResults = (this.data.hasresults > 20);
+    this.data.tooMuchResults = this.data.hasresults > SYSTEM.SEARCH_MAX_RESULTS;
     return;
   }
 
   /**
-   * @description Display the journal page with hilighted pattern
+   * @description Toggle highlighting of pattern in documents
    */
-  static async onOpenJournalPage(event, searchPattern) {
+  static async toggleEnricher(event, searchPattern, messageId) {
     event.preventDefault();
     const element = event.currentTarget;
+    
+    // g for global, multiple replacements, i for case insensitive; the rest is for not replacing the html markup's content when the pattern appears in it
+    const regexPattern = await new RegExp("(" + searchPattern + ")(?![^<]*>)", "gim"); 
 
-    const journalId = element.dataset.journalId;
-    const journal = game.journal.get(journalId);
-    const pageId = element.dataset.pageId;
-    const journalPage = await journal.pages.get(pageId);
-    if (!journalPage || !searchPattern) return;
-
-    //cas image
-    if (journalPage.type === "image") {
-      const imgPopout = new ImagePopout(journalPage.src);
-      imgPopout.render(true);
-      return;
+    let isAlreadyHighlighted = CONFIG.TextEditor.enrichers.findIndex((element) => element.namePattern === searchPattern);
+    if (isAlreadyHighlighted >= 0) {
+      // Remove
+      CONFIG.TextEditor.enrichers.splice(isAlreadyHighlighted, 1);
+    } else {
+      // Add
+      CONFIG.TextEditor.enrichers = await CONFIG.TextEditor.enrichers.concat([
+        {
+          pattern: regexPattern,
+          namePattern: searchPattern,
+          enricher: async (match, options) => {
+            const awdoc = document.createElement("mark");
+            awdoc.innerHTML = `${match[1]}`;
+            return awdoc;
+          },
+        },
+      ]);
     }
-    //cas texte
-    let originalText = journalPage.text.content;
-    const regexPattern = new RegExp("("+searchPattern+")(?![^<]*>)", "gi"); //g pour global, remplacement multiples, i pour case insensitive ; le reste est pour ne pas remplacer le contenu des balises quand le pattern y apparait
-    const modifiedText = await originalText.replace(regexPattern, "<mark>$1</mark>");
 
-    const modifiedTexthtml = await TextEditor.enrichHTML(modifiedText, { async: false });
+    const journals = Object.values(ui.windows).filter(x => x instanceof JournalSheet);
 
-    let highlightedPage = new Dialog({
-      content: modifiedTexthtml,
-      submitOnChange: false,
-      resizable: true,
-      buttons: {
-        Cancel: { label: `Fermer` },
-      },
-    });
+    for (const journal of journals) {
+       ui.windows[journal.appId].render(true);
+    }
 
-    highlightedPage.position.width = 800;
-    highlightedPage.render(true);
+    // Update the chat message    
+    await SearchChat.updateMessage(messageId);
   }
+
+    // Reset the chat message with no highlighting
+    static async updateMessage(messageId, reset = false) {
+      const message = game.messages.get(messageId);
+      const searchPattern = message.getFlag("world", "searchPattern");
+      const searchData = message.getFlag("world", "searchData");    
+      const highlighted = message.getFlag("world", "highlighted");
+  
+      let newChatMessage = await new SearchChat();    
+      newChatMessage.data = searchData;    
+      newChatMessage.data.searchPattern = searchPattern;
+      newChatMessage.data.highlighted = reset ? false : !highlighted;
+      
+      const newContent = await renderTemplate(newChatMessage.template, newChatMessage.data);
+      message.update({ content: newContent, "flags.world.highlighted": reset ? false : !highlighted});
+    }
 }
 
 /**
@@ -132,7 +171,7 @@ export class SearchDialog extends Dialog {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       width: 400,
-      height: 230,
+      height: 260,
       classes: ["cthack", "dialog", "search"],
       template: `systems/${SYSTEM.id}/templates/search/search-dialog.hbs`,
     });
@@ -140,7 +179,7 @@ export class SearchDialog extends Dialog {
   data = {
     title: game.i18n.localize("SEARCHTOOL.WindowTitle"),
     buttons: {
-      chercher: {
+      research: {
         label: game.i18n.localize("SEARCHTOOL.ButtonSearch"),
         callback: async (html) => {
           let searchPattern = html.find("[name=searchtext]")[0].value;
@@ -158,7 +197,7 @@ export class SearchDialog extends Dialog {
         callback: () => {},
       },
     },
-    default: "chercher",
+    default: "research",
     close: () => {},
   };
 }

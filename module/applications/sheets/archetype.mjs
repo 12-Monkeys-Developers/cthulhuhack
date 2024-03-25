@@ -19,7 +19,7 @@ export default class CtHackArchetypeSheet extends CtHackItemSheet {
   /** @override */
   async getData(options) {
     const context = await super.getData(options);
-    context.dicesDamage = SYSTEM.DICES_DAMAGE;
+    context.diceDamageValues = SYSTEM.DICE_DAMAGE_VALUES;
     context.wealthStart = SYSTEM.WEALTH_START;
     context.saves = SYSTEM.SAVES;
     return context;

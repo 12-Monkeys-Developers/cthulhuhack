@@ -1,3 +1,10 @@
+2.5.0
+- Rework on all actors : DataModels usage and new sheet organization
+- Lot of new features : short description for actors
+- Add Sheet locked/unlocked feature for character and opponent sheets
+- Update search feature to use toggle button
+- Add 3 new values for Per Usage : by day, by night, per moment
+
 2.0.0
 - Rework on all items : DataModels usage and new sheet organization
 - Add Sheet locked/unlocked feature

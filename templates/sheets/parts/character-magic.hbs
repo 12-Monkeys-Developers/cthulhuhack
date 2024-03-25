@@ -1,0 +1,18 @@
+
+<div class="item character-contextmenu " data-item-id="{{_id}}">
+    <details>
+        <summary class="item-line">
+            <div class="item-name {{#if system.hasDescription}}has-description{{/if}}">{{#if system.hasImage}}<img src="{{img}}"/>{{/if}}{{{name}}}</div>
+            <div class="item-subtype">{{magicTypeToString system.subtype}}</div>
+            <div class="item-dice item" data-item-id="{{_id}}">
+                {{#if (isDiceRollable system.dice)}} <i class="fas fa-dice-d20 rollable"></i> {{/if}}
+                <select class="item-dice-select" name="system.dice" data-type="String" {{{getStyleForDice system.dice}}} disabled>
+                    {{selectOptions @root.diceValues selected=system.dice blank="CTHACK.Empty" localize=true}}
+                </select>
+            </div>
+            <div class="item-incantation">{{system.incantation}}</div>
+        </summary>
+    </details>
+</div>
+
+                             

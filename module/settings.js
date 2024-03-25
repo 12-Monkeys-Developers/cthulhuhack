@@ -12,7 +12,7 @@ export const registerSystemSettings = function() {
 		config: true,
 		type: Boolean,
 		default: false,
-		onChange: () => refreshAllActorSheets()
+		requiresReload: true
 	});
 
 	/**
@@ -25,7 +25,7 @@ export const registerSystemSettings = function() {
 		config: true,
 		type: Number,
 		default: 0,
-		onChange: () => refreshAllActorSheets()
+		requiresReload: true
 	});
 
 	/**
@@ -38,7 +38,7 @@ export const registerSystemSettings = function() {
 		config: true,
 		type: Boolean,
 		default: false,
-		onChange: () => refreshAllActorSheets()
+		requiresReload: true
 	});
 
 	/**
@@ -51,7 +51,7 @@ export const registerSystemSettings = function() {
 		config: true,
 		type: Boolean,
 		default: false,
-		onChange: () => refreshAllActorSheets()
+		requiresReload: true
 	});
 
 	/**
@@ -69,11 +69,11 @@ export const registerSystemSettings = function() {
             "resource" : "SETTINGS.WealthResource"
         },
 		default: "fixed",
-		onChange: () => refreshAllActorSheets()
+		requiresReload: true
 	});
 
 	/**
-     * Option to replace Wealth by another resource
+     * Miscellaneous resource option
      */
 	game.settings.register('cthack', 'MiscellaneousResource', {
 		name: 'SETTINGS.MiscellaneousResourceName',
@@ -82,7 +82,7 @@ export const registerSystemSettings = function() {
 		config: true,
 		type: String,
 		default: "",
-		onChange: () => refreshAllActorSheets()
+		requiresReload: true
 	});
 	
 	game.settings.register('cthack', 'worldKey', {

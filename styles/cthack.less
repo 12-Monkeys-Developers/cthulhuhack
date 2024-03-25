@@ -1,4 +1,4 @@
-// Import utilities.
+// Import utilities
 @import 'utils/variables.less';
 @import 'utils/polices.less';
 @import 'utils/mixins.less';
@@ -6,19 +6,18 @@
 
 /* Global styles */
 @import 'global/window.less';
-@import 'global/grid.less';
-@import 'global/flex.less';
 @import 'global/chat.less';
+
+/* App styles*/
+@import 'components/gm-manager.less';
+@import 'components/search.less';
 
 /* Styles limited to cthack sheets */
 .cthack {
-  @import 'components/window.less';
+  @import 'components/global.less';
   @import 'components/main.less';
-  @import 'components/forms.less';
-  @import 'components/tabs.less';
   @import 'components/character.less';
   @import 'components/opponent.less';
-  @import 'components/items.less';
   @import 'components/archetype.less';
   @import 'components/magic.less';
   @import 'components/ability.less';
@@ -26,5 +25,5 @@
   @import 'components/definition.less';
   @import 'components/weapon.less';
   @import 'components/attack.less';
-  @import 'components/opponent-ability.less';
+  @import 'components/opponent-ability.less';    
 }

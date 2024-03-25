@@ -1,5 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-  {{log "ability" this}}
+  {{!log "ability" this}}
   <div class="item-header">
     {{#if editable}}
       <img class="editable-image" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
@@ -36,7 +36,7 @@
         <input class="checkbox" name="system.multiple" type="checkbox" {{checked item.system.multiple}} />
       </div>
       <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.AbilityUseValueDtl"}}</div>
+        <div class="field-name">{{localize "CTHACK.AbilityUseValue"}}</div>
         <input class="field-value input-small" name="system.uses.value" type="text" value="{{item.system.uses.value}}" data-dtype="Number" />
       </div>
       <div class="data-group">

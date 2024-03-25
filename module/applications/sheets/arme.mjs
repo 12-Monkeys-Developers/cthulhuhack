@@ -14,4 +14,11 @@ export default class CtHackArmeSheet extends CtHackItemSheet {
    * @type {string}
    */
   static itemType = "weapon";
+
+  /** @override */
+  async getData(options) {
+    const context = await super.getData(options);
+    context.rangeValues = SYSTEM.RANGE;   
+    return context;
+  }
 }

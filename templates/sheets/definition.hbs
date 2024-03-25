@@ -1,5 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-  {{log "definition" this}}
+  {{!log "definition" this}}
   <div class="item-header">
     {{#if editable}}
       <img class="editable-image" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
@@ -21,17 +21,18 @@
   </div>
 
   <div class="definition-body">
-    <div class="definition-grid">
-      <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.DefinitionType"}}</div>
-        <input name="system.definitionType" type="text" value="{{item.system.definitionType}}" data-dtype="String" readonly />
+    {{#if editable}}
+      <div class="definition-grid">
+        <div class="data-group">
+          <div class="field-name">{{localize "CTHACK.DefinitionType"}}</div>
+          <input name="system.definitionType" type="text" value="{{item.system.definitionType}}" data-dtype="String" readonly />
+        </div>
+        <div class="data-group">
+          <div class="field-name">{{localize "CTHACK.DefinitionKey"}}</div>
+          <input name="system.key" type="text" value="{{item.system.key}}" data-dtype="String" readonly />
+        </div>
       </div>
-      <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.DefinitionKey"}}</div>
-        <input name="system.key" type="text" value="{{item.system.key}}" data-dtype="String" readonly />
-      </div>
-
-    </div>
+    {{/if}}
     <div class="item-description">
       {{#if editable}}
         <div class="field-name description">{{localize "CTHACK.Description"}}</div>

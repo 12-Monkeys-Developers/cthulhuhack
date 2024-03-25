@@ -2,6 +2,11 @@
   font-family: "EBGaramond";
   src: url("../ui/fonts/EBGaramond-VariableFont_wght.ttf");
 }
+.flex-center {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 /* Global styles */
 .window-app {
   font-family: 'EBGaramond', sans-serif;
@@ -24,10 +29,6 @@
   text-shadow: 0 0 10px #eea3a3;
   cursor: url("../ui/dice/d20-red.svg") 32 24, pointer;
 }
-.color-white {
-  /*color: white;*/
-  color: #dfe2d5;
-}
 #logo {
   content: url("../ui/cthack-logo.webp");
   width: 50px;
@@ -41,55 +42,12 @@
   top: -45px;
   left: calc(50% - 96px);
 }
-.character-resume {
-  text-align: center;
-}
-.character-resume .adrenaline-img {
-  height: 25px;
-  width: 25px;
-}
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-.tooltip .tooltiptextleft {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -25px;
-}
-.tooltip .tooltiptextright {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: -85px;
-}
-.tooltip:hover .tooltiptextleft,
-.tooltip:hover .tooltiptextright {
-  visibility: visible;
-}
-div.tip .tip-title {
-  color: #E77600 !important;
-  font-weight: bold;
-}
 .chat-message .message-header .message-sender {
   font-weight: bold;
+}
+#tooltip.tooltip-save {
+  max-width: 500px;
+  text-align: left;
 }
 i.cthack {
   width: 36px;
@@ -103,60 +61,9 @@ i.cthack {
   filter: grayscale(1);
   transition: 0.3s;
 }
-.editor.prosemirror.editing-source textarea {
-  color: #fff;
-}
-.grid,
-.grid-2col {
-  display: grid;
-  grid-column: span 2 / span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-gap: 10px;
-  margin: 0;
-  padding: 0;
-}
-.grid-3col {
-  grid-column: span 3 / span 3;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.grid-4col {
-  grid-column: span 4 / span 4;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-.flex-group-center,
-.flex-group-left,
-.flex-group-right {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 5px;
-  border: 1px solid #999;
-}
-.flex-group-left {
-  justify-content: flex-start;
-  text-align: left;
-}
-.flex-group-right {
-  justify-content: flex-end;
-  text-align: right;
-}
-.flex-center {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.flex-between {
-  justify-content: space-between;
-}
-.dice-roll .dice-total.success {
-  color: inherit;
-  background: #c7d0c0;
-  border: 1px solid #006c00;
-}
-.dice-roll .dice-total.failure {
-  color: inherit;
-  background: #ffdddd;
-  border: 1px solid #6e0000;
+a.inline-roll {
+  background: none;
+  border: 1px solid white;
 }
 .roll-failure {
   color: red;
@@ -176,54 +83,95 @@ i.cthack {
   color: #fff;
   padding: 0 5px 0 5px;
 }
-.chat-message .message-content .btn-search button {
-  margin: 5px 0 0 0;
-  line-height: 15px;
+/* App styles*/
+#gm-manager {
+  font-size: var(--font-size-18);
 }
-.chat-message .message-content .search-chat {
+.character-resume {
+  text-align: center;
+}
+.character-resume .adrenaline-img {
+  height: 25px;
+  width: 25px;
+}
+.search-chat {
   padding: 0 0 5px 0;
 }
-.chat-message .message-content .search-chat h3 {
+.search-chat h3 {
   padding-top: 10px;
+  margin: 10px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
 }
-.chat-message .message-content .search-chat a.content-link {
-  background: none;
-  margin: 5px 0 0 0;
-  padding: 5px;
+.search-chat h4 {
+  margin: 10px;
+  font-weight: bold;
+  text-align: center;
 }
-.chat-message .message-content .search-chat .motif {
+.search-chat .motif {
   padding-bottom: 5px;
 }
-.chat-message .message-content .search-chat .search-header {
+.search-chat .search-header {
   padding-top: 10px;
 }
-.chat-message .message-content .search-chat .search-result {
+.search-chat .search-result {
   padding: 5px 0 5px 0;
 }
-/* Styles limited to cthack sheets */
-.cthack {
-  /*** Refactor ***/
+.search-chat .journal {
+  margin: 10px 0 10px 0;
 }
+.search-chat .result {
+  margin-top: 5px;
+  border: none;
+  background: none;
+}
+.search-chat .result .content-link {
+  background: none;
+  border: none;
+}
+.search-chat .btn-highlight button {
+  padding: 5px;
+  margin: 5px;
+  line-height: 18px;
+}
+.search-dialog h3 {
+  margin: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.search-dialog .dialog-buttons button {
+  color: #fff;
+  padding-top: 15px;
+}
+.search-dialog input[type="text"].searchtext {
+  border: 1px solid #6e0000;
+  margin: 10px 0 10px 0;
+}
+/* Styles limited to cthack sheets */
 .cthack .window-content {
   background-image: url("../ui/sheet.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #fff;
   font-size: var(--font-size-20);
-  scrollbar-width: none;
+  scrollbar-width: thin;
 }
-.cthack .align-left {
-  text-align: left;
+.cthack .item-line:hover {
+  background-color: #59564c;
+  color: #ffffff;
 }
-.cthack .align-right {
-  text-align: right;
+.cthack .input-small,
+.cthack .select-small {
+  width: 50px;
 }
-.cthack .align-center {
-  text-align: center;
-  vertical-align: middle;
+.cthack .input-large,
+.cthack .select-large {
+  width: 100px;
 }
-.cthack .noborder {
-  border: none;
+.cthack .input-extralarge,
+.cthack .select-extralarge {
+  width: 150px;
 }
 .cthack input[type="text"],
 .cthack input[type="number"],
@@ -234,10 +182,6 @@ i.cthack {
 }
 .cthack input[type="text"] {
   border: none;
-}
-.cthack input[type="checkbox"] {
-  height: 12px;
-  width: 12px;
 }
 .cthack select {
   border: none;
@@ -270,266 +214,471 @@ i.cthack {
 .cthack ::-webkit-scrollbar {
   display: none;
 }
-.cthack nav.sheet-tabs {
-  height: 40px;
-  border-top: 0;
-  border-bottom: 0;
-}
-.cthack .frame {
-  background-image: url("../ui/frame.png");
-  background-repeat: no-repeat;
-  background-size: 50px;
-  background-position: center;
-  height: 50px;
-  border: none;
-  color: #fff;
-}
-.cthack .attack-damage {
-  width: 75px;
-  text-align: center;
-}
 .cthack .ask-roll-title .fa-dice-d20 {
   padding-right: 5px;
   padding-left: 5px;
-}
-.cthack #gm-manager {
-  font-size: var(--font-size-18);
 }
 .cthack .cthack.sheet.actor a.inline-roll,
 .cthack .cthack.sheet.item a.inline-roll {
   color: black;
 }
-.cthack .item-form {
-  color: #fff;
+.cthack.sheet.actor.character {
+  min-width: 960px;
 }
-.cthack .sheet-header {
-  flex: 0 0 auto;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+.cthack.sheet.actor.character select {
+  color: black;
 }
-.cthack .sheet-header .profile-img {
-  height: calc(20%);
-  width: auto;
-  margin: 0;
+.cthack.sheet.actor.character .no-dice {
+  color: white;
 }
-.cthack .sheet-header .opponent-img {
-  height: calc(10%);
-  width: auto;
-  margin: 0;
+.cthack.sheet.actor.character .dice-d4 {
+  background-image: url("systems/cthack/ui/dice/d4-grey.svg");
 }
-.cthack .sheet-header .adrenaline-img {
-  height: 30px;
-  width: auto;
+.cthack.sheet.actor.character .dice-d6 {
+  background-image: url("systems/cthack/ui/dice/d6-grey.svg");
 }
-.cthack .sheet-header .definition-img {
-  height: auto;
-  width: 50px;
+.cthack.sheet.actor.character .dice-d8 {
+  background-image: url("systems/cthack/ui/dice/d8-grey.svg");
 }
-.cthack .sheet-header .header-fields {
-  flex: 5;
+.cthack.sheet.actor.character .dice-d10 {
+  background-image: url("systems/cthack/ui/dice/d10-grey.svg");
 }
-.cthack .sheet-header h1.charname {
-  height: 50px;
-  padding: 0px 20px 0px 20px;
-  margin: 5px 0;
-  border-bottom: 0;
+.cthack.sheet.actor.character .dice-d12 {
+  background-image: url("systems/cthack/ui/dice/d12-grey.svg");
 }
-.cthack .sheet-header h1.charname input {
-  width: 100%;
-  height: 100%;
-  margin: 0;
+.cthack.sheet.actor.character nav#context-menu {
+  text-align: left;
+  width: 100px;
 }
-.cthack .sheet-tabs {
+.cthack.sheet.actor.character nav.sheet-tabs {
   flex: 0;
 }
-.cthack .tox .tox-editor-container {
-  background: #fff;
-}
-.cthack .tox .tox-edit-area {
-  padding: 0 8px;
-}
-.cthack .sheet-body {
-  height: 100%;
-  min-height: 150px;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-}
-.cthack .sheet-body .tab {
-  min-height: 150px;
-  height: 100%;
-}
-.cthack .sheet-body .tab .editor {
-  min-height: 150px;
-  height: 100%;
-}
-.cthack .tabs {
-  height: 40px;
-}
-.cthack .tabs .choice {
+.cthack.sheet.actor.character nav.sheet-tabs .choice {
   line-height: 40px;
   font-weight: bold;
 }
-.cthack .tabs .choice.active {
+.cthack.sheet.actor.character nav.sheet-tabs .choice.active {
   color: darkgrey;
   font-weight: bold;
   text-shadow: 0 0 10px #851016;
 }
-.cthack.sheet.actor.character .sheet-actor {
-  margin: 10px 20px;
+.cthack.sheet.actor.character .sidebar {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 10px 0 20px;
+  padding: 0 0 0 10px;
+  flex: 180px 0 0;
+  height: 400px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
 }
-.cthack.sheet.actor.character .occupation,
-.cthack.sheet.actor.character .archetype,
-.cthack.sheet.actor.character .save,
-.cthack.sheet.actor.character .resource {
+.cthack.sheet.actor.character .sidebar .image-container {
+  border: 1px solid var(--color-border-dark);
+  height: 225px;
+}
+.cthack.sheet.actor.character .sidebar .image-container img.actor-image {
   border: none;
+  min-width: 150px;
+  border-radius: 10px;
 }
-.cthack.sheet.actor.character .character-notes {
-  color: #fff;
+.cthack.sheet.actor.character .sidebar .image-container .hover-icon {
+  visibility: hidden;
+  position: absolute;
+  top: 70px;
+  left: 45px;
+  font-size: var(--font-size-16);
+  color: black;
 }
-.cthack.sheet.actor.character .input-hitpoints {
-  border-style: none;
-  font-size: 16px;
+.cthack.sheet.actor.character .sidebar .image-container:hover .hover-icon {
+  visibility: visible;
 }
-.cthack.sheet.actor.character .occupation {
-  padding-right: 15px;
-  padding-bottom: 10px;
+.cthack.sheet.actor.character .sidebar .sidebar-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2px;
 }
-.cthack.sheet.actor.character .occupation-input {
+.cthack.sheet.actor.character .sidebar .sidebar-section .save-value {
+  flex: 1;
+  text-align: left;
+  margin-right: 10px;
+}
+.cthack.sheet.actor.character .sidebar .sidebar-section .save-value {
+  flex: 2;
+  text-align: right;
+}
+.cthack.sheet.actor.character .sidebar .fortune {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.cthack.sheet.actor.character .sidebar .adrenaline {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.cthack.sheet.actor.character .sidebar .adrenaline .adrenaline-img {
+  height: 30px;
+  width: 30px;
+}
+.cthack.sheet.actor.character .sidebar .conditions {
+  display: flex;
+  flex-direction: column ;
+  margin-top: 10px;
+}
+.cthack.sheet.actor.character .sidebar .conditions .conditions-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sidebar .conditions .items-list {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.actor.character .sidebar .conditions .items-list .item-line {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.cthack.sheet.actor.character .sidebar .conditions .items-list .item-line .item-name-img {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sidebar .conditions .items-list .item-line .item-name-img img {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px 0 5px;
+}
+.cthack.sheet.actor.character .sidebar .conditions .items-list .item-line .has-description {
+  font-style: italic;
+}
+.cthack.sheet.actor.character .sidebar .conditions .items-list .item-summary {
+  font-size: 0.9em;
+}
+.cthack.sheet.actor.character .main {
+  margin: 30px 20px 0 0;
+  padding: 0 10px 10px 0;
+  min-width: 550px;
+}
+.cthack.sheet.actor.character .main .sheet-body {
+  width: 100%;
+  padding: 0 10px 0 10px;
+}
+.cthack.sheet.actor.character .main .sheet-body .tab {
+  width: 100%;
+}
+.cthack.sheet.actor.character .character-sheet-header {
+  max-height: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.cthack.sheet.actor.character .character-sheet-header .name {
+  margin-left: 10px;
+  font-size: 1.3em;
+}
+.cthack.sheet.actor.character .character-sheet-header .header-occupation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.cthack.sheet.actor.character .character-sheet-header .header-occupation .occupation-archetype {
+  text-align: left;
+}
+.cthack.sheet.actor.character .character-sheet-header .occupation {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0 10px 0;
+}
+.cthack.sheet.actor.character .character-sheet-header .occupation label {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.cthack.sheet.actor.character .character-sheet-header .occupation input {
+  border: 1px solid;
+  width: 250px;
+}
+.cthack.sheet.actor.character .character-sheet-header .archetype {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0 10px 0;
+}
+.cthack.sheet.actor.character .character-sheet-header .archetype label {
+  margin-right: 20px;
+}
+.cthack.sheet.actor.character .character-sheet-header .archetype input {
+  border: 1px solid;
+  width: 250px;
+}
+.cthack.sheet.actor.character .character-sheet-header .short-description {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-style: italic;
+  padding-left: 50px;
+}
+.cthack.sheet.actor.character .character-sheet-header .short-description-editable {
+  border: 1px solid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.cthack.sheet.actor.character .character-sheet-header .resources {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin: 5px 0 5px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  border-radius: 10px;
+}
+.cthack.sheet.actor.character .character-sheet-header .resources-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.cthack.sheet.actor.character .character-sheet-header .resources-4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.cthack.sheet.actor.character .character-sheet-header .resources-5 {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.cthack.sheet.actor.character .character-sheet-header .fight {
+  margin-top: 10px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource .resource-content {
+  padding: 5px 0 5px 0;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource .hitpoints input {
+  height: 40px;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource .hitpoints .hitpoints-value {
+  text-align: right;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource .hitpoints .hitpoints-max {
+  text-align: left;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource-value {
+  color: black;
+  text-shadow: 0 0 10px red;
+}
+.cthack.sheet.actor.character nav.sheet-tabs {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 40px;
+  border-top: 0;
+  border-bottom: 1px solid white;
+  margin-top: 10px;
+}
+.cthack.sheet.actor.character nav.sheet-tabs .choice {
+  font-weight: normal;
+}
+.cthack.sheet.actor.character nav.sheet-tabs .choice.active {
+  color: white;
+  font-weight: bold;
+  border-top: 1px solid white;
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+  border-radius: 10px 10px 0 0;
+  padding: 0 5px 0 5px;
+  text-shadow: 0 0 10px red;
+}
+.cthack.sheet.actor.character .sheet-body .editor {
+  min-height: 150px;
+}
+.cthack.sheet.actor.character .sheet-body .editor-container {
+  flex: 1;
+  position: relative;
+  margin: 0;
+  min-height: 200px;
+}
+.cthack.sheet.actor.character .sheet-body .editor-content {
+  margin: 0px 5px;
+  font-weight: normal;
   font-size: var(--font-size-18);
 }
-.cthack.sheet.actor.character .hitpoints {
-  padding-left: calc(25%);
-  padding-right: calc(25%);
+.cthack.sheet.actor.character .sheet-body .prosemirror menu {
+  font-size: 0.8em;
 }
-.cthack.sheet.actor.character .hitpoints-frame {
-  background-image: url("../ui/frame.png");
-  background-repeat: no-repeat;
-  background-size: 40px;
-  background-position: center;
-  height: 40px;
-  width: 40px;
+.cthack.sheet.actor.character .sheet-body .prosemirror menu li {
+  margin: 0px 0px;
+}
+.cthack.sheet.actor.character .sheet-body .prosemirror menu li:hover {
+  border: 2px solid #eea3a3;
+}
+.cthack.sheet.actor.character .sheet-body .prosemirror menu button {
+  background: var(--color-hover-bg);
+}
+.cthack.sheet.actor.character .sheet-body .equipment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-name-img {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-name-img img {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px 0 5px;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-dice {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-range {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .has-description {
+  font-style: italic;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-description {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  text-align: left;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-summary {
+  font-size: 0.9em;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .abilities {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .abilities .title {
   border: none;
-  color: #fff;
-  text-align: center;
-  text-align-last: center;
-  -moz-text-align-last: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-.cthack.sheet.actor.character .saves {
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-bottom: 10px;
-}
-.cthack.sheet.actor.character .save {
-  font-size: var(--font-size-16);
-}
-.cthack.sheet.actor.character .save-name {
-  flex-grow: 3;
-}
-.cthack.sheet.actor.character input.save {
-  color: #fff;
-}
-.cthack.sheet.actor.character .resource-label {
-  text-transform: uppercase;
-  font-size: var(--font-size-16);
-}
-.cthack.sheet.actor.character .resource-content {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  padding-top: 5px;
-}
-.cthack.sheet.actor.character .resource-content-archetype {
-  margin: 0;
-  padding: 0;
-}
-.cthack.sheet.actor.character .resource-content-archetype select {
-  color: #fff;
-}
-.cthack.sheet.actor.character .entete-tableau {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #fff;
-  margin-bottom: 5px;
-}
-.cthack.sheet.actor.character .entete-tableau .entete-titre {
   font-size: 1em;
-}
-.cthack.sheet.actor.character .grid-abilities {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  row-gap: 5px;
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.cthack.sheet.actor.character .grid-abilities .entete {
-  text-transform: uppercase;
-}
-.cthack.sheet.actor.character .grid-abilities .item-bloc {
-  display: flex;
-  text-align: left;
-}
-.cthack.sheet.actor.character .grid-abilities .item-image {
-  width: 40px;
-  height: 40px;
-  margin-right: 5px;
-}
-.cthack.sheet.actor.character .grid-abilities .item-controls {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  gap: 5px;
-}
-.cthack.sheet.actor.character .grid-abilities .item-name,
-.cthack.sheet.actor.character .grid-abilities .item-element-text {
+  font-weight: bold;
+  margin: 5px 0 5px 0;
   display: flex;
   justify-content: center;
-  /* Centrer horizontalement */
   align-items: center;
-  /* Centrer verticalement */
-  height: 100%;
 }
-.cthack.sheet.actor.character .grid-magics {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  row-gap: 5px;
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.cthack.sheet.actor.character .grid-magics .entete {
-  text-transform: uppercase;
-}
-.cthack.sheet.actor.character .grid-magics .item-bloc {
-  display: flex;
-  text-align: left;
-}
-.cthack.sheet.actor.character .grid-magics .item-image {
-  width: 40px;
-  height: 40px;
-  margin-right: 5px;
-}
-.cthack.sheet.actor.character .grid-magics .item-controls {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  gap: 5px;
-}
-.cthack.sheet.actor.character .grid-magics .item-name,
-.cthack.sheet.actor.character .grid-magics .item-element-text {
+.cthack.sheet.actor.character .sheet-body .abilities-magic .abilities .title a {
+  padding-left: 10px;
+  font-size: 0.8em;
   display: flex;
   justify-content: center;
-  /* Centrer horizontalement */
   align-items: center;
-  /* Centrer verticalement */
-  height: 100%;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .magics {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .magics .title {
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 5px 0 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .magics .title a {
+  padding-left: 10px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 40px;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line .item-name {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line .item-name img {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px 0 5px;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line .item-use {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line .item-use-last {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .has-description {
+  font-style: italic;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: var(--font-size-16);
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  height: 40px;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line select {
+  height: 40px;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-name {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-name img {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px 0 5px;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-subtype {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-incantation {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .has-description {
+  font-style: italic;
 }
 .cthack.sheet.actor.opponent {
   display: flex;
@@ -627,12 +776,26 @@ i.cthack {
   grid-column-start: 1;
   grid-column-end: 2;
   display: flex;
-  justify-content: center;
-  text-align: center;
+  padding-left: 10px;
 }
-.cthack.sheet.actor.opponent .sheet-header .opponent-image img {
+.cthack.sheet.actor.opponent .sheet-header .opponent-image .editable-image {
+  border: none;
   height: 200px;
-  width: auto;
+}
+.cthack.sheet.actor.opponent .sheet-header .opponent-image img.actor-image {
+  border: none;
+  height: 150px;
+}
+.cthack.sheet.actor.opponent .sheet-header .opponent-image .hover-icon {
+  visibility: hidden;
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  font-size: var(--font-size-16);
+  color: black;
+}
+.cthack.sheet.actor.opponent .sheet-header .opponent-image:hover .hover-icon {
+  visibility: visible;
 }
 .cthack.sheet.actor.opponent .sheet-header .sheet-lock {
   display: flex;
@@ -797,6 +960,7 @@ i.cthack {
 .cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  height: 40px;
 }
 .cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line .item-name {
   font-weight: bold;
@@ -806,7 +970,11 @@ i.cthack {
 .cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line .item-name img {
   width: 30px;
   height: 30px;
-  margin-right: 5px;
+  margin: 0 5px 0 5px;
+}
+.cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .item-line .item-details {
+  display: flex;
+  align-items: center;
 }
 .cthack.sheet.actor.opponent .sheet-body .attacks .grid-attacks .has-description {
   font-style: italic;
@@ -842,6 +1010,7 @@ i.cthack {
 .cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
+  height: 40px;
 }
 .cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line .item-name {
   font-weight: bold;
@@ -851,7 +1020,19 @@ i.cthack {
 .cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line .item-name img {
   width: 30px;
   height: 30px;
-  margin-right: 5px;
+  margin: 0 5px 0 5px;
+}
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line .item-subtype {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line .item-dice {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .item-line .item-incantation {
+  display: flex;
+  align-items: center;
 }
 .cthack.sheet.actor.opponent .sheet-body .magics .grid-magics .has-description {
   font-style: italic;
@@ -886,7 +1067,8 @@ i.cthack {
 }
 .cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 1fr;
+  height: 40px;
 }
 .cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-name {
   font-weight: bold;
@@ -896,111 +1078,18 @@ i.cthack {
 .cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-name img {
   width: 30px;
   height: 30px;
-  margin-right: 5px;
+  margin: 0 5px 0 5px;
+}
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-details {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .item-line .item-use {
+  display: flex;
+  align-items: center;
 }
 .cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .has-description {
   font-style: italic;
-}
-.cthack .items-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.cthack .items-list h4 {
-  font-size: var(--font-size-20);
-}
-.cthack .items-list div {
-  text-align: center;
-  vertical-align: middle;
-}
-.cthack .items-list .item-header {
-  line-height: 25px;
-  padding: 0 5px 0 5px;
-  border-bottom: 1px solid #fff;
-}
-.cthack .items-list .item-header .item-header-name {
-  flex: 2;
-  text-align: left;
-  vertical-align: middle;
-}
-.cthack .items-list .item {
-  line-height: 25px;
-  padding: 0 5px 0 5px;
-}
-.cthack .items-list .item:hover {
-  background-color: #59564c;
-}
-.cthack .items-list .item .item-image {
-  flex: 0 0 40px;
-  padding-top: 5px;
-  margin-right: 5px;
-}
-.cthack .items-list .item .item-name {
-  padding-top: 10px;
-  text-align: left;
-}
-.cthack .items-list .item .item-element {
-  padding-top: 5px;
-  text-align: center;
-  vertical-align: middle;
-}
-.cthack .items-list .item .item-element-text {
-  padding-top: 10px;
-  text-align: center;
-  vertical-align: middle;
-}
-.cthack .items-list .item-bloc {
-  flex: 2;
-  margin: 0;
-}
-.cthack .items-list .item-name {
-  flex: 2;
-  margin: 0;
-  padding-top: 10px;
-}
-.cthack .items-list .item-controls-header {
-  flex: 0 0 86px;
-  text-align: right;
-}
-.cthack .items-list .item-controls {
-  flex: 0 0 86px;
-  text-align: right;
-  padding-top: 10px;
-}
-.cthack .items-list .item-summary {
-  flex: 0 0 100%;
-  line-height: 16px;
-  padding: 0.25em 0.5em;
-  border-top: 1px solid #c9c7b8;
-  text-align: left;
-}
-.cthack .items-list .item-condition {
-  padding-top: 5px;
-}
-.cthack .sheet-header .archetype-image {
-  height: auto;
-  width: 128px;
-  margin: 20px 10px 0 20px;
-}
-.cthack .sheet-header .item-image {
-  min-height: 128px;
-  width: auto;
-  margin: 20px 0 0 20px;
-}
-.cthack .sheet-header .item-image .item-name {
-  margin: 0 10px 0 10px;
-}
-.cthack .input-small,
-.cthack .select-small {
-  width: 50px;
-}
-.cthack .input-large,
-.cthack .select-large {
-  width: 100px;
-}
-.cthack .input-extralarge,
-.cthack .select-extralarge {
-  width: 150px;
 }
 .cthack.sheet.item.archetype .editable input,
 .cthack.sheet.item.archetype .editable select {
@@ -1111,6 +1200,12 @@ i.cthack {
 }
 .cthack.sheet.item.archetype .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
+}
+.cthack.sheet.item.archetype .data-group .select-dice {
+  color: black;
+}
+.cthack.sheet.item.archetype .data-group .wealth-start {
+  width: 80px;
 }
 .cthack.sheet.item.magic .editable input,
 .cthack.sheet.item.magic .editable select {

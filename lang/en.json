@@ -65,8 +65,8 @@
     "Condition": "Condition(s)",
     "Conditions": "Conditions",
     "Items": "Equipment",
-    "Abilities": "Special abilities",
-    "AbilitiesAndMagic": "Special abilities & Magic",
+    "Abilities": "Special",
+    "AbilitiesAndMagic": "Abilities & Magic",
     "Magic": "Magic",
     "Damage": "Damage",
     "DamageDice": "Damage Dice",
@@ -78,17 +78,19 @@
 
     "AbilityKey": "Key",
     "AbilityUsePer": "Use Type",
-    "AbilityUseValue": "Uses",
-    "AbilityUseValueDtl": "Remaining uses",
+    "AbilityUseValue": "Remaining uses",
     "AbilityUseMax": "Maximum",
     "AbilityUseLast": "Last use",
     "AbilityMultiple": "Multiple",
     "AbilityUsePermanent": "Permanent",
     "AbilityUseScenario": "Per scenario",
     "AbilityUsePerSession": "Per session",
+    "AbilityUsePerDay": "Per day",
+    "AbilityUsePerNight": "Per night",    
     "AbilityUsePerHour": "Per hour",
     "AbilityUsePerScene": "Per scene",
     "AbilityUsePerFight": "Per fight",
+    "AbilityUsePerMoment": "Per moment",
     "AbilityIsCustom": "Custom",
     "AbilityAdvantageGiven": "Advantage given",
     "AbilityAdvantageText": "Advantage description",
@@ -151,6 +153,7 @@
     "AddMagic": "Add a spell or a ritual",
     "AddAttack": "Add an attack",
     "AddOpponentAbility": "Add an Opponent Ability",
+    "AddEquipment": "Left click to add a weapon, SHIFT + left click to add an object",
 
     "Attributes": "Attributes",
 
@@ -171,6 +174,7 @@
     "FortuneUse": "Spend",
     "FortuneUseMessage": "One token of Fortune has been used by {name}.<br>The remaining total is {total}.",
     "None": "---",
+    "Empty": "",
     "NO": "No",
     "YES": "Yes",
 
@@ -231,7 +235,10 @@
     "ContextMenuDelete": "Delete",
     "ContextMenuUse": "Use",
     "ContextMenuResetUse": "Reset",
-    "ContextMenuDecreaseUse": "Decrease"
+    "ContextMenuIncreaseUse": "Increase",
+    "Notifications": {
+      "AbilityHasAlready": "The ability {abilityName} has not the multiple property and already exists."
+    }
   },
 
   "SETTINGS": {
@@ -306,10 +313,16 @@
     "ButtonSearch": "Search",
     "ButtonCancel": "Cancel",
     "DialogTitle": "Search for Text in Journals, Characters, Items...",
-    "DialogInput": "Enter the text to search here:",
+    "DialogInput": "Text to search :",
     "ChatIntro": "Search result", 
     "ChatText": "Searched text: ",
     "NoResults": "No result",
-    "TooMuchResults": "More than 20 results, refine your search."
+    "TooManyResults": "More than 20 results, refine your search.",
+    "HighlightButton": "Highlight on/off",
+    "HighlightTooltip": "Toggle highlighting of pattern in documents",
+    "HighlightedButton": "Highlight Off",
+    "HighlightedTooltip": "Toggle off highlighting of pattern in documents",
+    "UnhighlightedButton": "Highlight On",
+    "UnhighlightedTooltip": "Toggle on highlighting of pattern in documents"
   }
 }

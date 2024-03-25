@@ -1,35 +1,13 @@
-.align-left {
-    text-align: left;
-  }
-  
-.align-right {
-  text-align: right;
-}
-
-.align-center {
-  text-align: center;
-  vertical-align: middle;
-}
-
-.noborder {
-  border: none;
-}
-
 input[type="text"],
 input[type="number"],
 input[type="password"],
 input[type="date"],
 input[type="time"] {
-  color: @c-white;
+  color: #fff;
 }
 
 input[type="text"] {
   border: none;
-}
-
-input[type="checkbox"] {
-  height: 12px;
-  width: 12px;
 }
 
 select {
@@ -46,19 +24,19 @@ select {
   -moz-appearance: none;
   background-color: transparent;
   font-weight: 800;
-  color: @c-white;
+  color: #fff;
   &:disabled {
     opacity: 1;
   }
 }
 
 option {
-  color: @c-white;
+  color: #fff;
   background: rgb(55,55,45);
 }
 
 option:checked, option:hover {
-  color: @c-white;
+  color: #fff;
   background: rgb(55,55,45);
 }
 
@@ -66,34 +44,9 @@ option:checked, option:hover {
   display: none;
 }
 
-nav.sheet-tabs {
-  height: 40px;
-  border-top: 0;
-  border-bottom: 0;
-}
-
-.frame {
-  background-image: url("../ui/frame.png");
-  background-repeat: no-repeat;
-  background-size: 50px;
-  background-position: center;
-  height: 50px;
-  border: none;
-  color: #fff;
-}
-
-.attack-damage {
-  width: 75px;
-  text-align: center;
-}
-
 .ask-roll-title .fa-dice-d20 {
 	padding-right: 5px;
   padding-left: 5px;
-}
-
-#gm-manager {
-  font-size: var(--font-size-18);
 }
 
 .cthack.sheet.actor a.inline-roll,

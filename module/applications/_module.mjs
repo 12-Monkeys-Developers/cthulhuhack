@@ -6,3 +6,6 @@ export { default as DefinitionSheet } from "./sheets/definition.mjs";
 export { default as MagieSheet } from "./sheets/magie.mjs";
 export { default as ObjetSheet } from "./sheets/objet.mjs";
 export { default as AdversaireCapaciteSheet } from "./sheets/adversaire-capacite.mjs";
+export { default as PersonnageSheet } from "./sheets/character.mjs";
+export { default as AdversaireSheet } from "./sheets/opponent.mjs";
+

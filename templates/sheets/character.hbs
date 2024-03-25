@@ -1,0 +1,206 @@
+{{!log 'actor-sheet' this}}
+<form class="{{cssClass}} flexrow" autocomplete="off">
+{{!log "character" this}}
+  {{> "systems/cthack/templates/sheets/parts/character-sidebar.hbs"}}
+  <div class="main flexcol">
+    <header class="character-sheet-header">
+      <div class="name" data-name="{{actor.name}}">
+        {{#if editable}}
+          <input name="name" type="text" value="{{actor.name}}" />
+        {{else}}
+          <div>{{actor.name}}</div>
+        {{/if}}
+      </div>
+      <div class="header-occupation"> 
+        <div class="occupation-archetype">
+          {{#if system.hasOccupation}}{{system.occupation}}{{/if}}{{#if system.hasArchetype}} (Archetype {{system.archetype}}){{/if}}
+        </div>
+        <div class="sheet-lock">
+          {{#if editable}}
+            <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
+          {{else}}
+            <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
+          {{/if}}
+        </div>
+      </div>
+      
+      {{#unless editable}}
+          {{#if system.hasShortDescription}}
+            <div class="short-description">
+              {{system.shortDescription}}
+            </div>
+          {{/if}}
+      {{/unless}}
+
+      {{#if editable}}
+        <div class="occupation">
+          <label>{{localize "CTHACK.Occupation"}}</label>
+          {{#if editable}}
+            <input name="system.occupation" type="text" value="{{system.occupation}}" class="occupation-input"/>
+          {{else}}
+            {{system.occupation}}
+          {{/if}}
+        </div>
+        <div class="archetype">
+          <label>{{localize "CTHACK.Archetype"}}</label>
+          {{#if editable}}
+            <input name="system.archetype" type="text" value="{{system.archetype}}" class="occupation-input"/>
+          {{else}}
+            {{system.archetype}}
+          {{/if}}                
+        </div>
+        <input class="short-description-editable" name="system.shortDescription" type="text" value="{{system.shortDescription}}"/>
+      {{/if}}
+      <div class="resources {{getNbRessources}}">
+        <div class="resource">
+            <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.flashlights.value)}}rollable{{/if}}" data-resource="flashlights" data-tooltip="{{localize 'CTHACK.FlashLightsDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.FlashLights"}}</label>
+            <div class="resource-content">
+                <select class="resource-value" name="system.attributes.flashlights.value" data-type="String" {{{getStyleForDice system.attributes.flashlights.value}}} {{disabled uneditable}}>
+                  {{selectOptions diceValues selected=system.attributes.flashlights.value}}                  
+                </select>
+                (
+                <select name="system.attributes.flashlights.max" data-type="String" {{{getStyleForDice system.attributes.flashlights.max}}} {{disabled uneditable}}>
+                  {{selectOptions diceMaxValues selected=system.attributes.flashlights.max}}
+                </select>
+               )
+            </div>
+        </div>                  
+        <div class="resource">
+            <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.smokes.value)}}rollable{{/if}}" data-resource="smokes" data-tooltip="{{localize 'CTHACK.SmokesDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Smokes"}}</label>
+            <div class="resource-content">
+                <select class="resource-value" name="system.attributes.smokes.value" data-type="String" {{{getStyleForDice system.attributes.smokes.value}}} {{disabled uneditable}}>
+                  {{selectOptions diceValues selected=system.attributes.smokes.value}}
+                </select>
+                (
+                <select name="system.attributes.smokes.max" data-type="String" {{{getStyleForDice system.attributes.smokes.max}}} {{disabled uneditable}}>
+                  {{selectOptions diceMaxValues selected=system.attributes.smokes.max}}
+                </select>
+                )
+            </div>
+        </div>
+        <div class="resource">
+            <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.sanity.value)}}rollable{{/if}}" data-resource="sanity" data-tooltip="{{localize 'CTHACK.SanityDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Sanity"}}</label>
+            <div class="resource-content">
+                <select class="resource-value"  name="system.attributes.sanity.value" data-type="String" {{{getStyleForDice system.attributes.sanity.value}}} {{disabled uneditable}}>
+                  {{selectOptions diceValues selected=system.attributes.sanity.value}}
+                </select>
+                (
+                <select name="system.attributes.sanity.max" data-type="String" {{{getStyleForDice system.attributes.sanity.max}}} {{disabled uneditable}}>
+                  {{selectOptions diceMaxValues selected=system.attributes.sanity.max}}
+                </select>
+                )
+            </div>
+        </div>
+        
+        {{#if (isEnabled "Wealth")}}  
+          <div class="resource">
+              <label for="wealthDice.value" class="resource-label wealth-name {{#if (isWealthAsResource)}}rollable{{/if}}" data-resource="wealthDice">{{localize "CTHACK.Wealth"}}</label>
+              <div class="resource-content">
+                  <select class="resource-value" name="system.attributes.wealthDice.value" data-type="String" {{{getStyleForDice system.attributes.wealthDice.value}}} {{disabled uneditable}}>
+                      {{selectOptions diceValues selected=system.attributes.wealthDice.value}}
+                  </select>
+                  {{#if (isWealthAsResource)}}
+                      (
+                      <select name="system.attributes.wealthDice.max" data-type="String" {{{getStyleForDice system.attributes.wealthDice.max}}} {{disabled uneditable}}>
+                      {{selectOptions diceMaxValues selected=system.attributes.wealthDice.max}}
+                      </select>
+                      )
+                  {{/if}}
+              </div>
+          </div>
+        {{/if}}
+
+        {{#if (isEnabled "MiscellaneousResource")}}    
+            <div class="resource">
+                <label for="miscellaneous.value" class="resource-label miscellaneous-name {{#if (isDiceRollable system.attributes.miscellaneous.value)}}rollable{{/if}}"  data-resource="miscellaneous">{{getMiscellaneousValue}}</label>
+                <div class="resource-content">
+                    <select class="resource-value" name="system.attributes.miscellaneous.value" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.value}}} {{disabled uneditable}}>
+                        {{selectOptions diceValues selected=system.attributes.miscellaneous.value}}
+                    </select>
+                    (
+                    <select name="system.attributes.miscellaneous.max" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.max}}} {{disabled uneditable}}>
+                        {{selectOptions diceMaxValues selected=system.attributes.miscellaneous.max}}
+                    </select>
+                    )
+                </div>
+            </div>
+        {{/if}}
+
+      </div>
+      <div class="fight">
+        <div class="resource">
+              <label class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
+              <div class="resource-content flexrow flex-center hitpoints">
+                  <input class="hitpoints-value" type="text" class="value" name="system.hp.value" value="{{system.hp.value}}" data-dtype="Number"/>
+                  /
+                  <input class="hitpoints-max" type="text" class="max" name="system.hp.max" value="{{system.hp.max}}" data-dtype="Number" {{disabled uneditable}}/>
+              </div>
+        </div>
+
+        <div class="resource">
+              <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.hitDice.value)}}rollable{{/if}}" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</label>
+              <div class="resource-content">
+                  <select class="resource-value" name="system.attributes.hitDice.value" data-type="String" {{{getStyleForDice system.attributes.hitDice.value}}} {{disabled uneditable}}>
+                      {{selectOptions diceValues selected=system.attributes.hitDice.value}}
+                  </select>
+                  (
+                  <select name="system.attributes.hitDice.max" data-type="String" {{{getStyleForDice system.attributes.hitDice.max}}} {{disabled uneditable}}>
+                       {{selectOptions diceMaxValues selected=system.attributes.hitDice.max}}
+                  </select>
+                  )
+              </div>
+        </div>
+
+        <div class="resource">
+            <label for="armedDamage.value" class="resource-label damage {{#if (isDiceRollable system.attributes.armedDamage.value)}}rollable{{/if}}" data-resource="armedDamage">{{localize "CTHACK.ArmedDamage"}}</label>
+            <div class="resource-content">
+                <select class="resource-value" name="system.attributes.armedDamage.value" data-type="String" {{{getStyleForDice system.attributes.armedDamage.value}}} {{disabled uneditable}}>
+                  {{selectOptions diceDamageValues selected=system.attributes.armedDamage.value}}
+                </select>
+            </div>
+        </div>
+
+        <div class="resource">
+            <label for="unarmedDamage.value" class="resource-label damage {{#if (isDiceRollable system.attributes.unarmedDamage.value)}}rollable{{/if}}" data-resource="unarmedDamage">{{localize "CTHACK.UnarmedDamage"}}</label>
+            <div class="resource-content">
+                <select class="resource-value" name="system.attributes.unarmedDamage.value" data-type="String" {{{getStyleForDice system.attributes.unarmedDamage.value}}} {{disabled uneditable}}>
+                  {{selectOptions diceDamageValues selected=system.attributes.unarmedDamage.value}}
+                </select>
+            </div>
+        </div>
+
+      </div>
+    </header>
+      
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="choice" data-tab="description">{{localize "CTHACK.Description"}}</a>        
+        <a class="choice" data-tab="equipment">{{localize "CTHACK.Items"}}{{#if editable}}&nbsp;&nbsp;<i class="fas fa-plus item-create" data-tooltip="{{localize "CTHACK.AddEquipment"}}" data-tooltip-direction="RIGHT" data-type="weapon" data-alt-type="item"></i>{{/if}}</a>
+        <a class="choice" data-tab="abilities">{{localize "CTHACK.AbilitiesAndMagic"}}</a>
+        <a class="choice" data-tab="notes">{{localize "CTHACK.Notes"}}</a>
+    </nav>
+   
+    <section class="sheet-body">
+            {{!-- Biography Tab --}}
+            <div class="tab biography" data-group="primary" data-tab="description">
+                {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true owner=owner}}
+            </div>
+            
+            {{!-- Equipment and Owned Items Tab --}}
+            <div class="tab items" data-group="primary" data-tab="equipment">
+              {{> "systems/cthack/templates/sheets/parts/character-equipment.hbs"}}
+            </div>
+
+            {{!-- Abilities and Magics Tab --}}
+            <div class="tab" data-group="primary" data-tab="abilities">
+              {{> "systems/cthack/templates/sheets/parts/character-abilities.hbs"}}
+            </div>  
+
+            {{!-- Notes Tab --}}
+            <div class="tab character-notes" data-group="primary" data-tab="notes">
+                {{editor enrichedNotes target="system.notes" engine="prosemirror" button=true owner=owner}}
+            </div>  
+    </section>
+  </div>
+</form>
+

@@ -1,31 +1,39 @@
 <div class="search-chat {{cssClass}}">
+  {{log "search-chat" this}}
   <h3>{{localize "SEARCHTOOL.ChatIntro"}}</h3>
   <div class="motif">{{localize "SEARCHTOOL.ChatText"}}{{searchPattern}}</div>
+  <div class="btn-highlight">
+    <button id="highlight" data-tooltip="SEARCHTOOL.{{#if highlighted}}HighlightedTooltip{{else}}UnhighlightedTooltip{{/if}}">{{#if highlighted}}{{localize "SEARCHTOOL.HighlightedButton"}}{{else}}{{localize "SEARCHTOOL.UnhighlightedButton"}}{{/if}}</button>
+  </div>
   {{#if hasresults}}
     {{#if tooMuchResults}}
-      {{localize "SEARCHTOOL.TooMuchResults"}}
+      {{localize "SEARCHTOOL.TooManyResults"}}
     {{else}}
       {{#if pageresults}}
-        <h4 class="search-header">{{localize "DOCUMENT.JournalEntryPages"}}</h4>
+        <h4>{{localize "DOCUMENT.JournalEntryPages"}}</h4>
         <div>
-          {{#each pageResultCollection as |page|}}
-            <div class="btn-search"><button id="ouvrirpage" class="ouvrir-page" data-journal-id="{{page.journalId}}" data-page-id="{{page.id}}" data-tooltip='Visualiser la page'>{{page.journalName}} - {{page.name}}</button></div>
+          {{#each pageResultCollection as |journal|}}
+            <div class="journal">{{journal.journalName}}<br />
+              {{#each journal.pages as |page|}}
+                <div class="result">@UUID[JournalEntry.{{journal.journalId}}.JournalEntryPage.{{page.pageId}}]</div>                
+              {{/each}}
+            </div>
           {{/each}}
         </div>
       {{/if}}
       {{#if actorresults}}
-        <h4 class="search-header">{{localize "DOCUMENT.Actors"}}</h4>
+        <h4>{{localize "DOCUMENT.Actors"}}</h4>
         <div>
-          {{#each actorResultCollection as |actor|}}
-            <div class="search-result">@UUID[Actor.{{actor._id}}]</div>
+          {{#each actorResultCollection as |id|}}
+            <div class="result">@UUID[Actor.{{id}}]</div>
           {{/each}}
         </div>
       {{/if}}
       {{#if itemresults}}
-        <h4 class="search-header">{{localize "DOCUMENT.Items"}}</h4>
+        <h4>{{localize "DOCUMENT.Items"}}</h4>
         <div>
-          {{#each itemResultCollection as |item|}}
-            <div class="search-result">@UUID[Item.{{item._id}}]</div>
+          {{#each itemResultCollection as |id|}}
+            <div class="result">@UUID[Item.{{id}}]</div>
           {{/each}}
         </div>
       {{/if}}

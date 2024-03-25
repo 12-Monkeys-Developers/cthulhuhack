@@ -65,8 +65,8 @@
     "Condition": "Condition(s)",
     "Conditions": "Conditions",
     "Items": "Equipement",
-    "Abilities": "Capacités spéciales",
-    "AbilitiesAndMagic": "Capacités spéciales & Magie",
+    "Abilities": "Capacités",
+    "AbilitiesAndMagic": "Capacités & Magie",
     "Magic": "Magie",
     "Damage": "Dégâts",
     "DamageDice": "Dé(s) de Dégâts",
@@ -78,17 +78,19 @@
 
     "AbilityKey": "Clé",
     "AbilityUsePer": "Type d'usage",
-    "AbilityUseValue": "Utilisations",
-    "AbilityUseValueDtl": "Utilisations restantes",
+    "AbilityUseValue": "Utilisations restantes",
     "AbilityUseMax": "Maximum",
     "AbilityUseLast": "Dernier usage",
     "AbilityMultiple": "Multiple",
     "AbilityUsePermanent": "Permanent",
     "AbilityUseScenario": "Par scénario",
     "AbilityUsePerSession": "Par séance",
+    "AbilityUsePerDay": "Par jour",
+    "AbilityUsePerNight": "Par nuit",
     "AbilityUsePerHour": "Par heure",
     "AbilityUsePerScene": "Par scène",
     "AbilityUsePerFight": "Par combat",
+    "AbilityUsePerMoment": "Par moment",
     "AbilityIsCustom": "Custom",
     "AbilityAdvantageGiven": "Donne un avantage",
     "AbilityAdvantageText": "Description avantage",
@@ -152,6 +154,7 @@
     "AddMagic": "Ajouter un sortilège ou un rituel",
     "AddAttack": "Ajouter une attaque",
     "AddOpponentAbility": "Ajouter une capacité d'adversaire",
+    "AddEquipment": "Clic gauche pour ajouter une arme, SHIFT + clic gauche pour ajouter un objet",
 
     "Attributes": "Attributs",
 
@@ -172,6 +175,7 @@
     "FortuneUse": "Dépenser",
     "FortuneUseMessage": "Un jeton de Fortune a été dépensé par {name}.<br>Le total restant est de {total}.",
     "None": "---",
+    "Empty": "",
     "NO": "Non",
     "YES": "Oui",
 
@@ -231,7 +235,10 @@
     "ContextMenuDelete": "Supprimer",
     "ContextMenuUse": "Utiliser",
     "ContextMenuResetUse": "Réinitialiser",
-    "ContextMenuDecreaseUse": "Diminuer"
+    "ContextMenuIncreaseUse": "Augmenter",
+    "Notifications": {
+      "AbilityHasAlready": "La capacité {abilityName} n'a pas la propriété multiple et est déjà présente."
+    }
   },
 
   "SETTINGS": {
@@ -304,11 +311,18 @@
     "WindowTitle": "Rechercher",
     "ButtonSearch": "Rechercher",
     "ButtonCancel": "Annuler",
-    "DialogTitle": "Recherche de Texte dans les Journaux, Personnages, Objets...",
-    "DialogInput": "Entrez ici le texte à rechercher :",
+    "DialogTitle": "Recherche de texte dans les Journaux, Personnages et Objets",
+    "DialogInput": "Texte à rechercher :",
     "ChatIntro": "Résultat de la recherche",
     "ChatText": "Texte recherché : ",
     "NoResults": "Aucun résultat",
-    "TooMuchResults": "Plus de 20 résultats, affinez votre recherche."
+    "TooManyResults": "Plus de 20 résultats, affinez votre recherche.",
+    "HighlightButton": "Surligner on/off",
+    "HighlightTooltip": "Basculer le surlignage du texte recherché dans les documents",
+    "HighlightedButton": "Surligner Off",
+    "HighlightedTooltip": "Ne plus surligner le texte recherché dans les documents",
+    "UnhighlightedButton": "Surligner On",
+    "UnhighlightedTooltip": "Surligner le texte recherché dans les documents"
   }
 }
+

@@ -1,0 +1,53 @@
+{{!log 'sidebar' this}}
+<div class="sidebar flexcol">
+  <div class="image-container">
+    {{#if editable}}
+      <img class="editable-image" src="{{data.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}"/>
+    {{else}}
+      <img class="actor-image" src="{{actor.img}}" data-tooltip="{{actor.name}}"/>
+      <a class="hover-icon share-image" data-tooltip="{{localize 'TOOLTIPS.ShowImage'}}" data-image="{{actor.img}}" data-name="{{actor.name}}"><i class="fas fa-image fa-fw"></i></a>
+    {{/if}}    
+  </div>
+  
+  {{#each actor.system.saves as |save key|}}
+    {{!log 'save' save key}}
+    <div class="sidebar-section" data-save="{{key}}">
+      <label class="save-name rollable" data-tooltip="{{localize (toDesc2 key)}}" data-tooltip-direction="UP" data-tooltip-class="tooltip-save">{{getSaveLabel2 key save}}</label>
+      {{#if @root.editable}}
+        <input class="save-value" type="text" name="system.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" />
+        <input type="checkbox" name="system.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}} />
+      {{else}}
+        {{save.value}}
+      {{/if}}
+    </div>
+  {{/each}}
+  {{#if (isEnabled "FortuneAvailable")}}
+    <div class="fortune">
+      <label class="resource-label">{{localize "CTHACK.Fortune"}} : {{getFortuneValue}}</label>
+      {{#if isGm}}
+        {{#if (shouldDisplayFortuneUse)}}
+          <a class="fortune-use" data-tooltip="{{localize 'CTHACK.FortuneUse'}}"><i class="fa fa-check-circle"></i></a>
+        {{/if}}
+      {{/if}}
+    </div>
+  {{/if}}
+  {{#if (isEnabled "Adrenaline")}}
+    <div class="adrenaline">
+      <img class="adrenaline-img" id="adr1" src="{{getAdrenalineImage system.attributes.adrenaline1.value}}" />
+      <img class="adrenaline-img" id="adr2" src="{{getAdrenalineImage system.attributes.adrenaline2.value}}" />
+    </div>
+  {{/if}}
+  {{#if (gt conditions.length 0)}}
+    <div class="conditions">
+      <div class="conditions-title">{{localize "CTHACK.Conditions"}}</div>
+      <div class="items-list">
+        {{#each conditions as |condition id|}}
+          {{!log 'condition' condition id}}
+          <div class="item-line item character-contextmenu" data-item-id="{{condition._id}}">
+            <div class="item-name-img {{#if condition.system.hasDescription}}has-description{{/if}}" data-tooltip="{{condition.enrichedDescription}}">{{#if condition.hasImage}}<img src="{{condition.img}}"/>{{/if}}{{condition.name}}</div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+</div>

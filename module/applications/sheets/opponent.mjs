@@ -1,9 +1,11 @@
-import { SYSTEM } from "../config/system.mjs";
+import { SYSTEM } from "../../config/system.mjs";
+import { SearchChat } from "../search/research.mjs";
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class CtHackOpponentSheet extends ActorSheet {
+export default class CtHackOpponentSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -17,7 +19,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    return "systems/cthack/templates/actor/opponent-sheet.hbs";
+    return "systems/cthack/templates/sheets/opponent.hbs";
   }
   
   /** @override */
@@ -73,18 +75,7 @@ export class CtHackOpponentSheet extends ActorSheet {
 
     html.find(".sheet-lock").click(this._onSheetLock.bind(this));
 
-    // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
-
     html.find(".attack-create").click(this._onAttackCreate.bind(this));
-
-    html.find(".attack-edit").click((ev) => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-      item.sheet.render(true);
-    });
-
-    html.find(".attack-delete").click(this._onAttackDelete.bind(this));
 
     html.find(".selectHitDice").change(this._onChangeHitDice.bind(this));
 
@@ -96,9 +87,9 @@ export class CtHackOpponentSheet extends ActorSheet {
     // Activate context menu
     this._contextOpponentMenu(html);
 
-    html.find(".image").click(this._onShareImage.bind(this));
+    html.find(".share-image").click(this._onShareImage.bind(this));
     html.find(".editable-image").on("contextmenu", this._resetImage.bind(this));
-    html.find(".name").on("contextmenu", this._onSearchActor.bind(this));
+    html.find(".search-name").on("contextmenu", this._onSearchActor.bind(this));
   }
 
   _contextOpponentMenu(html) {
@@ -134,15 +125,15 @@ export class CtHackOpponentSheet extends ActorSheet {
         },
       },
       {
-        name: game.i18n.localize("CTHACK.ContextMenuDecreaseUse"),
-        icon: '<i class="fa-solid fa-minus"></i>',
+        name: game.i18n.localize("CTHACK.ContextMenuIncreaseUse"),
+        icon: '<i class="fa-solid fa-plus"></i>',
         condition: (li) => {
           const item = this.actor.items.get(li.data("item-id"));
-          return item.isOwner && item.type === "opponentAbility" && item.system.isDecreaseable;
+          return item.isOwner && item.type === "opponentAbility" && item.system.isIncreaseable;
         },
         callback: (li) => {
           const item = this.actor.items.get(li.data("item-id"));
-          item.system.decrease();
+          item.system.increase();
           this.render();
         },
       },
@@ -198,7 +189,9 @@ export class CtHackOpponentSheet extends ActorSheet {
   async _onSearchActor(event) {
     event.preventDefault();
     const characterName = event.currentTarget.dataset.name;
-    await this.patternSearch(characterName);
+    let search = await new SearchChat().create(characterName);
+    await search.searchWorld();
+    await search.display();
   }
 
   /**
