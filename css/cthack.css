@@ -73,7 +73,10 @@ a.inline-roll {
 }
 .chat-message .message-content .chat-save-roll,
 .chat-message .message-content .chat-resource-roll,
-.chat-message .message-content .chat-other-roll {
+.chat-message .message-content .chat-other-roll,
+.chat-message .message-content .chat-save-roll-result,
+.chat-message .message-content .chat-resource-roll-result,
+.chat-message .message-content .chat-other-roll-result {
   padding: 5px;
 }
 .chat-message .message-content {
