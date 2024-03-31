@@ -7,7 +7,7 @@
         {{#if editable}}
           <input name="name" type="text" value="{{actor.name}}" />
         {{else}}
-          <div>{{actor.name}}</div>
+          <div class="search-name" data-name="{{actor.name}}" data-tooltip="{{localize 'TOOLTIPS.SearchName'}}">{{actor.name}}</div>
         {{/if}}
       </div>
       <div class="header-occupation"> 

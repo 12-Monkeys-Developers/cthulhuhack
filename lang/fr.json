@@ -305,7 +305,8 @@
     "LockSheet": "Verrouiller la fiche",
     "UnlockSheet": "Déverrouiller la fiche",
     "SelectImage": "Clic gauche pour sélectionner une image, clic droit pour supprimer l'image",
-    "ShowImage": "Montrer l'image"
+    "ShowImage": "Montrer l'image",
+    "SearchName": "Clic droit pour rechercher le nom"
   },
   "SEARCHTOOL": {
     "WindowTitle": "Rechercher",
