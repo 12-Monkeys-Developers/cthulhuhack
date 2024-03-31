@@ -10,4 +10,4 @@ With the change to LevelDB, there is a step to create the packs in local.
 
 # To update the packs
 -  Unpack data : npm run pushLDBtoJSON will create the src/packs files and export all actors/items in json files
--  Pack data : npm run pullJSONtoLDB will
+-  Pack data : npm run pullJSONtoLDB will create the packs from the json files

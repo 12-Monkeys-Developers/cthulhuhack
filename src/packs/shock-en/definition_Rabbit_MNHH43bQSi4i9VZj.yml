@@ -1,0 +1,22 @@
+_id: MNHH43bQSi4i9VZj
+name: Rabbit
+type: definition
+img: systems/cthack/ui/icons/dead-head.png
+data:
+  description: >-
+    <p>No Physical actions or Saves are possible for the next
+    Moment.&nbsp;Stands motionless.</p>
+  definitionType: Shock
+  key: SK-RAB
+  creationDate: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.shock.E6WnmZ1GnYbtYLsA
+_key: '!items!MNHH43bQSi4i9VZj'
+

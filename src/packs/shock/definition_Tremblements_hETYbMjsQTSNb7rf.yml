@@ -1,0 +1,22 @@
+_id: hETYbMjsQTSNb7rf
+name: Tremblements
+type: definition
+img: systems/cthack/ui/icons/dead-head.png
+data:
+  description: >-
+    <p>Modificateur de -[[/roll 1d6 ]] pour les Sauvegardes de
+    Dext&eacute;rit&eacute; durant autant de Moments que la valeur du
+    modificateur. <br />La p&eacute;nalit&eacute; r&eacute;duit d&rsquo;un point
+    chaque Moment &eacute;coul&eacute;.</p>
+  definitionType: Shock
+  key: SK-SHA
+  creationDate: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  xuaXKQ8wuA7GQpBm: 3
+flags: {}
+_key: '!items!hETYbMjsQTSNb7rf'
+

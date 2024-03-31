@@ -74,15 +74,9 @@ export class CthackUtils {
 
   static _handleMsgAskRoll(data) {
     const currentUser = game.user._id;
-    if (data.userId == currentUser) {
+    if (data.userId === currentUser) {
       AudioHelper.play({ src: "/systems/cthack/sounds/dice.wav", volume: 0.8, autoplay: true, loop: false }, false);
     }
   }
 }
 
-export function refreshAllActorSheets() {
-  if (CTHACK.debug) console.log(LOG_HEAD + "Refreshing all ActorSheets");
-  Object.values(ui.windows)
-    .filter((w) => w.constructor.name === "CtHackActorSheet")
-    .forEach((w) => w.render(false));
-}

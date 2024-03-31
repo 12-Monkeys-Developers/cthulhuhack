@@ -1,0 +1,128 @@
+_id: HZh0hnlfTTZfdvXS
+name: Shoggoth
+type: opponent
+sort: 100001
+flags:
+  cthack: {}
+img: icons/svg/mystery-man.svg
+items:
+  - _id: WeDFhbmGuPW3hkvJ
+    name: Écraser
+    type: attack
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    system:
+      htmlFields:
+        - description
+      damage: '18'
+      damageDice: '0'
+      description: >-
+        <p>Ecraser 4 cibles Proches (une <strong>Sauvegarde de
+        Dextérité</strong> permet d'éviter la moitié des dégâts)</p>
+      locked: true
+    folder: null
+    ownership:
+      default: 0
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: null
+      modifiedTime: 1711903489132
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!HZh0hnlfTTZfdvXS.WeDFhbmGuPW3hkvJ'
+effects: []
+system:
+  htmlFields:
+    - description
+    - shortDescription
+  hp:
+    value: 48
+    min: 0
+    max: 48
+  description: >-
+    <p>Soldat cuirassé et serviteur des Choses très anciennes, les Shoggoth
+    assimilent, s’adaptent et surmontent tout obstacle, évoluant à chaque
+    instant. Amorphe et malléable, l’apparence du Shoggoth a peut-être donné
+    naissance aux légendes des sorciers invoquant des serviteurs élémentaires
+    obéissant à leurs ordres. Probablement la plus grande erreur de tout le
+    règne des Choses très anciennes.</p><h2>Capacités
+    spéciales</h2><ul><li><p>Ne subit que le minimum des dégâts de toute
+    attaque.</p></li><li><p>Immunisé au feu, à l’eau, à l’électricité, au
+    poison, au froid.</p></li><li><p>Amphibie.</p></li></ul>
+  hitDice: '12'
+  armor: '8'
+  abilities: []
+  malus: '-11'
+  shortDescription: ''
+ownership:
+  default: 0
+  nbNihQhmxdH1Xo1p: 3
+prototypeToken:
+  flags: {}
+  name: Shoggoth
+  displayName: 0
+  width: 1
+  height: 1
+  lockRotation: false
+  rotation: 0
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: hp
+  bar2:
+    attribute: null
+  randomImg: false
+  light:
+    dim: 0
+    bright: 0
+    angle: 360
+    alpha: 1
+    animation:
+      speed: 5
+      intensity: 5
+      type: null
+      reverse: false
+    coloration: 1
+    attenuation: 0.5
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    darkness:
+      min: 0
+      max: 1
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: null
+    scaleX: 1
+    scaleY: 1
+    offsetX: 0
+    offsetY: 0
+    rotation: 0
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  alpha: 1
+  detectionModes: []
+folder: null
+_stats:
+  systemId: cthack
+  systemVersion: '#{VERSION}#'
+  coreVersion: '11.315'
+  createdTime: 1711903488095
+  modifiedTime: 1711903499211
+  lastModifiedBy: vkZ1uRwLntJ5cCjm
+_key: '!actors!HZh0hnlfTTZfdvXS'
+

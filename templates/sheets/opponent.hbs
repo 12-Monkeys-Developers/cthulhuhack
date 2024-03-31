@@ -1,5 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-  {{!log "opponent" this}}
+  {{log "opponent" this}}
   <header class="sheet-header {{#if (or hasImage editable)}}grid-image{{else}}grid-noimage{{/if}}">
 
     <div class="opponent-image">
@@ -95,7 +95,7 @@
       </div>
     {{else}}
       <div class="description">
-        {{editor enrichedDescription target="system.description" engine="prosemirror" button=true owner=owner editable=editable}}
+        {{{system.description}}}
       </div>
     {{/if}}
     

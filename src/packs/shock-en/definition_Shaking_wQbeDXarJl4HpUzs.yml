@@ -1,0 +1,22 @@
+_id: wQbeDXarJl4HpUzs
+name: Shaking
+type: definition
+img: systems/cthack/ui/icons/dead-head.png
+data:
+  description: >-
+    <p>-[[/roll 1d6 ]] modifier on DEX Saves for the same number of
+    Moments.&nbsp;&nbsp;Penalty reduces -1 each Moment that passes.</p>
+  definitionType: Shock
+  key: SK-SHA
+  creationDate: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.shock.hETYbMjsQTSNb7rf
+_key: '!items!wQbeDXarJl4HpUzs'
+

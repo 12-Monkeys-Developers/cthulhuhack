@@ -1,0 +1,26 @@
+_id: Z6E9tcFXFLeas5XP
+name: Pugiliste amélioré
+permission:
+  default: 0
+  Q9eXSbNsJCeaMOSw: 3
+type: ability
+data:
+  description: >-
+    <p><em>N&eacute;cessite d&rsquo;avoir la capacit&eacute; sp&eacute;ciale
+    &laquo; Pugiliste &raquo;</em>. Si le personnage prend le dessus (voir p.
+    32) un membre de votre adversaire est paralys&eacute; (bris&eacute; ou
+    bloqu&eacute; par exemple).</p>
+  key: IMPPUG
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+flags:
+  core:
+    sourceId: Item.jP99wLqvpi1ZWjYF
+img: systems/cthack/ui/icons/punch-blast.png
+effects: []
+_key: '!items!Z6E9tcFXFLeas5XP'
+

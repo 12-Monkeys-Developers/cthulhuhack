@@ -1,0 +1,21 @@
+name: Jet de choc
+permission:
+  default: 0
+  DGRLkzFEhbVzrCXX: 3
+type: script
+flags:
+  core:
+    sourceId: Macro.3EdHQuIKXK2o2Mh6
+scope: global
+command: |-
+  (async ()=>{
+    const table = game.tables.getName("Conséquences Choc");
+    await table.draw({ rollMode : `gmroll` });
+    await table.reset();
+  })();
+author: DGRLkzFEhbVzrCXX
+img: icons/svg/dice-target.svg
+actorIds: []
+_id: Ah1eQwswLBzee2sb
+_key: '!macros!Ah1eQwswLBzee2sb'
+

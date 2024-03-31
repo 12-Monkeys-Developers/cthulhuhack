@@ -1,0 +1,130 @@
+_id: koxKw9bjCnvB3xnB
+name: Shoggoth
+type: opponent
+img: icons/svg/mystery-man.svg
+data:
+  hp:
+    value: 48
+    min: 0
+    max: 48
+  description: >-
+    <h3>Dreadnought, soldier and servitor of the&nbsp;Elder Thing, the Shoggoth
+    adopts, adapts&nbsp;and overcomes all obstacles in time,&nbsp;evolving
+    moment by moment.&nbsp;Amorphous and plastic in form, the&nbsp;appearance of
+    Shoggoth might have&nbsp;given rise ancient tales of wizards
+    raising&nbsp;elementals as servants of their will. In all&nbsp;possibility,
+    the finest achievement and&nbsp;the greatest mistake of the Elder
+    Thing&rsquo;s&nbsp;reign.</h3>
+
+    <h2>Special Abilities</h2>
+
+    <ul>
+
+    <li>
+
+    <h3>Attack: Crush vs 4 nearby targets; DEX&nbsp;Save for half damage.</h3>
+
+    </li>
+
+    <li>
+
+    <h3>Suffers&nbsp;minimum damage from all attacks.</h3>
+
+    </li>
+
+    <li>
+
+    <h3>Immunity vs fire, water, electricity,&nbsp;poison, cold.</h3>
+
+    </li>
+
+    <li>
+
+    <h3>Amphibious.</h3>
+
+    </li>
+
+    </ul>
+  hitDice: '12'
+  armor: '8'
+  abilities: []
+  malus: '-11'
+token:
+  flags: {}
+  name: Shoggoth
+  displayName: 0
+  img: icons/svg/mystery-man.svg
+  tint: null
+  width: 1
+  height: 1
+  scale: 1
+  lockRotation: false
+  rotation: 0
+  vision: false
+  dimSight: 0
+  brightSight: 0
+  dimLight: 0
+  brightLight: 0
+  sightAngle: 0
+  lightAngle: 360
+  lightAlpha: 1
+  lightAnimation:
+    speed: 5
+    intensity: 5
+  actorId: HZh0hnlfTTZfdvXS
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: null
+  bar2:
+    attribute: null
+  randomImg: false
+  mirrorX: false
+  mirrorY: false
+  alpha: 1
+  light:
+    alpha: 0.5
+    angle: 0
+    bright: 0
+    coloration: 1
+    dim: 0
+    gradual: true
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    animation:
+      speed: 5
+      intensity: 5
+      reverse: false
+    darkness:
+      min: 0
+      max: 1
+items:
+  - _id: WeDFhbmGuPW3hkvJ
+    name: Crush
+    type: attack
+    data:
+      description: ''
+      damage: '18'
+      damageDice: ''
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    folder: null
+    permission:
+      default: 0
+    _key: '!actors.items!koxKw9bjCnvB3xnB.WeDFhbmGuPW3hkvJ'
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.opponents.HZh0hnlfTTZfdvXS
+_key: '!actors!koxKw9bjCnvB3xnB'
+

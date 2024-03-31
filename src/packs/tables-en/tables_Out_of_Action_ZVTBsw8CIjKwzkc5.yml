@@ -1,0 +1,157 @@
+_id: ZVTBsw8CIjKwzkc5
+name: Out of Action
+img: systems/cthack/ui/icons/first-aid-kit.png
+description: >-
+  A character with zero (or fewer) Hit Points is taken Out of Action (OofA).
+  They fall prone or stagger about, struck almost dumb with pain. Out of danger
+  (usually at the end of combat), roll 1d10 on the table. If they survive, they
+  regain 1d4 HP (up to maximum).
+results:
+  - _id: NVCZamYeDAbzBBX2
+    flags: {}
+    type: 2
+    text: Dead
+    img: systems/cthack/ui/icons/first-aid-kit.png
+    collection: cthack.outofaction-en
+    resultId: LIJVM9jaJTPlw9JQ
+    weight: 1
+    range:
+      - 1
+      - 1
+    drawn: false
+    rangeL: 1
+    rangeH: 1
+    _key: '!tables.results!ZVTBsw8CIjKwzkc5.NVCZamYeDAbzBBX2'
+  - _id: K6YKhEN5L1g98eZQ
+    flags: {}
+    type: 2
+    text: Broken
+    img: systems/cthack/ui/icons/first-aid-kit.png
+    collection: cthack.outofaction-en
+    resultId: n48B30fA1r8sfHv7
+    weight: 1
+    range:
+      - 2
+      - 2
+    drawn: false
+    rangeL: 2
+    rangeH: 2
+    _key: '!tables.results!ZVTBsw8CIjKwzkc5.K6YKhEN5L1g98eZQ'
+  - _id: ELFT1MHWBQTSuJnc
+    flags: {}
+    type: 2
+    text: Savaged
+    img: systems/cthack/ui/icons/first-aid-kit.png
+    collection: cthack.outofaction-en
+    resultId: 3L0EP566O4ZG1iMw
+    weight: 1
+    range:
+      - 3
+      - 3
+    drawn: false
+    rangeL: 3
+    rangeH: 3
+    _key: '!tables.results!ZVTBsw8CIjKwzkc5.ELFT1MHWBQTSuJnc'
+  - _id: gw0epEWsd9rBGLw2
+    flags: {}
+    type: 2
+    text: Crippled
+    img: systems/cthack/ui/icons/first-aid-kit.png
+    collection: cthack.outofaction-en
+    resultId: Z5yQTzoRKVtjuLkI
+    weight: 1
+    range:
+      - 4
+      - 4
+    drawn: false
+    rangeL: 4
+    rangeH: 4
+    _key: '!tables.results!ZVTBsw8CIjKwzkc5.gw0epEWsd9rBGLw2'
+  - _id: HqMMvNrLrrqSdXRu
+    flags: {}
+    type: 2
+    text: Cracked Bones
+    img: systems/cthack/ui/icons/first-aid-kit.png
+    collection: cthack.outofaction-en
+    resultId: tJo60ndi0uqKUTUN
+    weight: 1
+    range:
+      - 5
+      - 5
+    drawn: false
+    rangeL: 5
+    rangeH: 5
+    _key: '!tables.results!ZVTBsw8CIjKwzkc5.HqMMvNrLrrqSdXRu'
+  - _id: 6AWGx8pNxtvWb3fZ
+    flags: {}
+    type: 2
+    text: Knocked Out
+    img: systems/cthack/ui/icons/first-aid-kit.png
+    collection: cthack.outofaction-en
+    resultId: nmtvQ2nGF2zMEsBf
+    weight: 1
+    range:
+      - 6
+      - 6
+    drawn: false
+    rangeL: 6
+    rangeH: 6
+    _key: '!tables.results!ZVTBsw8CIjKwzkc5.6AWGx8pNxtvWb3fZ'
+  - _id: z09GZpQUsu4yAqkW
+    flags: {}
+    type: 2
+    text: Mild Concussion
+    img: systems/cthack/ui/icons/first-aid-kit.png
+    collection: cthack.outofaction-en
+    resultId: c0ryMlx0yOOpnRIK
+    weight: 1
+    range:
+      - 7
+      - 7
+    drawn: false
+    rangeL: 7
+    rangeH: 7
+    _key: '!tables.results!ZVTBsw8CIjKwzkc5.z09GZpQUsu4yAqkW'
+  - _id: zQIvvwZbjTDzKXOe
+    flags: {}
+    type: 2
+    text: Staggered
+    img: systems/cthack/ui/icons/first-aid-kit.png
+    collection: cthack.outofaction-en
+    resultId: zK6hGZEkI4JjqLRA
+    weight: 1
+    range:
+      - 8
+      - 8
+    drawn: false
+    rangeL: 8
+    rangeH: 8
+    _key: '!tables.results!ZVTBsw8CIjKwzkc5.zQIvvwZbjTDzKXOe'
+  - _id: XOMBpgbA8dDWp5hJ
+    flags: {}
+    type: 2
+    text: Winded
+    img: systems/cthack/ui/icons/first-aid-kit.png
+    collection: cthack.outofaction-en
+    resultId: YWtHTArruiVM3I0T
+    weight: 1
+    range:
+      - 9
+      - 10
+    drawn: false
+    rangeL: 9
+    rangeH: 10
+    _key: '!tables.results!ZVTBsw8CIjKwzkc5.XOMBpgbA8dDWp5hJ'
+formula: 1d10
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: RollTable.5OIbc46btiEnvLnk
+_key: '!tables!ZVTBsw8CIjKwzkc5'
+

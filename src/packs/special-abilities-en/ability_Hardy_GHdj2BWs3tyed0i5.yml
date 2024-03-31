@@ -1,0 +1,29 @@
+_id: GHdj2BWs3tyed0i5
+name: Hardy
+type: ability
+img: systems/cthack/ui/icons/heart-plus.png
+data:
+  description: >-
+    <p>You roll with Advantage&nbsp;when making Saves to avoid the&nbsp;harmful
+    effects of poison, drugs,&nbsp;chemicals or alcohol.</p>
+  key: HAR
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+  isCustom: false
+  advantageGiven: false
+  advantageText: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Item.zbiF1fX3xFUQBURa
+_key: '!items!GHdj2BWs3tyed0i5'
+

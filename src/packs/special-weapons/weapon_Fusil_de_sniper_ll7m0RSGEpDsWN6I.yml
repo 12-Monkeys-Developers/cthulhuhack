@@ -1,0 +1,18 @@
+name: Fusil de sniper
+permission:
+  default: 0
+  Q9eXSbNsJCeaMOSw: 3
+type: weapon
+data:
+  description: >-
+    <p>Le personnage peut perdre une action pour toucher automatiquement
+    &agrave; la prochaine action et passer &agrave; 1d12 en
+    D&eacute;g&acirc;t(s) arm&eacute; pour ce tir.</p>
+  dice: d6
+  range: distant
+flags: {}
+img: systems/cthack/ui/weapons/lee-enfield.png
+effects: []
+_id: ll7m0RSGEpDsWN6I
+_key: '!items!ll7m0RSGEpDsWN6I'
+

@@ -1,0 +1,19 @@
+_id: sEUjQx1DBFTApPUN
+name: Hunting Rifle
+type: weapon
+img: systems/cthack/ui/weapons/winchester-rifle.png
+data:
+  description: <p>1D10 Armed Damage.</p>
+  dice: d6
+  range: far
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.weapons.O8431PuIhFQSwUVW
+_key: '!items!sEUjQx1DBFTApPUN'
+

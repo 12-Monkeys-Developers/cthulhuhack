@@ -1,0 +1,17 @@
+name: Blaster
+permission:
+  default: 0
+  Q9eXSbNsJCeaMOSw: 3
+type: weapon
+data:
+  description: >-
+    <p>Lancez 1d12 pour le d&eacute; de D&eacute;g&acirc;t(s) arm&eacute;,
+    lancez le d&eacute; de Mat&eacute;riel avec un D&eacute;savantage.</p>
+  dice: d8
+  range: far
+flags: {}
+img: systems/cthack/ui/weapons/ray-gun.png
+effects: []
+_id: rnAbhqXi8Aa10Im4
+_key: '!items!rnAbhqXi8Aa10Im4'
+

@@ -1,0 +1,57 @@
+_id: 5AZjeoItTuiSRJmY
+name: Scholar (Balanced)
+type: archetype
+img: systems/cthack/ui/archetypes/cthack-savant.png
+data:
+  description: >-
+    <p><em>Professor, Archivist, Clerk, Nurse,&nbsp;</em><em>Academic, Game
+    Designer</em></p>
+
+    <p>&nbsp;</p>
+
+    <p><strong>Special Abilities</strong></p>
+
+    <p><strong>Deduction:</strong> Once per game session, you can apply your
+    powers of deduction and reasoning to reach an apposite conclusion; the GM
+    must&nbsp;provide a hint to the next best step.</p>
+
+    <p>Choose <strong>two </strong>from the following:</p>
+
+    <ul>
+
+    <li><strong>Iron Mind: </strong>Roll with Advantage on Saves when resisting
+    magic, occult&nbsp;ritual, hexes, curses, or possession by alien
+    influences.</li>
+
+    <li><strong>Erudite: </strong>Once per game hour, you can automatically
+    succeed with a single&nbsp;INT or WIS Save.</li>
+
+    <li><strong>MacGyver:</strong> Once per session, you can improvise a
+    solution to a situation&nbsp;using available tools, devices, and uncommon
+    lore.</li>
+
+    </ul>
+  flashlights: d10
+  smokes: d10
+  hitdice: d4
+  hitpoints: 1d4 + 8
+  wealthStart: '2'
+  wealthDice: d6
+  sanity: d8
+  armeddamage: d4
+  unarmeddamage: '1'
+  primarysave: int
+  secondarysave1: cha
+  secondarysave2: wis
+  capacities: []
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.archetypes.QfhSMDL2lyT4iUhH
+_key: '!items!5AZjeoItTuiSRJmY'
+

@@ -1,0 +1,29 @@
+_id: CzhUcUCbkYUhQUUj
+name: Mechanic
+type: ability
+img: systems/cthack/ui/icons/auto-repair.png
+data:
+  description: >-
+    <p>You roll with Advantage&nbsp;when repairing or damaging&nbsp;machinery or
+    vehicles.</p>
+  key: MEC
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+  isCustom: false
+  advantageGiven: false
+  advantageText: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Item.TeHLpbRoKyOSsq63
+_key: '!items!CzhUcUCbkYUhQUUj'
+

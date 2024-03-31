@@ -65,6 +65,12 @@ a.inline-roll {
   background: none;
   border: 1px solid white;
 }
+.editor.prosemirror.editing-source {
+  color: white;
+}
+.editor.prosemirror.editing-source textarea {
+  color: white;
+}
 .roll-failure {
   color: red;
 }
@@ -890,17 +896,16 @@ a.inline-roll {
   width: 20px;
 }
 .cthack.sheet.actor.opponent .sheet-body {
-  height: 100%;
-  min-height: 0;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
   display: flex;
   flex-direction: column;
-  height: auto;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
 }
 .cthack.sheet.actor.opponent .sheet-body .description-editable {
   border: none;
   font-size: 1rem;
+  height: 100%;
+  min-height: 200px;
 }
 .cthack.sheet.actor.opponent .sheet-body .description-editable .title {
   font-size: 1em;

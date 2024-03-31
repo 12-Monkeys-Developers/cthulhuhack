@@ -1,0 +1,20 @@
+_id: fkD3rjYrYFhwQnpW
+name: Scream
+type: definition
+img: systems/cthack/ui/icons/dead-head.png
+data:
+  description: <p>Piercing scream. Attracts attention.</p>
+  definitionType: Shock
+  key: SK-SCR
+  creationDate: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.shock.23IXCbEI5pPIBoBP
+_key: '!items!fkD3rjYrYFhwQnpW'
+

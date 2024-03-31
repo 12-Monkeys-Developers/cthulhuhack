@@ -45,18 +45,7 @@
           "name": "EN",
           "sorting": "m",
           "color": "#59564c",
-          "packs": [
-            "pregenerated-en",
-            "archetypes-en",
-            "abilities-en",
-            "weapons-en",
-            "opponents-en",
-            "gametables-en",
-            "outofaction-en",
-            "temporaryinsanity-en",
-            "shock-en",
-            "macros-en"
-          ],
+          "packs": ["pregenerated-en", "archetypes-en", "abilities-en", "weapons-en", "opponents-en", "gametables-en", "outofaction-en", "temporaryinsanity-en", "shock-en", "macros-en"],
           "folders": []
         }
       ]
@@ -97,7 +86,7 @@
     },
     {
       "name": "opponents",
-      "label": "FR - Créatures",
+      "label": "FR - Adversaires",
       "system": "cthack",
       "path": "packs/opponents",
       "type": "Actor",
@@ -209,9 +198,9 @@
     },
     {
       "name": "opponents-en",
-      "label": "EN - Creatures",
+      "label": "EN - Opponents",
       "system": "cthack",
-      "path": "packs/creatures-en",
+      "path": "packs/opponents-en",
       "type": "Actor",
       "private": false
     },
@@ -230,5 +219,11 @@
   "download": "#{DOWNLOAD}#",
   "gridDistance": 5,
   "gridUnits": "ft",
-  "primaryTokenAttribute": "hp"
+  "primaryTokenAttribute": "hp",
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json", "mjs"],
+      "path": ["css", "templates", "lang", "module"]
+    }
+  }
 }

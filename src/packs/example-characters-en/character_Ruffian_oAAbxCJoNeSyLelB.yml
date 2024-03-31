@@ -1,0 +1,240 @@
+_id: oAAbxCJoNeSyLelB
+name: Ruffian
+type: character
+img: systems/cthack/ui/pregenerated/voyou.webp
+data:
+  hp:
+    value: 10
+    min: 0
+    max: 10
+  occupation: ''
+  archetype: Ruffian
+  description: ''
+  biography: ''
+  attributes:
+    flashlights:
+      value: d6
+      max: d6
+    smokes:
+      value: d10
+      max: d10
+    sanity:
+      value: d8
+      max: d8
+    hitDice:
+      value: d6
+      max: d6
+    wealthDice:
+      value: d6
+      max: d6
+    armedDamage:
+      value: d6
+    unarmedDamage:
+      value: d4
+    adrenaline1:
+      value: pj
+    adrenaline2:
+      value: pj
+    miscellaneous:
+      value: d6
+      max: d6
+  saves:
+    str:
+      value: 10
+      advantage: false
+    dex:
+      value: 10
+      advantage: false
+    con:
+      value: 10
+      advantage: false
+    wis:
+      value: 10
+      advantage: false
+    int:
+      value: 10
+      advantage: false
+    cha:
+      value: 10
+      advantage: false
+  abilities:
+    - key: SELPRE
+    - key: HOUCAR
+    - key: SIZIUP
+    - key: BETALO
+  notes: ''
+token:
+  flags: {}
+  name: Voyou
+  displayName: 0
+  img: systems/cthack/ui/pregenerated/voyou.webp
+  tint: null
+  width: 1
+  height: 1
+  scale: 1
+  lockRotation: false
+  rotation: 0
+  vision: false
+  dimSight: 0
+  brightSight: 0
+  dimLight: 0
+  brightLight: 0
+  sightAngle: 0
+  lightAngle: 360
+  lightAlpha: 1
+  lightAnimation:
+    speed: 5
+    intensity: 5
+  actorId: n5zjVhcS7sozLnkT
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: null
+  bar2:
+    attribute: null
+  randomImg: false
+  mirrorX: false
+  mirrorY: false
+  alpha: 1
+  light:
+    alpha: 0.5
+    angle: 0
+    bright: 0
+    coloration: 1
+    dim: 0
+    gradual: true
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    animation:
+      speed: 5
+      intensity: 5
+      reverse: false
+    darkness:
+      min: 0
+      max: 1
+items:
+  - _id: 2vHnkRhtPzf8RkKh
+    name: Self-Preservation
+    type: ability
+    img: systems/cthack/ui/icons/extra-lucid.png
+    data:
+      description: >-
+        <p>Roll with&nbsp;Advantage when making a Save to&nbsp;avoid traps,
+        devices and other&nbsp;mechanisms intended to impede or&nbsp;harm.</p>
+      key: SELPRE
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 1400000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Item.XKKv6w1z3wP0b208
+    _key: '!actors.items!oAAbxCJoNeSyLelB.2vHnkRhtPzf8RkKh'
+  - _id: Az11ralpLhvdy7MP
+    name: House of Cards
+    type: ability
+    img: systems/cthack/ui/icons/backstab.png
+    data:
+      description: >-
+        <p>Once per game&nbsp;session, you can break a trust or&nbsp;betray an
+        ally or friend - and&nbsp;narrate what happens - to avoid damage from a
+        failed WIS or CHA&nbsp;Save.</p>
+      key: HOUCAR
+      uses:
+        value: 1
+        max: 1
+        per: Session
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 3100000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Item.kaXCmKcYmqa0bXRh
+    _key: '!actors.items!oAAbxCJoNeSyLelB.Az11ralpLhvdy7MP'
+  - _id: feB8Ssl8wSxlMkcd
+    name: Sizing Up
+    type: ability
+    img: systems/cthack/ui/icons/eye-target.png
+    data:
+      description: >-
+        <p>You have a keen eye for&nbsp;weakness; gain a +1 to Hit
+        and&nbsp;Damage at a cost of rolling&nbsp;Flashlights after every such
+        attack.</p>
+      key: SIZIUP
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 4300000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Item.LJbnjsdMSYJn5mDJ
+    _key: '!actors.items!oAAbxCJoNeSyLelB.feB8Ssl8wSxlMkcd'
+  - _id: joYLVlSxsyvTETah
+    name: Better Alone
+    type: ability
+    img: systems/cthack/ui/icons/wolf-head.png
+    data:
+      description: >-
+        <p>While fighting&nbsp;without an ally, you temporarily&nbsp;gain 2
+        Armour Points and inflict +2&nbsp;Armed damage with
+        melee&nbsp;weapons.</p>
+      key: BETALO
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 2000000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Item.bIrS3hqMdPBtHt3V
+    _key: '!actors.items!oAAbxCJoNeSyLelB.joYLVlSxsyvTETah'
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.pregenerated.n5zjVhcS7sozLnkT
+_key: '!actors!oAAbxCJoNeSyLelB'
+

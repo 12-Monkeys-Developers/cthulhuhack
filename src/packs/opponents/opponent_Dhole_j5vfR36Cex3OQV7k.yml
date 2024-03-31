@@ -1,0 +1,122 @@
+_id: j5vfR36Cex3OQV7k
+name: Dhole
+type: opponent
+sort: 100001
+flags:
+  cthack: {}
+img: icons/svg/mystery-man.svg
+items:
+  - _id: 00xqaLkI39wQ7ZWS
+    name: Mordre
+    type: attack
+    data:
+      damage: '8'
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    _key: '!actors.items!j5vfR36Cex3OQV7k.00xqaLkI39wQ7ZWS'
+  - _id: 7GBLOfTXroQfFRlQ
+    name: Engloutir
+    type: attack
+    data:
+      damage: '6'
+    sort: 200000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    _key: '!actors.items!j5vfR36Cex3OQV7k.7GBLOfTXroQfFRlQ'
+effects: []
+system:
+  htmlFields:
+    - description
+    - shortDescription
+  hp:
+    value: 36
+    min: 0
+    max: 36
+  description: >-
+    <p>Monstrueuses entités massives, moitié-sangsue moitié-taupe, le Dhole a un
+    don naturel pour creuser à travers n’importe quoi, même la réalité ou les
+    rêves. Notre réalité est tellement absconse pour leurs sens surdéveloppés
+    qu’ils semblent être des créatures stupides se débattant sans but lorsqu’ils
+    sont invoqués dans notre monde.</p><h2>Capacités spéciales</h2><ul><li><p>Si
+    la défense échoue de plus de 4 points, ajouter une attaque Engloutir (6
+    dégâts par Moment) contre laquelle l’adversaire subit un Désavantage pour
+    s’échapper (Sauvegarde de Dextérité).</p></li><li><p>Réussir une Sauvegarde
+    de Dextérité à chaque début de Moment est nécessaire pour éviter de chuter à
+    cause des tremblements.</p></li><li><p>Immunité au feu.</p></li></ul>
+  hitDice: 8
+  armor: '8'
+  abilities: []
+  malus: -7
+  shortDescription: ''
+ownership:
+  default: 0
+  nbNihQhmxdH1Xo1p: 3
+prototypeToken:
+  flags: {}
+  name: Dhole
+  displayName: 0
+  width: 1
+  height: 1
+  lockRotation: false
+  rotation: 0
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: hp
+  bar2:
+    attribute: null
+  randomImg: false
+  light:
+    dim: 0
+    bright: 0
+    angle: 360
+    alpha: 1
+    animation:
+      speed: 5
+      intensity: 5
+      type: null
+      reverse: false
+    coloration: 1
+    attenuation: 0.5
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    darkness:
+      min: 0
+      max: 1
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: null
+    scaleX: 1
+    scaleY: 1
+    offsetX: 0
+    offsetY: 0
+    rotation: 0
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  alpha: 1
+  detectionModes: []
+folder: null
+_stats:
+  systemId: cthack
+  systemVersion: '#{VERSION}#'
+  coreVersion: '11.315'
+  createdTime: null
+  modifiedTime: 1711903048057
+  lastModifiedBy: vkZ1uRwLntJ5cCjm
+_key: '!actors!j5vfR36Cex3OQV7k'
+

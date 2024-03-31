@@ -1,0 +1,25 @@
+_id: TJn8Ph4FPBd63Ey1
+name: Fuyant comme une anguille
+permission:
+  default: 0
+  Q9eXSbNsJCeaMOSw: 3
+type: ability
+data:
+  description: >-
+    <p>Une fois par session le personnage peut r&eacute;percuter les
+    cons&eacute;quences d&rsquo;un &eacute;chec de Sauvegarde
+    d&rsquo;Intelligence ou Sagesse &agrave; quelqu&rsquo;un d&rsquo;autre.</p>
+  key: SLICUS
+  uses:
+    value: 1
+    max: 1
+    per: Session
+    last: ''
+  multiple: false
+flags:
+  core:
+    sourceId: Item.jLi0nIHRZDnouLBO
+img: systems/cthack/ui/icons/eel.png
+effects: []
+_key: '!items!TJn8Ph4FPBd63Ey1'
+

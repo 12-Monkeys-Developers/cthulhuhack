@@ -1,0 +1,199 @@
+_id: lxEXUEHxZRUlUaE3
+name: Brute
+permission:
+  default: 0
+  ElkdkfLFg9aO1OqA: 3
+type: character
+data:
+  hp:
+    value: 10
+    min: 0
+    max: 10
+  occupation: ''
+  archetype: Brute
+  description: ''
+  biography: ''
+  attributes:
+    flashlights:
+      value: d4
+      max: d4
+    smokes:
+      value: d4
+      max: d4
+    sanity:
+      value: d8
+      max: d8
+    hitDice:
+      value: d10
+      max: d6
+    wealthDice:
+      value: d6
+      max: d6
+    armedDamage:
+      value: d8
+    unarmedDamage:
+      value: d6
+    adrenaline1:
+      value: pj
+    adrenaline2:
+      value: pj
+  saves:
+    str:
+      value: 10
+      advantage: false
+    dex:
+      value: 10
+      advantage: false
+    con:
+      value: 10
+      advantage: false
+    wis:
+      value: 10
+      advantage: false
+    int:
+      value: 10
+      advantage: false
+    cha:
+      value: 10
+      advantage: false
+  abilities:
+    - key: TACADV
+      id: 8EuiohhKulwXeqdy
+    - key: TACADV
+      id: 8EuiohhKulwXeqdy
+    - key: NARESC
+      id: PtHONiERYtJXwAMI
+    - key: RIP
+      id: ZJvm1resELxeLApu
+    - key: ADRRUS
+      id: bjnkoosl3C3jqHEl
+sort: 100001
+flags: {}
+img: systems/cthack/ui/pregenerated/brute.webp
+token:
+  flags: {}
+  name: Brute
+  displayName: 0
+  img: systems/cthack/ui/pregenerated/brute.webp
+  tint: null
+  width: 1
+  height: 1
+  scale: 1
+  lockRotation: false
+  rotation: 0
+  vision: false
+  dimSight: 0
+  brightSight: 0
+  dimLight: 0
+  brightLight: 0
+  sightAngle: 360
+  lightAngle: 360
+  lightAlpha: 1
+  lightAnimation:
+    speed: 5
+    intensity: 5
+  actorId: lxEXUEHxZRUlUaE3
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1: {}
+  bar2: {}
+  randomImg: false
+items:
+  - _id: RFUE4L2D5zO0lCfE
+    name: Tactique
+    type: ability
+    data:
+      description: >-
+        <p>Lorsqu&rsquo;il effectue une action, le personnage peut faire une
+        attaque suppl&eacute;mentaire contre la m&ecirc;me cible ou une autre.
+        Vous pouvez choisir cette Capacit&eacute; sp&eacute;ciale&nbsp;
+        plusieurs fois.</p>
+      key: TACADV
+      uses:
+        value: 1
+        max: 1
+        per: Fight
+        last: ''
+      multiple: true
+    sort: 100000
+    flags:
+      core:
+        sourceId: Item.ErZ1mNKx7pdQAn8I
+    img: systems/cthack/ui/icons/swords-power.png
+    effects: []
+    _key: '!actors.items!lxEXUEHxZRUlUaE3.RFUE4L2D5zO0lCfE'
+  - _id: N4ypxebk8Df1K3iv
+    name: Échappée belle
+    type: ability
+    data:
+      description: >-
+        <p>Une fois par session de jeu, vous pouvez d&eacute;cider que votre
+        personnage casse un &eacute;quipement (vous devez raconter comment cela
+        se produit) afin d&rsquo;&eacute;viter des d&eacute;g&acirc;ts suite
+        &agrave; une Sauvegarde de Force ou de Dext&eacute;rit&eacute;
+        rat&eacute;e.</p>
+      key: NARESC
+      uses:
+        value: 1
+        max: 1
+        per: Session
+        last: ''
+      multiple: false
+    sort: 200000
+    flags:
+      core:
+        sourceId: Item.JSxc3eh04ZAodTRj
+    img: systems/cthack/ui/icons/toolbox.png
+    effects: []
+    _key: '!actors.items!lxEXUEHxZRUlUaE3.N4ypxebk8Df1K3iv'
+  - _id: 4f27Am4KfQpxygbV
+    name: Musclé
+    type: ability
+    data:
+      description: >-
+        <p>Le personnage b&eacute;n&eacute;ficie d'un <strong>Avantage
+        </strong>pour les <strong>Sauvegardes </strong>lorsqu'il utilise sa
+        force pour soulever, d&eacute;placer ou lutter.</p>
+      key: RIP
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+    sort: 300000
+    flags:
+      core:
+        sourceId: Compendium.cthack.abilities.ZJvm1resELxeLApu
+    img: systems/cthack/ui/icons/biceps.png
+    effects: []
+    _key: '!actors.items!lxEXUEHxZRUlUaE3.4f27Am4KfQpxygbV'
+  - _id: jwWjglq1BY05q22Z
+    name: Poussée d'adrénaline
+    type: ability
+    data:
+      description: >-
+        <p>Une fois par heure de jeu, en combat, lancez votre D&eacute; de Vie
+        et ajoutez la valeur obtenue aux Points de Vie actuels du personnage
+        (cela ne peut pas vous permettre de d&eacute;passer vos Points de Vie
+        maximum). Si vous utilisez l&rsquo;option D&eacute; de Vie en tant que
+        Ressource (voir p. 10), vous regagnez &agrave; la place un niveau de
+        D&eacute; de Vie.</p>
+      key: ADRRUS
+      uses:
+        value: 1
+        max: 1
+        per: Hour
+        last: ''
+      multiple: false
+    sort: 400000
+    flags:
+      core:
+        sourceId: Item.okbiEUn3QsEAt8Lh
+    img: systems/cthack/ui/icons/healing.png
+    effects: []
+    _key: '!actors.items!lxEXUEHxZRUlUaE3.jwWjglq1BY05q22Z'
+effects: []
+_key: '!actors!lxEXUEHxZRUlUaE3'
+
