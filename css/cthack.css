@@ -97,6 +97,12 @@ a.inline-roll {
   font-size: var(--font-size-18);
 }
 .character-resume {
+  background-image: url("../ui/sheet.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+  font-size: var(--font-size-20);
+  scrollbar-width: thin;
   text-align: center;
 }
 .character-resume .adrenaline-img {

@@ -1,3 +1,10 @@
+2.6.0
+- Fix display in chat
+- Change the way to do packs and fix some opponent's description
+- Add search on right click on character (for pregenerated characters)
+- Fix display of long image in character sheet
+- Fix background color of GM Manager
+
 2.5.0
 - Rework on all actors : DataModels usage and new sheet organization
 - Lot of new features : short description for actors
