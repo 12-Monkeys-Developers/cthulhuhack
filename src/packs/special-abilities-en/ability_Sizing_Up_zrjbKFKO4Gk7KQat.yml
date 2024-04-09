@@ -1,0 +1,29 @@
+_id: zrjbKFKO4Gk7KQat
+name: Sizing Up
+type: ability
+img: systems/cthack/ui/icons/eye-target.png
+data:
+  description: >-
+    <p>You have a keen eye for&nbsp;weakness; gain a +1 to Hit and&nbsp;Damage
+    at a cost of rolling&nbsp;Flashlights after every such attack.</p>
+  key: SIZIUP
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+  isCustom: false
+  advantageGiven: false
+  advantageText: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Item.LJbnjsdMSYJn5mDJ
+_key: '!items!zrjbKFKO4Gk7KQat'
+

@@ -1,4 +1,5 @@
 import { formatDate } from "../../utils.js";
+import { SearchChat } from "../search/research.mjs";
 
 /**
  * @extends {ActorSheet}
@@ -130,6 +131,8 @@ export default class CtHackCharacterSheet extends ActorSheet {
 
     // Activate context menu
     this._contextCharacterMenu(html);
+
+    html.find(".search-name").on("contextmenu", this._onSearchActor.bind(this));
   }
 
   //#endregion
@@ -256,6 +259,19 @@ export default class CtHackCharacterSheet extends ActorSheet {
     await this.actor.update({ img: "icons/svg/mystery-man.svg" });
   }
 
+  /**
+   * Handles the search event for an actor.
+   * @param {Event} event - The search event.
+   * @returns {Promise<void>} - A promise that resolves when the search is complete.
+   */
+  async _onSearchActor(event) {
+    event.preventDefault();
+    const characterName = event.currentTarget.dataset.name;
+    let search = await new SearchChat().create(characterName);
+    await search.searchWorld();
+    await search.display();
+  }
+  
   /** @override */
   async _onDropItemCreate(itemData) {
     // Only if the sheet is unlocked

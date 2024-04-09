@@ -1,0 +1,29 @@
+_id: JwqBM0z1U0Om4N02
+name: Improved Pugilist
+type: ability
+img: systems/cthack/ui/icons/punch-blast.png
+data:
+  description: >-
+    <p>Requires Pugilist. Instead of inflicting extra damage, roll d6 &ndash; if
+    1 or 2, cripple one of your opponent&rsquo;s limbs.</p>
+  key: IMPPUG
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+  isCustom: false
+  advantageGiven: false
+  advantageText: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Item.jP99wLqvpi1ZWjYF
+_key: '!items!JwqBM0z1U0Om4N02'
+

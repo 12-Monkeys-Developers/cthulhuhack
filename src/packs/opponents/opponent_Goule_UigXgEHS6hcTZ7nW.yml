@@ -1,0 +1,138 @@
+_id: UigXgEHS6hcTZ7nW
+name: Goule
+type: opponent
+sort: 100001
+flags:
+  cthack: {}
+img: icons/svg/mystery-man.svg
+items:
+  - _id: QDTf3YQkv5I0KhcC
+    name: Griffe
+    type: attack
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    system:
+      htmlFields:
+        - description
+      damage: '2'
+      damageDice: '0'
+      nb: 2
+      locked: true
+    folder: null
+    ownership:
+      default: 0
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: null
+      modifiedTime: 1711903068758
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!UigXgEHS6hcTZ7nW.QDTf3YQkv5I0KhcC'
+  - _id: ZJ62bQgRgbhncNJi
+    name: Morsure
+    type: attack
+    data:
+      damage: '2'
+    sort: 200000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    _key: '!actors.items!UigXgEHS6hcTZ7nW.ZJ62bQgRgbhncNJi'
+effects: []
+system:
+  htmlFields:
+    - description
+    - shortDescription
+  hp:
+    value: 8
+    min: 0
+    max: 8
+  description: >-
+    <p>Habitants immortels de royaumes souterrains, les goules sont en torpeur
+    et n’émergent que pour chercher de la nourriture. Aucune goule ne ressemble
+    à une autre. Elles ont quelquefois des ressemblances avec les êtres humains
+    et des similitudes avec les ancêtres des homo sapiens. Omnivores, elles se
+    nourrissent de morts ou de vivants. Leur apparence engourdit tant l’esprit
+    et les sens que leurs victimes consentent à se faire
+    dévorer.</p><h2>Capacités spéciales</h2><ul><li><p>Leur visage est si
+    horrible que, à moins de détourner le regard ou de se bander les yeux (ce
+    qui octroie un Désavantage), il est nécessaire de réussir une Sauvegarde de
+    Sagesse au début de chaque Moment afin d’éviter de subir un
+    Choc.</p></li></ul>
+  hitDice: '2'
+  armor: '1'
+  abilities: []
+  malus: '-1'
+  shortDescription: ''
+ownership:
+  default: 0
+  nbNihQhmxdH1Xo1p: 3
+prototypeToken:
+  flags: {}
+  name: Goule
+  displayName: 0
+  width: 1
+  height: 1
+  lockRotation: false
+  rotation: 0
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: hp
+  bar2:
+    attribute: null
+  randomImg: false
+  light:
+    dim: 0
+    bright: 0
+    angle: 360
+    alpha: 1
+    animation:
+      speed: 5
+      intensity: 5
+      type: null
+      reverse: false
+    coloration: 1
+    attenuation: 0.5
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    darkness:
+      min: 0
+      max: 1
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: null
+    scaleX: 1
+    scaleY: 1
+    offsetX: 0
+    offsetY: 0
+    rotation: 0
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  alpha: 1
+  detectionModes: []
+folder: null
+_stats:
+  systemId: cthack
+  systemVersion: '#{VERSION}#'
+  coreVersion: '11.315'
+  createdTime: 1711903066691
+  modifiedTime: 1711903099298
+  lastModifiedBy: vkZ1uRwLntJ5cCjm
+_key: '!actors!UigXgEHS6hcTZ7nW'
+

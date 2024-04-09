@@ -1,0 +1,115 @@
+_id: VLMuRMbfyi0ZybFF
+name: Shock
+img: systems/cthack/ui/icons/dead-head.png
+description: >-
+  The Sanity rules hit Investigators hard and affect them significantly. If the
+  danger of insanity seems too extreme consider that when a Sanity test shows 1
+  or 2, use
+
+  Shock instead of Temporary Insanity. When Shocked, Players can use tokens to
+  track the effect; when their turn comes, they return a token and continue to
+  suffer. When the last token goes, the Investigator recovers.
+results:
+  - _id: xx4gZYpF3neK80iG
+    flags: {}
+    type: 2
+    text: Shaking
+    img: systems/cthack/ui/icons/dead-head.png
+    collection: cthack.shock-en
+    resultId: wQbeDXarJl4HpUzs
+    weight: 1
+    range:
+      - 1
+      - 1
+    drawn: false
+    rangeL: 1
+    rangeH: 1
+    _key: '!tables.results!VLMuRMbfyi0ZybFF.xx4gZYpF3neK80iG'
+  - _id: SkWHxcZ5BsrVwxVB
+    flags: {}
+    type: 2
+    text: Vague
+    img: systems/cthack/ui/icons/dead-head.png
+    collection: cthack.shock-en
+    resultId: IkyZNo0R1YwF0xnV
+    weight: 1
+    range:
+      - 2
+      - 2
+    drawn: false
+    rangeL: 2
+    rangeH: 2
+    _key: '!tables.results!VLMuRMbfyi0ZybFF.SkWHxcZ5BsrVwxVB'
+  - _id: RzO5PNAuNmXJfLOT
+    flags: {}
+    type: 2
+    text: Rabbit
+    img: systems/cthack/ui/icons/dead-head.png
+    collection: cthack.shock-en
+    resultId: MNHH43bQSi4i9VZj
+    weight: 1
+    range:
+      - 3
+      - 3
+    drawn: false
+    rangeL: 3
+    rangeH: 3
+    _key: '!tables.results!VLMuRMbfyi0ZybFF.RzO5PNAuNmXJfLOT'
+  - _id: ABm5n9NfD0uX9eAx
+    flags: {}
+    type: 2
+    text: Faint
+    img: systems/cthack/ui/icons/dead-head.png
+    collection: cthack.shock-en
+    resultId: XQ0OIdqWqXYO2XOj
+    weight: 1
+    range:
+      - 4
+      - 4
+    drawn: false
+    rangeL: 4
+    rangeH: 4
+    _key: '!tables.results!VLMuRMbfyi0ZybFF.ABm5n9NfD0uX9eAx'
+  - _id: rWXR7TkDaDRl5e0M
+    flags: {}
+    type: 2
+    text: Dive
+    img: systems/cthack/ui/icons/dead-head.png
+    collection: cthack.shock-en
+    resultId: Ph80ZiQM7WFJPp5h
+    weight: 1
+    range:
+      - 5
+      - 5
+    drawn: false
+    rangeL: 5
+    rangeH: 5
+    _key: '!tables.results!VLMuRMbfyi0ZybFF.rWXR7TkDaDRl5e0M'
+  - _id: 4v2yBWWqunsSWBtF
+    flags: {}
+    type: 2
+    text: Scream
+    img: systems/cthack/ui/icons/dead-head.png
+    collection: cthack.shock-en
+    resultId: fkD3rjYrYFhwQnpW
+    weight: 1
+    range:
+      - 6
+      - 6
+    drawn: false
+    rangeL: 6
+    rangeH: 6
+    _key: '!tables.results!VLMuRMbfyi0ZybFF.4v2yBWWqunsSWBtF'
+formula: 1d6
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: RollTable.BJlo63GaK2GoxqGo
+_key: '!tables!VLMuRMbfyi0ZybFF'
+

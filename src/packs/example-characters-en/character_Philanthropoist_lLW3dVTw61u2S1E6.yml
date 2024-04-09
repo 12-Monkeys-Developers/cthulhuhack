@@ -1,0 +1,241 @@
+_id: lLW3dVTw61u2S1E6
+name: Philanthropoist
+type: character
+img: systems/cthack/ui/pregenerated/philanthrope.webp
+data:
+  hp:
+    value: 10
+    min: 0
+    max: 10
+  occupation: ''
+  archetype: Philanthropist
+  description: ''
+  biography: ''
+  attributes:
+    flashlights:
+      value: d6
+      max: d6
+    smokes:
+      value: d10
+      max: d10
+    sanity:
+      value: d10
+      max: d10
+    hitDice:
+      value: d8
+      max: d6
+    wealthDice:
+      value: d10
+      max: d6
+    armedDamage:
+      value: d6
+    unarmedDamage:
+      value: '1'
+    adrenaline1:
+      value: pj
+    adrenaline2:
+      value: pj
+    miscellaneous:
+      value: d6
+      max: d6
+  saves:
+    str:
+      value: 10
+      advantage: false
+    dex:
+      value: 10
+      advantage: false
+    con:
+      value: 10
+      advantage: false
+    wis:
+      value: 10
+      advantage: false
+    int:
+      value: 10
+      advantage: false
+    cha:
+      value: 10
+      advantage: false
+  abilities:
+    - key: GRIDET
+    - key: FIEMED
+    - key: WITWOR
+    - key: IND
+  notes: ''
+token:
+  flags: {}
+  name: Philanthrope
+  displayName: 0
+  img: systems/cthack/ui/pregenerated/philanthrope.webp
+  tint: null
+  width: 1
+  height: 1
+  scale: 1
+  lockRotation: false
+  rotation: 0
+  vision: false
+  dimSight: 0
+  brightSight: 0
+  dimLight: 0
+  brightLight: 0
+  sightAngle: 0
+  lightAngle: 360
+  lightAlpha: 1
+  lightAnimation:
+    speed: 5
+    intensity: 5
+  actorId: 7K33ai3NswXE2KTe
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: null
+  bar2:
+    attribute: null
+  randomImg: false
+  mirrorX: false
+  mirrorY: false
+  alpha: 1
+  light:
+    alpha: 0.5
+    angle: 0
+    bright: 0
+    coloration: 1
+    dim: 0
+    gradual: true
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    animation:
+      speed: 5
+      intensity: 5
+      reverse: false
+    darkness:
+      min: 0
+      max: 1
+items:
+  - _id: zXNL91q6RL77iDtY
+    name: Grim Determination
+    type: ability
+    img: systems/cthack/ui/icons/meditation.png
+    data:
+      description: >-
+        <p>Once per gaming session, you can re-roll any&nbsp;check for Out of
+        the Action or&nbsp;Sanity / Shock - choose your&nbsp;preferred
+        result.</p>
+      key: GRIDET
+      uses:
+        value: 1
+        max: 1
+        per: Session
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 2100000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Item.gr9uKkcjxExM1rZr
+    _key: '!actors.items!lLW3dVTw61u2S1E6.zXNL91q6RL77iDtY'
+  - _id: H0vxwtKF6PbsCI1t
+    name: Field Medicine
+    type: ability
+    img: systems/cthack/ui/icons/first-aid-kit.png
+    data:
+      description: >-
+        <p>Once per gaming&nbsp;hour, outside combat, you can heal&nbsp;another
+        character d6 lost Hit Points&nbsp;(or one Hit Die step, if using
+        the&nbsp;optional rules).</p>
+      key: FIEMED
+      uses:
+        value: 1
+        max: 1
+        per: Hour
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 3800000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Item.S94zzLx010PIENcN
+    _key: '!actors.items!lLW3dVTw61u2S1E6.H0vxwtKF6PbsCI1t'
+  - _id: Wq65mqEpxfjRSmAx
+    name: Withering Words
+    type: ability
+    img: systems/cthack/ui/icons/talk.png
+    data:
+      description: >-
+        <p>You can use&nbsp;CHA for attacks (instead of STR or&nbsp;DEX),
+        providing your opponent can&nbsp;hear and understand you.
+        Roll&nbsp;damage as if Armed; if you reduce&nbsp;an opponent to 0 hp (or
+        no Hit Dice),&nbsp;they become incapacitated.</p>
+      key: WITWOR
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 3600000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Item.s6rNHTpDHe15QGJt
+    _key: '!actors.items!lLW3dVTw61u2S1E6.Wq65mqEpxfjRSmAx'
+  - _id: 3gLATNTpq6bXhrZh
+    name: Indomitable
+    type: ability
+    img: systems/cthack/ui/icons/lion.png
+    data:
+      description: >-
+        <p>Roll with Advantage when making a Save against&nbsp;deception, mind
+        control or attempts&nbsp;to cloud perception.</p>
+      key: IND
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 4200000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Item.3SfNP7zMMWMUgboC
+    _key: '!actors.items!lLW3dVTw61u2S1E6.3gLATNTpq6bXhrZh'
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.pregenerated.7K33ai3NswXE2KTe
+_key: '!actors!lLW3dVTw61u2S1E6'
+

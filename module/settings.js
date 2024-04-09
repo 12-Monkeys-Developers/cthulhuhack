@@ -1,5 +1,3 @@
-import { refreshAllActorSheets } from './utils.js';
-
 export const registerSystemSettings = function() {
 
 	/**

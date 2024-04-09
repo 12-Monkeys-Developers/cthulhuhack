@@ -65,6 +65,12 @@ a.inline-roll {
   background: none;
   border: 1px solid white;
 }
+.editor.prosemirror.editing-source {
+  color: white;
+}
+.editor.prosemirror.editing-source textarea {
+  color: white;
+}
 .roll-failure {
   color: red;
 }
@@ -73,7 +79,10 @@ a.inline-roll {
 }
 .chat-message .message-content .chat-save-roll,
 .chat-message .message-content .chat-resource-roll,
-.chat-message .message-content .chat-other-roll {
+.chat-message .message-content .chat-other-roll,
+.chat-message .message-content .chat-save-roll-result,
+.chat-message .message-content .chat-resource-roll-result,
+.chat-message .message-content .chat-other-roll-result {
   padding: 5px;
 }
 .chat-message .message-content {
@@ -271,10 +280,6 @@ a.inline-roll {
   height: 400px;
   scrollbar-width: thin;
   scrollbar-color: var(--primary) transparent;
-}
-.cthack.sheet.actor.character .sidebar .image-container {
-  border: 1px solid var(--color-border-dark);
-  height: 225px;
 }
 .cthack.sheet.actor.character .sidebar .image-container img.actor-image {
   border: none;
@@ -887,17 +892,16 @@ a.inline-roll {
   width: 20px;
 }
 .cthack.sheet.actor.opponent .sheet-body {
-  height: 100%;
-  min-height: 0;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
   display: flex;
   flex-direction: column;
-  height: auto;
+  margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
 }
 .cthack.sheet.actor.opponent .sheet-body .description-editable {
   border: none;
   font-size: 1rem;
+  height: 100%;
+  min-height: 200px;
 }
 .cthack.sheet.actor.opponent .sheet-body .description-editable .title {
   font-size: 1em;

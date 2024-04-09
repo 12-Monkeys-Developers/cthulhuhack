@@ -1,0 +1,29 @@
+_id: afznTxuZjRn9Jhet
+name: Improved Heavy Hitter
+type: ability
+img: systems/cthack/ui/icons/muscle-up.png
+data:
+  description: >-
+    <p>Requires&nbsp;Heavy Hitter. DEX Save to disarm&nbsp;your opponent on a
+    successful strike.</p>
+  key: IMPHEAHIT
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+  isCustom: false
+  advantageGiven: false
+  advantageText: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Item.2lrZI42rgo4xkwX5
+_key: '!items!afznTxuZjRn9Jhet'
+

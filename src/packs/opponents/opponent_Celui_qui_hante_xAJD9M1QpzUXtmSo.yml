@@ -1,0 +1,181 @@
+_id: xAJD9M1QpzUXtmSo
+name: Celui-qui-hante
+type: opponent
+img: icons/svg/mystery-man.svg
+items:
+  - _id: Bdd0rLcERF6ZmYeC
+    name: Pointe osseuse
+    type: attack
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    folder: null
+    system:
+      htmlFields:
+        - description
+      description: ''
+      damage: '9'
+      damageDice: '0'
+      locked: true
+    ownership:
+      default: 0
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: null
+      modifiedTime: 1711902705231
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!xAJD9M1QpzUXtmSo.Bdd0rLcERF6ZmYeC'
+  - _id: TcGBgJoewHBs1Q7S
+    name: Griffe
+    type: attack
+    sort: 200000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    folder: null
+    system:
+      htmlFields:
+        - description
+      description: ''
+      damage: '3'
+      damageDice: '0'
+      nb: 3
+      locked: true
+    ownership:
+      default: 0
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: null
+      modifiedTime: 1711902783075
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!xAJD9M1QpzUXtmSo.TcGBgJoewHBs1Q7S'
+  - _id: dJ6P9bLaF2nyVrLu
+    name: Acide
+    type: attack
+    sort: 300000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    folder: null
+    system:
+      htmlFields:
+        - description
+      description: >-
+        <p>3 dégâts par Moment à moins de passer  un compte à rebours de 3 à ne
+        rien faire pour nettoyer l'acide.</p>
+      damage: 3
+      damageDice: '0'
+      locked: true
+    ownership:
+      default: 0
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: null
+      modifiedTime: 1711902763183
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!xAJD9M1QpzUXtmSo.dJ6P9bLaF2nyVrLu'
+effects: []
+folder: null
+sort: 100001
+flags:
+  cthack: {}
+system:
+  htmlFields:
+    - description
+    - shortDescription
+  hp:
+    value: 33
+    min: 0
+    max: 33
+  description: >-
+    <p>Invoqué pour assassiner, Celui-qui-hante est un limier vicieux et sans
+    merci, capable de voler sur de courtes distances et doté d’une patience
+    infinie. Il peut voyager entre les mondes clandestinement, son essence étant
+    attachée à des cristaux d’obsidienne extra-dimensionnels. Un sorcier peut
+    demander à Celui-qui-hante de traquer une proie à l’aide d’un sort qui doit
+    inclure trois formes différentes de marqueurs biologiques, comme des
+    cheveux, du sang, des ongles ou des larmes.</p><h2>Capacités
+    spéciales</h2><ul><li><p>Tant que l’on ne sait pas où est Celui-qui-hante,
+    toutes les attaques échouent automatiquement</p></li><li><p>Les Sauvegardes
+    ont un Désavantage si Celui qui hante est invisible mais
+    localisable.</p></li></ul>
+  hitDice: '9'
+  armor: '8'
+  abilities: []
+  malus: '-8'
+  shortDescription: ''
+ownership:
+  default: 0
+  nbNihQhmxdH1Xo1p: 3
+prototypeToken:
+  flags: {}
+  name: Celui-qui-hante
+  displayName: 0
+  width: 1
+  height: 1
+  lockRotation: false
+  rotation: 0
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: null
+  bar2:
+    attribute: null
+  randomImg: false
+  alpha: 1
+  light:
+    alpha: 1
+    angle: 360
+    bright: 0
+    coloration: 1
+    dim: 0
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    animation:
+      speed: 5
+      intensity: 5
+      type: null
+      reverse: false
+    darkness:
+      min: 0
+      max: 1
+    attenuation: 0.5
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: null
+    scaleX: 1
+    scaleY: 1
+    offsetX: 0
+    offsetY: 0
+    rotation: 0
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  detectionModes: []
+_stats:
+  systemId: cthack
+  systemVersion: '#{VERSION}#'
+  coreVersion: '11.315'
+  createdTime: 1711902685544
+  modifiedTime: 1711902872651
+  lastModifiedBy: vkZ1uRwLntJ5cCjm
+_key: '!actors!xAJD9M1QpzUXtmSo'
+

@@ -1,0 +1,137 @@
+_id: phy12pGkNCy6SIFQ
+name: Chose très ancienne
+type: opponent
+sort: 100001
+flags:
+  cthack: {}
+img: icons/svg/mystery-man.svg
+items:
+  - _id: IPeSBvo1v6lnUpal
+    name: Tentacules
+    type: attack
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    system:
+      htmlFields:
+        - description
+      damage: '3'
+      damageDice: '0'
+      nb: 4
+      locked: true
+    folder: null
+    ownership:
+      default: 0
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: null
+      modifiedTime: 1711902913748
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!phy12pGkNCy6SIFQ.IPeSBvo1v6lnUpal'
+  - _id: KGRtqSYepnxzs4ae
+    name: Déchirer
+    type: attack
+    data:
+      damage: '5'
+    sort: 200000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    _key: '!actors.items!phy12pGkNCy6SIFQ.KGRtqSYepnxzs4ae'
+effects: []
+system:
+  htmlFields:
+    - description
+    - shortDescription
+  hp:
+    value: 24
+    min: 0
+    max: 24
+  description: >-
+    <p>Les Choses très anciennes ressemblent à des barils tronqués hérissés de
+    tentacules sur sa circonférence et possédant une multitude de noeuds
+    sensoriels sur leurs « têtes ». Les Choses très anciennes ont dominé de
+    nombreuses planètes par le passé. Sur Terre, leurs scientifiques ont réalisé
+    des prouesses en manipulations biologiques et technologiques, jusqu’à créer
+    la vie (ce qui signa leur perte). Arrogantes et particulièrement véhémentes,
+    elles se multiplient et se battent sans cesse.</p><h2>Capacités
+    spéciales</h2><ul><li><p>Si deux attaques Tentacule touchent, ajouter une
+    attaque Déchirer (5 dégâts).</p></li><li><p>Peut jeter 1d6 sortilèges
+    choisis de manière aléatoire.</p></li><li><p>Voler.</p></li></ul>
+  hitDice: '6'
+  armor: '3'
+  abilities: []
+  malus: '-5'
+  shortDescription: ''
+ownership:
+  default: 0
+  nbNihQhmxdH1Xo1p: 3
+prototypeToken:
+  flags: {}
+  name: Chose très ancienne
+  displayName: 0
+  width: 1
+  height: 1
+  lockRotation: false
+  rotation: 0
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: hp
+  bar2:
+    attribute: null
+  randomImg: false
+  light:
+    dim: 0
+    bright: 0
+    angle: 360
+    alpha: 1
+    animation:
+      speed: 5
+      intensity: 5
+      type: null
+      reverse: false
+    coloration: 1
+    attenuation: 0.5
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    darkness:
+      min: 0
+      max: 1
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: null
+    scaleX: 1
+    scaleY: 1
+    offsetX: 0
+    offsetY: 0
+    rotation: 0
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  alpha: 1
+  detectionModes: []
+folder: null
+_stats:
+  systemId: cthack
+  systemVersion: '#{VERSION}#'
+  coreVersion: '11.315'
+  createdTime: 1711902913275
+  modifiedTime: 1711902961992
+  lastModifiedBy: vkZ1uRwLntJ5cCjm
+_key: '!actors!phy12pGkNCy6SIFQ'
+

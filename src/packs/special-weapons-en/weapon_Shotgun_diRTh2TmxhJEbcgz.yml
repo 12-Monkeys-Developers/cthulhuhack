@@ -1,0 +1,21 @@
+_id: diRTh2TmxhJEbcgz
+name: Shotgun
+type: weapon
+img: systems/cthack/ui/weapons/sawed-off-shotgun.png
+data:
+  description: |-
+    <p>+2 step / -2 to hit.</p>
+    <p>Target Armour counts double.</p>
+  dice: d6
+  range: near
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.weapons.yAOhGNh3fo7myVIa
+_key: '!items!diRTh2TmxhJEbcgz'
+

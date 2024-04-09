@@ -1,0 +1,18 @@
+_id: mopCKEb3LSXW8Kny
+name: Estropié
+permission:
+  default: 0
+  Nf5osQkK29WIwE1I: 3
+type: definition
+data:
+  description: >-
+    <p>Enlevez d&eacute;finitivement 2 points parmi les valeurs de Sauvegardes
+    de physique.</p>
+  definitionType: OutOfAction
+  key: OOA-CRI
+  creationDate: ''
+flags: {}
+img: systems/cthack/ui/icons/first-aid-kit.png
+effects: []
+_key: '!items!mopCKEb3LSXW8Kny'
+

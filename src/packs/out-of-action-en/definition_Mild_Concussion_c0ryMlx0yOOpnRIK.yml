@@ -1,0 +1,20 @@
+_id: c0ryMlx0yOOpnRIK
+name: Mild Concussion
+type: definition
+img: systems/cthack/ui/icons/first-aid-kit.png
+data:
+  description: <p>Disadvantage on all Tests for the next 20 minutes.</p>
+  definitionType: OutOfAction
+  key: OOA-MIC
+  creationDate: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.outofaction.AQvEfj1kobLUitfE
+_key: '!items!c0ryMlx0yOOpnRIK'
+

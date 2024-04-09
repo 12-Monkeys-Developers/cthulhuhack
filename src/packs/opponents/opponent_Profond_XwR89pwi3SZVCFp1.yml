@@ -1,0 +1,130 @@
+_id: XwR89pwi3SZVCFp1
+name: Profond
+type: opponent
+sort: 100001
+flags:
+  cthack: {}
+img: icons/svg/mystery-man.svg
+items:
+  - _id: ewV905Xi7Bax9j4f
+    name: Griffes
+    type: attack
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    system:
+      htmlFields:
+        - description
+      damage: '3'
+      locked: true
+      damageDice: '0'
+      nb: 2
+    folder: null
+    ownership:
+      default: 0
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: null
+      modifiedTime: 1711903331544
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!XwR89pwi3SZVCFp1.ewV905Xi7Bax9j4f'
+effects: []
+system:
+  htmlFields:
+    - description
+    - shortDescription
+  hp:
+    value: 8
+    min: 0
+    max: 8
+  description: >-
+    <p>Prédécesseurs aquatiques de l’humanité, les Profonds sont des
+    explorateurs et des conquérants plongés en torpeur sous les océans. Ils
+    souhaitent répandre leur patrimoine génétique en subjuguant et en
+    asservissant les autres espèces, car ils peuvent mélanger leur ADN avec les
+    autres espèces. Ils sont peut-être à l’origine des mythes concernant les
+    changelins. Les signes visibles de leur espèce deviennent en effet visibles
+    à l’adolescence. Bien que doués de sentiments, ils sont violemment
+    xénophobes.</p><h2>Capacités spéciales</h2><ul><li><p>Dés de vie :
+    2+</p></li><li><p>Armure : Dé de Vie + 2</p></li><li><p>Attaques : Griffer
+    (Dé de Vie + 1 dégâts) x2</p></li><li><p>Amphibie.</p></li><li><p>Se
+    défendre contre un Profond sous l’eau octroie un
+    Désavantage.</p></li><li><p>Le Profond peut liquéfier et mouler le métal
+    avec ses mains.</p></li></ul>
+  hitDice: '2'
+  armor: '4'
+  abilities: []
+  malus: '-1'
+  shortDescription: ''
+ownership:
+  default: 0
+  nbNihQhmxdH1Xo1p: 3
+prototypeToken:
+  flags: {}
+  name: Profond
+  displayName: 0
+  width: 1
+  height: 1
+  lockRotation: false
+  rotation: 0
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: hp
+  bar2:
+    attribute: null
+  randomImg: false
+  light:
+    dim: 0
+    bright: 0
+    angle: 360
+    alpha: 1
+    animation:
+      speed: 5
+      intensity: 5
+      type: null
+      reverse: false
+    coloration: 1
+    attenuation: 0.5
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    darkness:
+      min: 0
+      max: 1
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: null
+    scaleX: 1
+    scaleY: 1
+    offsetX: 0
+    offsetY: 0
+    rotation: 0
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  alpha: 1
+  detectionModes: []
+folder: null
+_stats:
+  systemId: cthack
+  systemVersion: '#{VERSION}#'
+  coreVersion: '11.315'
+  createdTime: 1711903316295
+  modifiedTime: 1711903411290
+  lastModifiedBy: vkZ1uRwLntJ5cCjm
+_key: '!actors!XwR89pwi3SZVCFp1'
+

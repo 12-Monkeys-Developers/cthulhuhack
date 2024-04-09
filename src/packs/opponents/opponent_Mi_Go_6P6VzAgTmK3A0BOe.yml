@@ -1,0 +1,124 @@
+_id: 6P6VzAgTmK3A0BOe
+name: Mi-Go
+type: opponent
+sort: 100001
+flags:
+  cthack: {}
+img: icons/svg/mystery-man.svg
+items:
+  - _id: YUOYhJyJXNbphBYx
+    name: Projecteur de brume
+    type: attack
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    system:
+      htmlFields:
+        - description
+      damage: '6'
+      damageDice: '0'
+      description: <p>Peut atteindre des cibles Distantes.</p>
+      locked: true
+    folder: null
+    ownership:
+      default: 0
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: null
+      modifiedTime: 1711903232202
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!6P6VzAgTmK3A0BOe.YUOYhJyJXNbphBYx'
+effects: []
+system:
+  htmlFields:
+    - description
+    - shortDescription
+  hp:
+    value: 12
+    min: 0
+    max: 12
+  description: >-
+    <p>Accumulateurs d’artefacts en tout genre et de technologie, les Mi-Go ont
+    une apparence foncièrement inhumaine. Ils vivent pour posséder. Ils
+    réduisent en esclavage les populations locales pour les aider à acquérir
+    toute technologie ou ressource qu’ils découvrent. Les Mi-Go se livrent à
+    d’immondes expérimentations sur leurs prisonniers.</p><h2>Capacités
+    spéciales</h2><ul><li><p>Attaque : Projecteur de brume</p></li><li><p>Peut
+    jeter 3 sortilèges choisis par le MJ.</p></li><li><p>Vol.</p></li></ul>
+  hitDice: '3'
+  armor: '3'
+  abilities: []
+  malus: '-2'
+  shortDescription: ''
+ownership:
+  default: 0
+  nbNihQhmxdH1Xo1p: 3
+prototypeToken:
+  flags: {}
+  name: Mi-GO
+  displayName: 0
+  width: 1
+  height: 1
+  lockRotation: false
+  rotation: 0
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: hp
+  bar2:
+    attribute: null
+  randomImg: false
+  light:
+    dim: 0
+    bright: 0
+    angle: 360
+    alpha: 1
+    animation:
+      speed: 5
+      intensity: 5
+      type: null
+      reverse: false
+    coloration: 1
+    attenuation: 0.5
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    darkness:
+      min: 0
+      max: 1
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: null
+    scaleX: 1
+    scaleY: 1
+    offsetX: 0
+    offsetY: 0
+    rotation: 0
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  alpha: 1
+  detectionModes: []
+folder: null
+_stats:
+  systemId: cthack
+  systemVersion: '#{VERSION}#'
+  coreVersion: '11.315'
+  createdTime: 1711903231265
+  modifiedTime: 1711903256218
+  lastModifiedBy: vkZ1uRwLntJ5cCjm
+_key: '!actors!6P6VzAgTmK3A0BOe'
+

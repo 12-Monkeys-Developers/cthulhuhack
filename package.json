@@ -7,7 +7,9 @@
     "watch": "gulp",
     "gulp": "gulp",
     "pushLDBtoJSON": "node ./tools/pushLDBtoJSON.mjs",
-    "pullJSONtoLDB": "node ./tools/pullJSONtoLDB.mjs"
+    "pullJSONtoLDB": "node ./tools/pullJSONtoLDB.mjs",
+    "pushLDBtoYAML": "node ./tools/pushLDBtoYAML.mjs",
+    "pullYAMLtoLDB": "node ./tools/pullYAMLtoLDB.mjs"
   },
   "browserslist": [
     "last 3 versions"

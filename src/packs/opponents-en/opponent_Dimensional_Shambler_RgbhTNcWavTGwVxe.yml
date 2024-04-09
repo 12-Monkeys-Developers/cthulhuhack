@@ -1,0 +1,125 @@
+_id: RgbhTNcWavTGwVxe
+name: Dimensional Shambler
+type: opponent
+img: icons/svg/mystery-man.svg
+data:
+  hp:
+    value: 20
+    min: 0
+    max: 20
+  description: >-
+    <h3>Nauseating hybrid of primate and insect; grey, hairless, with sunken
+    eyes like fading embers. They possess impossibly long limbs extending from a
+    bloated, corpse-like trunk. Shamblers have a tenuous link to all dimensions;
+    their appearance rends the fabric of space and time, overlaying distant
+    vistas. They find subsistence in cognition - those who not only see them but
+    process the impossibility of their existence feed their hunger.</h3>
+
+    <h2>Special Abilities</h2>
+
+    <ul>
+
+    <li>
+
+    <h3>Attack: Claw x 2.</h3>
+
+    </li>
+
+    <li>
+
+    <h3>If Sanity fails, WIS Save or suffer Grapple&nbsp;(attack at
+    Disadvantage, Countdown&nbsp;3 or lost forever in another dimension).</h3>
+
+    </li>
+
+    <li>
+
+    <h3>Vulnerable only to magic or science&nbsp;capable of rupturing
+    dimensions.</h3>
+
+    </li>
+
+    </ul>
+  hitDice: '5'
+  armor: '4'
+  abilities: []
+  malus: '-4'
+token:
+  flags: {}
+  name: Vagabond dimensionnel
+  displayName: 0
+  img: icons/svg/mystery-man.svg
+  tint: null
+  width: 1
+  height: 1
+  scale: 1
+  lockRotation: false
+  rotation: 0
+  vision: false
+  dimSight: 0
+  brightSight: 0
+  dimLight: 0
+  brightLight: 0
+  sightAngle: 0
+  lightAngle: 360
+  lightAlpha: 1
+  lightAnimation:
+    speed: 5
+    intensity: 5
+  actorId: VqCG2YYTJE9ekE8H
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: null
+  bar2:
+    attribute: null
+  randomImg: false
+  mirrorX: false
+  mirrorY: false
+  alpha: 1
+  light:
+    alpha: 0.5
+    angle: 0
+    bright: 0
+    coloration: 1
+    dim: 0
+    gradual: true
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    animation:
+      speed: 5
+      intensity: 5
+      reverse: false
+    darkness:
+      min: 0
+      max: 1
+items:
+  - _id: y1dJkIWh246dRDk2
+    name: Claw
+    type: attack
+    data:
+      description: ''
+      damage: '4'
+      damageDice: d8
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    folder: null
+    permission:
+      default: 0
+    _key: '!actors.items!RgbhTNcWavTGwVxe.y1dJkIWh246dRDk2'
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.opponents.VqCG2YYTJE9ekE8H
+_key: '!actors!RgbhTNcWavTGwVxe'
+

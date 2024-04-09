@@ -1,0 +1,23 @@
+_id: m8VF7ne8fWqwWRe2
+name: Main sûre
+permission:
+  default: 0
+  gCtskyVJVCb7NnMV: 3
+type: ability
+data:
+  description: >-
+    <p>Une fois par heure de jeu, vous r&eacute;ussissez automatiquement un test
+    d'attaque &agrave; distance.</p>
+  key: STEHAN
+  name: ''
+  uses:
+    value: 1
+    max: 1
+    per: Hour
+    last: ''
+  multiple: false
+flags: {}
+img: systems/cthack/ui/icons/gunshot.png
+effects: []
+_key: '!items!m8VF7ne8fWqwWRe2'
+

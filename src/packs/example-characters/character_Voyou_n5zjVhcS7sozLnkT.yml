@@ -1,0 +1,195 @@
+_id: n5zjVhcS7sozLnkT
+name: Voyou
+permission:
+  default: 0
+  ElkdkfLFg9aO1OqA: 3
+type: character
+data:
+  hp:
+    value: 10
+    min: 0
+    max: 10
+  occupation: ''
+  archetype: Voyou
+  description: ''
+  biography: ''
+  attributes:
+    flashlights:
+      value: d6
+      max: d6
+    smokes:
+      value: d10
+      max: d10
+    sanity:
+      value: d8
+      max: d8
+    hitDice:
+      value: d6
+      max: d6
+    wealthDice:
+      value: d6
+      max: d6
+    armedDamage:
+      value: d6
+    unarmedDamage:
+      value: d4
+    adrenaline1:
+      value: pj
+    adrenaline2:
+      value: pj
+  saves:
+    str:
+      value: 10
+      advantage: false
+    dex:
+      value: 10
+      advantage: false
+    con:
+      value: 10
+      advantage: false
+    wis:
+      value: 10
+      advantage: false
+    int:
+      value: 10
+      advantage: false
+    cha:
+      value: 10
+      advantage: false
+  abilities:
+    - key: SELPRE
+      id: PYW04ytDl8H2qqS8
+    - key: HOUCAR
+      id: iOzFHD0ekNiL4E9n
+    - key: SIZIUP
+      id: zT193zE0el7HsvvU
+    - key: BETALO
+      id: Utk8XlUhz3p7sZIr
+sort: 100001
+flags: {}
+img: systems/cthack/ui/pregenerated/voyou.webp
+token:
+  flags: {}
+  name: Voyou
+  displayName: 0
+  img: systems/cthack/ui/pregenerated/voyou.webp
+  tint: null
+  width: 1
+  height: 1
+  scale: 1
+  lockRotation: false
+  rotation: 0
+  vision: false
+  dimSight: 0
+  brightSight: 0
+  dimLight: 0
+  brightLight: 0
+  sightAngle: 360
+  lightAngle: 360
+  lightAlpha: 1
+  lightAnimation:
+    speed: 5
+    intensity: 5
+  actorId: n5zjVhcS7sozLnkT
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1: {}
+  bar2: {}
+  randomImg: false
+items:
+  - _id: G1FyGZw0EpcSetNB
+    name: Sens du danger
+    type: ability
+    data:
+      description: >-
+        <p>Le personnage b&eacute;n&eacute;ficie d&rsquo;un Avantage lors des
+        Sauvegardes visant &agrave; &eacute;viter les pi&egrave;ges ou les
+        machines pouvant le blesser ou l&rsquo;entraver.</p>
+      key: SELPRE
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+    sort: 100000
+    flags:
+      core:
+        sourceId: Item.XKKv6w1z3wP0b208
+    img: systems/cthack/ui/icons/extra-lucid.png
+    effects: []
+    _key: '!actors.items!n5zjVhcS7sozLnkT.G1FyGZw0EpcSetNB'
+  - _id: GFMMZnT1JlAyzOgu
+    name: Château de cartes
+    type: ability
+    data:
+      description: >-
+        <p>Une fois par partie, le&nbsp;personnage peut trahir (vous devez
+        expliquer ce qui se passe) un alli&eacute;, PJ ou non, afin
+        d&rsquo;&eacute;viter les cons&eacute;quences d&rsquo;une
+        <strong>Sauvegarde de Sagesse</strong> ou <strong>Charisme</strong>
+        rat&eacute;e.</p>
+      key: HOUCAR
+      uses:
+        value: 1
+        max: 1
+        per: Session
+        last: ''
+      multiple: false
+    sort: 200000
+    flags:
+      core:
+        sourceId: Item.kaXCmKcYmqa0bXRh
+    img: systems/cthack/ui/icons/backstab.png
+    effects: []
+    _key: '!actors.items!n5zjVhcS7sozLnkT.GFMMZnT1JlAyzOgu'
+  - _id: B4HK0282vQnHNXA2
+    name: Jauger l'ennemi
+    type: ability
+    data:
+      description: >-
+        <p>Le personnage a l&rsquo;oeil pour rep&eacute;rer les faiblesses. Il a
+        un bonus de + 1 pour toucher et pour calculer ses d&eacute;g&acirc;ts
+        contre un adversaire &agrave; condition d&rsquo;effectuer un test de
+        Torche apr&egrave;s l&rsquo;attaque.</p>
+      key: SIZIUP
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+    sort: 300000
+    flags:
+      core:
+        sourceId: Item.LJbnjsdMSYJn5mDJ
+    img: systems/cthack/ui/icons/eye-target.png
+    effects: []
+    _key: '!actors.items!n5zjVhcS7sozLnkT.B4HK0282vQnHNXA2'
+  - _id: bbRjemrl2adPfUR3
+    name: Loup solitaire
+    type: ability
+    data:
+      description: >-
+        <p>Lorsque le personnage combat sans alli&eacute; (PJ ou PNJ), il gagne
+        temporairement 2 points d&rsquo;Armure et inflige + 2
+        D&eacute;g&acirc;ts arm&eacute; avec les armes de
+        m&ecirc;l&eacute;e.</p>
+      key: BETALO
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+    sort: 400000
+    flags:
+      core:
+        sourceId: Item.bIrS3hqMdPBtHt3V
+    img: systems/cthack/ui/icons/wolf-head.png
+    effects: []
+    _key: '!actors.items!n5zjVhcS7sozLnkT.bbRjemrl2adPfUR3'
+effects: []
+_key: '!actors!n5zjVhcS7sozLnkT'
+

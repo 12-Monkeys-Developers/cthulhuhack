@@ -1,4 +1,3 @@
-{{!log 'actor-sheet' this}}
 <form class="{{cssClass}} flexrow" autocomplete="off">
 {{!log "character" this}}
   {{> "systems/cthack/templates/sheets/parts/character-sidebar.hbs"}}
@@ -8,7 +7,7 @@
         {{#if editable}}
           <input name="name" type="text" value="{{actor.name}}" />
         {{else}}
-          <div>{{actor.name}}</div>
+          <div class="search-name" data-name="{{actor.name}}" data-tooltip="{{localize 'TOOLTIPS.SearchName'}}">{{actor.name}}</div>
         {{/if}}
       </div>
       <div class="header-occupation"> 

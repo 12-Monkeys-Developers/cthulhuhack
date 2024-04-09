@@ -305,7 +305,8 @@
     "LockSheet": "Lock the sheet",
     "UnlockSheet": "Unlock the sheet",
     "SelectImage": "Left click to select an image, right click to remove the image",
-    "ShowImage": "Show the image"
+    "ShowImage": "Show the image",
+    "SearchName": "Right click to search the name"
   },
 
   "SEARCHTOOL": {

@@ -1,0 +1,127 @@
+_id: a603g9o6yt8cvh21
+name: Grande race de Yith
+type: opponent
+sort: 100001
+flags:
+  cthack: {}
+img: icons/svg/mystery-man.svg
+items:
+  - _id: Fz2pjYRjs5N16a3T
+    name: Rayon laser
+    type: attack
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    system:
+      htmlFields:
+        - description
+      damage: '3'
+      damageDice: '0'
+      description: <p>Le rayon cible tout ce qui est dans la ligne de vue.</p>
+      locked: true
+    folder: null
+    ownership:
+      default: 0
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: null
+      modifiedTime: 1711903140019
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!a603g9o6yt8cvh21.Fz2pjYRjs5N16a3T'
+effects: []
+system:
+  htmlFields:
+    - description
+    - shortDescription
+  hp:
+    value: 36
+    min: 0
+    max: 36
+  description: >-
+    <p>La grande race de Yith est formée de voyageurs temporels de forme
+    conique, venus d’un lointain passé et ayant une grande soif de connaissance,
+    qu’ils acquièrent en changeant de corps. Gardiens de bibliothèques-villes
+    cachées dans le temps au commencement de notre univers, ils tentent de
+    cataloguer toutes les choses et tous les moments. La grande race recherche
+    la la vérité à propos de leur propre destruction à venir et les moyens de
+    l’empêcher.</p><h2>Capacités spéciales</h2><ul><li><p>Leur forme changeante
+    octroie un Désavantage pour les Sauvegardes de
+    Dextérité.</p></li><li><p>Peut jeter 1d3 sortilèges choisis de manière
+    aléatoire.</p></li><li><p>Peut voyager dans le temps.</p></li></ul>
+  hitDice: '9'
+  armor: '4'
+  abilities: []
+  malus: '-8'
+  shortDescription: ''
+ownership:
+  default: 0
+  nbNihQhmxdH1Xo1p: 3
+prototypeToken:
+  flags: {}
+  name: Grande race de Yith
+  displayName: 0
+  width: 1
+  height: 1
+  lockRotation: false
+  rotation: 0
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: hp
+  bar2:
+    attribute: null
+  randomImg: false
+  light:
+    dim: 0
+    bright: 0
+    angle: 360
+    alpha: 1
+    animation:
+      speed: 5
+      intensity: 5
+      type: null
+      reverse: false
+    coloration: 1
+    attenuation: 0.5
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    darkness:
+      min: 0
+      max: 1
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: null
+    scaleX: 1
+    scaleY: 1
+    offsetX: 0
+    offsetY: 0
+    rotation: 0
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  alpha: 1
+  detectionModes: []
+folder: null
+_stats:
+  systemId: cthack
+  systemVersion: '#{VERSION}#'
+  coreVersion: '11.315'
+  createdTime: 1711903139091
+  modifiedTime: 1711903164423
+  lastModifiedBy: vkZ1uRwLntJ5cCjm
+_key: '!actors!a603g9o6yt8cvh21'
+

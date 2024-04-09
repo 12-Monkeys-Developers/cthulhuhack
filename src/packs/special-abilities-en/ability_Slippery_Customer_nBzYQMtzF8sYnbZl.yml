@@ -1,0 +1,29 @@
+_id: nBzYQMtzF8sYnbZl
+name: Slippery Customer
+type: ability
+img: systems/cthack/ui/icons/eel.png
+data:
+  description: >-
+    <p>Once per&nbsp;session your slippery nature allows&nbsp;you to shift the
+    repercussions of a&nbsp;failed INT or WIS Save to someone else.</p>
+  key: SLICUS
+  uses:
+    value: 1
+    max: 1
+    per: Session
+    last: ''
+  multiple: false
+  isCustom: false
+  advantageGiven: false
+  advantageText: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Item.jLi0nIHRZDnouLBO
+_key: '!items!nBzYQMtzF8sYnbZl'
+

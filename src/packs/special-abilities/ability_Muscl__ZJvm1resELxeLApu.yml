@@ -1,0 +1,24 @@
+_id: ZJvm1resELxeLApu
+name: Musclé
+permission:
+  default: 0
+  gCtskyVJVCb7NnMV: 3
+type: ability
+data:
+  description: >-
+    <p>Le personnage b&eacute;n&eacute;ficie d'un <strong>Avantage </strong>pour
+    les <strong>Sauvegardes </strong>lorsqu'il utilise sa force pour soulever,
+    d&eacute;placer ou lutter.</p>
+  key: RIP
+  name: ''
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+flags: {}
+img: systems/cthack/ui/icons/biceps.png
+effects: []
+_key: '!items!ZJvm1resELxeLApu'
+

@@ -1,5 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-  {{!log "opponent" this}}
+  {{log "opponent" this}}
   <header class="sheet-header {{#if (or hasImage editable)}}grid-image{{else}}grid-noimage{{/if}}">
 
     <div class="opponent-image">
@@ -18,7 +18,7 @@
         {{#if editable}}
           <input name="name" type="text" value="{{actor.name}}" />
         {{else}}
-          <div class="search-name" data-name="{{actor.name}}" data-tooltip="Clic droit pour rechercher le nom">{{actor.name}}</div>
+          <div class="search-name" data-name="{{actor.name}}" data-tooltip="{{localize 'TOOLTIPS.SearchName'}}">{{actor.name}}</div>
         {{/if}}
       </div>
       <div class="sheet-lock">
@@ -95,7 +95,7 @@
       </div>
     {{else}}
       <div class="description">
-        {{editor enrichedDescription target="system.description" engine="prosemirror" button=true owner=owner editable=editable}}
+        {{{system.description}}}
       </div>
     {{/if}}
     

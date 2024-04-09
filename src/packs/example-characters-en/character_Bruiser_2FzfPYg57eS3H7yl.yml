@@ -1,0 +1,241 @@
+_id: 2FzfPYg57eS3H7yl
+name: Bruiser
+type: character
+img: systems/cthack/ui/pregenerated/brute.webp
+data:
+  hp:
+    value: 10
+    min: 0
+    max: 10
+  occupation: ''
+  archetype: Bruiser
+  description: ''
+  biography: ''
+  attributes:
+    flashlights:
+      value: d4
+      max: d4
+    smokes:
+      value: d4
+      max: d4
+    sanity:
+      value: d8
+      max: d8
+    hitDice:
+      value: d10
+      max: d6
+    wealthDice:
+      value: d6
+      max: d6
+    armedDamage:
+      value: d8
+    unarmedDamage:
+      value: d6
+    adrenaline1:
+      value: pj
+    adrenaline2:
+      value: pj
+    miscellaneous:
+      value: d6
+      max: d6
+  saves:
+    str:
+      value: 10
+      advantage: false
+    dex:
+      value: 10
+      advantage: false
+    con:
+      value: 10
+      advantage: false
+    wis:
+      value: 10
+      advantage: false
+    int:
+      value: 10
+      advantage: false
+    cha:
+      value: 10
+      advantage: false
+  abilities:
+    - key: TACADV
+      id: 8EuiohhKulwXeqdy
+    - key: NARESC
+    - key: RIP
+    - key: ADRRUS
+  notes: ''
+token:
+  flags: {}
+  name: Brute
+  displayName: 0
+  img: systems/cthack/ui/pregenerated/brute.webp
+  tint: null
+  width: 1
+  height: 1
+  scale: 1
+  lockRotation: false
+  rotation: 0
+  vision: false
+  dimSight: 0
+  brightSight: 0
+  dimLight: 0
+  brightLight: 0
+  sightAngle: 0
+  lightAngle: 360
+  lightAlpha: 1
+  lightAnimation:
+    speed: 5
+    intensity: 5
+  actorId: lxEXUEHxZRUlUaE3
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: null
+  bar2:
+    attribute: null
+  randomImg: false
+  mirrorX: false
+  mirrorY: false
+  alpha: 1
+  light:
+    alpha: 0.5
+    angle: 0
+    bright: 0
+    coloration: 1
+    dim: 0
+    gradual: true
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    animation:
+      speed: 5
+      intensity: 5
+      reverse: false
+    darkness:
+      min: 0
+      max: 1
+items:
+  - _id: VJ9MH6DBIf96WUSL
+    name: Tactical Advantage
+    type: ability
+    img: systems/cthack/ui/icons/swords-power.png
+    data:
+      description: >-
+        <p>As part of&nbsp;your action, you can make an&nbsp;additional attack
+        against the same&nbsp;or a different target. You can select&nbsp;this
+        Ability multiple times.</p>
+      key: TACADV
+      uses:
+        value: 1
+        max: 1
+        per: Fight
+        last: ''
+      multiple: true
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 500000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Item.ErZ1mNKx7pdQAn8I
+    _key: '!actors.items!2FzfPYg57eS3H7yl.VJ9MH6DBIf96WUSL'
+  - _id: M4xb3xJfmiANg804
+    name: Narrow Escape
+    type: ability
+    img: systems/cthack/ui/icons/toolbox.png
+    data:
+      description: >-
+        <p>Once per game&nbsp;session, you can break a piece of&nbsp;equipment -
+        and narrate what happens - to avoid damage from a failed STR or DEX
+        Save.</p>
+      key: NARESC
+      uses:
+        value: 1
+        max: 1
+        per: Session
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 1500000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Item.JSxc3eh04ZAodTRj
+    _key: '!actors.items!2FzfPYg57eS3H7yl.M4xb3xJfmiANg804'
+  - _id: gVJUgBAtabdkTeFi
+    name: Ripped
+    type: ability
+    img: systems/cthack/ui/icons/biceps.png
+    data:
+      description: >-
+        <p>You roll with Advantage&nbsp;when making a Save to lift,
+        drag,&nbsp;snap, break, wrestle or otherwise exert your strength.</p>
+      key: RIP
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+      name: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 2300000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Compendium.cthack.abilities.ZJvm1resELxeLApu
+    _key: '!actors.items!2FzfPYg57eS3H7yl.gVJUgBAtabdkTeFi'
+  - _id: PrA4aWMy3gpJHxha
+    name: Adrenaline Rush
+    type: ability
+    img: systems/cthack/ui/icons/healing.png
+    data:
+      description: >-
+        <p>Once per game&nbsp;hour, while in combat, recover a Hit&nbsp;Die of
+        lost HP (or one Hit Die step).</p>
+      key: ADRRUS
+      uses:
+        value: 1
+        max: 1
+        per: Hour
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 2500000
+    permission:
+      59G26I43j4RYqfKX: 3
+    flags:
+      core:
+        sourceId: Item.okbiEUn3QsEAt8Lh
+    _key: '!actors.items!2FzfPYg57eS3H7yl.PrA4aWMy3gpJHxha'
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.pregenerated.lxEXUEHxZRUlUaE3
+_key: '!actors!2FzfPYg57eS3H7yl'
+

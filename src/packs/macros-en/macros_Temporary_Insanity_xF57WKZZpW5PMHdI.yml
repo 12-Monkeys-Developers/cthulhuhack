@@ -1,0 +1,22 @@
+_id: xF57WKZZpW5PMHdI
+name: Temporary Insanity
+type: script
+author: 59G26I43j4RYqfKX
+img: icons/svg/dice-target.svg
+scope: global
+command: |-
+  (async ()=>{
+    const table = game.tables.getName("Temporary Insanity");
+    await table.draw({ rollMode : `gmroll` });
+    await table.reset();
+  })();
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Macro.QlNgErmXnnQpRZcw
+_key: '!macros!xF57WKZZpW5PMHdI'
+

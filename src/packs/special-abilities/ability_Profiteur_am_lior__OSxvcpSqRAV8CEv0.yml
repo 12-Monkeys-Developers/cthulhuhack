@@ -1,0 +1,26 @@
+_id: OSxvcpSqRAV8CEv0
+name: Profiteur amélioré
+permission:
+  default: 0
+  Q9eXSbNsJCeaMOSw: 3
+type: ability
+data:
+  description: >-
+    <p><em>N&eacute;cessite d&rsquo;avoir la capacit&eacute; sp&eacute;ciale
+    &laquo; Profiteur &raquo;</em>. Lorsque vous faites un test de
+    Mat&eacute;riel pour v&eacute;rifier si votre personnage est &agrave; court
+    de munitions, vous b&eacute;n&eacute;ficiez d&rsquo;un Avantage.</p>
+  key: IMPSCR
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+flags:
+  core:
+    sourceId: Item.XlblAygEV8OttGB8
+img: systems/cthack/ui/icons/shotgun-rounds.png
+effects: []
+_key: '!items!OSxvcpSqRAV8CEv0'
+

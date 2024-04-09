@@ -1,0 +1,133 @@
+_id: VqCG2YYTJE9ekE8H
+name: Vagabond dimensionnel
+type: opponent
+img: icons/svg/mystery-man.svg
+items:
+  - _id: y1dJkIWh246dRDk2
+    name: Griffes
+    type: attack
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    folder: null
+    system:
+      htmlFields:
+        - description
+      description: ''
+      damage: '4'
+      damageDice: d4
+      nb: 2
+      locked: true
+    ownership:
+      default: 0
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: null
+      modifiedTime: 1711903520535
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!VqCG2YYTJE9ekE8H.y1dJkIWh246dRDk2'
+effects: []
+folder: null
+sort: 100001
+flags:
+  cthack: {}
+system:
+  htmlFields:
+    - description
+    - shortDescription
+  hp:
+    value: 20
+    min: 0
+    max: 20
+  description: >-
+    <p>Les vagabonds dimensionnels sont des hybrides dégoûtant de primate et
+    d’insecte. Ils sont gris, chauves, et ont des yeux enfoncés rougeoyant comme
+    des braises. Leurs membres incroyablement longs sortent d’un tronc
+    boursouflé cadavérique. Les vagabonds dimensionnels ont un lien ténu avec
+    toutes les dimensions, leur apparence déchire le tissu de l’espace et du
+    temps, leur permettant de voir tout lieu à toute époque. Ils se nourrissent
+    de la pensée. En effet, ceux qui non seulement les voient mais ne
+    parviennent pas à appréhender leur existence nourrissent leur
+    faim.</p><h2>Capacités spéciales</h2><ul><li><p>En cas d’échec à un test de
+    Santé mentale, les adversaires doivent réussir une Sauvegarde de Sagesse ou
+    se retrouver agrippés (attaque avec un Désavantage, compte à rebours de 3
+    après quoi le personnage est emporté dans une autre
+    dimension).</p></li><li><p>Vulnérable seulement à la magie ou à la science
+    capable de rompre les dimensions.</p></li></ul>
+  hitDice: '5'
+  armor: '4'
+  abilities: []
+  malus: '-4'
+  shortDescription: ''
+ownership:
+  default: 0
+  nbNihQhmxdH1Xo1p: 3
+prototypeToken:
+  flags: {}
+  name: Vagabond dimensionnel
+  displayName: 0
+  width: 1
+  height: 1
+  lockRotation: false
+  rotation: 0
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: hp
+  bar2:
+    attribute: null
+  randomImg: false
+  alpha: 1
+  light:
+    alpha: 1
+    angle: 360
+    bright: 0
+    color: null
+    coloration: 1
+    dim: 0
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    animation:
+      speed: 5
+      intensity: 5
+      type: null
+      reverse: false
+    darkness:
+      min: 0
+      max: 1
+    attenuation: 0.5
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: null
+    scaleX: 1
+    scaleY: 1
+    offsetX: 0
+    offsetY: 0
+    rotation: 0
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  detectionModes: []
+_stats:
+  systemId: cthack
+  systemVersion: '#{VERSION}#'
+  coreVersion: '11.315'
+  createdTime: 1711903519958
+  modifiedTime: 1711903647905
+  lastModifiedBy: vkZ1uRwLntJ5cCjm
+_key: '!actors!VqCG2YYTJE9ekE8H'
+

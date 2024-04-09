@@ -1,0 +1,24 @@
+_id: wqPvFo729ghCO8IC
+name: Blackout
+type: definition
+img: systems/cthack/ui/icons/screaming.png
+data:
+  description: >-
+    <p>The Investigator passes out. They lose all awareness of anything that
+    happens during this blackout. Under stress (any potential loss of
+    Sanity)&nbsp;for the next Scene, the character must make a CON Save or
+    blackout again.</p>
+  definitionType: TemporaryInsanity
+  key: TI-BLA
+  creationDate: ''
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+  59G26I43j4RYqfKX: 3
+flags:
+  core:
+    sourceId: Compendium.cthack.temporaryinsanity.OccloUIsiGvu5LVA
+_key: '!items!wqPvFo729ghCO8IC'
+

@@ -1,0 +1,234 @@
+_id: exQuOApAPlETC2ck
+name: Byakhee
+type: opponent
+sort: 100001
+flags:
+  cthack: {}
+img: icons/svg/mystery-man.svg
+items:
+  - _id: Vaza1rkiepitUOG7
+    name: Griffer
+    type: attack
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    system:
+      htmlFields:
+        - description
+      damage: '2'
+      damageDice: '0'
+      nb: 2
+    folder: null
+    ownership:
+      default: 0
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: null
+      modifiedTime: 1711902537919
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!exQuOApAPlETC2ck.Vaza1rkiepitUOG7'
+  - _id: CzPEM3uXneDNTx0s
+    name: Mordre
+    type: attack
+    data:
+      damage: '2'
+    sort: 200000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    _key: '!actors.items!exQuOApAPlETC2ck.CzPEM3uXneDNTx0s'
+  - _id: 4j13vHONSTg35Tga
+    name: Déchirer
+    type: attack
+    data:
+      damage: '3'
+    sort: 300000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    _key: '!actors.items!exQuOApAPlETC2ck.4j13vHONSTg35Tga'
+  - _id: 6dmuT73rWHPkjYWo
+    name: Chute
+    type: attack
+    data:
+      damage: '6'
+    sort: 400000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    _key: '!actors.items!exQuOApAPlETC2ck.6dmuT73rWHPkjYWo'
+  - name: Déchirer
+    type: opponentAbility
+    _id: 5QSWhmzRrqZFUKej
+    img: icons/svg/item-bag.svg
+    system:
+      htmlFields:
+        - description
+      locked: true
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      description: >-
+        <p>Si les deux attaques Griffer touchent, ajouter une attaque Déchirer
+        (3 dégâts).</p>
+    effects: []
+    folder: null
+    sort: 0
+    ownership:
+      default: 0
+      vkZ1uRwLntJ5cCjm: 3
+    flags: {}
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: 1711902568393
+      modifiedTime: 1711902598541
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!exQuOApAPlETC2ck.5QSWhmzRrqZFUKej'
+  - name: Chuter
+    type: opponentAbility
+    _id: zs71Ur804gZDFLJW
+    img: icons/svg/item-bag.svg
+    system:
+      htmlFields:
+        - description
+      locked: true
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      description: >-
+        <p>Si le dé de Sauvegarde indique 1 ou 2, ajouter une attaque Chute (6
+        dégâts).</p>
+    effects: []
+    folder: null
+    sort: 0
+    ownership:
+      default: 0
+      vkZ1uRwLntJ5cCjm: 3
+    flags: {}
+    _stats:
+      systemId: cthack
+      systemVersion: '#{VERSION}#'
+      coreVersion: '11.315'
+      createdTime: 1711902611052
+      modifiedTime: 1711902631647
+      lastModifiedBy: vkZ1uRwLntJ5cCjm
+    _key: '!actors.items!exQuOApAPlETC2ck.zs71Ur804gZDFLJW'
+effects: []
+system:
+  htmlFields:
+    - description
+    - shortDescription
+  hp:
+    value: 16
+    min: 0
+    max: 16
+  description: >-
+    <p>Le Byakhee ressemble à un croisement entre une taupe à nez étoilé, une
+    chauve-souris vampire, un grizzly, un vautour, un cheval et un primate
+    zombi. Il peut se déplacer facilement dans n’importe quel milieu (l’air, la
+    mer et même le vide de l’espace) et y survivre. Lorsqu’il n’est pas invoqué
+    pour servir de monture, il voyage à travers l’espace pour atteindre ses
+    propres buts. La survie des chevaucheurs de Byakhee dépend de leur propre
+    préparation : les Byakhee ne se préoccupent pas du bien-être de ceux qui
+    voyagent sur leur dos.</p>
+  hitDice: '4'
+  armor: '2'
+  abilities: []
+  attributes:
+    flashlights:
+      value: ''
+      max: ''
+    smokes:
+      value: ''
+      max: ''
+    sanity:
+      value: ''
+      max: ''
+    hitDice:
+      value: ''
+    armedDamage:
+      value: ''
+    unarmedDamage:
+      value: ''
+    wealthDice:
+      value: ''
+  malus: '-3'
+  shortDescription: ''
+ownership:
+  default: 0
+  nbNihQhmxdH1Xo1p: 3
+prototypeToken:
+  flags: {}
+  name: byakhee
+  displayName: 0
+  width: 1
+  height: 1
+  lockRotation: false
+  rotation: 0
+  actorLink: false
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: hp
+  bar2:
+    attribute: null
+  randomImg: false
+  light:
+    dim: 0
+    bright: 0
+    angle: 360
+    alpha: 1
+    animation:
+      speed: 5
+      intensity: 5
+      type: null
+      reverse: false
+    coloration: 1
+    attenuation: 0.5
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    darkness:
+      min: 0
+      max: 1
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: null
+    scaleX: 1
+    scaleY: 1
+    offsetX: 0
+    offsetY: 0
+    rotation: 0
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  alpha: 1
+  detectionModes: []
+folder: null
+_stats:
+  systemId: cthack
+  systemVersion: '#{VERSION}#'
+  coreVersion: '11.315'
+  createdTime: 1711902537919
+  modifiedTime: 1711902640906
+  lastModifiedBy: vkZ1uRwLntJ5cCjm
+_key: '!actors!exQuOApAPlETC2ck'
+

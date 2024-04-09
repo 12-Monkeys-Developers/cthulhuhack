@@ -57,6 +57,7 @@ export default class CtHackOpponentSheet extends ActorSheet {
     context.hasShortDescription = !!this.actor.system.description;
     context.opponentHitDice = SYSTEM.OPPONENT_HIT_DICE;
 
+    context.system = this.actor.system;
     return context;
   }
 
