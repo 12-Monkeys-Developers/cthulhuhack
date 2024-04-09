@@ -281,10 +281,6 @@ a.inline-roll {
   scrollbar-width: thin;
   scrollbar-color: var(--primary) transparent;
 }
-.cthack.sheet.actor.character .sidebar .image-container {
-  border: 1px solid var(--color-border-dark);
-  height: 225px;
-}
 .cthack.sheet.actor.character .sidebar .image-container img.actor-image {
   border: none;
   min-width: 150px;
