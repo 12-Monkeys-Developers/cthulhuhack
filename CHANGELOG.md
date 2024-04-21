@@ -1,5 +1,8 @@
-2.6.1
+2.7.1
 - Fix objects links in NPC descriptions
+
+2.7.0
+- Fix empty packs, which are now in YAML and not in JSON
 
 2.6.0
 - Fix display in chat
