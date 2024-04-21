@@ -1,3 +1,6 @@
+2.6.1
+- Fix objects links in NPC descriptions
+
 2.6.0
 - Fix display in chat
 - Change the way to do packs and fix some opponent's description
