@@ -8,6 +8,7 @@ data:
     <p>Roll Supply Die with Disadvantage.</p>
   dice: d8
   range: far
+  locked: true
 effects: []
 folder: null
 sort: 0

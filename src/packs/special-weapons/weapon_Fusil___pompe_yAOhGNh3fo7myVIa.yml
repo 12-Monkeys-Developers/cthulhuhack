@@ -9,6 +9,7 @@ data:
     <p>L&rsquo;Armure de la cible compte double.</p>
   dice: d6
   range: near
+  locked: true
 flags: {}
 img: systems/cthack/ui/weapons/sawed-off-shotgun.png
 effects: []

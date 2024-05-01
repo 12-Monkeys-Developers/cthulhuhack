@@ -54,6 +54,7 @@ data:
   secondarysave1: dex
   secondarysave2: con
   capacities: []
+  locked: true
 effects: []
 folder: null
 sort: 0

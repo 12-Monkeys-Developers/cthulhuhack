@@ -9,6 +9,7 @@ data:
   definitionType: OutOfAction
   key: OOA-CRB
   creationDate: ''
+  locked: true
 effects: []
 folder: null
 sort: 0

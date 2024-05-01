@@ -10,6 +10,7 @@ data:
   definitionType: Shock
   key: SK-RAB
   creationDate: ''
+  locked: true
 flags: {}
 img: systems/cthack/ui/icons/dead-head.png
 effects: []

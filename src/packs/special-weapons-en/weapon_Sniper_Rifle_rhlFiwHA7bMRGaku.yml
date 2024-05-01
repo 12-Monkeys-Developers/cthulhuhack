@@ -8,6 +8,7 @@ data:
     <p>1D12 Armed Damage.</p>
   dice: d6
   range: distant
+  locked: true
 effects: []
 folder: null
 sort: 0

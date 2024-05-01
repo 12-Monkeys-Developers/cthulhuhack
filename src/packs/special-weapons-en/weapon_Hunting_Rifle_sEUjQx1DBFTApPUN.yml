@@ -6,6 +6,7 @@ data:
   description: <p>1D10 Armed Damage.</p>
   dice: d6
   range: far
+  locked: true
 effects: []
 folder: null
 sort: 0

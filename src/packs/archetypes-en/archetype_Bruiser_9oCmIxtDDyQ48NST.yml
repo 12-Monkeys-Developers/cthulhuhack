@@ -106,7 +106,7 @@ data:
   secondarysave1: dex
   secondarysave2: con
   capacities: []
-  'hitdice ': d10
+  locked: true
 effects: []
 folder: null
 sort: 0

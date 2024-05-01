@@ -45,6 +45,7 @@ data:
   secondarysave1: wis
   secondarysave2: dex
   capacities: []
+  locked: true
 effects: []
 folder: null
 sort: 0

@@ -13,6 +13,7 @@ data:
   definitionType: Shock
   key: SK-FAI
   creationDate: ''
+  locked: true
 effects: []
 folder: null
 sort: 0

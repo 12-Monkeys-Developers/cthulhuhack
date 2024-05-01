@@ -9,6 +9,7 @@ data:
     lancez le d&eacute; de Mat&eacute;riel avec un D&eacute;savantage.</p>
   dice: d8
   range: far
+  locked: true
 flags: {}
 img: systems/cthack/ui/weapons/ray-gun.png
 effects: []

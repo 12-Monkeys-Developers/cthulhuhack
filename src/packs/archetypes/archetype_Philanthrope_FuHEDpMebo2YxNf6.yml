@@ -52,6 +52,7 @@ data:
   secondarysave1: cha
   secondarysave2: con
   capacities: []
+  locked: true
 effects: []
 folder: null
 sort: 0

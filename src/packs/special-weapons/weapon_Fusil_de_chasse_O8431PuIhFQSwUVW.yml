@@ -9,6 +9,7 @@ data:
     le d&eacute; de D&eacute;g&acirc;t(s) arm&eacute; &agrave; 1d10.</p>
   dice: d6
   range: far
+  locked: true
 flags: {}
 img: systems/cthack/ui/weapons/winchester-rifle.png
 effects: []

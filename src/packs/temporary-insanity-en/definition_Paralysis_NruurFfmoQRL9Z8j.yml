@@ -12,6 +12,7 @@ data:
   definitionType: TemporaryInsanity
   key: TI-PAS
   creationDate: ''
+  locked: true
 effects: []
 folder: null
 sort: 0

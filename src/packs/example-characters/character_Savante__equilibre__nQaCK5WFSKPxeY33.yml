@@ -5,6 +5,7 @@ permission:
   ElkdkfLFg9aO1OqA: 3
 type: character
 data:
+  locked: true
   hp:
     value: 10
     min: 0

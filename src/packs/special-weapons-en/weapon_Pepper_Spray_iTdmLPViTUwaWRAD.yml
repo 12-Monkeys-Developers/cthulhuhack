@@ -8,6 +8,7 @@ data:
     <p>Concealable.</p>
   dice: d6
   range: near
+  locked: true
 effects: []
 folder: null
 sort: 0

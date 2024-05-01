@@ -3,6 +3,7 @@ name: Scholar (Flashlights)
 type: character
 img: systems/cthack/ui/pregenerated/savant-torche.webp
 data:
+  locked: true
   hp:
     value: 10
     min: 0

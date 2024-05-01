@@ -9,6 +9,7 @@ data:
   definitionType: OutOfAction
   key: OOA-SAV
   creationDate: ''
+  locked: true
 effects: []
 folder: null
 sort: 0

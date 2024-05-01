@@ -10,6 +10,7 @@ data:
     D&eacute;g&acirc;t(s) arm&eacute; pour ce tir.</p>
   dice: d6
   range: distant
+  locked: true
 flags: {}
 img: systems/cthack/ui/weapons/lee-enfield.png
 effects: []

@@ -7,6 +7,7 @@ data:
   description: <p>Dissimulable</p>
   dice: d6
   range: near
+  locked: true
 flags: {}
 img: systems/cthack/ui/weapons/revolver.png
 effects: []

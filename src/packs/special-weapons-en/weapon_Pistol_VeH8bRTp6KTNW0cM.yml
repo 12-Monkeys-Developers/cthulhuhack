@@ -6,6 +6,7 @@ data:
   description: ''
   dice: d8
   range: near
+  locked: true
 effects: []
 folder: null
 sort: 0
