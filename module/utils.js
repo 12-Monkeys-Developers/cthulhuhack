@@ -75,7 +75,7 @@ export class CthackUtils {
   static _handleMsgAskRoll(data) {
     const currentUser = game.user._id;
     if (data.userId === currentUser) {
-      AudioHelper.play({ src: "/systems/cthack/sounds/dice.wav", volume: 0.8, autoplay: true, loop: false }, false);
+      AudioHelper.play({ src: "/systems/cthack/sounds/drums.wav", volume: 0.8, autoplay: true, loop: false }, false);
     }
   }
 }
