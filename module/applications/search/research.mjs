@@ -38,7 +38,7 @@ export class SearchChat {
    */
   async _createContent() {
     // Update the data to provide to the template
-    const data = duplicate(this.data);
+    const data = foundry.utils.duplicate(this.data);
 
     data.searchPattern = this.searchPattern;
     data.highlighted = this.highlighted;
@@ -55,7 +55,7 @@ export class SearchChat {
     this.content = await this._createContent();
 
     // Create the chat data
-    const chatData = duplicate(this.data);
+    const chatData = foundry.utils.duplicate(this.data);
     chatData.user = game.user.id;
     chatData.content = this.content;
     chatData.flags = { world: { type: "searchPage", searchPattern: this.searchPattern, searchData: this.data, highlighted: this.highlighted } };
