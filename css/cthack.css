@@ -438,32 +438,36 @@ a.inline-roll {
   grid-column-end: 3;
   margin: 5px 0 5px 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
   justify-content: center;
   border: 1px solid;
   border-radius: 10px;
 }
 .cthack.sheet.actor.character .character-sheet-header .resources-3 {
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
 }
 .cthack.sheet.actor.character .character-sheet-header .resources-4 {
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
 }
 .cthack.sheet.actor.character .character-sheet-header .resources-5 {
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
 }
 .cthack.sheet.actor.character .character-sheet-header .fight {
   margin-top: 10px;
   grid-column-start: 1;
   grid-column-end: 3;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
   justify-content: center;
   border: 1px solid;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+}
+.cthack.sheet.actor.character .character-sheet-header .fight-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.cthack.sheet.actor.character .character-sheet-header .fight-4 {
+  grid-template-columns: repeat(4, 1fr);
 }
 .cthack.sheet.actor.character .character-sheet-header .resource {
   justify-content: center;

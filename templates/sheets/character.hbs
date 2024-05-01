@@ -126,29 +126,33 @@
         {{/if}}
 
       </div>
-      <div class="fight">
-        <div class="resource">
-              <label class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
-              <div class="resource-content flexrow flex-center hitpoints">
-                  <input class="hitpoints-value" type="text" class="value" name="system.hp.value" value="{{system.hp.value}}" data-dtype="Number"/>
-                  /
-                  <input class="hitpoints-max" type="text" class="max" name="system.hp.max" value="{{system.hp.max}}" data-dtype="Number" {{disabled uneditable}}/>
-              </div>
-        </div>
+      <div class="fight {{getNbFightColumns}}">
+        {{#if displayHP}}
+          <div class="resource">
+                <label class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
+                <div class="resource-content flexrow flex-center hitpoints">
+                    <input class="hitpoints-value" type="text" class="value" name="system.hp.value" value="{{system.hp.value}}" data-dtype="Number"/>
+                    /
+                    <input class="hitpoints-max" type="text" class="max" name="system.hp.max" value="{{system.hp.max}}" data-dtype="Number" {{disabled uneditable}}/>
+                </div>
+          </div>
+        {{/if}}
 
-        <div class="resource">
-              <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.hitDice.value)}}rollable{{/if}}" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</label>
-              <div class="resource-content">
-                  <select class="resource-value" name="system.attributes.hitDice.value" data-type="String" {{{getStyleForDice system.attributes.hitDice.value}}} {{disabled uneditable}}>
-                      {{selectOptions diceValues selected=system.attributes.hitDice.value}}
-                  </select>
-                  (
-                  <select name="system.attributes.hitDice.max" data-type="String" {{{getStyleForDice system.attributes.hitDice.max}}} {{disabled uneditable}}>
-                       {{selectOptions diceMaxValues selected=system.attributes.hitDice.max}}
-                  </select>
-                  )
-              </div>
-        </div>
+        {{#if displayHD}}
+          <div class="resource">
+                <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.hitDice.value)}}rollable{{/if}}" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</label>
+                <div class="resource-content">
+                    <select class="resource-value" name="system.attributes.hitDice.value" data-type="String" {{{getStyleForDice system.attributes.hitDice.value}}} {{disabled uneditable}}>
+                        {{selectOptions diceValues selected=system.attributes.hitDice.value}}
+                    </select>
+                    (
+                    <select name="system.attributes.hitDice.max" data-type="String" {{{getStyleForDice system.attributes.hitDice.max}}} {{disabled uneditable}}>
+                        {{selectOptions diceMaxValues selected=system.attributes.hitDice.max}}
+                    </select>
+                    )
+                </div>
+          </div>
+        {{/if}}
 
         <div class="resource">
             <label for="armedDamage.value" class="resource-label damage {{#if (isDiceRollable system.attributes.armedDamage.value)}}rollable{{/if}}" data-resource="armedDamage">{{localize "CTHACK.ArmedDamage"}}</label>

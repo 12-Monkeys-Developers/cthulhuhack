@@ -238,6 +238,11 @@
     "ContextMenuIncreaseUse": "Increase",
     "Notifications": {
       "AbilityHasAlready": "The ability {abilityName} has not the multiple property and already exists."
+    },
+    "Logs": {
+      "InitStart": "Initialization of Cthulhu Hack system",
+      "InitEnd": "Cthulhu Hack system initialized",
+      "ReadyEnd": "Cthulhu Hack system ready"
     }
   },
 
@@ -255,6 +260,11 @@
     "WealthResource": "Wealth is managed as a resource",
     "HitDiceResourceName": "Hit Dice Resource Option",
     "HitDiceResourceHint": "Handle hit dice as a resource",
+    "HealthDisplayName": "Health Display Option",
+    "HealthDisplayHint": "Display hit points, hit dice or both",
+    "HealthDisplayHp": "Display hit points",
+    "HealthDisplayHd": "Display hit dice",
+    "HealthDisplayBoth": "Display hit points and hit dice",    
     "MiscellaneousResourceName": "Miscellaneous Resource",
     "MiscellaneousResourceHint": "Allow to have a additional resource",
     "CompendiumFRName": "Display french compendiums",

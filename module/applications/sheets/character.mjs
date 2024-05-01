@@ -79,6 +79,15 @@ export default class CtHackCharacterSheet extends ActorSheet {
     context.diceMaxValues = SYSTEM.DICE_MAX_VALUES;
     context.diceDamageValues = SYSTEM.DICE_DAMAGE_VALUES;
 
+    const healthDisplay = game.settings.get("cthack","HealthDisplay");
+    context.displayHD = true;
+    context.displayHP = true;
+    if (healthDisplay === "hp") {
+      context.displayHD = false;
+    }
+    else if (healthDisplay === "hd") {
+      context.displayHP = false;
+    }
     return context;
   }
 
