@@ -10,7 +10,7 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
     // Saves
     const saveField = (label) => {
       const schema = {
-        value: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
+        value: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 10, min: 0 }),
         advantage: new fields.BooleanField({ required: true, nullable: false, initial: false }),
       };
       return new fields.SchemaField(schema, { label });
