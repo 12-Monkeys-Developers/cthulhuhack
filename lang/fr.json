@@ -236,6 +236,8 @@
     "ContextMenuUse": "Utiliser",
     "ContextMenuResetUse": "Réinitialiser",
     "ContextMenuIncreaseUse": "Augmenter",
+    "ContextMenuSendToChatAll": "Envoyer dans le chat pour tous",
+    "ContextMenuSendToChatGM": "Envoyer dans le chat pour le MJ",
     "Notifications": {
       "AbilityHasAlready": "La capacité {abilityName} n'a pas la propriété multiple et est déjà présente."
     },

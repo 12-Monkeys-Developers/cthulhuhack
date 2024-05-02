@@ -170,6 +170,41 @@ export default class CtHackCharacterSheet extends ActorSheet {
   _getCharacterEntryContextOptions() {
     return [
       {
+        name: game.i18n.localize("CTHACK.ContextMenuSendToChatAll"),
+        icon: '<i class="fa-solid fa-users"></i>',
+        condition: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          return item.isOwner && item.system.hasDescription;
+        },
+        callback: async (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          ChatMessage.create({
+            user: game.user.id,
+            content: await renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
+              item: item,
+            }),
+          });
+        },
+      },
+      {
+        name: game.i18n.localize("CTHACK.ContextMenuSendToChatGM"),
+        icon: '<i class="fa-solid fa-user"></i>',
+        condition: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          return item.isOwner && item.system.hasDescription && !game.user.isGM;
+        },
+        callback: async (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          ChatMessage.create({
+            user: game.user.id,
+            whisper: ChatMessage.getWhisperRecipients("GM").map((u) => u.id),
+            content: await renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
+              item: item,
+            }),
+          });
+        },
+      },
+      {
         name: game.i18n.localize("CTHACK.ContextMenuUse"),
         icon: '<i class="fas fa-check"></i>',
         condition: (li) => {

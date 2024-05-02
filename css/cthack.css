@@ -92,6 +92,15 @@ a.inline-roll {
   color: #fff;
   padding: 0 5px 0 5px;
 }
+.chat-message .message-content .chat-description .name {
+  display: flex;
+  align-items: center;
+}
+.chat-message .message-content .chat-description img {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
 /* App styles*/
 #gm-manager {
   font-size: var(--font-size-18);
@@ -272,7 +281,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character nav#context-menu {
   text-align: left;
-  width: 100px;
+  width: auto;
 }
 .cthack.sheet.actor.character nav.sheet-tabs {
   flex: 0;

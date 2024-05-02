@@ -236,6 +236,8 @@
     "ContextMenuUse": "Use",
     "ContextMenuResetUse": "Reset",
     "ContextMenuIncreaseUse": "Increase",
+    "ContextMenuSendToChatAll": "Send to chat for all",
+    "ContextMenuSendToChatGM": "Send to chat for GM",
     "Notifications": {
       "AbilityHasAlready": "The ability {abilityName} has not the multiple property and already exists."
     },
