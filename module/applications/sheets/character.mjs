@@ -6,6 +6,16 @@ import { SearchChat } from "../search/research.mjs";
  */
 export default class CtHackCharacterSheet extends ActorSheet {
   //#region Overrided methods
+
+  constructor(options) {
+    super(options);
+    Hooks.on("updateSetting", async (document, change, options, userId) => {
+      if (document.key === "cthack.FortuneValue") {
+        this.render();
+      }
+    });
+  }
+
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {

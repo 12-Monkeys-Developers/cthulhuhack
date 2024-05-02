@@ -22,7 +22,7 @@ export const registerSystemSettings = function () {
     config: true,
     type: Number,
     default: 0,
-    requiresReload: true,
+    requiresReload: false,
   });
 
   /**
