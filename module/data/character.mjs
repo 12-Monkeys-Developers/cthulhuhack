@@ -76,9 +76,9 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
     );
 
     schema.hp = new fields.SchemaField({
-      value: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 }),
+      value: new fields.NumberField({ required: true, nullable: false, initial: 10, min: 0 }),
       min: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 }),
-      max: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
+      max: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 10 }),
     });
 
     return schema;

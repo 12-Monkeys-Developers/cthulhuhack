@@ -103,7 +103,7 @@ a.inline-roll {
 }
 .cthack table {
   width: auto;
-  margin: 10px 30px 0 30px;
+  margin: 0 20px 0 20px;
 }
 .cthack .character-resume {
   background-image: url("../ui/sheet.webp");
