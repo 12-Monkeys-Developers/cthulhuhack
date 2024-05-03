@@ -1,3 +1,12 @@
+2.8.0
+- Change option about HitDice and HitPoints settings : Now the option is no more a boolean but has 3 values : HD, HP or both
+- Fix missing description expand
+- Refresh of character sheet if Fortune Value Setting is changed
+- Add context menu to Increase or Decrease Fortune value (GM only) : instead of the use button
+- Update gm-manager design and display according to the new options
+- By default, compendium are hidden to players
+- Send item's description to the chat for all players or only the GM
+
 2.7.1
 - Fix objects links in NPC descriptions
 
