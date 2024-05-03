@@ -3,6 +3,7 @@ name: Bruiser
 type: character
 img: systems/cthack/ui/pregenerated/brute.webp
 data:
+  locked: true
   hp:
     value: 10
     min: 0

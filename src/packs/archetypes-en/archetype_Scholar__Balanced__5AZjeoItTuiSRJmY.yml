@@ -44,6 +44,7 @@ data:
   secondarysave1: cha
   secondarysave2: wis
   capacities: []
+  locked: true
 effects: []
 folder: null
 sort: 0

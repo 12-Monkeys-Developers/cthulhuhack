@@ -6,6 +6,16 @@ import { SearchChat } from "../search/research.mjs";
  */
 export default class CtHackCharacterSheet extends ActorSheet {
   //#region Overrided methods
+
+  constructor(options) {
+    super(options);
+    Hooks.on("updateSetting", async (document, change, options, userId) => {
+      if (document.key === "cthack.FortuneValue") {
+        this.render();
+      }
+    });
+  }
+
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -74,11 +84,19 @@ export default class CtHackCharacterSheet extends ActorSheet {
     context.hasImage = this.actor.hasImage;
 
     context.system = this.actor.system;
-    
+
     context.diceValues = SYSTEM.DICE_VALUES;
     context.diceMaxValues = SYSTEM.DICE_MAX_VALUES;
     context.diceDamageValues = SYSTEM.DICE_DAMAGE_VALUES;
 
+    const healthDisplay = game.settings.get("cthack", "HealthDisplay");
+    context.displayHD = true;
+    context.displayHP = true;
+    if (healthDisplay === "hp") {
+      context.displayHD = false;
+    } else if (healthDisplay === "hd") {
+      context.displayHP = false;
+    }
     return context;
   }
 
@@ -122,9 +140,6 @@ export default class CtHackCharacterSheet extends ActorSheet {
       html.find(".miscellaneous-name").click(this._onResourceRoll.bind(this));
     }
 
-    // Fortune option
-    html.find(".fortune-use").click(this._onFortuneUse.bind(this));
-
     // Adrenaline option
     html.find("#adr1").click(this._onAdrenalineUse.bind(this));
     html.find("#adr2").click(this._onAdrenalineUse.bind(this));
@@ -144,15 +159,51 @@ export default class CtHackCharacterSheet extends ActorSheet {
    * @param {*} html
    */
   _contextCharacterMenu(html) {
-    ContextMenu.create(this, html, ".character-contextmenu", this._getEntryContextOptions());
+    ContextMenu.create(this, html, ".character-contextmenu", this._getCharacterEntryContextOptions());
+    ContextMenu.create(this, html, ".character-sidebar-contextmenu", this._getCharacterSidebarEntryContextOptions());
   }
 
   /**
    * Add the context menu options for the character sheet.
    * @returns
    */
-  _getEntryContextOptions() {
+  _getCharacterEntryContextOptions() {
     return [
+      {
+        name: game.i18n.localize("CTHACK.ContextMenuSendToChatAll"),
+        icon: '<i class="fa-solid fa-users"></i>',
+        condition: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          return item.isOwner && item.system.hasDescription;
+        },
+        callback: async (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          ChatMessage.create({
+            user: game.user.id,
+            content: await renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
+              item: item,
+            }),
+          });
+        },
+      },
+      {
+        name: game.i18n.localize("CTHACK.ContextMenuSendToChatGM"),
+        icon: '<i class="fa-solid fa-user"></i>',
+        condition: (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          return item.isOwner && item.system.hasDescription && !game.user.isGM;
+        },
+        callback: async (li) => {
+          const item = this.actor.items.get(li.data("item-id"));
+          ChatMessage.create({
+            user: game.user.id,
+            whisper: ChatMessage.getWhisperRecipients("GM").map((u) => u.id),
+            content: await renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
+              item: item,
+            }),
+          });
+        },
+      },
       {
         name: game.i18n.localize("CTHACK.ContextMenuUse"),
         icon: '<i class="fas fa-check"></i>',
@@ -233,6 +284,45 @@ export default class CtHackCharacterSheet extends ActorSheet {
   }
 
   /**
+   * Add the context menu options for the character sheet.
+   * @returns
+   */
+  _getCharacterSidebarEntryContextOptions() {
+    return [
+      {
+        name: game.i18n.localize("CTHACK.ContextMenuUse"),
+        icon: '<i class="fas fa-check"></i>',
+        condition: (li) => {
+          const currentValue = game.settings.get("cthack", "FortuneValue");
+          return currentValue > 0 && game.user.isGM;
+        },
+        callback: (li) => {
+          const currentValue = game.settings.get("cthack", "FortuneValue");
+          const newValue = currentValue - 1;
+
+          game.settings.set("cthack", "FortuneValue", newValue);
+          ChatMessage.create({
+            user: game.user.id,
+            content: game.i18n.format("CTHACK.FortuneUseMessage", { name: this.actor.name, total: newValue }),
+          });
+        },
+      },
+      {
+        name: game.i18n.localize("CTHACK.ContextMenuIncreaseUse"),
+        icon: '<i class="fa-solid fa-plus"></i>',
+        condition: (li) => {
+          return game.user.isGM;
+        },
+        callback: (li) => {
+          const currentValue = game.settings.get("cthack", "FortuneValue");
+          const newValue = currentValue + 1;
+          game.settings.set("cthack", "FortuneValue", newValue);
+        },
+      },
+    ];
+  }
+
+  /**
    * Handles the event when sharing an image.
    *
    * @param {Event} event - The event object.
@@ -271,7 +361,7 @@ export default class CtHackCharacterSheet extends ActorSheet {
     await search.searchWorld();
     await search.display();
   }
-  
+
   /** @override */
   async _onDropItemCreate(itemData) {
     // Only if the sheet is unlocked
@@ -480,27 +570,6 @@ export default class CtHackCharacterSheet extends ActorSheet {
     event.preventDefault();
     const damage = event.currentTarget.dataset.resource;
     this.actor.rollDamageRoll(damage, { event: event });
-  }
-
-  /**
-   * Reduce the Fortune value by 1 (GM only)
-   * @param {Event} event   The originating click event
-   * @private
-   */
-  _onFortuneUse(event) {
-    event.preventDefault();
-    if (game.user.isGM) {
-      const currentValue = game.settings.get("cthack", "FortuneValue");
-      const newValue = currentValue - 1;
-
-      if (currentValue > 0) {
-        game.settings.set("cthack", "FortuneValue", newValue);
-        ChatMessage.create({
-          user: game.user.id,
-          content: game.i18n.format("CTHACK.FortuneUseMessage", { name: this.actor.name, total: newValue }),
-        });
-      }
-    }
   }
 
   /**

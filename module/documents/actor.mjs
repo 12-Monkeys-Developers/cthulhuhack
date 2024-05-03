@@ -32,7 +32,7 @@ export default class CtHackActor extends Actor {
     }
 
     // Roll and return
-    const rollData = mergeObject(options, {
+    const rollData = foundry.utils.mergeObject(options, {
       rollType: "Save",
       title: game.i18n.format("CTHACK.SavePromptTitle", { save: label }),
       rollId: label,
@@ -80,7 +80,7 @@ export default class CtHackActor extends Actor {
     }
 
     // Roll and return
-    const rollData = mergeObject(options, {
+    const rollData = foundry.utils.mergeObject(options, {
       rollType: "Resource",
       title: title,
       rollId: title,
@@ -120,7 +120,7 @@ export default class CtHackActor extends Actor {
     const message = game.i18n.format("CTHACK.MaterialRollDetails", { material: materialName });
 
     // Roll and return
-    const rollData = mergeObject(options, {
+    const rollData = foundry.utils.mergeObject(options, {
       rollType: "Material",
       title: game.i18n.format("CTHACK.MaterialRollPromptTitle") + " : " + item.name,
       rollId: message,
@@ -229,7 +229,7 @@ export default class CtHackActor extends Actor {
     const label = game.i18n.localize(damage);
 
     // Roll and return
-    const rollData = mergeObject(options, {
+    const rollData = foundry.utils.mergeObject(options, {
       rollType: "Damage",
       title: label,
       rollId: label,
@@ -261,7 +261,7 @@ export default class CtHackActor extends Actor {
     if (item.system.damageDice.charAt(0) !== "d") isCustomFormula = true;
 
     // Roll and return
-    const rollData = mergeObject(options, {
+    const rollData = foundry.utils.mergeObject(options, {
       rollType: "AttackDamage",
       title: label,
       rollId: label,

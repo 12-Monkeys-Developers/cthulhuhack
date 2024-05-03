@@ -3,6 +3,7 @@ name: Ruffian
 type: character
 img: systems/cthack/ui/pregenerated/voyou.webp
 data:
+  locked: true
   hp:
     value: 10
     min: 0

@@ -11,6 +11,7 @@ data:
   definitionType: TemporaryInsanity
   key: TI-AMN
   creationDate: ''
+  locked: true
 effects: []
 folder: null
 sort: 0

@@ -68,7 +68,7 @@ export const registerHandlebarsHelpers = function() {
 
 	Handlebars.registerHelper('isEnabled', function(configKey) {
 		const value = game.settings.get("cthack", configKey);
-		if (value === false || value == "none" || value == "") return false;
+		if (value === false || value === "none" || value === "") return false;
         return true;
 
 	});
@@ -159,11 +159,12 @@ export const registerHandlebarsHelpers = function() {
 		return `style="background-image:url('systems/cthack/ui/dice/${value}-grey.svg');padding: 5px;"`;
 	});
 
+	/*
 	Handlebars.registerHelper('getStyleForDiceV2', function(value) {
 		if (value === undefined) return;
 		if (value === "" || value == 0 || value == 1) return "no-dice";
 		return `dice-${value}`;
-	});
+	});*/
 
 	Handlebars.registerHelper('getNbRessources', function() {
 		const wealthEnabled = game.settings.get("cthack","Wealth") !== "none" ? true : false;
@@ -171,6 +172,13 @@ export const registerHandlebarsHelpers = function() {
         if (wealthEnabled && miscellaneousEnabled) return "resources-5";
 		if (wealthEnabled || miscellaneousEnabled) return "resources-4";
 		return "resources-3";
+	});
+
+	Handlebars.registerHelper('getNbFightColumns', function() {
+		const healthDisplay = game.settings.get("cthack","HealthDisplay");
+		
+		if (healthDisplay === "both") return "fight-4";
+		return "fight-3";
 	});
 	
 };

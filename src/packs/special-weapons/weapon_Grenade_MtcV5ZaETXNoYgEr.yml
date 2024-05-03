@@ -9,6 +9,7 @@ data:
     cibles al&eacute;atoires Proches.</p>
   dice: ''
   range: 3str
+  locked: true
 flags: {}
 img: systems/cthack/ui/weapons/grenade.png
 effects: []

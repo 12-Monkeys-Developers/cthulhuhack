@@ -236,8 +236,15 @@
     "ContextMenuUse": "Utiliser",
     "ContextMenuResetUse": "Réinitialiser",
     "ContextMenuIncreaseUse": "Augmenter",
+    "ContextMenuSendToChatAll": "Envoyer dans le chat pour tous",
+    "ContextMenuSendToChatGM": "Envoyer dans le chat pour le MJ",
     "Notifications": {
       "AbilityHasAlready": "La capacité {abilityName} n'a pas la propriété multiple et est déjà présente."
+    },
+    "Logs": {
+      "InitStart": "Initialisation du système Cthulhu Hack",
+      "InitEnd": "Système Cthulhu Hack initialisé",
+      "ReadyEnd": "Système Cthulhu Hack prêt"
     }
   },
 
@@ -255,6 +262,11 @@
     "WealthResource": "La richesse est gérée comme une ressource",
     "HitDiceResourceName": "Dé de vie en tant que Ressource",
     "HitDiceResourceHint": "Au lieu d'une valeur fixe, vous pouvez gérer les points de vie d'un personnage avec le Dé de Vie",
+    "HealthDisplayName": "Gestion des points de vie",
+    "HealthDisplayHint": "Afficher les points de vie, les dés de vie ou les deux",
+    "HealthDisplayHp": "Afficher les points de vie",
+    "HealthDisplayHd": "Afficher les dés de vie",
+    "HealthDisplayBoth": "Afficher les points et les dés de vie",
     "MiscellaneousResourceName": "Ressource diverse",
     "MiscellaneousResourceHint": "Permet de gérer une ressource supplémentaire",
     "CompendiumFRName": "Afficher les compendiums français",
@@ -308,6 +320,7 @@
     "ShowImage": "Montrer l'image",
     "SearchName": "Clic droit pour rechercher le nom"
   },
+
   "SEARCHTOOL": {
     "WindowTitle": "Rechercher",
     "ButtonSearch": "Rechercher",

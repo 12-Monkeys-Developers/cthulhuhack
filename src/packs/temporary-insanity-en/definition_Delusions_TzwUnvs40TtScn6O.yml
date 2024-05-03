@@ -10,6 +10,7 @@ data:
   definitionType: TemporaryInsanity
   key: DEL
   creationDate: ''
+  locked: true
 effects: []
 folder: null
 sort: 0

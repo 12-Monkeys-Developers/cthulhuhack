@@ -9,6 +9,7 @@ data:
   definitionType: OutOfAction
   key: OOA-BRO
   creationDate: ''
+  locked: true
 effects: []
 folder: null
 sort: 0

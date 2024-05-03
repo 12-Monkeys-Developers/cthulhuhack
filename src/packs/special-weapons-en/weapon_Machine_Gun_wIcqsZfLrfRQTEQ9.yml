@@ -6,6 +6,7 @@ data:
   description: '<p>Shot or Spray: auto-hit, immediate Supply Die.</p>'
   dice: d8
   range: near
+  locked: true
 effects: []
 folder: null
 sort: 0

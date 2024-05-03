@@ -17,6 +17,7 @@ data:
   definitionType: TemporaryInsanity
   key: TI-HYS
   creationDate: ''
+  locked: true
 flags: {}
 img: systems/cthack/ui/icons/screaming.png
 effects: []

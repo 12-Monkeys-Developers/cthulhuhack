@@ -27,7 +27,7 @@ export default class CtHackItem extends Item {
    * @returns {boolean} Returns true if the item has an image, false otherwise.
    */
   get hasImage(){
-    if (this.type === "magic")  return this.img && this.img !== CtHackItem.DEFAULT_ICON_MAGIC; 
+    if (this.type === "magic") return this.img && this.img !== CtHackItem.DEFAULT_ICON_MAGIC; 
     else return this.img && this.img !== CtHackItem.DEFAULT_ICON;
   }
 }

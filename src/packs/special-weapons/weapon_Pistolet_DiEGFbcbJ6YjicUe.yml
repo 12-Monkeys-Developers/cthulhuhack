@@ -7,6 +7,7 @@ data:
   description: ''
   dice: d8
   range: near
+  locked: true
 flags: {}
 img: systems/cthack/ui/weapons/colt-m1911.png
 effects: []

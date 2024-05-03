@@ -9,6 +9,7 @@ data:
   definitionType: Shock
   key: SK-SHA
   creationDate: ''
+  locked: true
 effects: []
 folder: null
 sort: 0

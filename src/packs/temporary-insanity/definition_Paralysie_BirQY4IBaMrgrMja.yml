@@ -18,6 +18,7 @@ data:
   definitionType: TemporaryInsanity
   key: TI-PAS
   creationDate: ''
+  locked: true
 flags: {}
 img: systems/cthack/ui/icons/screaming.png
 effects: []

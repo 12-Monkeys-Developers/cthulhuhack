@@ -8,6 +8,7 @@ data:
   definitionType: Shock
   key: SK-SCR
   creationDate: ''
+  locked: true
 flags: {}
 img: systems/cthack/ui/icons/dead-head.png
 effects: []

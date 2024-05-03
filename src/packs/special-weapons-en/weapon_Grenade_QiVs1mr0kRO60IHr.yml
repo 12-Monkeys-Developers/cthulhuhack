@@ -8,6 +8,7 @@ data:
     <p>Effects 1d4 targets in a Nearby area.</p>
   dice: ''
   range: 3str
+  locked: true
 effects: []
 folder: null
 sort: 0

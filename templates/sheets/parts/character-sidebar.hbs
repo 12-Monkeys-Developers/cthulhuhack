@@ -22,13 +22,8 @@
     </div>
   {{/each}}
   {{#if (isEnabled "FortuneAvailable")}}
-    <div class="fortune">
+    <div class="fortune character-sidebar-contextmenu">
       <label class="resource-label">{{localize "CTHACK.Fortune"}} : {{getFortuneValue}}</label>
-      {{#if isGm}}
-        {{#if (shouldDisplayFortuneUse)}}
-          <a class="fortune-use" data-tooltip="{{localize 'CTHACK.FortuneUse'}}"><i class="fa fa-check-circle"></i></a>
-        {{/if}}
-      {{/if}}
     </div>
   {{/if}}
   {{#if (isEnabled "Adrenaline")}}

@@ -1,9 +1,6 @@
-<div id="gm-manager" class="flex">
-  <header class="window-header flexrow draggable app-title-bar">
-  </header>
-  
+<div id="gm-manager">  
+  {{log 'gm-manager' this}}
   {{#if (isEnabled "FortuneAvailable")}}
-    <br>
     <label class="resource-label">{{localize "CTHACK.Fortune"}} : {{getFortuneValue}}</label>
   {{/if}}
 
@@ -15,8 +12,10 @@
         <th class="gm-resource-all" data-resource="FlashLights">{{localize "CTHACK.FlashLights"}}</th>
         <th class="gm-resource-all" data-resource="Smokes">{{localize "CTHACK.Smokes"}}</th>
         <th class="gm-resource-all" data-resource="Sanity">{{localize "CTHACK.Sanity"}}</th>
-        <th class="gm-resource-all" data-resource="Miscellaneous">{{#if (isEnabled "MiscellaneousResource")}}{{getMiscellaneousValue}}{{else}}{{localize "CTHACK.Wealth"}}{{/if}}</th>
-        <th class="gm-resource-all" data-resource="HitDice">{{#if (isEnabled "HitDiceResource")}}{{localize "CTHACK.HitDice"}}{{else}}{{localize "CTHACK.HitPoints"}}{{/if}}</th>
+        {{#if (or hasWealthResource hasWealthFixed)}}<th {{#if hasWealthResource}}class="gm-resource-all" data-resource="Wealth"{{/if}}>{{localize "CTHACK.Wealth"}}</th>{{/if}}
+        {{#if hasMisc}}<th class="gm-resource-all" data-resource="Miscellaneous">{{getMiscellaneousValue}}</th>{{/if}}
+        {{#if hasHD}}<th class="gm-resource-all" data-resource="HitDice">{{localize "CTHACK.HitDice"}}</th>{{/if}}
+        {{#if hasHP}}<th>{{localize "CTHACK.HitPoints"}}</th>{{/if}}        
         {{#if (isEnabled "Adrenaline")}}<th class="gm-adr-all" data-resource="Adrenaline">{{localize "GMMANAGER.Adrenaline"}}</th>{{/if}}
         <th class="gm-save-all" data-save="Str">{{localize "CTHACK.SaveStrAbbr"}}</th>
         <th class="gm-save-all" data-save="Dex">{{localize "CTHACK.SaveDexAbbr"}}</th>

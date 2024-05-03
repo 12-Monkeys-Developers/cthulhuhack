@@ -9,6 +9,7 @@ data:
   definitionType: OutOfAction
   key: OOA-DEA
   creationDate: ''
+  locked: true
 flags: {}
 img: systems/cthack/ui/icons/first-aid-kit.png
 effects: []

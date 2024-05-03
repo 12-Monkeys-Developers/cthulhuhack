@@ -22,7 +22,7 @@ import * as documents from "./documents/_module.mjs";
 export default class FullsearchJournalSheet extends JournalSheet {}
 
 Hooks.once("init", async function () {
-  console.log(LOG_HEAD + "Initialisation du système Cthulhu Hack");
+  console.log(LOG_HEAD + game.i18n.localize("CTHACK.Logs.InitStart"));
   console.log(CTHACK.ASCII);
 
   game.system.CONST = SYSTEM;
@@ -103,7 +103,7 @@ Hooks.once("init", async function () {
   // Search
   Journal.registerSheet(game.system.id, FullsearchJournalSheet, { makeDefault: false });
 
-  console.log(LOG_HEAD + "Système Cthulhu Hack initialisé");
+  console.log(LOG_HEAD + game.i18n.localize("CTHACK.Logs.InitEnd"));
 });
 
 // Register world usage statistics
@@ -137,9 +137,9 @@ function registerWorldCount(registerKey) {
 }
 
 Hooks.once("ready", async function () {
-  // console.log(LOG_HEAD + 'Système Cthulhu Hack Ready - Start');
   if (!DEV_MODE) {
     registerWorldCount("cthack");
   }
-  console.log(LOG_HEAD + "Système Cthulhu Hack Ready - Finished");
+
+  console.log(LOG_HEAD + game.i18n.localize("CTHACK.Logs.ReadyEnd"));
 });

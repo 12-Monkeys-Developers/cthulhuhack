@@ -24,19 +24,31 @@ export class GMManager extends Application {
     static get defaultOptions() {
       return foundry.utils.mergeObject(super.defaultOptions, {
         template: GMManager.GM_MANAGER_TEMPLATE,
+        classes: ["cthack", "gm-manager"],
         title:  game.i18n.localize('GMMANAGER.Title'),
         top: 100,
         left: 120,
-        width: game.settings.get('cthack', 'Adrenaline') ? 1000 : 900,
+        width: 1200,
         height: "auto",
         resizable: true,
       });
     }
 
     getData() {
-      const data = super.getData();
-      data.players = game.users.filter(u=>u.hasPlayerOwner && u.active);     
-      return data;      
+      const context = super.getData();
+      context.players = game.users.filter(u=>u.hasPlayerOwner && u.active);     
+
+      const misc = game.settings.get('cthack', 'MiscellaneousResource');
+      const healthDisplay = game.settings.get('cthack', 'HealthDisplay');
+      const wealth = game.settings.get('cthack', 'Wealth');
+
+      context.hasMisc = misc !== "";
+      context.hasHP = healthDisplay === "hp" || healthDisplay === "both";
+      context.hasHD = healthDisplay === "hd" || healthDisplay === "both";
+      context.hasWealthResource = wealth === "resource";
+      context.hasWealthFixed = wealth === "fixed";
+
+      return context;      
     }
 
     render(force=false, options={}){

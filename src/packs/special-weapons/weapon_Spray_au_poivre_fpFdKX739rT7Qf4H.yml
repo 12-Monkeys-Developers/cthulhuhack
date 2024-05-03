@@ -9,6 +9,7 @@ data:
     Avantage durant 1d3 Moments. <br />Dissimulable.</p>
   dice: d6
   range: near
+  locked: true
 flags: {}
 img: systems/cthack/ui/weapons/spray.png
 effects: []

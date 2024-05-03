@@ -92,11 +92,29 @@ a.inline-roll {
   color: #fff;
   padding: 0 5px 0 5px;
 }
+.chat-message .message-content .chat-description .name {
+  display: flex;
+  align-items: center;
+}
+.chat-message .message-content .chat-description img {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
 /* App styles*/
 #gm-manager {
   font-size: var(--font-size-18);
+  display: flex;
+  flex-direction: column;
 }
-.character-resume {
+.cthack label {
+  margin-left: 30px;
+}
+.cthack table {
+  width: auto;
+  margin: 0 20px 0 20px;
+}
+.cthack .character-resume {
   background-image: url("../ui/sheet.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -105,7 +123,7 @@ a.inline-roll {
   scrollbar-width: thin;
   text-align: center;
 }
-.character-resume .adrenaline-img {
+.cthack .character-resume .adrenaline-img {
   height: 25px;
   width: 25px;
 }
@@ -263,7 +281,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character nav#context-menu {
   text-align: left;
-  width: 100px;
+  width: auto;
 }
 .cthack.sheet.actor.character nav.sheet-tabs {
   flex: 0;
@@ -438,32 +456,36 @@ a.inline-roll {
   grid-column-end: 3;
   margin: 5px 0 5px 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
   justify-content: center;
   border: 1px solid;
   border-radius: 10px;
 }
 .cthack.sheet.actor.character .character-sheet-header .resources-3 {
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
 }
 .cthack.sheet.actor.character .character-sheet-header .resources-4 {
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
 }
 .cthack.sheet.actor.character .character-sheet-header .resources-5 {
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
 }
 .cthack.sheet.actor.character .character-sheet-header .fight {
   margin-top: 10px;
   grid-column-start: 1;
   grid-column-end: 3;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
   justify-content: center;
   border: 1px solid;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+}
+.cthack.sheet.actor.character .character-sheet-header .fight-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.cthack.sheet.actor.character .character-sheet-header .fight-4 {
+  grid-template-columns: repeat(4, 1fr);
 }
 .cthack.sheet.actor.character .character-sheet-header .resource {
   justify-content: center;

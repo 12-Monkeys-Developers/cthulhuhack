@@ -46,6 +46,7 @@ data:
   secondarysave1: con
   secondarysave2: str
   capacities: []
+  locked: true
 effects: []
 folder: null
 sort: 0
