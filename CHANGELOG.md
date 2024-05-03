@@ -6,6 +6,7 @@
 - Update gm-manager design and display according to the new options
 - By default, compendium are hidden to players
 - Send item's description to the chat for all players or only the GM
+- Add locked: true to many items (all except abilites and opponents)
 
 2.7.1
 - Fix objects links in NPC descriptions
