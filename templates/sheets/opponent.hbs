@@ -1,5 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-  {{log "opponent" this}}
+  {{!log "opponent" this}}
   <header class="sheet-header {{#if (or hasImage editable)}}grid-image{{else}}grid-noimage{{/if}}">
 
     <div class="opponent-image">
@@ -132,7 +132,7 @@
       {{/if}}
       <div class="grid-opponent-abilities">
         {{#each opponentAbilities as |ability id|}}    
-          {{log 'opponent-ability' ability}}   
+          {{!log 'opponent-ability' ability}}   
             <div class="item opponent-contextmenu" data-item-id="{{ability._id}}">
               <details>
                 <summary class="item-line">

@@ -70,7 +70,7 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
     schema.occupation = new fields.StringField({ required: false, blank: true });
     schema.abilities = new fields.ArrayField(
       new fields.SchemaField({
-        id: new fields.StringField({ required: true, blank: false, nullable: false }),
+        id: new fields.StringField({ required: false, blank: true}),
         key: new fields.StringField({ required: true, blank: false, nullable: false }),
       })
     );

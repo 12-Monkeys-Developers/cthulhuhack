@@ -1,3 +1,6 @@
+2.8.1
+- Fix potential error in character's abilitites : allow undefined in model
+
 2.8.0
 - Change option about HitDice and HitPoints settings : Now the option is no more a boolean but has 3 values : HD, HP or both
 - Fix missing description expand
