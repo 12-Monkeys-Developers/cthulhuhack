@@ -297,7 +297,7 @@ a.inline-roll {
   flex: 0;
   border-top: 0;
   border-bottom: 1px solid var(--nav-active-color);
-  margin-top: 10px;
+  margin: 10px 5px 0 5px;
 }
 .cthack.sheet.actor.character nav.sheet-tabs .choice {
   height: 40px;
@@ -413,7 +413,7 @@ a.inline-roll {
   font-size: 0.9em;
 }
 .cthack.sheet.actor.character .main {
-  margin: 30px 20px 0 0;
+  margin: 30px 0 0 0;
   padding: 0 10px 10px 0;
   min-width: 550px;
 }
@@ -525,8 +525,21 @@ a.inline-roll {
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content {
   padding: 5px 0 5px 0;
 }
+.cthack.sheet.actor.character .character-sheet-header .resource .hitpoints {
+  display: flex;
+  align-items: center;
+  /* Aligne verticalement au centre */
+  justify-content: center;
+  /* Centrer horizontalement le contenu */
+  gap: 5px;
+  /* Ajoute un espace entre les éléments */
+}
 .cthack.sheet.actor.character .character-sheet-header .resource .hitpoints input {
   height: 40px;
+  width: 40px;
+  /* Ajustez la largeur selon vos besoins */
+  text-align: center;
+  /* Centrer le texte dans l'input */
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .hitpoints .hitpoints-value {
   text-align: right;

@@ -47,7 +47,7 @@
       flex: 0;
       border-top: 0;
       border-bottom: 1px solid var(--nav-active-color);
-      margin-top: 10px;
+      margin: 10px 5px 0 5px;
       .choice {
         height: 40px;
         line-height: 40px;
@@ -175,7 +175,7 @@
   }
 
   .main {
-    margin: 30px 20px 0 0;
+    margin: 30px 0 0 0;
     padding: 0 10px 10px 0;
     min-width: 550px;
     .sheet-body {
@@ -287,8 +287,14 @@
         padding: 5px 0 5px 0;
       }
       .hitpoints {
+        display: flex;
+        align-items: center; /* Aligne verticalement au centre */
+        justify-content: center; /* Centrer horizontalement le contenu */
+        gap: 5px; /* Ajoute un espace entre les éléments */
         input {
           height: 40px;
+          width: 40px; /* Ajustez la largeur selon vos besoins */
+          text-align: center; /* Centrer le texte dans l'input */
         }
         .hitpoints-value {
           text-align: right;
