@@ -1,9 +1,19 @@
 &.sheet.actor.character {
   min-width: 960px;
+
   select {
     color: black;
   }
 
+  .rollable {
+    &:hover,
+    &:focus {
+      color: var(--rollable-color);
+      text-shadow: 0 0 10px rgb(238, 163, 163);
+      cursor: url("../ui/dice/d20-red.svg") 32 24, pointer;
+    }
+  }
+  
   .no-dice {
     color: white;
   }
@@ -35,23 +45,36 @@
     }
     &.sheet-tabs {
       flex: 0;
+      border-top: 0;
+      border-bottom: 1px solid var(--nav-active-color);
+      margin-top: 10px;
       .choice {
+        height: 40px;
         line-height: 40px;
         font-weight: bold;
-      }
-    
-      .choice.active {
-        color: darkgrey;
-        font-weight: bold;
-        text-shadow: 0 0 10px #851016;
+        &:hover {
+          color: var(--nav-active-color);
+          text-shadow: 0 0 10px var(--nav-active-shadow-color);
+        }
+        &.active {
+          color: var(--nav-active-color);
+          font-weight: bold;
+          border-top: 1px solid var(--nav-active-color);
+          border-right: 1px solid var(--nav-active-color);
+          border-left: 1px solid var(--nav-active-color);
+          border-radius: 10px 10px 0 0;
+          padding: 0 5px 0 5px;
+          text-shadow: 0 0 10px var(--nav-active-shadow-color);
+        }
       }
     }
   }
+
   .sidebar {
     display: flex;
     flex-direction: column;
     margin: 30px 10px 0 20px;
-    padding: 0 0 0 10px;
+    padding: 0 10px 0 10px;
     flex: 180px 0 0;
     height: 400px;
     scrollbar-width: thin;
@@ -86,6 +109,9 @@
       align-items: center;
       padding-top: 2px;
 
+      label {
+        font-weight: bold;
+      }
       .save-value {
         flex: 1;
         text-align: left;
@@ -115,7 +141,7 @@
     }
     .conditions {
       display: flex;
-      flex-direction: column ;
+      flex-direction: column;
       margin-top: 10px;
       .conditions-title {
         display: flex;
@@ -168,6 +194,7 @@
     .name {
       margin-left: 10px;
       font-size: 1.3em;
+      font-weight: bold;
     }
     .header-occupation {
       display: flex;
@@ -222,6 +249,7 @@
       justify-content: center;
       border: 1px solid;
       border-radius: 10px;
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     }
     .resources-3 {
       grid-template-columns: repeat(3, 1fr);
@@ -240,8 +268,8 @@
       align-items: center;
       justify-content: center;
       border: 1px solid;
-      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     }
     .fight-3 {
       grid-template-columns: repeat(3, 1fr);
@@ -250,6 +278,7 @@
       grid-template-columns: repeat(4, 1fr);
     }
     .resource {
+      font-weight: bold;
       justify-content: center;
       align-items: center;
       text-align: center;
@@ -272,28 +301,6 @@
     .resource-value {
       color: black;
       text-shadow: 0 0 10px red;
-    }
-  }
-
-  nav.sheet-tabs {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    height: 40px;
-    border-top: 0;
-    border-bottom: 1px solid white;
-    margin-top: 10px;
-    .choice {
-      font-weight: normal;
-      &.active {
-        color: white;
-        font-weight: bold;
-        border-top: 1px solid white;
-        border-right: 1px solid white;
-        border-left: 1px solid white;
-        border-radius: 10px 10px 0 0;
-        padding: 0 5px 0 5px;
-        text-shadow: 0 0 10px red;
-      }
     }
   }
 

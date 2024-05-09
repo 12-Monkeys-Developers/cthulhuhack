@@ -3,10 +3,16 @@ input[type="number"],
 input[type="password"],
 input[type="date"],
 input[type="time"] {
-  color: #fff;
+  color: var(--font-color-primary);
 }
 
 input[type="text"] {
+  border: none;
+  background: none;
+}
+
+textarea:read-only {
+  background: none;
   border: none;
 }
 
@@ -23,8 +29,8 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: transparent;
-  font-weight: 800;
-  color: #fff;
+  //font-weight: 800;
+  color: var(--font-color-primary);
   &:disabled {
     opacity: 1;
   }
@@ -52,4 +58,8 @@ option:checked, option:hover {
 .cthack.sheet.actor a.inline-roll,
 .cthack.sheet.item a.inline-roll {
   color: black;
+}
+
+.data-group .field-name, .field-name.description {
+  font-weight: bold;
 }

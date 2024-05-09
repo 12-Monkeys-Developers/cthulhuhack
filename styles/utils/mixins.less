@@ -1,23 +1,9 @@
-// Not used
-.element-invisible() {
-  position: absolute;
-
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
 // Mixin for items
 .item-common-header() {
   .editable {
     input,
     select {
-      border: 1px solid #782e22;
+      border: var(--border-standard);
     }
   }
   .item-header {
@@ -25,6 +11,7 @@
     flex-direction: row;
     margin: 10px 0 10px 0;
     padding: 0 10px 0 10px;
+    color: var(--font-color-primary);
     img {
       border: 0px;
       max-height: 50px;
@@ -36,7 +23,6 @@
       border: 0px;
       margin: 10px 0 0 10px;
       padding: 0;
-      color: #fff;
     }
     .name {
       width: 20rem;
@@ -44,7 +30,6 @@
       text-align: left;
       border: 0px;
       margin: 10px 0 0 10px;
-      color: #fff;
     }
     .sheet-lock {
       margin-left: auto;
@@ -60,7 +45,7 @@
   padding-right: 20px;
   font-size: 1rem;
   text-align: center;
-  color: #fff;
+  color: var(--font-color-primary);;
   .data-group {
     display: flex;
     flex-direction: column;
@@ -115,10 +100,4 @@
       background: var(--color-hover-bg);
     }
   }
-}
-
-.flex-center {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }

@@ -1,11 +1,3 @@
-.roll-failure {
-  color: red;
-}
-
-.roll-success {
-  color: green;
-}
-
 .chat-message {
   .message-content .chat-save-roll,
   .message-content .chat-resource-roll,
@@ -15,22 +7,34 @@
   .message-content .chat-other-roll-result {
     padding: @padding-sm;
   }
+  .message-header .message-sender {
+    font-weight: bold;
+  }
   .message-content {
     background-image: url(../ui/cthack-green.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     color: #fff;
-    padding: 0 5px 0 5px;
+    padding: 0 @padding-sm 0 @padding-sm;
   }
   .message-content .chat-description {
     .name {
-      display: flex;  
+      display: flex;
       align-items: center;
     }
     img {
       width: 30px;
       height: 30px;
       margin: 5px;
+    }
+  }
+  .dice-result {
+    .roll-failure {
+      color: red;
+    }
+
+    .roll-success {
+      color: green;
     }
   }
 }

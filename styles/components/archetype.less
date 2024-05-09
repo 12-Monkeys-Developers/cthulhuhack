@@ -1,15 +1,18 @@
 &.sheet.item.archetype {
   .item-common-header();
   .archetype-body-header {
-    display: flex;
+    display: flex; 
+    align-items: flex-start;
     grid-gap: 10px;
     padding: 0 20px 0 20px;;
     img {
       height: 350px;
       width:  150px;
-    }
+      flex-shrink: 0;
+    }    
   }
   .archetype-body-header-right {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
   }
