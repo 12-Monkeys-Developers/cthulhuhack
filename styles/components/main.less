@@ -34,16 +34,10 @@ select {
   &:disabled {
     opacity: 1;
   }
-}
-
-option {
-  color: #fff;
-  background: rgb(55,55,45);
-}
-
-option:checked, option:hover {
-  color: #fff;
-  background: rgb(55,55,45);
+  option, option:checked, option:hover {
+    color: var(--font-color-primary);
+    background: var(--select-background-color);
+  }  
 }
 
 ::-webkit-scrollbar {

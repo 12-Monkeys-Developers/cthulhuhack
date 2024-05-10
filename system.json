@@ -304,7 +304,7 @@
       }
     }
   ],
-  "background": "systems/cthack/ui/accueil.png",
+  "background": "systems/cthack/ui/accueil.webp",
   "socket": true,
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",

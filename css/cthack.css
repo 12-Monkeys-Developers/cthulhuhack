@@ -1,10 +1,16 @@
 :root {
   --background-standard: no-repeat url('/systems/cthack/ui/sheet.webp');
-  --font-color-primary: #fff;
+  --background-image-standard: url('/systems/cthack/ui/sheet.webp');
+  --background-chat-image: url('/systems/cthack/ui/cthack-green.webp');
   --border-standard: 1px solid #782e22;
+  --font-color-primary: #fff;
   --nav-active-color: darkgrey;
   --nav-active-shadow-color: #782e22;
   --rollable-color: #d44d54;
+  --logo-standard: url('/systems/cthack/ui/cthack-logo.webp');
+  --select-background-color: #37372d;
+  --item-line-hover-color: #111;
+  --item-line-hover-background-color: darkgrey;
   scrollbar-width: thin;
   scrollbar-color: #782e22 #111;
 }
@@ -17,9 +23,10 @@
   font-family: 'EBGaramond', sans-serif;
 }
 .window-app .window-content {
-  background-image: url("../ui/background-white.png");
+  background-image: url("../ui/background-white.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  /* Item in an opened compendium */
 }
 .window-app .window-content .compendium.directory .directory-list .directory-item {
   border: none;
@@ -29,13 +36,13 @@
   color: #ffffff;
 }
 #logo {
-  content: url("../ui/cthack-logo.webp");
+  content: var(--logo-standard);
   width: 50px;
   height: 50px;
   margin-left: 15px;
 }
 #pause > img {
-  content: url("../ui/cthack-logo.webp");
+  content: var(--logo-standard);
   height: 192px;
   width: 192px;
   top: -45px;
@@ -48,7 +55,7 @@
 i.cthack {
   width: 36px;
   height: 36px;
-  background-image: url(../ui/cthack-logo.webp);
+  background-image: var(--logo-standard);
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -79,10 +86,10 @@ a.inline-roll {
   font-weight: bold;
 }
 .chat-message .message-content {
-  background-image: url(../ui/cthack-green.jpg);
+  background-image: var(--background-chat-image);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  color: #fff;
+  color: var(--font-color-primary);
   padding: 0 5px 0 5px;
 }
 .chat-message .message-content .chat-description .name {
@@ -114,10 +121,10 @@ a.inline-roll {
   margin: 0 20px 0 20px;
 }
 .cthack.gm-manager .character-resume {
-  background-image: url("../ui/sheet.webp");
+  background-image: var(--background-image-standard);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  color: #fff;
+  color: var(--font-color-primary);
   font-size: var(--font-size-20);
   scrollbar-width: thin;
   text-align: center;
@@ -187,8 +194,8 @@ a.inline-roll {
   font-size: var(--font-size-20);
 }
 .cthack .item-line:hover {
-  background-color: #59564c;
-  color: #ffffff;
+  background-color: var(--item-line-hover-background-color);
+  color: var(--item-line-hover-color);
 }
 .cthack .input-small,
 .cthack .select-small {
@@ -235,14 +242,11 @@ a.inline-roll {
 .cthack select:disabled {
   opacity: 1;
 }
-.cthack option {
-  color: #fff;
-  background: #37372d;
-}
-.cthack option:checked,
-.cthack option:hover {
-  color: #fff;
-  background: #37372d;
+.cthack select option,
+.cthack select option:checked,
+.cthack select option:hover {
+  color: var(--font-color-primary);
+  background: var(--select-background-color);
 }
 .cthack ::-webkit-scrollbar {
   display: none;
@@ -315,6 +319,7 @@ a.inline-roll {
   border-right: 1px solid var(--nav-active-color);
   border-left: 1px solid var(--nav-active-color);
   border-radius: 10px 10px 0 0;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   padding: 0 5px 0 5px;
   text-shadow: 0 0 10px var(--nav-active-shadow-color);
 }
@@ -1848,12 +1853,12 @@ a.inline-roll {
   height: 40px;
 }
 .cthack.sheet.item.attack .attack-grid .input-damage {
-  color: #fff;
+  color: var(--font-color-primary);
   opacity: inherit;
 }
 .cthack.sheet.item.attack .attack-grid .select-damageDice {
   min-width: 80px;
-  color: #fff;
+  color: var(--font-color-primary);
   opacity: 1;
 }
 .cthack.sheet.item.attack .item-description {

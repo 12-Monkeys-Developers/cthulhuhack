@@ -1,10 +1,11 @@
 .window-app {
   font-family: @font-primary;
   .window-content {
-    background-image: url("../ui/background-white.png");
+    background-image: url("../ui/background-white.webp");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 
+    /* Item in an opened compendium */
     .compendium.directory .directory-list .directory-item {
       border: none;
       &:hover {
@@ -16,14 +17,14 @@
 }
 
 #logo {
-  content: url("../ui/cthack-logo.webp");
+  content: var(--logo-standard);
   width: 50px;
   height: 50px;
   margin-left: 15px;
 }
 
 #pause > img {
-  content: url("../ui/cthack-logo.webp");
+  content: var(--logo-standard);
   height: 192px;
   width: 192px;
   top: -45px;
@@ -38,7 +39,7 @@
 i.cthack {
   width: 36px;
   height: 36px;
-  background-image: url(../ui/cthack-logo.webp);
+  background-image: var(--logo-standard);
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
