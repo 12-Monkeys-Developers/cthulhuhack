@@ -90,7 +90,7 @@ a.inline-roll {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: var(--font-color-primary);
-  padding: 0 5px 0 5px;
+  padding: 0 5px 5px 5px;
 }
 .chat-message .message-content .chat-description .name {
   display: flex;
@@ -259,10 +259,6 @@ a.inline-roll {
   border: none;
   background: none;
 }
-.cthack textarea:read-only {
-  background: none;
-  border: none;
-}
 .cthack select {
   border: none;
   background-repeat: no-repeat;
@@ -287,12 +283,20 @@ a.inline-roll {
   color: var(--font-color-primary);
   background: var(--select-background-color);
 }
+.cthack textarea:read-only {
+  background: none;
+  border: none;
+}
 .cthack ::-webkit-scrollbar {
   display: none;
 }
-.cthack .ask-roll-title .fa-dice-d20 {
-  padding-right: 5px;
-  padding-left: 5px;
+.cthack h4.ask-roll-title {
+  margin: 0;
+  padding: 5px 0 5px 0;
+}
+.cthack .ask-roll-dice {
+  margin-bottom: 5px;
+  padding: 5px;
 }
 .cthack .cthack.sheet.actor a.inline-roll,
 .cthack .cthack.sheet.item a.inline-roll {

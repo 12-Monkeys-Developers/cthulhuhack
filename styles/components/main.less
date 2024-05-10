@@ -11,11 +11,6 @@ input[type="text"] {
   background: none;
 }
 
-textarea:read-only {
-  background: none;
-  border: none;
-}
-
 select {
   border: none;
   background-repeat: no-repeat;
@@ -34,19 +29,31 @@ select {
   &:disabled {
     opacity: 1;
   }
-  option, option:checked, option:hover {
+  option,
+  option:checked,
+  option:hover {
     color: var(--font-color-primary);
     background: var(--select-background-color);
-  }  
+  }
+}
+
+textarea:read-only {
+  background: none;
+  border: none;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
 
-.ask-roll-title .fa-dice-d20 {
-	padding-right: 5px;
-  padding-left: 5px;
+h4.ask-roll-title {
+  margin: 0;
+  padding: 5px 0 5px 0;
+}
+
+.ask-roll-dice {
+  margin-bottom: 5px;
+  padding: 5px;
 }
 
 .cthack.sheet.actor a.inline-roll,
@@ -54,6 +61,7 @@ select {
   color: black;
 }
 
-.data-group .field-name, .field-name.description {
+.data-group .field-name,
+.field-name.description {
   font-weight: bold;
 }
