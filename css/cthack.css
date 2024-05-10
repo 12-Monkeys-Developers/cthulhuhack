@@ -1,4 +1,6 @@
 :root {
+  --font-primary: 'EBGaramond', sans-serif;
+  --font-secondary: 'EBGaramond', sans-serif;
   --background-standard: no-repeat url('/systems/cthack/ui/sheet.webp');
   --background-image-standard: url('/systems/cthack/ui/sheet.webp');
   --background-chat-image: url('/systems/cthack/ui/cthack-green.webp');
@@ -20,7 +22,7 @@
 }
 /* Global styles */
 .window-app {
-  font-family: 'EBGaramond', sans-serif;
+  font-family: var(--font-primary);
 }
 .window-app .window-content {
   background-image: url("../ui/background-white.webp");
@@ -367,11 +369,9 @@ a.inline-roll {
   text-shadow: 0 0 10px var(--nav-active-shadow-color);
 }
 .cthack.sheet.actor.character .sidebar {
-  display: flex;
-  flex-direction: column;
   margin: 30px 10px 0 20px;
   padding: 0 10px 0 10px;
-  flex: 180px 0 0;
+  flex: 220px 0 0;
   height: 400px;
   scrollbar-width: thin;
   scrollbar-color: var(--primary) transparent;
@@ -402,11 +402,12 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .sidebar .sidebar-section label {
   font-weight: bold;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-24);
 }
 .cthack.sheet.actor.character .sidebar .sidebar-section .save-value {
   flex: 1;
   text-align: left;
-  margin-right: 10px;
 }
 .cthack.sheet.actor.character .sidebar .sidebar-section .save-value {
   flex: 2;
@@ -479,7 +480,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .name {
   margin-left: 10px;
-  font-size: 1.3em;
+  font-size: var(--font-size-24);
   font-weight: bold;
 }
 .cthack.sheet.actor.character .character-sheet-header .header-occupation {
@@ -489,6 +490,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .header-occupation .occupation-archetype {
   text-align: left;
+  font-size: var(--font-size-20);
 }
 .cthack.sheet.actor.character .character-sheet-header .occupation {
   display: flex;
@@ -570,6 +572,10 @@ a.inline-roll {
   text-align: center;
   padding: 5px;
 }
+.cthack.sheet.actor.character .character-sheet-header .resource label {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-24);
+}
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content {
   padding: 5px 0 5px 0;
 }
@@ -611,7 +617,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .sheet-body .editor-content {
   margin: 0px 5px;
   font-weight: normal;
-  font-size: var(--font-size-18);
+  font-size: var(--font-size-20);
 }
 .cthack.sheet.actor.character .sheet-body .prosemirror menu {
   font-size: 0.8em;
