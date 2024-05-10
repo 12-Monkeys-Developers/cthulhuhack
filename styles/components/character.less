@@ -350,7 +350,12 @@
         flex-direction: column;
         .item-line {
           display: grid;
-          grid-template-columns: 2fr 1fr 2fr;
+          &.weapon {
+            grid-template-columns: 2fr 1fr 2fr;
+          }
+          &.other {
+            grid-template-columns: 2fr 1fr;
+          }
           .item-name-img {
             display: flex;
             align-items: center;

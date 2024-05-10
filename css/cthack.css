@@ -9,8 +9,8 @@
   --rollable-color: #d44d54;
   --logo-standard: url('/systems/cthack/ui/cthack-logo.webp');
   --select-background-color: #37372d;
-  --item-line-hover-color: #111;
-  --item-line-hover-background-color: darkgrey;
+  --item-line-hover-color: #fff;
+  --item-line-hover-background-color: #37372d;
   scrollbar-width: thin;
   scrollbar-color: #782e22 #111;
 }
@@ -106,6 +106,45 @@ a.inline-roll {
 }
 .chat-message .dice-result .roll-success {
   color: green;
+}
+.cthack.dialog-roll input.field-value {
+  border: var(--border-standard);
+}
+.cthack.dialog-roll .dialog-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  justify-content: space-around;
+}
+.cthack.dialog-roll .dialog-buttons > * {
+  flex: 1;
+}
+.cthack.dialog-roll .dialog-buttons > .flex0 {
+  display: block;
+  flex: 0;
+}
+.cthack.dialog-roll .dialog-buttons > .flex1 {
+  flex: 1;
+}
+.cthack.dialog-roll .dialog-buttons > .flex2 {
+  flex: 2;
+}
+.cthack.dialog-roll .dialog-buttons > .flex3 {
+  flex: 3;
+}
+.cthack.dialog-roll .dialog-buttons button {
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px groove var(--color-border-light-highlight);
+  margin: 0 5px 0 0;
+  color: var(--font-color-primary);
+}
+.cthack.dialog-roll .dialog-buttons button:last-child {
+  margin-right: 0;
+}
+.cthack.dialog-roll .dialog-buttons button.default {
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove var(--color-border-light-secondary);
 }
 /* App styles*/
 #gm-manager {
@@ -592,7 +631,12 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line {
   display: grid;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line.weapon {
   grid-template-columns: 2fr 1fr 2fr;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line.other {
+  grid-template-columns: 2fr 1fr;
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-name-img {
   display: flex;
