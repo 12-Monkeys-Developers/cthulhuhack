@@ -25,10 +25,11 @@ export const preloadHandlebarsTemplates = async function() {
 		'systems/cthack/templates/sheets/magic.hbs',
 
 		// CHAT
-		'systems/cthack/templates/chat/rollSave.hbs',
-		'systems/cthack/templates/chat/rollResource.hbs',
+		'systems/cthack/templates/chat/roll-save.hbs',
+		'systems/cthack/templates/chat/roll-resource.hbs',
+		'systems/cthack/templates/chat/roll-other.hbs',
 		'systems/cthack/templates/chat/tooltip.hbs',
-		'systems/cthack/templates/chat/askRoll.hbs',
+		'systems/cthack/templates/chat/gm-manager-ask-roll.hbs',
 
 		// APP
 		'systems/cthack/templates/app/gm-manager.hbs',

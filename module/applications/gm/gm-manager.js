@@ -87,7 +87,7 @@ export class GMManager extends Application {
       
       ChatMessage.create({
         user: game.user.id,
-        content: await renderTemplate(`systems/cthack/templates/chat/askRoll.hbs`, {
+        content: await renderTemplate(`systems/cthack/templates/chat/gm-manager-ask-roll.hbs`, {
           text: text,
           rollType: "resource",
           resource: resource
@@ -107,7 +107,7 @@ export class GMManager extends Application {
 
       ChatMessage.create({
         user: game.user.id,
-        content: await renderTemplate(`systems/cthack/templates/chat/askRoll.hbs`, {
+        content: await renderTemplate(`systems/cthack/templates/chat/gm-manager-ask-roll.hbs`, {
           text: text,
           rollType: "save",
           resource: save
@@ -141,7 +141,7 @@ export class GMManager extends Application {
 
       ChatMessage.create({
         user: game.user.id,
-        content: await renderTemplate(`systems/cthack/templates/chat/askRoll.hbs`, {
+        content: await renderTemplate(`systems/cthack/templates/chat/gm-manager-ask-roll.hbs`, {
           text: text,
           rollType: "resource",
           resource: resource
@@ -167,7 +167,7 @@ export class GMManager extends Application {
       
       ChatMessage.create({
         user: game.user.id,
-        content: await renderTemplate(`systems/cthack/templates/chat/askRoll.hbs`, {
+        content: await renderTemplate(`systems/cthack/templates/chat/gm-manager-ask-roll.hbs`, {
           text: text,
           rollType: "save",
           resource: save
