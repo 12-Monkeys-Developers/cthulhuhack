@@ -171,7 +171,7 @@ export class SearchDialog extends Dialog {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       width: 400,
-      height: 260,
+      height: 270,
       classes: ["cthack", "dialog", "search"],
       template: `systems/${SYSTEM.id}/templates/search/search-dialog.hbs`,
     });
