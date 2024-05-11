@@ -4,12 +4,12 @@
   --background-standard: no-repeat url('/systems/cthack/ui/sheet.webp');
   --background-image-standard: url('/systems/cthack/ui/sheet.webp');
   --background-chat-image: url('/systems/cthack/ui/cthack-green.webp');
+  --logo-standard: url('/systems/cthack/ui/cthack-logo.webp');
   --border-standard: 1px solid #782e22;
   --font-color-primary: #fff;
   --nav-active-color: darkgrey;
   --nav-active-shadow-color: #782e22;
   --rollable-color: #d44d54;
-  --logo-standard: url('/systems/cthack/ui/cthack-logo.webp');
   --select-background-color: #37372d;
   --item-line-hover-color: #fff;
   --item-line-hover-background-color: #37372d;
@@ -243,6 +243,7 @@ a.inline-roll {
 .cthack .item-line:hover {
   background-color: var(--item-line-hover-background-color);
   color: var(--item-line-hover-color);
+  border-radius: 5px 5px 5px 5px;
 }
 .cthack .input-small,
 .cthack .select-small {
@@ -293,7 +294,7 @@ a.inline-roll {
 .cthack select option:checked,
 .cthack select option:hover {
   color: var(--font-color-primary);
-  background: var(--select-background-color);
+  /* background: var(--select-background-color); */
 }
 .cthack textarea:read-only {
   background: none;
