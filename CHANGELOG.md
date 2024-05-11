@@ -1,3 +1,6 @@
+2.9.0
+- CSS system can now be customized by a module
+
 2.8.1
 - Fix potential error in character's abilitites : allow undefined in model
 

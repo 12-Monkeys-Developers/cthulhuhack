@@ -294,7 +294,7 @@ a.inline-roll {
 .cthack select option:checked,
 .cthack select option:hover {
   color: var(--font-color-primary);
-  /* background: var(--select-background-color); */
+  background: var(--select-background-color);
 }
 .cthack textarea:read-only {
   background: none;
