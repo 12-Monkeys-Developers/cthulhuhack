@@ -13,6 +13,7 @@
   --select-background-color: #37372d;
   --item-line-hover-color: #fff;
   --item-line-hover-background-color: #37372d;
+  --gm-manager-header-background-color: rgba(0, 0, 0, 0.5);
   scrollbar-width: thin;
   scrollbar-color: #782e22 #111;
 }
@@ -160,6 +161,9 @@ a.inline-roll {
 .cthack.gm-manager table {
   width: auto;
   margin: 0 20px 0 20px;
+}
+.cthack.gm-manager table thead {
+  background: var(--gm-manager-header-background-color);
 }
 .cthack.gm-manager .character-resume {
   background-image: var(--background-image-standard);
