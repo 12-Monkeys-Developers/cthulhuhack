@@ -4,19 +4,22 @@
   flex-direction: column;
 }
 
-.cthack {
+.cthack.gm-manager {
   label {
     margin-left: 30px;
   }
   table {
     width: auto;
     margin: 0 20px 0 20px;
+    thead {
+      background: var(--gm-manager-header-background-color);
+    }
   }
   .character-resume {
-    background-image: url("../ui/sheet.webp");
+    background-image: var(--background-image-standard);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    color: #fff;
+    color: var(--font-color-primary);
     font-size: var(--font-size-20);
     scrollbar-width: thin;
     text-align: center;

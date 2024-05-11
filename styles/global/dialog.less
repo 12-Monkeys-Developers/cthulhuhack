@@ -1,0 +1,41 @@
+.cthack.dialog-roll {
+    input.field-value{
+        border: var(--border-standard);
+    }
+  .dialog-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    justify-content: space-around;
+  }
+  .dialog-buttons > * {
+    flex: 1;
+  }
+  .dialog-buttons > .flex0 {
+    display: block;
+    flex: 0;
+  }
+  .dialog-buttons > .flex1 {
+    flex: 1;
+  }
+  .dialog-buttons > .flex2 {
+    flex: 2;
+  }
+  .dialog-buttons > .flex3 {
+    flex: 3;
+  }
+  .dialog-buttons button {
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px groove var(--color-border-light-highlight);
+    margin: 0 5px 0 0;
+    color: var(--font-color-primary);
+  }
+  .dialog-buttons button:last-child {
+    margin-right: 0;
+  }
+  .dialog-buttons button.default {
+    background: rgba(0, 0, 0, 0.05);
+    border: 2px groove var(--color-border-light-secondary);
+  }
+}

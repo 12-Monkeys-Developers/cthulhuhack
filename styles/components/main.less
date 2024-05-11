@@ -3,11 +3,12 @@ input[type="number"],
 input[type="password"],
 input[type="date"],
 input[type="time"] {
-  color: #fff;
+  color: var(--font-color-primary);
 }
 
 input[type="text"] {
   border: none;
+  background: none;
 }
 
 select {
@@ -23,33 +24,44 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: transparent;
-  font-weight: 800;
-  color: #fff;
+  //font-weight: 800;
+  color: var(--font-color-primary);
   &:disabled {
     opacity: 1;
   }
+  option,
+  option:checked,
+  option:hover {
+    color: var(--font-color-primary);
+    background: var(--select-background-color);
+  }
 }
 
-option {
-  color: #fff;
-  background: rgb(55,55,45);
-}
-
-option:checked, option:hover {
-  color: #fff;
-  background: rgb(55,55,45);
+textarea:read-only {
+  background: none;
+  border: none;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
 
-.ask-roll-title .fa-dice-d20 {
-	padding-right: 5px;
-  padding-left: 5px;
+h4.ask-roll-title {
+  margin: 0;
+  padding: 5px 0 5px 0;
+}
+
+.ask-roll-dice {
+  margin-bottom: 5px;
+  padding: 5px;
 }
 
 .cthack.sheet.actor a.inline-roll,
 .cthack.sheet.item a.inline-roll {
   color: black;
+}
+
+.data-group .field-name,
+.field-name.description {
+  font-weight: bold;
 }

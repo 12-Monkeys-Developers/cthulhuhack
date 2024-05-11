@@ -186,7 +186,7 @@ export async function diceRoll(
 			}
 
 			roll.realTargetValue = hasModifier ? targetValue + parseFloat(modifier) : targetValue;
-			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollSave.hbs`, roll);
+			messageData.content = await renderTemplate(`systems/cthack/templates/chat/roll-save.hbs`, roll);
 		}
 
 		if (rollType === 'Resource' || rollType === 'Material') {
@@ -196,15 +196,15 @@ export async function diceRoll(
 				roll.isSuccess = false;
 			} else roll.resourceLost = false;
 
-			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollResource.hbs`, roll);
+			messageData.content = await renderTemplate(`systems/cthack/templates/chat/roll-resource.hbs`, roll);
 		}
 
 		if (rollType === 'Damage') {
-			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollOther.hbs`, roll);
+			messageData.content = await renderTemplate(`systems/cthack/templates/chat/roll-other.hbs`, roll);
 		}
 
 		if (rollType === 'AttackDamage') {
-			messageData.content = await renderTemplate(`systems/cthack/templates/chat/rollOther.hbs`, roll);
+			messageData.content = await renderTemplate(`systems/cthack/templates/chat/roll-other.hbs`, roll);
 		}
 
 		roll.toMessage(messageData, messageOptions);
@@ -293,7 +293,7 @@ function _calculateNumberOfDices(dialogChoice, advantage, disadvantage) {
  */
 async function _diceRollDialog({ template, title, parts, data, rollMode, dialogOptions, rollType, modifier, advantage, disadvantage, abilitiesAdvantages, roll } = {}) {
 	// Render modal dialog
-	template = template || 'systems/cthack/templates/chat/roll-dialog.hbs';
+	template = template || 'systems/cthack/templates/dialog/roll-dialog.hbs';
 	let dialogData = {
 		formula: parts.join(' + '),
 		data: data,
@@ -306,6 +306,8 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 		abilitiesAdvantages: abilitiesAdvantages
 	};
 	const html = await renderTemplate(template, dialogData);
+
+	let dialogFinalOptions = dialogOptions !== undefined ? foundry.utils.mergeObject(dialogOptions, {classes: ["dialog", "cthack", "dialog-roll"]}) : {classes: ["cthack", "dialog-roll"]};
 
 	// TODO Virer les tooltips et utiliser le fonctionnement standard de Foundry
 	if (rollType !== 'Damage' && rollType !== 'AttackDamage') {
@@ -340,7 +342,7 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 					default: 'normalBtn',
 					close: () => resolve(null)
 				},
-				dialogOptions
+				dialogFinalOptions
 			).render(true);
 		});
 	} else if (rollType === 'Damage') {
@@ -367,7 +369,7 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 					default: 'normalBtn',
 					close: () => resolve(null)
 				},
-				dialogOptions
+				dialogFinalOptions
 			).render(true);
 		});
 	} else if (rollType === 'AttackDamage') {
@@ -386,7 +388,7 @@ async function _diceRollDialog({ template, title, parts, data, rollMode, dialogO
 					default: 'normalBtn',
 					close: () => resolve(null)
 				},
-				dialogOptions
+				dialogFinalOptions
 			).render(true);
 		});
 	}

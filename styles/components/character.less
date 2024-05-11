@@ -1,7 +1,17 @@
 &.sheet.actor.character {
   min-width: 960px;
+
   select {
     color: black;
+  }
+
+  .rollable {
+    &:hover,
+    &:focus {
+      color: var(--rollable-color);
+      text-shadow: 0 0 10px rgb(238, 163, 163);
+      cursor: url("../ui/dice/d20-red.svg") 32 24, pointer;
+    }
   }
 
   .no-dice {
@@ -35,24 +45,36 @@
     }
     &.sheet-tabs {
       flex: 0;
+      border-top: 0;
+      border-bottom: 1px solid var(--nav-active-color);
+      margin: 10px 5px 0 5px;
       .choice {
+        height: 40px;
         line-height: 40px;
         font-weight: bold;
-      }
-    
-      .choice.active {
-        color: darkgrey;
-        font-weight: bold;
-        text-shadow: 0 0 10px #851016;
+        &:hover {
+          color: var(--nav-active-color);
+          text-shadow: 0 0 10px var(--nav-active-shadow-color);
+        }
+        &.active {
+          color: var(--nav-active-color);
+          font-weight: bold;
+          border-top: 1px solid var(--nav-active-color);
+          border-right: 1px solid var(--nav-active-color);
+          border-left: 1px solid var(--nav-active-color);
+          border-radius: 10px 10px 0 0;
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+          padding: 0 5px 0 5px;
+          text-shadow: 0 0 10px var(--nav-active-shadow-color);
+        }
       }
     }
   }
+
   .sidebar {
-    display: flex;
-    flex-direction: column;
     margin: 30px 10px 0 20px;
-    padding: 0 0 0 10px;
-    flex: 180px 0 0;
+    padding: 0 10px 0 10px;
+    flex: 220px 0 0;
     height: 400px;
     scrollbar-width: thin;
     scrollbar-color: var(--primary) transparent;
@@ -85,11 +107,14 @@
       justify-content: space-between;
       align-items: center;
       padding-top: 2px;
-
+      label {
+        font-weight: bold;
+        font-family: var(--font-secondary);
+        font-size: var(--font-size-24);
+      }
       .save-value {
         flex: 1;
         text-align: left;
-        margin-right: 10px;
       }
       .save-value {
         flex: 2;
@@ -115,7 +140,7 @@
     }
     .conditions {
       display: flex;
-      flex-direction: column ;
+      flex-direction: column;
       margin-top: 10px;
       .conditions-title {
         display: flex;
@@ -149,7 +174,7 @@
   }
 
   .main {
-    margin: 30px 20px 0 0;
+    margin: 30px 0 0 0;
     padding: 0 10px 10px 0;
     min-width: 550px;
     .sheet-body {
@@ -167,7 +192,8 @@
     grid-template-columns: 1fr 1fr;
     .name {
       margin-left: 10px;
-      font-size: 1.3em;
+      font-size: var(--font-size-24);
+      font-weight: bold;
     }
     .header-occupation {
       display: flex;
@@ -175,6 +201,7 @@
       justify-content: space-between;
       .occupation-archetype {
         text-align: left;
+        font-size: var(--font-size-20);
       }
     }
     .occupation {
@@ -209,7 +236,7 @@
       padding-left: 50px;
     }
     .short-description-editable {
-      border: 1px solid;
+      border: 1px solid;      
       grid-column-start: 1;
       grid-column-end: 3;
     }
@@ -222,6 +249,7 @@
       justify-content: center;
       border: 1px solid;
       border-radius: 10px;
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     }
     .resources-3 {
       grid-template-columns: repeat(3, 1fr);
@@ -240,8 +268,8 @@
       align-items: center;
       justify-content: center;
       border: 1px solid;
-      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     }
     .fight-3 {
       grid-template-columns: repeat(3, 1fr);
@@ -250,16 +278,27 @@
       grid-template-columns: repeat(4, 1fr);
     }
     .resource {
+      font-weight: bold;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: @padding-sm;
+      padding: 5px;
+      label {
+        font-family: var(--font-secondary);
+        font-size: var(--font-size-24);
+      }
       .resource-content {
         padding: 5px 0 5px 0;
       }
       .hitpoints {
+        display: flex;
+        align-items: center; /* Aligne verticalement au centre */
+        justify-content: center; /* Centrer horizontalement le contenu */
+        gap: 5px; /* Ajoute un espace entre les éléments */
         input {
           height: 40px;
+          width: 40px; /* Ajustez la largeur selon vos besoins */
+          text-align: center; /* Centrer le texte dans l'input */
         }
         .hitpoints-value {
           text-align: right;
@@ -272,28 +311,6 @@
     .resource-value {
       color: black;
       text-shadow: 0 0 10px red;
-    }
-  }
-
-  nav.sheet-tabs {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    height: 40px;
-    border-top: 0;
-    border-bottom: 1px solid white;
-    margin-top: 10px;
-    .choice {
-      font-weight: normal;
-      &.active {
-        color: white;
-        font-weight: bold;
-        border-top: 1px solid white;
-        border-right: 1px solid white;
-        border-left: 1px solid white;
-        border-radius: 10px 10px 0 0;
-        padding: 0 5px 0 5px;
-        text-shadow: 0 0 10px red;
-      }
     }
   }
 
@@ -312,7 +329,7 @@
     .editor-content {
       margin: 0px 5px;
       font-weight: normal;
-      font-size: var(--font-size-18);
+      font-size: var(--font-size-20);
     }
 
     .prosemirror menu {
@@ -336,7 +353,12 @@
         flex-direction: column;
         .item-line {
           display: grid;
-          grid-template-columns: 2fr 1fr 2fr;
+          &.weapon {
+            grid-template-columns: 2fr 1fr 2fr;
+          }
+          &.other {
+            grid-template-columns: 2fr 1fr;
+          }
           .item-name-img {
             display: flex;
             align-items: center;

@@ -4,15 +4,15 @@
       "character": "Character",
       "opponent": "Opponent"
     },
-    "Item": {
-      "archetype": "Ability",
+    "Item": {      
+      "ability": "Ability",
       "item": "Item",
       "weapon": "Weapon",
-      "attack": "Attack",
-      "magic": "Magic",
-      "ability": "Archetype",
-      "definition": "Definition",
-      "opponentAbility": "Opponent Ability"
+      "magic": "Magic",      
+      "archetype": "Archetype",
+      "attack": "Attack",      
+      "opponentAbility": "Opponent Ability",
+      "definition": "Definition"
     }
   },
 
@@ -310,7 +310,8 @@
     "Title": "Players status",
     "Adrenaline": "Adrenaline",
     "Player": "Player",
-    "Character": "Character"
+    "Character": "Character",
+    "LetsRoll": "Let's roll"
   },
 
   "TOOLTIPS": {

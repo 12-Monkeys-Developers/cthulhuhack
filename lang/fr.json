@@ -8,11 +8,11 @@
       "ability": "Capacité",
       "item": "Objet",
       "weapon": "Arme",
-      "attack": "Attaque",
       "magic": "Magie",
       "archetype": "Archétype",
-      "definition": "Définition",
-      "opponentAbility": "Capacité adversaire"
+      "attack": "Attaque",
+      "opponentAbility": "Capacité adversaire",
+      "definition": "Définition"
     }
   },
 
@@ -310,7 +310,8 @@
     "Title": "Statut des joueurs",
     "Adrenaline": "Adrénaline",
     "Player": "Joueur",
-    "Character": "Personnage"
+    "Character": "Personnage",
+    "LetsRoll": "Faire le jet"
   },
 
   "TOOLTIPS": {
