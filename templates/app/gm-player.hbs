@@ -1,7 +1,7 @@
 {{!log 'gm-manager-player' this}}
 <tr class="character-resume" data-user-id="{{id}}" data-character-name="{{character.name}}" data-character-id="{{character.id}}">
     <td>{{name}}</td>
-    <td>{{character.name}}</td>
+    <td class="gm-character" data-tooltip="{{character.system.infos}}">{{character.name}}</td>
     <td class="gm-resource-individual" data-resource="FlashLights">{{character.system.attributes.flashlights.value}}</td>
     <td class="gm-resource-individual" data-resource="Smokes">{{character.system.attributes.smokes.value}}</td>
     <td class="gm-resource-individual" data-resource="Sanity">{{character.system.attributes.sanity.value}}</td>

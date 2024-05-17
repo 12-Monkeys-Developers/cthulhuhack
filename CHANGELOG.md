@@ -1,5 +1,7 @@
 2.9.1
 - Fix font color of chat result from random tables
+- GM Manager : Add click on character name to open the character sheet
+- GM Manager : Add tooltip on character name to display abilities and magics items name
 
 2.9.0
 - CSS system can now be customized by a module
