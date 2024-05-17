@@ -95,4 +95,15 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
   get hasArchetype() {
     return !!this.archetype;
   }
+
+  get infos() {
+    const abilities = this.parent.itemTypes.ability;
+    const abilitiesTitle = game.i18n.localize("CTHACK.Abilities");
+    const abilitiesName = abilities.map(ability => ability.name);
+
+    const magics = this.parent.itemTypes.magic;
+    const magicsTitle = game.i18n.localize("CTHACK.Magic");
+    const magicsName = magics.map(magic => magic.name);
+    return `${abilitiesTitle} : ${abilitiesName.join(', ')} <br/> ${magicsTitle} : ${magicsName.join(', ')}`
+  }
 }
