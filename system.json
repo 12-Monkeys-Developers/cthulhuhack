@@ -125,7 +125,7 @@
     },
     {
       "name": "gametables",
-      "label": "FR - Tableaux",
+      "label": "FR - Tables aléatoires",
       "system": "cthack",
       "path": "packs/tables",
       "type": "RollTable",

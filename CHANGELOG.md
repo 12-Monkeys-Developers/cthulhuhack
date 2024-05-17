@@ -1,3 +1,6 @@
+2.9.1
+- Fix font color of chat result from random tables
+
 2.9.0
 - CSS system can now be customized by a module
 
