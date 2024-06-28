@@ -55,7 +55,7 @@ export async function diceRoll(
 	let adv = 0;
 
 	// Define the inner roll function
-	const _roll = (parts, adv, form, advantage, disadvantage) => {
+	const _roll = async (parts, adv, form, advantage, disadvantage) => {
 		// Determine the dice roll and modifiers
 		let nd;
 		let mods = '';
@@ -102,7 +102,7 @@ export async function diceRoll(
 		let roll = new Roll(parts.join(' + '), data);
 
 		try {
-			roll.evaluate({async: false});
+			await roll.evaluate();
 		} catch (err) {
 			console.error(err);
 			//ui.notifications.error(`Dice roll evaluation failed: ${err.message}`);

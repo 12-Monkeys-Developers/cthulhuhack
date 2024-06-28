@@ -1,3 +1,6 @@
+3.0.0
+- Compatibility V12 : The async option for Roll#evaluate has been removed
+
 2.9.2
 - Add maximum compatibiliy to V11
 
