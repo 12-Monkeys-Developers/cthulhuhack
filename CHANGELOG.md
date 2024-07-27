@@ -1,3 +1,6 @@
+3.0.1
+- Fix the automatic decrease in case of failure for ressources : miscellaneous, wealthDice, hitDice
+
 3.0.0
 - Compatibility V12 : The async option for Roll#evaluate has been removed
 

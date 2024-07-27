@@ -196,16 +196,30 @@ export default class CtHackActor extends Actor {
     const actorResource = this.system.attributes[resourceId];
 
     // old value is 0 or dx
-    const oldValue = actorResource.value;
-    if (oldValue != "0") {
+    let oldValue = actorResource.value;
+    if (oldValue !== "0") {
       let newValue = findLowerDice(oldValue);
       actorResource.value = newValue;
-      if (resourceId === "flashlights") {
-        await this.update({ "data.attributes.flashlights": actorResource });
-      } else if (resourceId === "smokes") {
-        await this.update({ "data.attributes.smokes": actorResource });
-      } else if (resourceId === "sanity") {
-        await this.update({ "data.attributes.sanity": actorResource });
+
+      switch (resourceId) {
+        case "flashlights":
+          await this.update({ "system.attributes.flashlights": actorResource });
+          break;
+        case "smokes":
+          await this.update({ "system.attributes.smokes": actorResource });
+          break;
+        case "sanity":
+          await this.update({ "system.attributes.sanity": actorResource });
+          break;
+        case "miscellaneous":
+          await this.update({ "system.attributes.miscellaneous": actorResource });
+          break;
+        case "wealthDice":
+          await this.update({ "system.attributes.wealthDice": actorResource });
+          break;
+        case "hitDice":
+          await this.update({ "system.attributes.hitDice": actorResource });
+          break;
       }
     }
   }
@@ -570,7 +584,7 @@ export default class CtHackActor extends Actor {
     return false;
   }
 
-  get hasImage(){
+  get hasImage() {
     return this.img && this.img !== "icons/svg/mystery-man.svg";
   }
 }
