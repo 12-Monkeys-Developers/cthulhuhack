@@ -97,6 +97,16 @@ export default class CtHackCharacterSheet extends ActorSheet {
     } else if (healthDisplay === "hd") {
       context.displayHP = false;
     }
+
+    context.isWealthAsResource = game.settings.get("cthack", "Wealth") === "resource";  
+    context.hasLostFlashlights = this.actor.system.attributes.flashlights.value !== this.actor.system.attributes.flashlights.max;
+    context.hasLostSmokes = this.actor.system.attributes.smokes.value !== this.actor.system.attributes.smokes.max;
+    context.hasLostSanity = this.actor.system.attributes.sanity.value !== this.actor.system.attributes.sanity.max;
+    context.hasLostMiscellaneous = this.actor.system.attributes.miscellaneous.value !== this.actor.system.attributes.miscellaneous.max;   
+    context.hasLostHitDice = this.actor.system.attributes.hitDice.value !== this.actor.system.attributes.hitDice.max;
+    context.hasLostWealthDice = this.actor.system.attributes.wealthDice.value !== this.actor.system.attributes.wealthDice.max;
+         
+    console.log("Character Sheet Context",context);
     return context;
   }
 

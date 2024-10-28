@@ -80,6 +80,9 @@ a.inline-roll {
 .editor.prosemirror.editing-source textarea {
   color: var(--font-color-primary);
 }
+.chat-message {
+  padding: 0;
+}
 .chat-message .message-content .chat-save-roll,
 .chat-message .message-content .chat-resource-roll,
 .chat-message .message-content .chat-other-roll,
@@ -91,6 +94,8 @@ a.inline-roll {
 .chat-message .message-header .message-sender {
   font-weight: bold;
 }
+.chat-message .message,
+.chat-message .message-header,
 .chat-message .message-content {
   background-image: var(--background-chat-image);
   background-repeat: no-repeat;
@@ -621,6 +626,8 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .resource-value {
   color: black;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource-value.resource-value-lost {
   text-shadow: 0 0 10px red;
 }
 .cthack.sheet.actor.character .sheet-body .editor {

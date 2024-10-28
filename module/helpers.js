@@ -73,11 +73,6 @@ export const registerHandlebarsHelpers = function() {
 
 	});
 
-	Handlebars.registerHelper('isWealthAsResource', function() {
-		const value = game.settings.get("cthack", "Wealth");
-		return value == 'resource';
-	});
-
 	Handlebars.registerHelper('getFortuneValue', function() {
 		return game.settings.get('cthack', 'FortuneValue');
 	});

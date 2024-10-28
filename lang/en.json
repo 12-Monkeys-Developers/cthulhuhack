@@ -319,7 +319,8 @@
     "UnlockSheet": "Unlock the sheet",
     "SelectImage": "Left click to select an image, right click to remove the image",
     "ShowImage": "Show the image",
-    "SearchName": "Right click to search the name"
+    "SearchName": "Right click to search the name",
+    "Max": "Max : "
   },
 
   "SEARCHTOOL": {

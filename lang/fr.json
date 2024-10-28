@@ -319,7 +319,8 @@
     "UnlockSheet": "Déverrouiller la fiche",
     "SelectImage": "Clic gauche pour sélectionner une image, clic droit pour supprimer l'image",
     "ShowImage": "Montrer l'image",
-    "SearchName": "Clic droit pour rechercher le nom"
+    "SearchName": "Clic droit pour rechercher le nom",
+    "Max": "Max : "
   },
 
   "SEARCHTOOL": {
