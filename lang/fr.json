@@ -272,7 +272,9 @@
     "CompendiumFRName": "Afficher les compendiums français",
     "CompendiumFRHint": "Affiche ou non les compendiums français du système",
     "CompendiumENName": "Afficher les compendiums anglais",
-    "CompendiumENHint": "Affiche ou non les compendiums anglais du système"
+    "CompendiumENHint": "Affiche ou non les compendiums anglais du système",
+    "RevisedName": "Cthulhu Hach Réédition",
+    "RevisedHint": "Active les règles de la réédition de Cthulhu Hack"
   },
 
   "CHAT": {

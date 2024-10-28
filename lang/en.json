@@ -272,7 +272,9 @@
     "CompendiumFRName": "Display french compendiums",
     "CompendiumFRHint": "Display french compendiums",
     "CompendiumENName": "Display english compendiums",
-    "CompendiumENHint": "Display english compendiums"
+    "CompendiumENHint": "Display english compendiums",    
+    "RevisedName": "Cthulhu Hach Reissue",
+    "RevisedHint": "Activate Cthulhu Hack reissue rules"
   },
 
   "CHAT": {
