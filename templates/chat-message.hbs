@@ -1,0 +1,51 @@
+{{!log 'chat-message' this}}
+<div class="{{cssClass}}">
+    <div class="intro-chat">
+        {{#if (ne actingCharImg "icons/svg/mystery-man.svg")}}
+            <div class="intro-img">
+                <img src="{{actingCharImg}}" data-tooltip="{{actingCharName}}" />
+            </div>
+        {{else}}
+            <div></div>
+        {{/if}}
+        <div class="intro-right">                
+            <p class="introText" {{#if isSave}}data-tooltip="{{introTextTooltip}}"{{/if}}>{{{introText}}}
+            {{#if isSave}}
+                    <br>
+                    {{#if (eq avantages "avantage")}} {{localize "CTHACK.Roll.avantage"}}{{/if}}
+                    {{#if (eq avantages "desavantage")}} {{localize "CTHACK.Roll.desavantage"}}{{/if}}
+                    {{#if (eq avantages "doubleAvantage")}} {{localize "CTHACK.Roll.doubleAvantage"}}{{/if}}
+                    {{#if (eq avantages "doubleDesavantage")}} {{localize "CTHACK.Roll.doubleDesavantage"}}{{/if}}
+            {{/if}}        
+            </p>                 
+        </div>
+    </div>
+     {{#if isSave}}
+        <div class="result">
+            {{#if (eq resultType "success")}}
+                {{#if isPrivate}}?{{else}}{{localize "CTHACK.Roll.success"}}{{/if}}
+            {{else}}
+                {{#if isPrivate}}?{{else}}{{localize "CTHACK.Roll.failure"}}{{/if}}
+            {{/if}}
+        </div>
+     {{/if}}
+     {{#if isResource}}
+        <div class="result">
+            {{#if (eq resultType "success")}}
+                {{#if isPrivate}}?{{else}}{{localize "CTHACK.Roll.success"}}{{/if}}
+            {{else}}
+                {{#if isPrivate}}?{{else}}{{localize "CTHACK.Roll.failure"}}{{#if isFailure}} ({{localize "CTHACK.Roll.resourceLost"}}){{/if}}{{/if}}
+            {{/if}}
+        </div>
+     {{/if}}
+     {{#if (and isGM isDamage hasTarget)}}
+            {{localize "CTHACK.Roll.displayArmor" targetName=targetName targetArmor=targetArmor realDamage=realDamage}}
+     {{/if}}
+    {{#unless isPrivate}}
+        <div class="dice-result">
+            <h4 class="dice-total">{{total}}</h4>
+            <div class="dice-formula">{{formula}}</div>
+            {{{tooltip}}}        
+        </div>
+    {{/unless}}
+</div>

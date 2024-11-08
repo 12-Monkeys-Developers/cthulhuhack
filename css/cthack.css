@@ -2085,3 +2085,149 @@ a.inline-roll {
 .cthack.sheet.item.opponentAbility .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
 }
+.application.dialog.cthack {
+  color: var(--color-light-1);
+}
+.application.dialog.cthack input,
+.application.dialog.cthack select {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-light-1);
+  color: var(--color-light-1);
+  font-size: 1.2rem;
+}
+.application.dialog.cthack legend {
+  letter-spacing: 1px;
+}
+.application.dialog.cthack .cthack-roll-dialog fieldset {
+  margin: 10px 0 0 0;
+  padding: 5px;
+}
+.application.dialog.cthack .cthack-roll-dialog .select {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-aide-gene {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-aide-gene select {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-light-1);
+  width: 60px;
+  text-align: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-avantages #selectAvantages {
+  background-color: inherit;
+  text-align: center;
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-avantages input[type="range"] {
+  margin-top: 5px;
+  border: 2px solid var(--color-light-1);
+  --range-track-color: var(--color-light-1);
+  --range-thumb-background-color: rgba(11, 10, 19, 0.9);
+  --range-thumb-border-color: var(--color-light-1);
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-avantages input[name="selectAvantages"] {
+  border: none;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-bonus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-bonus .bonus.checked {
+  background: var(--color-dark-3);
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-modificateur {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-modificateur select {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-light-1);
+  width: 60px;
+  text-align: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-visibility {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-visibility select {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-light-1);
+  width: 50%;
+  text-align: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-damage,
+.application.dialog.cthack .cthack-roll-dialog .dialog-resource,
+.application.dialog.cthack .cthack-roll-dialog .dialog-save {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 2);
+  color: var(--color-light-1);
+}
+.application.dialog.cthack button {
+  border-color: var(--color-light-1);
+  color: var(--color-light-1);
+  font-size: 1.2rem;
+}
+.application.dialog.cthack button:hover {
+  background: var(--color-dark-3);
+}
+.dice-roll {
+  flex-direction: column;
+}
+.dice-roll .dice-total,
+.dice-roll .dice-formula {
+  padding-top: 5px;
+}
+.dice-roll .dice-total {
+  margin-bottom: 5px;
+}
+.dice-roll .message-header {
+  font-family: var(--font-primary);
+}
+.dice-roll img {
+  border: 0px;
+}
+.dice-roll .intro-chat {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.dice-roll .intro-chat .intro-img {
+  padding: 5px;
+  width: 80px;
+  align-self: center;
+}
+.dice-roll .intro-chat .intro-right {
+  display: flex;
+  flex-direction: column;
+}
+.dice-roll .intro-chat .intro-right .introText {
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+  width: 210px;
+  margin-left: 20px;
+}
+.dice-roll .result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--font-size-standard) * 1.2);
+  text-shadow: 0 0 10px var(--color-shadow-primary);
+}

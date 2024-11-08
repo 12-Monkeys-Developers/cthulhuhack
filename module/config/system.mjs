@@ -13,6 +13,13 @@ export const DICE_MAX_VALUES = { d4: "4", d6: "6", d8: "8", d10: "10", d12: "12"
 export const WEALTH_START = { 2: "CHA*2", 3: "CHA*3", 4: "CHA*4", sp: "CTHACK.WealthStartSpecial" };
 export const SEARCH_MAX_RESULTS = 20;
 
+export const ROLL_TYPE = Object.freeze({
+  SAVE: "save",
+  RESOURCE: "resource",
+  DAMAGE: "damage",
+  ATTACK: "attack",
+})
+
 /**
  * Include all constant definitions within the SYSTEM global export
  * @type {Object}

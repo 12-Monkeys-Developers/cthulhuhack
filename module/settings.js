@@ -113,11 +113,24 @@ export const registerSystemSettings = function () {
     requiresReload: true,
   })
 
+
+  /**
+   * World key used for statistics
+   */  
   game.settings.register("cthack", "worldKey", {
     name: "Unique world key",
     scope: "world",
     config: false,
     type: String,
     default: "",
+  })
+
+  game.settings.register("cthack", "displayOpponentMalus", {
+    name: "SETTINGS.displayOpponentMalus",
+    hint: "SETTINGS.displayOpponentMalusHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
   })
 }

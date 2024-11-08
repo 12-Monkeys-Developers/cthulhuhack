@@ -82,6 +82,9 @@ Hooks.once("init", async function () {
   Items.registerSheet(SYSTEM_NAME, applications.AdversaireCapaciteSheet, { types: ["opponentAbility"], makeDefault: true });
   Items.registerSheet(SYSTEM_NAME, applications.DefinitionSheet, { types: ["definition"], makeDefault: true });
 
+    // Dice system configuration
+    CONFIG.Dice.rolls.push(documents.CtHackRoll)
+
   // Preload Handlebars Templates
   preloadHandlebarsTemplates();
 

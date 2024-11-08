@@ -245,6 +245,91 @@
       "InitStart": "Initialisation du système Cthulhu Hack",
       "InitEnd": "Système Cthulhu Hack initialisé",
       "ReadyEnd": "Système Cthulhu Hack prêt"
+    },
+    "Dialog": {
+      "titleSave": "Jet de sauvegarde",
+      "titleResource": "Jet de ressource",
+      "titleDamage": "Jet de dégâts",
+      "titleAttack": "Jet d'attaque",
+      "titleStandard": "Jet standard"
+    },
+    "Roll": {
+      "save": "Jet de sauvegarde <br> {save}",
+      "resource": "Jet de ressource <br> {resource}",
+      "damage": "Jet de dégâts <br> {item}",
+      "attack": "Jet d'attaque <br> {item}",
+      "roll": "Lancer",
+      "adversite": "Adversité",
+      "avantagesDesavantages": "Avantages et désavantages",
+      "normal": "Normal",
+      "avantage": "Avec avantage",
+      "desavantage": "Avec désavantage",
+      "doubleAvantage": "Avec double avantage",
+      "doubleDesavantage": "Avec double désavantage",
+      "visibilite": "Visibilité du lancer",
+      "success": "Réussite",
+      "failure": "Echec",
+      "resourceLost": "Ressource perdue",
+      "displayArmor": "{targetName} a une armure de {targetArmor}. Dégâts réels : {realDamage}"
+    },
+    "Character": {
+      "saves": {
+        "str": "Force",
+        "dex": "Dextérité",
+        "con": "Constitution",
+        "wis": "Sagesse",
+        "int": "Intelligence",
+        "cha": "Charisme"
+      },
+      "resources": {
+        "flashlights": "Torche",
+        "smokes": "Bagou",
+        "sanity": "Santé mentale",
+        "hitPoints": "Points de Vie",
+        "wealth": "Richesse"
+      }
+    },
+
+    "Label": {
+      "degats": "Dégâts",
+      "ressource": "Ressource",
+      "sauvegarde": "Sauvegarde",
+      "modificateur": "Modificateur"
+    },
+    "Warning": {
+      "noResource": "Vous n'avez plus de ressource {ressource}"
+    },
+    "StandardAbilities": {
+      "SWILEA": {
+        "label": "Agile"
+      },
+      "STA": {
+        "label": "Artiste"
+      },
+      "ANIHAN": {
+        "label": "Dressage"
+      },
+      "IND": {
+        "label": "Indomptable"
+      },
+      "MEC": {
+        "label": "Mécanicien"
+      },
+      "IROMIN": {
+        "label": "Mental d'acier"
+      },
+      "RIP": {
+        "label": "Musclé"
+      },
+      "LEG": {
+        "label": "Prestidigitation"
+      },
+      "SELPRE": {
+        "label": "Sens du danger"
+      },
+      "HAR": {
+        "label": "Vigoureux"
+      }
     }
   },
 
@@ -274,7 +359,9 @@
     "CompendiumENName": "Afficher les compendiums anglais",
     "CompendiumENHint": "Affiche ou non les compendiums anglais du système",
     "RevisedName": "Cthulhu Hach Réédition",
-    "RevisedHint": "Active les règles de la réédition de Cthulhu Hack"
+    "RevisedHint": "Active les règles de la réédition de Cthulhu Hack",
+    "displayOpponentMalus": "Afficher le malus d'adversité",
+    "displayOpponentMalusHint": "Affiche le malus d'adversité pour les joueurs."
   },
 
   "CHAT": {
@@ -322,7 +409,8 @@
     "SelectImage": "Clic gauche pour sélectionner une image, clic droit pour supprimer l'image",
     "ShowImage": "Montrer l'image",
     "SearchName": "Clic droit pour rechercher le nom",
-    "Max": "Max : "
+    "Max": "Max : ",
+    "saveIntroTextTooltip": "Caractéristique : {value} <br> Modificateur : {modificateur}"
   },
 
   "SEARCHTOOL": {
@@ -343,4 +431,3 @@
     "UnhighlightedTooltip": "Surligner le texte recherché dans les documents"
   }
 }
-

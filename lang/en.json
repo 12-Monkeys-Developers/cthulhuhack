@@ -4,13 +4,13 @@
       "character": "Character",
       "opponent": "Opponent"
     },
-    "Item": {      
+    "Item": {
       "ability": "Ability",
       "item": "Item",
       "weapon": "Weapon",
-      "magic": "Magic",      
+      "magic": "Magic",
       "archetype": "Archetype",
-      "attack": "Attack",      
+      "attack": "Attack",
       "opponentAbility": "Opponent Ability",
       "definition": "Definition"
     }
@@ -86,7 +86,7 @@
     "AbilityUseScenario": "Per scenario",
     "AbilityUsePerSession": "Per session",
     "AbilityUsePerDay": "Per day",
-    "AbilityUsePerNight": "Per night",    
+    "AbilityUsePerNight": "Per night",
     "AbilityUsePerHour": "Per hour",
     "AbilityUsePerScene": "Per scene",
     "AbilityUsePerFight": "Per fight",
@@ -94,6 +94,7 @@
     "AbilityIsCustom": "Custom",
     "AbilityAdvantageGiven": "Advantage given",
     "AbilityAdvantageText": "Advantage description",
+
     "MagicType": "Type",
     "MagicSanity": "Sanity",
     "MagicIncantation": "Incantation",
@@ -227,7 +228,6 @@
       "Div": "Dive",
       "Scr": "Scream"
     },
-
     "GMManager": {
       "Title": "Players Status"
     },
@@ -245,6 +245,91 @@
       "InitStart": "Initialization of Cthulhu Hack system",
       "InitEnd": "Cthulhu Hack system initialized",
       "ReadyEnd": "Cthulhu Hack system ready"
+    },
+    "Dialog": {
+      "titleSave": "Save Roll",
+      "titleResource": "Resource Roll",
+      "titleDamage": "Damage Roll",
+      "titleAttack": "Attack Roll",
+      "titleStandard": "Standard Roll"
+    },
+    "Roll": {
+      "save": "Save Roll <br> {save}",
+      "resource": "Resource Roll <br> {resource}",
+      "damage": "Damage Roll <br> {item}",
+      "attack": "Attack Roll <br> {item}",
+      "roll": "Roll",
+      "adversite": "Opponent",
+      "avantagesDesavantages": "Advantages and disadvantages",
+      "normal": "Normal",
+      "avantage": "With advantage",
+      "desavantage": "With disadvantage",
+      "doubleAvantage": "With double advantage",
+      "doubleDesavantage": "With double disadvantage",
+      "visibilite": "Roll visibility",
+      "success": "Success",
+      "failure": "Failure",
+      "resourceLost": "Resource lost",
+      "displayArmor": "{targetName} has an armor of {targetArmor}. Real damages : {realDamage}"
+    },
+    "Character": {
+      "saves": {
+        "str": "Strength",
+        "dex": "Dexterity",
+        "con": "Constitution",
+        "wis": "Wisdom",
+        "int": "Intelligence",
+        "cha": "Charisma"
+      },
+      "resources": {
+        "flashlights": "Flashlights",
+        "smokes": "Smokes",
+        "sanity": "Sanity",
+        "hitPoints": "Hit Points",
+        "wealth": "Wealth"
+      }
+    },
+
+    "Label": {
+      "degats": "Damage",
+      "ressource": "Resource",
+      "sauvegarde": "Save",
+      "modificateur": "Modifier"
+    },
+    "Warning": {
+      "noResource": "You have no more resource {ressource}"
+    },
+    "StandardAbilities": {
+      "SWILEA": {
+        "label": "Agile"
+      },
+      "STA": {
+        "label": "Stagecraft"
+      },
+      "ANIHAN": {
+        "label": "Animal Handler"
+      },
+      "IND": {
+        "label": "Indomitable"
+      },
+      "MEC": {
+        "label": "Mechanic"
+      },
+      "IROMIN": {
+        "label": "Iron Mind"
+      },
+      "RIP": {
+        "label": "Ripped"
+      },
+      "LEG": {
+        "label": "Legerdemain"
+      },
+      "SELPRE": {
+        "label": "Self-Preservation"
+      },
+      "HAR": {
+        "label": "Hardy"
+      }
     }
   },
 
@@ -266,15 +351,17 @@
     "HealthDisplayHint": "Display hit points, hit dice or both",
     "HealthDisplayHp": "Display hit points",
     "HealthDisplayHd": "Display hit dice",
-    "HealthDisplayBoth": "Display hit points and hit dice",    
+    "HealthDisplayBoth": "Display hit points and hit dice",
     "MiscellaneousResourceName": "Miscellaneous Resource",
     "MiscellaneousResourceHint": "Allow to have a additional resource",
     "CompendiumFRName": "Display french compendiums",
     "CompendiumFRHint": "Display french compendiums",
     "CompendiumENName": "Display english compendiums",
-    "CompendiumENHint": "Display english compendiums",    
+    "CompendiumENHint": "Display english compendiums",
     "RevisedName": "Cthulhu Hach Reissue",
-    "RevisedHint": "Activate Cthulhu Hack reissue rules"
+    "RevisedHint": "Activate Cthulhu Hack reissue rules",
+    "displayOpponentMalus": "Display Opponent malus",
+    "displayOpponentMalusHint": "Display the Opponent malus to the players."    
   },
 
   "CHAT": {
@@ -322,7 +409,8 @@
     "SelectImage": "Left click to select an image, right click to remove the image",
     "ShowImage": "Show the image",
     "SearchName": "Right click to search the name",
-    "Max": "Max : "
+    "Max": "Max : ",
+    "saveIntroTextTooltip": "Caracteristic : {value} <br> Modifier : {modificateur}"
   },
 
   "SEARCHTOOL": {
@@ -331,7 +419,7 @@
     "ButtonCancel": "Cancel",
     "DialogTitle": "Search for Text in Journals, Characters, Items...",
     "DialogInput": "Text to search :",
-    "ChatIntro": "Search result", 
+    "ChatIntro": "Search result",
     "ChatText": "Searched text: ",
     "NoResults": "No result",
     "TooManyResults": "More than 20 results, refine your search.",

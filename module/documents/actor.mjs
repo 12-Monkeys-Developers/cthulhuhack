@@ -2,6 +2,7 @@ import { CTHACK } from "../config.js";
 import { diceRoll } from "../dice.js";
 import { formatDate, findLowerDice } from "../utils.js";
 import { LOG_HEAD } from "../constants.js";
+import { ROLL_TYPE } from "../config/system.mjs";
 
 /**
  * @extends {Actor}
@@ -19,11 +20,12 @@ export default class CtHackActor extends Actor {
    * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollSave(saveId, options = {}) {
+    const v2 = game.settings.get("cthack", "Revised") ? true : false;
     if (CTHACK.debug) console.log(`${LOG_HEAD}Roll save ${saveId}`);
     const save = CTHACK.saves[saveId];
     const label = game.i18n.localize(save);
     const saveValue = this.system.saves[saveId].value;
-    const abilitiesAdvantages = this._findSavesAdvantages(saveId);
+    const abilitiesAdvantages = v2 ? this.findSavesAdvantages(saveId) : this.findSavesAdvantagesHTML(saveId);
     let hasAdvantage = false;
     let hasDisadvantage = false;
     if (this.getFlag("cthack", "disadvantageOOA") !== undefined && this.getFlag("cthack", "disadvantageOOA") === true) {
@@ -31,18 +33,27 @@ export default class CtHackActor extends Actor {
       hasDisadvantage = true;
     }
 
-    // Roll and return
-    const rollData = foundry.utils.mergeObject(options, {
-      rollType: "Save",
-      title: game.i18n.format("CTHACK.SavePromptTitle", { save: label }),
-      rollId: label,
-      targetValue: saveValue,
-      abilitiesAdvantages: abilitiesAdvantages,
-      advantage: hasAdvantage,
-      disadvantage: hasDisadvantage,
-    });
-    rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
-    return await diceRoll(rollData);
+    // V1
+    if (!v2) {
+      // Roll and return
+      const rollData = foundry.utils.mergeObject(options, {
+        rollType: "Save",
+        title: game.i18n.format("CTHACK.SavePromptTitle", { save: label }),
+        rollId: label,
+        targetValue: saveValue,
+        abilitiesAdvantages: abilitiesAdvantages,
+        advantage: hasAdvantage,
+        disadvantage: hasDisadvantage,
+      });
+      rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
+      return await diceRoll(rollData);
+    }
+    // V2
+    else 
+    {
+      return await this.system.roll(ROLL_TYPE.SAVE, saveId)
+    }
+
   }
 
   /**
@@ -297,7 +308,7 @@ export default class CtHackActor extends Actor {
       let abilitiesList = this.system.abilities;
       abilitiesList.splice(index, 1);
 
-      await this.update({ "data.abilities": abilitiesList });
+      await this.update({ "system.abilities": abilitiesList });
     }
   }
 
@@ -326,56 +337,63 @@ export default class CtHackActor extends Actor {
     return index;
   }
 
-  /**
-   *
-   * @param {*} saveId
-   * @returns
-   */
-  _findSavesAdvantages(saveId) {
+  findSavesAdvantagesHTML(saveId) {
     let advantages = "<ul>";
+    let advantagesArray = this.findSavesAdvantages(saveId);
+
+    for (let index = 0; index < advantagesArray.length; index++) {
+        advantages += `<li> ${advantagesArray[index]} </li>`;
+    }
+    if (advantages === "<ul>") {
+      advantages = "";
+    } else advantages += "</ul>";
+    return advantages;
+  }
+  
+
+  findSavesAdvantages(saveId) {
+    let advantages = [];
+
     let abilitiesList = this.system.abilities;
     for (let index = 0; index < abilitiesList.length; index++) {
       const element = abilitiesList[index];
       if (element.key === "SWILEA" && (saveId === "str" || saveId === "dex" || saveId === "con")) {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageSWILEA") + "</li>";
+        advantages.push({text: game.i18n.localize("CTHACK.AdvantageSWILEA"), origin: game.i18n.localize("CTHACK.StandardAbilities.SWILEA.label")});
       }
       if (element.key === "STA") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageSTA") + "</li>";
+        advantages.push({text: game.i18n.localize("CTHACK.AdvantageSTA"), origin: game.i18n.localize("CTHACK.StandardAbilities.STA.label")});
       }
       if (element.key === "ANIHAN") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageANIHAN") + "</li>";
+        advantages.push({text: game.i18n.localize("CTHACK.AdvantageANIHAN"), origin: game.i18n.localize("CTHACK.StandardAbilities.ANIHAN.label")});
       }
       if (element.key === "IND" && (saveId === "wis" || saveId === "int" || saveId === "cha")) {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageIND") + "</li>";
+        advantages.push({text: game.i18n.localize("CTHACK.AdvantageIND"), origin: game.i18n.localize("CTHACK.StandardAbilities.IND.label")});
       }
       if (element.key === "MEC") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageMEC") + "</li>";
+        advantages.push({text: game.i18n.localize("CTHACK.AdvantageMEC"), origin: game.i18n.localize("CTHACK.StandardAbilities.MEC.label")});
       }
       if (element.key === "IROMIN") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageIROMIN") + "</li>";
+        advantages.push({text: game.i18n.localize("CTHACK.AdvantageIROMIN"), origin: game.i18n.localize("CTHACK.StandardAbilities.IROMIN.label")});
       }
       if (element.key === "RIP" && saveId === "str") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageRIP") + "</li>";
+        advantages.push({text: game.i18n.localize("CTHACK.AdvantageRIP"), origin: game.i18n.localize("CTHACK.StandardAbilities.RIP.label")});
       }
       if (element.key === "LEG") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageLEG") + "</li>";
+        advantages.push({text: game.i18n.localize("CTHACK.AdvantageLEG"), origin: game.i18n.localize("CTHACK.StandardAbilities.LEG.label")});
       }
       if (element.key === "SELPRE") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageSELPRE") + "</li>";
+        advantages.push({text: game.i18n.localize("CTHACK.AdvantageSELPRE"), origin: game.i18n.localize("CTHACK.StandardAbilities.SELPRE.label")});
       }
       if (element.key === "HAR") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageHAR") + "</li>";
+        advantages.push({text: game.i18n.localize("CTHACK.AdvantageHAR"), origin: game.i18n.localize("CTHACK.StandardAbilities.HAR.label")});
       }
     }
 
-    const customAdvantagesText = this._findSavesAdvantagesFromCustomAbilities();
-    if (customAdvantagesText != "") {
-      advantages += customAdvantagesText;
+    const customAdvantages = this._findSavesAdvantagesFromCustomAbilities();
+    if (customAdvantages.length > 0) {
+      advantages.push(...customAdvantages);
     }
 
-    if (advantages === "<ul>") {
-      advantages = "";
-    } else advantages += "</ul>";
     return advantages;
   }
 
@@ -388,13 +406,13 @@ export default class CtHackActor extends Actor {
    * @returns
    */
   _findSavesAdvantagesFromCustomAbilities() {
-    let customAdvantagesText = "";
+    let customAdvantages = [];
     this.items.forEach((element) => {
       if (element.type === "ability" && element.system.isCustom && element.system.advantageGiven && element.system.advantageText !== "") {
-        customAdvantagesText += "<li>" + element.system.advantageText + "</li>";
+        customAdvantages.push(element.system.advantageText);
       }
     });
-    return customAdvantagesText;
+    return customAdvantages;
   }
 
   /**
