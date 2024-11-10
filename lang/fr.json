@@ -17,10 +17,6 @@
   },
 
   "CTHACK": {
-    "SheetClassCharacter": "Personnage",
-    "SheetClassOpponent": "Adversaire",
-    "SheetClassItem": "Objet",
-
     "Name": "Nom",
     "Occupation": "Métier",
     "Archetype": "Archétype",
