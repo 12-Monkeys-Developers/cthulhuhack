@@ -7,7 +7,7 @@
       <img src="{{item.img}}" />
     {{/if}}
     {{#if editable}}
-      <input name="name" type="text" value="{{item.name}}" />
+      <input name="name" type="text" value="{{item.name}}" {{#if (isAbilityKeyReadOnly item.system.key)}}readonly{{/if}}/>
     {{else}}
       <div class="name">{{item.name}}</div>
     {{/if}}
