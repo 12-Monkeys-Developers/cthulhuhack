@@ -1,6 +1,4 @@
 import { ROLL_TYPE } from "../config/system.mjs"
-//import { findLowerDice } from "../utils"
-import { CthackUtils } from "../utils.js"
 
 export default class CtHackRoll extends Roll {
   /**
@@ -387,6 +385,7 @@ export default class CtHackRoll extends Roll {
       resultType = roll.total === 1 || roll.total === 2 ? "failure" : "success"
     }
 
+    // Armor of the target is taking into account
     let realDamage
     if (options.rollType === ROLL_TYPE.DAMAGE) {
       realDamage = Math.max(0, roll.total - parseInt(targetArmor, 10))

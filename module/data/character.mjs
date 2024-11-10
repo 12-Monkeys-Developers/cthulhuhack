@@ -153,6 +153,7 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
   async _roll(rollType, rollTarget, rollValue, opponentTarget = undefined, rollAdvantage = "=") {
+    console.log("Rolling", rollType, rollTarget, rollValue, opponentTarget, rollAdvantage)
     const hasTarget = opponentTarget !== undefined
     let roll = await CtHackRoll.prompt({
       rollType,
@@ -167,16 +168,17 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
     })
     if (!roll) return null
 
+    await roll.toMessage({}, { rollMode: roll.options.rollMode })
+    
     // Perte de ressouces
     if (rollType === ROLL_TYPE.RESOURCE && roll.resultType === "failure") {
       const value = this.attributes[rollTarget].value
       const newValue = CthackUtils.findLowerDice(value)
       await this.parent.update({ [`system.attributes.${rollTarget}.value`]: newValue })
     }
-    await roll.toMessage({}, { rollMode: roll.options.rollMode })
   }
 
   getSaveModifiers(saveId) {
-    return this.parent.findSavesAdvantages(saveId);
+    return this.parent.findSavesAdvantages(saveId)
   }
 }

@@ -1,3 +1,6 @@
+4.0.0
+- Revised version updates
+
 3.0.2
 - GM Manager : Fix Roll for all for Wealth
 

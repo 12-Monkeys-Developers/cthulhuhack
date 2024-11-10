@@ -426,7 +426,6 @@ a.inline-roll {
 .cthack.sheet.actor.character .sidebar .sidebar-section label {
   font-weight: bold;
   font-family: var(--font-secondary);
-  font-size: var(--font-size-24);
 }
 .cthack.sheet.actor.character .sidebar .sidebar-section .save-value {
   flex: 1;
@@ -503,7 +502,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .name {
   margin-left: 10px;
-  font-size: var(--font-size-24);
+  font-size: var(--font-size-20);
   font-weight: bold;
 }
 .cthack.sheet.actor.character .character-sheet-header .header-occupation {
@@ -513,7 +512,6 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .header-occupation .occupation-archetype {
   text-align: left;
-  font-size: var(--font-size-20);
 }
 .cthack.sheet.actor.character .character-sheet-header .occupation {
   display: flex;
@@ -601,7 +599,6 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .resource label {
   font-family: var(--font-secondary);
-  font-size: var(--font-size-24);
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content {
   padding: 5px 0 5px 0;
@@ -2177,7 +2174,7 @@ a.inline-roll {
   border: none;
   background-color: rgba(0, 0, 0, 0.1);
   color: var(--color-light-1);
-  width: 50%;
+  width: 200px;
   text-align: center;
 }
 .application.dialog.cthack .cthack-roll-dialog .dialog-damage,

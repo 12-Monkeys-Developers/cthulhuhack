@@ -1,4 +1,4 @@
-import { DICE_VALUES, ABILITY_KEYS_RESERVED } from "./config.js"
+import { ARRAY_DICE_VALUES, ABILITY_KEYS_RESERVED } from "./config.js"
 import { CTHACK } from "./config.js"
 import { LOG_HEAD } from "./constants.js"
 
@@ -8,25 +8,6 @@ import { LOG_HEAD } from "./constants.js"
  */
 export function isDice(value) {
   return DICE_VALUES.includes(value)
-}
-
-/**
- * Return the next lower type of dice : d4 for d6 by exemple
- * @param dice the current dice dX
- */
-export function findLowerDice(dice) {
-  if (CTHACK.debug) console.log(`${LOG_HEAD}Find lower dice of ${dice}`)
-  let result = "0"
-  if (dice !== "0") {
-    let value = parseInt(dice.substring(1))
-    let index = DICE_VALUES.indexOf(value)
-    let newValue = DICE_VALUES[index - 1]
-    if (newValue !== 0) {
-      result = "d" + newValue
-    }
-  }
-  if (CTHACK.debug) console.log(`${LOG_HEAD}Lower dice is ${result}`)
-  return result
 }
 
 /**
@@ -81,7 +62,7 @@ export class CthackUtils {
 
   // Used when a ressource is lost to find the next lower dice
   static findLowerDice(dice) {
-    let index = DICE_VALUES.indexOf(dice)
-    return DICE_VALUES[index - 1]
+    let index = ARRAY_DICE_VALUES.indexOf(dice)
+    return ARRAY_DICE_VALUES[index - 1]
   }
 }

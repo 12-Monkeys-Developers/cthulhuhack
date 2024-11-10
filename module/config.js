@@ -156,4 +156,4 @@ export const ABILITY_KEYS_RESERVED = [
 	'WITWOR'
 ];
 
-export const DICE_VALUES = [ 0, 4, 6, 8, 10, 12 ];
+export const ARRAY_DICE_VALUES = [ '0', 'd4', 'd6', 'd8', 'd10', 'd12' ];
