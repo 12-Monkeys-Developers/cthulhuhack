@@ -361,6 +361,9 @@ export default class CtHackActor extends Actor {
     }
 
     // Skills avantage : V2 only
+    if (game.settings.get("cthack", "Revised")) {
+      advantages.push({text: this.system.skills, origin: game.i18n.localize("CTHACK.Skills")});
+    }
 
     // Check if the actor has the advantage from the standard abilities
     let abilitiesList = this.system.abilities;

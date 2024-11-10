@@ -207,12 +207,16 @@
     .occupation {
       display: flex;
       flex-direction: row;
-      padding: 10px 0 10px 0;
+      padding: 10px 10px 10px 0;
       label {
         margin-left: 20px;
-        margin-right: 20px;
+        margin-right: 10px;
       }
-      input {
+      input.occupation-name {
+        border: 1px solid;
+        width: 150px;
+      }
+      input.occupation-skills {
         border: 1px solid;
         width: 250px;
       }
@@ -226,7 +230,7 @@
       }
       input {
         border: 1px solid;
-        width: 250px;
+        width: 200px;
       }
     }
     .short-description {
@@ -236,7 +240,7 @@
       padding-left: 50px;
     }
     .short-description-editable {
-      border: 1px solid;      
+      border: 1px solid;
       grid-column-start: 1;
       grid-column-end: 3;
     }
@@ -315,7 +319,6 @@
         text-shadow: 0 0 10px red;
       }
     }
-    
   }
 
   .sheet-body {

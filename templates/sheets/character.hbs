@@ -10,9 +10,10 @@
           <div class="search-name" data-name="{{actor.name}}" data-tooltip="{{localize 'TOOLTIPS.SearchName'}}">{{actor.name}}</div>
         {{/if}}
       </div>
+
       <div class="header-occupation"> 
-        <div class="occupation-archetype">
-          {{#if system.hasOccupation}}{{system.occupation}}{{/if}}{{#if system.hasArchetype}} (Archetype {{system.archetype}}){{/if}}
+        <div class="occupation-archetype" data-tooltip="{{#if system.hasArchetype}} Archetype {{system.archetype}}{{/if}}">
+          {{#if system.hasOccupation}}{{system.occupation}} {{#if system.hasSkills}}({{system.skills}}){{/if}}{{/if}}
         </div>
         <div class="sheet-lock">
           {{#if editable}}
@@ -34,19 +35,13 @@
       {{#if editable}}
         <div class="occupation">
           <label>{{localize "CTHACK.Occupation"}}</label>
-          {{#if editable}}
-            <input name="system.occupation" type="text" value="{{system.occupation}}" class="occupation-input"/>
-          {{else}}
-            {{system.occupation}}
-          {{/if}}
+          <input class="occupation-name" name="system.occupation" type="text" value="{{system.occupation}}" class="occupation-input"/>
+          <label>{{localize "CTHACK.Skills"}}</label>
+          <input class="occupation-skills" name="system.skills" type="text" value="{{system.skills}}" class="occupation-input"/>
         </div>
         <div class="archetype">
           <label>{{localize "CTHACK.Archetype"}}</label>
-          {{#if editable}}
-            <input name="system.archetype" type="text" value="{{system.archetype}}" class="occupation-input"/>
-          {{else}}
-            {{system.archetype}}
-          {{/if}}                
+          <input name="system.archetype" type="text" value="{{system.archetype}}" class="occupation-input"/>               
         </div>
         <input class="short-description-editable" name="system.shortDescription" type="text" value="{{system.shortDescription}}" data-tooltip="{{localize 'CTHACK.ShortDescription'}}"/>
       {{/if}}

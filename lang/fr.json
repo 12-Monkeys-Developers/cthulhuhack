@@ -19,6 +19,7 @@
   "CTHACK": {
     "Name": "Nom",
     "Occupation": "Métier",
+    "Skills": "Compétences",
     "Archetype": "Archétype",
     "SaveStr": "Force",
     "SaveStrAbbr": "For",

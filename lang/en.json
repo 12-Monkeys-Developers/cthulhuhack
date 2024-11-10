@@ -20,6 +20,7 @@
     "Name": "Name",
     "Occupation": "Occupation",
     "Archetype": "Archetype",
+    "Skills": "Skills",
     "SaveStr": "Strength",
     "SaveStrAbbr": "Str",
     "SaveStrDesc": "vs Melee attacks that cannot be dodged",

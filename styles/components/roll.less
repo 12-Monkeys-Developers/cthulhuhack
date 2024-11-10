@@ -39,13 +39,18 @@
     }
 
     .dialog-avantages {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       #selectAvantages {
         background-color: inherit;
-        text-align: center;
+        //text-align: center;
         font-family: var(--font-secondary);
         font-size: calc(var(--font-size-standard) * 1.2);
       }
       input[type="range"] {
+        width: 300px;        ;
         margin-top: 5px;
         border: 2px solid var(--color-light-1);
         --range-track-color: var(--color-light-1);
@@ -54,6 +59,7 @@
       }
       input[name="selectAvantages"] {
         border: none;
+        text-align: center;
       }
     }
 

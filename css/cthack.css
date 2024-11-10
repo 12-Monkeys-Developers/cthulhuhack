@@ -518,13 +518,17 @@ a.inline-roll {
 .cthack.sheet.actor.character .character-sheet-header .occupation {
   display: flex;
   flex-direction: row;
-  padding: 10px 0 10px 0;
+  padding: 10px 10px 10px 0;
 }
 .cthack.sheet.actor.character .character-sheet-header .occupation label {
   margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
-.cthack.sheet.actor.character .character-sheet-header .occupation input {
+.cthack.sheet.actor.character .character-sheet-header .occupation input.occupation-name {
+  border: 1px solid;
+  width: 150px;
+}
+.cthack.sheet.actor.character .character-sheet-header .occupation input.occupation-skills {
   border: 1px solid;
   width: 250px;
 }
@@ -538,7 +542,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .archetype input {
   border: 1px solid;
-  width: 250px;
+  width: 200px;
 }
 .cthack.sheet.actor.character .character-sheet-header .short-description {
   grid-column-start: 1;
@@ -2120,13 +2124,19 @@ a.inline-roll {
   width: 60px;
   text-align: center;
 }
+.application.dialog.cthack .cthack-roll-dialog .dialog-avantages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .application.dialog.cthack .cthack-roll-dialog .dialog-avantages #selectAvantages {
   background-color: inherit;
-  text-align: center;
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.2);
 }
 .application.dialog.cthack .cthack-roll-dialog .dialog-avantages input[type="range"] {
+  width: 300px;
   margin-top: 5px;
   border: 2px solid var(--color-light-1);
   --range-track-color: var(--color-light-1);
@@ -2135,6 +2145,7 @@ a.inline-roll {
 }
 .application.dialog.cthack .cthack-roll-dialog .dialog-avantages input[name="selectAvantages"] {
   border: none;
+  text-align: center;
 }
 .application.dialog.cthack .cthack-roll-dialog .dialog-bonus {
   display: flex;

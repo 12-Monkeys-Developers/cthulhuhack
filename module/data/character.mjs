@@ -70,6 +70,7 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
     schema.equipment = new fields.HTMLField({ required: false, blank: true, textSearch: true })
     schema.archetype = new fields.StringField({ required: false, blank: true })
     schema.occupation = new fields.StringField({ required: false, blank: true })
+    schema.skills = new fields.StringField({ required: false, blank: true })
     schema.abilities = new fields.ArrayField(
       new fields.SchemaField({
         id: new fields.StringField({ required: false, blank: true }),
@@ -96,6 +97,10 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
 
   get hasArchetype() {
     return !!this.archetype
+  }
+
+  get hasSkills() {
+    return !!this.skills
   }
 
   get infos() {
