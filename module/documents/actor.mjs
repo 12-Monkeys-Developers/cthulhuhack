@@ -342,7 +342,7 @@ export default class CtHackActor extends Actor {
     let advantagesArray = this.findSavesAdvantages(saveId);
 
     for (let index = 0; index < advantagesArray.length; index++) {
-        advantages += `<li> ${advantagesArray[index]} </li>`;
+        advantages += `<li> ${advantagesArray[index].text} </li>`;
     }
     if (advantages === "<ul>") {
       advantages = "";
@@ -354,6 +354,7 @@ export default class CtHackActor extends Actor {
   findSavesAdvantages(saveId) {
     let advantages = [];
 
+    // Check if the actor has the advantage from the standard abilities
     let abilitiesList = this.system.abilities;
     for (let index = 0; index < abilitiesList.length; index++) {
       const element = abilitiesList[index];
@@ -389,6 +390,7 @@ export default class CtHackActor extends Actor {
       }
     }
 
+    // Check if the actor has the advantage from the custom abilities
     const customAdvantages = this._findSavesAdvantagesFromCustomAbilities();
     if (customAdvantages.length > 0) {
       advantages.push(...customAdvantages);
@@ -409,7 +411,7 @@ export default class CtHackActor extends Actor {
     let customAdvantages = [];
     this.items.forEach((element) => {
       if (element.type === "ability" && element.system.isCustom && element.system.advantageGiven && element.system.advantageText !== "") {
-        customAdvantages.push(element.system.advantageText);
+        customAdvantages.push({text: element.system.advantageText, origin: element.name});
       }
     });
     return customAdvantages;
