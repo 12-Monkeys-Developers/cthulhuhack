@@ -354,6 +354,14 @@ export default class CtHackActor extends Actor {
   findSavesAdvantages(saveId) {
     let advantages = [];
 
+    // Occupation avantage
+    const occupation = this.system.occupation;
+    if (occupation && occupation !== "") {
+      advantages.push({text: occupation, origin: game.i18n.localize("CTHACK.Occupation")});
+    }
+
+    // Skills avantage : V2 only
+
     // Check if the actor has the advantage from the standard abilities
     let abilitiesList = this.system.abilities;
     for (let index = 0; index < abilitiesList.length; index++) {
