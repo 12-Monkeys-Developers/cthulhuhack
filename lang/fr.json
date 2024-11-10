@@ -248,6 +248,7 @@
       "titleResource": "Jet de ressource",
       "titleDamage": "Jet de dégâts",
       "titleAttack": "Jet d'attaque",
+      "titleMaterial": "Jet de matériel",
       "titleStandard": "Jet standard"
     },
     "Roll": {
@@ -255,6 +256,7 @@
       "resource": "Jet de ressource <br> {resource}",
       "damage": "Jet de dégâts <br> {item}",
       "attack": "Jet d'attaque <br> {item}",
+      "material": "Jet de matériel <br> {material}",
       "roll": "Lancer",
       "adversite": "Adversité",
       "avantagesDesavantages": "Avantages et désavantages",
@@ -291,6 +293,7 @@
       "degats": "Dégâts",
       "ressource": "Ressource",
       "sauvegarde": "Sauvegarde",
+      "material": "Matériel",
       "modificateur": "Modificateur"
     },
     "Warning": {
@@ -381,7 +384,7 @@
 
   "MACROS": {
     "MultipleTokensSelected": "Vous avez sélectionné plusieurs tokens.",
-    "NoTokenSelected": "Aucun token n'est sélectionné.",
+    "NoTokenSelected": "Aucun token n'est sélectionné ou le joueur n'a pas de personnage attribué.",
     "ObjectNotInInventory": "L'objet {itemName} n'est pas dans l'inventaire de {actorName}.",
     "ObjectWithoutResource": "L'objet {itemName} n'est pas un objet à ressource.",
     "ObjectEmptyResource": "L'objet {itemName} n'a plus de ressources.",

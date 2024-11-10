@@ -248,6 +248,7 @@
       "titleResource": "Resource Roll",
       "titleDamage": "Damage Roll",
       "titleAttack": "Attack Roll",
+      "titleMaterial": "Material Roll",
       "titleStandard": "Standard Roll"
     },
     "Roll": {
@@ -255,6 +256,7 @@
       "resource": "Resource Roll <br> {resource}",
       "damage": "Damage Roll <br> {item}",
       "attack": "Attack Roll <br> {item}",
+      "material": "Material Roll <br> {material}",
       "roll": "Roll",
       "adversite": "Opponent",
       "avantagesDesavantages": "Advantages and disadvantages",
@@ -291,6 +293,7 @@
       "degats": "Damage",
       "ressource": "Resource",
       "sauvegarde": "Save",
+      "material": "Material",
       "modificateur": "Modifier"
     },
     "Warning": {
@@ -381,7 +384,7 @@
 
   "MACROS": {
     "MultipleTokensSelected": "You have selected several tokens.",
-    "NoTokenSelected": "No token is selected.",
+    "NoTokenSelected": "No token is selected or the player has no character.",
     "ObjectNotInInventory": "The item {itemName} is not in the inventory of {actorName}.",
     "ObjectWithoutResource": "The item {itemName} is an object without resources.",
     "ObjectEmptyResource": "The item {itemName} has no more resources.",

@@ -1,4 +1,4 @@
-{{!log 'chat-message' this}}
+{{log 'chat-message' this}}
 <div class="{{cssClass}}">
     <div class="intro-chat">
         {{#if (ne actingCharImg "icons/svg/mystery-man.svg")}}
@@ -30,6 +30,15 @@
         </div>
      {{/if}}
      {{#if isResource}}
+        <div class="result">
+            {{#if (eq resultType "success")}}
+                {{#if isPrivate}}?{{else}}{{localize "CTHACK.Roll.success"}}{{/if}}
+            {{else}}
+                {{#if isPrivate}}?{{else}}{{localize "CTHACK.Roll.failure"}}{{#if isFailure}} ({{localize "CTHACK.Roll.resourceLost"}}){{/if}}{{/if}}
+            {{/if}}
+        </div>
+     {{/if}}
+    {{#if isMaterial}}
         <div class="result">
             {{#if (eq resultType "success")}}
                 {{#if isPrivate}}?{{else}}{{localize "CTHACK.Roll.success"}}{{/if}}

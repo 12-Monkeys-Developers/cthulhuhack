@@ -47,6 +47,12 @@
       <div class="dialog-resource">{{formula}}</div>
     </fieldSet>
   {{/if}}
+  {{#if isMaterial}}
+    <fieldSet>
+      <legend>{{localize "CTHACK.Label.material"}}</legend>
+      <div class="dialog-resource">{{formula}}</div>
+    </fieldSet>
+  {{/if}}  
   <fieldSet class="dialog-visibility">
     <legend>{{localize "CTHACK.Roll.visibilite"}}</legend>
     <select name="visibility">

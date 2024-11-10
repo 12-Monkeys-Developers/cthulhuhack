@@ -136,6 +136,9 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
         rollValue = this.parent.items.get(rollTarget).system.degats
         opponentTarget = game.user.targets.first()
         break
+      case ROLL_TYPE.MATERIAL:
+        rollValue = this.parent.items.get(rollTarget).system.dice
+        break
       default:
         // Handle other cases or do nothing
         break
@@ -169,12 +172,20 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
     if (!roll) return null
 
     await roll.toMessage({}, { rollMode: roll.options.rollMode })
-    
-    // Perte de ressouces
+
+    // Perte de ressouce pour un jet de ressource
     if (rollType === ROLL_TYPE.RESOURCE && roll.resultType === "failure") {
       const value = this.attributes[rollTarget].value
       const newValue = CthackUtils.findLowerDice(value)
       await this.parent.update({ [`system.attributes.${rollTarget}.value`]: newValue })
+    }
+
+    // Perte de ressource pour un jet de matériel
+    if (rollType === ROLL_TYPE.MATERIAL && roll.resultType === "failure") {
+      const item = this.parent.items.get(rollTarget)
+      const value = item.system.dice
+      const newValue = CthackUtils.findLowerDice(value)
+      await item.update({ "system.dice": newValue })
     }
   }
 

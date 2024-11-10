@@ -121,6 +121,7 @@ export default class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollMaterial(item, options = {}) {
+    const v2 = game.settings.get("cthack", "Revised") ? true : false
     const dice = item.system.dice
 
     if (CTHACK.debug) console.log(`${LOG_HEAD}Roll dice ${dice} for material ${item.name}`)
@@ -137,20 +138,27 @@ export default class CtHackActor extends Actor {
     const materialName = item.name
     const message = game.i18n.format("CTHACK.MaterialRollDetails", { material: materialName })
 
-    // Roll and return
-    const rollData = foundry.utils.mergeObject(options, {
-      rollType: "Material",
-      title: game.i18n.format("CTHACK.MaterialRollPromptTitle") + " : " + item.name,
-      rollId: message,
-      diceType: dice,
-    })
-    rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
+    // V1
+    if (!v2) {
+      // Roll and return
+      const rollData = foundry.utils.mergeObject(options, {
+        rollType: "Material",
+        title: game.i18n.format("CTHACK.MaterialRollPromptTitle") + " : " + item.name,
+        rollId: message,
+        diceType: dice,
+      })
+      rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
 
-    let rollMaterial = await diceRoll(rollData)
+      let rollMaterial = await diceRoll(rollData)
 
-    // Resource loss
-    if (rollMaterial && (rollMaterial.total === 1 || rollMaterial.total === 2)) {
-      await this._decreaseMaterialResource(item.id, item.system.dice)
+      // Resource loss
+      if (rollMaterial && (rollMaterial.total === 1 || rollMaterial.total === 2)) {
+        await this._decreaseMaterialResource(item.id, item.system.dice)
+      }
+    }
+    // V2
+    else {
+      return await this.system.roll(ROLL_TYPE.MATERIAL, item.id)
     }
   }
 

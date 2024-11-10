@@ -23,6 +23,10 @@ export default class CtHackRoll extends Roll {
     return this.type === ROLL_TYPE.DAMAGE
   }
 
+  get isMaterial() {
+    return this.type === ROLL_TYPE.MATERIAL
+  }
+
   get target() {
     return this.options.target
   }
@@ -117,6 +121,10 @@ export default class CtHackRoll extends Roll {
         const attackLabel = this.target
         text = game.i18n.format("CTHACK.Roll.attack", { item: attackLabel })
         break
+      case ROLL_TYPE.MATERIAL:
+        const materialLabel = this.target
+        text = game.i18n.format("CTHACK.Roll.material", { material: materialLabel })
+        break
     }
     return text
   }
@@ -199,6 +207,11 @@ export default class CtHackRoll extends Roll {
       damageDice = options.rollValue
     }
 
+    // Material roll
+    if (options.rollType === ROLL_TYPE.MATERIAL) {
+      options.rollTarget = game.actors.get(options.actorId).items.get(options.rollTarget).name
+    }
+
     let malus = "0"
     let targetMalus = "0"
     let targetName
@@ -220,13 +233,13 @@ export default class CtHackRoll extends Roll {
     if (options.rollType === ROLL_TYPE.SAVE) {
       saveModifiers = game.actors.get(options.actorId).system.getSaveModifiers(options.rollTarget)
     }
-    
 
     let dialogContext = {
       isSave: options.rollType === ROLL_TYPE.SAVE,
       isResource: options.rollType === ROLL_TYPE.RESOURCE,
       isDamage: options.rollType === ROLL_TYPE.DAMAGE,
       isAttack: options.rollType === ROLL_TYPE.ATTACK,
+      isMaterial: options.rollType === ROLL_TYPE.MATERIAL,
       rollModes,
       fieldRollMode,
       choiceAvantage,
@@ -237,7 +250,7 @@ export default class CtHackRoll extends Roll {
       malus,
       targetName,
       targetArmor,
-      saveModifiers
+      saveModifiers,
     }
     const content = await renderTemplate("systems/cthack/templates/roll-dialog.hbs", dialogContext)
 
@@ -281,30 +294,30 @@ export default class CtHackRoll extends Roll {
       render: (event, dialog) => {
         const rangeInput = dialog.querySelector('input[name="avantages"]')
         if (rangeInput) {
-          rangeInput.addEventListener('change', (event) => {
+          rangeInput.addEventListener("change", (event) => {
             event.preventDefault()
             event.stopPropagation()
             const readOnly = dialog.querySelector('input[name="selectAvantages"]')
             readOnly.value = this._convertAvantages(parseInt(event.target.value))
           })
         }
-        const bonusElements = dialog.querySelectorAll('.bonus');
+        const bonusElements = dialog.querySelectorAll(".bonus")
 
         // Ajoute un event listener à chaque élément
-        bonusElements.forEach(element => {
-          element.addEventListener('click', (event) => {
+        bonusElements.forEach((element) => {
+          element.addEventListener("click", (event) => {
             event.preventDefault()
             event.stopPropagation()
             let bonus = event.currentTarget.closest(".bonus")
             bonus.classList.toggle("checked")
             let currentValue = parseInt(dialog.querySelector('input[name="avantages"]').value)
-            if (bonus.classList.contains("checked")) currentValue = Math.min(currentValue+1,5)
-            else currentValue = Math.max(currentValue-1,1)
+            if (bonus.classList.contains("checked")) currentValue = Math.min(currentValue + 1, 5)
+            else currentValue = Math.max(currentValue - 1, 1)
             rangeInput.value = currentValue
             const readOnly = dialog.querySelector('input[name="selectAvantages"]')
             readOnly.value = this._convertAvantages(currentValue)
-          }); 
-        });
+          })
+        })
       },
     })
 
@@ -383,6 +396,8 @@ export default class CtHackRoll extends Roll {
       resultType = roll.total <= treshold ? "success" : "failure"
     } else if (options.rollType === ROLL_TYPE.RESOURCE) {
       resultType = roll.total === 1 || roll.total === 2 ? "failure" : "success"
+    } else if (options.rollType === ROLL_TYPE.MATERIAL) {
+      resultType = roll.total === 1 || roll.total === 2 ? "failure" : "success"
     }
 
     // Armor of the target is taking into account
@@ -428,6 +443,8 @@ export default class CtHackRoll extends Roll {
         return `${game.i18n.localize("CTHACK.Dialog.titleDamage")} : ${target}`
       case ROLL_TYPE.ATTACK:
         return `${game.i18n.localize("CTHACK.Dialog.titleAttack")} : ${target}`
+      case ROLL_TYPE.MATERIAL:
+        return `${game.i18n.localize("CTHACK.Dialog.titleMaterial")} : ${target}`
       default:
         return game.i18n.localize("CTHACK.Dialog.titleStandard")
     }
@@ -453,6 +470,7 @@ export default class CtHackRoll extends Roll {
    * @property {boolean} isSave - Indicates if the roll is a saving throw.
    * @property {boolean} isResource - Indicates if the roll is related to a resource.
    * @property {boolean} isDamage - Indicates if the roll is for damage.
+   * @property {boolean} isMaterial - Indicates if the roll is for material.
    * @property {boolean} isFailure - Indicates if the roll is a failure.
    * @property {Array} avantages - Advantages associated with the roll.
    * @property {string} actorId - The ID of the actor performing the roll.
@@ -479,6 +497,7 @@ export default class CtHackRoll extends Roll {
       total: this.total,
       isSave: this.isSave,
       isResource: this.isResource,
+      isMaterial: this.isMaterial,
       isDamage: this.isDamage,
       isFailure: this.isFailure,
       avantages: this.avantages,
@@ -514,6 +533,7 @@ export default class CtHackRoll extends Roll {
         isSave: this.isSave,
         isResource: this.isResource,
         isDamage: this.isDamage,
+        isMaterial: this.isMaterial,
         isFailure: this.resultType === "failure",
         avantages: this.avantages,
         introText: this.introText,
@@ -527,7 +547,7 @@ export default class CtHackRoll extends Roll {
         realDamage: this.realDamage,
         ...messageData,
       },
-      { rollMode: rollMode },
+      { rollMode: rollMode }
     )
   }
 

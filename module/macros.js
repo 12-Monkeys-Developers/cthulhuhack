@@ -131,7 +131,7 @@ export class Macros {
         if (tokens.length > 1) return ui.notifications.warn(game.i18n.localize('MACROS.MultipleTokensSelected'));
         const token = canvas.tokens.controlled[0];
 
-        const actor = token ? token.actor : null;
+        const actor = token ? token.actor : game.user.character;
         if (!actor) return ui.notifications.warn(game.i18n.localize('MACROS.NoTokenSelected'));
 
         // Check the actor has the item
