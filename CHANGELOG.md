@@ -1,3 +1,6 @@
+3.0.2
+- GM Manager : Fix Roll for all for Wealth
+
 3.0.1
 - Fix the automatic decrease in case of failure for ressources : miscellaneous, wealthDice, hitDice
 

@@ -9,20 +9,20 @@
       <tr>
         <th>{{localize "GMMANAGER.Player"}}</th>
         <th>{{localize "GMMANAGER.Character"}}</th>
-        <th class="gm-resource-all" data-resource="FlashLights">{{localize "CTHACK.FlashLights"}}</th>
-        <th class="gm-resource-all" data-resource="Smokes">{{localize "CTHACK.Smokes"}}</th>
-        <th class="gm-resource-all" data-resource="Sanity">{{localize "CTHACK.Sanity"}}</th>
-        {{#if (or hasWealthResource hasWealthFixed)}}<th {{#if hasWealthResource}}class="gm-resource-all" data-resource="Wealth"{{/if}}>{{localize "CTHACK.Wealth"}}</th>{{/if}}
-        {{#if hasMisc}}<th class="gm-resource-all" data-resource="Miscellaneous">{{getMiscellaneousValue}}</th>{{/if}}
-        {{#if hasHD}}<th class="gm-resource-all" data-resource="HitDice">{{localize "CTHACK.HitDice"}}</th>{{/if}}
+        <th class="gm-resource-all" data-resource="flashlights">{{localize "CTHACK.FlashLights"}}</th>
+        <th class="gm-resource-all" data-resource="smokes">{{localize "CTHACK.Smokes"}}</th>
+        <th class="gm-resource-all" data-resource="sanity">{{localize "CTHACK.Sanity"}}</th>
+        {{#if (or hasWealthResource hasWealthFixed)}}<th {{#if hasWealthResource}}class="gm-resource-all" data-resource="wealthDice"{{/if}}>{{localize "CTHACK.Wealth"}}</th>{{/if}}
+        {{#if hasMisc}}<th class="gm-resource-all" data-resource="miscellaneous">{{getMiscellaneousValue}}</th>{{/if}}
+        {{#if hasHD}}<th class="gm-resource-all" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</th>{{/if}}
         {{#if hasHP}}<th>{{localize "CTHACK.HitPoints"}}</th>{{/if}}        
         {{#if (isEnabled "Adrenaline")}}<th class="gm-adr-all" data-resource="Adrenaline">{{localize "GMMANAGER.Adrenaline"}}</th>{{/if}}
-        <th class="gm-save-all" data-save="Str">{{localize "CTHACK.SaveStrAbbr"}}</th>
-        <th class="gm-save-all" data-save="Dex">{{localize "CTHACK.SaveDexAbbr"}}</th>
-        <th class="gm-save-all" data-save="Con">{{localize "CTHACK.SaveConAbbr"}}</th>
-        <th class="gm-save-all" data-save="Wis">{{localize "CTHACK.SaveWisAbbr"}}</th>
-        <th class="gm-save-all" data-save="Int">{{localize "CTHACK.SaveIntAbbr"}}</th>
-        <th class="gm-save-all" data-save="Cha">{{localize "CTHACK.SaveChaAbbr"}}</th>
+        <th class="gm-save-all" data-save="str">{{localize "CTHACK.SaveStrAbbr"}}</th>
+        <th class="gm-save-all" data-save="dex">{{localize "CTHACK.SaveDexAbbr"}}</th>
+        <th class="gm-save-all" data-save="con">{{localize "CTHACK.SaveConAbbr"}}</th>
+        <th class="gm-save-all" data-save="wis">{{localize "CTHACK.SaveWisAbbr"}}</th>
+        <th class="gm-save-all" data-save="int">{{localize "CTHACK.SaveIntAbbr"}}</th>
+        <th class="gm-save-all" data-save="cha">{{localize "CTHACK.SaveChaAbbr"}}</th>
       </tr>
     </thead>
     <tbody>

@@ -1,3 +1,4 @@
+import { SYSTEM } from "../../config/system.mjs";
 export class GMManager extends Application {
   static GM_MANAGER = "gm-manager";
   static GM_MANAGER_TEMPLATE = "systems/cthack/templates/app/gm-manager.hbs";
@@ -73,12 +74,12 @@ export class GMManager extends Application {
   async _onRessourceRollForAll(event) {
     event.preventDefault();
     const resource = event.currentTarget.dataset.resource;
-    if (resource == "Adrenaline") return;
+    if (resource === "Adrenaline") return;
     let label;
-    if (resource == "Miscellaneous") {
+    if (resource === "miscellaneous") {
       label = game.settings.get("cthack", "MiscellaneousResource");
     } else {
-      label = game.i18n.localize("CTHACK." + resource);
+      label = game.i18n.localize(SYSTEM.RESOURCES[resource].label);
     }
 
     const text = game.i18n.format("CHAT.AskRollForAll", { resource: label });
@@ -101,7 +102,7 @@ export class GMManager extends Application {
   async _onSaveRollForAll(event) {
     event.preventDefault();
     const save = event.currentTarget.dataset.save;
-    const text = game.i18n.format("CHAT.AskRollForAll", { resource: game.i18n.localize("CTHACK.Save" + save) });
+    const text = game.i18n.format("CHAT.AskRollForAll", { resource: game.i18n.localize(SYSTEM.SAVES[save].label) });
 
     ChatMessage.create({
       user: game.user.id,

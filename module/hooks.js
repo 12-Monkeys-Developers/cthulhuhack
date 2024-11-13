@@ -54,8 +54,8 @@ export function registerHooks() {
         const type = btn.data("type");
         const resource = btn.data("resource");
         const character = game.user.character;
-        if (type === "resource") character.rollResource(resource.toLowerCase());
-        else if (type === "save") character.rollSave(resource.toLowerCase());
+        if (type === "resource") character.rollResource(resource);
+        else if (type === "save") character.rollSave(resource);
       });
     }
 
