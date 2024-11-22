@@ -2150,7 +2150,7 @@ a.inline-roll {
   justify-content: center;
 }
 .application.dialog.cthack .cthack-roll-dialog .dialog-bonus .bonus.checked {
-  background: var(--color-dark-3);
+  background: var(--color-dark-4);
 }
 .application.dialog.cthack .cthack-roll-dialog .dialog-modificateur {
   display: flex;
