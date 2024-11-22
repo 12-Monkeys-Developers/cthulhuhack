@@ -13,7 +13,10 @@ export function initControlButtons() {
         title: game.i18n.localize("CTHACK.GMManager.Title"),
         icon: "fa-solid fa-users",
         button: true,
-        onClick: () => { game.cthack.macros.launchGMManager(); }
+        onClick: () => { 
+          if (Object.values(ui.windows).some(item => item.options?.id === "gm-manager")) game.cthack.gmManager.close(); 
+          else game.cthack.macros.launchGMManager()
+        }
       });
 
       menu.push({
