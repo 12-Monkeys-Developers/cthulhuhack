@@ -252,7 +252,7 @@ export default class CtHackRoll extends Roll {
       targetArmor,
       saveModifiers,
     }
-    const content = await renderTemplate("systems/cthack/templates/roll-dialog.hbs", dialogContext)
+    const content = await renderTemplate("systems/cthack/templates/roll-dialog-v2.hbs", dialogContext)
 
     const title = CtHackRoll.createTitle(options.rollType, options.rollTarget)
     const label = game.i18n.localize("CTHACK.Roll.roll")
@@ -297,6 +297,11 @@ export default class CtHackRoll extends Roll {
           rangeInput.addEventListener("change", (event) => {
             event.preventDefault()
             event.stopPropagation()
+            // Reset de tous choix de Modificateur
+            const allModifiers = dialog.querySelectorAll(".bonus")
+            allModifiers.forEach((element) => {
+              if (element.classList.contains("checked")) element.classList.toggle("checked")
+            })
             const readOnly = dialog.querySelector('input[name="selectAvantages"]')
             readOnly.value = this._convertAvantages(parseInt(event.target.value))
           })
@@ -310,12 +315,20 @@ export default class CtHackRoll extends Roll {
             event.stopPropagation()
             let bonus = event.currentTarget.closest(".bonus")
             bonus.classList.toggle("checked")
-            let currentValue = parseInt(dialog.querySelector('input[name="avantages"]').value)
-            if (bonus.classList.contains("checked")) currentValue = Math.min(currentValue + 1, 5)
-            else currentValue = Math.max(currentValue - 1, 1)
-            rangeInput.value = currentValue
+
+            // Parcours de tous les éléments pour vérifier tous ceux qui sont checked
+            let nbChecked = 0
+            const allModifiers = dialog.querySelectorAll(".bonus")
+            allModifiers.forEach((element) => {
+              if (element.classList.contains("checked")) nbChecked++
+            })
+            const value = 3 + nbChecked
+            if (value <= 0) value = 0
+            if (value > 5) value = 5
+
+            rangeInput.value = value
             const readOnly = dialog.querySelector('input[name="selectAvantages"]')
-            readOnly.value = this._convertAvantages(currentValue)
+            readOnly.value = this._convertAvantages(value)
           })
         })
       },
@@ -553,17 +566,10 @@ export default class CtHackRoll extends Roll {
 
   // Used in the avantages select : convert the selected value to the corresponding string
   static _convertAvantages(value) {
-    switch (value) {
-      case 1:
-        return game.i18n.localize("CTHACK.Roll.doubleDesavantage")
-      case 2:
-        return game.i18n.localize("CTHACK.Roll.desavantage")
-      case 3:
-        return game.i18n.localize("CTHACK.Roll.normal")
-      case 4:
-        return game.i18n.localize("CTHACK.Roll.avantage")
-      case 5:
-        return game.i18n.localize("CTHACK.Roll.doubleAvantage")
-    }
+    if (value <= 1) return game.i18n.localize("CTHACK.Roll.doubleDesavantage")
+    else if (value >= 5) return game.i18n.localize("CTHACK.Roll.doubleAvantage")
+    else if (value === 2) return game.i18n.localize("CTHACK.Roll.desavantage")
+    else if (value === 3) return game.i18n.localize("CTHACK.Roll.normal")
+    else if (value === 4) return game.i18n.localize("CTHACK.Roll.avantage")
   }
 }

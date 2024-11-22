@@ -21,10 +21,12 @@ export default class CtHackItemSheet extends ItemSheet {
   /** @override */
   async getData(options) {
     const context = super.getData(options);
+    context.fields = this.document.schema.fields,
+    context.systemFields = this.document.system.schema.fields,
     // By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
     context.editable = this.isEditable;
     context.enrichedDescription = await TextEditor.enrichHTML(context.item.system.description, { async: true });
-    context.system = this.item.system;
+    context.system = this.document.system;
     context.diceValues = SYSTEM.DICE_VALUES;
     context.diceMaxValues = SYSTEM.DICE_MAX_VALUES;
     context.diceDamageValues = SYSTEM.DICE_DAMAGE_VALUES;
