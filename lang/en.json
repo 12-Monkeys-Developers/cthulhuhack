@@ -358,10 +358,10 @@
     "CompendiumFRHint": "Display french compendiums",
     "CompendiumENName": "Display english compendiums",
     "CompendiumENHint": "Display english compendiums",
-    "RevisedName": "Cthulhu Hach Reissue",
+    "RevisedName": "Cthulhu Hack Reissue",
     "RevisedHint": "Activate Cthulhu Hack reissue rules",
     "displayOpponentMalus": "Display Opponent malus",
-    "displayOpponentMalusHint": "Display the Opponent malus to the players."    
+    "displayOpponentMalusHint": "Display the Opponent malus to the players (if Reissue activated)."    
   },
 
   "CHAT": {

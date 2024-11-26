@@ -358,10 +358,10 @@
     "CompendiumFRHint": "Affiche ou non les compendiums français du système",
     "CompendiumENName": "Afficher les compendiums anglais",
     "CompendiumENHint": "Affiche ou non les compendiums anglais du système",
-    "RevisedName": "Cthulhu Hach Réédition",
+    "RevisedName": "Cthulhu Hack Réédition",
     "RevisedHint": "Active les règles de la réédition de Cthulhu Hack",
-    "displayOpponentMalus": "Afficher le malus d'adversité",
-    "displayOpponentMalusHint": "Affiche le malus d'adversité pour les joueurs."
+    "displayOpponentMalus": "Afficher le malus d'adversité (Revised Edition)",
+    "displayOpponentMalusHint": "Affiche le malus d'adversité pour les joueurs si l'option Réédition est active."
   },
 
   "CHAT": {

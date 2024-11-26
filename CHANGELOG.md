@@ -1,5 +1,12 @@
 4.0.0
 - Revised version updates
+- Save success is now less or equal instead of less : applied in V1 and V2
+- Display max of a ressource only with a tooltip in Locked Mode
+- New Revised Setting : to activate V2 features
+- New Roll if Revised setting is on : new dialog window. Can choose bonus from standard abilities, custom abilities, occupation, and skills (revised only)
+- New Setting : display adversary malus, used with Revised version option
+- New Roll : can used adversary malus of a target if the option is on
+- Players status menu is now a toggle 
 
 3.0.2
 - GM Manager : Fix Roll for all for Wealth
