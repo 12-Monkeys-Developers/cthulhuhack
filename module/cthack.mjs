@@ -67,6 +67,13 @@ Hooks.once("init", async function () {
     opponentAbility: models.CtHackOpponentAbility,
   }
 
+  CONFIG.Actor.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
+  CONFIG.Item.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
+  CONFIG.JournalEntry.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
+  CONFIG.RollTable.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
+  CONFIG.Scene.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
+  CONFIG.Macro.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
+
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet)
   Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheet, { types: ["character"], makeDefault: true })
