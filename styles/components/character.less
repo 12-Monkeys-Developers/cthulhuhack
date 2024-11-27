@@ -181,7 +181,7 @@
       width: 100%;
       padding: 0 10px 0 10px;
       .tab {
-        width: 100%;
+        width: 100%;        
       }
     }
   }
@@ -356,6 +356,16 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       .items-list {
+        div.title {
+          display: flex;
+          justify-content: end;
+          align-items: center;
+          i {
+            padding: 10px 20px 0 0;
+            font-size: 1.2em;
+          }
+        }
+
         display: flex;
         flex-direction: column;
         .item-line {

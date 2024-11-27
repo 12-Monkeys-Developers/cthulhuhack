@@ -400,7 +400,7 @@ a.inline-roll {
   scrollbar-color: var(--primary) transparent;
 }
 .cthack.sheet.actor.character .sidebar .image-container img.actor-image {
-  /* border: none; */
+  border: none;
   min-width: 150px;
   border-radius: 10px;
 }
@@ -664,6 +664,15 @@ a.inline-roll {
 .cthack.sheet.actor.character .sheet-body .equipment .items-list {
   display: flex;
   flex-direction: column;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list div.title {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list div.title i {
+  padding: 10px 20px 0 0;
+  font-size: 1.2em;
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line {
   display: grid;

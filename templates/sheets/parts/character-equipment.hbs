@@ -5,6 +5,11 @@
         {{editor enrichedEquipment target="system.equipment"  engine="prosemirror" button=true owner=owner}}
     </div>
     <div class="items-list">
+        {{#if editable}}
+            <div class="title">
+                <i class="fas fa-plus item-create" data-tooltip="{{localize "CTHACK.AddEquipment"}}" data-tooltip-direction="LEFT" data-type="weapon" data-alt-type="item"></i>
+            </div>
+        {{/if}}
         {{#each weapons as |item id|}}
             {{!log 'weapon' item id}}
             <div class="item character-contextmenu" data-item-id="{{_id}}">
@@ -12,7 +17,7 @@
                     <summary class="item-line weapon">
                         <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
                         <div class="item-dice">
-                            {{#if (isDiceRollable system.dice)}} <i class="fas fa-dice-d20 rollable"></i> {{/if}}
+                            {{#if (isDiceRollable system.dice)}} <i class="fas fa-dice-d20 rollable" data-tooltip="{{localize 'CTHACK.MaterialRollPromptTitle'}}"></i> {{/if}}
                             <select class="item-dice-select" name="system.dice" data-type="String" {{{getStyleForDice system.dice}}} disabled>
                                 {{selectOptions @root.diceValues selected=system.dice blank="CTHACK.Empty" localize=true}}
                             </select>
@@ -29,7 +34,7 @@
                     <summary class="item-line other">
                         <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
                         <div class="item-dice">
-                            {{#if (isDiceRollable system.dice)}} <i class="fas fa-dice-d20 rollable"></i> {{/if}}
+                            {{#if (isDiceRollable system.dice)}} <i class="fas fa-dice-d20 rollable" data-tooltip="{{localize 'CTHACK.MaterialRollPromptTitle'}}"></i> {{/if}}
                             <select class="item-dice-select" name="system.dice" data-type="String" {{{getStyleForDice system.dice}}} disabled>
                                 {{selectOptions @root.diceValues selected=system.dice blank="CTHACK.Empty" localize=true}}
                             </select>
