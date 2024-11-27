@@ -95,6 +95,10 @@ export default class CtHackRoll extends Roll {
     return this.options.realDamage
   }
 
+  get selectedModifiers() {
+    return this.options.selectedModifiers
+  }
+
   /**
    * Generates introductory text based on the roll type.
    *
@@ -136,6 +140,7 @@ export default class CtHackRoll extends Roll {
    */
   _createIntroTextTooltip() {
     let tooltip = game.i18n.format("TOOLTIPS.saveIntroTextTooltip", { value: this.value, modificateur: this.modificateur })
+    tooltip = tooltip.concat(`<br>Avantages : ${this.selectedModifiers}`)
     if (this.hasTarget) {
       tooltip = tooltip.concat(`<br>Cible : ${this.targetName}`)
     }
@@ -292,12 +297,13 @@ export default class CtHackRoll extends Roll {
       ],
       rejectClose: false, // Click on Close button will not launch an error
       render: (event, dialog) => {
+        // Gestion du sélecteur Avantages et désavantages
         const rangeInput = dialog.querySelector('input[name="avantages"]')
         if (rangeInput) {
           rangeInput.addEventListener("change", (event) => {
             event.preventDefault()
             event.stopPropagation()
-            // Reset de tous choix de Modificateur
+            // Reset de tous les choix de Modificateur
             const allModifiers = dialog.querySelectorAll(".bonus")
             allModifiers.forEach((element) => {
               if (element.classList.contains("checked")) element.classList.toggle("checked")
@@ -306,8 +312,9 @@ export default class CtHackRoll extends Roll {
             readOnly.value = this._convertAvantages(parseInt(event.target.value))
           })
         }
-        const bonusElements = dialog.querySelectorAll(".bonus")
 
+        // Gestion des Modificateurs
+        const bonusElements = dialog.querySelectorAll(".bonus")
         // Ajoute un event listener à chaque élément
         bonusElements.forEach((element) => {
           element.addEventListener("click", (event) => {
@@ -318,10 +325,16 @@ export default class CtHackRoll extends Roll {
 
             // Parcours de tous les éléments pour vérifier tous ceux qui sont checked
             let nbChecked = 0
+            let selectedModifiers = []
+            const selectedModifiersInput = dialog.querySelector('input[name="selectedModifiers"]')
             const allModifiers = dialog.querySelectorAll(".bonus")
             allModifiers.forEach((element) => {
-              if (element.classList.contains("checked")) nbChecked++
+              if (element.classList.contains("checked")) {
+                nbChecked++
+                selectedModifiers.push(element.textContent.trim())
+              }
             })
+            selectedModifiersInput.value = selectedModifiers.join(", ")
             const value = 3 + nbChecked
             if (value <= 0) value = 0
             if (value > 5) value = 5
@@ -390,6 +403,8 @@ export default class CtHackRoll extends Roll {
       ...rollContext,
     }
 
+    console.log("rollData", rollData)
+
     /**
      * A hook event that fires before the roll is made.
      * @function cthack.preRoll
@@ -419,6 +434,7 @@ export default class CtHackRoll extends Roll {
       realDamage = Math.max(0, roll.total - parseInt(targetArmor, 10))
     }
 
+    console.log("roll", roll)
     roll.options.resultType = resultType
     roll.options.treshold = treshold
     roll.options.introText = roll._createIntroText()

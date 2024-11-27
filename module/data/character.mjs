@@ -156,7 +156,7 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
   async _roll(rollType, rollTarget, rollValue, opponentTarget = undefined, rollAdvantage = "=") {
-    console.log("Rolling", rollType, rollTarget, rollValue, opponentTarget, rollAdvantage)
+    // console.log("Rolling", rollType, rollTarget, rollValue, opponentTarget, rollAdvantage)
     const hasTarget = opponentTarget !== undefined
     let roll = await CtHackRoll.prompt({
       rollType,

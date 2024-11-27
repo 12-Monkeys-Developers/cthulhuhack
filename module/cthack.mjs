@@ -25,10 +25,17 @@ Hooks.once("init", async function () {
   console.log(LOG_HEAD + game.i18n.localize("CTHACK.Logs.InitStart"))
   console.log(CTHACK.ASCII)
 
+  globalThis.cthack = game.system
   game.system.CONST = SYSTEM
 
+  // Expose the system API
+  game.system.api = {
+    applications,
+    models,
+    documents,
+  }
+
   game.cthack = {
-    config: CTHACK,
     macros: Macros,
   }
 

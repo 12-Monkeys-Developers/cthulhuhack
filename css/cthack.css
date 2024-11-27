@@ -400,7 +400,7 @@ a.inline-roll {
   scrollbar-color: var(--primary) transparent;
 }
 .cthack.sheet.actor.character .sidebar .image-container img.actor-image {
-  border: none;
+  /* border: none; */
   min-width: 150px;
   border-radius: 10px;
 }

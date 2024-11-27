@@ -6,7 +6,7 @@
       <div class="dialog-save">{{formula}}</div>
     </fieldSet>
         <fieldSet>
-    <legend>{{localize "CTHACK.Label.modificateur"}}</legend>
+    <legend>{{localize "CTHACK.Label.modificateurs"}}</legend>
       <div class="dialog-bonus">
           {{#each saveModifiers as |modifier|}}
             <div class="bonus" data-tooltip="{{modifier.origin}}">
@@ -15,6 +15,7 @@
           {{/each}}
       </div>
     </fieldSet>
+    <input type="hidden" name="selectedModifiers" >
     <fieldSet class="dialog-avantages">
       <legend>{{localize "CTHACK.Roll.avantagesDesavantages"}}</legend>
       <input

@@ -294,7 +294,8 @@
       "ressource": "Ressource",
       "sauvegarde": "Sauvegarde",
       "material": "Matériel",
-      "modificateur": "Modificateur"
+      "modificateur": "Modificateur",
+      "modificateurs": "Modificateurs"
     },
     "Warning": {
       "noResource": "Vous n'avez plus de ressource {ressource}"
@@ -410,7 +411,7 @@
     "ShowImage": "Montrer l'image",
     "SearchName": "Clic droit pour rechercher le nom",
     "Max": "Max : ",
-    "saveIntroTextTooltip": "Caractéristique : {value} <br> Modificateur : {modificateur}"
+    "saveIntroTextTooltip": "Caractéristique : {value} <br> Adversité : {modificateur}"
   },
 
   "SEARCHTOOL": {
