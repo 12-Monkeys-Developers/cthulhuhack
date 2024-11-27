@@ -9,6 +9,21 @@ import { ROLL_TYPE } from "../config/system.mjs"
  * @extends {Actor}
  */
 export default class CtHackActor extends Actor {
+  async _preCreate(data, options, user) {
+    await super._preCreate(data, options, user)
+
+    // Configure prototype token settings
+    const prototypeToken = {}
+    if (this.type === "character") {
+      Object.assign(prototypeToken, {
+        sight: { enabled: true },
+        actorLink: true,
+        disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
+      })
+      this.updateSource({ prototypeToken })
+    }
+  }
+
   /**
    * @name rollSave
    * @description Roll a Saving Throw
