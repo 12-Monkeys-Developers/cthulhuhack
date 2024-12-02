@@ -26,8 +26,9 @@
         data-tooltip="Double désavantage - Désavantage - Normal - Avantage - Double avantage"
         data-tooltip-direction="UP"
         data-tooltip-class="tooltip-avantages"
+        value = {{avantages}}
       />      
-      <input id="selectAvantages" name="selectAvantages" readonly value="Normal">
+      <input id="selectAvantages" name="selectAvantages" readonly value="{{selectAvantages}}">
     </fieldSet>      
     <fieldSet class="dialog-modificateur">
       <legend>{{localize "CTHACK.Roll.adversite"}}</legend>
@@ -35,6 +36,7 @@
         {{selectOptions choiceModificateur selected=malus}}
       </select>
     </fieldSet>
+    <input type="hidden" name="initialAvantages" value="{{initialAvantages}}">
   {{/if}}
   {{#if (or isDamage isAttack)}}
     <fieldSet>

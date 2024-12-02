@@ -160,6 +160,7 @@ export default class CtHackRoll extends Roll {
    * @param {boolean} options.hasTarget Whether the roll has a target.
    * @param {Object} options.target The target of the roll, if any.
    * @param {Object} options.data Additional data for the roll.
+   * @param {Object} options.rollAdvantage Default advantage for the roll : =, + , ++, -, --
    *
    * @returns {Promise<Object|null>} The roll result or null if the dialog was cancelled.
    */
@@ -239,6 +240,28 @@ export default class CtHackRoll extends Roll {
       saveModifiers = game.actors.get(options.actorId).system.getSaveModifiers(options.rollTarget)
     }
 
+    let avantages = 3
+    if (options.rollAdvantage) {
+      switch (options.rollAdvantage) {
+        case "+":
+          avantages = 4
+          break
+        case "++":
+          avantages = 5
+          break
+        case "-":
+          avantages = 2
+          break
+        case "--":
+          avantages = 1
+          break
+        case "=":
+        default:
+          avantages = 3
+          break
+      }
+    }
+
     let dialogContext = {
       isSave: options.rollType === ROLL_TYPE.SAVE,
       isResource: options.rollType === ROLL_TYPE.RESOURCE,
@@ -256,6 +279,9 @@ export default class CtHackRoll extends Roll {
       targetName,
       targetArmor,
       saveModifiers,
+      avantages,
+      selectAvantages: CtHackRoll._convertAvantages(avantages),
+      initialAvantages: avantages,
     }
     const content = await renderTemplate("systems/cthack/templates/roll-dialog-v2.hbs", dialogContext)
 
@@ -297,6 +323,7 @@ export default class CtHackRoll extends Roll {
       ],
       rejectClose: false, // Click on Close button will not launch an error
       render: (event, dialog) => {
+        console.log("dialog"  , dialog)
         // Gestion du sélecteur Avantages et désavantages
         const rangeInput = dialog.querySelector('input[name="avantages"]')
         if (rangeInput) {
@@ -323,8 +350,12 @@ export default class CtHackRoll extends Roll {
             let bonus = event.currentTarget.closest(".bonus")
             bonus.classList.toggle("checked")
 
-            // Parcours de tous les éléments pour vérifier tous ceux qui sont checked
+            // Avantage initial
+            const initialAdvantage = dialog.querySelector('input[name="initialAvantages"]')
+            let avantages = parseInt(initialAdvantage.value)
+
             let nbChecked = 0
+            // Parcours de tous les éléments pour vérifier tous ceux qui sont checked
             let selectedModifiers = []
             const selectedModifiersInput = dialog.querySelector('input[name="selectedModifiers"]')
             const allModifiers = dialog.querySelectorAll(".bonus")
@@ -335,7 +366,7 @@ export default class CtHackRoll extends Roll {
               }
             })
             selectedModifiersInput.value = selectedModifiers.join(", ")
-            const value = 3 + nbChecked
+            const value = avantages + nbChecked
             if (value <= 0) value = 0
             if (value > 5) value = 5
 

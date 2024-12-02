@@ -66,7 +66,7 @@ export default class CtHackActor extends Actor {
     }
     // V2
     else {
-      return await this.system.roll(ROLL_TYPE.SAVE, saveId)
+      return await this.system.roll(ROLL_TYPE.SAVE, saveId, options.rollAdvantage)
     }
   }
 
