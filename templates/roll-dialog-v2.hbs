@@ -1,6 +1,6 @@
 {{log "roll-dialog" this}}
 <div class="cthack-roll-dialog">
-  {{#if isSave}}
+  {{#if (or isSave isWeapon)}}
     <fieldSet>
       <legend>{{localize "CTHACK.Label.sauvegarde"}}</legend>
       <div class="dialog-save">{{formula}}</div>

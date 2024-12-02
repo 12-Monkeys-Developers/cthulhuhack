@@ -9,8 +9,8 @@
             <div></div>
         {{/if}}
         <div class="intro-right">                
-            <p class="introText" {{#if isSave}}data-tooltip="{{introTextTooltip}}"{{/if}}>{{{introText}}}
-            {{#if isSave}}
+            <p class="introText" {{#if (or isSave isWeapon)}}data-tooltip="{{introTextTooltip}}"{{/if}}>{{{introText}}}
+            {{#if (or isSave isWeapon)}}
                     <br>
                     {{#if (eq avantages "avantage")}} {{localize "CTHACK.Roll.avantage"}}{{/if}}
                     {{#if (eq avantages "desavantage")}} {{localize "CTHACK.Roll.desavantage"}}{{/if}}
@@ -20,7 +20,7 @@
             </p>                 
         </div>
     </div>
-     {{#if isSave}}
+     {{#if (or isSave isWeapon)}}
         <div class="result">
             {{#if (eq resultType "success")}}
                 {{#if isPrivate}}?{{else}}{{localize "CTHACK.Roll.success"}}{{/if}}

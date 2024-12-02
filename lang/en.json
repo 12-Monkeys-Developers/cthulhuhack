@@ -245,6 +245,7 @@
     },
     "Dialog": {
       "titleSave": "Save Roll",
+      "titleWeapon": "Weapon Roll",
       "titleResource": "Resource Roll",
       "titleDamage": "Damage Roll",
       "titleAttack": "Attack Roll",

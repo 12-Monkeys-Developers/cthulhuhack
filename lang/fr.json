@@ -245,6 +245,7 @@
     },
     "Dialog": {
       "titleSave": "Jet de sauvegarde",
+      "titleWeapon": "Jet d'attaque",
       "titleResource": "Jet de ressource",
       "titleDamage": "Jet de dégâts",
       "titleAttack": "Jet d'attaque",
@@ -253,6 +254,7 @@
     },
     "Roll": {
       "save": "Jet de sauvegarde <br> {save}",
+      "weapon": "Jet d'attaque : {item} <br> Sauvegarde : {save} <br>",
       "resource": "Jet de ressource <br> {resource}",
       "damage": "Jet de dégâts <br> {item}",
       "attack": "Jet d'attaque <br> {item}",

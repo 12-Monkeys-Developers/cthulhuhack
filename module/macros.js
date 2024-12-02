@@ -10,13 +10,13 @@ export class Macros {
 
       // Character's item
       if (item.type === "item") {
-        command = `game.cthack.macros.rollItemMacro("${item.id}", "${item.name}");`
+        command = `game.cthack.macros.rollItemMacro("${item.id}");`
         macroName = item.name + " (" + game.actors.get(actor.id).name + ")"
       }
 
       // Character's weapon
       else if (item.type === "weapon") {
-        command = `if (event?.shiftKey) {\n game.cthack.macros.rollItemMacro("${item.id}", "${item.name}");\n }\n else game.cthack.macros.rollWeaponMacro("${item._id}", "${item.name}");`
+        command = `if (event?.shiftKey) {\n game.cthack.macros.rollItemMacro("${item.id}");\n }\n else game.cthack.macros.rollWeaponMacro("${item._id}");`
         macroName = item.name + " (" + game.actors.get(actor.id).name + ")"
       }
 
@@ -93,69 +93,75 @@ export class Macros {
    *
    * @returns     Launch the item roll window
    */
-  static rollItemMacro = async function (itemId, itemName) {
+  static rollItemMacro = async function (itemId) {
     // Check only one token is selected
     const tokens = canvas.tokens.controlled
     if (tokens.length > 1) return ui.notifications.warn(game.i18n.localize("MACROS.MultipleTokensSelected"))
-    const token = canvas.tokens.controlled[0]
+    const token = tokens[0]
 
     const actor = token ? token.actor : null
     if (!actor) return ui.notifications.warn(game.i18n.localize("MACROS.NoTokenSelected"))
 
     // Check the actor has the item
     let item = actor.items.get(itemId)
-    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.ObjectNotInInventory", { itemName: itemName, actorName: actor.name }))
+    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.ObjectNotInInventory", { itemName: item.name, actorName: actor.name }))
 
     // Open the roll window if the item uses resource and is not at 0
     if (item.system.dice === "") {
-      return ui.notifications.warn(game.i18n.format("MACROS.ObjectWithoutResource", { itemName: itemName }))
+      return ui.notifications.warn(game.i18n.format("MACROS.ObjectWithoutResource", { itemName: item.name }))
     }
     if (item.system.dice === "0") {
-      return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: itemName }))
+      return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: item.name }))
     }
     actor.rollMaterial(item)
   }
 
-  /**
-   * @name rollWeaponMacro
-   * @description Roll the weapon attack : Strength save if Range is empty, Dexterity save if Range is not empty
-   *              Check that only one token is selected and he has the item
-   * @public
-   *
-   * @param {*} itemId
-   * @param {*} itemName
-   *
-   * @returns     Launch the save roll window
-   */
-  static rollWeaponMacro = async function (itemId, itemName, rollAdvantage = '=') {
+/**
+ * Rolls a weapon macro for the selected token's actor.
+ * Roll the weapon attack : Strength save if Range is empty, Dexterity save if Range is not empty
+ * 
+ * @param {string} itemId - The ID of the item to roll.
+ * @param {string} [rollAdvantage='='] - The roll advantage, default is '='.
+ * 
+ * @returns {Promise<void>} - A promise that resolves when the roll is complete.
+ * 
+ * @throws {Error} If multiple tokens are selected.
+ * @throws {Error} If no token is selected.
+ * @throws {Error} If the actor does not have the item.
+ * @throws {Error} If the item's resource is empty.
+ */
+  static rollWeaponMacro = async function (itemId, rollAdvantage = '=') {
     // Check only one token is selected
     const tokens = canvas.tokens.controlled
     if (tokens.length > 1) return ui.notifications.warn(game.i18n.localize("MACROS.MultipleTokensSelected"))
-    const token = canvas.tokens.controlled[0]
+    const token = tokens[0]
 
     const actor = token ? token.actor : game.user.character
     if (!actor) return ui.notifications.warn(game.i18n.localize("MACROS.NoTokenSelected"))
 
     // Check the actor has the item
     let item = actor.items.get(itemId)
-    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.ObjectNotInInventory", { itemName: itemName, actorName: actor.name }))
+    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.ObjectNotInInventory", { itemName: item.name, actorName: actor.name }))
 
     // Open the save window if the item uses resource and is not at 0, or if the item uses no resource
     if (item.system.dice === "0") {
-      return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: itemName }))
+      return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: item.name }))
     }
 
-    let mod = 0
-    if (game.user.targets.size > 0) {
+    let modifier = 0
+    if (game.settings.get("cthack", "displayOpponentMalus") && game.user.targets.size > 0) {
       const target = [...game.user.targets][0]
       if (target.actor.type == "opponent") {
-        mod = target.actor.system.malus
+        modifier = target.actor.system.malus
       }
     }
-    if (mod < 0) {
-      item.system.range === "" ? actor.rollSave("str", { modifier: mod, rollAdvantage }) : actor.rollSave("dex", { modifier: mod, rollAdvantage })
+
+    const isWeaponRoll = true
+    const itemName = item.name
+    if (modifier < 0) {
+      item.system.range === "" ? actor.rollSave("str", { modifier, rollAdvantage, isWeaponRoll, itemName }) : actor.rollSave("dex", { modifier, rollAdvantage, isWeaponRoll, itemName })
     } else {
-      item.system.range === "" ? actor.rollSave("str", {rollAdvantage}) : actor.rollSave("dex", {rollAdvantage})
+      item.system.range === "" ? actor.rollSave("str", {rollAdvantage, isWeaponRoll, itemName}) : actor.rollSave("dex", {rollAdvantage, isWeaponRoll, itemName})
     }
   }
 

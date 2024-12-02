@@ -115,19 +115,27 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
   }
 
   /**
-   * Rolls a dice for a character.
-   * @param {("save"|"resource|damage")} rollType The type of the roll.
-   * @param {number} rollTarget The target value for the roll. Which caracteristic or resource. If the roll is a damage roll, this is the id of the item.
-   * @param {"="|"+"|"++"|"-"|"--"} rollAdvantage If there is an avantage (+), a disadvantage (-), a double advantage (++), a double disadvantage (--) or a normal roll (=).
-   * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
+   * Perform a roll based on the specified roll type and target.
+   *
+   * @param {string} rollType - The type of roll to perform (e.g., SAVE, WEAPON, RESOURCE, DAMAGE, MATERIAL).
+   * @param {string} rollTarget - The target of the roll, which can be a save, attribute, or item. If the roll is a damage roll, this is the id of the item.
+   * @param {Object} [options={}] - Additional options for the roll.
+   * @param {string} [options.rollAdvantage="="] - The advantage or disadvantage for the roll. If there is an avantage (+), a disadvantage (-), a double advantage (++), a double disadvantage (--) or a normal roll (=).
+   * @returns {Promise<void>} - A promise that resolves when the roll is complete.
    */
-  async roll(rollType, rollTarget, rollAdvantage = "=") {
-    let rollValue
-    let opponentTarget
+  async roll(rollType, rollTarget, options = {}) {
+    const { rollAdvantage = "=" } = options;
+    let rollValue, opponentTarget;
+    let rollOptions = {}
     switch (rollType) {
       case ROLL_TYPE.SAVE:
         rollValue = this.saves[rollTarget].value
         opponentTarget = game.user.targets.first()
+        break
+      case ROLL_TYPE.WEAPON:
+        rollValue = this.saves[rollTarget].value
+        opponentTarget = game.user.targets.first()
+        rollOptions.itemName = options.itemName
         break
       case ROLL_TYPE.RESOURCE:
         rollValue = this.attributes[rollTarget].value
@@ -141,9 +149,9 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
         break
       default:
         // Handle other cases or do nothing
-        break
+        break      
     }
-    await this._roll(rollType, rollTarget, rollValue, opponentTarget, rollAdvantage)
+    await this._roll(rollType, rollTarget, rollValue, opponentTarget, rollAdvantage, rollOptions)
   }
 
   /**
@@ -155,7 +163,7 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
    * @param {"="|"+"|"++"|"-"|"--"} rollAdvantage If there is an avantage (+), a disadvantage (-), a double advantage (++), a double disadvantage (--) or a normal roll (=).
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
-  async _roll(rollType, rollTarget, rollValue, opponentTarget = undefined, rollAdvantage = "=") {
+  async _roll(rollType, rollTarget, rollValue, opponentTarget = undefined, rollAdvantage = "=", rollOptions = {}) {
     // console.log("Rolling", rollType, rollTarget, rollValue, opponentTarget, rollAdvantage)
     const hasTarget = opponentTarget !== undefined
     let roll = await CtHackRoll.prompt({
@@ -168,6 +176,7 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
       hasTarget,
       target: opponentTarget,
       rollAdvantage,
+      itemName: rollOptions.itemName ? rollOptions.itemName : undefined,
     })
     if (!roll) return null
 

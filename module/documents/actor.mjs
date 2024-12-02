@@ -25,15 +25,17 @@ export default class CtHackActor extends Actor {
   }
 
   /**
-   * @name rollSave
-   * @description Roll a Saving Throw
-   *              Prompt the user for input regarding Advantage/Disadvantage
-   * @public
+   * Roll a save for the actor.
    *
-   * @param {String} saveId       The save ID (e.g. "str")
-   * @param {Object} options      Options which configure how save tests are rolled
+   * V2 options : modifier, rollAdvantage, isWeaponRoll, itemName
+   * V1 options : speaker
    *
-   * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
+   * @param {string} saveId - The ID of the save to roll.
+   * @param {Object} [options={}] - Additional options for the roll.
+   * @param {Object} [options.speaker] - The speaker for the roll. (V1)
+   * @param {boolean} [options.isWeaponRoll=false] - Whether the roll is a weapon roll. (V2)
+   * @param {boolean} [options.rollAdvantage=false] - Whether the roll has advantage (=, +, ++, -, --) (V2)
+   * @returns {Promise<Object>} The result of the roll.
    */
   async rollSave(saveId, options = {}) {
     const v2 = game.settings.get("cthack", "Revised") ? true : false
@@ -66,7 +68,14 @@ export default class CtHackActor extends Actor {
     }
     // V2
     else {
-      return await this.system.roll(ROLL_TYPE.SAVE, saveId, options.rollAdvantage)
+      // Weapon roll
+      if (options.isWeaponRoll) {
+        return await this.system.roll(ROLL_TYPE.WEAPON, saveId, { rollAdvantage: options.rollAdvantage, itemName: options.itemName })
+      }
+      // Save roll
+      else {
+        return await this.system.roll(ROLL_TYPE.SAVE, saveId, { rollAdvantage: options.rollAdvantage })
+      }
     }
   }
 

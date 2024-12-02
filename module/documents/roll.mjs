@@ -15,6 +15,10 @@ export default class CtHackRoll extends Roll {
     return this.type === ROLL_TYPE.SAVE
   }
 
+  get isWeapon() {
+    return this.type === ROLL_TYPE.WEAPON
+  }
+
   get isResource() {
     return this.type === ROLL_TYPE.RESOURCE
   }
@@ -99,6 +103,10 @@ export default class CtHackRoll extends Roll {
     return this.options.selectedModifiers
   }
 
+  get itemName() {
+    return this.options.itemName
+  }
+
   /**
    * Generates introductory text based on the roll type.
    *
@@ -106,28 +114,34 @@ export default class CtHackRoll extends Roll {
    */
   _createIntroText() {
     let text
+    let label
 
     switch (this.type) {
       case ROLL_TYPE.SAVE:
-        const saveLabel = game.i18n.localize(`CTHACK.Character.saves.${this.target}`)
-        text = game.i18n.format("CTHACK.Roll.save", { save: saveLabel })
+        label = game.i18n.localize(`CTHACK.Character.saves.${this.target}`)
+        text = game.i18n.format("CTHACK.Roll.save", { save: label })
+        text = text.concat("<br>").concat(`Seuil : ${this.treshold}`)
+        break
+      case ROLL_TYPE.WEAPON:
+        label = game.i18n.localize(`CTHACK.Character.saves.${this.target}`)
+        text = game.i18n.format("CTHACK.Roll.weapon", { item: this.itemName, save: label })
         text = text.concat("<br>").concat(`Seuil : ${this.treshold}`)
         break
       case ROLL_TYPE.RESOURCE:
-        const resourceLabel = game.i18n.localize(`CTHACK.Character.resources.${this.target}`)
-        text = game.i18n.format("CTHACK.Roll.resource", { resource: resourceLabel })
+        label = game.i18n.localize(`CTHACK.Character.resources.${this.target}`)
+        text = game.i18n.format("CTHACK.Roll.resource", { resource: label })
         break
       case ROLL_TYPE.DAMAGE:
-        const damageLabel = this.target
-        text = game.i18n.format("CTHACK.Roll.damage", { item: damageLabel })
+        label = this.target
+        text = game.i18n.format("CTHACK.Roll.damage", { item: label })
         break
       case ROLL_TYPE.ATTACK:
-        const attackLabel = this.target
-        text = game.i18n.format("CTHACK.Roll.attack", { item: attackLabel })
+        label = this.target
+        text = game.i18n.format("CTHACK.Roll.attack", { item: label })
         break
       case ROLL_TYPE.MATERIAL:
-        const materialLabel = this.target
-        text = game.i18n.format("CTHACK.Roll.material", { material: materialLabel })
+        clabel = this.target
+        text = game.i18n.format("CTHACK.Roll.material", { material: label })
         break
     }
     return text
@@ -140,7 +154,9 @@ export default class CtHackRoll extends Roll {
    */
   _createIntroTextTooltip() {
     let tooltip = game.i18n.format("TOOLTIPS.saveIntroTextTooltip", { value: this.value, modificateur: this.modificateur })
-    tooltip = tooltip.concat(`<br>Avantages : ${this.selectedModifiers}`)
+    if (this.selectedModifiers) {
+      tooltip = tooltip.concat(`<br>Avantages : ${this.selectedModifiers}`)
+    }    
     if (this.hasTarget) {
       tooltip = tooltip.concat(`<br>Cible : ${this.targetName}`)
     }
@@ -225,18 +241,20 @@ export default class CtHackRoll extends Roll {
     let saveModifiers
     const displayOpponentMalus = game.settings.get("cthack", "displayOpponentMalus")
 
-    if (options.rollType === ROLL_TYPE.SAVE && options.hasTarget && options.target.document.actor.type === "opponent") {
-      targetName = options.target.document.actor.name
-      if (displayOpponentMalus) malus = options.target.document.actor.system.malus.toString()
-      else targetMalus = options.target.document.actor.system.malus.toString()
+    if ((options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) && options.hasTarget && options.target.document.actor.type === "opponent") {
+      const actor = options.target.document.actor
+      targetName = actor.name
+      if (displayOpponentMalus) malus = actor.system.malus.toString()
+      else targetMalus = actor.system.malus.toString()
     }
 
     if (options.rollType === ROLL_TYPE.DAMAGE && options.hasTarget && options.target.document.actor.type === "opponent") {
-      targetName = options.target.document.actor.name
-      targetArmor = options.target.document.actor.system.armure.toString()
+      const actor = options.target.document.actor
+      targetName = actor.name
+      targetArmor = actor.system.armure.toString()
     }
 
-    if (options.rollType === ROLL_TYPE.SAVE) {
+    if (options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) {
       saveModifiers = game.actors.get(options.actorId).system.getSaveModifiers(options.rollTarget)
     }
 
@@ -264,6 +282,7 @@ export default class CtHackRoll extends Roll {
 
     let dialogContext = {
       isSave: options.rollType === ROLL_TYPE.SAVE,
+      isWeapon: options.rollType === ROLL_TYPE.WEAPON,
       isResource: options.rollType === ROLL_TYPE.RESOURCE,
       isDamage: options.rollType === ROLL_TYPE.DAMAGE,
       isAttack: options.rollType === ROLL_TYPE.ATTACK,
@@ -285,15 +304,15 @@ export default class CtHackRoll extends Roll {
     }
     const content = await renderTemplate("systems/cthack/templates/roll-dialog-v2.hbs", dialogContext)
 
-    const title = CtHackRoll.createTitle(options.rollType, options.rollTarget)
-    const label = game.i18n.localize("CTHACK.Roll.roll")
+    const title = CtHackRoll.createTitle(options)
+    const buttonLabel = game.i18n.localize("CTHACK.Roll.roll")
     const rollContext = await foundry.applications.api.DialogV2.wait({
       window: { title: title },
       classes: ["cthack"],
       content,
       buttons: [
         {
-          label: label,
+          label: buttonLabel,
           callback: (event, button, dialog) => {
             const output = Array.from(button.form.elements).reduce((obj, input) => {
               if (input.name) obj[input.name] = input.value
@@ -323,7 +342,7 @@ export default class CtHackRoll extends Roll {
       ],
       rejectClose: false, // Click on Close button will not launch an error
       render: (event, dialog) => {
-        console.log("dialog"  , dialog)
+        console.log("dialog", dialog)
         // Gestion du sélecteur Avantages et désavantages
         const rangeInput = dialog.querySelector('input[name="avantages"]')
         if (rangeInput) {
@@ -383,10 +402,10 @@ export default class CtHackRoll extends Roll {
 
     let treshold
 
-    if (options.rollType === ROLL_TYPE.SAVE) {
+    if (options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) {
       const modificateur = rollContext.modificateur === "" ? 0 : parseInt(rollContext.modificateur, 10)
 
-      if (options.rollType === ROLL_TYPE.SAVE) {
+      if (options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) {
         let dice = "1d20"
         switch (rollContext.avantages) {
           case "avantage":
@@ -431,7 +450,8 @@ export default class CtHackRoll extends Roll {
       targetName,
       targetArmor,
       targetMalus,
-      ...rollContext,
+      itemName: options.itemName ? options.itemName : undefined,
+      ...rollContext
     }
 
     console.log("rollData", rollData)
@@ -446,12 +466,12 @@ export default class CtHackRoll extends Roll {
      */
     if (Hooks.call("cthack.preRoll", options, rollData) === false) return
 
-    const roll = new this(formula, options.data, rollData)
+    const roll = new this(formula, {}, rollData)
 
     await roll.evaluate()
 
     let resultType
-    if (options.rollType === ROLL_TYPE.SAVE) {
+    if (options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) {
       resultType = roll.total <= treshold ? "success" : "failure"
     } else if (options.rollType === ROLL_TYPE.RESOURCE) {
       resultType = roll.total === 1 || roll.total === 2 ? "failure" : "success"
@@ -493,18 +513,20 @@ export default class CtHackRoll extends Roll {
    * @param {string} target The target of the roll.
    * @returns {string} The generated title.
    */
-  static createTitle(type, target) {
-    switch (type) {
+  static createTitle(options = {}) {
+    switch (options.rollType) {
       case ROLL_TYPE.SAVE:
-        return `${game.i18n.localize("CTHACK.Dialog.titleSave")} : ${game.i18n.localize(`CTHACK.Character.saves.${target}`)}`
+        return `${game.i18n.localize("CTHACK.Dialog.titleSave")} : ${game.i18n.localize(`CTHACK.Character.saves.${options.rollTarget}`)}`
+      case ROLL_TYPE.WEAPON:
+        return `${game.i18n.localize("CTHACK.Dialog.titleWeapon")} : ${options.itemName} (${game.i18n.localize(`CTHACK.Character.saves.${options.rollTarget}`)})`
       case ROLL_TYPE.RESOURCE:
-        return `${game.i18n.localize("CTHACK.Dialog.titleResource")} : ${game.i18n.localize(`CTHACK.Character.resources.${target}`)}`
+        return `${game.i18n.localize("CTHACK.Dialog.titleResource")} : ${game.i18n.localize(`CTHACK.Character.resources.${options.rollTarget}`)}`
       case ROLL_TYPE.DAMAGE:
-        return `${game.i18n.localize("CTHACK.Dialog.titleDamage")} : ${target}`
+        return `${game.i18n.localize("CTHACK.Dialog.titleDamage")} : ${options.rollTarget}`
       case ROLL_TYPE.ATTACK:
-        return `${game.i18n.localize("CTHACK.Dialog.titleAttack")} : ${target}`
+        return `${game.i18n.localize("CTHACK.Dialog.titleAttack")} : ${options.rollTarget}`
       case ROLL_TYPE.MATERIAL:
-        return `${game.i18n.localize("CTHACK.Dialog.titleMaterial")} : ${target}`
+        return `${game.i18n.localize("CTHACK.Dialog.titleMaterial")} : ${options.rollTarget}`
       default:
         return game.i18n.localize("CTHACK.Dialog.titleStandard")
     }
@@ -556,6 +578,7 @@ export default class CtHackRoll extends Roll {
       formula: this.formula,
       total: this.total,
       isSave: this.isSave,
+      isWeapon: this.isWeapon,
       isResource: this.isResource,
       isMaterial: this.isMaterial,
       isDamage: this.isDamage,
@@ -591,6 +614,7 @@ export default class CtHackRoll extends Roll {
     super.toMessage(
       {
         isSave: this.isSave,
+        isWeapon: this.isWeapon,
         isResource: this.isResource,
         isDamage: this.isDamage,
         isMaterial: this.isMaterial,

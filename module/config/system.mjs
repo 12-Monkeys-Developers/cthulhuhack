@@ -19,6 +19,7 @@ export const ROLL_TYPE = Object.freeze({
   DAMAGE: "damage",
   ATTACK: "attack",
   MATERIAL: "material",
+  WEAPON: "weapon"
 })
 
 /**
