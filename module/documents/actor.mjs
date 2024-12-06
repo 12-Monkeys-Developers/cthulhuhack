@@ -390,54 +390,40 @@ export default class CtHackActor extends Actor {
   }
 
   findSavesAdvantages(saveId) {
-    let advantages = []
+    const advantages = []
 
     // Occupation avantage
-    const occupation = this.system.occupation
-    if (occupation && occupation !== "") {
+    const { occupation, skills, abilities } = this.system
+    if (occupation) {
       advantages.push({ text: occupation, origin: game.i18n.localize("CTHACK.Occupation") })
     }
 
     // Skills avantage : V2 only
     if (game.settings.get("cthack", "Revised")) {
-      advantages.push({ text: this.system.skills, origin: game.i18n.localize("CTHACK.Skills") })
+      advantages.push({ text: skills, origin: game.i18n.localize("CTHACK.Skills") })
+    }
+
+    // Mapping of ability keys to their respective advantages
+    const abilityAdvantages = {
+      SWILEA: { condition: ["str", "dex", "con"], text: "CTHACK.AdvantageSWILEA", origin: "CTHACK.StandardAbilities.SWILEA.label" },
+      STA: { condition: [], text: "CTHACK.AdvantageSTA", origin: "CTHACK.StandardAbilities.STA.label" },
+      ANIHAN: { condition: [], text: "CTHACK.AdvantageANIHAN", origin: "CTHACK.StandardAbilities.ANIHAN.label" },
+      IND: { condition: ["wis", "int", "cha"], text: "CTHACK.AdvantageIND", origin: "CTHACK.StandardAbilities.IND.label" },
+      MEC: { condition: [], text: "CTHACK.AdvantageMEC", origin: "CTHACK.StandardAbilities.MEC.label" },
+      IROMIN: { condition: [], text: "CTHACK.AdvantageIROMIN", origin: "CTHACK.StandardAbilities.IROMIN.label" },
+      RIP: { condition: ["str"], text: "CTHACK.AdvantageRIP", origin: "CTHACK.StandardAbilities.RIP.label" },
+      LEG: { condition: [], text: "CTHACK.AdvantageLEG", origin: "CTHACK.StandardAbilities.LEG.label" },
+      SELPRE: { condition: [], text: "CTHACK.AdvantageSELPRE", origin: "CTHACK.StandardAbilities.SELPRE.label" },
+      HAR: { condition: [], text: "CTHACK.AdvantageHAR", origin: "CTHACK.StandardAbilities.HAR.label" },
     }
 
     // Check if the actor has the advantage from the standard abilities
-    let abilitiesList = this.system.abilities
-    for (let index = 0; index < abilitiesList.length; index++) {
-      const element = abilitiesList[index]
-      if (element.key === "SWILEA" && (saveId === "str" || saveId === "dex" || saveId === "con")) {
-        advantages.push({ text: game.i18n.localize("CTHACK.AdvantageSWILEA"), origin: game.i18n.localize("CTHACK.StandardAbilities.SWILEA.label") })
+    abilities.forEach((ability) => {
+      const advantage = abilityAdvantages[ability.key]
+      if (advantage && (advantage.condition.length === 0 || advantage.condition.includes(saveId))) {
+        advantages.push({ text: game.i18n.localize(advantage.text), origin: game.i18n.localize(advantage.origin) })
       }
-      if (element.key === "STA") {
-        advantages.push({ text: game.i18n.localize("CTHACK.AdvantageSTA"), origin: game.i18n.localize("CTHACK.StandardAbilities.STA.label") })
-      }
-      if (element.key === "ANIHAN") {
-        advantages.push({ text: game.i18n.localize("CTHACK.AdvantageANIHAN"), origin: game.i18n.localize("CTHACK.StandardAbilities.ANIHAN.label") })
-      }
-      if (element.key === "IND" && (saveId === "wis" || saveId === "int" || saveId === "cha")) {
-        advantages.push({ text: game.i18n.localize("CTHACK.AdvantageIND"), origin: game.i18n.localize("CTHACK.StandardAbilities.IND.label") })
-      }
-      if (element.key === "MEC") {
-        advantages.push({ text: game.i18n.localize("CTHACK.AdvantageMEC"), origin: game.i18n.localize("CTHACK.StandardAbilities.MEC.label") })
-      }
-      if (element.key === "IROMIN") {
-        advantages.push({ text: game.i18n.localize("CTHACK.AdvantageIROMIN"), origin: game.i18n.localize("CTHACK.StandardAbilities.IROMIN.label") })
-      }
-      if (element.key === "RIP" && saveId === "str") {
-        advantages.push({ text: game.i18n.localize("CTHACK.AdvantageRIP"), origin: game.i18n.localize("CTHACK.StandardAbilities.RIP.label") })
-      }
-      if (element.key === "LEG") {
-        advantages.push({ text: game.i18n.localize("CTHACK.AdvantageLEG"), origin: game.i18n.localize("CTHACK.StandardAbilities.LEG.label") })
-      }
-      if (element.key === "SELPRE") {
-        advantages.push({ text: game.i18n.localize("CTHACK.AdvantageSELPRE"), origin: game.i18n.localize("CTHACK.StandardAbilities.SELPRE.label") })
-      }
-      if (element.key === "HAR") {
-        advantages.push({ text: game.i18n.localize("CTHACK.AdvantageHAR"), origin: game.i18n.localize("CTHACK.StandardAbilities.HAR.label") })
-      }
-    }
+    })
 
     // Check if the actor has the advantage from the custom abilities
     const customAdvantages = this._findSavesAdvantagesFromCustomAbilities()
@@ -457,13 +443,9 @@ export default class CtHackActor extends Actor {
    * @returns
    */
   _findSavesAdvantagesFromCustomAbilities() {
-    let customAdvantages = []
-    this.items.forEach((element) => {
-      if (element.type === "ability" && element.system.isCustom && element.system.advantageGiven && element.system.advantageText !== "") {
-        customAdvantages.push({ text: element.system.advantageText, origin: element.name })
-      }
-    })
-    return customAdvantages
+    return this.items
+      .filter(item => item.type === "ability" && item.system.isCustom && item.system.advantageGiven && item.system.advantageText !== "")
+      .map(item => ({ text: item.system.advantageText, origin: item.name }));
   }
 
   /**
@@ -471,10 +453,9 @@ export default class CtHackActor extends Actor {
    * @param {*} itemData
    */
   async createDefinitionItem(itemData) {
-    if (itemData.system.key === "OOA-CRB" || itemData.system.key === "OOA-MIC" || itemData.system.key === "OOA-STA" || itemData.system.key === "OOA-WIN") {
-      this._createActiveEffect(itemData)
-    } else if (itemData.system.key.startsWith("OOA") || itemData.system.key.startsWith("TI") || itemData.system.key.startsWith("SK")) {
-      this._createActiveEffect(itemData)
+    const key = itemData.system.key;
+    if (key.startsWith("OOA") || key.startsWith("TI") || key.startsWith("SK")) {
+      this._createActiveEffect(itemData);
     }
 
     // Create the owned item

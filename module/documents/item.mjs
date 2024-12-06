@@ -5,6 +5,15 @@ export default class CtHackItem extends Item {
   static DEFAULT_ICON_MAGIC = "/systems/cthack/ui/icons/spell-book.png";
   static DEFAULT_ICON = "icons/svg/item-bag.svg";
 
+  async _preUpdate(changed, options, user) {
+    await super._preUpdate(changed, options, user)
+
+    // For abilitiy items, sets the defalut value for the "key" field.
+    if (this.type === "ability") {      
+      this.updateSource({ "system.key": this.name.slugify() })
+    }
+  }
+
   /** override */
   static getDefaultArtwork(itemData) {
     if (itemData.type === "magic") {
