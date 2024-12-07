@@ -128,7 +128,11 @@ export default class CtHackRoll extends Roll {
         text = text.concat("<br>").concat(`Seuil : ${this.treshold}`)
         break
       case ROLL_TYPE.RESOURCE:
-        label = game.i18n.localize(`CTHACK.Character.resources.${this.target}`)
+        if (this.target !== "miscellaneous") label = game.i18n.localize(`CTHACK.Character.resources.${this.target}`)
+        else {
+          const resourceName = game.settings.get("cthack", "MiscellaneousResource")
+          label = resourceName
+        }
         text = game.i18n.format("CTHACK.Roll.resource", { resource: label })
         break
       case ROLL_TYPE.DAMAGE:
@@ -156,7 +160,7 @@ export default class CtHackRoll extends Roll {
     let tooltip = game.i18n.format("TOOLTIPS.saveIntroTextTooltip", { value: this.value, modificateur: this.modificateur })
     if (this.selectedModifiers) {
       tooltip = tooltip.concat(`<br>Avantages : ${this.selectedModifiers}`)
-    }    
+    }
     if (this.hasTarget) {
       tooltip = tooltip.concat(`<br>Cible : ${this.targetName}`)
     }
@@ -451,7 +455,7 @@ export default class CtHackRoll extends Roll {
       targetArmor,
       targetMalus,
       itemName: options.itemName ? options.itemName : undefined,
-      ...rollContext
+      ...rollContext,
     }
 
     console.log("rollData", rollData)
@@ -520,7 +524,12 @@ export default class CtHackRoll extends Roll {
       case ROLL_TYPE.WEAPON:
         return `${game.i18n.localize("CTHACK.Dialog.titleWeapon")} : ${options.itemName} (${game.i18n.localize(`CTHACK.Character.saves.${options.rollTarget}`)})`
       case ROLL_TYPE.RESOURCE:
-        return `${game.i18n.localize("CTHACK.Dialog.titleResource")} : ${game.i18n.localize(`CTHACK.Character.resources.${options.rollTarget}`)}`
+        if (options.rollTarget !== "miscellaneous")
+          return `${game.i18n.localize("CTHACK.Dialog.titleResource")} : ${game.i18n.localize(`CTHACK.Character.resources.${options.rollTarget}`)}`
+        else {
+          const resourceName = game.settings.get("cthack", "MiscellaneousResource")
+          return `${game.i18n.localize("CTHACK.Dialog.titleResource")} : ${resourceName}`
+        }
       case ROLL_TYPE.DAMAGE:
         return `${game.i18n.localize("CTHACK.Dialog.titleDamage")} : ${options.rollTarget}`
       case ROLL_TYPE.ATTACK:

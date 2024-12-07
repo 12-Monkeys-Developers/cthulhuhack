@@ -287,7 +287,7 @@
         "smokes": "Bagou",
         "sanity": "Santé mentale",
         "hitPoints": "Points de Vie",
-        "wealth": "Richesse"
+        "wealthDice": "Richesse"
       }
     },
 
@@ -297,7 +297,8 @@
       "sauvegarde": "Sauvegarde",
       "material": "Matériel",
       "modificateur": "Modificateur",
-      "modificateurs": "Modificateurs"
+      "modificateurs": "Modificateurs",
+      "jet": "Jet de "
     },
     "Warning": {
       "noResource": "Vous n'avez plus de ressource {ressource}"

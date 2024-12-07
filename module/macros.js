@@ -1,7 +1,23 @@
 export class Macros {
   static createCthackMacro = async function (dropData, slot) {
     // Create macro depending of the item dropped on the hotbar
-    if (dropData.type == "Item") {
+
+    if (dropData.type == "roll") {
+      const name = game.actors.get(dropData.actorId).name
+      const rollCommand =
+        dropData.rollType === "save"
+          ? `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}', '=');`
+          : `game.actors.get('${dropData.actorId}').rollResource('${dropData.rollTarget}');`
+      let rollName
+      if (dropData.rollType === "resource") {
+          if (dropData.rollTarget !== "miscellaneous") rollName = `${game.i18n.localize("CTHACK.Label.jet")} ${game.i18n.localize(`CTHACK.Character.resources.${dropData.rollTarget}`)} (${name})`        
+          else {
+            const resourceName = game.settings.get("cthack", "MiscellaneousResource")
+            rollName = `${game.i18n.localize("CTHACK.Label.jet")} ${resourceName} (${name})`
+          }
+      }
+      this.createMacro(slot, rollName, rollCommand, "icons/svg/d20-grey.svg")
+    } else if (dropData.type == "Item") {
       const item = await fromUuid(dropData.uuid)
       const actor = item.actor
 
@@ -116,21 +132,21 @@ export class Macros {
     actor.rollMaterial(item)
   }
 
-/**
- * Rolls a weapon macro for the selected token's actor.
- * Roll the weapon attack : Strength save if Range is empty, Dexterity save if Range is not empty
- * 
- * @param {string} itemId - The ID of the item to roll.
- * @param {string} [rollAdvantage='='] - The roll advantage, default is '='.
- * 
- * @returns {Promise<void>} - A promise that resolves when the roll is complete.
- * 
- * @throws {Error} If multiple tokens are selected.
- * @throws {Error} If no token is selected.
- * @throws {Error} If the actor does not have the item.
- * @throws {Error} If the item's resource is empty.
- */
-  static rollWeaponMacro = async function (itemId, rollAdvantage = '=') {
+  /**
+   * Rolls a weapon macro for the selected token's actor.
+   * Roll the weapon attack : Strength save if Range is empty, Dexterity save if Range is not empty
+   *
+   * @param {string} itemId - The ID of the item to roll.
+   * @param {string} [rollAdvantage='='] - The roll advantage, default is '='.
+   *
+   * @returns {Promise<void>} - A promise that resolves when the roll is complete.
+   *
+   * @throws {Error} If multiple tokens are selected.
+   * @throws {Error} If no token is selected.
+   * @throws {Error} If the actor does not have the item.
+   * @throws {Error} If the item's resource is empty.
+   */
+  static rollWeaponMacro = async function (itemId, rollAdvantage = "=") {
     // Check only one token is selected
     const tokens = canvas.tokens.controlled
     if (tokens.length > 1) return ui.notifications.warn(game.i18n.localize("MACROS.MultipleTokensSelected"))
@@ -159,9 +175,11 @@ export class Macros {
     const isWeaponRoll = true
     const itemName = item.name
     if (modifier < 0) {
-      item.system.range === "" ? actor.rollSave("str", { modifier, rollAdvantage, isWeaponRoll, itemName }) : actor.rollSave("dex", { modifier, rollAdvantage, isWeaponRoll, itemName })
+      item.system.range === ""
+        ? actor.rollSave("str", { modifier, rollAdvantage, isWeaponRoll, itemName })
+        : actor.rollSave("dex", { modifier, rollAdvantage, isWeaponRoll, itemName })
     } else {
-      item.system.range === "" ? actor.rollSave("str", {rollAdvantage, isWeaponRoll, itemName}) : actor.rollSave("dex", {rollAdvantage, isWeaponRoll, itemName})
+      item.system.range === "" ? actor.rollSave("str", { rollAdvantage, isWeaponRoll, itemName }) : actor.rollSave("dex", { rollAdvantage, isWeaponRoll, itemName })
     }
   }
 

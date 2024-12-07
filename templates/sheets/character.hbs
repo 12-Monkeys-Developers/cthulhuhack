@@ -46,7 +46,7 @@
         <input class="short-description-editable" name="system.shortDescription" type="text" value="{{system.shortDescription}}" data-tooltip="{{localize 'CTHACK.ShortDescription'}}"/>
       {{/if}}
       <div class="resources {{getNbRessources}}">
-        <div class="resource">
+        <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="flashlights">
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.flashlights.value)}}rollable{{/if}}" data-resource="flashlights" data-tooltip="{{localize 'CTHACK.FlashLightsDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.FlashLights"}}</label>
             <div class="resource-content">
                 <select class="resource-value {{#if hasLostFlashlights}}resource-value-lost{{/if}}" name="system.attributes.flashlights.value" data-type="String" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.flashlights.max}}" {{{getStyleForDice system.attributes.flashlights.value}}} {{disabled uneditable}}>
@@ -61,7 +61,7 @@
                 {{/if}}
             </div>
         </div>                  
-        <div class="resource">
+        <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="smokes">
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.smokes.value)}}rollable{{/if}}" data-resource="smokes" data-tooltip="{{localize 'CTHACK.SmokesDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Smokes"}}</label>
             <div class="resource-content">
                 <select class="resource-value {{#if hasLostSmokes}}resource-value-lost{{/if}}" name="system.attributes.smokes.value" data-type="String" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.smokes.max}}" {{{getStyleForDice system.attributes.smokes.value}}} {{disabled uneditable}}>
@@ -76,7 +76,7 @@
                 {{/if}}
             </div>
         </div>
-        <div class="resource">
+        <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="sanity">
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.sanity.value)}}rollable{{/if}}" data-resource="sanity" data-tooltip="{{localize 'CTHACK.SanityDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Sanity"}}</label>
             <div class="resource-content">
                 <select class="resource-value {{#if hasLostSanity}}resource-value-lost{{/if}}"  name="system.attributes.sanity.value" data-type="String" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.sanity.max}}" {{{getStyleForDice system.attributes.sanity.value}}} {{disabled uneditable}}>
@@ -93,7 +93,7 @@
         </div>
         
         {{#if (isEnabled "Wealth")}}  
-          <div class="resource">
+          <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="wealthDice">
               <label for="wealthDice.value" class="resource-label wealth-name {{#if isWealthAsResource}}rollable{{/if}}" data-resource="wealthDice">{{localize "CTHACK.Wealth"}}</label>
               <div class="resource-content">
                   <select class="resource-value {{#if hasLostWealthDice}}resource-value-lost{{/if}}" name="system.attributes.wealthDice.value" data-type="String" {{#if isWealthAsResource}}data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.wealthDice.max}}"{{/if}} {{{getStyleForDice system.attributes.wealthDice.value}}} {{disabled uneditable}}>
@@ -111,7 +111,7 @@
         {{/if}}
 
         {{#if (isEnabled "MiscellaneousResource")}}    
-            <div class="resource">
+            <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="miscellaneous">
                 <label for="miscellaneous.value" class="resource-label miscellaneous-name {{#if (isDiceRollable system.attributes.miscellaneous.value)}}rollable{{/if}} {{#if hasLostMiscellaneous}}resource-value-lost{{/if}}"  data-resource="miscellaneous">{{getMiscellaneousValue}}</label>
                 <div class="resource-content">
                     <select class="resource-value" name="system.attributes.miscellaneous.value" data-type="String" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.miscellaneous.max}}" {{{getStyleForDice system.attributes.miscellaneous.value}}} {{disabled uneditable}}>

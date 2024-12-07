@@ -286,7 +286,7 @@
         "smokes": "Smokes",
         "sanity": "Sanity",
         "hitPoints": "Hit Points",
-        "wealth": "Wealth"
+        "wealthDice": "Wealth"
       }
     },
 
@@ -295,7 +295,8 @@
       "ressource": "Resource",
       "sauvegarde": "Save",
       "material": "Material",
-      "modificateur": "Modifier"
+      "modificateur": "Modifier",
+      "jet": "Roll of "
     },
     "Warning": {
       "noResource": "You have no more resource {ressource}"
