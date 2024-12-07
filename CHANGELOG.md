@@ -6,7 +6,9 @@
 - New Roll if Revised setting is on : new dialog window. Can choose bonus from standard abilities, custom abilities, occupation, and skills (revised only)
 - New Setting : display adversary malus, used with Revised version option
 - New Roll : can used adversary malus of a target if the option is on
-- Players status menu is now a toggle 
+- Players status menu is now a toggle
+- Revised hotbar drop and now Resource, Save, Damage can be dropped
+- Ability : key can't be changed and is now generated from the name
 
 3.0.2
 - GM Manager : Fix Roll for all for Wealth

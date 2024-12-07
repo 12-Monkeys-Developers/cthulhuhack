@@ -69,6 +69,7 @@ export default class CtHackCharacterSheet extends ActorSheet {
             rollTarget: dataset.dragTarget,
             value: target.value,
           }
+          break
         case "save":
           dragData = {
             actorId: this.document.id,
@@ -77,6 +78,17 @@ export default class CtHackCharacterSheet extends ActorSheet {
             rollTarget: dataset.dragTarget,
             value: dataset.value,
           }
+          break
+        case "damage":
+          target = event.currentTarget.querySelector("select")
+          dragData = {
+            actorId: this.document.id,
+            type: "roll",
+            rollType: dragType,
+            rollTarget: dataset.dragTarget,
+            value: target.value,
+          }
+          break
       }
     }
 
@@ -633,7 +645,7 @@ export default class CtHackCharacterSheet extends ActorSheet {
   _onDamagedRoll(event) {
     event.preventDefault()
     const damage = event.currentTarget.dataset.resource
-    this.actor.rollDamageRoll(damage, { event: event })
+    this.actor.rollDamage(damage, { event: event })
   }
 
   /**

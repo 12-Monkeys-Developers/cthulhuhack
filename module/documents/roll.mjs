@@ -136,7 +136,7 @@ export default class CtHackRoll extends Roll {
         text = game.i18n.format("CTHACK.Roll.resource", { resource: label })
         break
       case ROLL_TYPE.DAMAGE:
-        label = this.target
+        label = game.i18n.localize(`CTHACK.Character.damage.${this.target}`)
         text = game.i18n.format("CTHACK.Roll.damage", { item: label })
         break
       case ROLL_TYPE.ATTACK:
@@ -144,7 +144,7 @@ export default class CtHackRoll extends Roll {
         text = game.i18n.format("CTHACK.Roll.attack", { item: label })
         break
       case ROLL_TYPE.MATERIAL:
-        clabel = this.target
+        label = this.target
         text = game.i18n.format("CTHACK.Roll.material", { material: label })
         break
     }
@@ -219,17 +219,9 @@ export default class CtHackRoll extends Roll {
     }
 
     let damageDice
-
-    // Damage roll
-    if (options.rollType === ROLL_TYPE.DAMAGE) {
-      damageDice = options.rollValue
-      // Récupération du nom de l'objet si c'est un jet depuis la fiche de l'acteur
-      // Si c'est via une macro le nom est connu
-      options.rollTarget = game.actors.get(options.actorId).items.get(options.rollTarget).name
-    }
-
-    // Attack roll
-    if (options.rollType === ROLL_TYPE.ATTACK) {
+ 
+    // Damage roll or Attack roll
+    if (options.rollType === ROLL_TYPE.DAMAGE || options.rollType === ROLL_TYPE.ATTACK) {
       damageDice = options.rollValue
     }
 
@@ -255,7 +247,7 @@ export default class CtHackRoll extends Roll {
     if (options.rollType === ROLL_TYPE.DAMAGE && options.hasTarget && options.target.document.actor.type === "opponent") {
       const actor = options.target.document.actor
       targetName = actor.name
-      targetArmor = actor.system.armure.toString()
+      targetArmor = actor.system.armor.toString()
     }
 
     if (options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) {
@@ -511,7 +503,7 @@ export default class CtHackRoll extends Roll {
   }
 
   /**
-   * Creates a title based on the given type.
+   * Creates the title of the Prompt Dialog based on the given type.
    *
    * @param {string} type The type of the roll.
    * @param {string} target The target of the roll.
@@ -531,7 +523,7 @@ export default class CtHackRoll extends Roll {
           return `${game.i18n.localize("CTHACK.Dialog.titleResource")} : ${resourceName}`
         }
       case ROLL_TYPE.DAMAGE:
-        return `${game.i18n.localize("CTHACK.Dialog.titleDamage")} : ${options.rollTarget}`
+        return `${game.i18n.localize("CTHACK.Dialog.titleDamage")} : ${game.i18n.localize(`CTHACK.Character.damage.${options.rollTarget}`)}`
       case ROLL_TYPE.ATTACK:
         return `${game.i18n.localize("CTHACK.Dialog.titleAttack")} : ${options.rollTarget}`
       case ROLL_TYPE.MATERIAL:

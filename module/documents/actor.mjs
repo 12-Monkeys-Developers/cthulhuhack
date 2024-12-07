@@ -280,8 +280,9 @@ export default class CtHackActor extends Actor {
    * @param {Object} options      Options which configure how damage tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
-  async rollDamageRoll(damageId, options = {}) {
+  async rollDamage(damageId, options = {}) {
     if (CTHACK.debug) console.log(`${LOG_HEAD}Roll ${damageId} roll`)
+    const v2 = game.settings.get("cthack", "Revised") ? true : false
 
     const damageDice = this.system.attributes[damageId].value
 
@@ -289,18 +290,24 @@ export default class CtHackActor extends Actor {
       return
     }
 
-    const damage = CTHACK.attributes[damageId]
-    const label = game.i18n.localize(damage)
+    const label = game.i18n.localize(CTHACK.attributes[damageId])
 
-    // Roll and return
-    const rollData = foundry.utils.mergeObject(options, {
-      rollType: "Damage",
-      title: label,
-      rollId: label,
-      diceType: damageDice,
-    })
-    rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
-    return await diceRoll(rollData)
+    // V1
+    if (!v2) {
+      // Roll and return
+      const rollData = foundry.utils.mergeObject(options, {
+        rollType: "Damage",
+        title: label,
+        rollId: label,
+        diceType: damageDice,
+      })
+      rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
+      return await diceRoll(rollData)
+    }
+    // V2
+    else {
+      return await this.system.roll(ROLL_TYPE.DAMAGE, damageId)
+    }
   }
 
   /**
@@ -444,8 +451,8 @@ export default class CtHackActor extends Actor {
    */
   _findSavesAdvantagesFromCustomAbilities() {
     return this.items
-      .filter(item => item.type === "ability" && item.system.isCustom && item.system.advantageGiven && item.system.advantageText !== "")
-      .map(item => ({ text: item.system.advantageText, origin: item.name }));
+      .filter((item) => item.type === "ability" && item.system.isCustom && item.system.advantageGiven && item.system.advantageText !== "")
+      .map((item) => ({ text: item.system.advantageText, origin: item.name }))
   }
 
   /**
@@ -453,9 +460,9 @@ export default class CtHackActor extends Actor {
    * @param {*} itemData
    */
   async createDefinitionItem(itemData) {
-    const key = itemData.system.key;
+    const key = itemData.system.key
     if (key.startsWith("OOA") || key.startsWith("TI") || key.startsWith("SK")) {
-      this._createActiveEffect(itemData);
+      this._createActiveEffect(itemData)
     }
 
     // Create the owned item

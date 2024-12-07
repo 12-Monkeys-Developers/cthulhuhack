@@ -4,15 +4,6 @@ export class Macros {
 
     if (dropData.type == "roll") {
       const name = game.actors.get(dropData.actorId).name
-      let rollCommand
-      switch (dropData.rollType) {
-        case "save":
-          rollCommand = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}', '=');`
-          break
-        case "resource":
-          rollCommand = `game.actors.get('${dropData.actorId}').rollResource('${dropData.rollTarget}');`
-          break
-      }
       let rollName
       switch (dropData.rollType) {
         case "save":
@@ -25,6 +16,22 @@ export class Macros {
             const resourceName = game.settings.get("cthack", "MiscellaneousResource")
             rollName = `${game.i18n.localize("CTHACK.Label.jet")} ${resourceName} (${name})`
           }
+          break
+        case "damage":
+          rollName = `${game.i18n.localize("CTHACK.Label.jet")} ${game.i18n.localize(`CTHACK.Character.damage.${dropData.rollTarget}`)} (${name})`
+          break
+      }
+
+      let rollCommand
+      switch (dropData.rollType) {
+        case "save":
+          rollCommand = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}', '=');`
+          break
+        case "resource":
+          rollCommand = `game.actors.get('${dropData.actorId}').rollResource('${dropData.rollTarget}');`
+          break
+        case "damage":
+          rollCommand = `game.actors.get('${dropData.actorId}').rollDamage('${dropData.rollTarget}');`
           break
       }
       this.createMacro(slot, rollName, rollCommand, "icons/svg/d20-grey.svg")

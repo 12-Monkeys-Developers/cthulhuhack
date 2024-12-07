@@ -159,7 +159,7 @@
           </div>
         {{/if}}
 
-        <div class="resource">
+        <div class="resource" data-drag="true" data-drag-type="damage" data-drag-target="armedDamage">
             <label for="armedDamage.value" class="resource-label damage {{#if (isDiceRollable system.attributes.armedDamage.value)}}rollable{{/if}}" data-resource="armedDamage">{{localize "CTHACK.ArmedDamage"}}</label>
             <div class="resource-content">
                 <select class="resource-value" name="system.attributes.armedDamage.value" data-type="String" {{{getStyleForDice system.attributes.armedDamage.value}}} {{disabled uneditable}}>
@@ -168,7 +168,7 @@
             </div>
         </div>
 
-        <div class="resource">
+        <div class="resource" data-drag="true" data-drag-type="damage" data-drag-target="unarmedDamage">
             <label for="unarmedDamage.value" class="resource-label damage {{#if (isDiceRollable system.attributes.unarmedDamage.value)}}rollable{{/if}}" data-resource="unarmedDamage">{{localize "CTHACK.UnarmedDamage"}}</label>
             <div class="resource-content">
                 <select class="resource-value" name="system.attributes.unarmedDamage.value" data-type="String" {{{getStyleForDice system.attributes.unarmedDamage.value}}} {{disabled uneditable}}>

@@ -288,6 +288,10 @@
         "sanity": "Santé mentale",
         "hitPoints": "Points de Vie",
         "wealthDice": "Richesse"
+      },
+      "damage": {
+        "armedDamage": "Dégât(s) armé",
+        "unarmedDamage": "Dégât(s) sans arme"
       }
     },
 

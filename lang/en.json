@@ -287,6 +287,10 @@
         "sanity": "Sanity",
         "hitPoints": "Hit Points",
         "wealthDice": "Wealth"
+      },
+      "damage": {
+        "armedDamage": "Armed",
+        "unarmedDamage": "Unarmed"
       }
     },
 
