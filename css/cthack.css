@@ -2237,7 +2237,6 @@ a.inline-roll {
 .dice-roll .intro-chat .intro-right .introText {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  width: 210px;
   margin-left: 20px;
 }
 .dice-roll .result {
