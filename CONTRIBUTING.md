@@ -9,5 +9,5 @@ With the change to LevelDB, there is a step to create the packs in local.
     - npm run pullYAMLtoLDB will create the packs depending of the content of src/packs directory
 
 # To update the packs
--  Unpack data : npm run pushYAMLtoJSON will create the src/packs files and export all actors/items in yaml files
+-  Unpack data : npm run pushLDBtoYAML will create the src/packs files and export all actors/items in yaml files
 -  Pack data : npm run pullYAMLtoLDB will create the packs from the yaml files
