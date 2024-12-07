@@ -35,9 +35,9 @@ export default class CtHackCharacterSheet extends ActorSheet {
   /** @inheritdoc */
   _onDragStart(event) {
     if ("link" in event.target.dataset) return
-    
+
     const li = event.currentTarget
-    
+
     // Create drag data
     let dragData
 
@@ -55,8 +55,9 @@ export default class CtHackCharacterSheet extends ActorSheet {
 
     if (!dragData) {
       const el = event.currentTarget.closest('[data-drag="true"]')
-      const dragType = el.dataset.dragType
-  
+      const dataset = el.dataset
+      const dragType = dataset.dragType
+
       let target
       switch (dragType) {
         case "resource":
@@ -65,8 +66,16 @@ export default class CtHackCharacterSheet extends ActorSheet {
             actorId: this.document.id,
             type: "roll",
             rollType: dragType,
-            rollTarget: el.dataset.dragTarget,
+            rollTarget: dataset.dragTarget,
             value: target.value,
+          }
+        case "save":
+          dragData = {
+            actorId: this.document.id,
+            type: "roll",
+            rollType: dragType,
+            rollTarget: dataset.dragTarget,
+            value: dataset.value,
           }
       }
     }

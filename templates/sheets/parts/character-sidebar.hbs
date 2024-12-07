@@ -11,7 +11,7 @@
   
   {{#each actor.system.saves as |save key|}}
     {{!log 'save' save key}}
-    <div class="sidebar-section" data-save="{{key}}">
+    <div class="sidebar-section" data-save="{{key}}" data-drag="true" data-drag-type="save" data-drag-target="{{key}}" data-drag-value="{{save.value}}">
       <label class="save-name rollable" data-tooltip="{{localize (toDesc key)}}" data-tooltip-direction="UP" data-tooltip-class="tooltip-save">{{getSaveLabel key save}}</label>
       {{#if @root.editable}}
         <input class="save-value" type="text" name="system.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" />

@@ -4,17 +4,28 @@ export class Macros {
 
     if (dropData.type == "roll") {
       const name = game.actors.get(dropData.actorId).name
-      const rollCommand =
-        dropData.rollType === "save"
-          ? `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}', '=');`
-          : `game.actors.get('${dropData.actorId}').rollResource('${dropData.rollTarget}');`
+      let rollCommand
+      switch (dropData.rollType) {
+        case "save":
+          rollCommand = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}', '=');`
+          break
+        case "resource":
+          rollCommand = `game.actors.get('${dropData.actorId}').rollResource('${dropData.rollTarget}');`
+          break
+      }
       let rollName
-      if (dropData.rollType === "resource") {
-          if (dropData.rollTarget !== "miscellaneous") rollName = `${game.i18n.localize("CTHACK.Label.jet")} ${game.i18n.localize(`CTHACK.Character.resources.${dropData.rollTarget}`)} (${name})`        
+      switch (dropData.rollType) {
+        case "save":
+          rollName = `${game.i18n.localize("CTHACK.Label.jet")} ${game.i18n.localize(`CTHACK.Character.saves.${dropData.rollTarget}`)} (${name})`
+          break
+        case "resource":
+          if (dropData.rollTarget !== "miscellaneous")
+            rollName = `${game.i18n.localize("CTHACK.Label.jet")} ${game.i18n.localize(`CTHACK.Character.resources.${dropData.rollTarget}`)} (${name})`
           else {
             const resourceName = game.settings.get("cthack", "MiscellaneousResource")
             rollName = `${game.i18n.localize("CTHACK.Label.jet")} ${resourceName} (${name})`
           }
+          break
       }
       this.createMacro(slot, rollName, rollCommand, "icons/svg/d20-grey.svg")
     } else if (dropData.type == "Item") {
