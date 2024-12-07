@@ -293,7 +293,7 @@ function _calculateNumberOfDices(dialogChoice, advantage, disadvantage) {
  */
 async function _diceRollDialog({ template, title, parts, data, rollMode, dialogOptions, rollType, modifier, advantage, disadvantage, abilitiesAdvantages, roll } = {}) {
 	// Render modal dialog
-	template = template || 'systems/cthack/templates/dialog/roll-dialog.hbs';
+	template = template || 'systems/cthack/templates/dialog/roll-dialog-v1.hbs';
 	let dialogData = {
 		formula: parts.join(' + '),
 		data: data,

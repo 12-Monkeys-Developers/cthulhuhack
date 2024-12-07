@@ -4,26 +4,23 @@
       "character": "Character",
       "opponent": "Opponent"
     },
-    "Item": {      
+    "Item": {
       "ability": "Ability",
       "item": "Item",
       "weapon": "Weapon",
-      "magic": "Magic",      
+      "magic": "Magic",
       "archetype": "Archetype",
-      "attack": "Attack",      
+      "attack": "Attack",
       "opponentAbility": "Opponent Ability",
       "definition": "Definition"
     }
   },
 
   "CTHACK": {
-    "SheetClassCharacter": "Character",
-    "SheetClassOpponent": "Opponent",
-    "SheetClassItem": "Object",
-
     "Name": "Name",
     "Occupation": "Occupation",
     "Archetype": "Archetype",
+    "Skills": "Skills",
     "SaveStr": "Strength",
     "SaveStrAbbr": "Str",
     "SaveStrDesc": "vs Melee attacks that cannot be dodged",
@@ -86,7 +83,7 @@
     "AbilityUseScenario": "Per scenario",
     "AbilityUsePerSession": "Per session",
     "AbilityUsePerDay": "Per day",
-    "AbilityUsePerNight": "Per night",    
+    "AbilityUsePerNight": "Per night",
     "AbilityUsePerHour": "Per hour",
     "AbilityUsePerScene": "Per scene",
     "AbilityUsePerFight": "Per fight",
@@ -94,6 +91,7 @@
     "AbilityIsCustom": "Custom",
     "AbilityAdvantageGiven": "Advantage given",
     "AbilityAdvantageText": "Advantage description",
+
     "MagicType": "Type",
     "MagicSanity": "Sanity",
     "MagicIncantation": "Incantation",
@@ -227,7 +225,6 @@
       "Div": "Dive",
       "Scr": "Scream"
     },
-
     "GMManager": {
       "Title": "Players Status"
     },
@@ -245,6 +242,100 @@
       "InitStart": "Initialization of Cthulhu Hack system",
       "InitEnd": "Cthulhu Hack system initialized",
       "ReadyEnd": "Cthulhu Hack system ready"
+    },
+    "Dialog": {
+      "titleSave": "Save Roll",
+      "titleWeapon": "Weapon Roll",
+      "titleResource": "Resource Roll",
+      "titleDamage": "Damage Roll",
+      "titleAttack": "Attack Roll",
+      "titleMaterial": "Material Roll",
+      "titleStandard": "Standard Roll"
+    },
+    "Roll": {
+      "save": "Save Roll <br> {save}",
+      "resource": "Resource Roll <br> {resource}",
+      "damage": "Damage Roll <br> {item}",
+      "attack": "Attack Roll <br> {item}",
+      "material": "Material Roll <br> {material}",
+      "roll": "Roll",
+      "adversite": "Opponent",
+      "avantagesDesavantages": "Advantages and disadvantages",
+      "normal": "Normal",
+      "avantage": "With advantage",
+      "desavantage": "With disadvantage",
+      "doubleAvantage": "With double advantage",
+      "doubleDesavantage": "With double disadvantage",
+      "visibilite": "Roll visibility",
+      "success": "Success",
+      "failure": "Failure",
+      "resourceLost": "Resource lost",
+      "displayArmor": "{targetName} has an armor of {targetArmor}. Real damages : {realDamage}"
+    },
+    "Character": {
+      "saves": {
+        "str": "Strength",
+        "dex": "Dexterity",
+        "con": "Constitution",
+        "wis": "Wisdom",
+        "int": "Intelligence",
+        "cha": "Charisma"
+      },
+      "resources": {
+        "flashlights": "Flashlights",
+        "smokes": "Smokes",
+        "sanity": "Sanity",
+        "hitPoints": "Hit Points",
+        "wealthDice": "Wealth"
+      },
+      "damage": {
+        "armedDamage": "Armed",
+        "unarmedDamage": "Unarmed"
+      }
+    },
+
+    "Label": {
+      "degats": "Damage",
+      "ressource": "Resource",
+      "sauvegarde": "Save",
+      "material": "Material",
+      "modificateur": "Modifier",
+      "jet": "Roll of "
+    },
+    "Warning": {
+      "noResource": "You have no more resource {ressource}"
+    },
+    "StandardAbilities": {
+      "SWILEA": {
+        "label": "Agile"
+      },
+      "STA": {
+        "label": "Stagecraft"
+      },
+      "ANIHAN": {
+        "label": "Animal Handler"
+      },
+      "IND": {
+        "label": "Indomitable"
+      },
+      "MEC": {
+        "label": "Mechanic"
+      },
+      "IROMIN": {
+        "label": "Iron Mind"
+      },
+      "RIP": {
+        "label": "Ripped"
+      },
+      "LEG": {
+        "label": "Legerdemain"
+      },
+      "SELPRE": {
+        "label": "Self-Preservation"
+      },
+      "HAR": {
+        "label": "Hardy"
+      }
     }
   },
 
@@ -266,13 +357,17 @@
     "HealthDisplayHint": "Display hit points, hit dice or both",
     "HealthDisplayHp": "Display hit points",
     "HealthDisplayHd": "Display hit dice",
-    "HealthDisplayBoth": "Display hit points and hit dice",    
+    "HealthDisplayBoth": "Display hit points and hit dice",
     "MiscellaneousResourceName": "Miscellaneous Resource",
     "MiscellaneousResourceHint": "Allow to have a additional resource",
     "CompendiumFRName": "Display french compendiums",
     "CompendiumFRHint": "Display french compendiums",
     "CompendiumENName": "Display english compendiums",
-    "CompendiumENHint": "Display english compendiums"
+    "CompendiumENHint": "Display english compendiums",
+    "RevisedName": "Cthulhu Hack Reissue",
+    "RevisedHint": "Activate Cthulhu Hack reissue rules",
+    "displayOpponentMalus": "Display Opponent malus",
+    "displayOpponentMalusHint": "Display the Opponent malus to the players (if Reissue activated)."    
   },
 
   "CHAT": {
@@ -295,7 +390,7 @@
 
   "MACROS": {
     "MultipleTokensSelected": "You have selected several tokens.",
-    "NoTokenSelected": "No token is selected.",
+    "NoTokenSelected": "No token is selected or the player has no character.",
     "ObjectNotInInventory": "The item {itemName} is not in the inventory of {actorName}.",
     "ObjectWithoutResource": "The item {itemName} is an object without resources.",
     "ObjectEmptyResource": "The item {itemName} has no more resources.",
@@ -319,7 +414,9 @@
     "UnlockSheet": "Unlock the sheet",
     "SelectImage": "Left click to select an image, right click to remove the image",
     "ShowImage": "Show the image",
-    "SearchName": "Right click to search the name"
+    "SearchName": "Right click to search the name",
+    "Max": "Max : ",
+    "saveIntroTextTooltip": "Caracteristic : {value} <br> Modifier : {modificateur}"
   },
 
   "SEARCHTOOL": {
@@ -328,7 +425,7 @@
     "ButtonCancel": "Cancel",
     "DialogTitle": "Search for Text in Journals, Characters, Items...",
     "DialogInput": "Text to search :",
-    "ChatIntro": "Search result", 
+    "ChatIntro": "Search result",
     "ChatText": "Searched text: ",
     "NoResults": "No result",
     "TooManyResults": "More than 20 results, refine your search.",

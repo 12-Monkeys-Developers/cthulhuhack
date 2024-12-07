@@ -6,8 +6,8 @@
     "css": "gulp css",
     "watch": "gulp",
     "gulp": "gulp",
-    "pushLDBtoYAML": "node ./tools/pushLDBtoYAML.mjs",
-    "pullYAMLtoLDB": "node ./tools/pullYAMLtoLDB.mjs"
+    "LDBtoYAML": "node ./tools/LDBtoYML.mjs",
+    "YAMLtoLDB": "node ./tools/YMLtoLDB.mjs"
   },
   "browserslist": [
     "last 3 versions"

@@ -6,64 +6,29 @@ import { SAVES } from './config/character.mjs';
 export const registerHandlebarsHelpers = function() {
 
 	Handlebars.registerHelper('hasModifier', function(modifier) {
-		if (modifier !== null && modifier !== 0 ){
-			return true;
-		}
-		return false;
+		return modifier !== null && modifier !== 0;
 	});
 
 	Handlebars.registerHelper('isModifierPositive', function(modifier) {
-		if (modifier !== null && modifier > 0 ){
-			return true;
-		}
-		return false;
+		return modifier > 0;
 	});
 
 	Handlebars.registerHelper('isModifierNegative', function(modifier) {
-		if (modifier !== null && modifier < 0 ){
-			return true;
-		}
-		return false;
+		return modifier !== null && modifier < 0;
 	});
 
-	Handlebars.registerHelper('getSaveLabel', function(str) {
-		var outStr = 'CTHACK.Save' + str.substring(0, 1).toUpperCase() + str.substring(1);
-		return outStr;
-	});
-
-	Handlebars.registerHelper('getSaveLabel2', function(key, save) {
+	Handlebars.registerHelper('getSaveLabel', function(key, save) {
 		let label = game.i18n.localize(SAVES[key].label);
 		if (save.advantage) label = label.concat(' *');
 		return label;
 	});
 
-	Handlebars.registerHelper('toDesc', function(str) {
-		var outStr = 'CTHACK.Save' + str.substring(0, 1).toUpperCase() + str.substring(1) + 'Desc';
-		return outStr;
-	});
-
-	Handlebars.registerHelper('toDesc2', function(save) {
+	Handlebars.registerHelper('toDesc', function(save) {
 		return SAVES[save].description;
-	});
-
-	// Return the dice from a value
-	Handlebars.registerHelper('toDice', function(value) {
-		if (isDice(value)) {
-			var outStr = `1d{{value}}`;
-			return outStr;
-		}
-		if (CTHACK.debug) (`{{value}} is not a valid dice value`);
 	});
 
 	Handlebars.registerHelper('stringNeitherNullEmpty', function(str) {
 		return str !== null && str !== '';
-	});
-
-	Handlebars.registerHelper('booleanToString', function(value) {
-		if (value) {
-			return game.i18n.localize('CTHACK.YES');
-		}
-		return game.i18n.localize('CTHACK.NO');
 	});
 
 	Handlebars.registerHelper('isEnabled', function(configKey) {
@@ -71,11 +36,6 @@ export const registerHandlebarsHelpers = function() {
 		if (value === false || value === "none" || value === "") return false;
         return true;
 
-	});
-
-	Handlebars.registerHelper('isWealthAsResource', function() {
-		const value = game.settings.get("cthack", "Wealth");
-		return value == 'resource';
 	});
 
 	Handlebars.registerHelper('getFortuneValue', function() {
@@ -86,23 +46,10 @@ export const registerHandlebarsHelpers = function() {
 		return game.settings.get('cthack', 'MiscellaneousResource');
 	});
 
-	Handlebars.registerHelper('shouldDisplayFortuneUse', function() {
-		if (game.settings.get('cthack', 'FortuneValue') > 0){
-			return true;
-		}
-		else {
-			return false;
-		}
-	});
-
 	Handlebars.registerHelper('getAdrenalineImage', function(value) {
 		if (value === 'pj') {
 			return 'icons/commodities/currency/coin-plain-portal-gold.webp';
 		} else return 'icons/commodities/currency/coin-embossed-skull-silver.webp';
-	});
-
-	Handlebars.registerHelper('getItemsAndWeapons', function(items) {
-		return items.filter((item) => item.type === 'item' || item.type === 'weapon');
 	});
 
 	Handlebars.registerHelper('rangeDesc', function(str) {
@@ -158,13 +105,6 @@ export const registerHandlebarsHelpers = function() {
 		if (value === "" || value == 0 || value == 1) return `style="color:white;"`;
 		return `style="background-image:url('systems/cthack/ui/dice/${value}-grey.svg');padding: 5px;"`;
 	});
-
-	/*
-	Handlebars.registerHelper('getStyleForDiceV2', function(value) {
-		if (value === undefined) return;
-		if (value === "" || value == 0 || value == 1) return "no-dice";
-		return `dice-${value}`;
-	});*/
 
 	Handlebars.registerHelper('getNbRessources', function() {
 		const wealthEnabled = game.settings.get("cthack","Wealth") !== "none" ? true : false;

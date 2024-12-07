@@ -17,31 +17,28 @@
   },
 
   "CTHACK": {
-    "SheetClassCharacter": "Personnage",
-    "SheetClassOpponent": "Adversaire",
-    "SheetClassItem": "Objet",
-
     "Name": "Nom",
     "Occupation": "Métier",
+    "Skills": "Compétences",
     "Archetype": "Archétype",
     "SaveStr": "Force",
     "SaveStrAbbr": "For",
-    "SaveStrDesc": "contre les dégâts physiques qui ne peuvent pas être esquivés",
+    "SaveStrDesc": "Contre dégâts physiques inesquivables, combat rapproché, soulever un objet lourd, enfoncer une porte sans se blesser", 
     "SaveDex": "Dextérité",
     "SaveDexAbbr": "Dex",
-    "SaveDexDesc": "contre les dégâts physiques qui peuvent être esquivés",
+    "SaveDexDesc": "Contre dégâts physiques qui peuvent être esquivés, combat à distance, effectuer une manipulation complexe", 
     "SaveCon": "Constitution",
     "SaveConAbbr": "Con",
-    "SaveConDesc": "contre le poison, la maladie, la mort, la torture, les explosions",
+    "SaveConDesc": "Contre poison, maladie, mort, torture, explosions, endurer la fatigue sans s’endormir, marcher longtemps sans repos",
     "SaveWis": "Sagesse",
     "SaveWisAbbr": "Sag",
-    "SaveWisDesc": "contre la tromperie, les illusions, les drogues",
+    "SaveWisDesc": "Contre la tromperie, les illusions, les drogues, percevoir, détecter le mensonge, avoir du sens commun ou de l’instinct",
     "SaveInt": "Intelligence",
     "SaveIntAbbr": "Int",
-    "SaveIntDesc": "contre la magie, les gadgets aliens",
+    "SaveIntDesc": "Contre la magie, les gadgets aliens, comprendre des concepts scientifiques complexes, résoudre une énigme diabolique",
     "SaveCha": "Charisme",
     "SaveChaAbbr": "Cha",
-    "SaveChaDesc": "contre le contrôle mental, la séduction, le charme, l'influence",
+    "SaveChaDesc": "Contre le contrôle mental, la séduction, le charme, l’influence, faire un discours émouvant ou en rapport avec l’émotion",
     "FlashLights": "Torche",
     "FlashLightsDesc": "Repérer, chercher physiquement",
     "Smokes": "Bagou",
@@ -245,6 +242,102 @@
       "InitStart": "Initialisation du système Cthulhu Hack",
       "InitEnd": "Système Cthulhu Hack initialisé",
       "ReadyEnd": "Système Cthulhu Hack prêt"
+    },
+    "Dialog": {
+      "titleSave": "Jet de sauvegarde",
+      "titleWeapon": "Jet d'attaque",
+      "titleResource": "Jet de ressource",
+      "titleDamage": "Jet de dégâts",
+      "titleAttack": "Jet d'attaque",
+      "titleMaterial": "Jet de matériel",
+      "titleStandard": "Jet standard"
+    },
+    "Roll": {
+      "save": "Jet de sauvegarde <br> {save}",
+      "weapon": "Jet d'attaque : {item} <br> Sauvegarde : {save} <br>",
+      "resource": "Jet de ressource <br> {resource}",
+      "damage": "Jet de dégâts <br> {item}",
+      "attack": "Jet d'attaque <br> {item}",
+      "material": "Jet de matériel <br> {material}",
+      "roll": "Lancer",
+      "adversite": "Adversité",
+      "avantagesDesavantages": "Avantages et désavantages",
+      "normal": "Normal",
+      "avantage": "Avec avantage",
+      "desavantage": "Avec désavantage",
+      "doubleAvantage": "Avec double avantage",
+      "doubleDesavantage": "Avec double désavantage",
+      "visibilite": "Visibilité du lancer",
+      "success": "Réussite",
+      "failure": "Echec",
+      "resourceLost": "Ressource perdue",
+      "displayArmor": "{targetName} a une armure de {targetArmor}. Dégâts réels : {realDamage}"
+    },
+    "Character": {
+      "saves": {
+        "str": "Force",
+        "dex": "Dextérité",
+        "con": "Constitution",
+        "wis": "Sagesse",
+        "int": "Intelligence",
+        "cha": "Charisme"
+      },
+      "resources": {
+        "flashlights": "Torche",
+        "smokes": "Bagou",
+        "sanity": "Santé mentale",
+        "hitPoints": "Points de Vie",
+        "wealthDice": "Richesse"
+      },
+      "damage": {
+        "armedDamage": "Dégât(s) armé",
+        "unarmedDamage": "Dégât(s) sans arme"
+      }
+    },
+
+    "Label": {
+      "degats": "Dégâts",
+      "ressource": "Ressource",
+      "sauvegarde": "Sauvegarde",
+      "material": "Matériel",
+      "modificateur": "Modificateur",
+      "modificateurs": "Modificateurs",
+      "jet": "Jet de "
+    },
+    "Warning": {
+      "noResource": "Vous n'avez plus de ressource {ressource}"
+    },
+    "StandardAbilities": {
+      "SWILEA": {
+        "label": "Agile"
+      },
+      "STA": {
+        "label": "Artiste"
+      },
+      "ANIHAN": {
+        "label": "Dressage"
+      },
+      "IND": {
+        "label": "Indomptable"
+      },
+      "MEC": {
+        "label": "Mécanicien"
+      },
+      "IROMIN": {
+        "label": "Mental d'acier"
+      },
+      "RIP": {
+        "label": "Musclé"
+      },
+      "LEG": {
+        "label": "Prestidigitation"
+      },
+      "SELPRE": {
+        "label": "Sens du danger"
+      },
+      "HAR": {
+        "label": "Vigoureux"
+      }
     }
   },
 
@@ -272,7 +365,11 @@
     "CompendiumFRName": "Afficher les compendiums français",
     "CompendiumFRHint": "Affiche ou non les compendiums français du système",
     "CompendiumENName": "Afficher les compendiums anglais",
-    "CompendiumENHint": "Affiche ou non les compendiums anglais du système"
+    "CompendiumENHint": "Affiche ou non les compendiums anglais du système",
+    "RevisedName": "Cthulhu Hack Réédition",
+    "RevisedHint": "Active les règles de la réédition de Cthulhu Hack",
+    "displayOpponentMalus": "Afficher le malus d'adversité (Version Réédition)",
+    "displayOpponentMalusHint": "Affiche le malus d'adversité pour les joueurs si l'option Réédition est active."
   },
 
   "CHAT": {
@@ -295,7 +392,7 @@
 
   "MACROS": {
     "MultipleTokensSelected": "Vous avez sélectionné plusieurs tokens.",
-    "NoTokenSelected": "Aucun token n'est sélectionné.",
+    "NoTokenSelected": "Aucun token n'est sélectionné ou le joueur n'a pas de personnage attribué.",
     "ObjectNotInInventory": "L'objet {itemName} n'est pas dans l'inventaire de {actorName}.",
     "ObjectWithoutResource": "L'objet {itemName} n'est pas un objet à ressource.",
     "ObjectEmptyResource": "L'objet {itemName} n'a plus de ressources.",
@@ -319,7 +416,9 @@
     "UnlockSheet": "Déverrouiller la fiche",
     "SelectImage": "Clic gauche pour sélectionner une image, clic droit pour supprimer l'image",
     "ShowImage": "Montrer l'image",
-    "SearchName": "Clic droit pour rechercher le nom"
+    "SearchName": "Clic droit pour rechercher le nom",
+    "Max": "Max : ",
+    "saveIntroTextTooltip": "Caractéristique : {value} <br> Adversité : {modificateur}"
   },
 
   "SEARCHTOOL": {
@@ -340,4 +439,3 @@
     "UnhighlightedTooltip": "Surligner le texte recherché dans les documents"
   }
 }
-

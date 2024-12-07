@@ -9,4 +9,4 @@
  export const TEMPLATES_PATH = `systems/${SYSTEM_NAME}/templates`;
  export const SYSTEM_ICONS_PATH = `systems/${SYSTEM_NAME}/ui/icons`;
  export const LOG_HEAD = 'CTHACK | ';
- export const DEV_MODE = false;
+ export const DEV_MODE = true;

@@ -80,6 +80,9 @@ a.inline-roll {
 .editor.prosemirror.editing-source textarea {
   color: var(--font-color-primary);
 }
+.chat-message {
+  padding: 0;
+}
 .chat-message .message-content .chat-save-roll,
 .chat-message .message-content .chat-resource-roll,
 .chat-message .message-content .chat-other-roll,
@@ -91,6 +94,8 @@ a.inline-roll {
 .chat-message .message-header .message-sender {
   font-weight: bold;
 }
+.chat-message .message,
+.chat-message .message-header,
 .chat-message .message-content {
   background-image: var(--background-chat-image);
   background-repeat: no-repeat;
@@ -421,7 +426,6 @@ a.inline-roll {
 .cthack.sheet.actor.character .sidebar .sidebar-section label {
   font-weight: bold;
   font-family: var(--font-secondary);
-  font-size: var(--font-size-24);
 }
 .cthack.sheet.actor.character .sidebar .sidebar-section .save-value {
   flex: 1;
@@ -498,7 +502,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .name {
   margin-left: 10px;
-  font-size: var(--font-size-24);
+  font-size: var(--font-size-20);
   font-weight: bold;
 }
 .cthack.sheet.actor.character .character-sheet-header .header-occupation {
@@ -508,18 +512,21 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .header-occupation .occupation-archetype {
   text-align: left;
-  font-size: var(--font-size-20);
 }
 .cthack.sheet.actor.character .character-sheet-header .occupation {
   display: flex;
   flex-direction: row;
-  padding: 10px 0 10px 0;
+  padding: 10px 10px 10px 0;
 }
 .cthack.sheet.actor.character .character-sheet-header .occupation label {
   margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
-.cthack.sheet.actor.character .character-sheet-header .occupation input {
+.cthack.sheet.actor.character .character-sheet-header .occupation input.occupation-name {
+  border: 1px solid;
+  width: 150px;
+}
+.cthack.sheet.actor.character .character-sheet-header .occupation input.occupation-skills {
   border: 1px solid;
   width: 250px;
 }
@@ -533,7 +540,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .archetype input {
   border: 1px solid;
-  width: 250px;
+  width: 200px;
 }
 .cthack.sheet.actor.character .character-sheet-header .short-description {
   grid-column-start: 1;
@@ -592,7 +599,6 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .resource label {
   font-family: var(--font-secondary);
-  font-size: var(--font-size-24);
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content {
   padding: 5px 0 5px 0;
@@ -621,6 +627,8 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .character-sheet-header .resource-value {
   color: black;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource-value.resource-value-lost {
   text-shadow: 0 0 10px red;
 }
 .cthack.sheet.actor.character .sheet-body .editor {
@@ -656,6 +664,15 @@ a.inline-roll {
 .cthack.sheet.actor.character .sheet-body .equipment .items-list {
   display: flex;
   flex-direction: column;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list div.title {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list div.title i {
+  padding: 10px 20px 0 0;
+  font-size: 1.2em;
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line {
   display: grid;
@@ -2077,4 +2094,156 @@ a.inline-roll {
 }
 .cthack.sheet.item.opponentAbility .item-description .prosemirror menu button {
   background: var(--color-hover-bg);
+}
+.application.dialog.cthack {
+  color: var(--color-light-1);
+}
+.application.dialog.cthack input,
+.application.dialog.cthack select {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-light-1);
+  color: var(--color-light-1);
+  font-size: 1.2rem;
+}
+.application.dialog.cthack legend {
+  letter-spacing: 1px;
+}
+.application.dialog.cthack .cthack-roll-dialog fieldset {
+  margin: 10px 0 0 0;
+  padding: 5px;
+}
+.application.dialog.cthack .cthack-roll-dialog .select {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-aide-gene {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-aide-gene select {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-light-1);
+  width: 60px;
+  text-align: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-avantages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-avantages #selectAvantages {
+  background-color: inherit;
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-avantages input[type="range"] {
+  width: 300px;
+  margin-top: 5px;
+  border: 2px solid var(--color-light-1);
+  --range-track-color: var(--color-light-1);
+  --range-thumb-background-color: rgba(11, 10, 19, 0.9);
+  --range-thumb-border-color: var(--color-light-1);
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-avantages input[name="selectAvantages"] {
+  border: none;
+  text-align: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-bonus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-bonus .bonus.checked {
+  background: var(--color-dark-4);
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-modificateur {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-modificateur select {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-light-1);
+  width: 60px;
+  text-align: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-visibility {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-visibility select {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-light-1);
+  width: 200px;
+  text-align: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-damage,
+.application.dialog.cthack .cthack-roll-dialog .dialog-resource,
+.application.dialog.cthack .cthack-roll-dialog .dialog-save {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 2);
+  color: var(--color-light-1);
+}
+.application.dialog.cthack button {
+  border-color: var(--color-light-1);
+  color: var(--color-light-1);
+  font-size: 1.2rem;
+}
+.application.dialog.cthack button:hover {
+  background: var(--color-dark-3);
+}
+.dice-roll {
+  flex-direction: column;
+}
+.dice-roll .dice-total,
+.dice-roll .dice-formula {
+  padding-top: 5px;
+}
+.dice-roll .dice-total {
+  margin-bottom: 5px;
+}
+.dice-roll .message-header {
+  font-family: var(--font-primary);
+}
+.dice-roll img {
+  border: 0px;
+}
+.dice-roll .intro-chat {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.dice-roll .intro-chat .intro-img {
+  padding: 5px;
+  width: 80px;
+  align-self: center;
+}
+.dice-roll .intro-chat .intro-right {
+  display: flex;
+  flex-direction: column;
+}
+.dice-roll .intro-chat .intro-right .introText {
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+  margin-left: 20px;
+}
+.dice-roll .result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--font-size-standard) * 1.2);
+  text-shadow: 0 0 10px var(--color-shadow-primary);
 }

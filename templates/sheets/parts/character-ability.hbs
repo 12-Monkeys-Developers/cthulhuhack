@@ -14,7 +14,7 @@
         {{/if}}
       </div>
     </summary>
-     <div class="item-description">{{{enrichedDescription}}}</div>
+     <div class="item-description" {{#if system.advantageGiven}}data-tooltip="{{localize "CTHACK.AbilityAdvantageGiven"}} : {{{system.advantageText}}}"{{/if}}>{{{enrichedDescription}}}</div>
   </details>
 </div>
 

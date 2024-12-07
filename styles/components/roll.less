@@ -1,0 +1,169 @@
+.application.dialog.cthack {
+  color: var(--color-light-1);
+
+  input,
+  select {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: var(--color-light-1);
+    color: var(--color-light-1);
+    font-size: 1.2rem;
+  }
+
+  legend {
+    letter-spacing: 1px;
+  }
+
+  .cthack-roll-dialog {
+    fieldset {
+      //padding: 20px 10px 10px 10px;
+      margin: 10px 0 0 0;
+      padding: 5px;
+    }
+    .select {
+      width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .dialog-aide-gene {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      select {
+        border: none;
+        background-color: rgba(0, 0, 0, 0.1);
+        color: var(--color-light-1);
+        width: 60px;
+        text-align: center;
+      }
+    }
+
+    .dialog-avantages {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      #selectAvantages {
+        background-color: inherit;
+        //text-align: center;
+        font-family: var(--font-secondary);
+        font-size: calc(var(--font-size-standard) * 1.2);
+      }
+      input[type="range"] {
+        width: 300px;        ;
+        margin-top: 5px;
+        border: 2px solid var(--color-light-1);
+        --range-track-color: var(--color-light-1);
+        --range-thumb-background-color: rgba(11, 10, 19, 0.9);
+        --range-thumb-border-color: var(--color-light-1);
+      }
+      input[name="selectAvantages"] {
+        border: none;
+        text-align: center;
+      }
+    }
+
+    .dialog-bonus {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .bonus.checked {
+        background: var(--color-dark-4);
+      }
+    }
+
+    .dialog-modificateur {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      select {
+        border: none;
+        background-color: rgba(0, 0, 0, 0.1);
+        color: var(--color-light-1);
+        width: 60px;
+        text-align: center;
+      }
+    }
+
+    .dialog-visibility {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      select {
+        border: none;
+        background-color: rgba(0, 0, 0, 0.1);
+        color: var(--color-light-1);
+        width: 200px;
+        text-align: center;
+      }
+    }
+
+    .dialog-damage,
+    .dialog-resource,
+    .dialog-save {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: var(--font-secondary);
+      font-size: calc(var(--font-size-standard) * 2);
+      color: var(--color-light-1);
+    }
+  }
+
+  button {
+    border-color: var(--color-light-1);
+    color: var(--color-light-1);
+    font-size: 1.2rem;
+  }
+
+  button:hover {
+    background: var(--color-dark-3);
+  }
+}
+
+&.dice-roll {
+  flex-direction: column;
+
+  .dice-total,
+  .dice-formula {
+    padding-top: 5px;
+  }
+  .dice-total {
+    margin-bottom: 5px;
+  }
+  .message-header {
+    font-family: var(--font-primary);
+  }
+  img {
+    border: 0px;
+  }
+  .intro-chat {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    .intro-img {
+      padding: 5px;
+      width: 80px;
+      align-self: center;
+    }
+    .intro-right {
+      display: flex;
+      flex-direction: column;
+      .introText {
+        font-family: var(--font-secondary);
+        font-size: calc(var(--font-size-standard) * 1.2);
+        //width: 210px;
+        margin-left: 20px;
+      }
+    }
+  }
+  .result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(var(--font-size-standard) * 1.2);
+    text-shadow: 0 0 10px var(--color-shadow-primary);
+  }
+}

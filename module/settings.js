@@ -1,29 +1,16 @@
 export const registerSystemSettings = function () {
   /**
-   * Fortune option
+   * Revised option
    */
-  game.settings.register("cthack", "FortuneAvailable", {
-    name: "SETTINGS.FortuneAvailableName",
-    hint: "SETTINGS.FortuneAvailableHint",
+  game.settings.register("cthack", "Revised", {
+    name: "SETTINGS.RevisedName",
+    hint: "SETTINGS.RevisedHint",
     scope: "world",
     config: true,
     type: Boolean,
-    default: false,
+    default: true,
     requiresReload: true,
-  });
-
-  /**
-   * Track the fortune value
-   */
-  game.settings.register("cthack", "FortuneValue", {
-    name: "SETTINGS.FortuneValueName",
-    hint: "SETTINGS.FortuneValueHint",
-    scope: "world",
-    config: true,
-    type: Number,
-    default: 0,
-    requiresReload: false,
-  });
+  })
 
   /**
    * Adrenaline option
@@ -36,7 +23,33 @@ export const registerSystemSettings = function () {
     type: Boolean,
     default: false,
     requiresReload: true,
-  });
+  })
+
+  /**
+   * Fortune option
+   */
+  game.settings.register("cthack", "FortuneAvailable", {
+    name: "SETTINGS.FortuneAvailableName",
+    hint: "SETTINGS.FortuneAvailableHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false,
+    requiresReload: true,
+  })
+
+  /**
+   * Track the fortune value
+   */
+  game.settings.register("cthack", "FortuneValue", {
+    name: "SETTINGS.FortuneValueName",
+    hint: "SETTINGS.FortuneValueHint",
+    scope: "world",
+    config: true,
+    type: Number,
+    default: 0,
+    requiresReload: false,
+  })
 
   /**
    * HitDice as resource option
@@ -49,7 +62,7 @@ export const registerSystemSettings = function () {
     type: Boolean,
     default: false,
     requiresReload: true,
-  });
+  })
 
   /**
    * Wealth as resource option
@@ -67,7 +80,7 @@ export const registerSystemSettings = function () {
     },
     default: "fixed",
     requiresReload: true,
-  });
+  })
 
   /**
    * Miscellaneous resource option
@@ -80,7 +93,7 @@ export const registerSystemSettings = function () {
     type: String,
     default: "",
     requiresReload: true,
-  });
+  })
 
   /**
    * New HitDice Resource option
@@ -98,13 +111,26 @@ export const registerSystemSettings = function () {
     },
     default: "both",
     requiresReload: true,
-  });
+  })
 
+
+  /**
+   * World key used for statistics
+   */  
   game.settings.register("cthack", "worldKey", {
     name: "Unique world key",
     scope: "world",
     config: false,
     type: String,
     default: "",
-  });
-};
+  })
+
+  game.settings.register("cthack", "displayOpponentMalus", {
+    name: "SETTINGS.displayOpponentMalus",
+    hint: "SETTINGS.displayOpponentMalusHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  })
+}

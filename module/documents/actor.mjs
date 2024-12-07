@@ -1,48 +1,82 @@
-import { CTHACK } from "../config.js";
-import { diceRoll } from "../dice.js";
-import { formatDate, findLowerDice } from "../utils.js";
-import { LOG_HEAD } from "../constants.js";
+import { CTHACK } from "../config.js"
+import { diceRoll } from "../dice.js"
+import { formatDate } from "../utils.js"
+import { CthackUtils } from "../utils.js"
+import { LOG_HEAD } from "../constants.js"
+import { ROLL_TYPE } from "../config/system.mjs"
 
 /**
  * @extends {Actor}
  */
 export default class CtHackActor extends Actor {
+  async _preCreate(data, options, user) {
+    await super._preCreate(data, options, user)
+
+    // Configure prototype token settings
+    const prototypeToken = {}
+    if (this.type === "character") {
+      Object.assign(prototypeToken, {
+        sight: { enabled: true },
+        actorLink: true,
+        disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
+      })
+      this.updateSource({ prototypeToken })
+    }
+  }
+
   /**
-   * @name rollSave
-   * @description Roll a Saving Throw
-   *              Prompt the user for input regarding Advantage/Disadvantage
-   * @public
+   * Roll a save for the actor.
    *
-   * @param {String} saveId       The save ID (e.g. "str")
-   * @param {Object} options      Options which configure how save tests are rolled
+   * V2 options : modifier, rollAdvantage, isWeaponRoll, itemName
+   * V1 options : speaker
    *
-   * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
+   * @param {string} saveId - The ID of the save to roll.
+   * @param {Object} [options={}] - Additional options for the roll.
+   * @param {Object} [options.speaker] - The speaker for the roll. (V1)
+   * @param {boolean} [options.isWeaponRoll=false] - Whether the roll is a weapon roll. (V2)
+   * @param {boolean} [options.rollAdvantage=false] - Whether the roll has advantage (=, +, ++, -, --) (V2)
+   * @returns {Promise<Object>} The result of the roll.
    */
   async rollSave(saveId, options = {}) {
-    if (CTHACK.debug) console.log(`${LOG_HEAD}Roll save ${saveId}`);
-    const save = CTHACK.saves[saveId];
-    const label = game.i18n.localize(save);
-    const saveValue = this.system.saves[saveId].value;
-    const abilitiesAdvantages = this._findSavesAdvantages(saveId);
-    let hasAdvantage = false;
-    let hasDisadvantage = false;
+    const v2 = game.settings.get("cthack", "Revised") ? true : false
+    if (CTHACK.debug) console.log(`${LOG_HEAD}Roll save ${saveId}`)
+    const save = CTHACK.saves[saveId]
+    const label = game.i18n.localize(save)
+    const saveValue = this.system.saves[saveId].value
+    const abilitiesAdvantages = v2 ? this.findSavesAdvantages(saveId) : this.findSavesAdvantagesHTML(saveId)
+    let hasAdvantage = false
+    let hasDisadvantage = false
     if (this.getFlag("cthack", "disadvantageOOA") !== undefined && this.getFlag("cthack", "disadvantageOOA") === true) {
-      if (CTHACK.debug) console.log("CTHACK | Out of Action Disadvantage");
-      hasDisadvantage = true;
+      if (CTHACK.debug) console.log("CTHACK | Out of Action Disadvantage")
+      hasDisadvantage = true
     }
 
-    // Roll and return
-    const rollData = foundry.utils.mergeObject(options, {
-      rollType: "Save",
-      title: game.i18n.format("CTHACK.SavePromptTitle", { save: label }),
-      rollId: label,
-      targetValue: saveValue,
-      abilitiesAdvantages: abilitiesAdvantages,
-      advantage: hasAdvantage,
-      disadvantage: hasDisadvantage,
-    });
-    rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
-    return await diceRoll(rollData);
+    // V1
+    if (!v2) {
+      // Roll and return
+      const rollData = foundry.utils.mergeObject(options, {
+        rollType: "Save",
+        title: game.i18n.format("CTHACK.SavePromptTitle", { save: label }),
+        rollId: label,
+        targetValue: saveValue,
+        abilitiesAdvantages: abilitiesAdvantages,
+        advantage: hasAdvantage,
+        disadvantage: hasDisadvantage,
+      })
+      rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
+      return await diceRoll(rollData)
+    }
+    // V2
+    else {
+      // Weapon roll
+      if (options.isWeaponRoll) {
+        return await this.system.roll(ROLL_TYPE.WEAPON, saveId, { rollAdvantage: options.rollAdvantage, itemName: options.itemName })
+      }
+      // Save roll
+      else {
+        return await this.system.roll(ROLL_TYPE.SAVE, saveId, { rollAdvantage: options.rollAdvantage })
+      }
+    }
   }
 
   /**
@@ -57,42 +91,50 @@ export default class CtHackActor extends Actor {
    * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollResource(resourceId, options = {}) {
-    if (CTHACK.debug) console.log(`${LOG_HEAD}Roll resource ${resourceId}`);
-    const label = game.i18n.localize(CTHACK.attributes[resourceId]);
-    const resourceValue = this.system.attributes[resourceId].value;
+    const v2 = game.settings.get("cthack", "Revised") ? true : false
+    if (CTHACK.debug) console.log(`${LOG_HEAD}Roll resource ${resourceId}`)
+    const label = game.i18n.localize(CTHACK.attributes[resourceId])
+    const resourceValue = this.system.attributes[resourceId].value
 
     // Resource at 0
     if (resourceValue === "0") {
-      return ui.notifications.warn(game.i18n.format("MACROS.ResourceAtZero", { resourceName: label }));
+      return ui.notifications.warn(game.i18n.format("MACROS.ResourceAtZero", { resourceName: label }))
     }
 
-    let title;
+    let title
 
     if (resourceId != "miscellaneous") {
-      title = game.i18n.format("CTHACK.ResourceRollPromptTitle", { resource: label });
+      title = game.i18n.format("CTHACK.ResourceRollPromptTitle", { resource: label })
     } else {
       if (game.settings.get("cthack", "MiscellaneousResource")) {
-        title = game.i18n.format("CTHACK.ResourceRollPromptTitle", { resource: game.settings.get("cthack", "MiscellaneousResource") });
+        title = game.i18n.format("CTHACK.ResourceRollPromptTitle", { resource: game.settings.get("cthack", "MiscellaneousResource") })
       } else {
-        const resourceName = ame.i18n.format("CTHACK.Misc");
-        title = game.i18n.format("CTHACK.ResourceRollPromptTitle", { resource: resourceName });
+        const resourceName = ame.i18n.format("CTHACK.Misc")
+        title = game.i18n.format("CTHACK.ResourceRollPromptTitle", { resource: resourceName })
       }
     }
 
-    // Roll and return
-    const rollData = foundry.utils.mergeObject(options, {
-      rollType: "Resource",
-      title: title,
-      rollId: title,
-      diceType: resourceValue,
-    });
-    rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
+    // V1
+    if (!v2) {
+      // Roll and return
+      const rollData = foundry.utils.mergeObject(options, {
+        rollType: "Resource",
+        title: title,
+        rollId: title,
+        diceType: resourceValue,
+      })
+      rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
 
-    let rollResource = await diceRoll(rollData);
+      let rollResource = await diceRoll(rollData)
 
-    // Resource loss
-    if (rollResource && (rollResource.total === 1 || rollResource.total === 2)) {
-      await this.decreaseResource(resourceId);
+      // Resource loss
+      if (rollResource && (rollResource.total === 1 || rollResource.total === 2)) {
+        await this.decreaseResource(resourceId)
+      }
+    }
+    // V2
+    else {
+      return await this.system.roll(ROLL_TYPE.RESOURCE, resourceId)
     }
   }
 
@@ -103,36 +145,44 @@ export default class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollMaterial(item, options = {}) {
-    const dice = item.system.dice;
+    const v2 = game.settings.get("cthack", "Revised") ? true : false
+    const dice = item.system.dice
 
-    if (CTHACK.debug) console.log(`${LOG_HEAD}Roll dice ${dice} for material ${item.name}`);
+    if (CTHACK.debug) console.log(`${LOG_HEAD}Roll dice ${dice} for material ${item.name}`)
 
     // Material without resource
     if (item.system.dice === "") {
-      return ui.notifications.warn(game.i18n.format("MACROS.ObjectWithoutResource", { itemName: item.name }));
+      return ui.notifications.warn(game.i18n.format("MACROS.ObjectWithoutResource", { itemName: item.name }))
     }
     // Material with resource at 0
     if (item.system.dice === "0") {
-      return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: item.name }));
+      return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: item.name }))
     }
 
-    const materialName = item.name;
-    const message = game.i18n.format("CTHACK.MaterialRollDetails", { material: materialName });
+    const materialName = item.name
+    const message = game.i18n.format("CTHACK.MaterialRollDetails", { material: materialName })
 
-    // Roll and return
-    const rollData = foundry.utils.mergeObject(options, {
-      rollType: "Material",
-      title: game.i18n.format("CTHACK.MaterialRollPromptTitle") + " : " + item.name,
-      rollId: message,
-      diceType: dice,
-    });
-    rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
+    // V1
+    if (!v2) {
+      // Roll and return
+      const rollData = foundry.utils.mergeObject(options, {
+        rollType: "Material",
+        title: game.i18n.format("CTHACK.MaterialRollPromptTitle") + " : " + item.name,
+        rollId: message,
+        diceType: dice,
+      })
+      rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
 
-    let rollMaterial = await diceRoll(rollData);
+      let rollMaterial = await diceRoll(rollData)
 
-    // Resource loss
-    if (rollMaterial && (rollMaterial.total === 1 || rollMaterial.total === 2)) {
-      await this._decreaseMaterialResource(item.id, item.system.dice);
+      // Resource loss
+      if (rollMaterial && (rollMaterial.total === 1 || rollMaterial.total === 2)) {
+        await this._decreaseMaterialResource(item.id, item.system.dice)
+      }
+    }
+    // V2
+    else {
+      return await this.system.roll(ROLL_TYPE.MATERIAL, item.id)
     }
   }
 
@@ -148,17 +198,17 @@ export default class CtHackActor extends Actor {
    */
 
   useAbility(ability) {
-    if (CTHACK.debug) console.log(`${LOG_HEAD}Use ability ${ability.name}`);
-    let remaining = ability.system.uses.value;
+    if (CTHACK.debug) console.log(`${LOG_HEAD}Use ability ${ability.name}`)
+    let remaining = ability.system.uses.value
     if (remaining === 0) {
-      return;
+      return
     }
     if (remaining > 0) {
-      remaining--;
+      remaining--
     }
-    const now = new Date();
-    const lastTime = formatDate(now);
-    ability.update({ "data.uses.value": remaining, "data.uses.last": lastTime });
+    const now = new Date()
+    const lastTime = formatDate(now)
+    ability.update({ "data.uses.value": remaining, "data.uses.last": lastTime })
   }
 
   /**
@@ -173,8 +223,8 @@ export default class CtHackActor extends Actor {
    */
 
   resetAbility(ability) {
-    if (CTHACK.debug) console.log(`${LOG_HEAD}Reset ability ${ability.name}`);
-    ability.update({ "data.uses.value": ability.system.uses.max, "data.uses.last": "" });
+    if (CTHACK.debug) console.log(`${LOG_HEAD}Reset ability ${ability.name}`)
+    ability.update({ "data.uses.value": ability.system.uses.max, "data.uses.last": "" })
   }
 
   /**
@@ -183,8 +233,8 @@ export default class CtHackActor extends Actor {
    * @param {String} dice   "d4""
    */
   async _decreaseMaterialResource(itemId, dice) {
-    const newDiceValue = findLowerDice(dice);
-    this.updateEmbeddedDocuments("Item", [{ _id: itemId, "data.dice": newDiceValue }]);
+    const newDiceValue = CthackUtils.findLowerDice(dice)
+    this.updateEmbeddedDocuments("Item", [{ _id: itemId, "data.dice": newDiceValue }])
   }
 
   /**
@@ -192,34 +242,34 @@ export default class CtHackActor extends Actor {
    * @param {String} resourceId   The resource ID (e.g. "smo")
    */
   async decreaseResource(resourceId) {
-    if (CTHACK.debug) console.log(`${LOG_HEAD}Decrease resource ${resourceId}`);
-    const actorResource = this.system.attributes[resourceId];
+    if (CTHACK.debug) console.log(`${LOG_HEAD}Decrease resource ${resourceId}`)
+    const actorResource = this.system.attributes[resourceId]
 
     // old value is 0 or dx
-    let oldValue = actorResource.value;
+    let oldValue = actorResource.value
     if (oldValue !== "0") {
-      let newValue = findLowerDice(oldValue);
-      actorResource.value = newValue;
+      let newValue = CthackUtils.findLowerDice(oldValue)
+      actorResource.value = newValue
 
       switch (resourceId) {
         case "flashlights":
-          await this.update({ "system.attributes.flashlights": actorResource });
-          break;
+          await this.update({ "system.attributes.flashlights": actorResource })
+          break
         case "smokes":
-          await this.update({ "system.attributes.smokes": actorResource });
-          break;
+          await this.update({ "system.attributes.smokes": actorResource })
+          break
         case "sanity":
-          await this.update({ "system.attributes.sanity": actorResource });
-          break;
+          await this.update({ "system.attributes.sanity": actorResource })
+          break
         case "miscellaneous":
-          await this.update({ "system.attributes.miscellaneous": actorResource });
-          break;
+          await this.update({ "system.attributes.miscellaneous": actorResource })
+          break
         case "wealthDice":
-          await this.update({ "system.attributes.wealthDice": actorResource });
-          break;
+          await this.update({ "system.attributes.wealthDice": actorResource })
+          break
         case "hitDice":
-          await this.update({ "system.attributes.hitDice": actorResource });
-          break;
+          await this.update({ "system.attributes.hitDice": actorResource })
+          break
       }
     }
   }
@@ -230,27 +280,34 @@ export default class CtHackActor extends Actor {
    * @param {Object} options      Options which configure how damage tests are rolled
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
-  async rollDamageRoll(damageId, options = {}) {
-    if (CTHACK.debug) console.log(`${LOG_HEAD}Roll ${damageId} roll`);
+  async rollDamage(damageId, options = {}) {
+    if (CTHACK.debug) console.log(`${LOG_HEAD}Roll ${damageId} roll`)
+    const v2 = game.settings.get("cthack", "Revised") ? true : false
 
-    const damageDice = this.system.attributes[damageId].value;
+    const damageDice = this.system.attributes[damageId].value
 
     if (damageDice == 1) {
-      return;
+      return
     }
 
-    const damage = CTHACK.attributes[damageId];
-    const label = game.i18n.localize(damage);
+    const label = game.i18n.localize(CTHACK.attributes[damageId])
 
-    // Roll and return
-    const rollData = foundry.utils.mergeObject(options, {
-      rollType: "Damage",
-      title: label,
-      rollId: label,
-      diceType: damageDice,
-    });
-    rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
-    return await diceRoll(rollData);
+    // V1
+    if (!v2) {
+      // Roll and return
+      const rollData = foundry.utils.mergeObject(options, {
+        rollType: "Damage",
+        title: label,
+        rollId: label,
+        diceType: damageDice,
+      })
+      rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
+      return await diceRoll(rollData)
+    }
+    // V2
+    else {
+      return await this.system.roll(ROLL_TYPE.DAMAGE, damageId)
+    }
   }
 
   /**
@@ -260,19 +317,19 @@ export default class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollAttackDamageRoll(item, options = {}) {
-    if (CTHACK.debug) console.log(`${LOG_HEAD}Attack roll for ${item.name} with a ${item.system.damageDice} dice`);
+    if (CTHACK.debug) console.log(`${LOG_HEAD}Attack roll for ${item.name} with a ${item.system.damageDice} dice`)
 
-    const label = game.i18n.format("CTHACK.AttackDamageDiceRollPrompt", { item: item.name });
+    const label = game.i18n.format("CTHACK.AttackDamageDiceRollPrompt", { item: item.name })
 
     // Custom Formula ?
-    let isCustomFormula = false;
+    let isCustomFormula = false
 
     // If there is a + in the formula, it's a custom Formula
-    const count = item.system.damageDice.includes("+");
-    if (count != null) isCustomFormula = true;
+    const count = item.system.damageDice.includes("+")
+    if (count != null) isCustomFormula = true
 
     // If the first character is not d, it's a custom Formula, 2d6 by exemple
-    if (item.system.damageDice.charAt(0) !== "d") isCustomFormula = true;
+    if (item.system.damageDice.charAt(0) !== "d") isCustomFormula = true
 
     // Roll and return
     const rollData = foundry.utils.mergeObject(options, {
@@ -281,9 +338,9 @@ export default class CtHackActor extends Actor {
       rollId: label,
       diceType: isCustomFormula === false ? item.system.damageDice : null,
       customFormula: isCustomFormula === true ? item.system.damageDice : null,
-    });
-    rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this });
-    return await diceRoll(rollData);
+    })
+    rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
+    return await diceRoll(rollData)
   }
 
   /**
@@ -292,12 +349,12 @@ export default class CtHackActor extends Actor {
    * @param {*} itemId
    */
   async deleteAbility(key, itemId) {
-    const index = this._findAbilityIndex(key, itemId);
+    const index = this._findAbilityIndex(key, itemId)
     if (index !== -1) {
-      let abilitiesList = this.system.abilities;
-      abilitiesList.splice(index, 1);
+      let abilitiesList = this.system.abilities
+      abilitiesList.splice(index, 1)
 
-      await this.update({ "data.abilities": abilitiesList });
+      await this.update({ "system.abilities": abilitiesList })
     }
   }
 
@@ -308,75 +365,80 @@ export default class CtHackActor extends Actor {
    * @returns
    */
   _findAbilityIndex(key, id) {
-    let abilitiesList = this.system.abilities;
-    let trouve = false;
-    let index = -1;
-    let i = 0;
+    let abilitiesList = this.system.abilities
+    let trouve = false
+    let index = -1
+    let i = 0
     while (!trouve && i < abilitiesList.length) {
       if (key === abilitiesList[i].key) {
-        trouve = true;
-        index = i;
+        trouve = true
+        index = i
       }
-      i++;
+      i++
     }
 
     if (index === -1) {
-      if (CTHACK.debug) console.log(`La capacité de clé ${key} n'a pas été trouvée dans la liste.`);
+      if (CTHACK.debug) console.log(`La capacité de clé ${key} n'a pas été trouvée dans la liste.`)
     }
-    return index;
+    return index
   }
 
-  /**
-   *
-   * @param {*} saveId
-   * @returns
-   */
-  _findSavesAdvantages(saveId) {
-    let advantages = "<ul>";
-    let abilitiesList = this.system.abilities;
-    for (let index = 0; index < abilitiesList.length; index++) {
-      const element = abilitiesList[index];
-      if (element.key === "SWILEA" && (saveId === "str" || saveId === "dex" || saveId === "con")) {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageSWILEA") + "</li>";
-      }
-      if (element.key === "STA") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageSTA") + "</li>";
-      }
-      if (element.key === "ANIHAN") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageANIHAN") + "</li>";
-      }
-      if (element.key === "IND" && (saveId === "wis" || saveId === "int" || saveId === "cha")) {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageIND") + "</li>";
-      }
-      if (element.key === "MEC") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageMEC") + "</li>";
-      }
-      if (element.key === "IROMIN") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageIROMIN") + "</li>";
-      }
-      if (element.key === "RIP" && saveId === "str") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageRIP") + "</li>";
-      }
-      if (element.key === "LEG") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageLEG") + "</li>";
-      }
-      if (element.key === "SELPRE") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageSELPRE") + "</li>";
-      }
-      if (element.key === "HAR") {
-        advantages += "<li>" + game.i18n.localize("CTHACK.AdvantageHAR") + "</li>";
-      }
-    }
+  findSavesAdvantagesHTML(saveId) {
+    let advantages = "<ul>"
+    let advantagesArray = this.findSavesAdvantages(saveId)
 
-    const customAdvantagesText = this._findSavesAdvantagesFromCustomAbilities();
-    if (customAdvantagesText != "") {
-      advantages += customAdvantagesText;
+    for (let index = 0; index < advantagesArray.length; index++) {
+      advantages += `<li> ${advantagesArray[index].text} </li>`
     }
-
     if (advantages === "<ul>") {
-      advantages = "";
-    } else advantages += "</ul>";
-    return advantages;
+      advantages = ""
+    } else advantages += "</ul>"
+    return advantages
+  }
+
+  findSavesAdvantages(saveId) {
+    const advantages = []
+
+    // Occupation avantage
+    const { occupation, skills, abilities } = this.system
+    if (occupation) {
+      advantages.push({ text: occupation, origin: game.i18n.localize("CTHACK.Occupation") })
+    }
+
+    // Skills avantage : V2 only
+    if (game.settings.get("cthack", "Revised")) {
+      advantages.push({ text: skills, origin: game.i18n.localize("CTHACK.Skills") })
+    }
+
+    // Mapping of ability keys to their respective advantages
+    const abilityAdvantages = {
+      SWILEA: { condition: ["str", "dex", "con"], text: "CTHACK.AdvantageSWILEA", origin: "CTHACK.StandardAbilities.SWILEA.label" },
+      STA: { condition: [], text: "CTHACK.AdvantageSTA", origin: "CTHACK.StandardAbilities.STA.label" },
+      ANIHAN: { condition: [], text: "CTHACK.AdvantageANIHAN", origin: "CTHACK.StandardAbilities.ANIHAN.label" },
+      IND: { condition: ["wis", "int", "cha"], text: "CTHACK.AdvantageIND", origin: "CTHACK.StandardAbilities.IND.label" },
+      MEC: { condition: [], text: "CTHACK.AdvantageMEC", origin: "CTHACK.StandardAbilities.MEC.label" },
+      IROMIN: { condition: [], text: "CTHACK.AdvantageIROMIN", origin: "CTHACK.StandardAbilities.IROMIN.label" },
+      RIP: { condition: ["str"], text: "CTHACK.AdvantageRIP", origin: "CTHACK.StandardAbilities.RIP.label" },
+      LEG: { condition: [], text: "CTHACK.AdvantageLEG", origin: "CTHACK.StandardAbilities.LEG.label" },
+      SELPRE: { condition: [], text: "CTHACK.AdvantageSELPRE", origin: "CTHACK.StandardAbilities.SELPRE.label" },
+      HAR: { condition: [], text: "CTHACK.AdvantageHAR", origin: "CTHACK.StandardAbilities.HAR.label" },
+    }
+
+    // Check if the actor has the advantage from the standard abilities
+    abilities.forEach((ability) => {
+      const advantage = abilityAdvantages[ability.key]
+      if (advantage && (advantage.condition.length === 0 || advantage.condition.includes(saveId))) {
+        advantages.push({ text: game.i18n.localize(advantage.text), origin: game.i18n.localize(advantage.origin) })
+      }
+    })
+
+    // Check if the actor has the advantage from the custom abilities
+    const customAdvantages = this._findSavesAdvantagesFromCustomAbilities()
+    if (customAdvantages.length > 0) {
+      advantages.push(...customAdvantages)
+    }
+
+    return advantages
   }
 
   /**
@@ -388,13 +450,9 @@ export default class CtHackActor extends Actor {
    * @returns
    */
   _findSavesAdvantagesFromCustomAbilities() {
-    let customAdvantagesText = "";
-    this.items.forEach((element) => {
-      if (element.type === "ability" && element.system.isCustom && element.system.advantageGiven && element.system.advantageText !== "") {
-        customAdvantagesText += "<li>" + element.system.advantageText + "</li>";
-      }
-    });
-    return customAdvantagesText;
+    return this.items
+      .filter((item) => item.type === "ability" && item.system.isCustom && item.system.advantageGiven && item.system.advantageText !== "")
+      .map((item) => ({ text: item.system.advantageText, origin: item.name }))
   }
 
   /**
@@ -402,14 +460,13 @@ export default class CtHackActor extends Actor {
    * @param {*} itemData
    */
   async createDefinitionItem(itemData) {
-    if (itemData.system.key === "OOA-CRB" || itemData.system.key === "OOA-MIC" || itemData.system.key === "OOA-STA" || itemData.system.key === "OOA-WIN") {
-      this._createActiveEffect(itemData);
-    } else if (itemData.system.key.startsWith("OOA") || itemData.system.key.startsWith("TI") || itemData.system.key.startsWith("SK")) {
-      this._createActiveEffect(itemData);
+    const key = itemData.system.key
+    if (key.startsWith("OOA") || key.startsWith("TI") || key.startsWith("SK")) {
+      this._createActiveEffect(itemData)
     }
 
     // Create the owned item
-    return this.createEmbeddedDocuments("Item", [itemData], { renderSheet: true });
+    return this.createEmbeddedDocuments("Item", [itemData], { renderSheet: true })
   }
 
   /**
@@ -417,9 +474,9 @@ export default class CtHackActor extends Actor {
    * @param {*} itemData
    */
   async _createActiveEffect(itemData) {
-    if (CTHACK.debug) console.log(`CTHACK | Create active Effect with itemData ${itemData}`);
+    if (CTHACK.debug) console.log(`CTHACK | Create active Effect with itemData ${itemData}`)
 
-    let effectData;
+    let effectData
 
     if (itemData.system.key === "OOA-CRB") {
       effectData = {
@@ -449,7 +506,7 @@ export default class CtHackActor extends Actor {
           seconds: 3600,
         },
         tint: "#BB0022",
-      };
+      }
     } else if (itemData.system.key === "OOA-MIC") {
       effectData = {
         label: "OOA-MIC",
@@ -458,8 +515,8 @@ export default class CtHackActor extends Actor {
           seconds: 1200,
         },
         tint: "#BB0022",
-      };
-      await this.setFlag("cthack", "disadvantageOOA", true);
+      }
+      await this.setFlag("cthack", "disadvantageOOA", true)
     } else if (itemData.system.key === "OOA-STA") {
       effectData = {
         label: "OOA-STA",
@@ -468,8 +525,8 @@ export default class CtHackActor extends Actor {
           seconds: 600,
         },
         tint: "#BB0022",
-      };
-      await this.setFlag("cthack", "disadvantageOOA", true);
+      }
+      await this.setFlag("cthack", "disadvantageOOA", true)
     } else if (itemData.system.key === "OOA-WIN") {
       effectData = {
         label: "OOA-WIN",
@@ -478,8 +535,8 @@ export default class CtHackActor extends Actor {
           seconds: 60,
         },
         tint: "#BB0022",
-      };
-      await this.setFlag("cthack", "disadvantageOOA", true);
+      }
+      await this.setFlag("cthack", "disadvantageOOA", true)
     } else if (itemData.system.key.startsWith("OOA")) {
       effectData = {
         label: itemData.system.key,
@@ -488,7 +545,7 @@ export default class CtHackActor extends Actor {
           seconds: 3600,
         },
         tint: "#BB0022",
-      };
+      }
     } else if (itemData.system.key.startsWith("TI")) {
       effectData = {
         label: itemData.system.key,
@@ -497,7 +554,7 @@ export default class CtHackActor extends Actor {
           seconds: 3600,
         },
         tint: "#BB0022",
-      };
+      }
     } else if (itemData.system.key.startsWith("SK")) {
       effectData = {
         label: itemData.system.key,
@@ -506,11 +563,11 @@ export default class CtHackActor extends Actor {
           seconds: 3600,
         },
         tint: "#BB0022",
-      };
+      }
     }
 
     // Create the Active Effect
-    this.createEmbeddedDocuments("ActiveEffect", [effectData]);
+    this.createEmbeddedDocuments("ActiveEffect", [effectData])
   }
 
   /**
@@ -522,30 +579,30 @@ export default class CtHackActor extends Actor {
    */
   async deleteEffectFromItem(item) {
     // Delete the Active Effect
-    let effect;
-    const definitionKey = item.system.key;
-    if (CTHACK.debug) console.log("CTHACK | deleteDefinitionItem : definitionKey = " + definitionKey);
+    let effect
+    const definitionKey = item.system.key
+    if (CTHACK.debug) console.log("CTHACK | deleteDefinitionItem : definitionKey = " + definitionKey)
     if (definitionKey === "OOA-CRB") {
-      effect = this.effects.find((i) => i.name === definitionKey);
-      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id);
-      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
+      effect = this.effects.find((i) => i.name === definitionKey)
+      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id)
+      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
     } else if (definitionKey === "OOA-MIC" || definitionKey === "OOA-STA" || definitionKey === "OOA-WIN") {
-      effect = this.effects.find((i) => i.name === definitionKey);
-      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id);
-      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
-      await this.unsetFlag("cthack", "disadvantageOOA");
+      effect = this.effects.find((i) => i.name === definitionKey)
+      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id)
+      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
+      await this.unsetFlag("cthack", "disadvantageOOA")
     } else if (definitionKey.startsWith("OOA")) {
-      effect = this.effects.find((i) => i.name === definitionKey);
-      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id);
-      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
+      effect = this.effects.find((i) => i.name === definitionKey)
+      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id)
+      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
     } else if (definitionKey.startsWith("TI")) {
-      effect = this.effects.find((i) => i.name === definitionKey);
-      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id);
-      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
+      effect = this.effects.find((i) => i.name === definitionKey)
+      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id)
+      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
     } else if (definitionKey.startsWith("SK")) {
-      effect = this.effects.find((i) => i.name === definitionKey);
-      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id);
-      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
+      effect = this.effects.find((i) => i.name === definitionKey)
+      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id)
+      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
     }
   }
 
@@ -562,29 +619,29 @@ export default class CtHackActor extends Actor {
   getAvailableAttributes() {
     let availableAttributes = Object.entries(this.system.attributes).filter(function (a) {
       if (a[0] === "adrenaline1" || a[0] === "adrenaline2") {
-        return false;
+        return false
       }
       if (a[0] === "hitDice" && !game.settings.get("cthack", "HitDiceResource")) {
-        return false;
+        return false
       }
       if (a[0] === "wealthDice" && (!game.settings.get("cthack", "Wealth") || game.settings.get("cthack", "MiscellaneousResource") !== "")) {
-        return false;
+        return false
       }
       if (a[0] === "miscellaneous" && game.settings.get("cthack", "MiscellaneousResource") === "") {
-        return false;
+        return false
       }
-      return true;
-    });
+      return true
+    })
 
-    return availableAttributes;
+    return availableAttributes
   }
 
   get isUnlocked() {
-    if (this.getFlag(game.system.id, "SheetUnlocked")) return true;
-    return false;
+    if (this.getFlag(game.system.id, "SheetUnlocked")) return true
+    return false
   }
 
   get hasImage() {
-    return this.img && this.img !== "icons/svg/mystery-man.svg";
+    return this.img && this.img !== "icons/svg/mystery-man.svg"
   }
 }

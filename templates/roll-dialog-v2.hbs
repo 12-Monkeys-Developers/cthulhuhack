@@ -1,0 +1,65 @@
+{{log "roll-dialog" this}}
+<div class="cthack-roll-dialog">
+  {{#if (or isSave isWeapon)}}
+    <fieldSet>
+      <legend>{{localize "CTHACK.Label.sauvegarde"}}</legend>
+      <div class="dialog-save">{{formula}}</div>
+    </fieldSet>
+        <fieldSet>
+    <legend>{{localize "CTHACK.Label.modificateurs"}}</legend>
+      <div class="dialog-bonus">
+          {{#each saveModifiers as |modifier|}}
+            <div class="bonus" data-tooltip="{{modifier.origin}}">
+              {{modifier.text}}
+            </div>
+          {{/each}}
+      </div>
+    </fieldSet>
+    <input type="hidden" name="selectedModifiers" >
+    <fieldSet class="dialog-avantages">
+      <legend>{{localize "CTHACK.Roll.avantagesDesavantages"}}</legend>
+      <input
+        type="range"
+        name="avantages"
+        min="1"
+        max="5"
+        data-tooltip="Double désavantage - Désavantage - Normal - Avantage - Double avantage"
+        data-tooltip-direction="UP"
+        data-tooltip-class="tooltip-avantages"
+        value = {{avantages}}
+      />      
+      <input id="selectAvantages" name="selectAvantages" readonly value="{{selectAvantages}}">
+    </fieldSet>      
+    <fieldSet class="dialog-modificateur">
+      <legend>{{localize "CTHACK.Roll.adversite"}}</legend>
+      <select name="modificateur" {{#if hasTarget}}data-tooltip="Cible : {{targetName}}" data-tooltip-direction="UP"{{/if}}>
+        {{selectOptions choiceModificateur selected=malus}}
+      </select>
+    </fieldSet>
+    <input type="hidden" name="initialAvantages" value="{{initialAvantages}}">
+  {{/if}}
+  {{#if (or isDamage isAttack)}}
+    <fieldSet>
+      <legend>{{localize "CTHACK.Label.degats"}}</legend>
+      <div class="dialog-damage">{{damageDice}}</div>
+    </fieldSet>
+  {{/if}}
+  {{#if isResource}}
+    <fieldSet>
+      <legend>{{localize "CTHACK.Label.ressource"}}</legend>
+      <div class="dialog-resource">{{formula}}</div>
+    </fieldSet>
+  {{/if}}
+  {{#if isMaterial}}
+    <fieldSet>
+      <legend>{{localize "CTHACK.Label.material"}}</legend>
+      <div class="dialog-resource">{{formula}}</div>
+    </fieldSet>
+  {{/if}}  
+  <fieldSet class="dialog-visibility">
+    <legend>{{localize "CTHACK.Roll.visibilite"}}</legend>
+    <select name="visibility">
+      {{selectOptions rollModes selected=visibility}}
+    </select>
+  </fieldSet>
+</div>

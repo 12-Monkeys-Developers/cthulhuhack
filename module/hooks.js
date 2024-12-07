@@ -30,7 +30,7 @@ export function registerHooks() {
    * Journal   - open journal sheet
    */
   Hooks.on("hotbarDrop", (bar, data, slot) => {
-    if (["Actor", "Item", "JournalEntry"].includes(data.type)) {
+    if (["Actor", "Item", "JournalEntry", "roll"].includes(data.type)) {
       Macros.createCthackMacro(data, slot);
       return false;
     }
