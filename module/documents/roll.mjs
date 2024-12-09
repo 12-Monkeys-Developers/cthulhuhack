@@ -219,7 +219,7 @@ export default class CtHackRoll extends Roll {
     }
 
     let damageDice
- 
+
     // Damage roll or Attack roll
     if (options.rollType === ROLL_TYPE.DAMAGE || options.rollType === ROLL_TYPE.ATTACK) {
       damageDice = options.rollValue
@@ -338,7 +338,7 @@ export default class CtHackRoll extends Roll {
       ],
       rejectClose: false, // Click on Close button will not launch an error
       render: (event, dialog) => {
-        console.log("dialog", dialog)
+        console.debug("dialog", dialog)
         // Gestion du sélecteur Avantages et désavantages
         const rangeInput = dialog.querySelector('input[name="avantages"]')
         if (rangeInput) {
@@ -395,33 +395,64 @@ export default class CtHackRoll extends Roll {
 
     // If the user cancels the dialog, exit
     if (rollContext === null) return
+    console.debug("rollContext", rollContext)
 
+    /* Exemple of rollContext : modificateur correspond à l'adversité, selectedModifiers correspond aux modificateurs sélectionnés, initialAvantages correspond à l'avantage initial (utile pour une macro)
+      avantages correspond au niveau d'avantage (1, 2, 3, 4, 5), selectAvantages correspond au label de l'avantage sélectionné
+    "modificateur": "-3",
+    "selectedModifiers": "",
+    "initialAvantages": "3",
+    "avantages": "normal",
+    "selectAvantages": "Normal",
+    "visibility": "publicroll"
+    */
+
+    // Treshold is used for a save or a weapon roll
     let treshold
-
     if (options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) {
       const modificateur = rollContext.modificateur === "" ? 0 : parseInt(rollContext.modificateur, 10)
-
-      if (options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) {
-        let dice = "1d20"
-        switch (rollContext.avantages) {
-          case "avantage":
-            dice = "2d20kl"
-            break
-          case "desavantage":
-            dice = "2d20kh"
-            break
-          case "doubleAvantage":
-            dice = "3d20kl"
-            break
-          case "doubleDesavantage":
-            dice = "3d20kh"
-            break
-        }
-        formula = `${dice}`
-      }
-
       treshold = options.rollValue + modificateur
     }
+
+    // Formula for a save roll, a weapon roll
+    if (options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) {
+      let dice = "1d20"
+      switch (rollContext.avantages) {
+        case "avantage":
+          dice = "2d20kl"
+          break
+        case "desavantage":
+          dice = "2d20kh"
+          break
+        case "doubleAvantage":
+          dice = "3d20kl"
+          break
+        case "doubleDesavantage":
+          dice = "3d20kh"
+          break
+      }
+      formula = `${dice}`
+    }
+
+    // Formula for a resource roll or a material roll
+    if (options.rollType === ROLL_TYPE.RESOURCE || options.rollType === ROLL_TYPE.MATERIAL) {
+      let dice = formula
+      switch (rollContext.avantages) {
+        case "avantage":
+          dice = `2${dice}kh`
+          break
+        case "desavantage":
+          dice = `2${dice}kl`
+          break
+        case "doubleAvantage":
+          dice = `3${dice}kh`
+          break
+        case "doubleDesavantage":
+          dice = `3${dice}kl`
+          break
+      }
+      formula = `${dice}`
+    }    
 
     // Formula for a damage roll
     if (options.rollType === ROLL_TYPE.DAMAGE) {
@@ -450,7 +481,7 @@ export default class CtHackRoll extends Roll {
       ...rollContext,
     }
 
-    console.log("rollData", rollData)
+    console.debug("rollData", rollData)
 
     /**
      * A hook event that fires before the roll is made.
@@ -481,7 +512,7 @@ export default class CtHackRoll extends Roll {
       realDamage = Math.max(0, roll.total - parseInt(targetArmor, 10))
     }
 
-    console.log("roll", roll)
+    console.debug("roll", roll)
     roll.options.resultType = resultType
     roll.options.treshold = treshold
     roll.options.introText = roll._createIntroText()

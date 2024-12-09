@@ -124,6 +124,13 @@ a.inline-roll {
 .chat-message .table-result a.content-link {
   color: var(--content-link-color);
 }
+.chat-message .roll.die {
+  color: white;
+}
+.chat-message .roll.die.discarded {
+  color: black;
+  filter: none;
+}
 .cthack.dialog-roll input.field-value {
   border: var(--border-standard);
 }

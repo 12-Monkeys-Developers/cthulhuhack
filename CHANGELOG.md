@@ -1,3 +1,6 @@
+4.1.0
+- Add advantage select to Resource and Material roll
+
 4.0.0
 - Revised version updates
 - Save success is now less or equal instead of less : applied in V1 and V2

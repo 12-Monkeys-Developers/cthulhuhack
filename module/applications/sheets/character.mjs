@@ -172,7 +172,7 @@ export default class CtHackCharacterSheet extends ActorSheet {
     context.hasLostHitDice = this.actor.system.attributes.hitDice.value !== this.actor.system.attributes.hitDice.max
     context.hasLostWealthDice = this.actor.system.attributes.wealthDice.value !== this.actor.system.attributes.wealthDice.max
 
-    console.log("Character Sheet Context", context)
+    console.debug("Character Sheet Context", context)
     return context
   }
 

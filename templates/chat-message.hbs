@@ -10,7 +10,7 @@
         {{/if}}
         <div class="intro-right">                
             <p class="introText" {{#if (or isSave isWeapon)}}data-tooltip="{{introTextTooltip}}"{{/if}}>{{{introText}}}
-            {{#if (or isSave isWeapon)}}
+            {{#if (or isSave isWeapon isResource isMaterial)}}
                     <br>
                     {{#if (eq avantages "avantage")}} {{localize "CTHACK.Roll.avantage"}}{{/if}}
                     {{#if (eq avantages "desavantage")}} {{localize "CTHACK.Roll.desavantage"}}{{/if}}
