@@ -1,3 +1,6 @@
+4.2.0
+- Roll V2 : by default the visibility in the Dialog is the same as the default visibiity in the Chat
+
 4.1.0
 - Add advantage select to Resource and Material roll
 

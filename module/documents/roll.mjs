@@ -197,10 +197,11 @@ export default class CtHackRoll extends Roll {
     }
 
     const rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value)]))
+    const defaultRollMode = game.settings.get("core", "rollMode")
     const fieldRollMode = new foundry.data.fields.StringField({
       choices: rollModes,
       blank: false,
-      default: "public",
+      default: defaultRollMode,
     })
 
     const choiceAvantage = { normal: "Normal", avantage: "Avantage", desavantage: "Désavantage", doubleAvantage: "Double avantage", doubleDesavantage: "Double désavantage" }
@@ -285,6 +286,7 @@ export default class CtHackRoll extends Roll {
       isMaterial: options.rollType === ROLL_TYPE.MATERIAL,
       rollModes,
       fieldRollMode,
+      defaultRollMode,
       choiceAvantage,
       choiceModificateur,
       damageDice,
@@ -298,6 +300,7 @@ export default class CtHackRoll extends Roll {
       selectAvantages: CtHackRoll._convertAvantages(avantages),
       initialAvantages: avantages,
     }
+    console.debug("dialogContext", dialogContext)
     const content = await renderTemplate("systems/cthack/templates/roll-dialog-v2.hbs", dialogContext)
 
     const title = CtHackRoll.createTitle(options)
