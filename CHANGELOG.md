@@ -1,3 +1,6 @@
+4.2.1
+- Fix chat's labels for rolls asked from the GM Manager
+
 4.2.0
 - Roll V2 : by default the visibility in the Dialog is the same as the default visibiity in the Chat
 

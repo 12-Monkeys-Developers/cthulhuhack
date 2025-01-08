@@ -1,11 +1,17 @@
-{{!log 'gm-manager-player' this}}
+{{log 'gm-manager-player' this @root}}
 <tr class="character-resume" data-user-id="{{id}}" data-character-name="{{character.name}}" data-character-id="{{character.id}}">
     <td>{{name}}</td>
     <td class="gm-character" data-tooltip="{{character.system.infos}}">{{character.name}}</td>
-    <td class="gm-resource-individual" data-resource="flashLights">{{character.system.attributes.flashlights.value}}</td>
+    <td class="gm-resource-individual" data-resource="flashlights">{{character.system.attributes.flashlights.value}}</td>
     <td class="gm-resource-individual" data-resource="smokes">{{character.system.attributes.smokes.value}}</td>
     <td class="gm-resource-individual" data-resource="sanity">{{character.system.attributes.sanity.value}}</td>
-    {{#if (or @root.hasWealthResource @root.hasWealthFixed)}}<td {{#if hasWealthResource}}class="gm-resource-individual"{{/if}} data-resource="wealthDice">{{character.system.attributes.wealthDice.value}}</td>{{/if}}
+    {{#if (or @root.hasWealthResource @root.hasWealthFixed)}}
+        {{#if @root.hasWealthResource}}
+            <td class="gm-resource-individual" data-resource="wealthDice">{{character.system.attributes.wealthDice.value}}</td>
+        {{else}}
+            <td>{{character.system.attributes.wealthDice.value}}</td>
+        {{/if}}  
+    {{/if}}    
     {{#if @root.hasMisc}}<td class="gm-resource-individual" data-resource="miscellaneous">{{character.system.attributes.miscellaneous.value}}</td>{{/if}}
     {{#if @root.hasHD}}<td class="gm-resource-individual" data-resource="hitDice">{{character.system.attributes.hitDice.value}}</td>{{/if}}
     {{#if @root.hasHP}}<td>{{character.system.hp.value}}</td>{{/if}}

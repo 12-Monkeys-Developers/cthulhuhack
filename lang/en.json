@@ -286,6 +286,7 @@
         "smokes": "Smokes",
         "sanity": "Sanity",
         "hitPoints": "Hit Points",
+        "hitDice": "Hit Dice",
         "wealthDice": "Wealth"
       },
       "damage": {
