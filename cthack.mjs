@@ -21,7 +21,7 @@ import * as documents from "./module/documents/_module.mjs"
 
 export default class FullsearchJournalSheet extends JournalSheet {}
 
-Hooks.once("init", async function () {
+Hooks.once("init", function () {
   console.log(LOG_HEAD + "Initialization of Cthulhu Hack system")
   console.log(CTHACK.ASCII)
 
@@ -172,7 +172,7 @@ function registerWorldCount(registerKey) {
   }
 }
 
-Hooks.once("ready", async function () {
+Hooks.once("ready", function () {
   if (!DEV_MODE) {
     registerWorldCount("cthack")
   }
