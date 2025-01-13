@@ -26,7 +26,7 @@ async function enrichRoll(match) {
   const title = match[2]
   const avantage = match[3]
 
-  if (!["for", "dex", "con", "sag", "int", "char", "str", "wis", "torche", "bagou", "san", "flashlights", "smokes", "wealthDice", "hitDice", "miscellaneous"].includes(target))
+  if (!["for", "dex", "con", "sag", "int", "char", "str", "wis", "torche", "bagou", "san", "richesse", "flashlights", "smokes", "wealthDice", "hitDice", "miscellaneous"].includes(target))
     return
 
   let type = "resource"
@@ -46,6 +46,9 @@ async function enrichRoll(match) {
     }
     if (target === "bagou") {
       target = "smokes"
+    }
+    if (target === "richesse") {      
+      target = "wealthDice"
     }
   }
 
@@ -88,8 +91,10 @@ async function enrichRoll(match) {
  */
 function getLibelle(type, target) {
   if (type === "save") {
-    return game.i18n.localize(`CTHACK.Character.saves.${target}`)
+    return game.i18n.localize(`CTHACK.Character.saves.${target}`);
   } else {
-    return game.i18n.localize(`CTHACK.Character.resources.${target}`)
+    return target === "miscellaneous"
+      ? game.settings.get("cthack", "MiscellaneousResource")
+      : game.i18n.localize(`CTHACK.Character.resources.${target}`);
   }
 }

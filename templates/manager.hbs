@@ -1,0 +1,68 @@
+
+  <div>
+  {{log 'gm-manager' this}}
+  {{#if (isEnabled "FortuneAvailable")}}
+    <label class="resource-label">{{localize "CTHACK.Fortune"}} : {{getFortuneValue}}</label>
+  {{/if}}
+
+  <table>
+    <thead>
+      <tr>
+        <th>{{localize "CTHACK.Manager.Player"}}</th>
+        <th>{{localize "CTHACK.Manager.Character"}}</th>
+        <th data-action="resourceAll" data-resource="flashlights">{{localize "CTHACK.FlashLights"}}</th>
+        <th data-action="resourceAll" data-resource="smokes">{{localize "CTHACK.Smokes"}}</th>
+        <th data-action="resourceAll" data-resource="sanity">{{localize "CTHACK.Sanity"}}</th>
+        {{#if (or hasWealthResource hasWealthFixed)}}<th {{#if hasWealthResource}}data-action="resourceAll" data-resource="wealthDice"{{/if}}>{{localize "CTHACK.Wealth"}}</th>{{/if}}
+        {{#if hasMisc}}<th data-action="resourceAll" data-resource="miscellaneous">{{getMiscellaneousValue}}</th>{{/if}}
+        {{#if hasHD}}<th data-action="resourceAll" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</th>{{/if}}
+        {{#if hasHP}}<th>{{localize "CTHACK.HitPoints"}}</th>{{/if}}        
+        {{#if (isEnabled "Adrenaline")}}<th class="gm-adr-all" data-resource="Adrenaline">{{localize "CTHACK.Manager.Adrenaline"}}</th>{{/if}}
+        <th data-action="saveAll" data-save="str">{{localize "CTHACK.SaveStrAbbr"}}</th>
+        <th data-action="saveAll" data-save="dex">{{localize "CTHACK.SaveDexAbbr"}}</th>
+        <th data-action="saveAll" data-save="con">{{localize "CTHACK.SaveConAbbr"}}</th>
+        <th data-action="saveAll" data-save="wis">{{localize "CTHACK.SaveWisAbbr"}}</th>
+        <th data-action="saveAll" data-save="int">{{localize "CTHACK.SaveIntAbbr"}}</th>
+        <th data-action="saveAll" data-save="cha">{{localize "CTHACK.SaveChaAbbr"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each players as |player|}}
+        {{log 'gm-manager-player' player}}
+        <tr class="character-resume" data-user-id="{{id}}" data-character-name="{{character.name}}" data-character-id="{{character.id}}">
+            <td>{{name}}</td>
+            <td data-action="openSheet" data-character-id="{{player.character.id}}" data-tooltip="{{character.system.infos}}">{{character.name}}</td>
+            <td data-action="resourceOne" data-resource="flashlights">{{character.system.attributes.flashlights.value}}</td>
+            <td data-action="resourceOne" data-resource="smokes">{{character.system.attributes.smokes.value}}</td>
+            <td data-action="resourceOne" data-resource="sanity">{{character.system.attributes.sanity.value}}</td>
+            {{#if (or @root.hasWealthResource @root.hasWealthFixed)}}
+                {{#if @root.hasWealthResource}}
+                    <td data-action="resourceOne" data-resource="wealthDice">{{character.system.attributes.wealthDice.value}}</td>
+                {{else}}
+                    <td>{{character.system.attributes.wealthDice.value}}</td>
+                {{/if}}  
+            {{/if}}    
+            {{#if @root.hasMisc}}<td data-action="resourceOne" data-resource="miscellaneous">{{character.system.attributes.miscellaneous.value}}</td>{{/if}}
+            {{#if @root.hasHD}}<td data-action="resourceOne" data-resource="hitDice">{{character.system.attributes.hitDice.value}}</td>{{/if}}
+            {{#if @root.hasHP}}<td>{{character.system.hp.value}}</td>{{/if}}
+            {{#if (isEnabled "Adrenaline")}}
+                <td data-action="resourceOne" data-resource="Adrenaline">
+                    <img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline1.value}}"><img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline2.value}}">
+                </td>
+            {{/if}}
+            <td data-action="saveOne" data-save="str">{{character.system.saves.str.value}}</td>
+            <td data-action="saveOne" data-save="dex">{{character.system.saves.dex.value}}</td>
+            <td data-action="saveOne" data-save="con">{{character.system.saves.con.value}}</td>
+            <td data-action="saveOne" data-save="wis">{{character.system.saves.wis.value}}</td>
+            <td data-action="saveOne" data-save="int">{{character.system.saves.int.value}}</td>
+            <td data-action="saveOne" data-save="cha">{{character.system.saves.cha.value}}</td>
+        </tr>
+      {{/each}}    
+    </tbody>
+  </table>
+
+
+</div>
+
+
+

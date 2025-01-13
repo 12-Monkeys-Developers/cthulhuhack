@@ -44,7 +44,7 @@ export class CthackUtils {
     switch (sockmsg.msg) {
       case "msg_use_fortune":
         return CthackUtils._handleMsgUseFortune(sockmsg.data)
-      case "msg_ask_roll":
+      case "askRoll":
         return CthackUtils._handleMsgAskRoll(sockmsg.data)
     }
   }
@@ -56,7 +56,7 @@ export class CthackUtils {
   static _handleMsgAskRoll(data) {
     const currentUser = game.user._id
     if (data.userId === currentUser) {
-      AudioHelper.play({ src: "/systems/cthack/sounds/drums.wav", volume: 0.8, autoplay: true, loop: false }, false)
+      foundry.audio.AudioHelper.play({ src: "/systems/cthack/sounds/drums.wav", volume: 0.8, autoplay: true, loop: false }, false)
     }
   }
 

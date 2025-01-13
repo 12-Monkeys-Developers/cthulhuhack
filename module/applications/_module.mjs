@@ -8,4 +8,4 @@ export { default as ObjetSheet } from "./sheets/objet.mjs";
 export { default as AdversaireCapaciteSheet } from "./sheets/adversaire-capacite.mjs";
 export { default as PersonnageSheet } from "./sheets/character.mjs";
 export { default as AdversaireSheet } from "./sheets/opponent.mjs";
-
+export { default as CthulhuHackManager } from "./manager.mjs";

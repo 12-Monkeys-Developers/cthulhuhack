@@ -17,6 +17,8 @@
   },
 
   "CTHACK": {
+    "SheetClassCharacter": "Feuille de personnnage",
+    "SheetClassOpponent": "Feuille d'adversaire",
     "Name": "Nom",
     "Occupation": "Métier",
     "Skills": "Compétences",
@@ -225,9 +227,6 @@
       "Div": "Frayeur",
       "Scr": "Hurlement"
     },
-    "GMManager": {
-      "Title": "Statut des joueurs"
-    },
     "ContextMenuEdit": "Editer",
     "ContextMenuDelete": "Supprimer",
     "ContextMenuUse": "Utiliser",
@@ -339,6 +338,25 @@
       "HAR": {
         "label": "Vigoureux"
       }
+    },
+    "Manager": {
+      "Title": "Statut des joueurs",
+      "Adrenaline": "Adrénaline",
+      "Player": "Joueur",
+      "Character": "Personnage",
+      "LetsRoll": "Faire le jet",
+      "str": "Force",
+      "dex": "Dextérité",
+      "con": "Constitution",
+      "wis": "Sagesse",
+      "int": "Intelligence",
+      "cha": "Charisme",
+      "flashlights": "Torche",
+      "smokes": "Bagou",
+      "sanity": "Santé mentale",
+      "hitPoints": "Points de Vie",
+      "hitDice": "Dé de Vie",
+      "wealthDice": "Richesse"      
     }
   },
 
@@ -402,14 +420,6 @@
     "AbilityWithoutUsage": "La capacité {itemName} n'a pas d'utilisation limitée.",
     "AbilityUsesAtZero": "La capacité {itemName} ne peut plus être utilisée.",
     "ResourceAtZero": "La ressource {resourceName} est épuisée."
-  },
-
-  "GMMANAGER": {
-    "Title": "Statut des joueurs",
-    "Adrenaline": "Adrénaline",
-    "Player": "Joueur",
-    "Character": "Personnage",
-    "LetsRoll": "Faire le jet"
   },
 
   "TOOLTIPS": {

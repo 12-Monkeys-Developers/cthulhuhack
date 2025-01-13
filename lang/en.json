@@ -17,6 +17,8 @@
   },
 
   "CTHACK": {
+    "SheetClassCharacter": "Character Sheet",
+    "SheetClassOpponent": "Opponent Sheet",
     "Name": "Name",
     "Occupation": "Occupation",
     "Archetype": "Archetype",
@@ -225,9 +227,6 @@
       "Div": "Dive",
       "Scr": "Scream"
     },
-    "GMManager": {
-      "Title": "Players Status"
-    },
     "ContextMenuEdit": "Edit",
     "ContextMenuDelete": "Delete",
     "ContextMenuUse": "Use",
@@ -337,6 +336,25 @@
       "HAR": {
         "label": "Hardy"
       }
+    },
+    "Manager": {
+      "Title": "Players status",
+      "Adrenaline": "Adrenaline",
+      "Player": "Player",
+      "Character": "Character",
+      "LetsRoll": "Let's roll",
+      "str": "Strength",
+      "dex": "Dexterity",
+      "con": "Constitution",
+      "wis": "Wisdom",
+      "int": "Intelligence",
+      "cha": "Charisma",
+      "flashlights": "Flashlights",
+      "smokes": "Smokes",
+      "sanity": "Sanity",
+      "hitPoints": "Hit Points",
+      "hitDice": "Hit Dice",
+      "wealthDice": "Wealth"
     }
   },
 
@@ -368,7 +386,7 @@
     "RevisedName": "Cthulhu Hack Reissue",
     "RevisedHint": "Activate Cthulhu Hack reissue rules",
     "displayOpponentMalus": "Display Opponent malus",
-    "displayOpponentMalusHint": "Display the Opponent malus to the players (if Reissue activated)."    
+    "displayOpponentMalusHint": "Display the Opponent malus to the players (if Reissue activated)."
   },
 
   "CHAT": {
@@ -400,14 +418,6 @@
     "AbilityWithoutUsage": "The ability {itemName} has no limited usage.",
     "AbilityUsesAtZero": "The ability {itemName} can't be used anymore.",
     "ResourceAtZero": "The resource {resourceName} is exhausted."
-  },
-
-  "GMMANAGER": {
-    "Title": "Players status",
-    "Adrenaline": "Adrenaline",
-    "Player": "Player",
-    "Character": "Character",
-    "LetsRoll": "Let's roll"
   },
 
   "TOOLTIPS": {

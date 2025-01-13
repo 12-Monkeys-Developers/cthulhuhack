@@ -134,7 +134,7 @@ export default class CtHackActor extends Actor {
     }
     // V2
     else {
-      return await this.system.roll(ROLL_TYPE.RESOURCE, resourceId)
+      return await this.system.roll(ROLL_TYPE.RESOURCE, resourceId, { rollAdvantage: options.rollAdvantage })
     }
   }
 

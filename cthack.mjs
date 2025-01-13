@@ -7,7 +7,6 @@ import { registerSystemSettings } from "./module/settings.mjs"
 import { CthackUtils } from "./module/utils.mjs"
 import { Macros } from "./module/macros.mjs"
 import { registerHooks } from "./module/hooks.mjs"
-import { GMManager } from "./module/applications/gm/gm-manager.mjs"
 import { initControlButtons } from "./module/control-buttons.mjs"
 import { setupTextEnrichers } from "./module/enrichers.mjs"
 
@@ -84,8 +83,8 @@ Hooks.once("init", async function () {
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet)
-  Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheet, { types: ["character"], makeDefault: true })
-  Actors.registerSheet(SYSTEM_NAME, applications.AdversaireSheet, { types: ["opponent"], makeDefault: true })
+  Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheet, { types: ["character"], label: "CTHACK.SheetClassCharacter", makeDefault: true })
+  Actors.registerSheet(SYSTEM_NAME, applications.AdversaireSheet, { types: ["opponent"], label: "CTHACK.SheetClassOpponent", makeDefault: true })
 
   Items.unregisterSheet("core", ItemSheet)
   Items.registerSheet(SYSTEM_NAME, applications.CapaciteSheet, { types: ["ability"], makeDefault: true })
@@ -117,6 +116,19 @@ Hooks.once("init", async function () {
 
   // Setup Text Enrichers
   setupTextEnrichers()
+
+  // Gestion des jets de dés depuis les journaux
+  document.addEventListener("click", (event) => {
+    const anchor = event.target.closest("a.ask-roll-journal")
+    if (!anchor) return
+    event.preventDefault()
+    event.stopPropagation()
+    const type = anchor.dataset.rollType
+    const target = anchor.dataset.rollTarget
+    const title = anchor.dataset.rollTitle
+    const avantage = anchor.dataset.rollAvantage
+    applications.CthulhuHackManager.askRollForAll(type, target, title, avantage)
+  })  
 
   // Other Document Configuration
   const v2 = game.settings.get("cthack", "Revised") ? true : false
@@ -166,9 +178,13 @@ Hooks.once("ready", async function () {
   }
 
   // Game Manager
-  game.cthack.gmManager = new GMManager()
+  /*game.cthack.gmManager = new GMManager()
   if (game.user.isGM) {
     game.cthack.gmManager.render(true)
+  }*/
+  game.system.applicationManager = new applications.CthulhuHackManager()
+  if (game.user.isGM) {
+    game.system.applicationManager.render(true)
   }
 
   console.log(LOG_HEAD + game.i18n.localize("CTHACK.Logs.ReadyEnd"))

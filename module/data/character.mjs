@@ -111,6 +111,11 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
     const magics = this.parent.itemTypes.magic
     const magicsTitle = game.i18n.localize("CTHACK.Magic")
     const magicsName = magics.map((magic) => magic.name)
+
+    if (abilities.length === 0 && magics.length === 0) return ""
+    if (abilities.length === 0) return `${magicsTitle} : ${magicsName.join(", ")}`
+    if (magics.length === 0) return `${abilitiesTitle} : ${abilitiesName.join(", ")}`
+    
     return `${abilitiesTitle} : ${abilitiesName.join(", ")} <br/> ${magicsTitle} : ${magicsName.join(", ")}`
   }
 

@@ -52,10 +52,11 @@ export function registerHooks() {
       html.find(".ask-roll-dice").click((event) => {
         const btn = $(event.currentTarget);
         const type = btn.data("type");
-        const resource = btn.data("resource");
+        const value = btn.data("value");
+        const avantage = btn.data("avantage") ?? "="
         const character = game.user.character;
-        if (type === "resource") character.rollResource(resource);
-        else if (type === "save") character.rollSave(resource);
+        if (type === "resource") character.rollResource(value, {rollAdvantage: avantage});
+        else if (type === "save") character.rollSave(value, {rollAdvantage: avantage});
       });
     }
 

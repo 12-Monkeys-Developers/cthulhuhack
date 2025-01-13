@@ -10,12 +10,13 @@ export function initControlButtons() {
     if (game.user.isGM) {
       menu.push({
         name: "gm-manager",
-        title: game.i18n.localize("CTHACK.GMManager.Title"),
+        title: game.i18n.localize("CTHACK.Manager.Title"),
         icon: "fa-solid fa-users",
         button: true,
         onClick: () => { 
-          if (Object.values(ui.windows).some(item => item.options?.id === "gm-manager")) game.cthack.gmManager.close(); 
-          else game.cthack.macros.launchGMManager()
+          if (!foundry.applications.instances.has("cthack-application-manager")) {
+            game.system.applicationManager.render(true)
+          } else game.system.applicationManager.close()
         }
       });
 
