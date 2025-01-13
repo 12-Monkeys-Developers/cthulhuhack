@@ -1,24 +1,24 @@
 // Import Modules
-import { CTHACK } from "./config.mjs"
-import { SYSTEM_NAME, LOG_HEAD, DEV_MODE } from "./constants.mjs"
-import { registerHandlebarsHelpers } from "./helpers.mjs"
-import { preloadHandlebarsTemplates } from "./templates.mjs"
-import { registerSystemSettings } from "./settings.mjs"
-import { CthackUtils } from "./utils.mjs"
-import { Macros } from "./macros.mjs"
-import { registerHooks } from "./hooks.mjs"
-import { GMManager } from "./applications/gm/gm-manager.mjs"
-import { initControlButtons } from "./control-buttons.mjs"
-import { setupTextEnrichers } from "./enrichers.mjs"
+import { CTHACK } from "./module/config.mjs"
+import { SYSTEM_NAME, LOG_HEAD, DEV_MODE } from "./module/constants.mjs"
+import { registerHandlebarsHelpers } from "./module/helpers.mjs"
+import { preloadHandlebarsTemplates } from "./module/templates.mjs"
+import { registerSystemSettings } from "./module/settings.mjs"
+import { CthackUtils } from "./module/utils.mjs"
+import { Macros } from "./module/macros.mjs"
+import { registerHooks } from "./module/hooks.mjs"
+import { GMManager } from "./module/applications/gm/gm-manager.mjs"
+import { initControlButtons } from "./module/control-buttons.mjs"
+import { setupTextEnrichers } from "./module/enrichers.mjs"
 
-import { SYSTEM } from "./config/system.mjs"
+import { SYSTEM } from "./module/config/system.mjs"
 
 globalThis.SYSTEM = SYSTEM
 
 // Import modules
-import * as models from "./data/_module.mjs"
-import * as applications from "./applications/_module.mjs"
-import * as documents from "./documents/_module.mjs"
+import * as models from "./module/data/_module.mjs"
+import * as applications from "./module/applications/_module.mjs"
+import * as documents from "./module/documents/_module.mjs"
 
 export default class FullsearchJournalSheet extends JournalSheet {}
 

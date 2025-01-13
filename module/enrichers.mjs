@@ -9,71 +9,74 @@
 export function setupTextEnrichers() {
   CONFIG.TextEditor.enrichers = CONFIG.TextEditor.enrichers.concat([
     {
-      // eslint-disable-next-line no-useless-escape
       pattern: /\@jet\[(.+?)\]{(.*?)}\((.*?)\)/gm,
-      enricher: async (match, options) => {
-        const a = document.createElement("a")
-        a.classList.add("ask-roll-journal")
-        let target = match[1]
-        const title = match[2]
-        const avantage = match[3]
-
-        if (
-          !["for", "dex", "con", "sag", "int", "char", "str", "wis", "torche", "bagou", "san", "flashlights", "smokes", "wealthDice", "hitDice", "miscellaneous"].includes(target)
-        )
-          return
-
-        let type = "resource"
-        if (["for", "dex", "con", "sag", "int", "char", "str", "wis"].includes(target)) {
-          type = "save"
-          if (target === "for") {
-            target = "str"
-          }
-          if (target === "sag") {
-            target = "wis"
-          }
-        }
-
-        if (type === "resource") {
-          if (target === "torche") {
-            target = "flashlights"
-          }
-          if (target === "bagou") {
-            target = "smokes"
-          }
-        }
-
-        let rollAvantage = "normal"
-        if (avantage) {
-          switch (avantage) {
-            case "++":
-              rollAvantage = "++"
-              break
-            case "+":
-              rollAvantage = "+"
-              break
-            case "-":
-              rollAvantage = "-"
-              break
-            case "--":
-              rollAvantage = "--"
-              break
-            default:
-              break
-          }
-        }
-
-        a.dataset.rollType = type
-        a.dataset.rollTarget = target
-        a.dataset.rollTitle = title
-        a.dataset.rollAvantage = rollAvantage
-        a.innerHTML = `
-            <i class="fas fa-dice-d20"></i> ${getLibelle(type, target)}${rollAvantage !== "normal" ? rollAvantage : ""}
-          `
-        return a
-      },
+      enricher: async (match, options) => enrichRoll(match),
+    },
+    {
+      pattern: /\@roll\[(.+?)\]{(.*?)}\((.*?)\)/gm,
+      enricher: async (match, options) => enrichRoll(match),
     },
   ])
+}
+
+async function enrichRoll(match) {
+  const a = document.createElement("a")
+  a.classList.add("ask-roll-journal")
+  let target = match[1]
+  const title = match[2]
+  const avantage = match[3]
+
+  if (!["for", "dex", "con", "sag", "int", "char", "str", "wis", "torche", "bagou", "san", "flashlights", "smokes", "wealthDice", "hitDice", "miscellaneous"].includes(target))
+    return
+
+  let type = "resource"
+  if (["for", "dex", "con", "sag", "int", "char", "str", "wis"].includes(target)) {
+    type = "save"
+    if (target === "for") {
+      target = "str"
+    }
+    if (target === "sag") {
+      target = "wis"
+    }
+  }
+
+  if (type === "resource") {
+    if (target === "torche") {
+      target = "flashlights"
+    }
+    if (target === "bagou") {
+      target = "smokes"
+    }
+  }
+
+  let rollAvantage = "normal"
+  if (avantage) {
+    switch (avantage) {
+      case "++":
+        rollAvantage = "++"
+        break
+      case "+":
+        rollAvantage = "+"
+        break
+      case "-":
+        rollAvantage = "-"
+        break
+      case "--":
+        rollAvantage = "--"
+        break
+      default:
+        break
+    }
+  }
+
+  a.dataset.rollType = type
+  a.dataset.rollTarget = target
+  a.dataset.rollTitle = title
+  a.dataset.rollAvantage = rollAvantage
+  a.innerHTML = `
+      <i class="fas fa-dice-d20"></i> ${getLibelle(type, target)}${rollAvantage !== "normal" ? rollAvantage : ""}
+    `
+  return a
 }
 
 /**

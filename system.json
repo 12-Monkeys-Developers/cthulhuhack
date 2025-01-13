@@ -15,7 +15,7 @@
     "verified": "12",
     "maximum": "12"
   },
-  "esmodules": ["module/cthack.mjs"],
+  "esmodules": ["cthack.mjs"],
   "styles": ["css/cthack.css"],
   "languages": [
     {
@@ -29,6 +29,22 @@
       "path": "lang/fr.json"
     }
   ],
+  "documentTypes": {
+    "Actor": {
+      "character": { "htmlFields": ["description", "shortDescription", "biography", "notes", "equipment"] },
+      "opponent": { "htmlFields": ["description", "shortDescription"] }
+    },
+    "Item": {
+      "ability": { "htmlFields": ["description"] },
+      "item": { "htmlFields": ["description"] },
+      "weapon": { "htmlFields": ["description"] },
+      "magic": { "htmlFields": ["description"] },
+      "archetype": { "htmlFields": ["description"] },
+      "attack": { "htmlFields": ["description"] },
+      "opponentAbility": { "htmlFields": ["description"] },
+      "definition": { "htmlFields": ["description"] }
+    }
+  },
   "packFolders": [
     {
       "name": "Cthulhu Hack",

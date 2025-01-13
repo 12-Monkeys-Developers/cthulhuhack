@@ -124,9 +124,9 @@ jobs:
              ./system.zip                        \
             `# The files that will be included.` \
             system.json                          \
-            template.json                        \
+            cthack.mjs                           \
             README.md                            \
-            CHANGELOG.md                            \
+            CHANGELOG.md                         \
             LICENSE                              \
             templates/                           \
             module/                              \
