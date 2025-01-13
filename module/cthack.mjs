@@ -1,14 +1,15 @@
 // Import Modules
-import { CTHACK } from "./config.js"
-import { SYSTEM_NAME, LOG_HEAD, DEV_MODE } from "./constants.js"
-import { registerHandlebarsHelpers } from "./helpers.js"
-import { preloadHandlebarsTemplates } from "./templates.js"
-import { registerSystemSettings } from "./settings.js"
-import { CthackUtils } from "./utils.js"
-import { Macros } from "./macros.js"
-import { registerHooks } from "./hooks.js"
-import { GMManager } from "./applications/gm/gm-manager.js"
-import { initControlButtons } from "./control-buttons.js"
+import { CTHACK } from "./config.mjs"
+import { SYSTEM_NAME, LOG_HEAD, DEV_MODE } from "./constants.mjs"
+import { registerHandlebarsHelpers } from "./helpers.mjs"
+import { preloadHandlebarsTemplates } from "./templates.mjs"
+import { registerSystemSettings } from "./settings.mjs"
+import { CthackUtils } from "./utils.mjs"
+import { Macros } from "./macros.mjs"
+import { registerHooks } from "./hooks.mjs"
+import { GMManager } from "./applications/gm/gm-manager.mjs"
+import { initControlButtons } from "./control-buttons.mjs"
+import { setupTextEnrichers } from "./enrichers.mjs"
 
 import { SYSTEM } from "./config/system.mjs"
 
@@ -22,7 +23,7 @@ import * as documents from "./documents/_module.mjs"
 export default class FullsearchJournalSheet extends JournalSheet {}
 
 Hooks.once("init", async function () {
-  console.log(LOG_HEAD + game.i18n.localize("CTHACK.Logs.InitStart"))
+  console.log(LOG_HEAD + "Initialization of Cthulhu Hack system")
   console.log(CTHACK.ASCII)
 
   globalThis.cthack = game.system
@@ -114,6 +115,9 @@ Hooks.once("init", async function () {
   // Init new buttons for the system
   initControlButtons()
 
+  // Setup Text Enrichers
+  setupTextEnrichers()
+
   // Other Document Configuration
   const v2 = game.settings.get("cthack", "Revised") ? true : false
   if (v2) {
@@ -123,7 +127,7 @@ Hooks.once("init", async function () {
   // Search
   Journal.registerSheet(game.system.id, FullsearchJournalSheet, { makeDefault: false })
 
-  console.log(LOG_HEAD + game.i18n.localize("CTHACK.Logs.InitEnd"))
+  console.log(LOG_HEAD + "Cthulhu Hack system initialized")
 })
 
 // Register world usage statistics
