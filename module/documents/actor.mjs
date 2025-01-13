@@ -1,8 +1,8 @@
-import { CTHACK } from "../config.js"
-import { diceRoll } from "../dice.js"
-import { formatDate } from "../utils.js"
-import { CthackUtils } from "../utils.js"
-import { LOG_HEAD } from "../constants.js"
+import { CTHACK } from "../config.mjs"
+import { diceRoll } from "../dice.mjs"
+import { formatDate } from "../utils.mjs"
+import { CthackUtils } from "../utils.mjs"
+import { LOG_HEAD } from "../constants.mjs"
 import { ROLL_TYPE } from "../config/system.mjs"
 
 /**

@@ -1,5 +1,5 @@
 import CommonItem from "./common-item.mjs";
-import { formatDate } from "../utils.js";
+import { formatDate } from "../utils.mjs";
 
 export default class CtHackOpponentAbility extends CommonItem {
   static defineSchema() {

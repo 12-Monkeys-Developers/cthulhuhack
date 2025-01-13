@@ -1,4 +1,4 @@
-import { formatDate } from "../../utils.js"
+import { formatDate } from "../../utils.mjs"
 import { SearchChat } from "../search/research.mjs"
 
 /**

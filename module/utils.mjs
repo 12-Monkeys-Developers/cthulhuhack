@@ -1,6 +1,6 @@
-import { ARRAY_DICE_VALUES, ABILITY_KEYS_RESERVED } from "./config.js"
-import { CTHACK } from "./config.js"
-import { LOG_HEAD } from "./constants.js"
+import { ARRAY_DICE_VALUES, ABILITY_KEYS_RESERVED } from "./config.mjs"
+import { CTHACK } from "./config.mjs"
+import { LOG_HEAD } from "./constants.mjs"
 
 /**
  * Check the value is a valid dice (dX)

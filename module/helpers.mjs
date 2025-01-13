@@ -1,5 +1,5 @@
-import { isDice, isAbilityKeyReserved } from './utils.js';
-import { CTHACK } from './config.js';
+import { isDice, isAbilityKeyReserved } from './utils.mjs';
+import { CTHACK } from './config.mjs';
 
 import { SAVES } from './config/character.mjs';
 

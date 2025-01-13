@@ -1,6 +1,6 @@
 import { SYSTEM, ROLL_TYPE } from "../config/system.mjs"
 import CtHackRoll from "../documents/roll.mjs"
-import { CthackUtils } from "../utils.js"
+import { CthackUtils } from "../utils.mjs"
 
 export default class CtHackCharacter extends foundry.abstract.DataModel {
   static defineSchema() {
