@@ -146,7 +146,6 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
         rollValue = this.attributes[rollTarget].value
         break
       case ROLL_TYPE.DAMAGE:
-        //rollValue = this.parent.items.get(rollTarget).system.degats
         rollValue = this.attributes[rollTarget].value
         opponentTarget = game.user.targets.first()
         break

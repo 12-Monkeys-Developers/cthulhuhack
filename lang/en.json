@@ -187,7 +187,6 @@
 
     "Material": "Material",
     "MaterialRollPromptTitle": "Material Roll",
-    "MaterialRollDetails": "Roll for {material}",
 
     "OpponentArmor": "Armor Points",
     "OpponentArmorShort": "AP",

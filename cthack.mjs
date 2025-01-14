@@ -131,10 +131,8 @@ Hooks.once("init", function () {
   })  
 
   // Other Document Configuration
-  const v2 = game.settings.get("cthack", "Revised") ? true : false
-  if (v2) {
-    CONFIG.ChatMessage.documentClass = documents.CtHackChatMessage
-  }
+  CONFIG.ChatMessage.documentClass = documents.CtHackChatMessage
+
 
   // Search
   Journal.registerSheet(game.system.id, FullsearchJournalSheet, { makeDefault: false })

@@ -4,6 +4,7 @@ import { formatDate } from "../utils.mjs"
 import { CthackUtils } from "../utils.mjs"
 import { LOG_HEAD } from "../constants.mjs"
 import { ROLL_TYPE } from "../config/system.mjs"
+import CtHackRoll from "./roll.mjs"
 
 /**
  * @extends {Actor}
@@ -25,57 +26,35 @@ export default class CtHackActor extends Actor {
   }
 
   /**
-   * Roll a save for the actor.
+   * Rolls a save or weapon roll based on the provided save ID and options.
    *
-   * V2 options : modifier, rollAdvantage, isWeaponRoll, itemName
-   * V1 options : speaker
-   *
-   * @param {string} saveId - The ID of the save to roll.
+   * @param {string} saveId - The ID of the save to be rolled.
    * @param {Object} [options={}] - Additional options for the roll.
-   * @param {Object} [options.speaker] - The speaker for the roll. (V1)
-   * @param {boolean} [options.isWeaponRoll=false] - Whether the roll is a weapon roll. (V2)
-   * @param {boolean} [options.rollAdvantage=false] - Whether the roll has advantage (=, +, ++, -, --) (V2)
-   * @returns {Promise<Object>} The result of the roll.
+   * @param {boolean} [options.isWeaponRoll=false] - Whether the roll is a weapon roll.
+   * @param {boolean} [options.rollAdvantage=false] - Whether the roll has advantage (=, +, ++, -, --).
+   * @param {string} [options.itemName] - The name of the item for weapon rolls.
+   * @returns {Promise} - A promise that resolves with the result of the roll.
    */
   async rollSave(saveId, options = {}) {
-    const v2 = game.settings.get("cthack", "Revised") ? true : false
     if (CTHACK.debug) console.log(`${LOG_HEAD}Roll save ${saveId}`)
-    const save = CTHACK.saves[saveId]
-    const label = game.i18n.localize(save)
-    const saveValue = this.system.saves[saveId].value
-    const abilitiesAdvantages = v2 ? this.findSavesAdvantages(saveId) : this.findSavesAdvantagesHTML(saveId)
-    let hasAdvantage = false
     let hasDisadvantage = false
     if (this.getFlag("cthack", "disadvantageOOA") !== undefined && this.getFlag("cthack", "disadvantageOOA") === true) {
       if (CTHACK.debug) console.log("CTHACK | Out of Action Disadvantage")
       hasDisadvantage = true
     }
 
-    // V1
-    if (!v2) {
-      // Roll and return
-      const rollData = foundry.utils.mergeObject(options, {
-        rollType: "Save",
-        title: game.i18n.format("CTHACK.SavePromptTitle", { save: label }),
-        rollId: label,
-        targetValue: saveValue,
-        abilitiesAdvantages: abilitiesAdvantages,
-        advantage: hasAdvantage,
-        disadvantage: hasDisadvantage,
-      })
-      rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
-      return await diceRoll(rollData)
+    let rollAdvantage = options.rollAdvantage || "="
+    if (hasDisadvantage) {
+      rollAdvantage = CtHackRoll.addDisadvantage(rollAdvantage)
     }
-    // V2
+
+    // Weapon roll
+    if (options.isWeaponRoll) {
+      return await this.system.roll(ROLL_TYPE.WEAPON, saveId, { rollAdvantage, itemName: options.itemName })
+    }
+    // Save roll
     else {
-      // Weapon roll
-      if (options.isWeaponRoll) {
-        return await this.system.roll(ROLL_TYPE.WEAPON, saveId, { rollAdvantage: options.rollAdvantage, itemName: options.itemName })
-      }
-      // Save roll
-      else {
-        return await this.system.roll(ROLL_TYPE.SAVE, saveId, { rollAdvantage: options.rollAdvantage })
-      }
+      return await this.system.roll(ROLL_TYPE.SAVE, saveId, { rollAdvantage })
     }
   }
 
@@ -91,7 +70,6 @@ export default class CtHackActor extends Actor {
    * @returns {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollResource(resourceId, options = {}) {
-    const v2 = game.settings.get("cthack", "Revised") ? true : false
     if (CTHACK.debug) console.log(`${LOG_HEAD}Roll resource ${resourceId}`)
     const label = game.i18n.localize(CTHACK.attributes[resourceId])
     const resourceValue = this.system.attributes[resourceId].value
@@ -114,28 +92,7 @@ export default class CtHackActor extends Actor {
       }
     }
 
-    // V1
-    if (!v2) {
-      // Roll and return
-      const rollData = foundry.utils.mergeObject(options, {
-        rollType: "Resource",
-        title: title,
-        rollId: title,
-        diceType: resourceValue,
-      })
-      rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
-
-      let rollResource = await diceRoll(rollData)
-
-      // Resource loss
-      if (rollResource && (rollResource.total === 1 || rollResource.total === 2)) {
-        await this.decreaseResource(resourceId)
-      }
-    }
-    // V2
-    else {
-      return await this.system.roll(ROLL_TYPE.RESOURCE, resourceId, { rollAdvantage: options.rollAdvantage })
-    }
+    return await this.system.roll(ROLL_TYPE.RESOURCE, resourceId, { rollAdvantage: options.rollAdvantage })
   }
 
   /**
@@ -145,7 +102,6 @@ export default class CtHackActor extends Actor {
    * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
    */
   async rollMaterial(item, options = {}) {
-    const v2 = game.settings.get("cthack", "Revised") ? true : false
     const dice = item.system.dice
 
     if (CTHACK.debug) console.log(`${LOG_HEAD}Roll dice ${dice} for material ${item.name}`)
@@ -159,31 +115,7 @@ export default class CtHackActor extends Actor {
       return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: item.name }))
     }
 
-    const materialName = item.name
-    const message = game.i18n.format("CTHACK.MaterialRollDetails", { material: materialName })
-
-    // V1
-    if (!v2) {
-      // Roll and return
-      const rollData = foundry.utils.mergeObject(options, {
-        rollType: "Material",
-        title: game.i18n.format("CTHACK.MaterialRollPromptTitle") + " : " + item.name,
-        rollId: message,
-        diceType: dice,
-      })
-      rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
-
-      let rollMaterial = await diceRoll(rollData)
-
-      // Resource loss
-      if (rollMaterial && (rollMaterial.total === 1 || rollMaterial.total === 2)) {
-        await this._decreaseMaterialResource(item.id, item.system.dice)
-      }
-    }
-    // V2
-    else {
-      return await this.system.roll(ROLL_TYPE.MATERIAL, item.id)
-    }
+    return await this.system.roll(ROLL_TYPE.MATERIAL, item.id)
   }
 
   /**
@@ -282,32 +214,13 @@ export default class CtHackActor extends Actor {
    */
   async rollDamage(damageId, options = {}) {
     if (CTHACK.debug) console.log(`${LOG_HEAD}Roll ${damageId} roll`)
-    const v2 = game.settings.get("cthack", "Revised") ? true : false
-
     const damageDice = this.system.attributes[damageId].value
 
     if (damageDice == 1) {
       return
     }
 
-    const label = game.i18n.localize(CTHACK.attributes[damageId])
-
-    // V1
-    if (!v2) {
-      // Roll and return
-      const rollData = foundry.utils.mergeObject(options, {
-        rollType: "Damage",
-        title: label,
-        rollId: label,
-        diceType: damageDice,
-      })
-      rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
-      return await diceRoll(rollData)
-    }
-    // V2
-    else {
-      return await this.system.roll(ROLL_TYPE.DAMAGE, damageId)
-    }
+    return await this.system.roll(ROLL_TYPE.DAMAGE, damageId)
   }
 
   /**

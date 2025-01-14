@@ -26,7 +26,7 @@ export default class CtHackManager extends HandlebarsApplicationMixin(Applicatio
     position: {
       top: 100,
       left: 120,
-      width: 1200,
+      width: 1300,
       height: "auto",
     },
     form: {

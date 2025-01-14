@@ -678,4 +678,15 @@ export default class CtHackRoll extends Roll {
     else if (value === 3) return game.i18n.localize("CTHACK.Roll.normal")
     else if (value === 4) return game.i18n.localize("CTHACK.Roll.avantage")
   }
+
+  static addDisadvantage(avantage) {
+    const disadvantageMap = {
+      "++": "+",
+      "+": "=",
+      "=": "-",
+      "-": "--",
+      "--": "--"
+    };
+    return disadvantageMap[avantage] || avantage;
+  }
 }
