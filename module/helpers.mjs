@@ -48,8 +48,8 @@ export const registerHandlebarsHelpers = function() {
 
 	Handlebars.registerHelper('getAdrenalineImage', function(value) {
 		if (value === 'pj') {
-			return 'icons/commodities/currency/coin-plain-portal-gold.webp';
-		} else return 'icons/commodities/currency/coin-embossed-skull-silver.webp';
+			return 'systems/cthack/ui/dmk_jeton_fortune_on.webp';
+		} else return 'systems/cthack/ui/dmk_jeton_fortune_off.webp';
 	});
 
 	Handlebars.registerHelper('rangeDesc', function(str) {

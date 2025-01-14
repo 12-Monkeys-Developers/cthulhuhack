@@ -342,6 +342,7 @@
       "Player": "Player",
       "Character": "Character",
       "LetsRoll": "Let's roll",
+      "Fortune": "Fortune",
       "str": "Strength",
       "dex": "Dexterity",
       "con": "Constitution",
@@ -359,11 +360,11 @@
 
   "SETTINGS": {
     "FortuneAvailableName": "Fortune Option",
-    "FortuneAvailableHint": "Allow Fortune option",
+    "FortuneAvailableHint": "Allow Fortune option (V1)",
     "FortuneValueName": "Fortune available",
     "FortuneValueHint": "Fortune value available to players",
     "AdrenalineName": "Adrenaline Option",
-    "AdrenalineHint": "Allow Adrenaline option",
+    "AdrenalineHint": "Allow Adrenaline option (V1) or Fortune option (V2)",
     "WealthName": "Wealth s",
     "WealthHint": "Choose how the wealth resource is managed",
     "WealthNone": "No wealth management",

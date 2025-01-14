@@ -1,9 +1,12 @@
 
   <div>
   {{log 'gm-manager' this}}
-  {{#if (isEnabled "FortuneAvailable")}}
-    <label class="resource-label">{{localize "CTHACK.Fortune"}} : {{getFortuneValue}}</label>
-  {{/if}}
+
+  {{#unless isV2}}
+    {{#if (isEnabled "FortuneAvailable")}}
+      <label class="resource-label">{{localize "CTHACK.Fortune"}} : {{getFortuneValue}}</label>
+    {{/if}}
+  {{/unless}}
 
   <table>
     <thead>
@@ -17,7 +20,7 @@
         {{#if hasMisc}}<th data-action="resourceAll" data-resource="miscellaneous">{{getMiscellaneousValue}}</th>{{/if}}
         {{#if hasHD}}<th data-action="resourceAll" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</th>{{/if}}
         {{#if hasHP}}<th>{{localize "CTHACK.HitPoints"}}</th>{{/if}}        
-        {{#if (isEnabled "Adrenaline")}}<th class="gm-adr-all" data-resource="Adrenaline">{{localize "CTHACK.Manager.Adrenaline"}}</th>{{/if}}
+        {{#if (isEnabled "Adrenaline")}}<th>{{#if isV2}}{{localize "CTHACK.Manager.Fortune"}}{{else}}{{localize "CTHACK.Manager.Adrenaline"}}{{/if}}</th>{{/if}}
         <th data-action="saveAll" data-save="str">{{localize "CTHACK.SaveStrAbbr"}}</th>
         <th data-action="saveAll" data-save="dex">{{localize "CTHACK.SaveDexAbbr"}}</th>
         <th data-action="saveAll" data-save="con">{{localize "CTHACK.SaveConAbbr"}}</th>
@@ -46,9 +49,7 @@
             {{#if @root.hasHD}}<td data-action="resourceOne" data-resource="hitDice">{{character.system.attributes.hitDice.value}}</td>{{/if}}
             {{#if @root.hasHP}}<td>{{character.system.hp.value}}</td>{{/if}}
             {{#if (isEnabled "Adrenaline")}}
-                <td data-action="resourceOne" data-resource="Adrenaline">
-                    <img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline1.value}}"><img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline2.value}}">
-                </td>
+                <td><img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline1.value}}"><img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline2.value}}"></td>
             {{/if}}
             <td data-action="saveOne" data-save="str">{{character.system.saves.str.value}}</td>
             <td data-action="saveOne" data-save="dex">{{character.system.saves.dex.value}}</td>

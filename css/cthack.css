@@ -198,6 +198,7 @@ a.inline-roll {
 .cthack.gm-manager .character-resume .adrenaline-img {
   height: 25px;
   width: 25px;
+  border: none;
 }
 .search-chat {
   padding: 0 0 5px 0;
@@ -456,6 +457,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .sidebar .adrenaline .adrenaline-img {
   height: 30px;
   width: 30px;
+  border: none;
 }
 .cthack.sheet.actor.character .sidebar .conditions {
   display: flex;

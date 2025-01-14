@@ -341,6 +341,7 @@
     "Manager": {
       "Title": "Statut des joueurs",
       "Adrenaline": "Adrénaline",
+      "Fortune": "Fortune",
       "Player": "Joueur",
       "Character": "Personnage",
       "LetsRoll": "Faire le jet",
@@ -361,11 +362,11 @@
 
   "SETTINGS": {
     "FortuneAvailableName": "Option Fortune",
-    "FortuneAvailableHint": "Active la gestion des jetons de Fortune",
+    "FortuneAvailableHint": "Active la gestion des jetons de Fortune (V1)",
     "FortuneValueName": "Nb jetons Fortune",
     "FortuneValueHint": "Nombre de jetons Fortune restant",
     "AdrenalineName": "Option Adrenaline",
-    "AdrenalineHint": "Active la gestion de l'adrénaline",
+    "AdrenalineHint": "Active la gestion de l'adrénaline (V1) ou de la fortune (V2)",
     "WealthName": "Richesse",
     "WealthHint": "Choisissez comment est gérée la richesse",
     "WealthNone": "Pas de gestion de la richesse",

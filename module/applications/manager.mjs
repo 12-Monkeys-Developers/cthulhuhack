@@ -57,6 +57,7 @@ export default class CtHackManager extends HandlebarsApplicationMixin(Applicatio
     const misc = game.settings.get("cthack", "MiscellaneousResource")
     const healthDisplay = game.settings.get("cthack", "HealthDisplay")
     const wealth = game.settings.get("cthack", "Wealth")
+    const v2 = game.settings.get("cthack", "Revised")
     return {
       players: game.users.filter((u) => u.hasPlayerOwner && u.active),
       misc,
@@ -67,6 +68,7 @@ export default class CtHackManager extends HandlebarsApplicationMixin(Applicatio
       hasHD: healthDisplay === "hd" || healthDisplay === "both",
       hasWealthResource: wealth === "resource",
       hasWealthFixed: wealth === "fixed",
+      isV2: v2,
     }
   }
 
