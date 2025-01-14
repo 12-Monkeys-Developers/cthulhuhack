@@ -25,9 +25,6 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/cthack/templates/sheets/magic.hbs",
 
     // CHAT
-    "systems/cthack/templates/chat/roll-save.hbs",
-    "systems/cthack/templates/chat/roll-resource.hbs",
-    "systems/cthack/templates/chat/roll-other.hbs",
     "systems/cthack/templates/chat/tooltip.hbs",
   ]
 

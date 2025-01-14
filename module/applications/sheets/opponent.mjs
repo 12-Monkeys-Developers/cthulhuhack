@@ -266,19 +266,6 @@ export default class CtHackOpponentSheet extends ActorSheet {
   }
 
   /**
-   * Handle deleting a new Owned Item for the actor using initial data defined in the HTML dataset
-   * @param {Event} event   The originating click event
-   * @private
-   */
-  _onAttackDelete(event) {
-    event.preventDefault();
-    const li = $(event.currentTarget).parents(".item");
-    const itemId = li.data("itemId");
-    li.slideUp(200, () => this.render(false));
-    return this.actor.deleteEmbeddedDocuments("Item", [itemId]);
-  }
-
-  /**
    * Handle clickable Damaged roll.
    * @param {Event} event   The originating click event
    * @private
@@ -292,7 +279,7 @@ export default class CtHackOpponentSheet extends ActorSheet {
     const itemId = li.data("itemId");
     let item = this.actor.items.get(itemId);
 
-    this.actor.rollAttackDamageRoll(item, { event: event });
+    this.actor.system.roll(item.system.damageDice, item.name);
   }
 
   /**

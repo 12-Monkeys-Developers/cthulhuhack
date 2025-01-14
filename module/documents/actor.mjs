@@ -1,5 +1,4 @@
 import { CTHACK } from "../config.mjs"
-import { diceRoll } from "../dice.mjs"
 import { formatDate } from "../utils.mjs"
 import { CthackUtils } from "../utils.mjs"
 import { LOG_HEAD } from "../constants.mjs"
@@ -221,39 +220,6 @@ export default class CtHackActor extends Actor {
     }
 
     return await this.system.roll(ROLL_TYPE.DAMAGE, damageId)
-  }
-
-  /**
-   * Roll an attack damage
-   * @param {Item} item   		Item of type attack for opponent
-   * @param {Object} options      Options which configure how damage tests are rolled
-   * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
-   */
-  async rollAttackDamageRoll(item, options = {}) {
-    if (CTHACK.debug) console.log(`${LOG_HEAD}Attack roll for ${item.name} with a ${item.system.damageDice} dice`)
-
-    const label = game.i18n.format("CTHACK.AttackDamageDiceRollPrompt", { item: item.name })
-
-    // Custom Formula ?
-    let isCustomFormula = false
-
-    // If there is a + in the formula, it's a custom Formula
-    const count = item.system.damageDice.includes("+")
-    if (count != null) isCustomFormula = true
-
-    // If the first character is not d, it's a custom Formula, 2d6 by exemple
-    if (item.system.damageDice.charAt(0) !== "d") isCustomFormula = true
-
-    // Roll and return
-    const rollData = foundry.utils.mergeObject(options, {
-      rollType: "AttackDamage",
-      title: label,
-      rollId: label,
-      diceType: isCustomFormula === false ? item.system.damageDice : null,
-      customFormula: isCustomFormula === true ? item.system.damageDice : null,
-    })
-    rollData.speaker = options.speaker || ChatMessage.getSpeaker({ actor: this })
-    return await diceRoll(rollData)
   }
 
   /**

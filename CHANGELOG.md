@@ -1,3 +1,10 @@
+4.3.0
+- Add roll enricher to allow custom linked in journals, actors or items
+- Refactoring of GM Manager to use AppV2
+- Manage Fortune depending of version
+- Change Fortune's icons
+- Remove V1 roll : only V2 roll right now
+
 4.2.1
 - Fix chat's labels for rolls asked from the GM Manager
 

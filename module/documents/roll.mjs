@@ -679,6 +679,12 @@ export default class CtHackRoll extends Roll {
     else if (value === 4) return game.i18n.localize("CTHACK.Roll.avantage")
   }
 
+  /**
+   * Adjusts the given advantage with a new disadvantage.
+   *
+   * @param {string} avantage - The current advantage level, which can be one of "++", "+", "=", "-", or "--".
+   * @returns {string} - The adjusted disadvantage level. If the input is not one of the predefined levels, it returns the input as is.
+   */
   static addDisadvantage(avantage) {
     const disadvantageMap = {
       "++": "+",

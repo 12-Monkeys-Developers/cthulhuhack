@@ -226,7 +226,7 @@ export class Macros {
     if (!item) return ui.notifications.warn(game.i18n.format("MACROS.AttackNotFound", { opponentName: actor.name, itemName: itemName }))
 
     // Open the roll window
-    actor.rollAttackDamageRoll(item)
+    actor.system.roll(item.system.damageDice, item.name)
   }
 
   /**

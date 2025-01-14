@@ -1,6 +1,6 @@
 
   <div>
-  {{log 'gm-manager' this}}
+  {{!log 'gm-manager' this}}
 
   {{#unless isV2}}
     {{#if (isEnabled "FortuneAvailable")}}
@@ -31,7 +31,7 @@
     </thead>
     <tbody>
       {{#each players as |player|}}
-        {{log 'gm-manager-player' player}}
+        {{!log 'gm-manager-player' player}}
         <tr class="character-resume" data-user-id="{{id}}" data-character-name="{{character.name}}" data-character-id="{{character.id}}">
             <td>{{name}}</td>
             <td data-action="openSheet" data-character-id="{{player.character.id}}" data-tooltip="{{character.system.infos}}">{{character.name}}</td>
