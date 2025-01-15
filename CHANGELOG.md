@@ -1,3 +1,7 @@
+4.3.1
+- Fix bug on enricher of type cha
+- Minor css fix : html text in edit mode in prose mirror
+
 4.3.0
 - Add roll enricher to allow custom linked in journals, actors or items
 - Refactoring of GM Manager to use AppV2
