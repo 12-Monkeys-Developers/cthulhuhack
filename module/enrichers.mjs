@@ -1,7 +1,7 @@
 /**
  * Enricher qui permet de transformer un texte en un lien de lancer de dés
  * Pour une syntaxe de type @jet[x]{y}(z) avec x la caractéristique, y le titre et z l'avantage
- * x de type for, dex, con, sag, int, char, str, wis pour les caractéristiques
+ * x de type for, dex, con, sag, int, cha, str, wis pour les caractéristiques
  * et de type torche, bagou, san, flashlights, smokes, wealthDice, hitDice, miscellaneous pour les ressources
  * y est le titre du jet et permet de décrire l'action
  * z est l'avantage du jet, avec pour valeurs possibles : --, -, +, ++
@@ -26,11 +26,11 @@ async function enrichRoll(match) {
   const title = match[2]
   const avantage = match[3]
 
-  if (!["for", "dex", "con", "sag", "int", "char", "str", "wis", "torche", "bagou", "san", "richesse", "flashlights", "smokes", "wealthDice", "hitDice", "miscellaneous"].includes(target))
+  if (!["for", "dex", "con", "sag", "int", "cha", "str", "wis", "torche", "bagou", "san", "richesse", "flashlights", "smokes", "wealthDice", "hitDice", "miscellaneous"].includes(target))
     return
 
   let type = "resource"
-  if (["for", "dex", "con", "sag", "int", "char", "str", "wis"].includes(target)) {
+  if (["for", "dex", "con", "sag", "int", "cha", "str", "wis"].includes(target)) {
     type = "save"
     if (target === "for") {
       target = "str"
@@ -46,6 +46,9 @@ async function enrichRoll(match) {
     }
     if (target === "bagou") {
       target = "smokes"
+    }
+    if (target === "san") {
+      target = "sanity"
     }
     if (target === "richesse") {      
       target = "wealthDice"
