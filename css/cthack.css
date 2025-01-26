@@ -281,9 +281,6 @@ a.inline-roll {
   background: var(--context-menu-background-color);
   color: var(--context-menu-color);
 }
-.cthack a.content-link {
-  color: black;
-}
 .cthack input[type="text"],
 .cthack input[type="number"],
 .cthack input[type="password"],
