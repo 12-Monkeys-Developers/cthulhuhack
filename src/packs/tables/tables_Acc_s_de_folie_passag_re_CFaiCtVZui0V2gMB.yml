@@ -7,104 +7,101 @@ description: >-
 results:
   - _id: kLCaDsZyVLGtZrY8
     flags: {}
-    type: 2
+    type: pack
     text: Amnésie
     img: icons/svg/book.svg
-    collection: cthack.temporaryinsanity
-    resultId: 3yfwi9y3RYj9zwxB
     weight: 1
     range:
       - 1
       - 1
     drawn: false
-    rangeL: 1
-    rangeH: 1
+    documentCollection: cthack.temporaryinsanity
+    documentId: 3yfwi9y3RYj9zwxB
     _key: '!tables.results!CFaiCtVZui0V2gMB.kLCaDsZyVLGtZrY8'
   - _id: JfcD9oxsBZ56EopH
     flags: {}
-    type: 2
+    type: pack
     text: Délire
     img: icons/svg/book.svg
-    collection: cthack.temporaryinsanity
-    resultId: LBlk8Q4VsbYrBR33
     weight: 1
     range:
       - 2
       - 2
     drawn: false
-    rangeL: 2
-    rangeH: 2
+    documentCollection: cthack.temporaryinsanity
+    documentId: LBlk8Q4VsbYrBR33
     _key: '!tables.results!CFaiCtVZui0V2gMB.JfcD9oxsBZ56EopH'
   - _id: MY0RVcvmqlsTKA3j
     flags: {}
-    type: 2
+    type: pack
     text: Evanouissement
     img: icons/svg/book.svg
-    collection: cthack.temporaryinsanity
-    resultId: OccloUIsiGvu5LVA
     weight: 1
     range:
       - 3
       - 3
     drawn: false
-    rangeL: 3
-    rangeH: 3
+    documentCollection: cthack.temporaryinsanity
+    documentId: OccloUIsiGvu5LVA
     _key: '!tables.results!CFaiCtVZui0V2gMB.MY0RVcvmqlsTKA3j'
   - _id: prwtobFPk5ytHoYI
     flags: {}
-    type: 2
+    type: pack
     text: Hystérie
     img: icons/svg/book.svg
-    collection: cthack.temporaryinsanity
-    resultId: S4RD9DbJRbDSfFSx
     weight: 1
     range:
       - 4
       - 4
     drawn: false
-    rangeL: 4
-    rangeH: 4
+    documentCollection: cthack.temporaryinsanity
+    documentId: S4RD9DbJRbDSfFSx
     _key: '!tables.results!CFaiCtVZui0V2gMB.prwtobFPk5ytHoYI'
   - _id: ELp7z50oejJq8RiU
     flags: {}
-    type: 2
+    type: pack
     text: Paralysie
     img: icons/svg/book.svg
-    collection: cthack.temporaryinsanity
-    resultId: BirQY4IBaMrgrMja
     weight: 1
     range:
       - 5
       - 5
     drawn: false
-    rangeL: 5
-    rangeH: 5
+    documentCollection: cthack.temporaryinsanity
+    documentId: BirQY4IBaMrgrMja
     _key: '!tables.results!CFaiCtVZui0V2gMB.ELp7z50oejJq8RiU'
   - _id: 2j28QsXE0KodFwDK
     flags: {}
-    type: 2
+    type: pack
     text: Paranoia
     img: icons/svg/book.svg
-    collection: cthack.temporaryinsanity
-    resultId: LK1hc5H8HmDQmXBf
     weight: 1
     range:
       - 6
       - 6
     drawn: false
-    rangeL: 6
-    rangeH: 6
+    documentCollection: cthack.temporaryinsanity
+    documentId: LK1hc5H8HmDQmXBf
     _key: '!tables.results!CFaiCtVZui0V2gMB.2j28QsXE0KodFwDK'
 formula: 1d6
 replacement: true
 displayRoll: true
 folder: null
 sort: 0
-permission:
-  default: 0
-  ElkdkfLFg9aO1OqA: 3
 flags:
   core:
     sourceId: RollTable.SMoGta5E59NICGwW
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  ElkdkfLFg9aO1OqA: 3
 _key: '!tables!CFaiCtVZui0V2gMB'
 

@@ -1,0 +1,38 @@
+name: Polyglotte
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: polyglotte
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p>Votre personnage sait s’adapter rapidement à des langues inconnues, ce
+    qui lui permet de tenir une conversation simple avec n’importe quel individu
+    dans sa langue maternelle.</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737910113196
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: vcTrsdePpvHyFyFS
+sort: 1900000
+_key: '!items!vcTrsdePpvHyFyFS'
+

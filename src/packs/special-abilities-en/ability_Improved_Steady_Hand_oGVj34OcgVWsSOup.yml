@@ -2,7 +2,27 @@ _id: oGVj34OcgVWsSOup
 name: Improved Steady Hand
 type: ability
 img: systems/cthack/ui/icons/rifle.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.4O30uUldF4VlcWcb
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Requires&nbsp;Steady Hand. You do not have to&nbsp;roll DEX Saves to hit
     (unless at&nbsp;Disadvantage) with any Ranged&nbsp;weapon but must roll a
@@ -17,14 +37,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.4O30uUldF4VlcWcb
 _key: '!items!oGVj34OcgVWsSOup'
 

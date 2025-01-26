@@ -1,16 +1,29 @@
 name: Pistolet
-permission:
-  default: 0
-  Q9eXSbNsJCeaMOSw: 3
 type: weapon
-data:
-  description: ''
-  dice: d8
-  range: near
-  locked: true
 flags: {}
 img: systems/cthack/ui/weapons/colt-m1911.png
 effects: []
 _id: DiEGFbcbJ6YjicUe
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  Q9eXSbNsJCeaMOSw: 3
+system:
+  htmlFields:
+    - description
+  description: ''
+  dice: d8
+  range: near
+  locked: true
+folder: null
+sort: 0
 _key: '!items!DiEGFbcbJ6YjicUe'
 

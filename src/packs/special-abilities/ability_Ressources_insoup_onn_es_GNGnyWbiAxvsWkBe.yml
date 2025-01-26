@@ -1,0 +1,38 @@
+name: Ressources insoupçonnées
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: ressources-insoupconnees
+  uses:
+    value: 1
+    max: 1
+    per: Session
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p>Une fois par session, lorsque vous échouez à un test de Ressource qui est
+    à d4, au lieu d’épuiser la Ressource, considérez que le test est réussi, la
+    Ressource reste à d4.</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737910456139
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: GNGnyWbiAxvsWkBe
+sort: 400000
+_key: '!items!GNGnyWbiAxvsWkBe'
+

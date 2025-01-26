@@ -2,7 +2,27 @@ _id: LSGrfIisNOvyrVZR
 name: Self-Preservation
 type: ability
 img: systems/cthack/ui/icons/extra-lucid.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.XKKv6w1z3wP0b208
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Roll with&nbsp;Advantage when making a Save to&nbsp;avoid traps, devices
     and other&nbsp;mechanisms intended to impede or&nbsp;harm.</p>
@@ -16,14 +36,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.XKKv6w1z3wP0b208
 _key: '!items!LSGrfIisNOvyrVZR'
 

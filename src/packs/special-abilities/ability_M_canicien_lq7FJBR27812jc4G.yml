@@ -1,10 +1,26 @@
 _id: lq7FJBR27812jc4G
 name: Mécanicien
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.TeHLpbRoKyOSsq63
+img: systems/cthack/ui/icons/auto-repair.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Le personnage b&eacute;n&eacute;ficie d&rsquo;un
     <strong>Avantage</strong> lorsqu&rsquo;il r&eacute;pare des machines ou
@@ -16,10 +32,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.TeHLpbRoKyOSsq63
-img: systems/cthack/ui/icons/auto-repair.png
-effects: []
+  locked: true
+folder: null
+sort: 5300000
 _key: '!items!lq7FJBR27812jc4G'
 

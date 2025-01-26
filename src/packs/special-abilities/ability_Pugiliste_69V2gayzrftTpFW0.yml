@@ -1,10 +1,26 @@
 _id: 69V2gayzrftTpFW0
 name: Pugiliste
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.VpPN6iTU08T58PVx
+img: systems/cthack/ui/icons/punch.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Augmentez les D&eacute;g&acirc;t(s) non arm&eacute; d&rsquo;un niveau (si
     les d&eacute;g&acirc;ts sont actuellement &agrave; 1, augmentez-les &agrave;
@@ -16,10 +32,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.VpPN6iTU08T58PVx
-img: systems/cthack/ui/icons/punch.png
-effects: []
+  locked: true
+folder: null
+sort: 2100000
 _key: '!items!69V2gayzrftTpFW0'
 

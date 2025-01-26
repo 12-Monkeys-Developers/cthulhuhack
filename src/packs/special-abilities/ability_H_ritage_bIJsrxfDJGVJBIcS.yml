@@ -1,10 +1,26 @@
 _id: bIJsrxfDJGVJBIcS
 name: Héritage
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.s1mjsSSxNlTCTqBr
+img: systems/cthack/ui/icons/cash.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Ajoutez un niveau en <strong>Richesse</strong> (<strong>Richesse en tant
     que Ressource</strong>, voir p. 28). Vous pouvez choisir cette
@@ -18,10 +34,7 @@ data:
     per: Permanent
     last: ''
   multiple: true
-flags:
-  core:
-    sourceId: Item.s1mjsSSxNlTCTqBr
-img: systems/cthack/ui/icons/cash.png
-effects: []
+folder: null
+sort: 4500000
 _key: '!items!bIJsrxfDJGVJBIcS'
 

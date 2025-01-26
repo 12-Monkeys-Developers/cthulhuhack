@@ -2,21 +2,32 @@ _id: QiVs1mr0kRO60IHr
 name: Grenade
 type: weapon
 img: systems/cthack/ui/weapons/grenade.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.weapons.MtcV5ZaETXNoYgEr
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: |-
     <p>+3 step / -3 to hit.</p>
     <p>Effects 1d4 targets in a Nearby area.</p>
   dice: ''
   range: 3str
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.weapons.MtcV5ZaETXNoYgEr
 _key: '!items!QiVs1mr0kRO60IHr'
 

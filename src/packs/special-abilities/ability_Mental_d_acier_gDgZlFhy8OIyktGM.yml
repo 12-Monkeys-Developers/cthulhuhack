@@ -1,14 +1,30 @@
 _id: gDgZlFhy8OIyktGM
 name: Mental d'acier
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.5EPFMD7c5SsFflAb
+img: systems/cthack/ui/icons/psychic-waves.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
-    <p>Le personnage b&eacute;n&eacute;ficie d&rsquo;un Avantage pour les
-    Sauvegardes visant &agrave; r&eacute;sister &agrave; la magie, aux rituels
-    occultes, aux mal&eacute;dictions ou &agrave; la possession.</p>
+    <p>Le personnage bénéficie d’un <strong>Avantage</strong> pour les
+    <strong>Sauvegardes</strong> visant à résister à la magie, aux rituels
+    occultes, aux malédictions ou à la possession.</p>
   key: IROMIN
   uses:
     value: 0
@@ -16,10 +32,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.5EPFMD7c5SsFflAb
-img: systems/cthack/ui/icons/psychic-waves.png
-effects: []
+  locked: true
+folder: null
+sort: 5000000
 _key: '!items!gDgZlFhy8OIyktGM'
 

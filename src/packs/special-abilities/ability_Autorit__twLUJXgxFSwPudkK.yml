@@ -1,0 +1,39 @@
+name: Autorité
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: autorite
+  uses:
+    value: 1
+    max: 1
+    per: Session
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p>Une fois par séance, le personnage peut intimer un ordre simple à un PNJ
+    (« Lâche ton arme », « Ferme les yeux pendant dix secondes », « Ouvre la
+    porte »), qui le réalise si cela ne met pas directement sa vie en danger ni
+    celle d’autrui.</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737908666175
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: twLUJXgxFSwPudkK
+sort: 500000
+_key: '!items!twLUJXgxFSwPudkK'
+

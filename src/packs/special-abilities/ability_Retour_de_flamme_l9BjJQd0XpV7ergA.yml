@@ -1,10 +1,26 @@
 _id: l9BjJQd0XpV7ergA
 name: Retour de flamme
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.A1W385L1asXvavU0
+img: systems/cthack/ui/icons/flame.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Une fois par heure de jeu, vous r&eacute;ussissez automatiquement une
     Sauvegarde d&eacute;fensive et retournez les d&eacute;g&acirc;ts de
@@ -17,10 +33,8 @@ data:
     per: Hour
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.A1W385L1asXvavU0
-img: systems/cthack/ui/icons/flame.png
-effects: []
+  locked: true
+folder: null
+sort: 5200000
 _key: '!items!l9BjJQd0XpV7ergA'
 

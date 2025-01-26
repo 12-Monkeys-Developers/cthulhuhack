@@ -1,10 +1,24 @@
 _id: UVRM8dy8jo8hGYs6
 name: Jugeote
-permission:
+type: ability
+flags: {}
+img: systems/cthack/ui/icons/smart.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   gCtskyVJVCb7NnMV: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Ajoutez un niveau en <strong>Torche</strong>. Vous pouvez choisir cette
     capacit&eacute; sp&eacute;ciale plusieurs fois.</p>
@@ -16,8 +30,7 @@ data:
     per: Permanent
     last: ''
   multiple: true
-flags: {}
-img: systems/cthack/ui/icons/smart.png
-effects: []
+folder: null
+sort: 4000000
 _key: '!items!UVRM8dy8jo8hGYs6'
 

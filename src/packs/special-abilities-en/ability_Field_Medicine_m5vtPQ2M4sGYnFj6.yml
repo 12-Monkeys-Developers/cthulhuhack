@@ -2,7 +2,27 @@ _id: m5vtPQ2M4sGYnFj6
 name: Field Medicine
 type: ability
 img: systems/cthack/ui/icons/first-aid-kit.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.S94zzLx010PIENcN
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Once per gaming&nbsp;hour, outside combat, you can heal&nbsp;another
     character d6 lost Hit Points&nbsp;(or one Hit Die step, if using
@@ -17,14 +37,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.S94zzLx010PIENcN
 _key: '!items!m5vtPQ2M4sGYnFj6'
 

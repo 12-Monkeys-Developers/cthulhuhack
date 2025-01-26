@@ -1,10 +1,26 @@
 _id: TJn8Ph4FPBd63Ey1
 name: Fuyant comme une anguille
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.jLi0nIHRZDnouLBO
+img: systems/cthack/ui/icons/eel.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Une fois par session le personnage peut r&eacute;percuter les
     cons&eacute;quences d&rsquo;un &eacute;chec de Sauvegarde
@@ -16,10 +32,8 @@ data:
     per: Session
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.jLi0nIHRZDnouLBO
-img: systems/cthack/ui/icons/eel.png
-effects: []
+  locked: true
+folder: null
+sort: 3900000
 _key: '!items!TJn8Ph4FPBd63Ey1'
 

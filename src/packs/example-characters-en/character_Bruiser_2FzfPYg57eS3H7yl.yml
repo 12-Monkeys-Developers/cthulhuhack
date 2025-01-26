@@ -2,7 +2,187 @@ _id: 2FzfPYg57eS3H7yl
 name: Bruiser
 type: character
 img: systems/cthack/ui/pregenerated/brute.webp
-data:
+items:
+  - _id: VJ9MH6DBIf96WUSL
+    name: Tactical Advantage
+    type: ability
+    img: systems/cthack/ui/icons/swords-power.png
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 500000
+    flags:
+      core:
+        sourceId: Item.ErZ1mNKx7pdQAn8I
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      59G26I43j4RYqfKX: 3
+    system:
+      htmlFields:
+        - description
+      description: >-
+        <p>As part of&nbsp;your action, you can make an&nbsp;additional attack
+        against the same&nbsp;or a different target. You can select&nbsp;this
+        Ability multiple times.</p>
+      key: TACADV
+      uses:
+        value: 1
+        max: 1
+        per: Fight
+        last: ''
+      multiple: true
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    _key: '!actors.items!2FzfPYg57eS3H7yl.VJ9MH6DBIf96WUSL'
+  - _id: M4xb3xJfmiANg804
+    name: Narrow Escape
+    type: ability
+    img: systems/cthack/ui/icons/toolbox.png
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 1500000
+    flags:
+      core:
+        sourceId: Item.JSxc3eh04ZAodTRj
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      59G26I43j4RYqfKX: 3
+    system:
+      htmlFields:
+        - description
+      description: >-
+        <p>Once per game&nbsp;session, you can break a piece of&nbsp;equipment -
+        and narrate what happens - to avoid damage from a failed STR or DEX
+        Save.</p>
+      key: NARESC
+      uses:
+        value: 1
+        max: 1
+        per: Session
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    _key: '!actors.items!2FzfPYg57eS3H7yl.M4xb3xJfmiANg804'
+  - _id: gVJUgBAtabdkTeFi
+    name: Ripped
+    type: ability
+    img: systems/cthack/ui/icons/biceps.png
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 2300000
+    flags:
+      core:
+        sourceId: Compendium.cthack.abilities.ZJvm1resELxeLApu
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      59G26I43j4RYqfKX: 3
+    system:
+      htmlFields:
+        - description
+      description: >-
+        <p>You roll with Advantage&nbsp;when making a Save to lift,
+        drag,&nbsp;snap, break, wrestle or otherwise exert your strength.</p>
+      key: RIP
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+      name: ''
+    _key: '!actors.items!2FzfPYg57eS3H7yl.gVJUgBAtabdkTeFi'
+  - _id: PrA4aWMy3gpJHxha
+    name: Adrenaline Rush
+    type: ability
+    img: systems/cthack/ui/icons/healing.png
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 2500000
+    flags:
+      core:
+        sourceId: Item.okbiEUn3QsEAt8Lh
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      59G26I43j4RYqfKX: 3
+    system:
+      htmlFields:
+        - description
+      description: >-
+        <p>Once per game&nbsp;hour, while in combat, recover a Hit&nbsp;Die of
+        lost HP (or one Hit Die step).</p>
+      key: ADRRUS
+      uses:
+        value: 1
+        max: 1
+        per: Hour
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    _key: '!actors.items!2FzfPYg57eS3H7yl.PrA4aWMy3gpJHxha'
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.pregenerated.lxEXUEHxZRUlUaE3
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
+    - shortDescription
+    - biography
+    - notes
+    - equipment
   locked: true
   hp:
     value: 10
@@ -65,29 +245,14 @@ data:
     - key: RIP
     - key: ADRRUS
   notes: ''
-token:
+prototypeToken:
   flags: {}
   name: Brute
   displayName: 0
-  img: systems/cthack/ui/pregenerated/brute.webp
-  tint: null
   width: 1
   height: 1
-  scale: 1
   lockRotation: false
   rotation: 0
-  vision: false
-  dimSight: 0
-  brightSight: 0
-  dimLight: 0
-  brightLight: 0
-  sightAngle: 0
-  lightAngle: 360
-  lightAlpha: 1
-  lightAnimation:
-    speed: 5
-    intensity: 5
-  actorId: lxEXUEHxZRUlUaE3
   actorLink: false
   disposition: -1
   displayBars: 0
@@ -96,16 +261,13 @@ token:
   bar2:
     attribute: null
   randomImg: false
-  mirrorX: false
-  mirrorY: false
   alpha: 1
   light:
     alpha: 0.5
-    angle: 0
+    angle: 360
     bright: 0
     coloration: 1
     dim: 0
-    gradual: true
     luminosity: 0.5
     saturation: 0
     contrast: 0
@@ -114,129 +276,50 @@ token:
       speed: 5
       intensity: 5
       reverse: false
+      type: null
     darkness:
       min: 0
       max: 1
-items:
-  - _id: VJ9MH6DBIf96WUSL
-    name: Tactical Advantage
-    type: ability
-    img: systems/cthack/ui/icons/swords-power.png
-    data:
-      description: >-
-        <p>As part of&nbsp;your action, you can make an&nbsp;additional attack
-        against the same&nbsp;or a different target. You can select&nbsp;this
-        Ability multiple times.</p>
-      key: TACADV
-      uses:
-        value: 1
-        max: 1
-        per: Fight
-        last: ''
-      multiple: true
-      isCustom: false
-      advantageGiven: false
-      advantageText: ''
-    effects: []
-    folder: x5cwoPpfEO0BU9YX
-    sort: 500000
-    permission:
-      59G26I43j4RYqfKX: 3
-    flags:
-      core:
-        sourceId: Item.ErZ1mNKx7pdQAn8I
-    _key: '!actors.items!2FzfPYg57eS3H7yl.VJ9MH6DBIf96WUSL'
-  - _id: M4xb3xJfmiANg804
-    name: Narrow Escape
-    type: ability
-    img: systems/cthack/ui/icons/toolbox.png
-    data:
-      description: >-
-        <p>Once per game&nbsp;session, you can break a piece of&nbsp;equipment -
-        and narrate what happens - to avoid damage from a failed STR or DEX
-        Save.</p>
-      key: NARESC
-      uses:
-        value: 1
-        max: 1
-        per: Session
-        last: ''
-      multiple: false
-      isCustom: false
-      advantageGiven: false
-      advantageText: ''
-    effects: []
-    folder: x5cwoPpfEO0BU9YX
-    sort: 1500000
-    permission:
-      59G26I43j4RYqfKX: 3
-    flags:
-      core:
-        sourceId: Item.JSxc3eh04ZAodTRj
-    _key: '!actors.items!2FzfPYg57eS3H7yl.M4xb3xJfmiANg804'
-  - _id: gVJUgBAtabdkTeFi
-    name: Ripped
-    type: ability
-    img: systems/cthack/ui/icons/biceps.png
-    data:
-      description: >-
-        <p>You roll with Advantage&nbsp;when making a Save to lift,
-        drag,&nbsp;snap, break, wrestle or otherwise exert your strength.</p>
-      key: RIP
-      uses:
-        value: 0
-        max: 0
-        per: Permanent
-        last: ''
-      multiple: false
-      isCustom: false
-      advantageGiven: false
-      advantageText: ''
-      name: ''
-    effects: []
-    folder: x5cwoPpfEO0BU9YX
-    sort: 2300000
-    permission:
-      59G26I43j4RYqfKX: 3
-    flags:
-      core:
-        sourceId: Compendium.cthack.abilities.ZJvm1resELxeLApu
-    _key: '!actors.items!2FzfPYg57eS3H7yl.gVJUgBAtabdkTeFi'
-  - _id: PrA4aWMy3gpJHxha
-    name: Adrenaline Rush
-    type: ability
-    img: systems/cthack/ui/icons/healing.png
-    data:
-      description: >-
-        <p>Once per game&nbsp;hour, while in combat, recover a Hit&nbsp;Die of
-        lost HP (or one Hit Die step).</p>
-      key: ADRRUS
-      uses:
-        value: 1
-        max: 1
-        per: Hour
-        last: ''
-      multiple: false
-      isCustom: false
-      advantageGiven: false
-      advantageText: ''
-    effects: []
-    folder: x5cwoPpfEO0BU9YX
-    sort: 2500000
-    permission:
-      59G26I43j4RYqfKX: 3
-    flags:
-      core:
-        sourceId: Item.okbiEUn3QsEAt8Lh
-    _key: '!actors.items!2FzfPYg57eS3H7yl.PrA4aWMy3gpJHxha'
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.pregenerated.lxEXUEHxZRUlUaE3
+    attenuation: 0.5
+    negative: false
+    priority: 0
+    color: null
+  texture:
+    src: systems/cthack/ui/pregenerated/brute.webp
+    tint: '#ffffff'
+    scaleX: 1
+    scaleY: 1
+    anchorX: 0.5
+    anchorY: 0.5
+    offsetX: 0
+    offsetY: 0
+    fit: contain
+    rotation: 0
+    alphaThreshold: 0.75
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    color: null
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  hexagonalShape: 0
+  detectionModes: []
+  occludable:
+    radius: 0
+  ring:
+    enabled: false
+    colors:
+      ring: null
+      background: null
+    effects: 1
+    subject:
+      scale: 1
+      texture: null
 _key: '!actors!2FzfPYg57eS3H7yl'
 

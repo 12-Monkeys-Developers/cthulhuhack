@@ -1,10 +1,26 @@
 _id: 7kjDhjZtUN2U7aX3
 name: Débrouillard
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.9sPrm3D6UrCrW8pa
+img: systems/cthack/ui/icons/swiss-army-knife.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Une fois par session de jeu, le personnage peut improviser une solution
     &agrave; un probl&egrave;me avec ce qu&rsquo;il a sous la main (objets,
@@ -16,10 +32,8 @@ data:
     per: Session
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.9sPrm3D6UrCrW8pa
-img: systems/cthack/ui/icons/swiss-army-knife.png
-effects: []
+  locked: true
+folder: null
+sort: 2400000
 _key: '!items!7kjDhjZtUN2U7aX3'
 

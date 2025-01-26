@@ -2,7 +2,27 @@ _id: NruurFfmoQRL9Z8j
 name: Paralysis
 type: definition
 img: systems/cthack/ui/icons/screaming.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.temporaryinsanity.BirQY4IBaMrgrMja
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>The character freezes, gripped by fear. They cannot move of&nbsp;their
     own accord for a Minute. Other characters can attempt to carry them&nbsp;or
@@ -13,14 +33,5 @@ data:
   key: TI-PAS
   creationDate: ''
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.temporaryinsanity.BirQY4IBaMrgrMja
 _key: '!items!NruurFfmoQRL9Z8j'
 

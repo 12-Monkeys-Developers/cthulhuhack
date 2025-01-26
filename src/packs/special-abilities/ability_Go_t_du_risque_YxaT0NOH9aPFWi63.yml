@@ -1,0 +1,39 @@
+name: Goût du risque
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: gout-du-risque
+  uses:
+    value: 1
+    max: 1
+    per: Session
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p>Une fois par session, lorsque vous devez faire un test avec un
+    Désavantage, vous pouvez le faire avec Avantage (si vous avez la Capacité
+    spéciale Ambitieux, votre test ne se fait pas avec un bonus de 2
+    points).</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737909268095
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: YxaT0NOH9aPFWi63
+sort: 1300000
+_key: '!items!YxaT0NOH9aPFWi63'
+

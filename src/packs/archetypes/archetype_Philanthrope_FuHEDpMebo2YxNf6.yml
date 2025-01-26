@@ -1,64 +1,40 @@
 _id: FuHEDpMebo2YxNf6
 name: Philanthrope
 type: archetype
-img: systems/cthack/ui/archetypes/cthack-philanthrope.png
-data:
-  description: >-
-    <p><em>Ali&eacute;niste, docteur, dilettante, pasteur, chanteur</em></p>
-
-    <p>&nbsp;</p>
-
-    <p><strong><em>Capacit&eacute;s sp&eacute;ciales</em></strong></p>
-
-    <p><em><strong>Indomptable</strong> : vous b&eacute;n&eacute;ficiez
-    d&rsquo;un Avantage </em><em>pour les Sauvegardes contre la tromperie, le
-    </em><em>contr&ocirc;le mental ou lorsque votre investigateur </em><em>tente
-    de tromper son interlocuteur.</em></p>
-
-    <p><em>Choisissez en <strong>deux</strong> parmi les suivantes :</em></p>
-
-    <ul>
-
-    <li><em><strong>Force de caract&egrave;re</strong> : une fois par session de
-    </em><em>jeu, vous pouvez relancer les d&eacute;s pour un test de
-    </em><em>Hors-Jeu ou de Sant&eacute; mentale / Choc.
-    Choisissez&nbsp;</em><em>le r&eacute;sultat de votre choix.</em></li>
-
-    <li><em><strong>M&eacute;decin de terrain</strong> : une fois par heure de
-    </em><em>jeu, en dehors d&rsquo;un combat vous pouvez soigner </em><em>la
-    perte de 1d6 Points de Vie perdus.</em></li>
-
-    <li><em><strong>Verbe blessant</strong> : vous pouvez utiliser Charisme
-    </em><em>pour les attaques (au lieu de Force ou Dext&eacute;rit&eacute;),
-    </em><em>du moment que les adversaires peuvent </em><em>entendre le
-    personnage et le comprendre. Lancez </em><em>les d&eacute;g&acirc;ts comme
-    si le personnage &eacute;tait arm&eacute;. </em><em>Si la victime tombe
-    &agrave; 0 Point de Vie, elle est Hors </em><em>Jeu mais n&rsquo;est pas
-    tu&eacute;e.</em></li>
-
-    </ul>
-
-    <p>&nbsp;</p>
+img: systems/cthack/ui/archetypes/cthack-philanthrope.webp
+effects: []
+folder: null
+sort: 400000
+flags: {}
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737906259804
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  Q9eXSbNsJCeaMOSw: 3
+system:
+  htmlFields:
+    - description
+  description: "<p><em>Aliéniste, docteur, dilettante, pasteur, chanteur</em></p><p>\_</p><p><strong>Métiers (équipement)</strong></p><p>Barman (spray au poivre, vêtements chics), docteur (matériel de premiers secours, papiers officiels), entrepreneur (canne-épée, vêtements chics), pasteur (symbole sacré (Bible), uniforme), occultiste (ouvrage (mythes et légendes), dictaphone), scientifique (ouvrage scientifique, dictaphone).</p><p></p><p><strong>Capacités spéciales</strong></p><p><strong>Primaire</strong> : Indomptable</p><p><strong>Secondaires</strong> : Force de caractère, Verbe blessant, Médecin de terrain</p>"
   flashlights: d6
-  smokes: d10
-  hitdice: d8
-  hitpoints: 1d8 + 8
+  smokes: d12
+  hitdice: d6
+  hitpoints: '12'
   wealthStart: '4'
   wealthDice: d10
   sanity: d10
-  armeddamage: d6
+  armeddamage: d4
   unarmeddamage: '1'
   primarysave: wis
   secondarysave1: cha
   secondarysave2: con
   capacities: []
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  Q9eXSbNsJCeaMOSw: 3
-flags: {}
 _key: '!items!FuHEDpMebo2YxNf6'
 

@@ -1,10 +1,26 @@
 _id: PYW04ytDl8H2qqS8
 name: Sens du danger
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.XKKv6w1z3wP0b208
+img: systems/cthack/ui/icons/extra-lucid.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Le personnage b&eacute;n&eacute;ficie d&rsquo;un Avantage lors des
     Sauvegardes visant &agrave; &eacute;viter les pi&egrave;ges ou les machines
@@ -16,10 +32,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.XKKv6w1z3wP0b208
-img: systems/cthack/ui/icons/extra-lucid.png
-effects: []
+  locked: true
+folder: null
+sort: 3500000
 _key: '!items!PYW04ytDl8H2qqS8'
 

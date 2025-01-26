@@ -1,10 +1,26 @@
 _id: ynaUZNk9u5qBMqVB
 name: Profiteur
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.H5B3S6isstXZyaO9
+img: systems/cthack/ui/icons/light-backpack.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Vous pouvez annuler la perte d&rsquo;un &eacute;quipement suite &agrave;
     un test de Mat&eacute;riel rat&eacute; en perdant &agrave; la place un
@@ -16,10 +32,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.H5B3S6isstXZyaO9
-img: systems/cthack/ui/icons/light-backpack.png
-effects: []
+  locked: true
+folder: null
+sort: 6100000
 _key: '!items!ynaUZNk9u5qBMqVB'
 

@@ -1,10 +1,26 @@
 _id: o2tMUvkvoeEKp5cf
 name: Influent
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.j5px4YwLqIf5LKzR
+img: systems/cthack/ui/icons/embrassed-energy.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Ajoutez un niveau en <strong>Bagou</strong>. Vous pouvez choisir cette
     Capacit&eacute; sp&eacute;ciale plusieurs fois.</p>
@@ -15,10 +31,7 @@ data:
     per: Permanent
     last: ''
   multiple: true
-flags:
-  core:
-    sourceId: Item.j5px4YwLqIf5LKzR
-img: systems/cthack/ui/icons/embrassed-energy.png
-effects: []
+folder: null
+sort: 5500000
 _key: '!items!o2tMUvkvoeEKp5cf'
 

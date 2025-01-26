@@ -2,7 +2,27 @@ _id: eLE2L1voCVrQyEQ5
 name: Indomitable
 type: ability
 img: systems/cthack/ui/icons/lion.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.3SfNP7zMMWMUgboC
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Roll with Advantage when making a Save against&nbsp;deception, mind
     control or attempts&nbsp;to cloud perception.</p>
@@ -16,14 +36,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.3SfNP7zMMWMUgboC
 _key: '!items!eLE2L1voCVrQyEQ5'
 

@@ -1,10 +1,24 @@
 _id: d9gGogbPjsoxPZdd
 name: Détruit
-permission:
+type: definition
+flags: {}
+img: systems/cthack/ui/icons/first-aid-kit.png
+effects: []
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Nf5osQkK29WIwE1I: 3
-type: definition
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Enlevez d&eacute;finitivement 6 points parmi les valeurs de Sauvegardes.
     Choisissez deux Sauvegardes diff&eacute;rentes.</p>
@@ -12,8 +26,7 @@ data:
   key: OOA-BRO
   creationDate: ''
   locked: true
-flags: {}
-img: systems/cthack/ui/icons/first-aid-kit.png
-effects: []
+folder: null
+sort: 0
 _key: '!items!d9gGogbPjsoxPZdd'
 

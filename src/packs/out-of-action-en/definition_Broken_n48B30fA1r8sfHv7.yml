@@ -2,7 +2,27 @@ _id: n48B30fA1r8sfHv7
 name: Broken
 type: definition
 img: systems/cthack/ui/icons/first-aid-kit.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.outofaction.d9gGogbPjsoxPZdd
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Deduct 6 points from Save scores permanently, choosing at least&nbsp;two
     scores to reduce or spreading the loss across several.</p>
@@ -10,14 +30,5 @@ data:
   key: OOA-BRO
   creationDate: ''
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.outofaction.d9gGogbPjsoxPZdd
 _key: '!items!n48B30fA1r8sfHv7'
 

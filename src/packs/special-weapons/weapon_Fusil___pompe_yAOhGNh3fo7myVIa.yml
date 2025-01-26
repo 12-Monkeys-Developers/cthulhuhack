@@ -1,18 +1,31 @@
 name: Fusil à pompe
-permission:
+type: weapon
+flags: {}
+img: systems/cthack/ui/weapons/sawed-off-shotgun.png
+effects: []
+_id: yAOhGNh3fo7myVIa
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: weapon
-data:
+system:
+  htmlFields:
+    - description
   description: |-
     <p>+ 2 niveaux de d&eacute;g&acirc;ts / -2 au test de Sauvegarde.</p>
     <p>L&rsquo;Armure de la cible compte double.</p>
   dice: d6
   range: near
   locked: true
-flags: {}
-img: systems/cthack/ui/weapons/sawed-off-shotgun.png
-effects: []
-_id: yAOhGNh3fo7myVIa
+folder: null
+sort: 0
 _key: '!items!yAOhGNh3fo7myVIa'
 

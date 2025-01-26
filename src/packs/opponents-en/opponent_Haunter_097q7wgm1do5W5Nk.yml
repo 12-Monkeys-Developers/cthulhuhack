@@ -2,7 +2,107 @@ _id: 097q7wgm1do5W5Nk
 name: Haunter
 type: opponent
 img: icons/svg/mystery-man.svg
-data:
+items:
+  - _id: Bdd0rLcERF6ZmYeC
+    name: Skull Spindle
+    type: attack
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    folder: null
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      default: 0
+    system:
+      htmlFields:
+        - description
+      description: ''
+      damage: '9'
+      damageDice: 2d8
+    _key: '!actors.items!097q7wgm1do5W5Nk.Bdd0rLcERF6ZmYeC'
+  - _id: TcGBgJoewHBs1Q7S
+    name: Claw
+    type: attack
+    sort: 200000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    folder: null
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      default: 0
+    system:
+      htmlFields:
+        - description
+      description: ''
+      damage: '3'
+      damageDice: d6
+    _key: '!actors.items!097q7wgm1do5W5Nk.TcGBgJoewHBs1Q7S'
+  - _id: dJ6P9bLaF2nyVrLu
+    name: Acidic
+    type: attack
+    sort: 300000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    folder: null
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      default: 0
+    system:
+      htmlFields:
+        - description
+      description: ''
+      damage: Spécial
+      damageDice: ''
+    _key: '!actors.items!097q7wgm1do5W5Nk.dJ6P9bLaF2nyVrLu'
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.opponents.xAJD9M1QpzUXtmSo
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
+    - shortDescription
   hp:
     value: 33
     min: 0
@@ -45,29 +145,14 @@ data:
   armor: '8'
   abilities: []
   malus: '-8'
-token:
+prototypeToken:
   flags: {}
   name: Celui-qui-hante
   displayName: 0
-  img: icons/svg/mystery-man.svg
-  tint: null
   width: 1
   height: 1
-  scale: 1
   lockRotation: false
   rotation: 0
-  vision: false
-  dimSight: 0
-  brightSight: 0
-  dimLight: 0
-  brightLight: 0
-  sightAngle: 0
-  lightAngle: 360
-  lightAlpha: 1
-  lightAnimation:
-    speed: 5
-    intensity: 5
-  actorId: xAJD9M1QpzUXtmSo
   actorLink: false
   disposition: -1
   displayBars: 0
@@ -76,16 +161,13 @@ token:
   bar2:
     attribute: null
   randomImg: false
-  mirrorX: false
-  mirrorY: false
   alpha: 1
   light:
     alpha: 0.5
-    angle: 0
+    angle: 360
     bright: 0
     coloration: 1
     dim: 0
-    gradual: true
     luminosity: 0.5
     saturation: 0
     contrast: 0
@@ -94,63 +176,50 @@ token:
       speed: 5
       intensity: 5
       reverse: false
+      type: null
     darkness:
       min: 0
       max: 1
-items:
-  - _id: Bdd0rLcERF6ZmYeC
-    name: Skull Spindle
-    type: attack
-    data:
-      description: ''
-      damage: '9'
-      damageDice: 2d8
-    sort: 100000
-    flags: {}
-    img: icons/svg/mystery-man.svg
-    effects: []
-    folder: null
-    permission:
-      default: 0
-    _key: '!actors.items!097q7wgm1do5W5Nk.Bdd0rLcERF6ZmYeC'
-  - _id: TcGBgJoewHBs1Q7S
-    name: Claw
-    type: attack
-    data:
-      description: ''
-      damage: '3'
-      damageDice: d6
-    sort: 200000
-    flags: {}
-    img: icons/svg/mystery-man.svg
-    effects: []
-    folder: null
-    permission:
-      default: 0
-    _key: '!actors.items!097q7wgm1do5W5Nk.TcGBgJoewHBs1Q7S'
-  - _id: dJ6P9bLaF2nyVrLu
-    name: Acidic
-    type: attack
-    data:
-      description: ''
-      damage: Spécial
-      damageDice: ''
-    sort: 300000
-    flags: {}
-    img: icons/svg/mystery-man.svg
-    effects: []
-    folder: null
-    permission:
-      default: 0
-    _key: '!actors.items!097q7wgm1do5W5Nk.dJ6P9bLaF2nyVrLu'
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.opponents.xAJD9M1QpzUXtmSo
+    attenuation: 0.5
+    negative: false
+    priority: 0
+    color: null
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: '#ffffff'
+    scaleX: 1
+    scaleY: 1
+    anchorX: 0.5
+    anchorY: 0.5
+    offsetX: 0
+    offsetY: 0
+    fit: contain
+    rotation: 0
+    alphaThreshold: 0.75
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    color: null
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  hexagonalShape: 0
+  detectionModes: []
+  occludable:
+    radius: 0
+  ring:
+    enabled: false
+    colors:
+      ring: null
+      background: null
+    effects: 1
+    subject:
+      scale: 1
+      texture: null
 _key: '!actors!097q7wgm1do5W5Nk'
 

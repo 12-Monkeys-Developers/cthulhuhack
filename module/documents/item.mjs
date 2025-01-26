@@ -8,8 +8,8 @@ export default class CtHackItem extends Item {
   async _preUpdate(changed, options, user) {
     await super._preUpdate(changed, options, user)
 
-    // For abilitiy items, sets the defalut value for the "key" field.
-    if (this.type === "ability") {      
+    // For abilitiy items, sets the defalut value for the "key" field, only for custom abilities.
+    if (this.type === "ability" && this.system.isCustom) {      
       this.updateSource({ "system.key": this.name.slugify() })
     }
   }

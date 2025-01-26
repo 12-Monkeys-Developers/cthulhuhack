@@ -25,11 +25,13 @@ items:
       default: 0
     _stats:
       systemId: cthack
-      systemVersion: '#{VERSION}#'
-      coreVersion: '11.315'
+      systemVersion: '4.3.1#'
+      coreVersion: '12.327'
       createdTime: null
       modifiedTime: 1711903331544
       lastModifiedBy: vkZ1uRwLntJ5cCjm
+      compendiumSource: null
+      duplicateSource: null
     _key: '!actors.items!XwR89pwi3SZVCFp1.ewV905Xi7Bax9j4f'
 effects: []
 system:
@@ -97,14 +99,21 @@ prototypeToken:
     darkness:
       min: 0
       max: 1
+    negative: false
+    priority: 0
+    color: null
   texture:
     src: icons/svg/mystery-man.svg
-    tint: null
+    tint: '#ffffff'
     scaleX: 1
     scaleY: 1
     offsetX: 0
     offsetY: 0
     rotation: 0
+    anchorX: 0.5
+    anchorY: 0.5
+    fit: contain
+    alphaThreshold: 0.75
   sight:
     angle: 360
     enabled: false
@@ -114,17 +123,32 @@ prototypeToken:
     attenuation: 0.1
     saturation: 0
     contrast: 0
+    color: null
   appendNumber: false
   prependAdjective: false
   alpha: 1
   detectionModes: []
+  hexagonalShape: 0
+  occludable:
+    radius: 0
+  ring:
+    enabled: false
+    colors:
+      ring: null
+      background: null
+    effects: 1
+    subject:
+      scale: 1
+      texture: null
 folder: null
 _stats:
   systemId: cthack
-  systemVersion: '#{VERSION}#'
-  coreVersion: '11.315'
+  systemVersion: '4.3.1#'
+  coreVersion: '12.327'
   createdTime: 1711903316295
   modifiedTime: 1711903411290
   lastModifiedBy: vkZ1uRwLntJ5cCjm
+  compendiumSource: null
+  duplicateSource: null
 _key: '!actors!XwR89pwi3SZVCFp1'
 

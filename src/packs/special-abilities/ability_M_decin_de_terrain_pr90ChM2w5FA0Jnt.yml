@@ -1,13 +1,29 @@
 _id: pr90ChM2w5FA0Jnt
 name: Médecin de terrain
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.S94zzLx010PIENcN
+img: systems/cthack/ui/icons/first-aid-kit.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
-    <p>Une fois par heure de jeu, en dehors d&rsquo;un combat vous pouvez
-    soigner la perte de 1d6 Points de Vie perdus.</p>
+    <p>Une fois par heure de jeu, en dehors d’un combat vous pouvez soigner la
+    perte de [[/roll 1d6]] Points de Vie perdus.</p>
   key: FIEMED
   uses:
     value: 1
@@ -15,10 +31,8 @@ data:
     per: Hour
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.S94zzLx010PIENcN
-img: systems/cthack/ui/icons/first-aid-kit.png
-effects: []
+  locked: true
+folder: null
+sort: 5800000
 _key: '!items!pr90ChM2w5FA0Jnt'
 

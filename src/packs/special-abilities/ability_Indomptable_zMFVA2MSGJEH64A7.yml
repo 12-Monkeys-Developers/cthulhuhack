@@ -1,10 +1,26 @@
 _id: zMFVA2MSGJEH64A7
 name: Indomptable
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.3SfNP7zMMWMUgboC
+img: systems/cthack/ui/icons/lion.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Vous b&eacute;n&eacute;ficiez d&rsquo;un <strong>Avantage</strong> pour
     les <strong>Sauvegardes</strong> contre la tromperie,le contr&ocirc;le
@@ -17,10 +33,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.3SfNP7zMMWMUgboC
-img: systems/cthack/ui/icons/lion.png
-effects: []
+  locked: true
+folder: null
+sort: 6300000
 _key: '!items!zMFVA2MSGJEH64A7'
 

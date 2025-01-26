@@ -1,9 +1,24 @@
 name: Evanouissement
-permission:
+type: definition
+flags: {}
+img: systems/cthack/ui/icons/screaming.png
+effects: []
+_id: OccloUIsiGvu5LVA
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   ElkdkfLFg9aO1OqA: 3
-type: definition
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>L&rsquo;investigateur s&rsquo;&eacute;vanouit. Il n&rsquo;a plus aucune
     conscience de ce qui se d&eacute;roule durant cet &eacute;vanouissement. En
@@ -15,9 +30,7 @@ data:
   key: TI-BLA
   creationDate: ''
   locked: true
-flags: {}
-img: systems/cthack/ui/icons/screaming.png
-effects: []
-_id: OccloUIsiGvu5LVA
+folder: null
+sort: 0
 _key: '!items!OccloUIsiGvu5LVA'
 

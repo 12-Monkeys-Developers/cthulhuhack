@@ -1,17 +1,30 @@
 name: Hurlement
-permission:
+type: definition
+flags: {}
+img: systems/cthack/ui/icons/dead-head.png
+effects: []
+_id: 23IXCbEI5pPIBoBP
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   xuaXKQ8wuA7GQpBm: 3
-type: definition
-data:
+system:
+  htmlFields:
+    - description
   description: <p>Le personnage crie. Cela attire l&rsquo;attention.</p>
   definitionType: Shock
   key: SK-SCR
   creationDate: ''
   locked: true
-flags: {}
-img: systems/cthack/ui/icons/dead-head.png
-effects: []
-_id: 23IXCbEI5pPIBoBP
+folder: null
+sort: 0
 _key: '!items!23IXCbEI5pPIBoBP'
 

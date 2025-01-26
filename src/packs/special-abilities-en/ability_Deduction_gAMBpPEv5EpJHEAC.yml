@@ -2,7 +2,27 @@ _id: gAMBpPEv5EpJHEAC
 name: Deduction
 type: ability
 img: systems/cthack/ui/icons/sherlock-holmes.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.KvYOPcNjiXaaNrdO
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Once per game session,&nbsp;you can apply your powers of&nbsp;deduction
     and reasoning to reach an apposite conclusion - and require&nbsp;the GM to
@@ -17,14 +37,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.KvYOPcNjiXaaNrdO
 _key: '!items!gAMBpPEv5EpJHEAC'
 

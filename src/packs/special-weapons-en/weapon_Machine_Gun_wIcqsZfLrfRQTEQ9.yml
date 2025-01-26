@@ -2,19 +2,30 @@ _id: wIcqsZfLrfRQTEQ9
 name: Machine Gun
 type: weapon
 img: systems/cthack/ui/weapons/ak47.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.weapons.32Sh4esK5f1E0uNS
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: '<p>Shot or Spray: auto-hit, immediate Supply Die.</p>'
   dice: d8
   range: near
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.weapons.32Sh4esK5f1E0uNS
 _key: '!items!wIcqsZfLrfRQTEQ9'
 

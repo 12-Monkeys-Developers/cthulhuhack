@@ -2,7 +2,27 @@ _id: LkCBAzXR53ywygRL
 name: Inheritance
 type: ability
 img: systems/cthack/ui/icons/cash.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.s1mjsSSxNlTCTqBr
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Gain an additional&nbsp;step in Wealth (Wealth as&nbsp;Resource). You can
     select&nbsp;this Ability multiple times. You can automatically succeed a
@@ -17,14 +37,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.s1mjsSSxNlTCTqBr
 _key: '!items!LkCBAzXR53ywygRL'
 

@@ -2,7 +2,27 @@ _id: 4IqDxKNYG9gOxMHy
 name: Amnesia
 type: definition
 img: systems/cthack/ui/icons/screaming.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.temporaryinsanity.3yfwi9y3RYj9zwxB
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>The Investigator forgets a significant event, location or
     individual,&nbsp;possibly unconnected with the source of madness - or simply
@@ -12,14 +32,5 @@ data:
   key: TI-AMN
   creationDate: ''
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.temporaryinsanity.3yfwi9y3RYj9zwxB
 _key: '!items!4IqDxKNYG9gOxMHy'
 

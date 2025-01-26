@@ -2,21 +2,32 @@ _id: iTdmLPViTUwaWRAD
 name: Pepper Spray
 type: weapon
 img: systems/cthack/ui/weapons/spray.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.weapons.fpFdKX739rT7Qf4H
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: |-
     <p>Avoid attacks (defend) with Advantage for 1d3 Moments.</p>
     <p>Concealable.</p>
   dice: d6
   range: near
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.weapons.fpFdKX739rT7Qf4H
 _key: '!items!iTdmLPViTUwaWRAD'
 

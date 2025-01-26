@@ -22,11 +22,13 @@ items:
       default: 0
     _stats:
       systemId: cthack
-      systemVersion: '#{VERSION}#'
-      coreVersion: '11.315'
+      systemVersion: '4.3.1#'
+      coreVersion: '12.327'
       createdTime: null
       modifiedTime: 1711902705231
       lastModifiedBy: vkZ1uRwLntJ5cCjm
+      compendiumSource: null
+      duplicateSource: null
     _key: '!actors.items!xAJD9M1QpzUXtmSo.Bdd0rLcERF6ZmYeC'
   - _id: TcGBgJoewHBs1Q7S
     name: Griffe
@@ -48,11 +50,13 @@ items:
       default: 0
     _stats:
       systemId: cthack
-      systemVersion: '#{VERSION}#'
-      coreVersion: '11.315'
+      systemVersion: '4.3.1#'
+      coreVersion: '12.327'
       createdTime: null
       modifiedTime: 1711902783075
       lastModifiedBy: vkZ1uRwLntJ5cCjm
+      compendiumSource: null
+      duplicateSource: null
     _key: '!actors.items!xAJD9M1QpzUXtmSo.TcGBgJoewHBs1Q7S'
   - _id: dJ6P9bLaF2nyVrLu
     name: Acide
@@ -75,11 +79,13 @@ items:
       default: 0
     _stats:
       systemId: cthack
-      systemVersion: '#{VERSION}#'
-      coreVersion: '11.315'
+      systemVersion: '4.3.1#'
+      coreVersion: '12.327'
       createdTime: null
       modifiedTime: 1711902763183
       lastModifiedBy: vkZ1uRwLntJ5cCjm
+      compendiumSource: null
+      duplicateSource: null
     _key: '!actors.items!xAJD9M1QpzUXtmSo.dJ6P9bLaF2nyVrLu'
 effects: []
 folder: null
@@ -150,14 +156,21 @@ prototypeToken:
       min: 0
       max: 1
     attenuation: 0.5
+    negative: false
+    priority: 0
+    color: null
   texture:
     src: icons/svg/mystery-man.svg
-    tint: null
+    tint: '#ffffff'
     scaleX: 1
     scaleY: 1
     offsetX: 0
     offsetY: 0
     rotation: 0
+    anchorX: 0.5
+    anchorY: 0.5
+    fit: contain
+    alphaThreshold: 0.75
   sight:
     angle: 360
     enabled: false
@@ -167,15 +180,30 @@ prototypeToken:
     attenuation: 0.1
     saturation: 0
     contrast: 0
+    color: null
   appendNumber: false
   prependAdjective: false
   detectionModes: []
+  hexagonalShape: 0
+  occludable:
+    radius: 0
+  ring:
+    enabled: false
+    colors:
+      ring: null
+      background: null
+    effects: 1
+    subject:
+      scale: 1
+      texture: null
 _stats:
   systemId: cthack
-  systemVersion: '#{VERSION}#'
-  coreVersion: '11.315'
+  systemVersion: '4.3.1#'
+  coreVersion: '12.327'
   createdTime: 1711902685544
   modifiedTime: 1711902872651
   lastModifiedBy: vkZ1uRwLntJ5cCjm
+  compendiumSource: null
+  duplicateSource: null
 _key: '!actors!xAJD9M1QpzUXtmSo'
 

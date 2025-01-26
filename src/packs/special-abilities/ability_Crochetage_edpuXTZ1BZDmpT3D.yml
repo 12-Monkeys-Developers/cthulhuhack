@@ -1,10 +1,26 @@
 _id: edpuXTZ1BZDmpT3D
 name: Crochetage
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.V8Amd3VgSge2ImdU
+img: systems/cthack/ui/icons/lockpicks.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Le personnage peut d&eacute;verrouiller n&rsquo;importe quelle serrure ou
     cadenas gr&acirc;ce &agrave; un test de <strong>Torche</strong>.</p>
@@ -15,10 +31,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.V8Amd3VgSge2ImdU
-img: systems/cthack/ui/icons/lockpicks.png
-effects: []
+  locked: true
+folder: null
+sort: 4800000
 _key: '!items!edpuXTZ1BZDmpT3D'
 

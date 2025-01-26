@@ -2,7 +2,27 @@ _id: oKeu8mtHSyAIXne4
 name: Savvy
 type: ability
 img: systems/cthack/ui/icons/smart.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.abilities.UVRM8dy8jo8hGYs6
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>You gain an additional step&nbsp;in Flashlights. You can select
     this&nbsp;Ability multiple times.</p>
@@ -17,14 +37,5 @@ data:
   advantageGiven: false
   advantageText: ''
   name: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.abilities.UVRM8dy8jo8hGYs6
 _key: '!items!oKeu8mtHSyAIXne4'
 

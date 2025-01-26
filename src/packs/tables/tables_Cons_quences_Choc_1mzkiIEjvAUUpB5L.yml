@@ -1,7 +1,4 @@
 name: Conséquences Choc
-permission:
-  default: 0
-  xuaXKQ8wuA7GQpBm: 3
 flags:
   core:
     sourceId: RollTable.BJlo63GaK2GoxqGo
@@ -17,85 +14,99 @@ description: >-
 results:
   - _id: xx4gZYpF3neK80iG
     flags: {}
-    type: 2
+    type: pack
     text: Confus
     img: icons/svg/book.svg
-    collection: cthack.shock
-    resultId: XAh2b3Hxn9lOsMDf
     weight: 1
     range:
       - 1
       - 1
     drawn: false
+    documentCollection: cthack.shock
+    documentId: XAh2b3Hxn9lOsMDf
     _key: '!tables.results!1mzkiIEjvAUUpB5L.xx4gZYpF3neK80iG'
   - _id: SkWHxcZ5BsrVwxVB
     flags: {}
-    type: 2
+    type: pack
     text: Frayeur
     img: icons/svg/book.svg
-    collection: cthack.shock
-    resultId: I2p2PtGzmCWJuLxx
     weight: 1
     range:
       - 2
       - 2
     drawn: false
+    documentCollection: cthack.shock
+    documentId: I2p2PtGzmCWJuLxx
     _key: '!tables.results!1mzkiIEjvAUUpB5L.SkWHxcZ5BsrVwxVB'
   - _id: RzO5PNAuNmXJfLOT
     flags: {}
-    type: 2
+    type: pack
     text: Hurlement
     img: icons/svg/book.svg
-    collection: cthack.shock
-    resultId: 23IXCbEI5pPIBoBP
     weight: 1
     range:
       - 3
       - 3
     drawn: false
+    documentCollection: cthack.shock
+    documentId: 23IXCbEI5pPIBoBP
     _key: '!tables.results!1mzkiIEjvAUUpB5L.RzO5PNAuNmXJfLOT'
   - _id: ABm5n9NfD0uX9eAx
     flags: {}
-    type: 2
+    type: pack
     text: Immobile
     img: icons/svg/book.svg
-    collection: cthack.shock
-    resultId: E6WnmZ1GnYbtYLsA
     weight: 1
     range:
       - 4
       - 4
     drawn: false
+    documentCollection: cthack.shock
+    documentId: E6WnmZ1GnYbtYLsA
     _key: '!tables.results!1mzkiIEjvAUUpB5L.ABm5n9NfD0uX9eAx'
   - _id: rWXR7TkDaDRl5e0M
     flags: {}
-    type: 2
+    type: pack
     text: Inconscience
     img: icons/svg/book.svg
-    collection: cthack.shock
-    resultId: bE6J5phXRLBiQMr7
     weight: 1
     range:
       - 5
       - 5
     drawn: false
+    documentCollection: cthack.shock
+    documentId: bE6J5phXRLBiQMr7
     _key: '!tables.results!1mzkiIEjvAUUpB5L.rWXR7TkDaDRl5e0M'
   - _id: 4v2yBWWqunsSWBtF
     flags: {}
-    type: 2
+    type: pack
     text: Tremblements
     img: icons/svg/book.svg
-    collection: cthack.shock
-    resultId: hETYbMjsQTSNb7rf
     weight: 1
     range:
       - 6
       - 6
     drawn: false
+    documentCollection: cthack.shock
+    documentId: hETYbMjsQTSNb7rf
     _key: '!tables.results!1mzkiIEjvAUUpB5L.4v2yBWWqunsSWBtF'
 formula: 1d6
 replacement: true
 displayRoll: true
 _id: 1mzkiIEjvAUUpB5L
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  xuaXKQ8wuA7GQpBm: 3
+folder: null
+sort: 0
 _key: '!tables!1mzkiIEjvAUUpB5L'
 

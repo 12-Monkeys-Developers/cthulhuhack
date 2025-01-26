@@ -1,0 +1,42 @@
+name: Planification
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: planification
+  uses:
+    value: 1
+    max: 1
+    per: Session
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p>Une fois par session, lorsque vous établissez un plan avec d’autres
+    personnages, lancez 1d6. Le résultat est un nombre  de points à distribuer
+    aux autres personnages, en bonus à des tests de Sauvegardes. Vous devez
+    indiquer que vous donnez un bonus à un autre personnage avant que son joueur
+    lance les dés. Si le plan dévie sensiblement de ce qui était prévu, le MJ
+    peut décider que les points à distribuer ne sont plus utilisables, ils sont
+    perdus.</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737910068666
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: ZOYpR34aQxxGHslb
+sort: 2000000
+_key: '!items!ZOYpR34aQxxGHslb'
+

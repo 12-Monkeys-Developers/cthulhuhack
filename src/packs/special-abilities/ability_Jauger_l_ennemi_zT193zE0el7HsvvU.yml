@@ -1,15 +1,30 @@
 _id: zT193zE0el7HsvvU
 name: Jauger l'ennemi
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.LJbnjsdMSYJn5mDJ
+img: systems/cthack/ui/icons/eye-target.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
-    <p>Le personnage a l&rsquo;oeil pour rep&eacute;rer les faiblesses. Il a un
-    bonus de + 1 pour toucher et pour calculer ses d&eacute;g&acirc;ts contre un
-    adversaire &agrave; condition d&rsquo;effectuer un test de Torche
-    apr&egrave;s l&rsquo;attaque.</p>
+    <p>Le personnage a l’oeil pour repérer les faiblesses. Il a un bonus de + 1
+    pour toucher et pour calculer ses dégâts contre un adversaire à condition
+    d’effectuer <strong>un test de Torche</strong> après l’attaque.</p>
   key: SIZIUP
   uses:
     value: 0
@@ -17,10 +32,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.LJbnjsdMSYJn5mDJ
-img: systems/cthack/ui/icons/eye-target.png
-effects: []
+  locked: true
+folder: null
+sort: 6400000
 _key: '!items!zT193zE0el7HsvvU'
 

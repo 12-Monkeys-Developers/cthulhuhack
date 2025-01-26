@@ -2,7 +2,27 @@ _id: VN7yjiQh2uF8GxlH
 name: MacGyver
 type: ability
 img: systems/cthack/ui/icons/swiss-army-knife.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.9sPrm3D6UrCrW8pa
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Once per session, you&nbsp;can improvise a solution to a&nbsp;situation
     using available tools,&nbsp;devices, and uncommon lore.</p>
@@ -16,14 +36,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.9sPrm3D6UrCrW8pa
 _key: '!items!VN7yjiQh2uF8GxlH'
 

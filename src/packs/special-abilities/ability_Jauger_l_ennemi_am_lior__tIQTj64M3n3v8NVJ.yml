@@ -1,0 +1,40 @@
+name: Jauger l'ennemi amélioré
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: jauger-l'ennemi-ameliore
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p><em>Nécessite d’avoir la Capacité spéciale « Jauger l’ennemi ».</em> <br
+    />Le personnage peut effectuer une <strong>Sauvegarde de Sagesse</strong>.
+    En cas de succès il détermine le nombre de Points de Vie actuels de son
+    adversaire. <br />En cas d’échec il a un <strong>Désavantage</strong> à son
+    prochain test de Sauvegarde.</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737909652974
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: tIQTj64M3n3v8NVJ
+sort: 1500000
+_key: '!items!tIQTj64M3n3v8NVJ'
+

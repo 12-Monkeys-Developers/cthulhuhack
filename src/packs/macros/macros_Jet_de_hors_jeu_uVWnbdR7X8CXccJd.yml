@@ -1,7 +1,4 @@
 name: Jet de hors jeu
-permission:
-  default: 0
-  DGRLkzFEhbVzrCXX: 3
 type: script
 flags:
   core:
@@ -15,7 +12,20 @@ command: |-
   })();
 author: DGRLkzFEhbVzrCXX
 img: icons/svg/dice-target.svg
-actorIds: []
 _id: uVWnbdR7X8CXccJd
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  DGRLkzFEhbVzrCXX: 3
+folder: null
+sort: 0
 _key: '!macros!uVWnbdR7X8CXccJd'
 

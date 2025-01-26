@@ -2,7 +2,27 @@ _id: N6NZhx46Ead5A4DR
 name: Tactical Advantage
 type: ability
 img: systems/cthack/ui/icons/swords-power.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.ErZ1mNKx7pdQAn8I
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>As part of&nbsp;your action, you can make an&nbsp;additional attack
     against the same&nbsp;or a different target. You can select&nbsp;this
@@ -17,14 +37,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.ErZ1mNKx7pdQAn8I
 _key: '!items!N6NZhx46Ead5A4DR'
 

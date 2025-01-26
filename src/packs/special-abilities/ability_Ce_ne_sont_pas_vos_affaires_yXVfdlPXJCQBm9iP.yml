@@ -1,0 +1,38 @@
+name: Ce ne sont pas vos affaires
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: ce-ne-sont-pas-vos-affaires
+  uses:
+    value: 1
+    max: 1
+    per: Session
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p>Une fois par session, vous pouvez baisser d’un niveau le Bagou de votre
+    personnage pour mettre hors jeu un adversaire qui n’est pas une créature du
+    Mythe et qui a actuellement 15 Points de Vie ou moins.</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737908667761
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: yXVfdlPXJCQBm9iP
+sort: 600000
+_key: '!items!yXVfdlPXJCQBm9iP'
+

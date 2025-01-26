@@ -1,15 +1,31 @@
 _id: PtHONiERYtJXwAMI
 name: Échappée belle
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.JSxc3eh04ZAodTRj
+img: systems/cthack/ui/icons/toolbox.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
-    <p>Une fois par session de jeu, vous pouvez d&eacute;cider que votre
-    personnage casse un &eacute;quipement (vous devez raconter comment cela se
-    produit) afin d&rsquo;&eacute;viter des d&eacute;g&acirc;ts suite &agrave;
-    une Sauvegarde de Force ou de Dext&eacute;rit&eacute; rat&eacute;e.</p>
+    <p>Une fois par session de jeu, vous pouvez décider que votre personnage
+    casse un équipement (vous devez raconter comment cela se produit) afin
+    d’éviter des dégâts suite à une <strong>Sauvegarde de Force</strong> ou
+    <strong>de Dextérité ratée</strong>.</p>
   key: NARESC
   uses:
     value: 1
@@ -17,10 +33,8 @@ data:
     per: Session
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.JSxc3eh04ZAodTRj
-img: systems/cthack/ui/icons/toolbox.png
-effects: []
+  locked: true
+folder: null
+sort: 3600000
 _key: '!items!PtHONiERYtJXwAMI'
 

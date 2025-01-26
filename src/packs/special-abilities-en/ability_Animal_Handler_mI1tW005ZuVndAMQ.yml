@@ -2,7 +2,27 @@ _id: mI1tW005ZuVndAMQ
 name: Animal Handler
 type: ability
 img: systems/cthack/ui/icons/sitting-dog.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.abilities.KI69OSRVhVqwmAoH
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>You roll with&nbsp;Advantage when handling, riding or&nbsp;challenged by
     common animals.</p>
@@ -17,14 +37,5 @@ data:
   advantageGiven: false
   advantageText: ''
   name: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.abilities.KI69OSRVhVqwmAoH
 _key: '!items!mI1tW005ZuVndAMQ'
 

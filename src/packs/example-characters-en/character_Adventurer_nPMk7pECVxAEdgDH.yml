@@ -2,7 +2,187 @@ _id: nPMk7pECVxAEdgDH
 name: Adventurer
 type: character
 img: systems/cthack/ui/pregenerated/aventurier.webp
-data:
+items:
+  - _id: 8K6gvI63CXH08e1Y
+    name: Swings & Leaps
+    type: ability
+    img: systems/cthack/ui/icons/acrobatic.png
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 2600000
+    flags:
+      core:
+        sourceId: Compendium.cthack.abilities.cOow0hiXrMwQtD8J
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      59G26I43j4RYqfKX: 3
+    system:
+      htmlFields:
+        - description
+      description: >-
+        <p>Roll with&nbsp;Advantage on Saves when&nbsp;performing athletic
+        tasks, like&nbsp;climbing, jumping, leaping,&nbsp;swinging,
+        flipping.</p>
+      key: SWILEA
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+      name: ''
+    _key: '!actors.items!nPMk7pECVxAEdgDH.8K6gvI63CXH08e1Y'
+  - _id: YGcMXfH9eA0L0luU
+    name: Slippery Customer
+    type: ability
+    img: systems/cthack/ui/icons/eel.png
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 2700000
+    flags:
+      core:
+        sourceId: Item.jLi0nIHRZDnouLBO
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      59G26I43j4RYqfKX: 3
+    system:
+      htmlFields:
+        - description
+      description: >-
+        <p>Once per&nbsp;session your slippery nature allows&nbsp;you to shift
+        the repercussions of a&nbsp;failed INT or WIS Save to someone else.</p>
+      key: SLICUS
+      uses:
+        value: 1
+        max: 1
+        per: Session
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    _key: '!actors.items!nPMk7pECVxAEdgDH.YGcMXfH9eA0L0luU'
+  - _id: SYwb5JZJLaY2LU4S
+    name: Steady Hand
+    type: ability
+    img: systems/cthack/ui/icons/gunshot.png
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 3400000
+    flags:
+      core:
+        sourceId: Compendium.cthack.abilities.m8VF7ne8fWqwWRe2
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      59G26I43j4RYqfKX: 3
+    system:
+      htmlFields:
+        - description
+      description: >-
+        <p>Once per game hour,&nbsp;you can auto-succeed with a
+        single&nbsp;Ranged attack.</p>
+      key: STEHAN
+      uses:
+        value: 1
+        max: 1
+        per: Hour
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+      name: ''
+    _key: '!actors.items!nPMk7pECVxAEdgDH.SYwb5JZJLaY2LU4S'
+  - _id: WSglL7tnMMSo69DU
+    name: Scrounger
+    type: ability
+    img: systems/cthack/ui/icons/light-backpack.png
+    effects: []
+    folder: x5cwoPpfEO0BU9YX
+    sort: 4000000
+    flags:
+      core:
+        sourceId: Item.H5B3S6isstXZyaO9
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      59G26I43j4RYqfKX: 3
+    system:
+      htmlFields:
+        - description
+      description: >-
+        <p>You can offset the loss&nbsp;of an item of equipment&rsquo;s
+        Resource&nbsp;Die by losing an investigation die&nbsp;instead.</p>
+      key: SCR
+      uses:
+        value: 0
+        max: 0
+        per: Permanent
+        last: ''
+      multiple: false
+      isCustom: false
+      advantageGiven: false
+      advantageText: ''
+    _key: '!actors.items!nPMk7pECVxAEdgDH.WSglL7tnMMSo69DU'
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.pregenerated.OBCQN4Pf9wfw1Wpp
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
+    - shortDescription
+    - biography
+    - notes
+    - equipment
   locked: true
   hp:
     value: 10
@@ -64,29 +244,14 @@ data:
     - key: STEHAN
     - key: SCR
   notes: ''
-token:
+prototypeToken:
   flags: {}
   name: Aventurier
   displayName: 0
-  img: systems/cthack/ui/pregenerated/aventurier.webp
-  tint: null
   width: 1
   height: 1
-  scale: 1
   lockRotation: false
   rotation: 0
-  vision: false
-  dimSight: 0
-  brightSight: 0
-  dimLight: 0
-  brightLight: 0
-  sightAngle: 0
-  lightAngle: 360
-  lightAlpha: 1
-  lightAnimation:
-    speed: 5
-    intensity: 5
-  actorId: OBCQN4Pf9wfw1Wpp
   actorLink: false
   disposition: -1
   displayBars: 0
@@ -95,16 +260,13 @@ token:
   bar2:
     attribute: null
   randomImg: false
-  mirrorX: false
-  mirrorY: false
   alpha: 1
   light:
     alpha: 0.5
-    angle: 0
+    angle: 360
     bright: 0
     coloration: 1
     dim: 0
-    gradual: true
     luminosity: 0.5
     saturation: 0
     contrast: 0
@@ -113,129 +275,50 @@ token:
       speed: 5
       intensity: 5
       reverse: false
+      type: null
     darkness:
       min: 0
       max: 1
-items:
-  - _id: 8K6gvI63CXH08e1Y
-    name: Swings & Leaps
-    type: ability
-    img: systems/cthack/ui/icons/acrobatic.png
-    data:
-      description: >-
-        <p>Roll with&nbsp;Advantage on Saves when&nbsp;performing athletic
-        tasks, like&nbsp;climbing, jumping, leaping,&nbsp;swinging,
-        flipping.</p>
-      key: SWILEA
-      uses:
-        value: 0
-        max: 0
-        per: Permanent
-        last: ''
-      multiple: false
-      isCustom: false
-      advantageGiven: false
-      advantageText: ''
-      name: ''
-    effects: []
-    folder: x5cwoPpfEO0BU9YX
-    sort: 2600000
-    permission:
-      59G26I43j4RYqfKX: 3
-    flags:
-      core:
-        sourceId: Compendium.cthack.abilities.cOow0hiXrMwQtD8J
-    _key: '!actors.items!nPMk7pECVxAEdgDH.8K6gvI63CXH08e1Y'
-  - _id: YGcMXfH9eA0L0luU
-    name: Slippery Customer
-    type: ability
-    img: systems/cthack/ui/icons/eel.png
-    data:
-      description: >-
-        <p>Once per&nbsp;session your slippery nature allows&nbsp;you to shift
-        the repercussions of a&nbsp;failed INT or WIS Save to someone else.</p>
-      key: SLICUS
-      uses:
-        value: 1
-        max: 1
-        per: Session
-        last: ''
-      multiple: false
-      isCustom: false
-      advantageGiven: false
-      advantageText: ''
-    effects: []
-    folder: x5cwoPpfEO0BU9YX
-    sort: 2700000
-    permission:
-      59G26I43j4RYqfKX: 3
-    flags:
-      core:
-        sourceId: Item.jLi0nIHRZDnouLBO
-    _key: '!actors.items!nPMk7pECVxAEdgDH.YGcMXfH9eA0L0luU'
-  - _id: SYwb5JZJLaY2LU4S
-    name: Steady Hand
-    type: ability
-    img: systems/cthack/ui/icons/gunshot.png
-    data:
-      description: >-
-        <p>Once per game hour,&nbsp;you can auto-succeed with a
-        single&nbsp;Ranged attack.</p>
-      key: STEHAN
-      uses:
-        value: 1
-        max: 1
-        per: Hour
-        last: ''
-      multiple: false
-      isCustom: false
-      advantageGiven: false
-      advantageText: ''
-      name: ''
-    effects: []
-    folder: x5cwoPpfEO0BU9YX
-    sort: 3400000
-    permission:
-      59G26I43j4RYqfKX: 3
-    flags:
-      core:
-        sourceId: Compendium.cthack.abilities.m8VF7ne8fWqwWRe2
-    _key: '!actors.items!nPMk7pECVxAEdgDH.SYwb5JZJLaY2LU4S'
-  - _id: WSglL7tnMMSo69DU
-    name: Scrounger
-    type: ability
-    img: systems/cthack/ui/icons/light-backpack.png
-    data:
-      description: >-
-        <p>You can offset the loss&nbsp;of an item of equipment&rsquo;s
-        Resource&nbsp;Die by losing an investigation die&nbsp;instead.</p>
-      key: SCR
-      uses:
-        value: 0
-        max: 0
-        per: Permanent
-        last: ''
-      multiple: false
-      isCustom: false
-      advantageGiven: false
-      advantageText: ''
-    effects: []
-    folder: x5cwoPpfEO0BU9YX
-    sort: 4000000
-    permission:
-      59G26I43j4RYqfKX: 3
-    flags:
-      core:
-        sourceId: Item.H5B3S6isstXZyaO9
-    _key: '!actors.items!nPMk7pECVxAEdgDH.WSglL7tnMMSo69DU'
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.pregenerated.OBCQN4Pf9wfw1Wpp
+    attenuation: 0.5
+    negative: false
+    priority: 0
+    color: null
+  texture:
+    src: systems/cthack/ui/pregenerated/aventurier.webp
+    tint: '#ffffff'
+    scaleX: 1
+    scaleY: 1
+    anchorX: 0.5
+    anchorY: 0.5
+    offsetX: 0
+    offsetY: 0
+    fit: contain
+    rotation: 0
+    alphaThreshold: 0.75
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    color: null
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  hexagonalShape: 0
+  detectionModes: []
+  occludable:
+    radius: 0
+  ring:
+    enabled: false
+    colors:
+      ring: null
+      background: null
+    effects: 1
+    subject:
+      scale: 1
+      texture: null
 _key: '!actors!nPMk7pECVxAEdgDH'
 

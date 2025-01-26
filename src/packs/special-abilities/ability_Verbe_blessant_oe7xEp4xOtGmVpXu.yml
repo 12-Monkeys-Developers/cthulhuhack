@@ -1,10 +1,26 @@
 _id: oe7xEp4xOtGmVpXu
 name: Verbe blessant
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.s6rNHTpDHe15QGJt
+img: systems/cthack/ui/icons/talk.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910555519
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Vous pouvez utiliser Charisme pour les attaques (au lieu de Force ou
     Dext&eacute;rit&eacute;), du moment que les adversaires peuvent entendre
@@ -18,10 +34,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.s6rNHTpDHe15QGJt
-img: systems/cthack/ui/icons/talk.png
-effects: []
+  locked: true
+folder: null
+sort: 5600000
 _key: '!items!oe7xEp4xOtGmVpXu'
 

@@ -1,10 +1,26 @@
 _id: 7iUXbklurmmAcqMp
 name: Déduction
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.KvYOPcNjiXaaNrdO
+img: systems/cthack/ui/icons/sherlock-holmes.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Une fois par session de jeu,&nbsp;cette capacit&eacute; peut &ecirc;tre
     revendiqu&eacute;e afin que le</p>
@@ -18,10 +34,8 @@ data:
     per: Session
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.KvYOPcNjiXaaNrdO
-img: systems/cthack/ui/icons/sherlock-holmes.png
-effects: []
+  locked: true
+folder: null
+sort: 2300000
 _key: '!items!7iUXbklurmmAcqMp'
 

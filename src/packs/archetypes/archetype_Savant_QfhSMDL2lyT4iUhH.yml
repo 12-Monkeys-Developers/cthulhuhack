@@ -1,0 +1,40 @@
+_id: QfhSMDL2lyT4iUhH
+name: Savant
+type: archetype
+img: systems/cthack/ui/archetypes/cthack-savant.webp
+effects: []
+folder: null
+sort: 500000
+flags: {}
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737906592710
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  Q9eXSbNsJCeaMOSw: 3
+system:
+  htmlFields:
+    - description
+  description: "<p><em>Professeur, archiviste, employé de bureau, infirmière, créateur de jeu de société</em></p><p>\_</p><p><strong>Métiers (équipement)</strong></p><p>Académicien (lunettes de poche, ouvrage de référence), archiviste (carnet de notes, outils de réparation), astronome (ouvrage d’astronomie, jumelles), bibliothécaire (carnet de notes, roman favori), game designer (dictaphone, premier dé (porte-bonheur)), technicien de police (appareil photo, revolver)<br /></p><p><strong>Capacités spéciales</strong></p><p><strong>Primaire</strong> : Mental d’acier</p><p><strong>Secondaires</strong> : Déduction, Débrouillard, Érudit</p>"
+  flashlights: d12
+  smokes: d10
+  hitdice: d4
+  hitpoints: '10'
+  wealthStart: '2'
+  wealthDice: d6
+  sanity: d10
+  armeddamage: '1'
+  unarmeddamage: '1'
+  primarysave: int
+  secondarysave1: cha
+  secondarysave2: wis
+  capacities: []
+  locked: true
+_key: '!items!QfhSMDL2lyT4iUhH'
+

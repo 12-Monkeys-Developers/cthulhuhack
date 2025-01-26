@@ -1,0 +1,46 @@
+name: Artiste
+type: archetype
+img: systems/cthack/ui/archetypes/cthack-artiste.webp
+system:
+  locked: true
+  flashlights: d8
+  smokes: d10
+  hitdice: d6
+  hitpoints: '12'
+  wealthStart: '3'
+  wealthDice: d6
+  sanity: d8
+  armeddamage: d4
+  unarmeddamage: d4
+  primarysave: dex
+  secondarysave1: wis
+  secondarysave2: cha
+  capacities: []
+  description: >-
+    <p><strong>Métiers (équipement)</strong></p><p>Acteur (porte-bonheur,
+    vêtements chics), artisan (outils de réparation, tablier en cuir (1 PA)),
+    escroc (papiers officiels (falsifiés), vêtements chics), guide touristique
+    (boussole, cartes et plans, lanterne), magicien (porte-bonheur, canne-épée),
+    musicien (dictaphone, porte-bonheur).<br /></p><p><strong>Capacités
+    spéciales</strong></p><p><strong>Primaire</strong> :
+    Artiste</p><p><strong>Secondaires</strong> : Réseau, Ce ne sont pas vos
+    affaires, Inspiration</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737905994527
+  modifiedTime: 1737905994538
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: UeytCaw5rzj9uUrD
+sort: 200000
+_key: '!items!UeytCaw5rzj9uUrD'
+

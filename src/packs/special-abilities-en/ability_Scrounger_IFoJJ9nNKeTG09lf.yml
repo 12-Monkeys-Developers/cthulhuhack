@@ -2,7 +2,27 @@ _id: IFoJJ9nNKeTG09lf
 name: Scrounger
 type: ability
 img: systems/cthack/ui/icons/light-backpack.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.H5B3S6isstXZyaO9
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>You can offset the loss&nbsp;of an item of equipment&rsquo;s
     Resource&nbsp;Die by losing an investigation die&nbsp;instead.</p>
@@ -16,14 +36,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.H5B3S6isstXZyaO9
 _key: '!items!IFoJJ9nNKeTG09lf'
 

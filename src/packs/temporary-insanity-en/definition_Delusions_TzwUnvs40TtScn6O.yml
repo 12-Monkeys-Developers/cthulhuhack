@@ -2,7 +2,27 @@ _id: TzwUnvs40TtScn6O
 name: Delusions
 type: definition
 img: systems/cthack/ui/icons/screaming.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.temporaryinsanity.LBlk8Q4VsbYrBR33
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>The Investigator cannot make sense of the world nor rely on&nbsp;what
     they know. They question everything and likely believes things
@@ -11,14 +31,5 @@ data:
   key: DEL
   creationDate: ''
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.temporaryinsanity.LBlk8Q4VsbYrBR33
 _key: '!items!TzwUnvs40TtScn6O'
 

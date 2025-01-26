@@ -1,0 +1,38 @@
+name: Soigneux
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: soigneux
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p>Le personnage sait utiliser ses possessions jusqu’à leur dernier souffle.
+    Il bénéficie d’un Avantage lors des tests de Matériel lorsque le dé de
+    Matériel est à d4.</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737910543694
+  modifiedTime: 1737910543694
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: 1Qs3pJfBTmDIxjRK
+sort: 0
+_key: '!items!1Qs3pJfBTmDIxjRK'
+

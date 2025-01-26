@@ -1,0 +1,42 @@
+name: Foi
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: foi
+  uses:
+    value: 1
+    max: 1
+    per: Scenario
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p>Votre personnage a une foi indéfectible qui lui permet de résister aux
+    affres de la folie et rayonne sur ses alliés. Cette foi peut être tournée
+    vers une divinité, ou un concept comme la loyauté, l’héroïsme, la science.
+    </p><p>Une fois par scénario, vous pouvez conférer à votre personnage et
+    tous ses alliés un Avantage à un test de Santé mentale (par exemple lorsque
+    tout le groupe  rencontre une créature horrible, ou découvre un massacre qui
+    peut faire vaciller l’esprit).</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737909169961
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: NloysX0Yfqgpz1Jk
+sort: 1200000
+_key: '!items!NloysX0Yfqgpz1Jk'
+

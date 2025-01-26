@@ -2,7 +2,27 @@ _id: WGpVyqr0y2bFNmu0
 name: Stagecraft
 type: ability
 img: systems/cthack/ui/icons/drama-masks.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.DtwDR7kZrm83Osfc
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>You roll with Advantage when entertaining,&nbsp;performing or making
     Reaction rolls to avoid harm or consequence.</p>
@@ -16,14 +36,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.DtwDR7kZrm83Osfc
 _key: '!items!WGpVyqr0y2bFNmu0'
 

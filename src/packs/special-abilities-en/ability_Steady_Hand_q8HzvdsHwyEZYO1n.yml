@@ -2,7 +2,27 @@ _id: q8HzvdsHwyEZYO1n
 name: Steady Hand
 type: ability
 img: systems/cthack/ui/icons/gunshot.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.abilities.m8VF7ne8fWqwWRe2
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Once per game hour,&nbsp;you can auto-succeed with a single&nbsp;Ranged
     attack.</p>
@@ -17,14 +37,5 @@ data:
   advantageGiven: false
   advantageText: ''
   name: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.abilities.m8VF7ne8fWqwWRe2
 _key: '!items!q8HzvdsHwyEZYO1n'
 

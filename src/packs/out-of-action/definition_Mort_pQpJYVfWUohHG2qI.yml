@@ -1,17 +1,30 @@
 _id: pQpJYVfWUohHG2qI
 name: Mort
-permission:
+type: definition
+flags: {}
+img: systems/cthack/ui/icons/first-aid-kit.png
+effects: []
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Nf5osQkK29WIwE1I: 3
-type: definition
-data:
+system:
+  htmlFields:
+    - description
   description: <p>Le personnage n&rsquo;est plus de ce monde.</p>
   definitionType: OutOfAction
   key: OOA-DEA
   creationDate: ''
   locked: true
-flags: {}
-img: systems/cthack/ui/icons/first-aid-kit.png
-effects: []
+folder: null
+sort: 0
 _key: '!items!pQpJYVfWUohHG2qI'
 

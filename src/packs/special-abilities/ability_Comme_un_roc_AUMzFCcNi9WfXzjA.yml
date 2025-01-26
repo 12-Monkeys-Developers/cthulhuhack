@@ -1,10 +1,26 @@
 _id: AUMzFCcNi9WfXzjA
 name: Comme un roc
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.ks32gx9ccuRqB9Gp
+img: systems/cthack/ui/icons/rock-golem.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Tant que le personnage est debout, il b&eacute;n&eacute;ficie
     temporairement de 2 points d&rsquo;Armure et d&rsquo;un bonus de + 2 aux
@@ -18,10 +34,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.ks32gx9ccuRqB9Gp
-img: systems/cthack/ui/icons/rock-golem.png
-effects: []
+  locked: true
+folder: null
+sort: 2600000
 _key: '!items!AUMzFCcNi9WfXzjA'
 

@@ -2,21 +2,32 @@ _id: fMkTS7PVzxGOl2dr
 name: BFG
 type: weapon
 img: systems/cthack/ui/weapons/ray-gun.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.weapons.rnAbhqXi8Aa10Im4
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: |-
     <p>Roll 1D12 Armed Damage with Advantage.</p>
     <p>Roll Supply Die with Disadvantage.</p>
   dice: d8
   range: far
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.weapons.rnAbhqXi8Aa10Im4
 _key: '!items!fMkTS7PVzxGOl2dr'
 

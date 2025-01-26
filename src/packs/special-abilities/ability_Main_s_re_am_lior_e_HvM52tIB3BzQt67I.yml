@@ -1,10 +1,26 @@
 _id: HvM52tIB3BzQt67I
 name: Main sûre améliorée
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.4O30uUldF4VlcWcb
+img: systems/cthack/ui/icons/rifle.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p><em>N&eacute;cessite d&rsquo;avoir la capacit&eacute; sp&eacute;ciale
     &laquo; Main s&ucirc;re &raquo;</em>. Vous n&rsquo;avez pas besoin de faire
@@ -18,10 +34,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.4O30uUldF4VlcWcb
-img: systems/cthack/ui/icons/rifle.png
-effects: []
+  locked: true
+folder: null
+sort: 2900000
 _key: '!items!HvM52tIB3BzQt67I'
 

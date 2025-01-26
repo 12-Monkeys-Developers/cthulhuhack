@@ -1,10 +1,24 @@
 _id: cOow0hiXrMwQtD8J
 name: Agile
-permission:
+type: ability
+flags: {}
+img: systems/cthack/ui/icons/acrobatic.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   gCtskyVJVCb7NnMV: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Le personnage b&eacute;n&eacute;ficie d'un <strong>Avantage </strong>pour
     les <strong>Sauvegardes </strong>n&eacute;cessitant des capacti&eacute;s
@@ -17,8 +31,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags: {}
-img: systems/cthack/ui/icons/acrobatic.png
-effects: []
+  locked: true
+folder: null
+sort: 4700000
 _key: '!items!cOow0hiXrMwQtD8J'
 

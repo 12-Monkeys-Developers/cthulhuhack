@@ -2,7 +2,27 @@ _id: XQ0OIdqWqXYO2XOj
 name: Faint
 type: definition
 img: systems/cthack/ui/icons/dead-head.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.shock.bE6J5phXRLBiQMr7
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Takes another character a Moment to revive. STR/DEX/INT are
     at&nbsp;Disadvantage for an additional <span style="font-family:
@@ -12,14 +32,5 @@ data:
   key: SK-FAI
   creationDate: ''
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.shock.bE6J5phXRLBiQMr7
 _key: '!items!XQ0OIdqWqXYO2XOj'
 

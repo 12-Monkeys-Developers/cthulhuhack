@@ -2,7 +2,27 @@ _id: dyBKA8mVM6AE8fJ1
 name: Surprise Attack
 type: ability
 img: systems/cthack/ui/icons/sword-slice.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.AdJlgmeWNawV2hgM
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>In the first&nbsp;moment of any combat, you can&nbsp;inflict twice the
     normal damage&nbsp;with the weapon in hand.</p>
@@ -16,14 +36,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.AdJlgmeWNawV2hgM
 _key: '!items!dyBKA8mVM6AE8fJ1'
 

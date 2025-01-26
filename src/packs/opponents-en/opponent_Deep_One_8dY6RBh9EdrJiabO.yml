@@ -2,7 +2,55 @@ _id: 8dY6RBh9EdrJiabO
 name: Deep One
 type: opponent
 img: icons/svg/mystery-man.svg
-data:
+items:
+  - _id: ewV905Xi7Bax9j4f
+    name: Claw
+    type: attack
+    sort: 100000
+    flags: {}
+    img: icons/svg/mystery-man.svg
+    effects: []
+    folder: null
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    ownership:
+      default: 0
+    system:
+      htmlFields:
+        - description
+      description: ''
+      damage: '3'
+      damageDice: d6
+    _key: '!actors.items!8dY6RBh9EdrJiabO.ewV905Xi7Bax9j4f'
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.opponents.XwR89pwi3SZVCFp1
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
+    - shortDescription
   hp:
     value: 8
     min: 0
@@ -48,29 +96,14 @@ data:
   armor: '4'
   abilities: []
   malus: '-1'
-token:
+prototypeToken:
   flags: {}
   name: Profond
   displayName: 0
-  img: icons/svg/mystery-man.svg
-  tint: null
   width: 1
   height: 1
-  scale: 1
   lockRotation: false
   rotation: 0
-  vision: false
-  dimSight: 0
-  brightSight: 0
-  dimLight: 0
-  brightLight: 0
-  sightAngle: 0
-  lightAngle: 360
-  lightAlpha: 1
-  lightAnimation:
-    speed: 5
-    intensity: 5
-  actorId: XwR89pwi3SZVCFp1
   actorLink: false
   disposition: -1
   displayBars: 0
@@ -79,16 +112,13 @@ token:
   bar2:
     attribute: null
   randomImg: false
-  mirrorX: false
-  mirrorY: false
   alpha: 1
   light:
     alpha: 0.5
-    angle: 0
+    angle: 360
     bright: 0
     coloration: 1
     dim: 0
-    gradual: true
     luminosity: 0.5
     saturation: 0
     contrast: 0
@@ -97,33 +127,50 @@ token:
       speed: 5
       intensity: 5
       reverse: false
+      type: null
     darkness:
       min: 0
       max: 1
-items:
-  - _id: ewV905Xi7Bax9j4f
-    name: Claw
-    type: attack
-    data:
-      description: ''
-      damage: '3'
-      damageDice: d6
-    sort: 100000
-    flags: {}
-    img: icons/svg/mystery-man.svg
-    effects: []
-    folder: null
-    permission:
-      default: 0
-    _key: '!actors.items!8dY6RBh9EdrJiabO.ewV905Xi7Bax9j4f'
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.opponents.XwR89pwi3SZVCFp1
+    attenuation: 0.5
+    negative: false
+    priority: 0
+    color: null
+  texture:
+    src: icons/svg/mystery-man.svg
+    tint: '#ffffff'
+    scaleX: 1
+    scaleY: 1
+    anchorX: 0.5
+    anchorY: 0.5
+    offsetX: 0
+    offsetY: 0
+    fit: contain
+    rotation: 0
+    alphaThreshold: 0.75
+  sight:
+    angle: 360
+    enabled: false
+    range: 0
+    brightness: 1
+    visionMode: basic
+    color: null
+    attenuation: 0.1
+    saturation: 0
+    contrast: 0
+  appendNumber: false
+  prependAdjective: false
+  hexagonalShape: 0
+  detectionModes: []
+  occludable:
+    radius: 0
+  ring:
+    enabled: false
+    colors:
+      ring: null
+      background: null
+    effects: 1
+    subject:
+      scale: 1
+      texture: null
 _key: '!actors!8dY6RBh9EdrJiabO'
 

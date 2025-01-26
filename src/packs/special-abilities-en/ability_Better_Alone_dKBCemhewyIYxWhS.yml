@@ -2,7 +2,27 @@ _id: dKBCemhewyIYxWhS
 name: Better Alone
 type: ability
 img: systems/cthack/ui/icons/wolf-head.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.bIrS3hqMdPBtHt3V
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>While fighting&nbsp;without an ally, you temporarily&nbsp;gain 2 Armour
     Points and inflict +2&nbsp;Armed damage with melee&nbsp;weapons.</p>
@@ -16,14 +36,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.bIrS3hqMdPBtHt3V
 _key: '!items!dKBCemhewyIYxWhS'
 

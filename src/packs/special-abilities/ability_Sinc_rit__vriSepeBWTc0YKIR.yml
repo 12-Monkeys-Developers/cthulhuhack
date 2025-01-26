@@ -1,0 +1,37 @@
+name: Sincérité
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: sincerite
+  uses:
+    value: 1
+    max: 1
+    per: Session
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p>Le personnage peut une fois par session énoncer une vérité et persuader
+    son interlocuteur qu’il est sincère à ce propos.</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737910503811
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: vriSepeBWTc0YKIR
+sort: 300000
+_key: '!items!vriSepeBWTc0YKIR'
+

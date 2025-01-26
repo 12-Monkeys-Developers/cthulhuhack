@@ -24,41 +24,85 @@ items:
       default: 0
     _stats:
       systemId: cthack
-      systemVersion: '#{VERSION}#'
-      coreVersion: '11.315'
+      systemVersion: '4.3.1#'
+      coreVersion: '12.327'
       createdTime: null
       modifiedTime: 1711902537919
       lastModifiedBy: vkZ1uRwLntJ5cCjm
+      compendiumSource: null
+      duplicateSource: null
     _key: '!actors.items!exQuOApAPlETC2ck.Vaza1rkiepitUOG7'
   - _id: CzPEM3uXneDNTx0s
     name: Mordre
     type: attack
-    data:
-      damage: '2'
     sort: 200000
     flags: {}
     img: icons/svg/mystery-man.svg
     effects: []
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    system:
+      htmlFields:
+        - description
+      damage: '2'
+    folder: null
+    ownership:
+      default: 0
     _key: '!actors.items!exQuOApAPlETC2ck.CzPEM3uXneDNTx0s'
   - _id: 4j13vHONSTg35Tga
     name: Déchirer
     type: attack
-    data:
-      damage: '3'
     sort: 300000
     flags: {}
     img: icons/svg/mystery-man.svg
     effects: []
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    system:
+      htmlFields:
+        - description
+      damage: '3'
+    folder: null
+    ownership:
+      default: 0
     _key: '!actors.items!exQuOApAPlETC2ck.4j13vHONSTg35Tga'
   - _id: 6dmuT73rWHPkjYWo
     name: Chute
     type: attack
-    data:
-      damage: '6'
     sort: 400000
     flags: {}
     img: icons/svg/mystery-man.svg
     effects: []
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    system:
+      htmlFields:
+        - description
+      damage: '6'
+    folder: null
+    ownership:
+      default: 0
     _key: '!actors.items!exQuOApAPlETC2ck.6dmuT73rWHPkjYWo'
   - name: Déchirer
     type: opponentAbility
@@ -85,11 +129,13 @@ items:
     flags: {}
     _stats:
       systemId: cthack
-      systemVersion: '#{VERSION}#'
-      coreVersion: '11.315'
+      systemVersion: '4.3.1#'
+      coreVersion: '12.327'
       createdTime: 1711902568393
       modifiedTime: 1711902598541
       lastModifiedBy: vkZ1uRwLntJ5cCjm
+      compendiumSource: null
+      duplicateSource: null
     _key: '!actors.items!exQuOApAPlETC2ck.5QSWhmzRrqZFUKej'
   - name: Chuter
     type: opponentAbility
@@ -116,11 +162,13 @@ items:
     flags: {}
     _stats:
       systemId: cthack
-      systemVersion: '#{VERSION}#'
-      coreVersion: '11.315'
+      systemVersion: '4.3.1#'
+      coreVersion: '12.327'
       createdTime: 1711902611052
       modifiedTime: 1711902631647
       lastModifiedBy: vkZ1uRwLntJ5cCjm
+      compendiumSource: null
+      duplicateSource: null
     _key: '!actors.items!exQuOApAPlETC2ck.zs71Ur804gZDFLJW'
 effects: []
 system:
@@ -201,14 +249,21 @@ prototypeToken:
     darkness:
       min: 0
       max: 1
+    negative: false
+    priority: 0
+    color: null
   texture:
     src: icons/svg/mystery-man.svg
-    tint: null
+    tint: '#ffffff'
     scaleX: 1
     scaleY: 1
     offsetX: 0
     offsetY: 0
     rotation: 0
+    anchorX: 0.5
+    anchorY: 0.5
+    fit: contain
+    alphaThreshold: 0.75
   sight:
     angle: 360
     enabled: false
@@ -218,17 +273,32 @@ prototypeToken:
     attenuation: 0.1
     saturation: 0
     contrast: 0
+    color: null
   appendNumber: false
   prependAdjective: false
   alpha: 1
   detectionModes: []
+  hexagonalShape: 0
+  occludable:
+    radius: 0
+  ring:
+    enabled: false
+    colors:
+      ring: null
+      background: null
+    effects: 1
+    subject:
+      scale: 1
+      texture: null
 folder: null
 _stats:
   systemId: cthack
-  systemVersion: '#{VERSION}#'
-  coreVersion: '11.315'
+  systemVersion: '4.3.1#'
+  coreVersion: '12.327'
   createdTime: 1711902537919
   modifiedTime: 1711902640906
   lastModifiedBy: vkZ1uRwLntJ5cCjm
+  compendiumSource: null
+  duplicateSource: null
 _key: '!actors!exQuOApAPlETC2ck'
 

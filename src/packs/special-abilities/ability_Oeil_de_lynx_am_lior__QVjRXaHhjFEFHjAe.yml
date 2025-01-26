@@ -1,14 +1,30 @@
 _id: QVjRXaHhjFEFHjAe
 name: Oeil de lynx amélioré
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.Nh3tdeZsoccW4DGx
+img: systems/cthack/ui/icons/falling.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
-    <p><em>N&eacute;cessite d&rsquo;avoir la Capacit&eacute; sp&eacute;ciale
-    &laquo; Oeil de lynx &raquo;</em>. Si le personnage prend le dessus (voir p.
-    32) l&rsquo;adversaire tombe au sol.</p>
+    <p><em>Nécessite d’avoir la Capacité spéciale « Oeil de lynx »</em>. <br
+    />Si le personnage obtient un score inférieur au score Dé de Vie de
+    l’adversaire, ce dernier tombe au sol.</p>
   key: IMPDEADEY
   uses:
     value: 0
@@ -16,10 +32,9 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.Nh3tdeZsoccW4DGx
-img: systems/cthack/ui/icons/falling.png
-effects: []
+  locked: true
+  isCustom: true
+folder: null
+sort: 3700000
 _key: '!items!QVjRXaHhjFEFHjAe'
 

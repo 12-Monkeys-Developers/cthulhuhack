@@ -1,10 +1,26 @@
 _id: MTIcvFI1yzirRgAZ
 name: Gros bras amélioré
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.2lrZI42rgo4xkwX5
+img: systems/cthack/ui/icons/muscle-up.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p><em>N&eacute;cessite d&rsquo;avoir la Capacit&eacute; sp&eacute;ciale
     &laquo; Gros bras &raquo;</em>. Vous pouvez faire une
@@ -17,10 +33,7 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.2lrZI42rgo4xkwX5
-img: systems/cthack/ui/icons/muscle-up.png
-effects: []
+folder: null
+sort: 3200000
 _key: '!items!MTIcvFI1yzirRgAZ'
 

@@ -1,10 +1,26 @@
 _id: ysiH6ZIwt1Azejtg
 name: Gros bras
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.scInn6iqFO8UFxbJ
+img: systems/cthack/ui/icons/strong.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Augmentez les d&eacute;g&acirc;ts de m&ecirc;l&eacute;e du personnage
     d&rsquo;un niveau (si les d&eacute;g&acirc;ts sont actuellement &agrave; 1,
@@ -16,10 +32,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.scInn6iqFO8UFxbJ
-img: systems/cthack/ui/icons/strong.png
-effects: []
+  locked: true
+folder: null
+sort: 6200000
 _key: '!items!ysiH6ZIwt1Azejtg'
 

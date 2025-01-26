@@ -2,7 +2,27 @@ _id: ugUtdwcwfPboCmTH
 name: Narrow Escape
 type: ability
 img: systems/cthack/ui/icons/toolbox.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.JSxc3eh04ZAodTRj
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Once per game&nbsp;session, you can break a piece of&nbsp;equipment - and
     narrate what happens - to avoid damage from a failed STR or DEX Save.</p>
@@ -16,14 +36,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.JSxc3eh04ZAodTRj
 _key: '!items!ugUtdwcwfPboCmTH'
 

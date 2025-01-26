@@ -1,3 +1,8 @@
+4.4.0
+- Update compendiums Archetype and Abilities to revised edition
+- Enrichers : fix char instead of cha
+- Minor css fixes
+
 4.3.1
 - Fix bug on enricher of type cha
 - Minor css fix : html text in edit mode in prose mirror

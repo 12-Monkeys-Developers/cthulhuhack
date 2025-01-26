@@ -1,0 +1,38 @@
+name: Médecin de terrain amélioré
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: medecin-de-terrain-ameliore
+  uses:
+    value: 1
+    max: 1
+    per: Hour
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p><em>Nécessite d’avoir la capacité spéciale « Médecin de terrain ».</em>
+    <br />Une fois par heure de jeu, en dehors d’un combat vous pouvez soigner
+    la perte de [/roll 2d4] Points de Vie perdus.</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737909859728
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: X6YgJzGvqasWQBiW
+sort: 1700000
+_key: '!items!X6YgJzGvqasWQBiW'
+

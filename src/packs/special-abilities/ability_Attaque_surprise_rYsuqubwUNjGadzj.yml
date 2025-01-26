@@ -1,10 +1,26 @@
 _id: rYsuqubwUNjGadzj
 name: Attaque surprise
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.AdJlgmeWNawV2hgM
+img: systems/cthack/ui/icons/sword-slice.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Si votre investigateur est arm&eacute; lorsqu&rsquo;un combat commence,
     il inflige deux fois les d&eacute;g&acirc;ts habituels avec l&rsquo;arme
@@ -17,10 +33,7 @@ data:
     per: Fight
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.AdJlgmeWNawV2hgM
-img: systems/cthack/ui/icons/sword-slice.png
-effects: []
+folder: null
+sort: 5900000
 _key: '!items!rYsuqubwUNjGadzj'
 

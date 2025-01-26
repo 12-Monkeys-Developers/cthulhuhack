@@ -2,7 +2,27 @@ _id: MRCEqoIQKeuePdkR
 name: Hysteria
 type: definition
 img: systems/cthack/ui/icons/screaming.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.temporaryinsanity.S4RD9DbJRbDSfFSx
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>The Investigator devolves into a tumult of screaming
     hysterics,&nbsp;unable to acknowledge whatever triggered their state. The
@@ -12,14 +32,5 @@ data:
   key: TI-HYS
   creationDate: ''
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.temporaryinsanity.S4RD9DbJRbDSfFSx
 _key: '!items!MRCEqoIQKeuePdkR'
 

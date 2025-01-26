@@ -2,7 +2,27 @@ _id: sDsTbahECcqGLaW9
 name: Like a Rock
 type: ability
 img: systems/cthack/ui/icons/rock-golem.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.ks32gx9ccuRqB9Gp
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>While standing still you&nbsp;temporarily gain 2 Armour Points&nbsp;and
     do +2 melee damage, but make DEX Saves at -2.</p>
@@ -16,14 +36,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.ks32gx9ccuRqB9Gp
 _key: '!items!sDsTbahECcqGLaW9'
 

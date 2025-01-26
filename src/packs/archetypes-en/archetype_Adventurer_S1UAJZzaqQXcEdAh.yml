@@ -2,7 +2,27 @@ _id: S1UAJZzaqQXcEdAh
 name: Adventurer
 type: archetype
 img: systems/cthack/ui/archetypes/cthack-aventurier.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.archetypes.v5XzA6Y4SwnlH3yH
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p><em>Sleuth, Explorer, Archaeologist, Private&nbsp;</em><em>Eye, Soldier
     of Fortune</em></p>
@@ -47,14 +67,5 @@ data:
   secondarysave2: str
   capacities: []
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.archetypes.v5XzA6Y4SwnlH3yH
 _key: '!items!S1UAJZzaqQXcEdAh'
 

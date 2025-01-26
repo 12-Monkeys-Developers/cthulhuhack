@@ -2,7 +2,27 @@ _id: M6B3kJ7fcI6dcAH7
 name: Ruffian
 type: archetype
 img: systems/cthack/ui/archetypes/cthack-voyou.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.archetypes.9o47l8SwvXUR94Yu
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p><em>Charlatan, Criminal, Enforcer, </em><em>Bondsman, Smuggler, Gun
     Runner</em></p>
@@ -109,14 +129,5 @@ data:
   secondarysave2: dex
   capacities: []
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.archetypes.9o47l8SwvXUR94Yu
 _key: '!items!M6B3kJ7fcI6dcAH7'
 

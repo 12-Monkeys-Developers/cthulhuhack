@@ -2,7 +2,25 @@ _id: XAh2b3Hxn9lOsMDf
 name: Confus
 type: definition
 img: systems/cthack/ui/icons/dead-head.png
-data:
+effects: []
+folder: null
+sort: 0
+flags: {}
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  xuaXKQ8wuA7GQpBm: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Les Sauvegardes mentales ont un D&eacute;savantage durant [[/roll 1d6]]
     Moment.</p>
@@ -10,12 +28,5 @@ data:
   key: SK-VAG
   creationDate: ''
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  xuaXKQ8wuA7GQpBm: 3
-flags: {}
 _key: '!items!XAh2b3Hxn9lOsMDf'
 

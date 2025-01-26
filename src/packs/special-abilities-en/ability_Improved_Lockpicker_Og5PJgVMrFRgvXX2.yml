@@ -2,7 +2,27 @@ _id: Og5PJgVMrFRgvXX2
 name: Improved Lockpicker
 type: ability
 img: systems/cthack/ui/icons/lockpicks.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.JW7U8F3Rg1c6cbzS
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: <p>Requires&nbsp;Lockpicker but, you can roll with Advantage.</p>
   key: IMPLOC
   uses:
@@ -14,14 +34,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.JW7U8F3Rg1c6cbzS
 _key: '!items!Og5PJgVMrFRgvXX2'
 

@@ -1,10 +1,24 @@
 _id: m8VF7ne8fWqwWRe2
 name: Main sûre
-permission:
+type: ability
+flags: {}
+img: systems/cthack/ui/icons/gunshot.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   gCtskyVJVCb7NnMV: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Une fois par heure de jeu, vous r&eacute;ussissez automatiquement un test
     d'attaque &agrave; distance.</p>
@@ -16,8 +30,8 @@ data:
     per: Hour
     last: ''
   multiple: false
-flags: {}
-img: systems/cthack/ui/icons/gunshot.png
-effects: []
+  locked: true
+folder: null
+sort: 5400000
 _key: '!items!m8VF7ne8fWqwWRe2'
 

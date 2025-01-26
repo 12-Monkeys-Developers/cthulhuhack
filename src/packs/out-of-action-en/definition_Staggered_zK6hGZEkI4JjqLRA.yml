@@ -2,20 +2,31 @@ _id: zK6hGZEkI4JjqLRA
 name: Staggered
 type: definition
 img: systems/cthack/ui/icons/first-aid-kit.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.outofaction.hBVC8iSQfK4UV6mL
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: <p>Disadvantage on all Tests for the next 10 minutes.</p>
   definitionType: OutOfAction
   key: OOA-STA
   creationDate: ''
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.outofaction.hBVC8iSQfK4UV6mL
 _key: '!items!zK6hGZEkI4JjqLRA'
 

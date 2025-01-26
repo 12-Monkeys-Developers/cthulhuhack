@@ -2,7 +2,27 @@ _id: 5AZjeoItTuiSRJmY
 name: Scholar (Balanced)
 type: archetype
 img: systems/cthack/ui/archetypes/cthack-savant.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.archetypes.QfhSMDL2lyT4iUhH
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p><em>Professor, Archivist, Clerk, Nurse,&nbsp;</em><em>Academic, Game
     Designer</em></p>
@@ -45,14 +65,5 @@ data:
   secondarysave2: wis
   capacities: []
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.archetypes.QfhSMDL2lyT4iUhH
 _key: '!items!5AZjeoItTuiSRJmY'
 

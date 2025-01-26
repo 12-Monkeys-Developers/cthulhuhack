@@ -1,0 +1,47 @@
+name: Double-vue
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: double-vue
+  uses:
+    value: 0
+    max: 0
+    per: Permanent
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p>Le personnage perçoit une manifestation de l’Outre-monde, parmi les
+    suivantes. </p><ul><li><p>Fantôme permet de percevoir l’âme d’un humain
+    décédé dans une zone Au contact, sous la forme d’un fantôme éthéré. Il ne
+    peut pas interagir avec lui sauf si le fantôme initie le contact.
+    </p></li><li><p>Entités permet de détecter la présence, dans les environs,
+    d’une des multiples entités surnaturelles qui peuplent l’Outre-monde. À
+    proximité, il perçoit même celles qui sont invisibles ou dissimulées. Les
+    entités apparaissent nimbées d’une aura colorée.</p></li><li><p>Magie permet
+    de percevoir toute forme de magie active, sous la forme d’une aura colorée,
+    autour de l’individu ou du lieu concerné.</p></li><li><p>Ouïe spectrale
+    permet d’entendre une phrase (au gré du MJ) prononcée en Outre-monde par
+    l’esprit d’un mort dans une zone Proche.</p></li></ul>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737909043254
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: lQwOfyqFdh6l53Cv
+sort: 1100000
+_key: '!items!lQwOfyqFdh6l53Cv'
+

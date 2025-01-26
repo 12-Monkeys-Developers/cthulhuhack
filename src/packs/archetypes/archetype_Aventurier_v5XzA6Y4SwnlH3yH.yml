@@ -1,41 +1,41 @@
 _id: v5XzA6Y4SwnlH3yH
 name: Aventurier
 type: archetype
-img: systems/cthack/ui/archetypes/cthack-aventurier.png
-data:
+img: systems/cthack/ui/archetypes/cthack-aventurier.webp
+effects: []
+folder: null
+sort: 800000
+flags: {}
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737905996849
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  Q9eXSbNsJCeaMOSw: 3
+system:
+  htmlFields:
+    - description
   description: >-
-    <p><em>D&eacute;tective, explorateur, arch&eacute;ologue, d&eacute;tective
-    priv&eacute;, soldat de fortune<br /><br /></em></p>
-
-    <p><strong>Capacit&eacute;s sp&eacute;ciales</strong></p>
-
-    <p><strong>Agile</strong> : le personnage b&eacute;n&eacute;ficie d&rsquo;un
-    Avantage pour les Sauvegardes n&eacute;cessitant des capacit&eacute;s
-    athl&eacute;tiques, comme grimper, sauter ou se balancer.</p>
-
-    <p>Choisissez-en <strong>deux</strong> parmi les suivantes :</p>
-
-    <ul>
-
-    <li><strong>Fuyant comme une anguille</strong> : une fois par session votre
-    nature suspicieuse vous permet de r&eacute;percuter les cons&eacute;quences
-    d&rsquo;un &eacute;chec de Sauvegarde d&rsquo;Intelligence ou Sagesse sur
-    quelqu&rsquo;un d&rsquo;autre.</li>
-
-    <li><strong>Main s&ucirc;re</strong> : une fois par heure de jeu, vous
-    r&eacute;ussissez automatiquement un test d&rsquo;attaque &agrave;
-    distance.</li>
-
-    <li><strong>Profiteur</strong> : vous pouvez annuler la perte d&rsquo;un
-    &eacute;quipement suite &agrave; un test de Mat&eacute;riel rat&eacute; en
-    perdant &agrave; la place un niveau dans une Ressource
-    d&rsquo;Investigation.</li>
-
-    </ul>
+    <p><em>Détective, explorateur, archéologue, détective privé, soldat de
+    fortune<br /><br /></em><strong>Métiers
+    (équipement)</strong></p><p>Archéologue (matériel d’escalade, pied de
+    biche), aviateur (fusées éclairantes, vêtements chauds), détective
+    (revolver, papiers officiels), dilettante (pistolet, vêtements chics), 
+    journaliste (dictaphone, appareil photo)), représentant de commerce (papiers
+    officiels, vêtements chics). <br /></p><p><strong>Capacités
+    spéciales</strong></p><p><strong>Primaire</strong> :
+    Agile</p><p><strong>Secondaires</strong> : Fuyant comme une anguille, Main
+    sûre, Profiteur</p>
   flashlights: d8
   smokes: d6
   hitdice: d8
-  hitpoints: 1d8 + 8
+  hitpoints: '14'
   wealthStart: '3'
   wealthDice: d8
   sanity: d8
@@ -46,12 +46,5 @@ data:
   secondarysave2: str
   capacities: []
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  Q9eXSbNsJCeaMOSw: 3
-flags: {}
 _key: '!items!v5XzA6Y4SwnlH3yH'
 

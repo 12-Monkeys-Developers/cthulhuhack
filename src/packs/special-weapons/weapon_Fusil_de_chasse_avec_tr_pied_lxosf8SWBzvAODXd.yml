@@ -1,16 +1,29 @@
 name: Fusil de chasse avec trépied
-permission:
-  default: 0
-  Q9eXSbNsJCeaMOSw: 3
 type: weapon
-data:
-  description: ''
-  dice: d10
-  range: distant
-  locked: true
 flags: {}
 img: systems/cthack/ui/weapons/winchester-rifle.png
 effects: []
 _id: lxosf8SWBzvAODXd
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  Q9eXSbNsJCeaMOSw: 3
+system:
+  htmlFields:
+    - description
+  description: ''
+  dice: d10
+  range: distant
+  locked: true
+folder: null
+sort: 0
 _key: '!items!lxosf8SWBzvAODXd'
 

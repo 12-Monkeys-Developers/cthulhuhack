@@ -2,7 +2,27 @@ _id: HkN34pUichsrRuEL
 name: Backfire
 type: ability
 img: systems/cthack/ui/icons/flame.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.A1W385L1asXvavU0
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Once per game hour, you&nbsp;can automatically succeed in
     a&nbsp;defensive Save and cause the&nbsp;attacker to damage
@@ -17,14 +37,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.A1W385L1asXvavU0
 _key: '!items!HkN34pUichsrRuEL'
 

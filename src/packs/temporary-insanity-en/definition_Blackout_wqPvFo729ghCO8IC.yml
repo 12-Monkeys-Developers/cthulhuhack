@@ -2,7 +2,27 @@ _id: wqPvFo729ghCO8IC
 name: Blackout
 type: definition
 img: systems/cthack/ui/icons/screaming.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Compendium.cthack.temporaryinsanity.OccloUIsiGvu5LVA
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>The Investigator passes out. They lose all awareness of anything that
     happens during this blackout. Under stress (any potential loss of
@@ -12,14 +32,5 @@ data:
   key: TI-BLA
   creationDate: ''
   locked: true
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Compendium.cthack.temporaryinsanity.OccloUIsiGvu5LVA
 _key: '!items!wqPvFo729ghCO8IC'
 

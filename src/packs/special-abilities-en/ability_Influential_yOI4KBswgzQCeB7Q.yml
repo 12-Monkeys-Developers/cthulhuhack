@@ -2,7 +2,27 @@ _id: yOI4KBswgzQCeB7Q
 name: Influential
 type: ability
 img: systems/cthack/ui/icons/embrassed-energy.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.j5px4YwLqIf5LKzR
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Gain an additional step&nbsp;in Smokes. You can select this&nbsp;Ability
     multiple times.</p>
@@ -16,14 +36,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.j5px4YwLqIf5LKzR
 _key: '!items!yOI4KBswgzQCeB7Q'
 

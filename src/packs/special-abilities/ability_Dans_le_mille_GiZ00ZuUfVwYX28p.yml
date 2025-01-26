@@ -1,0 +1,37 @@
+name: Dans le mille
+type: ability
+img: icons/svg/item-bag.svg
+system:
+  locked: true
+  key: dans-le-mille
+  uses:
+    value: 1
+    max: 1
+    per: Permanent
+    last: ''
+  multiple: false
+  isCustom: true
+  advantageGiven: false
+  advantageText: ''
+  description: >-
+    <p>Une fois par session, au lieu de lancer les dés pour les dégâts,
+    occasionnez le nombre maximal du dé de dégâts + 2.</p>
+effects: []
+folder: null
+ownership:
+  default: 0
+  pjaJq2ZmyGPKbQvH: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: 1737908784637
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+_id: GiZ00ZuUfVwYX28p
+sort: 900000
+_key: '!items!GiZ00ZuUfVwYX28p'
+

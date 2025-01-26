@@ -1,18 +1,31 @@
 name: Spray au poivre
-permission:
+type: weapon
+flags: {}
+img: systems/cthack/ui/weapons/spray.png
+effects: []
+_id: fpFdKX739rT7Qf4H
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: weapon
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Prot&egrave;ge contre les attaques (action d&eacute;fensive) avec un
     Avantage durant 1d3 Moments. <br />Dissimulable.</p>
   dice: d6
   range: near
   locked: true
-flags: {}
-img: systems/cthack/ui/weapons/spray.png
-effects: []
-_id: fpFdKX739rT7Qf4H
+folder: null
+sort: 0
 _key: '!items!fpFdKX739rT7Qf4H'
 

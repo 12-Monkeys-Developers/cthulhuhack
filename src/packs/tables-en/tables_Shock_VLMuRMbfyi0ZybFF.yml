@@ -12,104 +12,101 @@ description: >-
 results:
   - _id: xx4gZYpF3neK80iG
     flags: {}
-    type: 2
+    type: pack
     text: Shaking
     img: systems/cthack/ui/icons/dead-head.png
-    collection: cthack.shock-en
-    resultId: wQbeDXarJl4HpUzs
     weight: 1
     range:
       - 1
       - 1
     drawn: false
-    rangeL: 1
-    rangeH: 1
+    documentCollection: cthack.shock-en
+    documentId: wQbeDXarJl4HpUzs
     _key: '!tables.results!VLMuRMbfyi0ZybFF.xx4gZYpF3neK80iG'
   - _id: SkWHxcZ5BsrVwxVB
     flags: {}
-    type: 2
+    type: pack
     text: Vague
     img: systems/cthack/ui/icons/dead-head.png
-    collection: cthack.shock-en
-    resultId: IkyZNo0R1YwF0xnV
     weight: 1
     range:
       - 2
       - 2
     drawn: false
-    rangeL: 2
-    rangeH: 2
+    documentCollection: cthack.shock-en
+    documentId: IkyZNo0R1YwF0xnV
     _key: '!tables.results!VLMuRMbfyi0ZybFF.SkWHxcZ5BsrVwxVB'
   - _id: RzO5PNAuNmXJfLOT
     flags: {}
-    type: 2
+    type: pack
     text: Rabbit
     img: systems/cthack/ui/icons/dead-head.png
-    collection: cthack.shock-en
-    resultId: MNHH43bQSi4i9VZj
     weight: 1
     range:
       - 3
       - 3
     drawn: false
-    rangeL: 3
-    rangeH: 3
+    documentCollection: cthack.shock-en
+    documentId: MNHH43bQSi4i9VZj
     _key: '!tables.results!VLMuRMbfyi0ZybFF.RzO5PNAuNmXJfLOT'
   - _id: ABm5n9NfD0uX9eAx
     flags: {}
-    type: 2
+    type: pack
     text: Faint
     img: systems/cthack/ui/icons/dead-head.png
-    collection: cthack.shock-en
-    resultId: XQ0OIdqWqXYO2XOj
     weight: 1
     range:
       - 4
       - 4
     drawn: false
-    rangeL: 4
-    rangeH: 4
+    documentCollection: cthack.shock-en
+    documentId: XQ0OIdqWqXYO2XOj
     _key: '!tables.results!VLMuRMbfyi0ZybFF.ABm5n9NfD0uX9eAx'
   - _id: rWXR7TkDaDRl5e0M
     flags: {}
-    type: 2
+    type: pack
     text: Dive
     img: systems/cthack/ui/icons/dead-head.png
-    collection: cthack.shock-en
-    resultId: Ph80ZiQM7WFJPp5h
     weight: 1
     range:
       - 5
       - 5
     drawn: false
-    rangeL: 5
-    rangeH: 5
+    documentCollection: cthack.shock-en
+    documentId: Ph80ZiQM7WFJPp5h
     _key: '!tables.results!VLMuRMbfyi0ZybFF.rWXR7TkDaDRl5e0M'
   - _id: 4v2yBWWqunsSWBtF
     flags: {}
-    type: 2
+    type: pack
     text: Scream
     img: systems/cthack/ui/icons/dead-head.png
-    collection: cthack.shock-en
-    resultId: fkD3rjYrYFhwQnpW
     weight: 1
     range:
       - 6
       - 6
     drawn: false
-    rangeL: 6
-    rangeH: 6
+    documentCollection: cthack.shock-en
+    documentId: fkD3rjYrYFhwQnpW
     _key: '!tables.results!VLMuRMbfyi0ZybFF.4v2yBWWqunsSWBtF'
 formula: 1d6
 replacement: true
 displayRoll: true
 folder: null
 sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
 flags:
   core:
     sourceId: RollTable.BJlo63GaK2GoxqGo
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
 _key: '!tables!VLMuRMbfyi0ZybFF'
 

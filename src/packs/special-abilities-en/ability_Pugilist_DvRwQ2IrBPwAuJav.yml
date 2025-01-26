@@ -2,7 +2,27 @@ _id: DvRwQ2IrBPwAuJav
 name: Pugilist
 type: ability
 img: systems/cthack/ui/icons/punch.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.VpPN6iTU08T58PVx
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: <p>Increase unarmed damage by one step (if currently 1, raise to 1d4).</p>
   key: PUG
   uses:
@@ -14,14 +34,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.VpPN6iTU08T58PVx
 _key: '!items!DvRwQ2IrBPwAuJav'
 

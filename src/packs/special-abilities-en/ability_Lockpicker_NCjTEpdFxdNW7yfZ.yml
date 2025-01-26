@@ -2,7 +2,27 @@ _id: NCjTEpdFxdNW7yfZ
 name: Lockpicker
 type: ability
 img: systems/cthack/ui/icons/lockpicks.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.V8Amd3VgSge2ImdU
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: <p>You can crack any lock by making a Flashlight roll.</p>
   key: LOC
   uses:
@@ -14,14 +34,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.V8Amd3VgSge2ImdU
 _key: '!items!NCjTEpdFxdNW7yfZ'
 

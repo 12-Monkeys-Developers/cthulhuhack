@@ -1,10 +1,26 @@
 _id: 8EuiohhKulwXeqdy
 name: Tactique
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.ErZ1mNKx7pdQAn8I
+img: systems/cthack/ui/icons/swords-power.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910510315
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Lorsqu&rsquo;il effectue une action, le personnage peut faire une attaque
     suppl&eacute;mentaire contre la m&ecirc;me cible ou une autre. Vous pouvez
@@ -16,10 +32,8 @@ data:
     per: Fight
     last: ''
   multiple: true
-flags:
-  core:
-    sourceId: Item.ErZ1mNKx7pdQAn8I
-img: systems/cthack/ui/icons/swords-power.png
-effects: []
+  locked: true
+folder: null
+sort: 2500000
 _key: '!items!8EuiohhKulwXeqdy'
 

@@ -2,7 +2,27 @@ _id: O2JMpY2CzD71lTQb
 name: Improved Deadeye
 type: ability
 img: systems/cthack/ui/icons/falling.png
-data:
+effects: []
+folder: null
+sort: 0
+flags:
+  core:
+    sourceId: Item.Nh3tdeZsoccW4DGx
+_stats:
+  coreVersion: '12.327'
+  systemId: null
+  systemVersion: null
+  createdTime: null
+  modifiedTime: null
+  lastModifiedBy: null
+  compendiumSource: null
+  duplicateSource: null
+ownership:
+  default: 0
+  59G26I43j4RYqfKX: 3
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Requires&nbsp;Deadeye. Check for Upper Hand or spin about and
     fall&nbsp;prone.</p>
@@ -16,14 +36,5 @@ data:
   isCustom: false
   advantageGiven: false
   advantageText: ''
-effects: []
-folder: null
-sort: 0
-permission:
-  default: 0
-  59G26I43j4RYqfKX: 3
-flags:
-  core:
-    sourceId: Item.Nh3tdeZsoccW4DGx
 _key: '!items!O2JMpY2CzD71lTQb'
 

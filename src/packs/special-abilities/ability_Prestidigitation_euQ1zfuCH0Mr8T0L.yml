@@ -1,10 +1,24 @@
 _id: euQ1zfuCH0Mr8T0L
 name: Prestidigitation
-permission:
+type: ability
+flags: {}
+img: systems/cthack/ui/icons/magick-trick.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   gCtskyVJVCb7NnMV: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Le personnage b&eacute;n&eacute;ficie d'un <strong>Avantage</strong> pour
     les t&acirc;ches n&eacute;cessitant une bonne coordination entre la main et
@@ -18,8 +32,8 @@ data:
     per: Permanent
     last: ''
   multiple: false
-flags: {}
-img: systems/cthack/ui/icons/magick-trick.png
-effects: []
+  locked: true
+folder: null
+sort: 4900000
 _key: '!items!euQ1zfuCH0Mr8T0L'
 

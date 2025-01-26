@@ -1,10 +1,26 @@
 _id: iOzFHD0ekNiL4E9n
 name: Château de cartes
-permission:
+type: ability
+flags:
+  core:
+    sourceId: Item.kaXCmKcYmqa0bXRh
+img: systems/cthack/ui/icons/backstab.png
+effects: []
+_stats:
+  coreVersion: '12.331'
+  systemId: cthack
+  systemVersion: '4.3.1#'
+  createdTime: null
+  modifiedTime: 1737910503831
+  lastModifiedBy: pjaJq2ZmyGPKbQvH
+  compendiumSource: null
+  duplicateSource: null
+ownership:
   default: 0
   Q9eXSbNsJCeaMOSw: 3
-type: ability
-data:
+system:
+  htmlFields:
+    - description
   description: >-
     <p>Une fois par partie, le&nbsp;personnage peut trahir (vous devez expliquer
     ce qui se passe) un alli&eacute;, PJ ou non, afin d&rsquo;&eacute;viter les
@@ -17,10 +33,8 @@ data:
     per: Session
     last: ''
   multiple: false
-flags:
-  core:
-    sourceId: Item.kaXCmKcYmqa0bXRh
-img: systems/cthack/ui/icons/backstab.png
-effects: []
+  locked: true
+folder: null
+sort: 5100000
 _key: '!items!iOzFHD0ekNiL4E9n'
 
