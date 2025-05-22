@@ -5,7 +5,7 @@ import { SearchChat } from "../search/research.mjs";
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export default class CtHackOpponentSheet extends ActorSheet {
+export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -29,30 +29,24 @@ export default class CtHackOpponentSheet extends ActorSheet {
     // By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
     context.editable = this.actor.isUnlocked;
 
-    context.attacks = this.actor.itemTypes.attack;
-
-    context.attacks = [];
+    context.attacks = this.actor.itemTypes.attack;    context.attacks = [];
     const attacksRaw = this.actor.itemTypes.attack;
     for (const attack of attacksRaw) {
-      attack.enrichedDescription = await TextEditor.enrichHTML(attack.system.description, { async: true });
+      attack.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(attack.system.description, { async: true });
       context.attacks.push(attack);
-    }
-
-    context.magics = [];
+    }    context.magics = [];
     const magicsRaw = this.actor.itemTypes.magic;
     for (const magic of magicsRaw) {
-      magic.enrichedDescription = await TextEditor.enrichHTML(magic.system.description, { async: true });
+      magic.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(magic.system.description, { async: true });
       context.magics.push(magic);
-    }
-
-    context.opponentAbilities = [];
+    }    context.opponentAbilities = [];
     const opponentAbilitiesRaw = this.actor.itemTypes.opponentAbility;
     for (const ability of opponentAbilitiesRaw) {
-      ability.enrichedDescription = await TextEditor.enrichHTML(ability.system.description, { async: true });
+      ability.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(ability.system.description, { async: true });
       context.opponentAbilities.push(ability);
     }
 
-    context.enrichedDescription = await TextEditor.enrichHTML(this.actor.system.description, { async: true });
+    context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.description, { async: true });
     context.hasImage = this.actor.hasImage;
     context.hasShortDescription = !!this.actor.system.description;
     context.opponentHitDice = SYSTEM.OPPONENT_HIT_DICE;
@@ -214,9 +208,7 @@ export default class CtHackOpponentSheet extends ActorSheet {
     let resultCollection = [];
     game.journal.forEach((doc) => {
       resultCollection.push(...doc.pages.search({ query: searchPattern }));
-    });
-
-    const htmlChat = await renderTemplate("systems/cthack/templates/chat/search-result.hbs", {
+    });    const htmlChat = await foundry.applications.handlebars.renderTemplate("systems/cthack/templates/chat/search-result.hbs", {
       resultCollection: resultCollection,
       pattern: searchPattern,
     });

@@ -301,7 +301,7 @@ export default class CtHackRoll extends Roll {
       initialAvantages: avantages,
     }
     console.debug("dialogContext", dialogContext)
-    const content = await renderTemplate("systems/cthack/templates/roll-dialog-v2.hbs", dialogContext)
+    const content = await foundry.applications.handlebars.renderTemplate("systems/cthack/templates/roll-dialog-v2.hbs", dialogContext)
 
     const title = CtHackRoll.createTitle(options)
     const buttonLabel = game.i18n.localize("CTHACK.Roll.roll")
@@ -455,7 +455,7 @@ export default class CtHackRoll extends Roll {
           break
       }
       formula = `${dice}`
-    }    
+    }
 
     // Formula for a damage roll
     if (options.rollType === ROLL_TYPE.DAMAGE) {
@@ -567,10 +567,9 @@ export default class CtHackRoll extends Roll {
     }
   }
 
-  /** @override */
-  async render(chatOptions = {}) {
+  /** @override */ async render(chatOptions = {}) {
     let chatData = await this._getChatCardData(chatOptions.isPrivate)
-    return await renderTemplate(this.constructor.CHAT_TEMPLATE, chatData)
+    return await foundry.applications.handlebars.renderTemplate(this.constructor.CHAT_TEMPLATE, chatData)
   }
 
   /**
@@ -691,8 +690,8 @@ export default class CtHackRoll extends Roll {
       "+": "=",
       "=": "-",
       "-": "--",
-      "--": "--"
-    };
-    return disadvantageMap[avantage] || avantage;
+      "--": "--",
+    }
+    return disadvantageMap[avantage] || avantage
   }
 }

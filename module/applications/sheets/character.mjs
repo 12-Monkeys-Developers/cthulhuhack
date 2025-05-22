@@ -4,7 +4,7 @@ import { SearchChat } from "../search/research.mjs"
 /**
  * @extends {ActorSheet}
  */
-export default class CtHackCharacterSheet extends ActorSheet {
+export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorSheet {
   //#region Overrided methods
 
   constructor(options) {
@@ -104,47 +104,35 @@ export default class CtHackCharacterSheet extends ActorSheet {
 
     // By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
     context.editable = this.actor.isUnlocked
-    context.uneditable = !this.actor.isUnlocked
-
-    // For all items, we enrich the description
+    context.uneditable = !this.actor.isUnlocked    // For all items, we enrich the description
     context.abilities = []
     const abilitiesRaw = this.actor.itemTypes.ability
     for (const item of abilitiesRaw) {
-      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true })
+      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.abilities.push(item)
-    }
-
-    context.magics = []
+    }    context.magics = []
     const magicsRaw = this.actor.itemTypes.magic
     for (const item of magicsRaw) {
-      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true })
+      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.magics.push(item)
-    }
-
-    context.weapons = []
+    }    context.weapons = []
     const weaponsRaw = this.actor.itemTypes.weapon
     for (const item of weaponsRaw) {
-      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true })
+      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.weapons.push(item)
-    }
-
-    context.otheritems = []
+    }    context.otheritems = []
     const otheritemsRaw = this.actor.itemTypes.item
     for (const item of otheritemsRaw) {
-      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true })
+      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.otheritems.push(item)
-    }
-
-    context.conditions = []
+    }    context.conditions = []
     const conditionsRaw = this.actor.itemTypes.definition
     for (const item of conditionsRaw) {
-      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true })
+      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.conditions.push(item)
-    }
-
-    context.enrichedBiography = await TextEditor.enrichHTML(this.actor.system.biography, { async: true })
-    context.enrichedNotes = await TextEditor.enrichHTML(this.actor.system.notes, { async: true })
-    context.enrichedEquipment = await TextEditor.enrichHTML(this.actor.system.equipment, { async: true })
+    }    context.enrichedBiography = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.biography, { async: true })
+    context.enrichedNotes = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.notes, { async: true })
+    context.enrichedEquipment = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.equipment, { async: true })
 
     context.isGm = game.user.isGM
     context.hasImage = this.actor.hasImage
@@ -251,12 +239,11 @@ export default class CtHackCharacterSheet extends ActorSheet {
         condition: (li) => {
           const item = this.actor.items.get(li.data("item-id"))
           return item.isOwner && item.system.hasDescription
-        },
-        callback: async (li) => {
+        },        callback: async (li) => {
           const item = this.actor.items.get(li.data("item-id"))
           ChatMessage.create({
             user: game.user.id,
-            content: await renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
+            content: await foundry.applications.handlebars.renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
               item: item,
             }),
           })
@@ -268,13 +255,12 @@ export default class CtHackCharacterSheet extends ActorSheet {
         condition: (li) => {
           const item = this.actor.items.get(li.data("item-id"))
           return item.isOwner && item.system.hasDescription && !game.user.isGM
-        },
-        callback: async (li) => {
+        },        callback: async (li) => {
           const item = this.actor.items.get(li.data("item-id"))
           ChatMessage.create({
             user: game.user.id,
             whisper: ChatMessage.getWhisperRecipients("GM").map((u) => u.id),
-            content: await renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
+            content: await foundry.applications.handlebars.renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
               item: item,
             }),
           })

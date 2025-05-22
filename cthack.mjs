@@ -19,7 +19,7 @@ import * as models from "./module/data/_module.mjs"
 import * as applications from "./module/applications/_module.mjs"
 import * as documents from "./module/documents/_module.mjs"
 
-export default class FullsearchJournalSheet extends JournalSheet {}
+export default class FullsearchJournalSheet extends foundry.appv1.sheets.JournalSheet {}
 
 Hooks.once("init", function () {
   console.log(LOG_HEAD + "Initialization of Cthulhu Hack system")
@@ -78,23 +78,23 @@ Hooks.once("init", function () {
   CONFIG.Item.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
   CONFIG.JournalEntry.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
   CONFIG.RollTable.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
-  CONFIG.Scene.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
+  CONFIG.Scene.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"  
   CONFIG.Macro.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
 
   // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet)
-  Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheet, { types: ["character"], label: "CTHACK.SheetClassCharacter", makeDefault: true })
-  Actors.registerSheet(SYSTEM_NAME, applications.AdversaireSheet, { types: ["opponent"], label: "CTHACK.SheetClassOpponent", makeDefault: true })
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet)
+  foundry.documents.collections.Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheet, { types: ["character"], label: "CTHACK.SheetClassCharacter", makeDefault: true })
+  foundry.documents.collections.Actors.registerSheet(SYSTEM_NAME, applications.AdversaireSheet, { types: ["opponent"], label: "CTHACK.SheetClassOpponent", makeDefault: true })
 
-  Items.unregisterSheet("core", ItemSheet)
-  Items.registerSheet(SYSTEM_NAME, applications.CapaciteSheet, { types: ["ability"], makeDefault: true })
-  Items.registerSheet(SYSTEM_NAME, applications.ObjetSheet, { types: ["item"], makeDefault: true })
-  Items.registerSheet(SYSTEM_NAME, applications.ArmeSheet, { types: ["weapon"], makeDefault: true })
-  Items.registerSheet(SYSTEM_NAME, applications.MagieSheet, { types: ["magic"], makeDefault: true })
-  Items.registerSheet(SYSTEM_NAME, applications.ArchetypeSheet, { types: ["archetype"], makeDefault: true })
-  Items.registerSheet(SYSTEM_NAME, applications.AttaqueSheet, { types: ["attack"], makeDefault: true })
-  Items.registerSheet(SYSTEM_NAME, applications.AdversaireCapaciteSheet, { types: ["opponentAbility"], makeDefault: true })
-  Items.registerSheet(SYSTEM_NAME, applications.DefinitionSheet, { types: ["definition"], makeDefault: true })
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet)
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.CapaciteSheet, { types: ["ability"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ObjetSheet, { types: ["item"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ArmeSheet, { types: ["weapon"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.MagieSheet, { types: ["magic"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ArchetypeSheet, { types: ["archetype"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.AttaqueSheet, { types: ["attack"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.AdversaireCapaciteSheet, { types: ["opponentAbility"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.DefinitionSheet, { types: ["definition"], makeDefault: true })
 
   // Dice system configuration
   CONFIG.Dice.rolls.push(documents.CtHackRoll)
