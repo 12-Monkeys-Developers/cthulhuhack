@@ -12,8 +12,8 @@
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": "12",
-    "verified": "12",
-    "maximum": "12"
+    "verified": "13",
+    "maximum": "13"
   },
   "esmodules": ["cthack.mjs"],
   "styles": ["css/cthack.css"],
