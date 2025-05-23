@@ -135,7 +135,7 @@ Hooks.once("init", function () {
 
 
   // Search
-  Journal.registerSheet(game.system.id, FullsearchJournalSheet, { makeDefault: false })
+  foundry.documents.collections.Journal.registerSheet(game.system.id, FullsearchJournalSheet, { makeDefault: false })
 
   console.log(LOG_HEAD + "Cthulhu Hack system initialized")
 })
