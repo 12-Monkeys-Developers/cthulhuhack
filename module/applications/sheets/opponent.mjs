@@ -93,7 +93,7 @@ export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet
   }
 
   _contextOpponentMenu(html) {
-    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".opponent-contextmenu", this._getEntryContextOptions());
+    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".opponent-contextmenu", this._getEntryContextOptions(), { jQuery: false});
   }
 
   _getEntryContextOptions() {
