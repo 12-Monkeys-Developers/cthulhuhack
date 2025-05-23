@@ -41,32 +41,34 @@ export function registerHooks() {
     configureDiceSoNice(dice3d);
   });
 
-  Hooks.on("renderChatMessage", (app, html, data) => {
-    highlightSuccessFailure(app, html, data);
-
-    if (game.user.isGM) {
-      html.find(".ask-roll-dice").each((i, btn) => {
+  Hooks.on("renderChatMessageHTML", (app, html, data) => {
+    highlightSuccessFailure(app, html, data);    if (game.user.isGM) {
+      html.querySelectorAll(".ask-roll-dice").forEach((btn) => {
         btn.style.display = "none";
       });
     } else {
-      html.find(".ask-roll-dice").click((event) => {
-        const btn = $(event.currentTarget);
-        const type = btn.data("type");
-        const value = btn.data("value");
-        const avantage = btn.data("avantage") ?? "="
-        const character = game.user.character;
-        if (type === "resource") character.rollResource(value, {rollAdvantage: avantage});
-        else if (type === "save") character.rollSave(value, {rollAdvantage: avantage});
+      html.querySelectorAll(".ask-roll-dice").forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          const type = btn.dataset.type;
+          const value = btn.dataset.value;
+          const avantage = btn.dataset.avantage ?? "=";
+          const character = game.user.character;
+          if (type === "resource") character.rollResource(value, {rollAdvantage: avantage});
+          else if (type === "save") character.rollSave(value, {rollAdvantage: avantage});
+        });
       });
-    }
-
-    // Search feature
+    }    // Search feature
     const typeMessage = data.message.flags.world?.type;
     if (typeMessage === "searchPage") {
       //html.find("#ouvrirpage").click(async (event) => await SearchChat.onOpenJournalPage(event, data.message.flags.world?.searchPattern));
       //html.find("#highlight").click(async (event) => await SearchChat.toggleEnricher(event, data.message.flags.world?.searchPattern));
       const messageId = data.message._id;
-      html.find("#highlight").click(async (event) => await SearchChat.toggleEnricher(event, data.message.flags.world?.searchPattern, messageId));
+      const highlightBtn = html.querySelector("#highlight");
+      if (highlightBtn) {
+        highlightBtn.addEventListener("click", async (event) => {
+          await SearchChat.toggleEnricher(event, data.message.flags.world?.searchPattern, messageId);
+        });
+      }
     }
 
   });
