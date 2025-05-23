@@ -7,7 +7,7 @@ import { registerSystemSettings } from "./module/settings.mjs"
 import { CthackUtils } from "./module/utils.mjs"
 import { Macros } from "./module/macros.mjs"
 import { registerHooks } from "./module/hooks.mjs"
-import { initControlButtons } from "./module/control-buttons.mjs"
+import initControlButtons from "./module/control-buttons.mjs"
 import { setupTextEnrichers } from "./module/enrichers.mjs"
 
 import { SYSTEM } from "./module/config/system.mjs"
