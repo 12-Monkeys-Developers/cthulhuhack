@@ -196,7 +196,7 @@ export default class CtHackRoll extends Roll {
       }
     }
 
-    const rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value)]))
+    const rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value.label)]))
     const defaultRollMode = game.settings.get("core", "rollMode")
     const fieldRollMode = new foundry.data.fields.StringField({
       choices: rollModes,
@@ -343,23 +343,23 @@ export default class CtHackRoll extends Roll {
       render: (event, dialog) => {
         console.debug("dialog", dialog)
         // Gestion du sélecteur Avantages et désavantages
-        const rangeInput = dialog.querySelector('input[name="avantages"]')
+        const rangeInput = dialog.element.querySelector('input[name="avantages"]')
         if (rangeInput) {
           rangeInput.addEventListener("change", (event) => {
             event.preventDefault()
             event.stopPropagation()
             // Reset de tous les choix de Modificateur
-            const allModifiers = dialog.querySelectorAll(".bonus")
+            const allModifiers = dialog.element.querySelectorAll(".bonus")
             allModifiers.forEach((element) => {
               if (element.classList.contains("checked")) element.classList.toggle("checked")
             })
-            const readOnly = dialog.querySelector('input[name="selectAvantages"]')
+            const readOnly = dialog.element.querySelector('input[name="selectAvantages"]')
             readOnly.value = this._convertAvantages(parseInt(event.target.value))
           })
         }
 
         // Gestion des Modificateurs
-        const bonusElements = dialog.querySelectorAll(".bonus")
+        const bonusElements = dialog.element.querySelectorAll(".bonus")
         // Ajoute un event listener à chaque élément
         bonusElements.forEach((element) => {
           element.addEventListener("click", (event) => {
@@ -369,14 +369,14 @@ export default class CtHackRoll extends Roll {
             bonus.classList.toggle("checked")
 
             // Avantage initial
-            const initialAdvantage = dialog.querySelector('input[name="initialAvantages"]')
+            const initialAdvantage = dialog.element.querySelector('input[name="initialAvantages"]')
             let avantages = parseInt(initialAdvantage.value)
 
             let nbChecked = 0
             // Parcours de tous les éléments pour vérifier tous ceux qui sont checked
             let selectedModifiers = []
-            const selectedModifiersInput = dialog.querySelector('input[name="selectedModifiers"]')
-            const allModifiers = dialog.querySelectorAll(".bonus")
+            const selectedModifiersInput = dialog.element.querySelector('input[name="selectedModifiers"]')
+            const allModifiers = dialog.element.querySelectorAll(".bonus")
             allModifiers.forEach((element) => {
               if (element.classList.contains("checked")) {
                 nbChecked++
@@ -389,7 +389,7 @@ export default class CtHackRoll extends Roll {
             if (value > 5) value = 5
 
             rangeInput.value = value
-            const readOnly = dialog.querySelector('input[name="selectAvantages"]')
+            const readOnly = dialog.element.querySelector('input[name="selectAvantages"]')
             readOnly.value = this._convertAvantages(value)
           })
         })
