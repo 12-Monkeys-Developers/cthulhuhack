@@ -49,10 +49,8 @@
 }
 #pause > img {
   content: var(--logo-standard);
-  height: 192px;
-  width: 192px;
-  top: -45px;
-  left: calc(50% - 96px);
+  height: 120px;
+  width: 120px;
 }
 #tooltip.tooltip-save {
   max-width: 500px;
