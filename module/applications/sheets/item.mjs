@@ -1,4 +1,9 @@
 export default class CtHackItemSheet extends foundry.appv1.sheets.ItemSheet {
+
+  // Variable to check if the appV1 is used : will remove warning
+  // To migrate before V16
+  static _warnedAppV1 = true
+
   /** @inheritdoc */
   static get defaultOptions() {
     const options = super.defaultOptions;

@@ -6,6 +6,11 @@ import { SearchChat } from "../search/research.mjs";
  * @extends {ActorSheet}
  */
 export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet {
+
+  // Variable to check if the appV1 is used : will remove warning
+  // To migrate before V16
+  static _warnedAppV1 = true
+
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -88,7 +93,7 @@ export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet
   }
 
   _contextOpponentMenu(html) {
-    ContextMenu.create(this, html, ".opponent-contextmenu", this._getEntryContextOptions());
+    foundry.applications.ux.ContextMenu.implementation.create(this, html, ".opponent-contextmenu", this._getEntryContextOptions());
   }
 
   _getEntryContextOptions() {

@@ -7,6 +7,10 @@ import { SearchChat } from "../search/research.mjs"
 export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorSheet {
   //#region Overrided methods
 
+  // Variable to check if the appV1 is used : will remove warning
+  // To migrate before V16
+  static _warnedAppV1 = true
+
   constructor(options) {
     super(options)
     Hooks.on("updateSetting", async (document, change, options, userId) => {
@@ -223,8 +227,8 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
    * @param {*} html
    */
   _contextCharacterMenu(html) {
-    ContextMenu.create(this, html, ".character-contextmenu", this._getCharacterEntryContextOptions())
-    ContextMenu.create(this, html, ".character-sidebar-contextmenu", this._getCharacterSidebarEntryContextOptions())
+    foundry.applications.ux.ContextMenu.implementation.create(this, html, ".character-contextmenu", this._getCharacterEntryContextOptions())
+    foundry.applications.ux.ContextMenu.implementation.create(this, html, ".character-sidebar-contextmenu", this._getCharacterSidebarEntryContextOptions())
   }
 
   /**
