@@ -93,7 +93,7 @@ export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet
   }
 
   _contextOpponentMenu(html) {
-    foundry.applications.ux.ContextMenu.implementation.create(this, html, ".opponent-contextmenu", this._getEntryContextOptions());
+    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".opponent-contextmenu", this._getEntryContextOptions());
   }
 
   _getEntryContextOptions() {
@@ -102,11 +102,11 @@ export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet
         name: game.i18n.localize("CTHACK.ContextMenuUse"),
         icon: '<i class="fas fa-check"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           return item.isOwner && item.type === "opponentAbility" && item.system.isUsable;
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           item.system.use();
           this.render();
         },
@@ -115,11 +115,11 @@ export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet
         name: game.i18n.localize("CTHACK.ContextMenuResetUse"),
         icon: '<i class="fa-solid fa-0"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           return item.isOwner && item.type === "opponentAbility" && item.system.isResetable;
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           item.system.resetUse();
           this.render();
         },
@@ -128,11 +128,11 @@ export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet
         name: game.i18n.localize("CTHACK.ContextMenuIncreaseUse"),
         icon: '<i class="fa-solid fa-plus"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           return item.isOwner && item.type === "opponentAbility" && item.system.isIncreaseable;
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           item.system.increase();
           this.render();
         },
@@ -141,11 +141,11 @@ export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet
         name: game.i18n.localize("CTHACK.ContextMenuEdit"),
         icon: '<i class="fas fa-edit"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           return item.isOwner;
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           item.sheet.render(true);
         },
       },
@@ -153,11 +153,11 @@ export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet
         name: game.i18n.localize("CTHACK.ContextMenuDelete"),
         icon: '<i class="fas fa-trash"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           return item.isOwner;
         },
         callback: async (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
         },
       },
@@ -290,7 +290,7 @@ export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet
     event.stopPropagation();
 
     const li = $(event.currentTarget).parents(".item");
-    const itemId = li.data("item-id");
+    const itemId = li.dataset.itemId;
     let item = this.actor.items.get(itemId);
 
     await this.actor.rollMaterial(item, { event: event });
