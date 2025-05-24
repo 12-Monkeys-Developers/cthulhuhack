@@ -176,10 +176,6 @@ Hooks.once("ready", function () {
   }
 
   // Game Manager
-  /*game.cthack.gmManager = new GMManager()
-  if (game.user.isGM) {
-    game.cthack.gmManager.render(true)
-  }*/
   game.system.applicationManager = new applications.CthulhuHackManager()
   if (game.user.isGM) {
     game.system.applicationManager.render(true)
