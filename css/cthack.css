@@ -192,7 +192,10 @@ a.inline-roll {
   scrollbar-width: thin;
   text-align: center;
 }
-.cthack.gm-manager .character-resume .adrenaline-img {
+.cthack.gm-manager .character-resume .adrenaline {
+  display: flex;
+}
+.cthack.gm-manager .character-resume .adrenaline .adrenaline-img {
   height: 25px;
   width: 25px;
   border: none;
