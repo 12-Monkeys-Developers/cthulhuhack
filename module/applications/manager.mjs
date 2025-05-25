@@ -12,7 +12,7 @@ export default class CtHackManager extends HandlebarsApplicationMixin(Applicatio
     super()
     Hooks.on("updateSetting", () => game.system.applicationManager.render(false))
     Hooks.on("updateActor", () => game.system.applicationManager.render(false))
-    Hooks.on("renderPlayerList", () => game.system.applicationManager.render(false))
+    Hooks.on("renderPlayers", () => game.system.applicationManager.render(false))
   }
 
   static DEFAULT_OPTIONS = {
