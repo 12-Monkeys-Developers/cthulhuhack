@@ -1,7 +1,7 @@
 import { highlightSuccessFailure } from "./chat.mjs";
 import { configureDiceSoNice } from "./dice.mjs";
 import { Macros } from "./macros.mjs";
-import { SearchChat } from "./applications/search/research.mjs";
+import { SearchChat } from "./applications/research.mjs";
 
 export function registerHooks() {
   Hooks.once("setup", function () {

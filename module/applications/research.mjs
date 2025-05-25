@@ -1,4 +1,4 @@
-import { SYSTEM } from "../../config/system.mjs"
+import { SYSTEM } from "../config/system.mjs"
 
 export class SearchChat {
   /**
@@ -114,13 +114,13 @@ export class SearchChat {
 
     // g for global, multiple replacements, i for case insensitive; the rest is for not replacing the html markup's content when the pattern appears in it
     const regexPattern = await new RegExp("(" + searchPattern + ")(?![^<]*>)", "gim")
-    let isAlreadyHighlighted = CONFIG.foundry.applications.ux.TextEditor.implementation.enrichers.findIndex((element) => element.namePattern === searchPattern)
+    let isAlreadyHighlighted = CONFIG.TextEditor.enrichers.findIndex((element) => element.namePattern === searchPattern)
     if (isAlreadyHighlighted >= 0) {
       // Remove
-      CONFIG.foundry.applications.ux.TextEditor.implementation.enrichers.splice(isAlreadyHighlighted, 1)
+      CONFIG.TextEditor.enrichers.splice(isAlreadyHighlighted, 1)
     } else {
       // Add
-      CONFIG.foundry.applications.ux.TextEditor.implementation.enrichers = await CONFIG.foundry.applications.ux.TextEditor.implementation.enrichers.concat([
+      CONFIG.TextEditor.enrichers = await CONFIG.TextEditor.enrichers.concat([
         {
           pattern: regexPattern,
           namePattern: searchPattern,
@@ -133,10 +133,11 @@ export class SearchChat {
       ])
     }
 
-    const journals = Object.values(ui.windows).filter((x) => x instanceof foundry.appv1.sheets.JournalSheet)
+    const journals = foundry.applications.instances.values().filter((x) => x.document instanceof JournalEntry)
+
 
     for (const journal of journals) {
-      ui.windows[journal.appId].render(true)
+      foundry.applications.instances.get(journal.id).render(true)
     }
 
     // Update the chat message
@@ -165,6 +166,9 @@ export class SearchChat {
  * @extends {Dialog}
  */
 export class SearchDialog extends Dialog {
+
+  static _warnedAppV1 = true
+
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {

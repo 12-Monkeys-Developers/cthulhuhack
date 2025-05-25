@@ -1,5 +1,5 @@
 import { SYSTEM } from "../../config/system.mjs";
-import { SearchChat } from "../search/research.mjs";
+import { SearchChat } from "../research.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications

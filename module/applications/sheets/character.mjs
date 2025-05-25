@@ -1,5 +1,5 @@
 import { formatDate } from "../../utils.mjs"
-import { SearchChat } from "../search/research.mjs"
+import { SearchChat } from "../research.mjs"
 
 /**
  * @extends {ActorSheet}

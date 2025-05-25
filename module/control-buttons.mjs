@@ -1,4 +1,4 @@
-import { SearchDialog } from "./applications/search/research.mjs"
+import { SearchDialog } from "./applications/research.mjs"
 /**
  * Menu spécifique au système
  */

@@ -122,7 +122,7 @@ a.inline-roll {
   color: var(--content-link-color);
 }
 .chat-message .roll.die {
-  color: white;
+  color: var(--font-color-primary);
 }
 .chat-message .roll.die.discarded {
   color: black;
@@ -203,7 +203,8 @@ a.inline-roll {
 .search-chat h3 {
   padding-top: 10px;
   margin: 10px;
-  font-weight: bold;
+  color: var(--font-color-primary);
+  font-size: 1rem;
   text-align: center;
   border: none;
 }
@@ -228,12 +229,15 @@ a.inline-roll {
   margin-top: 5px;
   border: none;
   background: none;
+  color: var(--font-color-primary);
 }
 .search-chat .result .content-link {
+  color: var(--font-color-primary);
   background: none;
   border: none;
 }
 .search-chat .btn-highlight button {
+  color: var(--font-color-primary);
   padding: 5px;
   margin: 5px;
   line-height: 18px;
@@ -357,7 +361,7 @@ a.inline-roll {
   cursor: url("../ui/dice/d20-red.svg") 32 24, pointer;
 }
 .cthack.sheet.actor.character .no-dice {
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.actor.character .dice-d4 {
   background-image: url("systems/cthack/ui/dice/d4-grey.svg");
@@ -666,17 +670,17 @@ a.inline-roll {
   margin: 0px 0px;
 }
 .cthack.sheet.actor.character .sheet-body .prosemirror menu button {
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.actor.character .sheet-body .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.actor.character .sheet-body .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.actor.character .sheet-body .equipment {
   display: grid;
@@ -1091,17 +1095,17 @@ a.inline-roll {
   margin: 0px 0px;
 }
 .cthack.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu button {
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.actor.opponent .sheet-body .description-editable .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.actor.opponent .sheet-body .description {
   padding: 0 10px 0 10px;
@@ -1376,17 +1380,17 @@ a.inline-roll {
   margin: 0px 0px;
 }
 .cthack.sheet.item.archetype .item-description .prosemirror menu button {
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.archetype .item-description .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.archetype .item-description .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.archetype .data-group .select-dice {
   color: black;
@@ -1502,17 +1506,17 @@ a.inline-roll {
   margin: 0px 0px;
 }
 .cthack.sheet.item.magic .item-description .prosemirror menu button {
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.magic .item-description .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.magic .item-description .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.ability .editable input,
 .cthack.sheet.item.ability .editable select {
@@ -1614,17 +1618,17 @@ a.inline-roll {
   margin: 0px 0px;
 }
 .cthack.sheet.item.ability .item-description .prosemirror menu button {
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.ability .item-description .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.ability .item-description .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.item .editable input,
 .cthack.sheet.item.item .editable select {
@@ -1723,17 +1727,17 @@ a.inline-roll {
   margin: 0px 0px;
 }
 .cthack.sheet.item.item .item-description .prosemirror menu button {
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.item .item-description .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.item .item-description .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.definition .editable input,
 .cthack.sheet.item.definition .editable select {
@@ -1825,17 +1829,17 @@ a.inline-roll {
   margin: 0px 0px;
 }
 .cthack.sheet.item.definition .item-description .prosemirror menu button {
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.definition .item-description .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.definition .item-description .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.weapon .editable input,
 .cthack.sheet.item.weapon .editable select {
@@ -1935,17 +1939,17 @@ a.inline-roll {
   margin: 0px 0px;
 }
 .cthack.sheet.item.weapon .item-description .prosemirror menu button {
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.weapon .item-description .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.weapon .item-description .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.attack .editable input,
 .cthack.sheet.item.attack .editable select {
@@ -2050,17 +2054,17 @@ a.inline-roll {
   margin: 0px 0px;
 }
 .cthack.sheet.item.attack .item-description .prosemirror menu button {
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.attack .item-description .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.attack .item-description .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.opponentAbility .editable input,
 .cthack.sheet.item.opponentAbility .editable select {
@@ -2168,17 +2172,17 @@ a.inline-roll {
   margin: 0px 0px;
 }
 .cthack.sheet.item.opponentAbility .item-description .prosemirror menu button {
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.opponentAbility .item-description .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
-  color: white;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.opponentAbility .item-description .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
-  color: white;
+  color: var(--font-color-primary);
 }
 .application.dialog.cthack {
   color: var(--color-light-1);
