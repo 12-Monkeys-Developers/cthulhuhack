@@ -100,6 +100,16 @@ a.inline-roll {
   color: var(--font-color-primary);
   padding: 5px;
 }
+.chat-message .message-content h1 {
+  font-size: 1.5rem;
+  color: var(--font-color-primary);
+  margin: 0;
+}
+.chat-message .message-content h3 {
+  font-size: 1.2rem;
+  color: var(--font-color-primary);
+  margin: 0;
+}
 .chat-message .table-draw .table-description {
   color: var(--font-color-primary);
 }
@@ -336,6 +346,7 @@ a.inline-roll {
   display: none;
 }
 .cthack h4.ask-roll-title {
+  font-size: 1rem;
   margin: 0;
   padding: 5px 0 5px 0;
 }
