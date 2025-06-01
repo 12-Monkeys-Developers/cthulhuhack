@@ -1,3 +1,6 @@
+5.0.0
+- Compatibility with Foundry V13
+
 4.4.0
 - Update compendiums Archetype and Abilities to revised edition
 - Enrichers : fix char instead of cha

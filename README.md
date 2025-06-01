@@ -27,7 +27,7 @@ Fonctionnalités
 version : 1.2.4
 
 Modules supportés avec une adaptation spécifique :
-- Token Action HUD
+- Token Action HUD Classic
 - Dice So Nice
 
 Actor
@@ -111,7 +111,7 @@ Features
 version : 1.2.4
 
 Supported modules with specific adaptation:
-- Token Action HUD
+- Token Action HUD Classic
 - Dice So Nice
 
 Actor
