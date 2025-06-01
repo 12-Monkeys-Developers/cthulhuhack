@@ -1,0 +1,59 @@
+.cthack-sidebar {
+  flex-direction: column;
+  overflow-y: auto;
+  color: var(--color-text-secondary);
+  &.active { // Excluded from popout
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  section {
+    gap: 0.5rem;
+    h4 {
+      margin: 0;
+    }
+    a.button {
+      flex-basis: 2rem;
+    }
+  }
+
+  // Info Section
+  .info {
+    font-size: var(--font-size-13);
+    .title {
+      margin: 0;
+      font-size: var(--font-size-32);
+      text-align: center;
+      letter-spacing: -0.3px;
+    }
+    .subtitle {
+      margin: -0.5rem 0 0;
+      color: var(--color-text-subtle);
+      text-align: center;
+    }
+    > div {
+      display: flex;
+      justify-content: space-between;
+      .label {
+        color: var(--color-text-emphatic);
+      }
+      .value {
+        color: var(--color-text-secondary);
+      }
+    }
+    .notification-pip {
+      margin-left: 0.25rem;
+      color:  var(--color-text-accent);
+      position: initial;
+    }
+  }
+}
+
+#cthack-popout {
+  overflow-y: hidden;
+  .window-content {
+    gap: 1.5rem;
+    overflow-y: auto;
+  }
+}

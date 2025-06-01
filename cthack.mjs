@@ -7,7 +7,6 @@ import { registerSystemSettings } from "./module/settings.mjs"
 import { CthackUtils } from "./module/utils.mjs"
 import { Macros } from "./module/macros.mjs"
 import { registerHooks } from "./module/hooks.mjs"
-import initControlButtons from "./module/control-buttons.mjs"
 import { setupTextEnrichers } from "./module/enrichers.mjs"
 
 import { SYSTEM } from "./module/config/system.mjs"
@@ -78,7 +77,7 @@ Hooks.once("init", function () {
   CONFIG.Item.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
   CONFIG.JournalEntry.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
   CONFIG.RollTable.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
-  CONFIG.Scene.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"  
+  CONFIG.Scene.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
   CONFIG.Macro.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
 
   // Register sheet application classes
@@ -111,8 +110,13 @@ Hooks.once("init", function () {
   // Register Hooks
   registerHooks()
 
-  // Init new buttons for the system
-  initControlButtons()
+  // Add a custom sidebar tab
+  CONFIG.ui.sidebar.TABS.cthack = {
+      active: false,
+			icon: `cthack`,
+			tooltip: `Cthulhu Hack`,
+  }
+  CONFIG.ui.cthack = applications.CthackSidebarMenu
 
   // Setup Text Enrichers
   setupTextEnrichers()
@@ -128,11 +132,10 @@ Hooks.once("init", function () {
     const title = anchor.dataset.rollTitle
     const avantage = anchor.dataset.rollAvantage
     applications.CthulhuHackManager.askRollForAll(type, target, title, avantage)
-  })  
+  })
 
   // Other Document Configuration
   CONFIG.ChatMessage.documentClass = documents.CtHackChatMessage
-
 
   // Search
   foundry.documents.collections.Journal.registerSheet(game.system.id, FullsearchJournalSheet, { makeDefault: false })

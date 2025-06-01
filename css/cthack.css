@@ -25,23 +25,6 @@
   src: url("../ui/fonts/EBGaramond-VariableFont_wght.ttf");
 }
 /* Global styles */
-/*.window-app {
-  font-family: var(--font-primary);
-  .window-content {
-    background-image: url("../ui/background-white.webp");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-
-    /* Item in an opened compendium 
-    .compendium.directory .directory-list .directory-item {
-      border: none;
-      &:hover {
-        background-color: #59564c;
-        color: #ffffff;
-      }
-    }
-  }
-}*/
 #logo {
   content: var(--logo-standard);
   width: 50px;
@@ -62,10 +45,6 @@
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  display: flex;
-  position: relative;
-  filter: grayscale(1);
-  transition: 0.3s;
 }
 a.inline-roll {
   background: none;
@@ -266,6 +245,61 @@ a.inline-roll {
 .search-dialog input[type="text"].searchtext {
   border: 1px solid #6e0000;
   margin: 10px 0 10px 0;
+}
+.cthack-sidebar {
+  flex-direction: column;
+  overflow-y: auto;
+  color: var(--color-text-secondary);
+}
+.cthack-sidebar.active {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.cthack-sidebar section {
+  gap: 0.5rem;
+}
+.cthack-sidebar section h4 {
+  margin: 0;
+}
+.cthack-sidebar section a.button {
+  flex-basis: 2rem;
+}
+.cthack-sidebar .info {
+  font-size: var(--font-size-13);
+}
+.cthack-sidebar .info .title {
+  margin: 0;
+  font-size: var(--font-size-32);
+  text-align: center;
+  letter-spacing: -0.3px;
+}
+.cthack-sidebar .info .subtitle {
+  margin: -0.5rem 0 0;
+  color: var(--color-text-subtle);
+  text-align: center;
+}
+.cthack-sidebar .info > div {
+  display: flex;
+  justify-content: space-between;
+}
+.cthack-sidebar .info > div .label {
+  color: var(--color-text-emphatic);
+}
+.cthack-sidebar .info > div .value {
+  color: var(--color-text-secondary);
+}
+.cthack-sidebar .info .notification-pip {
+  margin-left: 0.25rem;
+  color: var(--color-text-accent);
+  position: initial;
+}
+#cthack-popout {
+  overflow-y: hidden;
+}
+#cthack-popout .window-content {
+  gap: 1.5rem;
+  overflow-y: auto;
 }
 /* Styles limited to cthack sheets */
 .cthack .window-content {

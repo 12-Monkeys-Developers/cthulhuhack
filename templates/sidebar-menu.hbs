@@ -1,0 +1,32 @@
+<section class="cthack info flexcol">
+  <h1 class="title">Cthulhu Hack</h1>
+  <p class="subtitle version">{{version}}</p>
+</section>
+
+<section class="cthack support flexcol">
+  <h4 class="divider">{{localize "CTHACK.Sidebar.support"}}</h4>
+  <a class="button" href="https://discord.gg/rXSJTuY" rel="nofollow noopener" target="_blank" data-tooltip="{{localize 'CTHACK.Sidebar.discordSingesTooltip'}}">
+    <i class="fa-solid fa-landmark" inert></i>
+    {{localize "CTHACK.Sidebar.discordSinges"}}
+  </a>
+  <a class="button" href="https://discord.gg/pPSDNJk" rel="nofollow noopener" target="_blank" data-tooltip="{{localize 'CTHACK.Sidebar.discordLaFonderieTooltip'}}">
+    <i class="fa-solid fa-landmark" inert></i>
+    {{localize "CTHACK.Sidebar.discordLaFonderie"}}
+  </a>
+</section>
+
+{{#if user.isGM}}
+  <section class="cthack system flexcol">
+    <h4 class="divider">{{localize "CTHACK.Sidebar.menu"}}</h4>
+
+    <button type="button" data-action="openApp" data-app="gmmanager" data-tooltip="{{localize 'CTHACK.Sidebar.gmManagerTooltip'}}">
+      <i class="fa-solid fa-users" inert></i>
+      {{localize "CTHACK.Sidebar.gmManager"}}
+    </button>
+
+    <button type="button" data-action="openApp" data-app="search" data-tooltip="{{localize 'CTHACK.Sidebar.searchTooltip'}}">
+      <i class="fas fa-magnifying-glass" inert></i>
+      {{localize "CTHACK.Sidebar.search"}}
+    </button>
+  </section>
+{{/if}}
