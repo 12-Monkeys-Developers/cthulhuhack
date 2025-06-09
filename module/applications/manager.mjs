@@ -12,7 +12,7 @@ export default class CtHackManager extends HandlebarsApplicationMixin(Applicatio
     super()
     Hooks.on("updateSetting", () => game.system.applicationManager.render(false))
     Hooks.on("updateActor", () => game.system.applicationManager.render(false))
-    Hooks.on("renderPlayerList", () => game.system.applicationManager.render(false))
+    Hooks.on("renderPlayers", () => game.system.applicationManager.render(false))
   }
 
   static DEFAULT_OPTIONS = {
@@ -134,10 +134,9 @@ export default class CtHackManager extends HandlebarsApplicationMixin(Applicatio
           break
       }
     }
-
     ChatMessage.create({
       user: game.user.id,
-      content: await renderTemplate(`systems/cthack/templates/chat/ask-roll.hbs`, {
+      content: await foundry.applications.handlebars.renderTemplate(`systems/cthack/templates/chat/ask-roll.hbs`, {
         title: title !== null ? title : "",
         text: text,
         rollType: type,
@@ -164,7 +163,7 @@ export default class CtHackManager extends HandlebarsApplicationMixin(Applicatio
 
     ChatMessage.create({
       user: game.user.id,
-      content: await renderTemplate(`systems/cthack/templates/chat/ask-roll.hbs`, {
+      content: await foundry.applications.handlebars.renderTemplate(`systems/cthack/templates/chat/ask-roll.hbs`, {
         text: text,
         rollType: type,
         value: value,

@@ -1,11 +1,15 @@
 import { formatDate } from "../../utils.mjs"
-import { SearchChat } from "../search/research.mjs"
+import { SearchChat } from "../research.mjs"
 
 /**
  * @extends {ActorSheet}
  */
-export default class CtHackCharacterSheet extends ActorSheet {
+export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorSheet {
   //#region Overrided methods
+
+  // Variable to check if the appV1 is used : will remove warning
+  // To migrate before V16
+  static _warnedAppV1 = true
 
   constructor(options) {
     super(options)
@@ -104,47 +108,35 @@ export default class CtHackCharacterSheet extends ActorSheet {
 
     // By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
     context.editable = this.actor.isUnlocked
-    context.uneditable = !this.actor.isUnlocked
-
-    // For all items, we enrich the description
+    context.uneditable = !this.actor.isUnlocked    // For all items, we enrich the description
     context.abilities = []
     const abilitiesRaw = this.actor.itemTypes.ability
     for (const item of abilitiesRaw) {
-      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true })
+      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.abilities.push(item)
-    }
-
-    context.magics = []
+    }    context.magics = []
     const magicsRaw = this.actor.itemTypes.magic
     for (const item of magicsRaw) {
-      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true })
+      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.magics.push(item)
-    }
-
-    context.weapons = []
+    }    context.weapons = []
     const weaponsRaw = this.actor.itemTypes.weapon
     for (const item of weaponsRaw) {
-      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true })
+      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.weapons.push(item)
-    }
-
-    context.otheritems = []
+    }    context.otheritems = []
     const otheritemsRaw = this.actor.itemTypes.item
     for (const item of otheritemsRaw) {
-      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true })
+      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.otheritems.push(item)
-    }
-
-    context.conditions = []
+    }    context.conditions = []
     const conditionsRaw = this.actor.itemTypes.definition
     for (const item of conditionsRaw) {
-      item.enrichedDescription = await TextEditor.enrichHTML(item.system.description, { async: true })
+      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.conditions.push(item)
-    }
-
-    context.enrichedBiography = await TextEditor.enrichHTML(this.actor.system.biography, { async: true })
-    context.enrichedNotes = await TextEditor.enrichHTML(this.actor.system.notes, { async: true })
-    context.enrichedEquipment = await TextEditor.enrichHTML(this.actor.system.equipment, { async: true })
+    }    context.enrichedBiography = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.biography, { async: true })
+    context.enrichedNotes = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.notes, { async: true })
+    context.enrichedEquipment = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.equipment, { async: true })
 
     context.isGm = game.user.isGM
     context.hasImage = this.actor.hasImage
@@ -235,8 +227,8 @@ export default class CtHackCharacterSheet extends ActorSheet {
    * @param {*} html
    */
   _contextCharacterMenu(html) {
-    ContextMenu.create(this, html, ".character-contextmenu", this._getCharacterEntryContextOptions())
-    ContextMenu.create(this, html, ".character-sidebar-contextmenu", this._getCharacterSidebarEntryContextOptions())
+    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".character-contextmenu", this._getCharacterEntryContextOptions(), { jQuery: false})
+    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".character-sidebar-contextmenu", this._getCharacterSidebarEntryContextOptions(), { jQuery: false})
   }
 
   /**
@@ -249,14 +241,13 @@ export default class CtHackCharacterSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuSendToChatAll"),
         icon: '<i class="fa-solid fa-users"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           return item.isOwner && item.system.hasDescription
-        },
-        callback: async (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+        },        callback: async (li) => {
+          const item = this.actor.items.get(li.dataset.itemId)
           ChatMessage.create({
             user: game.user.id,
-            content: await renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
+            content: await foundry.applications.handlebars.renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
               item: item,
             }),
           })
@@ -266,15 +257,14 @@ export default class CtHackCharacterSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuSendToChatGM"),
         icon: '<i class="fa-solid fa-user"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           return item.isOwner && item.system.hasDescription && !game.user.isGM
-        },
-        callback: async (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+        },        callback: async (li) => {
+          const item = this.actor.items.get(li.dataset.itemId)
           ChatMessage.create({
             user: game.user.id,
             whisper: ChatMessage.getWhisperRecipients("GM").map((u) => u.id),
-            content: await renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
+            content: await foundry.applications.handlebars.renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
               item: item,
             }),
           })
@@ -284,11 +274,11 @@ export default class CtHackCharacterSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuUse"),
         icon: '<i class="fas fa-check"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           return item.isOwner && item.type === "ability" && item.system.isUsable
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           item.system.use()
           this.render()
         },
@@ -297,11 +287,11 @@ export default class CtHackCharacterSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuResetUse"),
         icon: '<i class="fa-solid fa-0"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           return item.isOwner && item.type === "ability" && item.system.isResetable
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           item.system.resetUse()
           this.render()
         },
@@ -310,11 +300,11 @@ export default class CtHackCharacterSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuIncreaseUse"),
         icon: '<i class="fa-solid fa-plus"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           return item.isOwner && item.type === "ability" && item.system.isIncreaseable
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           item.system.increase()
           this.render()
         },
@@ -323,11 +313,11 @@ export default class CtHackCharacterSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuEdit"),
         icon: '<i class="fas fa-edit"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           return item.isOwner
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           item.sheet.render(true)
         },
       },
@@ -335,11 +325,11 @@ export default class CtHackCharacterSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuDelete"),
         icon: '<i class="fas fa-trash"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           return item.isOwner
         },
         callback: async (li) => {
-          const item = this.actor.items.get(li.data("item-id"))
+          const item = this.actor.items.get(li.dataset.itemId)
           const key = item.system.key
           switch (item.type) {
             case "ability":
@@ -628,7 +618,7 @@ export default class CtHackCharacterSheet extends ActorSheet {
     event.preventDefault()
 
     const li = $(event.currentTarget).parents(".item")
-    const itemId = li.data("item-id")
+    const itemId = li.dataset.itemId
     let item = this.actor.items.get(itemId)
 
     await this.actor.rollMaterial(item, { event: event })

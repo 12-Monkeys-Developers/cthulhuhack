@@ -355,6 +355,9 @@
       "hitPoints": "Hit Points",
       "hitDice": "Hit Dice",
       "wealthDice": "Wealth"
+    },
+    "Menu": {
+      "title": "Cthulhu Hack"
     }
   },
 

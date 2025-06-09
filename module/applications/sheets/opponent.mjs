@@ -1,11 +1,16 @@
 import { SYSTEM } from "../../config/system.mjs";
-import { SearchChat } from "../search/research.mjs";
+import { SearchChat } from "../research.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export default class CtHackOpponentSheet extends ActorSheet {
+export default class CtHackOpponentSheet extends foundry.appv1.sheets.ActorSheet {
+
+  // Variable to check if the appV1 is used : will remove warning
+  // To migrate before V16
+  static _warnedAppV1 = true
+
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -29,30 +34,24 @@ export default class CtHackOpponentSheet extends ActorSheet {
     // By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
     context.editable = this.actor.isUnlocked;
 
-    context.attacks = this.actor.itemTypes.attack;
-
-    context.attacks = [];
+    context.attacks = this.actor.itemTypes.attack;    context.attacks = [];
     const attacksRaw = this.actor.itemTypes.attack;
     for (const attack of attacksRaw) {
-      attack.enrichedDescription = await TextEditor.enrichHTML(attack.system.description, { async: true });
+      attack.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(attack.system.description, { async: true });
       context.attacks.push(attack);
-    }
-
-    context.magics = [];
+    }    context.magics = [];
     const magicsRaw = this.actor.itemTypes.magic;
     for (const magic of magicsRaw) {
-      magic.enrichedDescription = await TextEditor.enrichHTML(magic.system.description, { async: true });
+      magic.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(magic.system.description, { async: true });
       context.magics.push(magic);
-    }
-
-    context.opponentAbilities = [];
+    }    context.opponentAbilities = [];
     const opponentAbilitiesRaw = this.actor.itemTypes.opponentAbility;
     for (const ability of opponentAbilitiesRaw) {
-      ability.enrichedDescription = await TextEditor.enrichHTML(ability.system.description, { async: true });
+      ability.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(ability.system.description, { async: true });
       context.opponentAbilities.push(ability);
     }
 
-    context.enrichedDescription = await TextEditor.enrichHTML(this.actor.system.description, { async: true });
+    context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.description, { async: true });
     context.hasImage = this.actor.hasImage;
     context.hasShortDescription = !!this.actor.system.description;
     context.opponentHitDice = SYSTEM.OPPONENT_HIT_DICE;
@@ -94,7 +93,7 @@ export default class CtHackOpponentSheet extends ActorSheet {
   }
 
   _contextOpponentMenu(html) {
-    ContextMenu.create(this, html, ".opponent-contextmenu", this._getEntryContextOptions());
+    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".opponent-contextmenu", this._getEntryContextOptions(), { jQuery: false});
   }
 
   _getEntryContextOptions() {
@@ -103,11 +102,11 @@ export default class CtHackOpponentSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuUse"),
         icon: '<i class="fas fa-check"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           return item.isOwner && item.type === "opponentAbility" && item.system.isUsable;
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           item.system.use();
           this.render();
         },
@@ -116,11 +115,11 @@ export default class CtHackOpponentSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuResetUse"),
         icon: '<i class="fa-solid fa-0"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           return item.isOwner && item.type === "opponentAbility" && item.system.isResetable;
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           item.system.resetUse();
           this.render();
         },
@@ -129,11 +128,11 @@ export default class CtHackOpponentSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuIncreaseUse"),
         icon: '<i class="fa-solid fa-plus"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           return item.isOwner && item.type === "opponentAbility" && item.system.isIncreaseable;
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           item.system.increase();
           this.render();
         },
@@ -142,11 +141,11 @@ export default class CtHackOpponentSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuEdit"),
         icon: '<i class="fas fa-edit"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           return item.isOwner;
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           item.sheet.render(true);
         },
       },
@@ -154,11 +153,11 @@ export default class CtHackOpponentSheet extends ActorSheet {
         name: game.i18n.localize("CTHACK.ContextMenuDelete"),
         icon: '<i class="fas fa-trash"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           return item.isOwner;
         },
         callback: async (li) => {
-          const item = this.actor.items.get(li.data("item-id"));
+          const item = this.actor.items.get(li.dataset.itemId);
           await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
         },
       },
@@ -214,9 +213,7 @@ export default class CtHackOpponentSheet extends ActorSheet {
     let resultCollection = [];
     game.journal.forEach((doc) => {
       resultCollection.push(...doc.pages.search({ query: searchPattern }));
-    });
-
-    const htmlChat = await renderTemplate("systems/cthack/templates/chat/search-result.hbs", {
+    });    const htmlChat = await foundry.applications.handlebars.renderTemplate("systems/cthack/templates/chat/search-result.hbs", {
       resultCollection: resultCollection,
       pattern: searchPattern,
     });
@@ -293,7 +290,7 @@ export default class CtHackOpponentSheet extends ActorSheet {
     event.stopPropagation();
 
     const li = $(event.currentTarget).parents(".item");
-    const itemId = li.data("item-id");
+    const itemId = li.dataset.itemId;
     let item = this.actor.items.get(itemId);
 
     await this.actor.rollMaterial(item, { event: event });

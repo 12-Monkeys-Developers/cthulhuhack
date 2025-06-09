@@ -45,7 +45,7 @@
   padding-right: 20px;
   font-size: 1rem;
   text-align: center;
-  color: var(--font-color-primary);;
+  color: var(--font-color-primary);
   .data-group {
     display: flex;
     flex-direction: column;
@@ -55,7 +55,8 @@
       text-transform: uppercase;
       margin-bottom: 5px;
     }
-    input, select {
+    input,
+    select {
       height: 40px;
       padding: 0;
     }
@@ -81,23 +82,30 @@
     .editor {
       min-height: 200px;
       scrollbar-width: thin;
-      .editor-content {
-        min-height: 150px;
-        margin: 0px 5px;
-        font-weight: normal;
+    }
+    .editor-content {
+      min-height: 150px;
+      margin: 0px 5px;
+      font-weight: normal;
+    }
+    .prosemirror menu {
+      font-size: 0.8em;
+      li {
+        margin: 0px 0px;
       }
-      .prosemirror menu {
-        font-size: 0.8em;
-        li {
-          margin: 0px 0px;
-          &:hover {
-            border: 2px solid #eea3a3;
-          }
+      button {
+        color: var(--font-color-primary);
+        &:hover {
+          box-shadow: none;
+          background: lightslategray;
+          color: var(--font-color-primary);
+        }
+        &.active {
+          box-shadow: none;
+          background: grey;
+          color: var(--font-color-primary);
         }
       }
-    }
-    .prosemirror menu button {
-      background: var(--color-hover-bg);
     }
   }
 }

@@ -49,7 +49,7 @@
             {{#if @root.hasHD}}<td data-action="resourceOne" data-resource="hitDice">{{character.system.attributes.hitDice.value}}</td>{{/if}}
             {{#if @root.hasHP}}<td>{{character.system.hp.value}}</td>{{/if}}
             {{#if (isEnabled "Adrenaline")}}
-                <td><img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline1.value}}"><img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline2.value}}"></td>
+                <td class="adrenaline"><img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline1.value}}"><img class="adrenaline-img" src="{{getAdrenalineImage character.system.attributes.adrenaline2.value}}"></td>
             {{/if}}
             <td data-action="saveOne" data-save="str">{{character.system.saves.str.value}}</td>
             <td data-action="saveOne" data-save="dex">{{character.system.saves.dex.value}}</td>

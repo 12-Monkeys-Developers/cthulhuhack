@@ -1,4 +1,9 @@
-export default class CtHackItemSheet extends ItemSheet {
+export default class CtHackItemSheet extends foundry.appv1.sheets.ItemSheet {
+
+  // Variable to check if the appV1 is used : will remove warning
+  // To migrate before V16
+  static _warnedAppV1 = true
+
   /** @inheritdoc */
   static get defaultOptions() {
     const options = super.defaultOptions;
@@ -25,7 +30,7 @@ export default class CtHackItemSheet extends ItemSheet {
     context.systemFields = this.document.system.schema.fields,
     // By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
     context.editable = this.isEditable;
-    context.enrichedDescription = await TextEditor.enrichHTML(context.item.system.description, { async: true });
+    context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.item.system.description, { async: true });
     context.system = this.document.system;
     context.diceValues = SYSTEM.DICE_VALUES;
     context.diceMaxValues = SYSTEM.DICE_MAX_VALUES;

@@ -357,6 +357,19 @@
       "hitPoints": "Points de Vie",
       "hitDice": "Dé de Vie",
       "wealthDice": "Richesse"      
+    },
+    "Sidebar": {
+      "title": "Cthulhu Hack",
+      "support": "Support",
+      "discordSinges":  "Discord des XII Singes",
+      "discordSingesTooltip": "Rejoignez le Discord des XII Singes pour discuter du système Cthulhu Hack et trouver du support dans le canal Foundry.",
+      "discordLaFonderie": "Discord de la Fonderie",
+      "discordLaFonderieTooltip": "Rejoignez le serveur francophone dédié à Foundry VTT et son canal Cthulhu Hack",
+      "menu": "Système",
+      "gmManager": "Gestionnaire de joueurs",
+      "gmManagerTooltip": "Ouvre le gestionnaire de joueurs",
+      "search": "Recherche",
+      "searchTooltip": "Ouvre la fenêtre de recherche"
     }
   },
 
