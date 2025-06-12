@@ -1,5 +1,6 @@
 import { formatDate } from "../../utils.mjs"
 import { SearchChat } from "../research.mjs"
+import { CTHACK } from "../../config.mjs"
 
 /**
  * @extends {ActorSheet}
@@ -108,33 +109,38 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
 
     // By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
     context.editable = this.actor.isUnlocked
-    context.uneditable = !this.actor.isUnlocked    // For all items, we enrich the description
+    context.uneditable = !this.actor.isUnlocked // For all items, we enrich the description
     context.abilities = []
     const abilitiesRaw = this.actor.itemTypes.ability
     for (const item of abilitiesRaw) {
       item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.abilities.push(item)
-    }    context.magics = []
+    }
+    context.magics = []
     const magicsRaw = this.actor.itemTypes.magic
     for (const item of magicsRaw) {
       item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.magics.push(item)
-    }    context.weapons = []
+    }
+    context.weapons = []
     const weaponsRaw = this.actor.itemTypes.weapon
     for (const item of weaponsRaw) {
       item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.weapons.push(item)
-    }    context.otheritems = []
+    }
+    context.otheritems = []
     const otheritemsRaw = this.actor.itemTypes.item
     for (const item of otheritemsRaw) {
       item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.otheritems.push(item)
-    }    context.conditions = []
+    }
+    context.conditions = []
     const conditionsRaw = this.actor.itemTypes.definition
     for (const item of conditionsRaw) {
       item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.conditions.push(item)
-    }    context.enrichedBiography = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.biography, { async: true })
+    }
+    context.enrichedBiography = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.biography, { async: true })
     context.enrichedNotes = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.notes, { async: true })
     context.enrichedEquipment = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.equipment, { async: true })
 
@@ -164,7 +170,7 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
     context.hasLostHitDice = this.actor.system.attributes.hitDice.value !== this.actor.system.attributes.hitDice.max
     context.hasLostWealthDice = this.actor.system.attributes.wealthDice.value !== this.actor.system.attributes.wealthDice.max
 
-    console.debug("Character Sheet Context", context)
+    if (CTHACK.debug) console.debug("Character Sheet Context", context)
     return context
   }
 
@@ -191,7 +197,11 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
     html.find(".damage.rollable").click(this._onDamagedRoll.bind(this))
 
     // Roll for item in inventory
-    html.find(".fa-dice-d20").click(this._onMaterialRoll.bind(this))
+    html.find(".fa-dice-d20.weapon").click(this._onMaterialRoll.bind(this))
+    html.find(".fa-dice-d20.otherItem").click(this._onMaterialRoll.bind(this))
+
+    // Roll for sanity
+    html.find(".fa-dice-d20.sanity").click(this._onSanityRoll.bind(this))
 
     // Wealth roll if the option is enabled
     if (game.settings.get("cthack", "Wealth") == "resource") {
@@ -227,8 +237,8 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
    * @param {*} html
    */
   _contextCharacterMenu(html) {
-    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".character-contextmenu", this._getCharacterEntryContextOptions(), { jQuery: false})
-    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".character-sidebar-contextmenu", this._getCharacterSidebarEntryContextOptions(), { jQuery: false})
+    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".character-contextmenu", this._getCharacterEntryContextOptions(), { jQuery: false })
+    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".character-sidebar-contextmenu", this._getCharacterSidebarEntryContextOptions(), { jQuery: false })
   }
 
   /**
@@ -243,7 +253,8 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
         condition: (li) => {
           const item = this.actor.items.get(li.dataset.itemId)
           return item.isOwner && item.system.hasDescription
-        },        callback: async (li) => {
+        },
+        callback: async (li) => {
           const item = this.actor.items.get(li.dataset.itemId)
           ChatMessage.create({
             user: game.user.id,
@@ -259,7 +270,8 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
         condition: (li) => {
           const item = this.actor.items.get(li.dataset.itemId)
           return item.isOwner && item.system.hasDescription && !game.user.isGM
-        },        callback: async (li) => {
+        },
+        callback: async (li) => {
           const item = this.actor.items.get(li.dataset.itemId)
           ChatMessage.create({
             user: game.user.id,
@@ -617,13 +629,31 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
   async _onMaterialRoll(event) {
     event.preventDefault()
 
-    const li = $(event.currentTarget).parents(".item")
+    const li = event.currentTarget.closest(".item")
+    if (!li) return
     const itemId = li.dataset.itemId
-    let item = this.actor.items.get(itemId)
+    if (!itemId) return
+    const item = this.actor.items.get(itemId)
 
     await this.actor.rollMaterial(item, { event: event })
   }
 
+
+
+  /**
+   * Handles the event when a magic roll is triggered.
+   * @param {Event} event - The event object.
+   * @returns {Promise<void>} - A promise that resolves when the function finishes executing.
+   */
+  async _onSanityRoll(event) {
+    event.preventDefault()
+
+    const li = event.currentTarget.closest(".item")
+    const itemId = li.dataset.itemId
+    const item = this.actor.items.get(itemId)
+
+    await this.actor.rollSanity(item, { event: event })
+  }
   /**
    * @name _onDamagedRoll
    * @description Callback on Damaged roll

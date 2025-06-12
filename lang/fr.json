@@ -25,10 +25,10 @@
     "Archetype": "Archétype",
     "SaveStr": "Force",
     "SaveStrAbbr": "For",
-    "SaveStrDesc": "Contre dégâts physiques inesquivables, combat rapproché, soulever un objet lourd, enfoncer une porte sans se blesser", 
+    "SaveStrDesc": "Contre dégâts physiques inesquivables, combat rapproché, soulever un objet lourd, enfoncer une porte sans se blesser",
     "SaveDex": "Dextérité",
     "SaveDexAbbr": "Dex",
-    "SaveDexDesc": "Contre dégâts physiques qui peuvent être esquivés, combat à distance, effectuer une manipulation complexe", 
+    "SaveDexDesc": "Contre dégâts physiques qui peuvent être esquivés, combat à distance, effectuer une manipulation complexe",
     "SaveCon": "Constitution",
     "SaveConAbbr": "Con",
     "SaveConDesc": "Contre poison, maladie, mort, torture, explosions, endurer la fatigue sans s’endormir, marcher longtemps sans repos",
@@ -248,6 +248,7 @@
       "titleDamage": "Jet de dégâts",
       "titleAttack": "Jet d'attaque",
       "titleMaterial": "Jet de matériel",
+      "titleSanity": "Jet de sanité",
       "titleStandard": "Jet standard"
     },
     "Roll": {
@@ -257,6 +258,7 @@
       "damage": "Jet de dégâts <br> {item}",
       "attack": "Jet d'attaque <br> {item}",
       "material": "Jet de matériel <br> {material}",
+      "sanity": "Jet de sanité",
       "roll": "Lancer",
       "adversite": "Adversité",
       "avantagesDesavantages": "Avantages et désavantages",
@@ -299,6 +301,7 @@
       "ressource": "Ressource",
       "sauvegarde": "Sauvegarde",
       "material": "Matériel",
+      "sanity": "Sanité",
       "modificateur": "Modificateur",
       "modificateurs": "Modificateurs",
       "jet": "Jet de "
@@ -356,12 +359,12 @@
       "sanity": "Santé mentale",
       "hitPoints": "Points de Vie",
       "hitDice": "Dé de Vie",
-      "wealthDice": "Richesse"      
+      "wealthDice": "Richesse"
     },
     "Sidebar": {
       "title": "Cthulhu Hack",
       "support": "Support",
-      "discordSinges":  "Discord des XII Singes",
+      "discordSinges": "Discord des XII Singes",
       "discordSingesTooltip": "Rejoignez le Discord des XII Singes pour discuter du système Cthulhu Hack et trouver du support dans le canal Foundry.",
       "discordLaFonderie": "Discord de la Fonderie",
       "discordLaFonderieTooltip": "Rejoignez le serveur francophone dédié à Foundry VTT et son canal Cthulhu Hack",

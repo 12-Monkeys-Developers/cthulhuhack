@@ -122,7 +122,7 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
   /**
    * Perform a roll based on the specified roll type and target.
    *
-   * @param {string} rollType - The type of roll to perform (e.g., SAVE, WEAPON, RESOURCE, DAMAGE, MATERIAL).
+   * @param {string} rollType - The type of roll to perform (e.g., SAVE, WEAPON, RESOURCE, DAMAGE, MATERIAL, SANITY).
    * @param {string} rollTarget - The target of the roll, which can be a save, attribute, or item. If the roll is a damage roll, this is the id of the item.
    * @param {Object} [options={}] - Additional options for the roll.
    * @param {string} [options.rollAdvantage="="] - The advantage or disadvantage for the roll. If there is an avantage (+), a disadvantage (-), a double advantage (++), a double disadvantage (--) or a normal roll (=).
@@ -150,6 +150,9 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
         opponentTarget = game.user.targets.first()
         break
       case ROLL_TYPE.MATERIAL:
+        rollValue = this.parent.items.get(rollTarget).system.dice
+        break
+      case ROLL_TYPE.SANITY:
         rollValue = this.parent.items.get(rollTarget).system.dice
         break
       default:
@@ -196,6 +199,14 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
 
     // Perte de ressource pour un jet de matériel
     if (rollType === ROLL_TYPE.MATERIAL && roll.resultType === "failure") {
+      const item = this.parent.items.get(rollTarget)
+      const value = item.system.dice
+      const newValue = CthackUtils.findLowerDice(value)
+      await item.update({ "system.dice": newValue })
+    }
+
+    // Perte de ressource pour un jet de sanité
+    if (rollType === ROLL_TYPE.SANITY && roll.resultType === "failure") {
       const item = this.parent.items.get(rollTarget)
       const value = item.system.dice
       const newValue = CthackUtils.findLowerDice(value)

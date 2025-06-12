@@ -118,6 +118,30 @@ export default class CtHackActor extends Actor {
   }
 
   /**
+   * Roll a Sanity dice
+   * @param {Item} item         The item used for the roll
+   * @param {Object} options      Options which configure how resource tests are rolled
+   * @return {Promise<Roll>}      A Promise which resolves to the created Roll instance
+   */
+  async rollSanity(item, options = {}) {
+    const dice = item.system.dice
+
+    if (CTHACK.debug) console.log(`${LOG_HEAD}Roll dice ${dice} for sanity ${item.name}`)
+
+    // Sanity without resource
+    if (item.system.dice === "") {
+      return ui.notifications.warn(game.i18n.format("MACROS.ObjectWithoutResource", { itemName: item.name }))
+    }
+    // Sanity with resource at 0
+    if (item.system.dice === "0") {
+      return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: item.name }))
+    }
+
+    if (this.type === "character") return await this.system.roll(ROLL_TYPE.SANITY, item.id)
+    if (this.type === "opponent") return await this.system.rollSanity(item.id)
+  }
+
+  /**
    * @name useAbility
    * @description 		Handles ability use
    * 						Decreases the usage left by 1

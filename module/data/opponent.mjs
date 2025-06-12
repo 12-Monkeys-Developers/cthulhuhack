@@ -1,5 +1,6 @@
 import CtHackRoll from "../documents/roll.mjs"
 import { ROLL_TYPE } from "../config/system.mjs"
+import { CthackUtils } from "../utils.mjs"
 export default class CtHackOpponent extends foundry.abstract.DataModel {
   static defineSchema() {
     const fields = foundry.data.fields
@@ -25,7 +26,7 @@ export default class CtHackOpponent extends foundry.abstract.DataModel {
    * @param {number} rollTarget The name of the attack
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
-  async roll(rollValue, rollTarget) {
+  async rollAttack(rollValue, rollTarget) {
     let roll = await CtHackRoll.prompt({
       rollType: ROLL_TYPE.ATTACK,
       rollValue,
@@ -36,5 +37,27 @@ export default class CtHackOpponent extends foundry.abstract.DataModel {
     })
     if (!roll) return null
     await roll.toMessage({}, { rollMode: roll.options.rollMode })
+  }
+
+  async rollSanity(rollTarget) {
+    const rollValue = this.parent.items.get(rollTarget).system.dice
+    let roll = await CtHackRoll.prompt({
+      rollType: ROLL_TYPE.SANITY,
+      rollValue,
+      rollTarget,
+      actorId: this.parent.id,
+      actorName: this.parent.name,
+      actorImage: this.parent.img,
+    })
+    if (!roll) return null
+    await roll.toMessage({}, { rollMode: roll.options.rollMode })
+
+    // Perte de ressource pour un jet de sanité
+    if (roll.resultType === "failure") {
+      const item = this.parent.items.get(rollTarget)
+      const value = item.system.dice
+      const newValue = CthackUtils.findLowerDice(value)
+      await item.update({ "system.dice": newValue })
+    }
   }
 }

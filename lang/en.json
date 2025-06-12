@@ -248,14 +248,17 @@
       "titleDamage": "Damage Roll",
       "titleAttack": "Attack Roll",
       "titleMaterial": "Material Roll",
+      "titleSanity": "Sanity Roll",
       "titleStandard": "Standard Roll"
     },
     "Roll": {
       "save": "Save Roll <br> {save}",
+      "weapon": "Weapon Roll : {item} <br> Save : {save} <br>",
       "resource": "Resource Roll <br> {resource}",
       "damage": "Damage Roll <br> {item}",
       "attack": "Attack Roll <br> {item}",
       "material": "Material Roll <br> {material}",
+      "sanity": "Sanity Roll",
       "roll": "Roll",
       "adversite": "Opponent",
       "avantagesDesavantages": "Advantages and disadvantages",
@@ -298,7 +301,9 @@
       "ressource": "Resource",
       "sauvegarde": "Save",
       "material": "Material",
+      "sanity": "Sanity",
       "modificateur": "Modifier",
+      "modificateurs": "Modifiers",
       "jet": "Roll of "
     },
     "Warning": {
@@ -356,8 +361,18 @@
       "hitDice": "Hit Dice",
       "wealthDice": "Wealth"
     },
-    "Menu": {
-      "title": "Cthulhu Hack"
+    "Sidebar": {
+      "title": "Cthulhu Hack",
+      "support": "Support",
+      "discordSinges": "Discord XII Singes",
+      "discordSingesTooltip": "Join the Discord XII Singes to discuss the Cthulhu Hack system and find support in the Foundry channel.",
+      "discordLaFonderie": "Discord de la Fonderie",
+      "discordLaFonderieTooltip": "Join the French-speaking server dedicated to Foundry VTT and its Cthulhu Hack channel.",
+      "menu": "System",
+      "gmManager": "Players Manager",
+      "gmManagerTooltip": "Open players manager",
+      "search": "Search",
+      "searchTooltip": "Open search window"
     }
   },
 

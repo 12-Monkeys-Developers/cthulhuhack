@@ -32,6 +32,10 @@ export default class CtHackRoll extends Roll {
     return this.type === ROLL_TYPE.MATERIAL
   }
 
+  get isSanity() {
+    return this.type === ROLL_TYPE.SANITY
+  }
+
   get target() {
     return this.options.target
   }
@@ -148,6 +152,10 @@ export default class CtHackRoll extends Roll {
         label = this.target
         text = game.i18n.format("CTHACK.Roll.material", { material: label })
         break
+      case ROLL_TYPE.SANITY:
+        label = this.target
+        text = game.i18n.localize("CTHACK.Roll.sanity")
+        break
     }
     return text
   }
@@ -227,8 +235,8 @@ export default class CtHackRoll extends Roll {
       damageDice = options.rollValue
     }
 
-    // Material roll
-    if (options.rollType === ROLL_TYPE.MATERIAL) {
+    // Material roll or Sanity roll
+    if (options.rollType === ROLL_TYPE.MATERIAL || options.rollType === ROLL_TYPE.SANITY) {
       options.rollTarget = game.actors.get(options.actorId).items.get(options.rollTarget).name
     }
 
@@ -285,6 +293,7 @@ export default class CtHackRoll extends Roll {
       isDamage: options.rollType === ROLL_TYPE.DAMAGE,
       isAttack: options.rollType === ROLL_TYPE.ATTACK,
       isMaterial: options.rollType === ROLL_TYPE.MATERIAL,
+      isSanity: options.rollType === ROLL_TYPE.SANITY,
       rollModes,
       fieldRollMode,
       defaultRollMode,
@@ -439,7 +448,7 @@ export default class CtHackRoll extends Roll {
     }
 
     // Formula for a resource roll or a material roll
-    if (options.rollType === ROLL_TYPE.RESOURCE || options.rollType === ROLL_TYPE.MATERIAL) {
+    if (options.rollType === ROLL_TYPE.RESOURCE || options.rollType === ROLL_TYPE.MATERIAL || options.rollType === ROLL_TYPE.SANITY) {
       let dice = formula
       switch (rollContext.avantages) {
         case "avantage":
@@ -508,6 +517,8 @@ export default class CtHackRoll extends Roll {
       resultType = roll.total === 1 || roll.total === 2 ? "failure" : "success"
     } else if (options.rollType === ROLL_TYPE.MATERIAL) {
       resultType = roll.total === 1 || roll.total === 2 ? "failure" : "success"
+    } else if (options.rollType === ROLL_TYPE.SANITY) {
+      resultType = roll.total === 1 || roll.total === 2 ? "failure" : "success"
     }
 
     // Armor of the target is taking into account
@@ -563,6 +574,8 @@ export default class CtHackRoll extends Roll {
         return `${game.i18n.localize("CTHACK.Dialog.titleAttack")} : ${options.rollTarget}`
       case ROLL_TYPE.MATERIAL:
         return `${game.i18n.localize("CTHACK.Dialog.titleMaterial")} : ${options.rollTarget}`
+      case ROLL_TYPE.SANITY:
+        return `${game.i18n.localize("CTHACK.Dialog.titleSanity")} : ${options.rollTarget}`
       default:
         return game.i18n.localize("CTHACK.Dialog.titleStandard")
     }
@@ -616,6 +629,7 @@ export default class CtHackRoll extends Roll {
       isWeapon: this.isWeapon,
       isResource: this.isResource,
       isMaterial: this.isMaterial,
+      isSanity: this.isSanity,
       isDamage: this.isDamage,
       isFailure: this.isFailure,
       avantages: this.avantages,
@@ -653,7 +667,8 @@ export default class CtHackRoll extends Roll {
         isResource: this.isResource,
         isDamage: this.isDamage,
         isMaterial: this.isMaterial,
-        isFailure: this.resultType === "failure",
+        isSanity: this.isSanity,
+        isFailure: this.resultType === "failure",        
         avantages: this.avantages,
         introText: this.introText,
         introTextTooltip: this.introTextTooltip,

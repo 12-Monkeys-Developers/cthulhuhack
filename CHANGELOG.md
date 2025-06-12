@@ -1,3 +1,7 @@
+5.0.1
+- Fix sanity roll for character and opponent
+- Fix material roll for character
+
 5.0.0
 - Compatibility with Foundry V13
 

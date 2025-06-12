@@ -24,7 +24,7 @@
     <input type="hidden" name="selectedModifiers" >    
     <input type="hidden" name="initialAvantages" value="{{initialAvantages}}">
   {{/if}}
-  {{#if (or isSave isWeapon isResource isMaterial)}}
+  {{#if (or isSave isWeapon isResource isMaterial isSanity)}}
       <fieldSet class="dialog-avantages">
       <legend>{{localize "CTHACK.Roll.avantagesDesavantages"}}</legend>
       <input
@@ -58,6 +58,12 @@
       <div class="dialog-resource">{{formula}}</div>
     </fieldSet>
   {{/if}}  
+  {{#if isSanity}}
+    <fieldSet>
+      <legend>{{localize "CTHACK.Label.sanity"}}</legend>
+      <div class="dialog-resource">{{formula}}</div>
+    </fieldSet>
+  {{/if}}    
   <fieldSet class="dialog-visibility">
     <legend>{{localize "CTHACK.Roll.visibilite"}}</legend>
     <select name="visibility">

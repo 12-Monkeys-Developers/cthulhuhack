@@ -10,7 +10,7 @@
         {{/if}}
         <div class="intro-right">                
             <p class="introText" {{#if (or isSave isWeapon)}}data-tooltip="{{introTextTooltip}}"{{/if}}>{{{introText}}}
-            {{#if (or isSave isWeapon isResource isMaterial)}}
+            {{#if (or isSave isWeapon isResource isMaterial isSanity)}}
                     <br>
                     {{#if (eq avantages "avantage")}} {{localize "CTHACK.Roll.avantage"}}{{/if}}
                     {{#if (eq avantages "desavantage")}} {{localize "CTHACK.Roll.desavantage"}}{{/if}}
@@ -47,6 +47,15 @@
             {{/if}}
         </div>
      {{/if}}
+    {{#if isSanity}}
+        <div class="result">
+            {{#if (eq resultType "success")}}
+                {{#if isPrivate}}?{{else}}{{localize "CTHACK.Roll.success"}}{{/if}}
+            {{else}}
+                {{#if isPrivate}}?{{else}}{{localize "CTHACK.Roll.failure"}}{{#if isFailure}} ({{localize "CTHACK.Roll.resourceLost"}}){{/if}}{{/if}}
+            {{/if}}
+        </div>
+     {{/if}}     
      {{#if (and isGM isDamage hasTarget)}}
             {{localize "CTHACK.Roll.displayArmor" targetName=targetName targetArmor=targetArmor realDamage=realDamage}}
      {{/if}}
