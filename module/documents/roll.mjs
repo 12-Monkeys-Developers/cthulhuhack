@@ -1,4 +1,5 @@
 import { ROLL_TYPE } from "../config/system.mjs"
+import { CTHACK } from "../config.mjs"
 
 export default class CtHackRoll extends Roll {
   /**
@@ -300,7 +301,7 @@ export default class CtHackRoll extends Roll {
       selectAvantages: CtHackRoll._convertAvantages(avantages),
       initialAvantages: avantages,
     }
-    console.debug("dialogContext", dialogContext)
+
     const content = await foundry.applications.handlebars.renderTemplate("systems/cthack/templates/roll-dialog-v2.hbs", dialogContext)
 
     const title = CtHackRoll.createTitle(options)
@@ -341,7 +342,7 @@ export default class CtHackRoll extends Roll {
       ],
       rejectClose: false, // Click on Close button will not launch an error
       render: (event, dialog) => {
-        console.debug("dialog", dialog)
+        if (CTHACK.debug) console.debug("dialog", dialog)
         // Gestion du sélecteur Avantages et désavantages
         const rangeInput = dialog.element.querySelector('input[name="avantages"]')
         if (rangeInput) {
@@ -398,7 +399,7 @@ export default class CtHackRoll extends Roll {
 
     // If the user cancels the dialog, exit
     if (rollContext === null) return
-    console.debug("rollContext", rollContext)
+    if (CTHACK.debug) console.debug("rollContext", rollContext)
 
     /* Exemple of rollContext : modificateur correspond à l'adversité, selectedModifiers correspond aux modificateurs sélectionnés, initialAvantages correspond à l'avantage initial (utile pour une macro)
       avantages correspond au niveau d'avantage (1, 2, 3, 4, 5), selectAvantages correspond au label de l'avantage sélectionné
@@ -484,7 +485,7 @@ export default class CtHackRoll extends Roll {
       ...rollContext,
     }
 
-    console.debug("rollData", rollData)
+    if (CTHACK.debug) console.debug("rollData", rollData)
 
     /**
      * A hook event that fires before the roll is made.
@@ -515,7 +516,7 @@ export default class CtHackRoll extends Roll {
       realDamage = Math.max(0, roll.total - parseInt(targetArmor, 10))
     }
 
-    console.debug("roll", roll)
+    if (CTHACK.debug) console.debug("roll", roll)
     roll.options.resultType = resultType
     roll.options.treshold = treshold
     roll.options.introText = roll._createIntroText()
