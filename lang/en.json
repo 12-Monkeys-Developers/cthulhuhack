@@ -17,8 +17,16 @@
   },
 
   "CTHACK": {
+    "Weapon": {
+      "FIELDS": {
+        "range": {
+          "label": "Range"
+        }
+      }
+    },
     "SheetClassCharacter": "Character Sheet",
     "SheetClassOpponent": "Opponent Sheet",
+    "ToggleMode": "Toggle between Edit and Play Mode",
     "Name": "Name",
     "Occupation": "Occupation",
     "Archetype": "Archetype",
@@ -180,6 +188,7 @@
 
     "ItemDiceName": "Material Dice",
     "ItemRangeName": "Range",
+    "RangeContact": "Contact",
     "RangeNear": "Near",
     "RangeFar": "Far",
     "RangeDistant": "Distant",

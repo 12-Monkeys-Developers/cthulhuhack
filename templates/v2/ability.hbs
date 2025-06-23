@@ -1,0 +1,69 @@
+<section>
+  {{log "ability" this}}
+  <div class="item-header">
+    {{#if isEdit}}
+      <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+      <input name="name" type="text" value="{{item.name}}" />
+    {{else}}
+      <img src="{{item.img}}" />
+      <input name="name" type="text" value="{{item.name}}" disabled />
+    {{/if}}
+  </div>
+  <div class="ability-body">
+    <div class="ability-grid">
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityKey"}}</div>
+        <input class="field-value input-key input-extralarge readonly" name="system.key" type="text" value="{{item.system.key}}" data-dtype="String" readonly />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityUsePer"}}</div>
+        <select class="select-usage" name="system.uses.per" data-type="String">
+          {{selectOptions usage selected=item.system.uses.per labelAttr="label" localize=true}}
+        </select>
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityMultiple"}}</div>
+        <input class="checkbox" name="system.multiple" type="checkbox" {{checked item.system.multiple}} />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityUseValue"}}</div>
+        <input class="field-value input-small" name="system.uses.value" type="text" value="{{item.system.uses.value}}" data-dtype="Number" />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityUseMax"}}</div>
+        <input class="field-value input-small" name="system.uses.max" type="text" value="{{item.system.uses.max}}" data-dtype="Number" />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityUseLast"}}</div>
+        <input class="field-value" name="system.uses.last" type="text" value="{{item.system.uses.last}}" data-dtype="String" />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityIsCustom"}}</div>
+        <input class="checkbox" name="system.isCustom" type="checkbox" {{checked item.system.isCustom}} />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityAdvantageGiven"}}</div>
+        <input class="checkbox" name="system.advantageGiven" type="checkbox" {{checked item.system.advantageGiven}} />
+      </div>
+      <div class="data-group">
+        <div class="field-name">{{localize "CTHACK.AbilityAdvantageText"}}</div>
+        <input class="field-value" name="system.advantageText" type="text" value="{{item.system.advantageText}}" data-dtype="String" />
+      </div>
+    </div>
+    <div class="item-description">
+      {{#if isEdit}}
+            <fieldset>
+                <legend>{{localize "CTHACK.Description"}}</legend>
+                {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=false}}
+            </fieldset>
+        {{else}}
+            {{#if system.hasDescription}}
+                <fieldset>
+                    <legend>{{localize "CTHACK.Description"}}</legend>
+                    {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=true}}
+                </fieldset>
+            {{/if}}
+        {{/if}}
+    </div>
+  </div>
+</section>

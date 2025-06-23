@@ -1,4 +1,8 @@
 export const RANGE = Object.freeze({    
+    contact: {
+        id: "contact",
+        label: "CTHACK.RangeContact",
+    },
     near: {
         id: "near",
         label: "CTHACK.RangeNear",

@@ -1355,9 +1355,7 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.archetype .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
-  text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
   padding: 0;
@@ -1368,10 +1366,6 @@ a.inline-roll {
   text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.archetype .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
 }
 .cthack.sheet.item.archetype .archetype-body-header {
   display: flex;
@@ -1481,9 +1475,7 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.magic .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
-  text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
   padding: 0;
@@ -1494,10 +1486,6 @@ a.inline-roll {
   text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.magic .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
 }
 .cthack.sheet.item.magic .magic-grid {
   display: grid;
@@ -1601,9 +1589,7 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.ability .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
-  text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
   padding: 0;
@@ -1614,10 +1600,6 @@ a.inline-roll {
   text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.ability .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
 }
 .cthack.sheet.item.ability .ability-grid {
   display: grid;
@@ -1713,9 +1695,7 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.item .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
-  text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
   padding: 0;
@@ -1726,10 +1706,6 @@ a.inline-roll {
   text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.item .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
 }
 .cthack.sheet.item.item .item-grid {
   display: grid;
@@ -1824,9 +1800,7 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.definition .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
-  text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
   padding: 0;
@@ -1837,10 +1811,6 @@ a.inline-roll {
   text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.definition .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
 }
 .cthack.sheet.item.definition .definition-grid {
   display: grid;
@@ -1926,9 +1896,7 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.weapon .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
-  text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
   padding: 0;
@@ -1939,10 +1907,6 @@ a.inline-roll {
   text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.weapon .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
 }
 .cthack.sheet.item.weapon .weapon-grid {
   display: grid;
@@ -2041,9 +2005,7 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.attack .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
-  text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
   padding: 0;
@@ -2054,10 +2016,6 @@ a.inline-roll {
   text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.attack .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
 }
 .cthack.sheet.item.attack .attack-grid {
   display: grid;
@@ -2156,9 +2114,7 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.opponentAbility .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
-  text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
   padding: 0;
@@ -2169,10 +2125,6 @@ a.inline-roll {
   text-align: left;
   border: 0px;
   margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.opponentAbility .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
 }
 .cthack.sheet.item.opponentAbility .ability-body {
   padding: 0 10px 0 10px;

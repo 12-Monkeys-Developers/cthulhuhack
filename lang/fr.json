@@ -17,8 +17,16 @@
   },
 
   "CTHACK": {
+    "Weapon": {
+      "FIELDS": {
+        "range": {
+          "label": "Portée"
+        }
+      }
+    },
     "SheetClassCharacter": "Feuille de personnnage",
     "SheetClassOpponent": "Feuille d'adversaire",
+    "ToggleMode": "Basculer entre le mode Edition et le mode Lecture",
     "Name": "Nom",
     "Occupation": "Métier",
     "Skills": "Compétences",
@@ -180,6 +188,7 @@
 
     "ItemDiceName": "Dé de Matériel",
     "ItemRangeName": "Portée",
+    "RangeContact": "Contact",
     "RangeNear": "Proche",
     "RangeFar": "Loin",
     "RangeDistant": "Distant",
