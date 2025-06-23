@@ -1336,7 +1336,6 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.archetype .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
   text-align: left;
   border: 0px;
@@ -1462,7 +1461,6 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.magic .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
   text-align: left;
   border: 0px;
@@ -1582,7 +1580,6 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.ability .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
   text-align: left;
   border: 0px;
@@ -1694,7 +1691,6 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.item .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
   text-align: left;
   border: 0px;
@@ -1803,7 +1799,6 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.definition .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
   text-align: left;
   border: 0px;
@@ -1905,7 +1900,6 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.weapon .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
   text-align: left;
   border: 0px;
@@ -2015,7 +2009,6 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.attack .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
   text-align: left;
   border: 0px;
@@ -2130,7 +2123,6 @@ a.inline-roll {
   max-height: 50px;
 }
 .cthack.sheet.item.opponentAbility .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
   text-align: left;
   border: 0px;
