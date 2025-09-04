@@ -23,9 +23,13 @@
             <div class="weapon-grid">
                 <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.Material"}}</div>
-                    <select class="select-dice-material" name="system.dice" data-type="String" {{{getStyleForDice system.dice}}}>
-                        {{selectOptions diceValues selected=system.dice blank="CTHACK.None" localize=true}}
-                    </select>
+                    {{#if editable}}
+                        <select class="select-dice-material" name="system.dice">
+                            {{selectOptions diceValues selected=system.dice blank="CTHACK.None" localize=true}}
+                        </select>
+                    {{else}}
+                        <img src="{{ concat 'systems/cthack/ui/dice/' system.dice '.webp'}}"/>
+                    {{/if}}
                 </div>
                 <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.ItemRangeName"}}</div>

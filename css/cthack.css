@@ -406,7 +406,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .rollable:focus {
   color: var(--rollable-color);
   text-shadow: 0 0 10px #eea3a3;
-  cursor: url("../ui/dice/d20-red.svg") 32 24, pointer;
+  cursor: pointer;
 }
 .cthack.sheet.actor.character .no-dice {
   color: var(--font-color-primary);
@@ -551,7 +551,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .main {
   margin: 30px 0 0 0;
-  padding: 0 10px 10px 0;
+  padding: 0 30px 10px 0;
   min-width: 550px;
 }
 .cthack.sheet.actor.character .main .sheet-body {
@@ -667,7 +667,17 @@ a.inline-roll {
   font-family: var(--font-secondary);
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content {
-  padding: 5px 0 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource .resource-content select {
+  color: white;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource .resource-content img {
+  border: none;
+  width: 80px;
+  height: 80px;
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .hitpoints {
   display: flex;
@@ -768,6 +778,15 @@ a.inline-roll {
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-dice {
   display: flex;
   align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-dice img {
+  border: none;
+  width: 50px;
+  height: 50px;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-dice img.dice-d20 {
+  width: 30px;
+  height: 30px;
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-range {
   display: flex;
@@ -1739,12 +1758,14 @@ a.inline-roll {
 .cthack.sheet.item.item .item-grid .data-group input[type="checkbox"] {
   flex: none;
 }
-.cthack.sheet.item.item .item-grid .select-dice-material {
-  color: #111;
-}
 .cthack.sheet.item.item .item-grid .select-dice-material .select:disabled {
   color: #111;
   opacity: 1;
+}
+.cthack.sheet.item.item .item-grid img {
+  border: none;
+  height: 80px;
+  width: 80px;
 }
 .cthack.sheet.item.item .item-description {
   display: flex;
@@ -1957,6 +1978,11 @@ a.inline-roll {
   min-width: 80px;
   color: var(--font-color-primary);
   opacity: 1;
+}
+.cthack.sheet.item.weapon .weapon-grid img {
+  border: none;
+  height: 80px;
+  width: 80px;
 }
 .cthack.sheet.item.weapon .item-description {
   display: flex;

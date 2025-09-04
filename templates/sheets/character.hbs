@@ -49,45 +49,51 @@
         <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="flashlights">
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.flashlights.value)}}rollable{{/if}}" data-resource="flashlights" data-tooltip="{{localize 'CTHACK.FlashLightsDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.FlashLights"}}</label>
             <div class="resource-content">
-                <select class="resource-value {{#if hasLostFlashlights}}resource-value-lost{{/if}}" name="system.attributes.flashlights.value" data-type="String" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.flashlights.max}}" {{{getStyleForDice system.attributes.flashlights.value}}} {{disabled uneditable}}>
-                  {{selectOptions diceValues selected=system.attributes.flashlights.value}}                  
-                </select>
                 {{#if editable}}
+                  <select class="resource-value {{#if hasLostFlashlights}}resource-value-lost{{/if}}" name="system.attributes.flashlights.value">
+                    {{selectOptions diceValues selected=system.attributes.flashlights.value}}                  
+                  </select>
                   (
-                  <select name="system.attributes.flashlights.max" data-type="String" {{{getStyleForDice system.attributes.flashlights.max}}} {{disabled uneditable}}>
+                  <select name="system.attributes.flashlights.max">
                     {{selectOptions diceMaxValues selected=system.attributes.flashlights.max}}
                   </select>
                   )
+                {{else}}
+                  <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.flashlights.value '.webp'}}" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.flashlights.max}}"/>
                 {{/if}}
             </div>
         </div>                  
         <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="smokes">
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.smokes.value)}}rollable{{/if}}" data-resource="smokes" data-tooltip="{{localize 'CTHACK.SmokesDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Smokes"}}</label>
             <div class="resource-content">
-                <select class="resource-value {{#if hasLostSmokes}}resource-value-lost{{/if}}" name="system.attributes.smokes.value" data-type="String" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.smokes.max}}" {{{getStyleForDice system.attributes.smokes.value}}} {{disabled uneditable}}>
-                  {{selectOptions diceValues selected=system.attributes.smokes.value}}
-                </select>
                 {{#if editable}}
+                  <select class="resource-value {{#if hasLostSmokes}}resource-value-lost{{/if}}" name="system.attributes.smokes.value">
+                    {{selectOptions diceValues selected=system.attributes.smokes.value}}
+                  </select>                
                   (
-                  <select name="system.attributes.smokes.max" data-type="String" {{{getStyleForDice system.attributes.smokes.max}}} {{disabled uneditable}}>
+                  <select name="system.attributes.smokes.max">
                     {{selectOptions diceMaxValues selected=system.attributes.smokes.max}}
                   </select>
                   )
+                  {{else}}
+                  <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.smokes.value '.webp'}}" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.smokes.max}}"/>
                 {{/if}}
             </div>
         </div>
         <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="sanity">
             <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.sanity.value)}}rollable{{/if}}" data-resource="sanity" data-tooltip="{{localize 'CTHACK.SanityDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Sanity"}}</label>
             <div class="resource-content">
-                <select class="resource-value {{#if hasLostSanity}}resource-value-lost{{/if}}"  name="system.attributes.sanity.value" data-type="String" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.sanity.max}}" {{{getStyleForDice system.attributes.sanity.value}}} {{disabled uneditable}}>
-                  {{selectOptions diceValues selected=system.attributes.sanity.value}}
-                </select>
                 {{#if editable}}
+                  <select class="resource-value {{#if hasLostSanity}}resource-value-lost{{/if}}" name="system.attributes.sanity.value">
+                    {{selectOptions diceValues selected=system.attributes.sanity.value}}
+                  </select>                
                   (
-                  <select name="system.attributes.sanity.max" data-type="String" {{{getStyleForDice system.attributes.sanity.max}}} {{disabled uneditable}}>
+                  <select name="system.attributes.sanity.max">
                     {{selectOptions diceMaxValues selected=system.attributes.sanity.max}}
                   </select>
                   )
+                {{else}}
+                  <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.sanity.value '.webp'}}" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.sanity.max}}"/>
                 {{/if}}
             </div>
         </div>
@@ -96,15 +102,23 @@
           <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="wealthDice">
               <label for="wealthDice.value" class="resource-label wealth-name {{#if isWealthAsResource}}rollable{{/if}}" data-resource="wealthDice">{{localize "CTHACK.Wealth"}}</label>
               <div class="resource-content">
-                  <select class="resource-value {{#if hasLostWealthDice}}resource-value-lost{{/if}}" name="system.attributes.wealthDice.value" data-type="String" {{#if isWealthAsResource}}data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.wealthDice.max}}"{{/if}} {{{getStyleForDice system.attributes.wealthDice.value}}} {{disabled uneditable}}>
-                      {{selectOptions diceValues selected=system.attributes.wealthDice.value}}
-                  </select>
-                  {{#if (and isWealthAsResource editable)}}
-                      (
-                      <select name="system.attributes.wealthDice.max" data-type="String" {{{getStyleForDice system.attributes.wealthDice.max}}} {{disabled uneditable}}>
-                      {{selectOptions diceMaxValues selected=system.attributes.wealthDice.max}}
+                  {{#if editable}}
+                    {{#if isWealthAsResource}}
+                      <select class="resource-value {{#if hasLostWealthDice}}resource-value-lost{{/if}}" name="system.attributes.wealthDice.value">
+                          {{selectOptions diceValues selected=system.attributes.wealthDice.value}}
+                      </select>                  
+                        (
+                        <select name="system.attributes.wealthDice.max">
+                        {{selectOptions diceMaxValues selected=system.attributes.wealthDice.max}}
+                        </select>
+                        )
+                    {{else}}
+                      <select class="resource-value {{#if hasLostWealthDice}}resource-value-lost{{/if}}" name="system.attributes.wealthDice.value">
+                          {{selectOptions diceValues selected=system.attributes.wealthDice.value}}
                       </select>
-                      )
+                    {{/if}}
+                  {{else}}
+                    <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.wealthDice.value '.webp'}}" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.wealthDice.max}}"/>
                   {{/if}}
               </div>
           </div>
@@ -114,15 +128,17 @@
             <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="miscellaneous">
                 <label for="miscellaneous.value" class="resource-label miscellaneous-name {{#if (isDiceRollable system.attributes.miscellaneous.value)}}rollable{{/if}} {{#if hasLostMiscellaneous}}resource-value-lost{{/if}}"  data-resource="miscellaneous">{{getMiscellaneousValue}}</label>
                 <div class="resource-content">
-                    <select class="resource-value" name="system.attributes.miscellaneous.value" data-type="String" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.miscellaneous.max}}" {{{getStyleForDice system.attributes.miscellaneous.value}}} {{disabled uneditable}}>
-                        {{selectOptions diceValues selected=system.attributes.miscellaneous.value}}
-                    </select>
                     {{#if editable}}
+                      <select class="resource-value" name="system.attributes.miscellaneous.value"
+                          {{selectOptions diceValues selected=system.attributes.miscellaneous.value}}
+                      </select>                    
                       (
-                      <select name="system.attributes.miscellaneous.max" data-type="String" {{{getStyleForDice system.attributes.miscellaneous.max}}} {{disabled uneditable}}>
+                      <select name="system.attributes.miscellaneous.max">
                           {{selectOptions diceMaxValues selected=system.attributes.miscellaneous.max}}
                       </select>
                       )
+                    {{else}}
+                      <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.miscellaneous.value '.webp'}}" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.miscellaneous.max}}"/>
                     {{/if}}
                 </div>
             </div>
@@ -134,9 +150,9 @@
           <div class="resource">
                 <label class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
                 <div class="resource-content flexrow flex-center hitpoints">
-                    <input class="hitpoints-value" type="text" class="value" name="system.hp.value" value="{{system.hp.value}}" data-dtype="Number"/>
+                    <input class="hitpoints-value" type="text" class="value" name="system.hp.value" value="{{system.hp.value}}"/>
                     /
-                    <input class="hitpoints-max" type="text" class="max" name="system.hp.max" value="{{system.hp.max}}" data-dtype="Number" {{disabled uneditable}}/>
+                    <input class="hitpoints-max" type="text" class="max" name="system.hp.max" value="{{system.hp.max}}"{{disabled uneditable}}/>
                 </div>
           </div>
         {{/if}}
@@ -145,15 +161,17 @@
           <div class="resource">
                 <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.hitDice.value)}}rollable{{/if}}" data-resource="hitDice">{{localize "CTHACK.HitDice"}}</label>
                 <div class="resource-content">
-                    <select class="resource-value {{#if hasLostHitDice}}resource-value-lost{{/if}}" name="system.attributes.hitDice.value" data-type="String" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.hitDice.max}}" {{{getStyleForDice system.attributes.hitDice.value}}} {{disabled uneditable}}>
-                        {{selectOptions diceValues selected=system.attributes.hitDice.value}}
-                    </select>
                     {{#if editable}}
+                      <select class="resource-value {{#if hasLostHitDice}}resource-value-lost{{/if}}" name="system.attributes.hitDice.value">
+                          {{selectOptions diceValues selected=system.attributes.hitDice.value}}
+                      </select>                    
                       (
-                      <select name="system.attributes.hitDice.max" data-type="String" {{{getStyleForDice system.attributes.hitDice.max}}} {{disabled uneditable}}>
+                      <select name="system.attributes.hitDice.max">
                           {{selectOptions diceMaxValues selected=system.attributes.hitDice.max}}
                       </select>
                       )
+                    {{else}}
+                      <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.hitDice.value '.webp'}}" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.hitDice.max}}"/>
                     {{/if}}
                 </div>
           </div>
@@ -162,18 +180,26 @@
         <div class="resource" data-drag="true" data-drag-type="damage" data-drag-target="armedDamage">
             <label for="armedDamage.value" class="resource-label damage {{#if (isDiceRollable system.attributes.armedDamage.value)}}rollable{{/if}}" data-resource="armedDamage">{{localize "CTHACK.ArmedDamage"}}</label>
             <div class="resource-content">
-                <select class="resource-value" name="system.attributes.armedDamage.value" data-type="String" {{{getStyleForDice system.attributes.armedDamage.value}}} {{disabled uneditable}}>
+              {{#if editable}}
+                <select class="resource-value" name="system.attributes.armedDamage.value">
                   {{selectOptions diceDamageValues selected=system.attributes.armedDamage.value}}
                 </select>
+              {{else}}
+                <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.armedDamage.value '.webp'}}"/>
+              {{/if}}
             </div>
         </div>
 
         <div class="resource" data-drag="true" data-drag-type="damage" data-drag-target="unarmedDamage">
             <label for="unarmedDamage.value" class="resource-label damage {{#if (isDiceRollable system.attributes.unarmedDamage.value)}}rollable{{/if}}" data-resource="unarmedDamage">{{localize "CTHACK.UnarmedDamage"}}</label>
             <div class="resource-content">
-                <select class="resource-value" name="system.attributes.unarmedDamage.value" data-type="String" {{{getStyleForDice system.attributes.unarmedDamage.value}}} {{disabled uneditable}}>
+              {{#if editable}}
+                <select class="resource-value" name="system.attributes.unarmedDamage.value">
                   {{selectOptions diceDamageValues selected=system.attributes.unarmedDamage.value}}
                 </select>
+              {{else}}
+                <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.unarmedDamage.value '.webp'}}"/>
+              {{/if}}
             </div>
         </div>
 

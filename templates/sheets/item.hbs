@@ -23,13 +23,17 @@
             <div class="item-grid">
                   <div class="data-group">
                     <div class="field-name">{{localize "CTHACK.ItemDiceName"}}</div>
-                    <select class="select-dice-material" name="system.dice" data-type="String" {{{getStyleForDice item.system.dice}}}>
-                        {{selectOptions diceValues selected=item.system.dice blank="CTHACK.None" localize=true}}
-                    </select>
+                    {{#if editable}}
+                        <select class="select-dice-material" name="system.dice">
+                            {{selectOptions diceValues selected=item.system.dice blank="CTHACK.None" localize=true}}
+                        </select>
+                    {{else}}
+                        <img src="{{ concat 'systems/cthack/ui/dice/' item.system.dice '.webp'}}"/>
+                    {{/if}}
                 </div>
             </div>
             <div class="item-description">
-                       {{#if editable}}
+                {{#if editable}}
                     <div class="field-name description">{{localize "CTHACK.Description"}}</div>
                 {{else}}
                     {{#if hasDescription}}

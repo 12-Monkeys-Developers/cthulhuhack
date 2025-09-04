@@ -329,5 +329,11 @@
     "distance": 5,
     "units": "ft"
   },
-  "primaryTokenAttribute": "hp"
+  "primaryTokenAttribute": "hp",
+    "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json"],
+      "paths": ["css", "styles", "lang", "templates"]
+    }
+  }
 }
