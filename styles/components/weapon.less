@@ -58,6 +58,11 @@
         font-size: 1rem;
         text-align: center;
         color: var(--font-color-primary);
+        &.readonly {
+          label {
+            margin-right: 20px;
+          }
+        }
       }
 
       .item-range {
@@ -69,6 +74,7 @@
           margin-right: 10px;
         }
         .select-range {
+          width: auto;
           font-size: 1rem;
           text-align: center;
           border: 0px;

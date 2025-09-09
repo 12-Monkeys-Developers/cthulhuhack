@@ -16,7 +16,7 @@ export default class CtHackArmeSheetV2 extends CtHackItemSheetV2 {
     },
   }
 
-  /** @override */
+  /** @override 
   _onRender(context, options) {
     super._onRender(context, options)
     const range = this.element.querySelector(".select-range")
@@ -28,13 +28,17 @@ export default class CtHackArmeSheetV2 extends CtHackItemSheetV2 {
         })
       })
     }
-  }
+  }*/
 
   /** @override */
   async _prepareContext() {
     const context = await super._prepareContext()
-    context.diceWidget = this.#diceWidget.bind(this)
+    //context.diceWidget = this.#diceWidget.bind(this)
     context.rangeValues = SYSTEM.RANGE
+    context.useSize = game.settings.get("cthack", "useSize")
+    context.hasSizeUnequipped = this.document.system.hasSizeUnequipped()
+    context.hasDefaultImage = this.document.system.hasDefaultImage()
+
     console.log("Context arme:", context)
     return context
   }
@@ -42,7 +46,7 @@ export default class CtHackArmeSheetV2 extends CtHackItemSheetV2 {
   /**
    * Render the Dice field as a choice between Dice values.
    * @returns {HTMLDivElement}
-   */
+  
   #diceWidget(field, _groupConfig, inputConfig) {
     // Create the form field
     const fg = document.createElement("div")
@@ -66,5 +70,5 @@ export default class CtHackArmeSheetV2 extends CtHackItemSheetV2 {
     ff.appendChild(input)
 
     return fg
-  }
+  } */
 }

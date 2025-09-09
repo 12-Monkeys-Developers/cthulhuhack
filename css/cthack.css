@@ -1915,6 +1915,9 @@ a.inline-roll {
   text-align: center;
   color: var(--font-color-primary);
 }
+.cthack.sheet.item.weapon .window-content.weapon-content .item-properties.grid-2.readonly label {
+  margin-right: 20px;
+}
 .cthack.sheet.item.weapon .window-content.weapon-content .item-properties .item-range {
   display: flex;
   justify-content: center;
@@ -1925,6 +1928,7 @@ a.inline-roll {
   margin-right: 10px;
 }
 .cthack.sheet.item.weapon .window-content.weapon-content .item-properties .item-range .select-range {
+  width: auto;
   font-size: 1rem;
   text-align: center;
   border: 0px;

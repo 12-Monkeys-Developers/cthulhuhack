@@ -82,6 +82,9 @@
     "Incantation": "Incantation",
     "Ritual": "Rituel",
     "Spell": "Sortilège",
+    "Equipped": "Equipé",
+    "Unequipped": "Non équipé",
+    "Home": "Chez soi",
 
     "AbilityKey": "Clé",
     "AbilityUsePer": "Type d'usage",
@@ -187,8 +190,12 @@
     "YES": "Oui",
 
     "ItemDiceName": "Dé de Matériel",
+    "ItemSizeName": "Encombrement",
+    "ItemSizeEquipped": "Encombrement équipé",
+    "ItemSizeUnequipped": "Encombrement non équipé",
     "ItemRangeName": "Portée",
     "RangeContact": "Contact",
+    "RangeContactNear": "Contact/Proche",
     "RangeNear": "Proche",
     "RangeFar": "Loin",
     "RangeDistant": "Distant",
@@ -413,7 +420,9 @@
     "RevisedName": "Cthulhu Hack Réédition",
     "RevisedHint": "Active les règles de la réédition de Cthulhu Hack",
     "displayOpponentMalus": "Afficher le malus d'adversité (Version Réédition)",
-    "displayOpponentMalusHint": "Affiche le malus d'adversité pour les joueurs si l'option Réédition est active."
+    "displayOpponentMalusHint": "Affiche le malus d'adversité pour les joueurs si l'option Réédition est active.",
+    "UseSizeName": "Utiliser l'option d'encombrement (Section 13)",
+    "UseSizeHint": "Active la gestion de l'encombrement des armes et des objets (cf. module Section 13)"
   },
 
   "CHAT": {

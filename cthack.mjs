@@ -10,6 +10,7 @@ import { registerHooks } from "./module/hooks.mjs"
 import { setupTextEnrichers } from "./module/enrichers.mjs"
 
 import { SYSTEM } from "./module/config/system.mjs"
+export * from "./module/elements/_module.mjs"
 
 globalThis.SYSTEM = SYSTEM
 

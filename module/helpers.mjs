@@ -126,5 +126,10 @@ export const registerHandlebarsHelpers = function() {
 		if (healthDisplay === "both") return "fight-4";
 		return "fight-3";
 	});
-	
+
+	Handlebars.registerHelper('getRangeLabel', function(value) {
+		if (value === "---" || value === "") return ""
+		return game.i18n.localize(SYSTEM.RANGE[value].label);
+	});
+
 };
