@@ -21,73 +21,59 @@ export default (base) => {
       },
     }
 
-    /**
-     * Available sheet modes.
-     * @enum {number}
-     */
-    static MODES = Object.freeze({
-      PLAY: 1,
-      EDIT: 2,
-    })
 
-    /**
-     * The mode the sheet is currently in.
-     * @type {CtHackDocumentSheet.MODES}
-     */
-    _mode
-
-    /**
-     * Is this sheet in Play Mode?
-     * @returns {boolean}
-     */
-    get isPlayMode() {
-      return this._mode === CtHackDocumentSheet.MODES.PLAY
-    }
-
-    /**
-     * Is this sheet in Edit Mode?
-     * @returns {boolean}
-     */
-    get isEditMode() {
-      return this._mode === CtHackDocumentSheet.MODES.EDIT
-    }
-
-    /** @inheritdoc */
+    /** @inheritdoc 
     _configureRenderOptions(options) {
       super._configureRenderOptions(options)
       if (options.mode && this.isEditable) this._mode = options.mode
-    }
+    }*/
 
-    /** @inheritdoc */
-    async _renderFrame(options) {
-      const frame = await super._renderFrame(options)
-      const buttons = [
-        constructHTMLButton({ label: "", classes: ["header-control", "icon", "fa-solid", "fa-user-lock"], dataset: { action: "toggleMode", tooltip: "CTHACK.ToggleMode" } }),
-      ]
-      this.window.controls.after(...buttons)
-      return frame
+    /** @override */
+    async _onRender(context, options) {
+      await super._onRender(context, options)
+      const editableImage = this.element.querySelector(".editable-image")
+      if (editableImage) {
+        editableImage.addEventListener("contextmenu", (event) => {
+          CtHackDocumentSheet.#onResetImage(event, editableImage)
+        })
+      }
     }
+    
 
     /** @inheritdoc */
     async _prepareContext(options) {
+      // super context : document, editable, fields, rootId, source, user
       const context = await super._prepareContext(options)
       Object.assign(context, {
         isPlay: this.isPlayMode,
         isEdit: this.isEditMode,
-        editable: this.isEditable,
         owner: this.document.isOwner,
         limited: this.document.limited,
         gm: game.user.isGM,
-        document: this.document,
         system: this.document.system,
         systemSource: this.document.system._source,
         systemFields: this.document.system.schema.fields,
-        source: this.document.toObject(),
-        fields: this.document.schema.fields,
         flags: this.document.flags,
-        config: game.system.CONST
+        config: game.system.CONST,
       })
       return context
+    }
+
+    /**
+     * Resets the image of the opponent sheet.
+     * @param {Event} event             The initiating click event.
+     * @param {HTMLElement} target      The current target of the event listener.
+     */
+    static async #onResetImage(event, target) {
+      event.preventDefault()
+      const dataset = target.dataset
+      if (!dataset) return
+      const uuid = dataset.uuid
+      if (!uuid) return
+      const item = fromUuidSync(uuid)
+      if (!item) return
+      if (item.type === "magic") await item.update({ img: "/systems/cthack/ui/icons/spell-book.png" })
+      else await item.update({ img: "icons/svg/item-bag.svg" })
     }
   }
 }

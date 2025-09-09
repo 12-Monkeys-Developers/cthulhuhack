@@ -8,9 +8,6 @@ export default class CtHackDefinitionSheetV2 extends CtHackItemSheetV2 {
       height: 300,
       width: 400,
     },
-    window: {
-      contentClasses: ["standard-form"],
-    },
   }
 
   /** @override */

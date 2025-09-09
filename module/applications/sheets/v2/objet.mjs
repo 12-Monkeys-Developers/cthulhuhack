@@ -3,14 +3,11 @@ import CtHackItemSheetV2 from "./item.mjs"
 export default class CtHackObjetSheetV2 extends CtHackItemSheetV2 {
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ["item"],
+    classes: ["object"],
     position: {
       height: 250,
       width: 250,
     },
-    window: {
-      contentClasses: ["standard-form"]
-    }
   }
 
   /** @override */

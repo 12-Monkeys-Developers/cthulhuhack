@@ -122,7 +122,7 @@ Hooks.once("init", function () {
   setupTextEnrichers()
 
   // Gestion des jets de dés depuis les journaux
-  document.addEventListener("click", (event) => {
+ /* document.addEventListener("click", (event) => {
     const anchor = event.target.closest("a.ask-roll-journal")
     if (!anchor) return
     event.preventDefault()
@@ -132,7 +132,7 @@ Hooks.once("init", function () {
     const title = anchor.dataset.rollTitle
     const avantage = anchor.dataset.rollAvantage
     applications.CthulhuHackManager.askRollForAll(type, target, title, avantage)
-  })
+  })*/
 
   // Other Document Configuration
   CONFIG.ChatMessage.documentClass = documents.CtHackChatMessage

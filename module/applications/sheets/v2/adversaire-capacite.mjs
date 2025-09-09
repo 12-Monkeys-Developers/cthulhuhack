@@ -3,13 +3,10 @@ import CtHackItemSheetV2 from "./item.mjs"
 export default class CtHackAdversaireCapaciteSheetV2 extends CtHackItemSheetV2 {
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ["adversaire-capacite"],
+    classes: ["opponent-ability"],
     position: {
       height: 600,
       width: 800,
-    },
-    window: {
-      contentClasses: ["standard-form"],
     },
   }
 

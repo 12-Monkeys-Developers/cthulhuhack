@@ -2,33 +2,38 @@
     {{log "weapon" this}}
         <div class="item-header">
             <input name="name" type="text" value="{{item.name}}"{{#if isEdit}} disabled{{/if}} />
-            <div class="form-group material">
-                <label>{{localize "CTHACK.Material"}}</label>
-                <div class="form-fields">
-                     {{#if isEdit}}
-                        <select {{#if isPlay}}disabled{{/if}} class="select-dice-material" name="system.dice">
-                            {{selectOptions diceValues selected=system.dice blank="CTHACK.None" localize=true}}
-                        </select>
+            <div class="item-header-row">
+               <div class="item-image">
+                    {{#if isEdit}}
+                        <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
                     {{else}}
-                        {{#if item.system.hasDice}}
-                                <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
-                        {{/if}}
+                        <img src="{{item.img}}" />
                     {{/if}}
+                </div>
+                <div class="form-group material">
+                    <label>{{localize "CTHACK.Material"}}</label>
+                    <div class="form-fields">
+                        {{#if isEdit}}
+                            <select {{#if isPlay}}disabled{{/if}} class="select-dice-material" name="system.dice">
+                                {{selectOptions diceValues selected=system.dice blank="CTHACK.None" localize=true}}
+                            </select>
+                        {{else}}
+                            {{#if item.system.hasDice}}
+                                    <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
+                            {{/if}}
+                        {{/if}}
+                    </div>
                 </div>
             </div>
         </div>
-        <div>
-            {{#if isEdit}}
-                <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
-            {{else}}
-                <img src="{{item.img}}" />
-            {{/if}}
-        </div>
-        <div>
+ 
+    <div class="item-properties grid-1">
+        <div class="item-range">
             <label>{{localize "CTHACK.ItemRangeName"}}</label>
             {{formInput systemFields.range name=system.range value=systemSource.range localize=true blank="CTHACK.None" classes="select-range" disabled=isPlay}}
         </div>
-        
+    </div>
+
          <!--
         <div class="form-group">
             <label>{{localize "CTHACK.ItemRangeName"}}</label>
@@ -42,18 +47,20 @@
         <!--
         {{formGroup systemFields.dice name=system.dice value=systemSource.dice localize=true blank="CTHACK.None" disabled=isPlay widget=diceWidget}}
         {{formGroup systemFields.range name=system.range value=systemSource.range localize=true blank="CTHACK.None" disabled=isPlay}}
-            -->               
-        {{#if isEdit}}
-            <fieldset>
-                <legend>{{localize "CTHACK.Description"}}</legend>
-                {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=false}}
-            </fieldset>
-        {{else}}
-            {{#if system.hasDescription}}
+                -->           
+        <div class="item-description">
+            {{#if isEdit}}
                 <fieldset>
                     <legend>{{localize "CTHACK.Description"}}</legend>
-                    {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=true}}
+                    {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
                 </fieldset>
+            {{else}}
+                {{#if system.hasDescription}}
+                    <fieldset>
+                        <legend>{{localize "CTHACK.Description"}}</legend>
+                        {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+                    </fieldset>
+                {{/if}}
             {{/if}}
-        {{/if}}
+        </div>
 </section>

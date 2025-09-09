@@ -1,0 +1,47 @@
+cthack-toggle-switch {
+    --toggle-switch-height: 20px;
+    --toggle-switch-width: 36px;
+    --toggle-switch-padding: 3px;
+    --toggle-switch-track-color-unchecked: black;
+    --toggle-switch-track-color-checked: #3ba55d;
+    --toggle-switch-thumb-color: white;
+    --toggle-switch-thumb-width: calc(var(--toggle-switch-height) - var(--toggle-switch-padding) * 2);
+    --toggle-switch-thumb-height: var(--toggle-switch-thumb-width);
+    --toggle-switch-transition-time: 250ms;
+
+    cursor: var(--cursor-pointer) !important;
+    display: inline-block;
+    width: var(--toggle-switch-width);
+    height: var(--toggle-switch-height);
+
+    track {
+        background: var(--toggle-switch-track-color-unchecked);
+        border-radius: calc((var(--toggle-switch-height) * 2) / 3);
+        box-shadow: 0 0 8px rgb(0 0 0 / 45%);
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        padding: var(--toggle-switch-padding);
+        width: 100%;
+    }
+
+    thumb {
+        background: var(--toggle-switch-thumb-color);
+        border-radius: 100%;
+        box-shadow: 0 0 8px rgb(0 0 0 / 45%);
+        display: block;
+        height: var(--toggle-switch-thumb-height);
+        text-align: center;
+        transition: margin-left var(--toggle-switch-transition-time) ease;
+        width: var(--toggle-switch-thumb-width);
+    }
+
+    &[checked] track {
+        background: var(--toggle-switch-track-color-checked);
+    }
+
+    &[checked] thumb {
+        margin-left: calc(100% - var(--toggle-switch-thumb-width));
+    }
+}

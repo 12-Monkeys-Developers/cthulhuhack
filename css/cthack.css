@@ -1416,7 +1416,7 @@ a.inline-roll {
   display: flex;
   flex-direction: column;
   padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
+  font-size: 1rem;
 }
 .cthack.sheet.item.archetype .item-description .description {
   text-align: center;
@@ -1426,11 +1426,11 @@ a.inline-roll {
   text-align: justify;
 }
 .cthack.sheet.item.archetype .item-description .editor {
-  min-height: 200px;
+  min-height: 100px;
   scrollbar-width: thin;
 }
 .cthack.sheet.item.archetype .item-description .editor-content {
-  min-height: 150px;
+  min-height: 100px;
   margin: 0px 5px;
   font-weight: normal;
 }
@@ -1536,7 +1536,7 @@ a.inline-roll {
   display: flex;
   flex-direction: column;
   padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
+  font-size: 1rem;
 }
 .cthack.sheet.item.magic .item-description .description {
   text-align: center;
@@ -1546,11 +1546,11 @@ a.inline-roll {
   text-align: justify;
 }
 .cthack.sheet.item.magic .item-description .editor {
-  min-height: 200px;
+  min-height: 100px;
   scrollbar-width: thin;
 }
 .cthack.sheet.item.magic .item-description .editor-content {
-  min-height: 150px;
+  min-height: 100px;
   margin: 0px 5px;
   font-weight: normal;
 }
@@ -1642,7 +1642,7 @@ a.inline-roll {
   display: flex;
   flex-direction: column;
   padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
+  font-size: 1rem;
 }
 .cthack.sheet.item.ability .item-description .description {
   text-align: center;
@@ -1652,11 +1652,11 @@ a.inline-roll {
   text-align: justify;
 }
 .cthack.sheet.item.ability .item-description .editor {
-  min-height: 200px;
+  min-height: 100px;
   scrollbar-width: thin;
 }
 .cthack.sheet.item.ability .item-description .editor-content {
-  min-height: 150px;
+  min-height: 100px;
   margin: 0px 5px;
   font-weight: normal;
 }
@@ -1679,33 +1679,9 @@ a.inline-roll {
   background: grey;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.item .editable input,
-.cthack.sheet.item.item .editable select {
-  border: var(--border-standard);
-}
 .cthack.sheet.item.item .item-header {
   display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.item .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.item .item-header input {
-  font-size: 1.2rem;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
-}
-.cthack.sheet.item.item .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
+  flex-direction: column;
 }
 .cthack.sheet.item.item .item-grid {
   display: grid;
@@ -1747,7 +1723,7 @@ a.inline-roll {
   display: flex;
   flex-direction: column;
   padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
+  font-size: 1rem;
 }
 .cthack.sheet.item.item .item-description .description {
   text-align: center;
@@ -1757,11 +1733,11 @@ a.inline-roll {
   text-align: justify;
 }
 .cthack.sheet.item.item .item-description .editor {
-  min-height: 200px;
+  min-height: 100px;
   scrollbar-width: thin;
 }
 .cthack.sheet.item.item .item-description .editor-content {
-  min-height: 150px;
+  min-height: 100px;
   margin: 0px 5px;
   font-weight: normal;
 }
@@ -1843,7 +1819,7 @@ a.inline-roll {
   display: flex;
   flex-direction: column;
   padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
+  font-size: 1rem;
 }
 .cthack.sheet.item.definition .item-description .description {
   text-align: center;
@@ -1853,11 +1829,11 @@ a.inline-roll {
   text-align: justify;
 }
 .cthack.sheet.item.definition .item-description .editor {
-  min-height: 200px;
+  min-height: 100px;
   scrollbar-width: thin;
 }
 .cthack.sheet.item.definition .item-description .editor-content {
-  min-height: 150px;
+  min-height: 100px;
   margin: 0px 5px;
   font-weight: normal;
 }
@@ -1880,35 +1856,57 @@ a.inline-roll {
   background: grey;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.weapon .editable input,
-.cthack.sheet.item.weapon .editable select {
-  border: var(--border-standard);
+.cthack.sheet.item.weapon .window-content.weapon-content {
+  height: auto;
 }
-.cthack.sheet.item.weapon .item-header {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-header {
   display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
+  flex-direction: column;
 }
-.cthack.sheet.item.weapon .item-header img {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-header input {
+  width: auto;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
   border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.weapon .item-header input {
-  font-size: 1.2rem;
-  border: 0px;
-  margin: 10px 0 0 10px;
+  margin: 10px 0 0 0;
   padding: 0;
 }
-.cthack.sheet.item.weapon .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
+.cthack.sheet.item.weapon .window-content.weapon-content .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
-.cthack.sheet.item.weapon .weapon-grid {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-header .item-header-row .item-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.weapon .window-content.weapon-content .item-header .item-header-row .item-image img {
+  border: 0px;
+  max-height: 150px;
+  max-width: auto;
+}
+.cthack.sheet.item.weapon .window-content.weapon-content .item-header .item-header-row .form-group.material {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.cthack.sheet.item.weapon .window-content.weapon-content .item-header .item-header-row .form-group.material img {
+  max-height: 80px;
+}
+.cthack.sheet.item.weapon .window-content.weapon-content .item-properties.grid-1 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--font-color-primary);
+}
+.cthack.sheet.item.weapon .window-content.weapon-content .item-properties.grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding-left: 20px;
@@ -1917,74 +1915,58 @@ a.inline-roll {
   text-align: center;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.weapon .weapon-grid .data-group {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-properties .item-range {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.weapon .weapon-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
+.cthack.sheet.item.weapon .window-content.weapon-content .item-properties .item-range label {
+  font-size: 1rem;
+  margin-right: 10px;
 }
-.cthack.sheet.item.weapon .weapon-grid .data-group input,
-.cthack.sheet.item.weapon .weapon-grid .data-group select {
-  height: 40px;
-  padding: 0;
+.cthack.sheet.item.weapon .window-content.weapon-content .item-properties .item-range .select-range {
+  font-size: 1rem;
+  text-align: center;
+  border: 0px;
+  padding: 5px;
 }
-.cthack.sheet.item.weapon .weapon-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.weapon .weapon-grid .select-dice-material {
-  opacity: inherit;
-}
-.cthack.sheet.item.weapon .weapon-grid .select-range {
-  min-width: 80px;
-  color: var(--font-color-primary);
-  opacity: 1;
-}
-.cthack.sheet.item.weapon .weapon-grid img {
-  border: none;
-  height: 80px;
-  width: 80px;
-}
-.cthack.sheet.item.weapon .item-description {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-description {
   display: flex;
   flex-direction: column;
   padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
+  font-size: 1rem;
 }
-.cthack.sheet.item.weapon .item-description .description {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-description .description {
   text-align: center;
   text-transform: uppercase;
 }
-.cthack.sheet.item.weapon .item-description .description-content {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-description .description-content {
   text-align: justify;
 }
-.cthack.sheet.item.weapon .item-description .editor {
-  min-height: 200px;
+.cthack.sheet.item.weapon .window-content.weapon-content .item-description .editor {
+  min-height: 100px;
   scrollbar-width: thin;
 }
-.cthack.sheet.item.weapon .item-description .editor-content {
-  min-height: 150px;
+.cthack.sheet.item.weapon .window-content.weapon-content .item-description .editor-content {
+  min-height: 100px;
   margin: 0px 5px;
   font-weight: normal;
 }
-.cthack.sheet.item.weapon .item-description .prosemirror menu {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-description .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack.sheet.item.weapon .item-description .prosemirror menu li {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-description .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack.sheet.item.weapon .item-description .prosemirror menu button {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-description .prosemirror menu button {
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.weapon .item-description .prosemirror menu button:hover {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-description .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.weapon .item-description .prosemirror menu button.active {
+.cthack.sheet.item.weapon .window-content.weapon-content .item-description .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
   color: var(--font-color-primary);
@@ -2061,7 +2043,7 @@ a.inline-roll {
   display: flex;
   flex-direction: column;
   padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
+  font-size: 1rem;
 }
 .cthack.sheet.item.attack .item-description .description {
   text-align: center;
@@ -2071,11 +2053,11 @@ a.inline-roll {
   text-align: justify;
 }
 .cthack.sheet.item.attack .item-description .editor {
-  min-height: 200px;
+  min-height: 100px;
   scrollbar-width: thin;
 }
 .cthack.sheet.item.attack .item-description .editor-content {
-  min-height: 150px;
+  min-height: 100px;
   margin: 0px 5px;
   font-weight: normal;
 }
@@ -2173,7 +2155,7 @@ a.inline-roll {
   display: flex;
   flex-direction: column;
   padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
+  font-size: 1rem;
 }
 .cthack.sheet.item.opponentAbility .item-description .description {
   text-align: center;
@@ -2183,11 +2165,11 @@ a.inline-roll {
   text-align: justify;
 }
 .cthack.sheet.item.opponentAbility .item-description .editor {
-  min-height: 200px;
+  min-height: 100px;
   scrollbar-width: thin;
 }
 .cthack.sheet.item.opponentAbility .item-description .editor-content {
-  min-height: 150px;
+  min-height: 100px;
   margin: 0px 5px;
   font-weight: normal;
 }
@@ -2361,4 +2343,46 @@ a.inline-roll {
   align-items: center;
   font-size: calc(var(--font-size-standard) * 1.2);
   text-shadow: 0 0 10px var(--color-shadow-primary);
+}
+cthack-toggle-switch {
+  --toggle-switch-height: 20px;
+  --toggle-switch-width: 36px;
+  --toggle-switch-padding: 3px;
+  --toggle-switch-track-color-unchecked: black;
+  --toggle-switch-track-color-checked: #3ba55d;
+  --toggle-switch-thumb-color: white;
+  --toggle-switch-thumb-width: calc(var(--toggle-switch-height) - var(--toggle-switch-padding) * 2);
+  --toggle-switch-thumb-height: var(--toggle-switch-thumb-width);
+  --toggle-switch-transition-time: 250ms;
+  cursor: var(--cursor-pointer) !important;
+  display: inline-block;
+  width: var(--toggle-switch-width);
+  height: var(--toggle-switch-height);
+}
+cthack-toggle-switch track {
+  background: var(--toggle-switch-track-color-unchecked);
+  border-radius: calc((var(--toggle-switch-height) * 2) / 3);
+  box-shadow: 0 0 8px rgb(0 0 0%);
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding: var(--toggle-switch-padding);
+  width: 100%;
+}
+cthack-toggle-switch thumb {
+  background: var(--toggle-switch-thumb-color);
+  border-radius: 100%;
+  box-shadow: 0 0 8px rgb(0 0 0%);
+  display: block;
+  height: var(--toggle-switch-thumb-height);
+  text-align: center;
+  transition: margin-left var(--toggle-switch-transition-time) ease;
+  width: var(--toggle-switch-thumb-width);
+}
+cthack-toggle-switch[checked] track {
+  background: var(--toggle-switch-track-color-checked);
+}
+cthack-toggle-switch[checked] thumb {
+  margin-left: calc(100% - var(--toggle-switch-thumb-width));
 }

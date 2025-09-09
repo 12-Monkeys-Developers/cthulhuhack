@@ -1,32 +1,58 @@
 import { CtHackDocumentSheetMixin } from "../../api/_module.mjs"
+import slideToggle from "../../../elements/slide-toggle.mjs"
 
 const { sheets, ux } = foundry.applications
 
 export default class CtHackItemSheetV2 extends CtHackDocumentSheetMixin(sheets.ItemSheetV2) {
+  /**
+   * Different sheet modes.
+   * @enum {number}
+   */
+  static SHEET_MODES = Object.freeze({
+    EDIT: 0,
+    PLAY: 1,
+  })
+
+  /**
+   * The current sheet mode.
+   * @type {number}
+   */
+  _sheetMode = this.constructor.SHEET_MODES.PLAY
+
+  /**
+   * Is this sheet in Play Mode?
+   * @returns {boolean}
+   */
+  get isPlayMode() {
+    return this._sheetMode === CtHackItemSheetV2.SHEET_MODES.PLAY
+  }
+
+  /**
+   * Is this sheet in Edit Mode?
+   * @returns {boolean}
+   */
+  get isEditMode() {
+    return this._sheetMode === CtHackItemSheetV2.SHEET_MODES.EDIT
+  }
+
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["item"],
     position: {
       width: 400,
-      height: 800,
+      height: "auto",
     },
     actions: {
-      toggleSheetLock: CtHackItemSheetV2.#onToggleSheetLock,
-      toggleMode: CtHackItemSheetV2.#toggleMode,
       editImage: CtHackItemSheetV2.#onEditImage,
-      resetImage: CtHackItemSheetV2.#onResetImage,
     },
   }
 
   /** @override */
-  _onRender(context, options) {
-    super._onRender(context, options)
-    const editableImage = this.element.querySelector(".editable-image")
-    if (editableImage) {
-      editableImage.addEventListener("contextmenu", (event) => {
-        CtHackItemSheetV2.#onResetImage(event, editableImage)
-      })
-    }
+  async _onRender(context, options) {
+    await super._onRender(context, options)
+
+    // Set toggle state and add status class to frame
+    this._renderModeToggle(this.element)
   }
 
   /** @override */
@@ -41,33 +67,6 @@ export default class CtHackItemSheetV2 extends CtHackDocumentSheetMixin(sheets.I
       diceDamageValues: SYSTEM.DICE_DAMAGE_VALUES,
     })
     return context
-  }
-
-  /**
-   * Toggle Edit vs. Play mode
-   *
-   * @this CtHackItemSheetV2
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   */
-  static async #toggleMode(event, target) {
-    if (!this.isEditable) {
-      console.error("You can't switch to Edit mode if the sheet is uneditable")
-      return
-    }
-    this._mode = this.isPlayMode ? CtHackItemSheetV2.MODES.EDIT : CtHackItemSheetV2.MODES.PLAY
-    this.render()
-  }
-
-  /**
-   * Handle toggling between Edit and Play mode.
-   * @param {Event} event             The initiating click event.
-   * @param {HTMLElement} target      The current target of the event listener.
-   */
-  static async #onToggleSheetLock(event, target) {
-    event.preventDefault()
-    await this.item.update({ "system.locked": !this.item.system.locked })
-    this.render({ force: true })
   }
 
   /**
@@ -96,20 +95,40 @@ export default class CtHackItemSheetV2 extends CtHackDocumentSheetMixin(sheets.I
     return fp.browse()
   }
 
-  /**
-   * Resets the image of the opponent sheet.
-   * @param {Event} event             The initiating click event.
-   * @param {HTMLElement} target      The current target of the event listener.
+    /**
+   * Manage the lock/unlock button on the sheet
+   * @param {Event} event
    */
-  static async #onResetImage(event, target) {
+  async _onSheetChangeLock(event) {
     event.preventDefault()
-    const dataset = target.dataset
-    if (!dataset) return
-    const uuid = dataset.uuid
-    if (!uuid) return
-    const item = fromUuidSync(uuid)
-    if (!item) return
-    if (item.type === "magic") await item.update({ img: "/systems/cthack/ui/icons/spell-book.png" })
-    else await item.update({ img: "icons/svg/item-bag.svg" })
+    const modes = this.constructor.SHEET_MODES
+    this._sheetMode = this.isEditMode ? modes.PLAY : modes.EDIT
+    await this.submit()
+    this.render()
+  }
+
+  /**
+   * Handle re-rendering the mode toggle on ownership changes.
+   * @param {HTMLElement} element
+   * @protected
+   */
+  _renderModeToggle(element) {
+    const header = element.querySelector(".window-header")
+    const toggle = header.querySelector(".mode-slider")
+    if (this.isEditable && !toggle) {
+      const toggle = document.createElement("cthack-toggle-switch")
+      toggle.checked = this._sheetMode === this.constructor.SHEET_MODES.EDIT
+      toggle.classList.add("mode-slider")
+      toggle.dataset.tooltip = "CTHACK.SheetModeEdit"
+      toggle.setAttribute("aria-label", game.i18n.localize("CTHACK.SheetModeEdit"))
+      toggle.addEventListener("change", this._onSheetChangeLock.bind(this))
+      toggle.addEventListener("dblclick", (event) => event.stopPropagation())
+      toggle.addEventListener("pointerdown", (event) => event.stopPropagation())
+      header.prepend(toggle)
+    } else if (this.isEditable) {
+      toggle.checked = this._sheetMode === this.constructor.SHEET_MODES.EDIT
+    } else if (!this.isEditable && toggle) {
+      toggle.remove()
+    }
   }
 }

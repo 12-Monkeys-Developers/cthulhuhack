@@ -3,13 +3,10 @@ import CtHackItemSheetV2 from "./item.mjs"
 export default class CtHackCapaciteSheetV2 extends CtHackItemSheetV2(sheets.ItemSheet) {
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ["weapon"],
+    classes: ["ability"],
     position: {
       height: 600,
       width: 800,
-    },
-    window: {
-      contentClasses: ["standard-form"],
     },
   }
 

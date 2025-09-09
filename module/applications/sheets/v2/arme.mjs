@@ -4,12 +4,8 @@ export default class CtHackArmeSheetV2 extends CtHackItemSheetV2 {
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["weapon"],
-    position: {
-      height: 300,
-      width: 400,
-    },
-    window: {
-      contentClasses: ["standard-form"],
+    window: {      
+      contentClasses: ["weapon-content"]
     },
   }
 
@@ -39,6 +35,7 @@ export default class CtHackArmeSheetV2 extends CtHackItemSheetV2 {
     const context = await super._prepareContext()
     context.diceWidget = this.#diceWidget.bind(this)
     context.rangeValues = SYSTEM.RANGE
+    console.log("Context arme:", context)
     return context
   }
 

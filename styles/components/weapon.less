@@ -1,20 +1,81 @@
 &.sheet.item.weapon {
-  .item-common-header();
-  .weapon-grid {
-    .item-common-grid(2);
-    .select-dice-material {
-      opacity: inherit;
+  .window-content.weapon-content {
+    height: auto;
+    .item-header {
+      display: flex;
+      flex-direction: column;
+      input {
+        width: auto;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        text-align: center;
+        border: 0px;
+        margin: 10px 0 0 0;
+        padding: 0;
+      }
+      .item-header-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .item-image {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            border: 0px;
+            max-height: 150px;
+            max-width: auto;
+          }
+        }
+        .form-group.material {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          font-size: 1.2rem;
+          img {
+            max-height: 80px;
+          }
+        }
+      }
     }
-    .select-range {
-      min-width: 80px;
-      color: var(--font-color-primary);
-      opacity: 1;
+    .item-properties {
+      &.grid-1 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 1rem;
+        text-align: center;
+        color: var(--font-color-primary);
+      }
+
+      &.grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 1rem;
+        text-align: center;
+        color: var(--font-color-primary);
+      }
+
+      .item-range {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        label {
+          font-size: 1rem;
+          margin-right: 10px;
+        }
+        .select-range {
+          font-size: 1rem;
+          text-align: center;
+          border: 0px;
+          padding: 5px;
+        }
+      }
     }
-    img {
-      border: none;
-      height: 80px;
-      width: 80px;
-    }
+    .item-common-description();
   }
-  .item-common-description();
 }
