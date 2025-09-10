@@ -1,35 +1,71 @@
-<section>
-    {{log "item" this}}
+{{log "Cthulhu Hack | object" this}}
+<section class="item-section">    
         <div class="item-header">
-            {{#if isEdit}}
-                <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
-                <input name="name" type="text" value="{{item.name}}" />
-            {{else}}
-                <img src="{{item.img}}" />
-                <input name="name" type="text" value="{{item.name}}" disabled/>
-            {{/if}}
-             <div class="form-group">
-                <label>{{localize "CTHACK.Material"}}</label>                    
-                <div class="form-fields">
-                    <select {{#if isPlay}}disabled{{/if}} class="select-dice-material" name="system.dice" data-type="String" {{{getStyleForDice item.system.dice}}}>
-                        {{selectOptions diceValues selected=item.system.dice blank="CTHACK.None" localize=true}}
-                    </select>
+            <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
+            <div class="item-header-row">
+               <div class="item-image">
+                    {{#if isEdit}}
+                        <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+                    {{else}}
+                        {{#unless hasDefaultImage}}
+                            <img src="{{item.img}}" />
+                        {{/unless}}                        
+                    {{/if}}
                 </div>
-            </div>            
+                <div class="form-group material">
+                    <label>{{localize "CTHACK.Material"}}</label>
+                    <div class="form-fields">
+                        {{#if isEdit}}
+                            <select {{#if isPlay}}disabled{{/if}} class="select-dice-material" name="system.dice">
+                                {{selectOptions diceValues selected=system.dice blank="CTHACK.None" localize=true}}
+                            </select>
+                        {{else}}
+                            {{#if item.system.hasDice}}
+                                    <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
+                            {{/if}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="item-body">
+ 
+        {{#if useSize}}
+            {{#if isEdit}}
+                <div class="item-properties grid-1">
+                    <div class="item-size">
+                        <label>{{localize "CTHACK.ItemSizeEquipped"}}</label>
+                        {{formInput systemFields.size.fields.equipped name="system.size.equipped" value=systemSource.size.equipped localize=true disabled=isPlay}}
+                        <label>{{localize "CTHACK.ItemSizeUnequipped"}}</label>
+                        {{formInput systemFields.size.fields.unequipped name="system.size.unequipped" value=systemSource.size.unequipped localize=true disabled=isPlay}}
+                    </div>            
+                </div>
+            {{else}}
+                <div class="item-properties grid-1 readonly">
+                    <div class="item-size">
+                        <label>{{localize "CTHACK.ItemSizeName"}}</label>
+                        <span data-tooltip="Equipé">{{system.size.equipped}}</span> {{#if hasSizeUnequipped }}<span data-tooltip="Non équipé">({{system.size.unequipped}})</span>{{/if}}
+                    </div>            
+                </div>
+            {{/if}}
+        {{/if}}
+        
+        <div class="item-description">
             {{#if isEdit}}
                 <fieldset>
                     <legend>{{localize "CTHACK.Description"}}</legend>
-                    {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=false}}
+                    <div class="description-content">
+                        {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+                    </div>
                 </fieldset>
             {{else}}
                 {{#if system.hasDescription}}
                     <fieldset>
                         <legend>{{localize "CTHACK.Description"}}</legend>
-                        {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=true}}
+                        <div class="description-content">
+                            {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+                        </div>
                     </fieldset>
                 {{/if}}
             {{/if}}
-        </div>    
+        </div>
 </section>

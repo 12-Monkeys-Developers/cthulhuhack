@@ -1,87 +1,130 @@
 &.sheet.item.weapon {
-  .window-content.weapon-content {
-    height: auto;
-    .item-header {
+  .weapon-content {
+    .weapon-section {
       display: flex;
       flex-direction: column;
-      input {
-        width: auto;
-        font-size: 1.5rem;
-        text-transform: uppercase;
-        text-align: center;
-        border: 0px;
-        margin: 10px 0 0 0;
-        padding: 0;
-      }
-      .item-header-row {
+      height: 100%;
+      overflow: hidden;
+      .item-header {
         display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        .item-image {
+        flex-direction: column;
+        input {
+          width: auto;
+          font-size: 1.2rem;
+          text-transform: uppercase;
+          text-align: center;
+          border: 0px;
+          margin: 10px 0 0 0;
+          padding: 0;
+        }
+        .item-header-row {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 10px 0 20px 0;
+          .item-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              border: 0px;
+              max-height: 120px;
+              max-width: auto;
+              margin-right: 10px;
+            }
+          }
+          .form-group.material {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 1.2rem;
+            img {
+              max-height: 70px;
+            }
+          }
+        }
+      }
+      .item-properties {
+        &.grid-1 {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          padding-left: 20px;
+          padding-right: 20px;
+          font-size: 1rem;
+          text-align: center;
+          color: var(--font-color-primary);
+        }
+
+        &.grid-2 {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          padding-left: 20px;
+          padding-right: 20px;
+          font-size: 1rem;
+          text-align: center;
+          color: var(--font-color-primary);
+          &.readonly {
+            label {
+              margin-right: 20px;
+            }
+          }
+        }
+
+        .item-range {
           display: flex;
           justify-content: center;
           align-items: center;
-          img {
-            border: 0px;
-            max-height: 150px;
-            max-width: auto;
-          }
-        }
-        .form-group.material {
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          font-size: 1.2rem;
-          img {
-            max-height: 80px;
-          }
-        }
-      }
-    }
-    .item-properties {
-      &.grid-1 {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        padding-left: 20px;
-        padding-right: 20px;
-        font-size: 1rem;
-        text-align: center;
-        color: var(--font-color-primary);
-      }
-
-      &.grid-2 {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        padding-left: 20px;
-        padding-right: 20px;
-        font-size: 1rem;
-        text-align: center;
-        color: var(--font-color-primary);
-        &.readonly {
           label {
-            margin-right: 20px;
+            font-size: 1rem;
+            margin-right: 10px;
+          }
+          .select-range {
+            width: auto;
+            font-size: 1rem;
+            text-align: center;
+            border: 0px;
+            padding: 5px;
           }
         }
       }
-
-      .item-range {
+      .item-description {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        label {
-          font-size: 1rem;
-          margin-right: 10px;
-        }
-        .select-range {
-          width: auto;
-          font-size: 1rem;
-          text-align: center;
-          border: 0px;
-          padding: 5px;
+        flex-direction: column;
+        flex: 1;
+        margin-top: 0;
+        margin-bottom: 10px;
+        overflow: hidden;
+        min-height: 0;
+        fieldset {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          margin-top: 10px;
+          min-height: 0;
+          overflow: hidden;
+          legend {
+            font-size: 1rem;
+            flex-shrink: 0;
+          }
+          .description-content {
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+            prose-mirror {
+              flex: 1;
+              overflow: auto;
+              min-height: 0;
+              button {
+                color: white;
+              }
+            }
+          }
         }
       }
     }
-    .item-common-description();
   }
 }

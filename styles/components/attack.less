@@ -1,20 +1,107 @@
 &.sheet.item.attack {
-  .item-common-header();
-  .attack-grid {
-    .item-common-grid(3);
-    padding: 0;
-    .field-name {
-      height: 40px;;
-    }
-    .input-damage {
-      color: var(--font-color-primary);
-      opacity: inherit
-    }
-    .select-damageDice {
-      min-width: 80px;
-      color: var(--font-color-primary);
-      opacity: 1;
+  .attack-content {
+    .attack-section {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+      .item-header {
+        display: flex;
+        flex-direction: column;
+        input {
+          width: auto;
+          font-size: 1.2rem;
+          text-transform: uppercase;
+          text-align: center;
+          border: 0px;
+          margin: 10px 0 0 0;
+          padding: 0;
+        }
+        .item-header-row {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 10px 0 20px 0;
+          .item-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              border: 0px;
+              max-height: 150px;
+              max-width: auto;
+              margin-right: 10px;
+            }
+          }
+          .form-group.material {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 1.2rem;
+            img {
+              max-height: 80px;
+            }
+          }
+        }
+      }
+      .item-properties {
+        &.grid-3 {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          padding-left: 20px;
+          padding-right: 20px;
+          font-size: 1rem;
+          text-align: center;
+          color: var(--font-color-primary);
+          &.readonly {
+            label {
+              margin-right: 20px;
+            }
+          }
+          select {
+            width: auto;
+          }
+          input {
+            text-align: center;
+          }
+        }
+      }
+      .item-description {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-top: 0;
+        margin-bottom: 10px;
+        overflow: auto;
+        min-height: 0;
+        fieldset {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          margin: 0;
+          min-height: 0;
+          overflow: hidden;
+          legend {
+            font-size: 1rem;
+          }
+          .description-content {
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;            
+            prose-mirror {
+              flex: 1;
+              overflow: auto;
+              button {
+                color: white;
+              }
+            }
+          }
+        }
+      }
     }
   }
-  .item-common-description();
 }

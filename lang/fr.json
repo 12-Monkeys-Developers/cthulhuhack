@@ -24,6 +24,136 @@
         }
       }
     },
+    "Magic": {
+      "FIELDS": {
+        "subtype": {
+          "label": "Type"
+        },
+        "incantation": {
+          "label": "Incantation"
+        }
+      }
+    },
+    "ArchetypeData": {
+      "FIELDS": {
+        "flashlights": {
+          "label": "Torche"
+        },
+        "smokes": {
+          "label": "Bagou"
+        },
+        "hitdice": {
+          "label": "Dé de Vie"
+        },
+        "hitpoints": {
+          "label": "Points de Vie"
+        },
+        "wealthStart": {
+          "label": "Richesse de départ"
+        },
+        "wealthDice": {
+          "label": "Dé de richesse"
+        },
+        "sanity": {
+          "label": "Santé mentale"
+        },
+        "armeddamage": {
+          "label": "Dégât(s) armé"
+        },
+        "unarmeddamage": {
+          "label": "Dégât(s) sans arme"
+        },
+        "primarysave": {
+          "label": "Sauvegarde primaire"
+        },
+        "secondarysave1": {
+          "label": "Autre sauvegarde"
+        },
+        "secondarysave2": {
+          "label": "Autre sauvegarde"
+        }
+      }
+    },
+    "Attack": {
+      "FIELDS": {
+        "nb": {
+          "label": "Nombre d'attaques"
+        },
+        "damage": {
+          "label": "Dégâts"
+        },
+        "damageDice": {
+          "label": "Dés de Dégâts"
+        }
+      }
+    },
+    "Definition": {
+      "FIELDS": {
+        "definitionType": {
+          "label": "Type"
+        },
+        "key": {
+          "label": "Clé"
+        },
+        "creationDate": {
+          "label": "Date de création"
+        }
+      }
+    },
+    "Ability": {
+      "FIELDS": {
+        "key": {
+          "label": "Clé"
+        },
+        "uses": {
+          "value": {
+            "label": "Utilisations restantes"
+          },
+          "max": {
+            "label": "Maximum"
+          },
+          "per": {
+            "label": "Type d'usage"
+          },
+          "last": {
+            "label": "Dernier usage"
+          }
+        },
+        "multiple": {
+          "label": "Multiple"
+        },
+        "isCustom": {
+          "label": "Custom"
+        },
+        "advantageGiven": {
+          "label": "Donne un avantage"
+        },
+        "advantageText": {
+          "label": "Description avantage"
+        }
+      }
+    },
+    "OpponentAbility": {
+      "FIELDS": {
+        "uses": {
+          "value": {
+            "label": "Utilisations restantes"
+          },
+          "max": {
+            "label": "Maximum"
+          },
+          "per": {
+            "label": "Type d'usage"
+          },
+          "last": {
+            "label": "Dernier usage"
+          }
+        }
+      }
+    },
+    "Ui": {
+      "Magic": "Magie"
+    },
     "SheetClassCharacter": "Feuille de personnnage",
     "SheetClassOpponent": "Feuille d'adversaire",
     "ToggleMode": "Basculer entre le mode Edition et le mode Lecture",
@@ -74,7 +204,6 @@
     "Items": "Equipement",
     "Abilities": "Capacités",
     "AbilitiesAndMagic": "Capacités & Magie",
-    "Magic": "Magie",
     "Damage": "Dégâts",
     "DamageDice": "Dé(s) de Dégâts",
     "Type": "Type",
@@ -85,6 +214,7 @@
     "Equipped": "Equipé",
     "Unequipped": "Non équipé",
     "Home": "Chez soi",
+    "SheetModeEdit": "Basculer entre le mode édition et le mode visualisation",
 
     "AbilityKey": "Clé",
     "AbilityUsePer": "Type d'usage",

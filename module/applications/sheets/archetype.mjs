@@ -1,27 +1,28 @@
-import { SYSTEM } from "../../config/system.mjs";
-import CtHackItemSheet from "./item.mjs";
+import CtHackItemSheet from "./item.mjs"
 
 export default class CtHackArchetypeSheet extends CtHackItemSheet {
-  static get defaultOptions() {
-    const options = super.defaultOptions;
-    return Object.assign(options, {
-      height: 600,
+  /** @override */
+  static DEFAULT_OPTIONS = {
+    classes: ["archetype"],
+    position: {
       width: 800,
-      resizable: true,
-    });
+    },
+    window: {      
+      contentClasses: ["archetype-content"]
+    }
   }
-  /**
-   * The item type displayed in the sheet
-   * @type {string}
-   */
-  static itemType = "archetype";
 
   /** @override */
-  async getData(options) {
-    const context = await super.getData(options);
-    context.diceDamageValues = SYSTEM.DICE_DAMAGE_VALUES;
-    context.wealthStart = SYSTEM.WEALTH_START;
-    context.saves = SYSTEM.SAVES;
-    return context;
+  static PARTS = {
+    main: {
+      template: "systems/cthack/templates/v2/archetype.hbs",
+    },
+  }
+
+  /** @override */
+  async _prepareContext() {
+    const context = await super._prepareContext()
+    context.wealthStart = SYSTEM.WEALTH_START
+    return context
   }
 }

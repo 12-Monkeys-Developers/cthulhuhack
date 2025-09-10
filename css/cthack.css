@@ -1339,52 +1339,41 @@ a.inline-roll {
 .cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .has-description {
   font-style: italic;
 }
-.cthack.sheet.item.archetype .editable input,
-.cthack.sheet.item.archetype .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.archetype .item-header {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header {
   display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.archetype .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.archetype .item-header input {
-  font-size: 1.2rem;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
-}
-.cthack.sheet.item.archetype .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.archetype .archetype-body-header {
-  display: flex;
-  align-items: flex-start;
   grid-gap: 10px;
   padding: 0 20px 0 20px;
 }
-.cthack.sheet.item.archetype .archetype-body-header img {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-left img {
   height: 350px;
   width: 150px;
-  flex-shrink: 0;
   border: none;
 }
-.cthack.sheet.item.archetype .archetype-body-header-right {
-  flex-grow: 1;
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-right {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
-.cthack.sheet.item.archetype .archetype-grid {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-right .item-description {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-right .item-description .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex: 1;
+}
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-right .item-description .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+}
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-right .item-description .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid {
   padding-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1394,519 +1383,78 @@ a.inline-roll {
   text-align: center;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.archetype .archetype-grid .data-group {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid .data-group {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.archetype .archetype-grid .data-group .field-name {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid .data-group .field-name {
   text-transform: uppercase;
   margin-bottom: 5px;
 }
-.cthack.sheet.item.archetype .archetype-grid .data-group input,
-.cthack.sheet.item.archetype .archetype-grid .data-group select {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid .data-group input,
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid .data-group select {
   height: 40px;
   padding: 0;
 }
-.cthack.sheet.item.archetype .archetype-grid .data-group input[type="checkbox"] {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid .data-group input[type="checkbox"] {
   flex: none;
 }
-.cthack.sheet.item.archetype .item-description {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: 1rem;
-}
-.cthack.sheet.item.archetype .item-description .description {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid input {
   text-align: center;
-  text-transform: uppercase;
 }
-.cthack.sheet.item.archetype .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.archetype .item-description .editor {
-  min-height: 100px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.archetype .item-description .editor-content {
-  min-height: 100px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.archetype .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.archetype .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.archetype .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.archetype .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.archetype .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.archetype .data-group .select-dice {
-  color: black;
-}
-.cthack.sheet.item.archetype .data-group .wealth-start {
-  width: 80px;
-}
-.cthack.sheet.item.magic .editable input,
-.cthack.sheet.item.magic .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.magic .item-header {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.magic .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.magic .item-header input {
-  font-size: 1.2rem;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
-}
-.cthack.sheet.item.magic .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.magic .magic-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 1rem;
-  text-align: center;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.magic .magic-grid .data-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.cthack.sheet.item.magic .magic-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-.cthack.sheet.item.magic .magic-grid .data-group input,
-.cthack.sheet.item.magic .magic-grid .data-group select {
-  height: 40px;
-  padding: 0;
-}
-.cthack.sheet.item.magic .magic-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.magic .magic-grid .select-subtype {
-  min-width: 80px;
-  font-size: 1rem;
-  color: var(--font-color-primary);
-  opacity: 1;
-}
-.cthack.sheet.item.magic .magic-grid .select-sanitation {
-  color: #111;
-}
-.cthack.sheet.item.magic .magic-grid .select-sanitation .select:disabled {
-  color: #111;
-  opacity: 1;
-}
-.cthack.sheet.item.magic .magic-grid .input-incantation {
-  min-width: 100px;
-  font-size: 1rem;
-  height: 40px;
-}
-.cthack.sheet.item.magic .item-description {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: 1rem;
-}
-.cthack.sheet.item.magic .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.magic .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.magic .item-description .editor {
-  min-height: 100px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.magic .item-description .editor-content {
-  min-height: 100px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.magic .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.magic .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.magic .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.magic .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.magic .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.ability .editable input,
-.cthack.sheet.item.ability .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.ability .item-header {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.ability .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.ability .item-header input {
-  font-size: 1.2rem;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
-}
-.cthack.sheet.item.ability .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.ability .ability-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 1rem;
-  text-align: center;
-  color: var(--font-color-primary);
-  grid-gap: 10px;
-}
-.cthack.sheet.item.ability .ability-grid .data-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.cthack.sheet.item.ability .ability-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-.cthack.sheet.item.ability .ability-grid .data-group input,
-.cthack.sheet.item.ability .ability-grid .data-group select {
-  height: 40px;
-  padding: 0;
-}
-.cthack.sheet.item.ability .ability-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.ability .ability-grid .select-usage {
-  min-width: 100px;
-  font-size: 1rem;
-  color: var(--font-color-primary);
-  opacity: 1;
-}
-.cthack.sheet.item.ability .ability-grid .readonly {
-  border: none;
-}
-.cthack.sheet.item.ability .item-description {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: 1rem;
-}
-.cthack.sheet.item.ability .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.ability .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.ability .item-description .editor {
-  min-height: 100px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.ability .item-description .editor-content {
-  min-height: 100px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.ability .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.ability .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.ability .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.ability .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.ability .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.item .item-header {
-  display: flex;
-  flex-direction: column;
-}
-.cthack.sheet.item.item .item-grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 1rem;
-  text-align: center;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.item .item-grid .data-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.cthack.sheet.item.item .item-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-.cthack.sheet.item.item .item-grid .data-group input,
-.cthack.sheet.item.item .item-grid .data-group select {
-  height: 40px;
-  padding: 0;
-}
-.cthack.sheet.item.item .item-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.item .item-grid .select-dice-material .select:disabled {
-  color: #111;
-  opacity: 1;
-}
-.cthack.sheet.item.item .item-grid img {
-  border: none;
-  height: 80px;
-  width: 80px;
-}
-.cthack.sheet.item.item .item-description {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: 1rem;
-}
-.cthack.sheet.item.item .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.item .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.item .item-description .editor {
-  min-height: 100px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.item .item-description .editor-content {
-  min-height: 100px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.item .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.item .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.item .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.item .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.item .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.definition .editable input,
-.cthack.sheet.item.definition .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.definition .item-header {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.definition .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.definition .item-header input {
-  font-size: 1.2rem;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
-}
-.cthack.sheet.item.definition .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.definition .definition-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 1rem;
-  text-align: center;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.definition .definition-grid .data-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.cthack.sheet.item.definition .definition-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-.cthack.sheet.item.definition .definition-grid .data-group input,
-.cthack.sheet.item.definition .definition-grid .data-group select {
-  height: 40px;
-  padding: 0;
-}
-.cthack.sheet.item.definition .definition-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.definition .item-description {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: 1rem;
-}
-.cthack.sheet.item.definition .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.definition .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.definition .item-description .editor {
-  min-height: 100px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.definition .item-description .editor-content {
-  min-height: 100px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.definition .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.definition .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.definition .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.definition .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.definition .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.weapon .window-content.weapon-content {
-  height: auto;
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-header {
-  display: flex;
-  flex-direction: column;
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-header input {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid select {
   width: auto;
-  font-size: 1.5rem;
+  text-align: center;
+}
+.cthack.sheet.item.magic .magic-content .magic-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
   text-transform: uppercase;
   text-align: center;
   border: 0px;
   margin: 10px 0 0 0;
   padding: 0;
 }
-.cthack.sheet.item.weapon .window-content.weapon-content .item-header .item-header-row {
+.cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 10px 0 20px 0;
 }
-.cthack.sheet.item.weapon .window-content.weapon-content .item-header .item-header-row .item-image {
+.cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row .item-image {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.weapon .window-content.weapon-content .item-header .item-header-row .item-image img {
+.cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row .item-image img {
   border: 0px;
   max-height: 150px;
   max-width: auto;
+  margin-right: 10px;
 }
-.cthack.sheet.item.weapon .window-content.weapon-content .item-header .item-header-row .form-group.material {
+.cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row .form-group.material {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   font-size: 1.2rem;
 }
-.cthack.sheet.item.weapon .window-content.weapon-content .item-header .item-header-row .form-group.material img {
+.cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row .form-group.material img {
   max-height: 80px;
 }
-.cthack.sheet.item.weapon .window-content.weapon-content .item-properties.grid-1 {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 1rem;
-  text-align: center;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-properties.grid-2 {
+.cthack.sheet.item.magic .magic-content .magic-section .item-properties.grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding-left: 20px;
@@ -1915,95 +1463,99 @@ a.inline-roll {
   text-align: center;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.weapon .window-content.weapon-content .item-properties.grid-2.readonly label {
+.cthack.sheet.item.magic .magic-content .magic-section .item-properties.grid-2.readonly label {
   margin-right: 20px;
 }
-.cthack.sheet.item.weapon .window-content.weapon-content .item-properties .item-range {
+.cthack.sheet.item.magic .magic-content .magic-section .item-properties.grid-2 select {
+  width: auto;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-properties.grid-2 input {
+  text-align: center;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+  min-height: 0;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description fieldset legend {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.ability .ability-content .ability-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-header .item-header-row .item-image {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.weapon .window-content.weapon-content .item-properties .item-range label {
-  font-size: 1rem;
+.cthack.sheet.item.ability .ability-content .ability-section .item-header .item-header-row .item-image img {
+  border: 0px;
+  max-height: 120px;
+  max-width: auto;
   margin-right: 10px;
 }
-.cthack.sheet.item.weapon .window-content.weapon-content .item-properties .item-range .select-range {
-  width: auto;
-  font-size: 1rem;
-  text-align: center;
-  border: 0px;
-  padding: 5px;
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-description {
+.cthack.sheet.item.ability .ability-content .ability-section .item-header .item-header-row .form-group.material {
   display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: 1rem;
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-description .editor {
-  min-height: 100px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-description .editor-content {
-  min-height: 100px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.weapon .window-content.weapon-content .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.attack .editable input,
-.cthack.sheet.item.attack .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.attack .item-header {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.attack .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.attack .item-header input {
+  justify-content: flex-end;
+  align-items: center;
   font-size: 1.2rem;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
 }
-.cthack.sheet.item.attack .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
+.cthack.sheet.item.ability .ability-content .ability-section .item-header .item-header-row .form-group.material img {
+  max-height: 70px;
 }
-.cthack.sheet.item.attack .attack-grid {
+.cthack.sheet.item.ability .ability-content .ability-section .item-properties.grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding-left: 20px;
@@ -2011,190 +1563,556 @@ a.inline-roll {
   font-size: 1rem;
   text-align: center;
   color: var(--font-color-primary);
-  padding: 0;
 }
-.cthack.sheet.item.attack .attack-grid .data-group {
+.cthack.sheet.item.ability .ability-content .ability-section .item-properties.grid-3 select {
+  width: auto;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-properties.grid-3 input {
+  text-align: center;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+  min-height: 0;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description fieldset legend {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.object .object-content .item-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.object .object-content .item-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.object .object-content .item-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.cthack.sheet.item.object .object-content .item-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.object .object-content .item-section .item-header .item-header-row .item-image {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.attack .attack-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
+.cthack.sheet.item.object .object-content .item-section .item-header .item-header-row .item-image img {
+  border: 0px;
+  max-height: 120px;
+  max-width: auto;
 }
-.cthack.sheet.item.attack .attack-grid .data-group input,
-.cthack.sheet.item.attack .attack-grid .data-group select {
-  height: 40px;
-  padding: 0;
-}
-.cthack.sheet.item.attack .attack-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.attack .attack-grid .field-name {
-  height: 40px;
-}
-.cthack.sheet.item.attack .attack-grid .input-damage {
-  color: var(--font-color-primary);
-  opacity: inherit;
-}
-.cthack.sheet.item.attack .attack-grid .select-damageDice {
-  min-width: 80px;
-  color: var(--font-color-primary);
-  opacity: 1;
-}
-.cthack.sheet.item.attack .item-description {
+.cthack.sheet.item.object .object-content .item-section .item-header .item-header-row .form-group.material {
   display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: 1rem;
-}
-.cthack.sheet.item.attack .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.attack .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.attack .item-description .editor {
-  min-height: 100px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.attack .item-description .editor-content {
-  min-height: 100px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.attack .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.attack .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.attack .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.attack .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.attack .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.opponentAbility .editable input,
-.cthack.sheet.item.opponentAbility .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.opponentAbility .item-header {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.opponentAbility .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.opponentAbility .item-header input {
+  justify-content: flex-end;
+  align-items: center;
   font-size: 1.2rem;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
 }
-.cthack.sheet.item.opponentAbility .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
+.cthack.sheet.item.object .object-content .item-section .item-header .item-header-row .form-group.material img {
+  max-height: 70px;
 }
-.cthack.sheet.item.opponentAbility .ability-body {
-  padding: 0 10px 0 10px;
-}
-.cthack.sheet.item.opponentAbility .ability-grid {
+.cthack.sheet.item.object .object-content .item-section .item-properties.grid-1 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   padding-left: 20px;
   padding-right: 20px;
   font-size: 1rem;
   text-align: center;
   color: var(--font-color-primary);
-  grid-gap: 10px;
 }
-.cthack.sheet.item.opponentAbility .ability-grid .data-group {
+.cthack.sheet.item.object .object-content .item-section .item-description {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+  min-height: 0;
+}
+.cthack.sheet.item.object .object-content .item-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.object .object-content .item-section .item-description fieldset legend {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.cthack.sheet.item.object .object-content .item-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.object .object-content .item-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.object .object-content .item-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.definition .definition-content .definition-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-header .item-header-row .item-image {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.opponentAbility .ability-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
+.cthack.sheet.item.definition .definition-content .definition-section .item-header .item-header-row .item-image img {
+  border: 0px;
+  max-height: 150px;
+  max-width: auto;
+  margin-right: 10px;
 }
-.cthack.sheet.item.opponentAbility .ability-grid .data-group input,
-.cthack.sheet.item.opponentAbility .ability-grid .data-group select {
-  height: 40px;
-  padding: 0;
+.cthack.sheet.item.definition .definition-content .definition-section .item-header .item-header-row .form-group.material {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.2rem;
 }
-.cthack.sheet.item.opponentAbility .ability-grid .data-group input[type="checkbox"] {
-  flex: none;
+.cthack.sheet.item.definition .definition-content .definition-section .item-header .item-header-row .form-group.material img {
+  max-height: 80px;
 }
-.cthack.sheet.item.opponentAbility .ability-grid .field-name {
-  height: 40px;
-}
-.cthack.sheet.item.opponentAbility .ability-grid .select-usage {
-  min-width: 100px;
+.cthack.sheet.item.definition .definition-content .definition-section .item-properties.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1rem;
+  text-align: center;
   color: var(--font-color-primary);
-  opacity: 1;
 }
-.cthack.sheet.item.opponentAbility .ability-grid .readonly {
-  border: none;
+.cthack.sheet.item.definition .definition-content .definition-section .item-properties.grid-2.readonly label {
+  margin-right: 20px;
 }
-.cthack.sheet.item.opponentAbility .item-description {
+.cthack.sheet.item.definition .definition-content .definition-section .item-properties.grid-2 select {
+  width: auto;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-properties.grid-2 input {
+  text-align: center;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-description {
   display: flex;
   flex-direction: column;
-  padding: 10px 10px 0px 10px;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-description fieldset legend {
   font-size: 1rem;
 }
-.cthack.sheet.item.opponentAbility .item-description .description {
-  text-align: center;
+.cthack.sheet.item.definition .definition-content .definition-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
   text-transform: uppercase;
+  text-align: center;
+  border: 0px;
+  margin: 10px 0 0 0;
+  padding: 0;
 }
-.cthack.sheet.item.opponentAbility .item-description .description-content {
-  text-align: justify;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
 }
-.cthack.sheet.item.opponentAbility .item-description .editor {
-  min-height: 100px;
-  scrollbar-width: thin;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row .item-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.cthack.sheet.item.opponentAbility .item-description .editor-content {
-  min-height: 100px;
-  margin: 0px 5px;
-  font-weight: normal;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row .item-image img {
+  border: 0px;
+  max-height: 120px;
+  max-width: auto;
+  margin-right: 10px;
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu {
-  font-size: 0.8em;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row .form-group.material {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.2rem;
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu li {
-  margin: 0px 0px;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row .form-group.material img {
+  max-height: 70px;
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu button {
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties.grid-1 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties.grid-2.readonly label {
+  margin-right: 20px;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties .item-range {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties .item-range label {
+  font-size: 1rem;
+  margin-right: 10px;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties .item-range .select-range {
+  width: auto;
+  font-size: 1rem;
+  text-align: center;
+  border: 0px;
+  padding: 5px;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+  min-height: 0;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description fieldset legend {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.attack .attack-content .attack-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-header .item-header-row .item-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-header .item-header-row .item-image img {
+  border: 0px;
+  max-height: 150px;
+  max-width: auto;
+  margin-right: 10px;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-header .item-header-row .form-group.material {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-header .item-header-row .form-group.material img {
+  max-height: 80px;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-properties.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
   color: var(--font-color-primary);
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-properties.grid-3.readonly label {
+  margin-right: 20px;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-properties.grid-3 select {
+  width: auto;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-properties.grid-3 input {
+  text-align: center;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description fieldset legend {
+  font-size: 1rem;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header .item-header-row .item-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header .item-header-row .item-image img {
+  border: 0px;
+  max-height: 120px;
+  max-width: auto;
+  margin-right: 10px;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header .item-header-row .form-group.material {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header .item-header-row .form-group.material img {
+  max-height: 70px;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-properties.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--font-color-primary);
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-properties.grid-2 select {
+  width: auto;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-properties.grid-2 input {
+  text-align: center;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+  min-height: 0;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description fieldset legend {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
 }
 .application.dialog.cthack {
   color: var(--color-light-1);

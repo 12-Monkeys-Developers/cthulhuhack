@@ -88,9 +88,9 @@ Hooks.once("init", function () {
 
   foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet)
   foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.CapaciteSheet, { types: ["ability"], makeDefault: true })
-  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ObjetSheetV2, { types: ["item"], makeDefault: true })
-  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ArmeSheetV2, { types: ["weapon"], makeDefault: true })
-  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.MagieSheetV2, { types: ["magic"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ObjetSheet, { types: ["item"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ArmeSheet, { types: ["weapon"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.MagieSheet, { types: ["magic"], makeDefault: true })
   foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ArchetypeSheet, { types: ["archetype"], makeDefault: true })
   foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.AttaqueSheet, { types: ["attack"], makeDefault: true })
   foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.AdversaireCapaciteSheet, { types: ["opponentAbility"], makeDefault: true })

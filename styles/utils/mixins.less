@@ -1,39 +1,4 @@
 // Mixin for items
-.item-common-header() {
-  .editable {
-    input,
-    select {
-      border: var(--border-standard);
-    }
-  }
-  .item-header {
-    display: flex;
-    flex-direction: row;
-    margin: 10px 0 10px 0;
-    padding: 0 10px 0 10px;
-    color: var(--font-color-primary);
-    img {
-      border: 0px;
-      max-height: 50px;
-    }
-    input {
-      //width: 20rem;
-      font-size: 1.2rem;
-      //text-align: left;
-      border: 0px;
-      margin: 10px 0 0 10px;
-      padding: 0;
-    }
-    .name {
-      width: 20rem;
-      font-size: 1.2rem;
-      text-align: left;;
-      border: 0px;
-      margin: 10px 0 0 10px;
-    }
-  }
-}
-
 .item-common-grid(@nbcolumns) {
   display: grid;
   grid-template-columns: repeat(@nbcolumns, 1fr);
@@ -58,50 +23,6 @@
     }
     input[type="checkbox"] {
       flex: none;
-    }
-  }
-}
-
-.item-common-description() {
-  .item-description {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 10px 0px 10px;
-    font-size: 1rem;
-    .description {
-      text-align: center;
-      text-transform: uppercase;
-    }
-    .description-content {
-      text-align: justify;
-    }
-    .editor {
-      min-height: 100px;
-      scrollbar-width: thin;
-    }
-    .editor-content {
-      min-height: 100px;
-      margin: 0px 5px;
-      font-weight: normal;
-    }
-    .prosemirror menu {
-      font-size: 0.8em;
-      li {
-        margin: 0px 0px;
-      }
-      button {
-        color: var(--font-color-primary);
-        &:hover {
-          box-shadow: none;
-          background: lightslategray;
-          color: var(--font-color-primary);
-        }
-        &.active {
-          box-shadow: none;
-          background: grey;
-          color: var(--font-color-primary);
-        }
-      }
     }
   }
 }

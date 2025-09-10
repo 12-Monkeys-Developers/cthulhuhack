@@ -1,5 +1,5 @@
 {{log "Cthulhu Hack | weapon" this}}
-<section>    
+<section class="weapon-section">    
         <div class="item-header">
             <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
             <div class="item-header-row">
@@ -68,13 +68,17 @@
             {{#if isEdit}}
                 <fieldset>
                     <legend>{{localize "CTHACK.Description"}}</legend>
-                    {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+                    <div class="description-content">
+                        {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+                    </div>
                 </fieldset>
             {{else}}
                 {{#if system.hasDescription}}
                     <fieldset>
                         <legend>{{localize "CTHACK.Description"}}</legend>
-                        {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+                        <div class="description-content">
+                            {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+                        </div>
                     </fieldset>
                 {{/if}}
             {{/if}}

@@ -1,38 +1,40 @@
-<section>
-  {{log "definition" this}}
-  <div class="item-header">
-    {{#if isEdit}}
-      <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
-      <input name="name" type="text" value="{{item.name}}" />
-    {{else}}
-      <img src="{{item.img}}" />
-      <input name="name" type="text" value="{{item.name}}" disabled />
-    {{/if}}
+{{log "Cthulhu Hack | definition" this}}
+<section class="definition-section">
+    <div class="item-header">
+        <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
+        <div class="item-header-row">
+            <div class="item-image">
+                {{#if isEdit}}
+                    <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+                {{else}}
+                    {{#unless hasDefaultImage}}
+                        <img src="{{item.img}}" />
+                    {{/unless}}                        
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+  <div class="item-properties grid-2">
+      {{formGroup systemFields.definitionType value=systemSource.definitionType name="system.definitionType" localize=true disabled=isPlay}}
+      {{formGroup systemFields.key value=systemSource.key name="system.key" localize=true disabled=isPlay}}
   </div>
 
-  <div class="definition-body">
-    {{#if editable}}
-      <div class="definition-grid">
-        <div class="data-group">
-          <div class="field-name">{{localize "CTHACK.DefinitionType"}}</div>
-          <input name="system.definitionType" type="text" value="{{item.system.definitionType}}" data-dtype="String" readonly />
-        </div>
-        <div class="data-group">
-          <div class="field-name">{{localize "CTHACK.DefinitionKey"}}</div>
-          <input name="system.key" type="text" value="{{item.system.key}}" data-dtype="String" readonly />
-        </div>
-      </div>
-    {{/if}}
+  <div class="item-description">
     {{#if isEdit}}
       <fieldset>
         <legend>{{localize "CTHACK.Description"}}</legend>
-        {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=false}}
+        <div class="description-content">
+          {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+        </div>
       </fieldset>
     {{else}}
       {{#if system.hasDescription}}
         <fieldset>
           <legend>{{localize "CTHACK.Description"}}</legend>
-          {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=true}}
+          <div class="description-content">
+            {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+          </div>
         </fieldset>
       {{/if}}
     {{/if}}

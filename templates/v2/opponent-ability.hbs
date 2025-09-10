@@ -1,47 +1,44 @@
-<section>
-  {{log "opponent ability" this}}
+{{log "Cthulhu Hack | opponent-ability" this}}
+<section class="opponent-ability-section">
   <div class="item-header">
+      <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
+      <div class="item-header-row">
+          <div class="item-image">
+              {{#if isEdit}}
+                  <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+              {{else}}
+                  {{#unless hasDefaultImage}}
+                      <img src="{{item.img}}" />
+                  {{/unless}}                        
+              {{/if}}
+          </div>
+      </div>
+  </div>
+
+ <div class="item-properties grid-2">
+    {{formGroup systemFields.uses.fields.per value=systemSource.uses.per name="system.uses.per" localize=true disabled=isPlay}}  
+    {{formGroup systemFields.uses.fields.max value=systemSource.uses.max name="system.uses.max" localize=true disabled=isPlay}}
+    {{formGroup systemFields.uses.fields.value value=systemSource.uses.value name="system.uses.value" localize=true disabled=isPlay}}    
+    {{formGroup systemFields.uses.fields.last value=systemSource.uses.last name="system.uses.last" localize=true disabled=isPlay}}
+ </div>
+
+  <div class="item-description">
     {{#if isEdit}}
-      <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
-      <input name="name" type="text" value="{{item.name}}" />
+      <fieldset>
+        <legend>{{localize "CTHACK.Description"}}</legend>
+        <div class="description-content">
+          {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+        </div>
+      </fieldset>
     {{else}}
-      <img src="{{item.img}}" />
-      <input name="name" type="text" value="{{item.name}}" disabled />
+      {{#if system.hasDescription}}
+        <fieldset>
+          <legend>{{localize "CTHACK.Description"}}</legend>
+          <div class="description-content">
+            {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+          </div>
+        </fieldset>
+      {{/if}}
     {{/if}}
   </div>
- <div class="ability-body">
-    <div class="ability-grid">
-      <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.AbilityUsePer"}}</div>
-        <select class="select-usage" name="system.uses.per" data-type="String">
-            {{selectOptions usage selected=item.system.uses.per labelAttr="label" localize=true}}
-        </select>
-      </div>
-      <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.AbilityUseValue"}}</div>
-        <input class="field-value input-small" name="system.uses.value" type="text" value="{{item.system.uses.value}}" data-dtype="Number" />
-      </div>
-      <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.AbilityUseMax"}}</div>
-        <input class="field-value input-small" name="system.uses.max" type="text" value="{{item.system.uses.max}}" data-dtype="Number" />   
-      </div>
-      <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.AbilityUseLast"}}</div>
-        <input class="field-value" name="system.uses.last" type="text" value="{{item.system.uses.last}}" data-dtype="String" />   
-      </div>
-    </div>
-        {{#if isEdit}}
-            <fieldset>
-                <legend>{{localize "CTHACK.Description"}}</legend>
-                {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=false}}
-            </fieldset>
-        {{else}}
-            {{#if system.hasDescription}}
-                <fieldset>
-                    <legend>{{localize "CTHACK.Description"}}</legend>
-                    {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true disabled=true}}
-                </fieldset>
-            {{/if}}
-        {{/if}}
-  </div>  
 </section>
