@@ -1,24 +1,29 @@
-import CtHackItemSheet from "./item.mjs";
+import CtHackItemSheet from "./item.mjs"
 
 export default class CtHackCapaciteSheet extends CtHackItemSheet {
-  static get defaultOptions() {
-    const options = super.defaultOptions;
-    return Object.assign(options, {
-      height: 600,
+  /** @override */
+  static DEFAULT_OPTIONS = {
+    classes: ["ability"],
+    position: {
       width: 800,
-      resizable: true,
-    });
+    },
+    window: {
+      contentClasses: ["ability-content"],
+    },
   }
-  /**
-   * The item type displayed in the sheet
-   * @type {string}
-   */
-  static itemType = "ability";
 
   /** @override */
-  async getData(options) {
-    const context = await super.getData(options);
-    context.usage = SYSTEM.ABILITY_USAGE;
-    return context;
+  static PARTS = {
+    main: {
+      template: "systems/cthack/templates/sheets/ability.hbs",
+    },
+  }
+
+  /** @override */
+  async _prepareContext() {
+    const context = await super._prepareContext()
+    context.usage = SYSTEM.ABILITY_USAGE
+    context.hasDefaultImage = this.document.system.hasDefaultImage()
+    return context
   }
 }

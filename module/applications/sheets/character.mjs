@@ -106,7 +106,8 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
   /** @override */
   async getData(options) {
     const context = super.getData(options)
-
+    context.fields = this.document.schema.fields,
+    context.systemFields = this.document.system.schema.fields,
     // By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
     context.editable = this.actor.isUnlocked
     context.uneditable = !this.actor.isUnlocked // For all items, we enrich the description
@@ -197,8 +198,8 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
     html.find(".damage.rollable").click(this._onDamagedRoll.bind(this))
 
     // Roll for item in inventory
-    html.find(".fa-dice-d20.weapon").click(this._onMaterialRoll.bind(this))
-    html.find(".fa-dice-d20.otherItem").click(this._onMaterialRoll.bind(this))
+    html.find(".dice-d20.weapon").click(this._onMaterialRoll.bind(this))
+    html.find(".dice-d20.otherItem").click(this._onMaterialRoll.bind(this))
 
     // Roll for sanity
     html.find(".fa-dice-d20.sanity").click(this._onSanityRoll.bind(this))

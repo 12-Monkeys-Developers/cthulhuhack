@@ -53,7 +53,7 @@ export const registerHandlebarsHelpers = function() {
 	});
 
 	Handlebars.registerHelper('rangeDesc', function(str) {
-		return CTHACK.range[str];
+		return game.i18n.localize(game.system.CONST.RANGE[str].label);
 	});
 
 	Handlebars.registerHelper('isDiceRollable', function(dice) {
@@ -103,7 +103,13 @@ export const registerHandlebarsHelpers = function() {
 	Handlebars.registerHelper('getStyleForDice', function(value) {
 		if (value === undefined) return;
 		if (value === "" || value == 0 || value == 1) return `style="color:white;"`;
-		return `style="background-image:url('systems/cthack/ui/dice/${value}-grey.svg');padding: 5px;"`;
+		return `style="background-image:url('systems/cthack/ui/dice/${value}.webp');padding: 5px;"`;
+	});
+
+	Handlebars.registerHelper('getDiceImg', function(value) {
+		if (value === undefined) return;
+		if (value === "" || value == 0 || value == 1) return ;
+		return `src="systems/cthack/ui/dice/${value}.webp"`;
 	});
 
 	Handlebars.registerHelper('getNbRessources', function() {
@@ -120,5 +126,10 @@ export const registerHandlebarsHelpers = function() {
 		if (healthDisplay === "both") return "fight-4";
 		return "fight-3";
 	});
-	
+
+	Handlebars.registerHelper('getRangeLabel', function(value) {
+		if (value === "---" || value === "") return ""
+		return game.i18n.localize(SYSTEM.RANGE[value].label);
+	});
+
 };

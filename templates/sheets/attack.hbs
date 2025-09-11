@@ -1,54 +1,43 @@
-<form class="{{cssClass}}" autocomplete="off">
-  {{!log "attack" this}}
-  <div class="item-header">
-    {{#if editable}}
-      <img class="editable-image" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
-    {{else}}
-      <img src="{{item.img}}" />
-    {{/if}}
-    {{#if editable}}
-      <input name="name" type="text" value="{{item.name}}" />
-    {{else}}
-      <div class="name">{{item.name}}</div>
-    {{/if}}
-    <div class="sheet-lock">
-      {{#if editable}}
-        <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
-      {{else}}
-        <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
-      {{/if}}
+{{log "Cthulhu Hack | attack" this}}
+<section class="attack-section">
+    <div class="item-header">
+        <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
+        <div class="item-header-row">
+            <div class="item-image">
+                {{#if isEdit}}
+                    <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+                {{else}}
+                    {{#unless hasDefaultImage}}
+                        <img src="{{item.img}}" />
+                    {{/unless}}                        
+                {{/if}}
+            </div>
+        </div>
     </div>
+
+  <div class="item-properties grid-3">
+    {{formGroup systemFields.damage value=systemSource.damage localize=true disabled=isPlay}}
+    {{formGroup systemFields.damageDice value=systemSource.damageDice localize=true disabled=isPlay}}
+    {{formGroup systemFields.nb value=systemSource.nb localize=true disabled=isPlay}}
   </div>
 
-  <div class="attack-body">
-    <div class="attack-grid">
-      <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.Damage"}}</div>
-        <input class="input-damage" name="system.damage" type="text" value="{{item.system.damage}}" data-type="Number" />
-      </div>
-      <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.DamageDice"}}</div>
-        <select class="select-damageDice" name="system.damageDice" data-type="String" >
-          {{selectOptions diceAttackDamageValues selected=item.system.damageDice}}
-        </select>
-      </div>
-      <div class="data-group">
-        <div class="field-name">{{localize "CTHACK.NbAttacks"}}</div>
-        <input class="input-damage" name="system.nb" type="text" value="{{item.system.nb}}" data-type="Number" />
-      </div>
-    </div>
-    <div class="item-description">
-      {{#if editable}}
-        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
-      {{else}}
-        {{#if hasDescription}}
-          <div class="field-name description">{{localize "CTHACK.Description"}}</div>
-        {{/if}}
+  <div class="item-description">
+    {{#if isEdit}}
+      <fieldset>
+        <legend>{{localize "CTHACK.Description"}}</legend>
+        <div class="description-content">
+          {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+        </div>
+      </fieldset>
+    {{else}}
+      {{#if system.hasDescription}}
+        <fieldset>
+          <legend>{{localize "CTHACK.Description"}}</legend>
+          <div class="description-content">
+            {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+          </div>
+        </fieldset>
       {{/if}}
-      <div class="description-content">
-        {{editor enrichedDescription target="system.description" button=true engine="prosemirror" owner=owner editable=editable}}
-      </div>
-    </div>
+    {{/if}}
   </div>
-
-</form>
+</section>

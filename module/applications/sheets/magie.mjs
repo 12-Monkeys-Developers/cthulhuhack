@@ -1,24 +1,29 @@
-import CtHackItemSheet from "./item.mjs";
+import CtHackItemSheet from "./item.mjs"
 
 export default class CtHackMagieSheet extends CtHackItemSheet {
-  static get defaultOptions() {
-    const options = super.defaultOptions;
-    return Object.assign(options, {
-      height: 400,
-      width: 400,
-      resizable: true,
-    });
+  /** @override */
+  static DEFAULT_OPTIONS = {
+    classes: ["magic"],
+    window: {
+      contentClasses: ["magic-content"],
+    },
+    position: {
+      height: 500,
+    },
   }
-  /**
-   * The item type displayed in the sheet
-   * @type {string}
-   */
-  static itemType = "magic";
 
   /** @override */
-  async getData(options) {
-    const context = await super.getData(options);
-    context.magicTypes = SYSTEM.MAGIC_TYPE;
-    return context;
+  static PARTS = {
+    main: {
+      template: "systems/cthack/templates/sheets/magic.hbs",
+    },
+  }
+
+  /** @override */
+  async _prepareContext() {
+    const context = await super._prepareContext()
+    context.magicTypes = SYSTEM.MAGIC_TYPE
+    context.hasDefaultImage = this.document.system.hasDefaultImage()
+    return context
   }
 }

@@ -1,33 +1,53 @@
 &.sheet.item.archetype {
-  .item-common-header();
-  .archetype-body-header {
-    display: flex; 
-    align-items: flex-start;
-    grid-gap: 10px;
-    padding: 0 20px 0 20px;;
-    img {
-      height: 350px;
-      width:  150px;
-      flex-shrink: 0;
-      border: none;
-    }    
-  }
-  .archetype-body-header-right {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .archetype-grid {
-    padding-top: 20px;    
-    .item-common-grid(3);
-  }
-  .item-common-description();
-  .data-group {
-    .select-dice {
-      color: black;
-    }
-    .wealth-start {
-      width: 80px;
+  .archetype-content {
+    .archetype-section {
+      .archetype-header {
+        display: flex;
+        grid-gap: 10px;
+        padding: 0 20px 0 20px;
+        .archetype-header-left {
+          img {
+            height: 350px;
+            width: 150px;
+            border: none;
+          }
+        }
+        .archetype-header-right {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          .item-description {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-top: 0;
+            margin-bottom: 10px;
+            .description-content {
+              font-size: 1rem;
+              display: flex;
+              flex: 1;
+              prose-mirror {
+                flex: 1;
+                overflow: auto;
+                button {
+                  color: white;
+                }
+              }
+            }
+          }
+        }
+      }
+      .archetype-grid {
+        padding-top: 20px;
+        .item-common-grid(3);
+        input {
+          text-align: center;
+        }
+        select {
+          width: auto;
+          text-align: center;
+        }
+      }
     }
   }
 }

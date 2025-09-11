@@ -1,24 +1,31 @@
-import CtHackItemSheet from "./item.mjs";
+import CtHackItemSheet from "./item.mjs"
 
 export default class CtHackArmeSheet extends CtHackItemSheet {
-  static get defaultOptions() {
-    const options = super.defaultOptions;
-    return Object.assign(options, {
-      height: 300,
-      width: 400,
-      resizable: true,
-    });
+  /** @override */
+  static DEFAULT_OPTIONS = {
+    classes: ["weapon"],
+    window: {
+      contentClasses: ["weapon-content"],
+    },
+    position: {
+      height: 500,
+    },
   }
-  /**
-   * The item type displayed in the sheet
-   * @type {string}
-   */
-  static itemType = "weapon";
 
   /** @override */
-  async getData(options) {
-    const context = await super.getData(options);
-    context.rangeValues = SYSTEM.RANGE;   
-    return context;
+  static PARTS = {
+    main: {
+      template: "systems/cthack/templates/sheets/weapon.hbs",
+    },
+  }
+
+  /** @override */
+  async _prepareContext() {
+    const context = await super._prepareContext()
+    context.rangeValues = SYSTEM.RANGE
+    context.useSize = game.settings.get("cthack", "useSize")
+    context.hasSizeUnequipped = this.document.system.hasSizeUnequipped()
+    context.hasDefaultImage = this.document.system.hasDefaultImage()
+    return context
   }
 }

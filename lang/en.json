@@ -17,8 +17,146 @@
   },
 
   "CTHACK": {
+    "Weapon": {
+      "FIELDS": {
+        "range": {
+          "label": "Range"
+        }
+      }
+    },
+    "Magic": {
+      "FIELDS": {
+        "subtype": {
+          "label": "Type"
+        },
+        "incantation": {
+          "label": "Incantation"
+        }
+      }
+    },
+    "ArchetypeData": {
+      "FIELDS": {
+        "flashlights": {
+          "label": "Flashlights"
+        },
+        "smokes": {
+          "label": "Smokes"
+        },
+        "hitdice": {
+          "label": "Hit Dice"
+        },
+        "hitpoints": {
+          "label": "Hit Points"
+        },
+        "wealthStart": {
+          "label": "Starting Wealth"
+        },
+        "wealthDice": {
+          "label": "Wealth Dice"
+        },
+        "sanity": {
+          "label": "Sanity"
+        },
+        "armeddamage": {
+          "label": "Armed damage"
+        },
+        "unarmeddamage": {
+          "label": "Unarmed damage"
+        },
+        "primarysave": {
+          "label": "Primary Save"
+        },
+        "secondarysave1": {
+          "label": "Other Save"
+        },
+        "secondarysave2": {
+          "label": "Other Save"
+        }
+      }
+    },
+    "Attack": {
+      "FIELDS": {
+        "nb": {
+          "label": "Number of Attacks"
+        },
+        "damage": {
+          "label": "Damage"
+        },
+        "damageDice": {
+          "label": "Damage Dice"
+        }
+      }
+    },
+    "Definition": {
+      "FIELDS": {
+        "definitionType": {
+          "label": "Type"
+        },
+        "key": {
+          "label": "Key"
+        },
+        "creationDate": {
+          "label": "Creation Date"
+        }
+      }
+    },
+    "Ability": {
+      "FIELDS": {
+        "key": {
+          "label": "Key"
+        },
+        "uses": {
+          "value": {
+            "label": "Remaining uses"
+          },  
+          "max": {
+            "label": "Maximum"
+          },
+          "per": {
+            "label": "Usage type"
+          },
+          "last": {
+            "label": "Last use"
+          }
+        },
+        "multiple": {
+          "label": "Multiple"
+        },
+        "isCustom": {
+          "label": "Custom"
+        },
+        "advantageGiven": {
+          "label": "Advantage given"
+        },
+        "advantageText": {
+          "label": "Advantage description"
+        }
+      }
+    },
+    "OpponentAbility": {
+      "FIELDS": {
+        "uses": {
+          "value": {
+            "label": "Remaining uses"
+          },  
+          "max": {
+            "label": "Maximum"
+          },
+          "per": {
+            "label": "Usage type"
+          },
+          "last": {
+            "label": "Last use"
+          }
+        }
+      }
+    },
+    "Ui": {
+      "Magic": "Magic"
+    },
     "SheetClassCharacter": "Character Sheet",
     "SheetClassOpponent": "Opponent Sheet",
+    "ToggleMode": "Toggle between Edit and Play Mode",
     "Name": "Name",
     "Occupation": "Occupation",
     "Archetype": "Archetype",
@@ -66,7 +204,6 @@
     "Items": "Equipment",
     "Abilities": "Special",
     "AbilitiesAndMagic": "Abilities & Magic",
-    "Magic": "Magic",
     "Damage": "Damage",
     "DamageDice": "Damage Dice",
     "Type": "Type",
@@ -74,6 +211,11 @@
     "Incantation": "Incantation",
     "Ritual": "Ritual",
     "Spell": "Spell",
+    "Equipped": "Equipped",
+    "Unequipped": "Unequipped",
+    "Home": "Home",
+    "SheetModeEdit": "Toggle between Edit and View mode",
+    "Status": "Status",
 
     "AbilityKey": "Key",
     "AbilityUsePer": "Use Type",
@@ -179,7 +321,12 @@
     "YES": "Yes",
 
     "ItemDiceName": "Material Dice",
+    "ItemSizeName": "Encumbrance",
+    "ItemSizeEquipped": "Encumbrance equipped",
+    "ItemSizeUnequipped": "Encumbrance unequipped",
     "ItemRangeName": "Range",
+    "RangeContact": "Contact",
+    "RangeContactNear": "Contact/Near",
     "RangeNear": "Near",
     "RangeFar": "Far",
     "RangeDistant": "Distant",
@@ -404,7 +551,9 @@
     "RevisedName": "Cthulhu Hack Reissue",
     "RevisedHint": "Activate Cthulhu Hack reissue rules",
     "displayOpponentMalus": "Display Opponent malus",
-    "displayOpponentMalusHint": "Display the Opponent malus to the players (if Reissue activated)."
+    "displayOpponentMalusHint": "Display the Opponent malus to the players (if Reissue activated).",
+    "UseSizeName": "Use the encumbrance option",
+    "UseSizeHint": "Activate the management of weapon and item encumbrance"
   },
 
   "CHAT": {

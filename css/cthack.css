@@ -406,7 +406,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .rollable:focus {
   color: var(--rollable-color);
   text-shadow: 0 0 10px #eea3a3;
-  cursor: url("../ui/dice/d20-red.svg") 32 24, pointer;
+  cursor: pointer;
 }
 .cthack.sheet.actor.character .no-dice {
   color: var(--font-color-primary);
@@ -551,7 +551,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .main {
   margin: 30px 0 0 0;
-  padding: 0 10px 10px 0;
+  padding: 0 30px 10px 0;
   min-width: 550px;
 }
 .cthack.sheet.actor.character .main .sheet-body {
@@ -667,7 +667,17 @@ a.inline-roll {
   font-family: var(--font-secondary);
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content {
-  padding: 5px 0 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource .resource-content select {
+  color: white;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource .resource-content img {
+  border: none;
+  width: 80px;
+  height: 80px;
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .hitpoints {
   display: flex;
@@ -768,6 +778,15 @@ a.inline-roll {
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-dice {
   display: flex;
   align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-dice img {
+  border: none;
+  width: 50px;
+  height: 50px;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-dice img.dice-d20 {
+  width: 30px;
+  height: 30px;
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-range {
   display: flex;
@@ -1320,58 +1339,41 @@ a.inline-roll {
 .cthack.sheet.actor.opponent .sheet-body .abilities .grid-opponent-abilities .has-description {
   font-style: italic;
 }
-.cthack.sheet.item.archetype .editable input,
-.cthack.sheet.item.archetype .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.archetype .item-header {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header {
   display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.archetype .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.archetype .item-header input {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
-}
-.cthack.sheet.item.archetype .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.archetype .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
-}
-.cthack.sheet.item.archetype .archetype-body-header {
-  display: flex;
-  align-items: flex-start;
   grid-gap: 10px;
   padding: 0 20px 0 20px;
 }
-.cthack.sheet.item.archetype .archetype-body-header img {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-left img {
   height: 350px;
   width: 150px;
-  flex-shrink: 0;
   border: none;
 }
-.cthack.sheet.item.archetype .archetype-body-header-right {
-  flex-grow: 1;
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-right {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
-.cthack.sheet.item.archetype .archetype-grid {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-right .item-description {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-right .item-description .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex: 1;
+}
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-right .item-description .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+}
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-header .archetype-header-right .item-description .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid {
   padding-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1381,106 +1383,179 @@ a.inline-roll {
   text-align: center;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.archetype .archetype-grid .data-group {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid .data-group {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.archetype .archetype-grid .data-group .field-name {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid .data-group .field-name {
   text-transform: uppercase;
   margin-bottom: 5px;
 }
-.cthack.sheet.item.archetype .archetype-grid .data-group input,
-.cthack.sheet.item.archetype .archetype-grid .data-group select {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid .data-group input,
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid .data-group select {
   height: 40px;
   padding: 0;
 }
-.cthack.sheet.item.archetype .archetype-grid .data-group input[type="checkbox"] {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid .data-group input[type="checkbox"] {
   flex: none;
 }
-.cthack.sheet.item.archetype .item-description {
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid input {
+  text-align: center;
+}
+.cthack.sheet.item.archetype .archetype-content .archetype-section .archetype-grid select {
+  width: auto;
+  text-align: center;
+}
+.cthack.sheet.item.magic .magic-content .magic-section {
   display: flex;
   flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
+  height: 100%;
+  overflow: hidden;
 }
-.cthack.sheet.item.archetype .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.archetype .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.archetype .item-description .editor {
-  min-height: 200px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.archetype .item-description .editor-content {
-  min-height: 150px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.archetype .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.archetype .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.archetype .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.archetype .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.archetype .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.archetype .data-group .select-dice {
-  color: black;
-}
-.cthack.sheet.item.archetype .data-group .wealth-start {
-  width: 80px;
-}
-.cthack.sheet.item.magic .editable input,
-.cthack.sheet.item.magic .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.magic .item-header {
+.cthack.sheet.item.magic .magic-content .magic-section .item-header {
   display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
+  flex-direction: column;
 }
-.cthack.sheet.item.magic .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.magic .item-header input {
-  width: 20rem;
+.cthack.sheet.item.magic .magic-content .magic-section .item-header input {
+  width: auto;
   font-size: 1.2rem;
-  text-align: left;
+  text-transform: uppercase;
+  text-align: center;
   border: 0px;
-  margin: 10px 0 0 10px;
+  margin: 10px 0 0 0;
   padding: 0;
 }
-.cthack.sheet.item.magic .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
+.cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row .item-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row .item-image img {
   border: 0px;
-  margin: 10px 0 0 10px;
+  max-height: 150px;
+  max-width: auto;
+  margin-right: 10px;
 }
-.cthack.sheet.item.magic .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
+.cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row .form-group.material {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.2rem;
 }
-.cthack.sheet.item.magic .magic-grid {
+.cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row .form-group.material img {
+  max-height: 80px;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-properties.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--font-color-primary);
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-properties.grid-2.readonly label {
+  margin-right: 20px;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-properties.grid-2 select {
+  width: auto;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-properties.grid-2 input {
+  text-align: center;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+  min-height: 0;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description fieldset legend {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.magic .magic-content .magic-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.ability .ability-content .ability-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-header .item-header-row .item-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-header .item-header-row .item-image img {
+  border: 0px;
+  max-height: 120px;
+  max-width: auto;
+  margin-right: 10px;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-header .item-header-row .form-group.material {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-header .item-header-row .form-group.material img {
+  max-height: 70px;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-properties.grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding-left: 20px;
@@ -1489,230 +1564,95 @@ a.inline-roll {
   text-align: center;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.magic .magic-grid .data-group {
+.cthack.sheet.item.ability .ability-content .ability-section .item-properties.grid-3 select {
+  width: auto;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-properties.grid-3 input {
+  text-align: center;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+  min-height: 0;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description fieldset legend {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.object .object-content .item-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.object .object-content .item-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.object .object-content .item-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.cthack.sheet.item.object .object-content .item-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.object .object-content .item-section .item-header .item-header-row .item-image {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.magic .magic-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-.cthack.sheet.item.magic .magic-grid .data-group input,
-.cthack.sheet.item.magic .magic-grid .data-group select {
-  height: 40px;
-  padding: 0;
-}
-.cthack.sheet.item.magic .magic-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.magic .magic-grid .select-subtype {
-  min-width: 80px;
-  font-size: 1rem;
-  color: var(--font-color-primary);
-  opacity: 1;
-}
-.cthack.sheet.item.magic .magic-grid .select-sanitation {
-  color: #111;
-}
-.cthack.sheet.item.magic .magic-grid .select-sanitation .select:disabled {
-  color: #111;
-  opacity: 1;
-}
-.cthack.sheet.item.magic .magic-grid .input-incantation {
-  min-width: 100px;
-  font-size: 1rem;
-  height: 40px;
-}
-.cthack.sheet.item.magic .item-description {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
-}
-.cthack.sheet.item.magic .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.magic .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.magic .item-description .editor {
-  min-height: 200px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.magic .item-description .editor-content {
-  min-height: 150px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.magic .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.magic .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.magic .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.magic .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.magic .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.ability .editable input,
-.cthack.sheet.item.ability .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.ability .item-header {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.ability .item-header img {
+.cthack.sheet.item.object .object-content .item-section .item-header .item-header-row .item-image img {
   border: 0px;
-  max-height: 50px;
+  max-height: 120px;
+  max-width: auto;
 }
-.cthack.sheet.item.ability .item-header input {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
-}
-.cthack.sheet.item.ability .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.ability .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
-}
-.cthack.sheet.item.ability .ability-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 1rem;
-  text-align: center;
-  color: var(--font-color-primary);
-  grid-gap: 10px;
-}
-.cthack.sheet.item.ability .ability-grid .data-group {
+.cthack.sheet.item.object .object-content .item-section .item-header .item-header-row .form-group.material {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-}
-.cthack.sheet.item.ability .ability-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-.cthack.sheet.item.ability .ability-grid .data-group input,
-.cthack.sheet.item.ability .ability-grid .data-group select {
-  height: 40px;
-  padding: 0;
-}
-.cthack.sheet.item.ability .ability-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.ability .ability-grid .select-usage {
-  min-width: 100px;
-  font-size: 1rem;
-  color: var(--font-color-primary);
-  opacity: 1;
-}
-.cthack.sheet.item.ability .ability-grid .readonly {
-  border: none;
-}
-.cthack.sheet.item.ability .item-description {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
-}
-.cthack.sheet.item.ability .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.ability .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.ability .item-description .editor {
-  min-height: 200px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.ability .item-description .editor-content {
-  min-height: 150px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.ability .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.ability .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.ability .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.ability .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.ability .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.item .editable input,
-.cthack.sheet.item.item .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.item .item-header {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.item .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.item .item-header input {
-  width: 20rem;
   font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
 }
-.cthack.sheet.item.item .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
+.cthack.sheet.item.object .object-content .item-section .item-header .item-header-row .form-group.material img {
+  max-height: 70px;
 }
-.cthack.sheet.item.item .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
-}
-.cthack.sheet.item.item .item-grid {
+.cthack.sheet.item.object .object-content .item-section .item-properties.grid-1 {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   padding-left: 20px;
@@ -1721,107 +1661,90 @@ a.inline-roll {
   text-align: center;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.item .item-grid .data-group {
+.cthack.sheet.item.object .object-content .item-section .item-description {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+  min-height: 0;
+}
+.cthack.sheet.item.object .object-content .item-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.object .object-content .item-section .item-description fieldset legend {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.cthack.sheet.item.object .object-content .item-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.object .object-content .item-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.object .object-content .item-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.definition .definition-content .definition-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-header .item-header-row .item-image {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.item .item-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
+.cthack.sheet.item.definition .definition-content .definition-section .item-header .item-header-row .item-image img {
+  border: 0px;
+  max-height: 150px;
+  max-width: auto;
+  margin-right: 10px;
 }
-.cthack.sheet.item.item .item-grid .data-group input,
-.cthack.sheet.item.item .item-grid .data-group select {
-  height: 40px;
-  padding: 0;
-}
-.cthack.sheet.item.item .item-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.item .item-grid .select-dice-material {
-  color: #111;
-}
-.cthack.sheet.item.item .item-grid .select-dice-material .select:disabled {
-  color: #111;
-  opacity: 1;
-}
-.cthack.sheet.item.item .item-description {
+.cthack.sheet.item.definition .definition-content .definition-section .item-header .item-header-row .form-group.material {
   display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
-}
-.cthack.sheet.item.item .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.item .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.item .item-description .editor {
-  min-height: 200px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.item .item-description .editor-content {
-  min-height: 150px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.item .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.item .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.item .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.item .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.item .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.definition .editable input,
-.cthack.sheet.item.definition .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.definition .item-header {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.definition .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.definition .item-header input {
-  width: 20rem;
+  justify-content: flex-end;
+  align-items: center;
   font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
 }
-.cthack.sheet.item.definition .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
+.cthack.sheet.item.definition .definition-content .definition-section .item-header .item-header-row .form-group.material img {
+  max-height: 80px;
 }
-.cthack.sheet.item.definition .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
-}
-.cthack.sheet.item.definition .definition-grid {
+.cthack.sheet.item.definition .definition-content .definition-section .item-properties.grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding-left: 20px;
@@ -1830,100 +1753,106 @@ a.inline-roll {
   text-align: center;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.definition .definition-grid .data-group {
+.cthack.sheet.item.definition .definition-content .definition-section .item-properties.grid-2.readonly label {
+  margin-right: 20px;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-properties.grid-2 select {
+  width: auto;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-properties.grid-2 input {
+  text-align: center;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-description {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-description fieldset legend {
+  font-size: 1rem;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+}
+.cthack.sheet.item.definition .definition-content .definition-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row .item-image {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.definition .definition-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row .item-image img {
+  border: 0px;
+  max-height: 120px;
+  max-width: auto;
+  margin-right: 10px;
 }
-.cthack.sheet.item.definition .definition-grid .data-group input,
-.cthack.sheet.item.definition .definition-grid .data-group select {
-  height: 40px;
-  padding: 0;
-}
-.cthack.sheet.item.definition .definition-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.definition .item-description {
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row .form-group.material {
   display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.2rem;
 }
-.cthack.sheet.item.definition .item-description .description {
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row .form-group.material img {
+  max-height: 70px;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties.grid-1 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1rem;
   text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.definition .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.definition .item-description .editor {
-  min-height: 200px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.definition .item-description .editor-content {
-  min-height: 150px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.definition .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.definition .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.definition .item-description .prosemirror menu button {
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.definition .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.definition .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.weapon .editable input,
-.cthack.sheet.item.weapon .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.weapon .item-header {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.weapon .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.weapon .item-header input {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
-}
-.cthack.sheet.item.weapon .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-}
-.cthack.sheet.item.weapon .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
-}
-.cthack.sheet.item.weapon .weapon-grid {
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties.grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding-left: 20px;
@@ -1932,108 +1861,120 @@ a.inline-roll {
   text-align: center;
   color: var(--font-color-primary);
 }
-.cthack.sheet.item.weapon .weapon-grid .data-group {
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties.grid-2.readonly label {
+  margin-right: 20px;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties.grid-2 .item-size {
   display: flex;
   flex-direction: column;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties.grid-2 .item-size select {
+  width: auto;
+  font-size: 1rem;
+  text-align: center;
+  border: 0px;
+  padding: 5px;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties .item-range {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.weapon .weapon-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties .item-range label {
+  font-size: 1rem;
+  margin-right: 10px;
 }
-.cthack.sheet.item.weapon .weapon-grid .data-group input,
-.cthack.sheet.item.weapon .weapon-grid .data-group select {
-  height: 40px;
-  padding: 0;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties .item-range .select-range {
+  width: auto;
+  font-size: 1rem;
+  text-align: center;
+  border: 0px;
+  padding: 5px;
 }
-.cthack.sheet.item.weapon .weapon-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.weapon .weapon-grid .select-dice-material {
-  opacity: inherit;
-}
-.cthack.sheet.item.weapon .weapon-grid .select-range {
-  min-width: 80px;
-  color: var(--font-color-primary);
-  opacity: 1;
-}
-.cthack.sheet.item.weapon .item-description {
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description {
   display: flex;
   flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+  min-height: 0;
 }
-.cthack.sheet.item.weapon .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.weapon .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.weapon .item-description .editor {
-  min-height: 200px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.weapon .item-description .editor-content {
-  min-height: 150px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.weapon .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.weapon .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.weapon .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.weapon .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.weapon .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.attack .editable input,
-.cthack.sheet.item.attack .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.attack .item-header {
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description fieldset {
   display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
+  flex-direction: column;
+  flex: 1;
+  margin-top: 10px;
+  min-height: 0;
+  overflow: hidden;
 }
-.cthack.sheet.item.attack .item-header img {
-  border: 0px;
-  max-height: 50px;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description fieldset legend {
+  font-size: 1rem;
+  flex-shrink: 0;
 }
-.cthack.sheet.item.attack .item-header input {
-  width: 20rem;
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.weapon .weapon-content .weapon-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.attack .attack-content .attack-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-header input {
+  width: auto;
   font-size: 1.2rem;
-  text-align: left;
+  text-transform: uppercase;
+  text-align: center;
   border: 0px;
-  margin: 10px 0 0 10px;
+  margin: 10px 0 0 0;
   padding: 0;
 }
-.cthack.sheet.item.attack .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
+.cthack.sheet.item.attack .attack-content .attack-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-header .item-header-row .item-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-header .item-header-row .item-image img {
   border: 0px;
-  margin: 10px 0 0 10px;
+  max-height: 150px;
+  max-width: auto;
+  margin-right: 10px;
 }
-.cthack.sheet.item.attack .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
+.cthack.sheet.item.attack .attack-content .attack-section .item-header .item-header-row .form-group.material {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.2rem;
 }
-.cthack.sheet.item.attack .attack-grid {
+.cthack.sheet.item.attack .attack-content .attack-section .item-header .item-header-row .form-group.material img {
+  max-height: 80px;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-properties.grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding-left: 20px;
@@ -2041,196 +1982,148 @@ a.inline-roll {
   font-size: 1rem;
   text-align: center;
   color: var(--font-color-primary);
-  padding: 0;
 }
-.cthack.sheet.item.attack .attack-grid .data-group {
+.cthack.sheet.item.attack .attack-content .attack-section .item-properties.grid-3.readonly label {
+  margin-right: 20px;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-properties.grid-3 select {
+  width: auto;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-properties.grid-3 input {
+  text-align: center;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: auto;
+  min-height: 0;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description fieldset legend {
+  font-size: 1rem;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+}
+.cthack.sheet.item.attack .attack-content .attack-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header input {
+  width: auto;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header .item-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 20px 0;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header .item-header-row .item-image {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.item.attack .attack-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header .item-header-row .item-image img {
+  border: 0px;
+  max-height: 120px;
+  max-width: auto;
+  margin-right: 10px;
 }
-.cthack.sheet.item.attack .attack-grid .data-group input,
-.cthack.sheet.item.attack .attack-grid .data-group select {
-  height: 40px;
-  padding: 0;
-}
-.cthack.sheet.item.attack .attack-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.attack .attack-grid .field-name {
-  height: 40px;
-}
-.cthack.sheet.item.attack .attack-grid .input-damage {
-  color: var(--font-color-primary);
-  opacity: inherit;
-}
-.cthack.sheet.item.attack .attack-grid .select-damageDice {
-  min-width: 80px;
-  color: var(--font-color-primary);
-  opacity: 1;
-}
-.cthack.sheet.item.attack .item-description {
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header .item-header-row .form-group.material {
   display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
-}
-.cthack.sheet.item.attack .item-description .description {
-  text-align: center;
-  text-transform: uppercase;
-}
-.cthack.sheet.item.attack .item-description .description-content {
-  text-align: justify;
-}
-.cthack.sheet.item.attack .item-description .editor {
-  min-height: 200px;
-  scrollbar-width: thin;
-}
-.cthack.sheet.item.attack .item-description .editor-content {
-  min-height: 150px;
-  margin: 0px 5px;
-  font-weight: normal;
-}
-.cthack.sheet.item.attack .item-description .prosemirror menu {
-  font-size: 0.8em;
-}
-.cthack.sheet.item.attack .item-description .prosemirror menu li {
-  margin: 0px 0px;
-}
-.cthack.sheet.item.attack .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.attack .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.attack .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.opponentAbility .editable input,
-.cthack.sheet.item.opponentAbility .editable select {
-  border: var(--border-standard);
-}
-.cthack.sheet.item.opponentAbility .item-header {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.opponentAbility .item-header img {
-  border: 0px;
-  max-height: 50px;
-}
-.cthack.sheet.item.opponentAbility .item-header input {
-  width: 20rem;
+  justify-content: flex-end;
+  align-items: center;
   font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
-  padding: 0;
 }
-.cthack.sheet.item.opponentAbility .item-header .name {
-  width: 20rem;
-  font-size: 1.2rem;
-  text-align: left;
-  border: 0px;
-  margin: 10px 0 0 10px;
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header .item-header-row .form-group.material img {
+  max-height: 70px;
 }
-.cthack.sheet.item.opponentAbility .item-header .sheet-lock {
-  margin-left: auto;
-  padding: 0 10px 0 10px;
-}
-.cthack.sheet.item.opponentAbility .ability-body {
-  padding: 0 10px 0 10px;
-}
-.cthack.sheet.item.opponentAbility .ability-grid {
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-properties.grid-2 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   padding-left: 20px;
   padding-right: 20px;
   font-size: 1rem;
   text-align: center;
   color: var(--font-color-primary);
-  grid-gap: 10px;
 }
-.cthack.sheet.item.opponentAbility .ability-grid .data-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-properties.grid-2 select {
+  width: auto;
 }
-.cthack.sheet.item.opponentAbility .ability-grid .data-group .field-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-.cthack.sheet.item.opponentAbility .ability-grid .data-group input,
-.cthack.sheet.item.opponentAbility .ability-grid .data-group select {
-  height: 40px;
-  padding: 0;
-}
-.cthack.sheet.item.opponentAbility .ability-grid .data-group input[type="checkbox"] {
-  flex: none;
-}
-.cthack.sheet.item.opponentAbility .ability-grid .field-name {
-  height: 40px;
-}
-.cthack.sheet.item.opponentAbility .ability-grid .select-usage {
-  min-width: 100px;
-  font-size: 1rem;
-  color: var(--font-color-primary);
-  opacity: 1;
-}
-.cthack.sheet.item.opponentAbility .ability-grid .readonly {
-  border: none;
-}
-.cthack.sheet.item.opponentAbility .item-description {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 10px 0px 10px;
-  font-size: var(--font-size-16);
-}
-.cthack.sheet.item.opponentAbility .item-description .description {
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-properties.grid-2 input {
   text-align: center;
-  text-transform: uppercase;
 }
-.cthack.sheet.item.opponentAbility .item-description .description-content {
-  text-align: justify;
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+  min-height: 0;
 }
-.cthack.sheet.item.opponentAbility .item-description .editor {
-  min-height: 200px;
-  scrollbar-width: thin;
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description fieldset {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 10px;
+  min-height: 0;
+  overflow: hidden;
 }
-.cthack.sheet.item.opponentAbility .item-description .editor-content {
-  min-height: 150px;
-  margin: 0px 5px;
-  font-weight: normal;
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description fieldset legend {
+  font-size: 1rem;
+  flex-shrink: 0;
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu {
-  font-size: 0.8em;
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description fieldset .description-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu li {
-  margin: 0px 0px;
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description fieldset .description-content prose-mirror {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
 }
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu button {
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu button:hover {
-  box-shadow: none;
-  background: lightslategray;
-  color: var(--font-color-primary);
-}
-.cthack.sheet.item.opponentAbility .item-description .prosemirror menu button.active {
-  box-shadow: none;
-  background: grey;
-  color: var(--font-color-primary);
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description fieldset .description-content prose-mirror button {
+  color: white;
 }
 .application.dialog.cthack {
   color: var(--color-light-1);
@@ -2383,4 +2276,46 @@ a.inline-roll {
   align-items: center;
   font-size: calc(var(--font-size-standard) * 1.2);
   text-shadow: 0 0 10px var(--color-shadow-primary);
+}
+cthack-toggle-switch {
+  --toggle-switch-height: 20px;
+  --toggle-switch-width: 36px;
+  --toggle-switch-padding: 3px;
+  --toggle-switch-track-color-unchecked: black;
+  --toggle-switch-track-color-checked: #3ba55d;
+  --toggle-switch-thumb-color: white;
+  --toggle-switch-thumb-width: calc(var(--toggle-switch-height) - var(--toggle-switch-padding) * 2);
+  --toggle-switch-thumb-height: var(--toggle-switch-thumb-width);
+  --toggle-switch-transition-time: 250ms;
+  cursor: var(--cursor-pointer) !important;
+  display: inline-block;
+  width: var(--toggle-switch-width);
+  height: var(--toggle-switch-height);
+}
+cthack-toggle-switch track {
+  background: var(--toggle-switch-track-color-unchecked);
+  border-radius: calc((var(--toggle-switch-height) * 2) / 3);
+  box-shadow: 0 0 8px rgb(0 0 0%);
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding: var(--toggle-switch-padding);
+  width: 100%;
+}
+cthack-toggle-switch thumb {
+  background: var(--toggle-switch-thumb-color);
+  border-radius: 100%;
+  box-shadow: 0 0 8px rgb(0 0 0%);
+  display: block;
+  height: var(--toggle-switch-thumb-height);
+  text-align: center;
+  transition: margin-left var(--toggle-switch-transition-time) ease;
+  width: var(--toggle-switch-thumb-width);
+}
+cthack-toggle-switch[checked] track {
+  background: var(--toggle-switch-track-color-checked);
+}
+cthack-toggle-switch[checked] thumb {
+  margin-left: calc(100% - var(--toggle-switch-thumb-width));
 }

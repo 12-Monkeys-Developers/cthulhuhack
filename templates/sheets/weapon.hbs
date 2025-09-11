@@ -1,51 +1,100 @@
-<form class="{{cssClass}}" autocomplete="off">
-    {{!log "weapon" this}}
+{{log "Cthulhu Hack | weapon" this}}
+<section class="weapon-section">    
         <div class="item-header">
-            {{#if editable}}
-                <img class="editable-image" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
-            {{else}}
-                <img src="{{item.img}}" />
-            {{/if}}
-            {{#if editable}}
-                <input name="name" type="text" value="{{item.name}}" />
-            {{else}}
-                <div class="name">{{item.name}}</div>
-            {{/if}}
-            <div class="sheet-lock">
-                {{#if editable}}
-                    <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
-                {{else}}
-                    <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
-                {{/if}}
-            </div>
-        </div>
-        <div class="weapon-body">
-            <div class="weapon-grid">
-                <div class="data-group">
-                    <div class="field-name">{{localize "CTHACK.Material"}}</div>
-                    <select class="select-dice-material" name="system.dice" data-type="String" {{{getStyleForDice system.dice}}}>
-                        {{selectOptions diceValues selected=system.dice blank="CTHACK.None" localize=true}}
-                    </select>
-                </div>
-                <div class="data-group">
-                    <div class="field-name">{{localize "CTHACK.ItemRangeName"}}</div>
-                    <select class="select-range" name="system.range" data-type="String">
-                        {{selectOptions rangeValues selected=system.range labelAttr="label" localize=true blank="CTHACK.None"}}
-                    </select>
-                </div>
-            </div>
-            <div class="item-description">
-                {{#if editable}}
-                    <div class="field-name description">{{localize "CTHACK.Description"}}</div>
-                {{else}}
-                    {{#if hasDescription}}
-                        <div class="field-name description">{{localize "CTHACK.Description"}}</div>
+            <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
+            <div class="item-header-row">
+               <div class="item-image">
+                    {{#if isEdit}}
+                        <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
+                    {{else}}
+                        {{#unless hasDefaultImage}}
+                            <img src="{{item.img}}" />
+                        {{/unless}}                        
                     {{/if}}
-                {{/if}}                
-                <div class="description-content">
-                    {{editor enrichedDescription target="system.description" button=true engine="prosemirror"
-                    owner=owner editable=editable}}
+                </div>
+                <div class="form-group material">
+                    <label>{{localize "CTHACK.Material"}}</label>
+                    <div class="form-fields">
+                        {{#if isEdit}}
+                            <select {{#if isPlay}}disabled{{/if}} class="select-dice-material" name="system.dice">
+                                {{selectOptions diceValues selected=system.dice blank="CTHACK.None" localize=true}}
+                            </select>
+                        {{else}}
+                            {{#if item.system.hasDice}}
+                                    <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
+                            {{/if}}
+                        {{/if}}
+                    </div>
                 </div>
             </div>
         </div>
-</form>
+ 
+        {{#if useSize}}
+            {{#if isEdit}}
+                <div class="item-properties grid-2">
+                    <div class="item-size">
+                        <label>{{localize "CTHACK.ItemSizeEquipped"}}</label>
+                        {{formInput systemFields.size.fields.equipped name="system.size.equipped" value=systemSource.size.equipped localize=true disabled=isPlay}}
+                        <label>{{localize "CTHACK.ItemSizeUnequipped"}}</label>
+                        {{formInput systemFields.size.fields.unequipped name="system.size.unequipped" value=systemSource.size.unequipped localize=true disabled=isPlay}}
+                        <label>{{localize "CTHACK.Status"}}</label>
+                        {{formInput systemFields.size.fields.status name="system.size.status" value=systemSource.size.status localize=true disabled=isPlay}}
+                    </div>            
+                    <div class="item-range">
+                        <label>{{localize "CTHACK.ItemRangeName"}}</label>
+                        {{formInput systemFields.range name="system.range" value=systemSource.range localize=true blank="CTHACK.None" classes="select-range" disabled=isPlay}}
+                    </div>
+                </div>
+            {{else}}
+                <div class="item-properties grid-2 readonly">
+                    <div class="item-size">
+                        <label>{{localize "CTHACK.ItemSizeName"}}</label>
+                        <div>
+                            <span data-tooltip="{{localize "CTHACK.Equipped"}}">{{system.size.equipped}}</span>
+                            {{#if hasSizeUnequipped }}
+                                <span data-tooltip="{{localize "CTHACK.Unequipped"}}">({{system.size.unequipped}})</span>
+                            {{/if}}
+                            {{#if (eq system.size.status "equipped")}}
+                                <i class="fa-solid fa-user-shield" data-tooltip="{{localize "CTHACK.Status"}} {{localize "CTHACK.Equipped"}}"></i>
+                            {{else if (eq system.size.status "unequipped")}}
+                                <i class="fa-solid fa-suitcase" data-tooltip="{{localize "CTHACK.Status"}} {{localize "CTHACK.Unequipped"}}"></i>
+                            {{else if (eq system.size.status "home")}}
+                                <i class="fa-solid fa-house" data-tooltip="{{localize "CTHACK.Status"}} {{localize "CTHACK.Home"}}"></i>
+                            {{/if}}
+                        </div>
+                    </div>            
+                    <div class="item-range">
+                        <label>{{localize "CTHACK.ItemRangeName"}}</label>
+                        {{getRangeLabel system.range}}
+                    </div>
+                </div>
+            {{/if}}
+        {{else}}
+            <div class="item-properties grid-1">
+                <div class="item-range">
+                    <label>{{localize "CTHACK.ItemRangeName"}}</label>
+                    {{formInput systemFields.range name=system.range value=systemSource.range localize=true blank="CTHACK.None" classes="select-range" disabled=isPlay}}
+                </div>
+            </div>
+        {{/if}}
+        
+        <div class="item-description">
+            {{#if isEdit}}
+                <fieldset>
+                    <legend>{{localize "CTHACK.Description"}}</legend>
+                    <div class="description-content">
+                        {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+                    </div>
+                </fieldset>
+            {{else}}
+                {{#if system.hasDescription}}
+                    <fieldset>
+                        <legend>{{localize "CTHACK.Description"}}</legend>
+                        <div class="description-content">
+                            {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+                        </div>
+                    </fieldset>
+                {{/if}}
+            {{/if}}
+        </div>
+</section>

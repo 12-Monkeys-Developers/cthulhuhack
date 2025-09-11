@@ -1,20 +1,33 @@
 import CommonItem from "./common-item.mjs"
+import CtHackItem from "../documents/item.mjs"
 import { formatDate } from "../utils.mjs"
 
 export default class CtHackAbility extends CommonItem {
+  /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = ["CTHACK.Ability"]
+
   static defineSchema() {
     const fields = foundry.data.fields
     const common = super.defineSchema()
     const schema = { ...common }
     schema.key = new fields.StringField({ required: true, nullable: false, initial: "" })
-    schema.uses = new fields.ObjectField({ required: true, nullable: false, initial: { value: 1, max: 1, per: "Permanent", last: "" } })
+    schema.uses = new fields.SchemaField({
+      value: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 }),
+      max: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
+      per: new fields.StringField({ required: true, choices: SYSTEM.ABILITY_USAGE, initial: "Permanent" }),
+      last: new fields.StringField({ required: true, nullable: false, initial: "" }),
+    })
     schema.multiple = new fields.BooleanField({ required: true, nullable: false, initial: false })
     schema.isCustom = new fields.BooleanField({ required: true, nullable: false, initial: false })
     schema.advantageGiven = new fields.BooleanField({ required: true, nullable: false, initial: false })
     schema.advantageText = new fields.StringField({ required: true, nullable: false, initial: "" })
     return schema
   }
-  
+
+  hasDefaultImage() {
+    return this.parent.img === CtHackItem.DEFAULT_ICON
+  }
+
   get hasUse() {
     return this.uses.per !== "Permanent"
   }

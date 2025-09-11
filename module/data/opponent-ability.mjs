@@ -1,7 +1,11 @@
 import CommonItem from "./common-item.mjs";
+import CtHackItem from "../documents/item.mjs"
 import { formatDate } from "../utils.mjs";
 
 export default class CtHackOpponentAbility extends CommonItem {
+    /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = ["CTHACK.OpponentAbility"];  
+
   static defineSchema() {
     const fields = foundry.data.fields;
     const common = super.defineSchema();
@@ -14,6 +18,10 @@ export default class CtHackOpponentAbility extends CommonItem {
     });
     return schema;
   }
+
+  hasDefaultImage() {
+    return this.parent.img === CtHackItem.DEFAULT_ICON
+  }  
 
   get hasUse() {
     return this.uses.per !== "Permanent";

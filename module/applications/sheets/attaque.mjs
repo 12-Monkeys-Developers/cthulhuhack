@@ -1,24 +1,28 @@
-import CtHackItemSheet from "./item.mjs";
+import CtHackItemSheet from "./item.mjs"
 
 export default class CtHackAttaqueSheet extends CtHackItemSheet {
-  static get defaultOptions() {
-    const options = super.defaultOptions;
-    return Object.assign(options, {
-      height: 300,
-      width: 300,
-      resizable: true,
-    });
+  /** @override */
+  static DEFAULT_OPTIONS = {
+    classes: ["attack"],
+    position: {
+      width: 800,
+    },
+    window: {
+      contentClasses: ["attack-content"],
+    },
   }
-  /**
-   * The item type displayed in the sheet
-   * @type {string}
-   */
-  static itemType = "attack";
 
-    /** @override */
-    async getData(options) {
-      const context = await super.getData(options);     
-      context.diceAttackDamageValues = SYSTEM.ATTACK_DAMAGE_DICE;
-      return context;
-    }
+  /** @override */
+  static PARTS = {
+    main: {
+      template: "systems/cthack/templates/sheets/attack.hbs",
+    },
+  }
+
+  /** @override */
+  async _prepareContext() {
+    const context = await super._prepareContext()
+    context.hasDefaultImage = this.document.system.hasDefaultImage()
+    return context
+  }
 }
