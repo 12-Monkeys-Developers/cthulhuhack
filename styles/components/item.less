@@ -53,6 +53,17 @@
           font-size: 1rem;
           text-align: center;
           color: var(--font-color-primary);
+          .item-size {
+            display: flex;
+            flex-direction: column;
+            select {
+              width: auto;
+              font-size: 1rem;
+              text-align: center;
+              border: 0px;
+              padding: 5px;
+            }
+          }
         }
       }
       .item-description {
@@ -73,7 +84,7 @@
           legend {
             font-size: 1rem;
             flex-shrink: 0;
-          }          
+          }
           .description-content {
             font-size: 1rem;
             display: flex;

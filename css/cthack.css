@@ -1661,6 +1661,17 @@ a.inline-roll {
   text-align: center;
   color: var(--font-color-primary);
 }
+.cthack.sheet.item.object .object-content .item-section .item-properties.grid-1 .item-size {
+  display: flex;
+  flex-direction: column;
+}
+.cthack.sheet.item.object .object-content .item-section .item-properties.grid-1 .item-size select {
+  width: auto;
+  font-size: 1rem;
+  text-align: center;
+  border: 0px;
+  padding: 5px;
+}
 .cthack.sheet.item.object .object-content .item-section .item-description {
   display: flex;
   flex-direction: column;
