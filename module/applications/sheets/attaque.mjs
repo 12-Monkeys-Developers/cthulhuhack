@@ -15,7 +15,7 @@ export default class CtHackAttaqueSheet extends CtHackItemSheet {
   /** @override */
   static PARTS = {
     main: {
-      template: "systems/cthack/templates/v2/attack.hbs",
+      template: "systems/cthack/templates/sheets/attack.hbs",
     },
   }
 

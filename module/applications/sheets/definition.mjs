@@ -15,7 +15,7 @@ export default class CtHackDefinitionSheet extends CtHackItemSheet {
   /** @override */
   static PARTS = {
     main: {
-      template: "systems/cthack/templates/v2/definition.hbs",
+      template: "systems/cthack/templates/sheets/definition.hbs",
     },
   }
 

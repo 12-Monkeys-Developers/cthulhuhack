@@ -15,7 +15,7 @@ export default class CtHackCapaciteSheet extends CtHackItemSheet {
   /** @override */
   static PARTS = {
     main: {
-      template: "systems/cthack/templates/v2/ability.hbs",
+      template: "systems/cthack/templates/sheets/ability.hbs",
     },
   }
 

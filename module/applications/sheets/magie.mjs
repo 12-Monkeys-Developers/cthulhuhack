@@ -15,7 +15,7 @@ export default class CtHackMagieSheet extends CtHackItemSheet {
   /** @override */
   static PARTS = {
     main: {
-      template: "systems/cthack/templates/v2/magic.hbs",
+      template: "systems/cthack/templates/sheets/magic.hbs",
     },
   }
 

@@ -12,7 +12,7 @@ export default class CtHackAdversaireCapaciteSheet extends CtHackItemSheet {
   /** @override */
   static PARTS = {
     main: {
-      template: "systems/cthack/templates/v2/opponent-ability.hbs",
+      template: "systems/cthack/templates/sheets/opponent-ability.hbs",
     },
   }
 

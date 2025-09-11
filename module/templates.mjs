@@ -15,15 +15,6 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/cthack/templates/sheets/parts/character-magic.hbs",
     "systems/cthack/templates/sheets/opponent.hbs",
 
-    // ITEM
-    "systems/cthack/templates/sheets/ability.hbs",
-    "systems/cthack/templates/sheets/archetype.hbs",
-    "systems/cthack/templates/sheets/attack.hbs",
-    "systems/cthack/templates/sheets/definition.hbs",
-    "systems/cthack/templates/sheets/item.hbs",
-    "systems/cthack/templates/sheets/weapon.hbs",
-    "systems/cthack/templates/sheets/magic.hbs",
-
     // CHAT
     "systems/cthack/templates/chat/tooltip.hbs",
   ]

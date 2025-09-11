@@ -12,7 +12,7 @@ export default class CtHackObjetSheet extends CtHackItemSheet {
   /** @override */
   static PARTS = {
     main: {
-      template: "systems/cthack/templates/v2/item.hbs",
+      template: "systems/cthack/templates/sheets/item.hbs",
     },
   }
 

@@ -15,7 +15,7 @@ export default class CtHackArchetypeSheet extends CtHackItemSheet {
   /** @override */
   static PARTS = {
     main: {
-      template: "systems/cthack/templates/v2/archetype.hbs",
+      template: "systems/cthack/templates/sheets/archetype.hbs",
     },
   }
 
