@@ -53,7 +53,7 @@ export const registerHandlebarsHelpers = function() {
 	});
 
 	Handlebars.registerHelper('rangeDesc', function(str) {
-		return CTHACK.range[str];
+		return game.i18n.localize(game.system.CONST.RANGE[str].label);
 	});
 
 	Handlebars.registerHelper('isDiceRollable', function(dice) {

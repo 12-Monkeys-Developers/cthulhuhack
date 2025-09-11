@@ -54,13 +54,6 @@ CTHACK.attributes = {
 	unarmedDamage: 'CTHACK.UnarmedDamage'
 };
 
-CTHACK.range = {
-	near: 'CTHACK.RangeNear',
-	far: 'CTHACK.RangeFar',
-	distant: 'CTHACK.RangeDistant',
-	'3str': 'CTHACK.RangeThreeStr'
-};
-
 CTHACK.abilityUsePeriod = {
 	Permanent: 'CTHACK.AbilityUsePermanent',
 	Scenario: 'CTHACK.AbilityUseScenario',
