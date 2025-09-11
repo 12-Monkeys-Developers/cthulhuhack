@@ -37,6 +37,8 @@
                         {{formInput systemFields.size.fields.equipped name="system.size.equipped" value=systemSource.size.equipped localize=true disabled=isPlay}}
                         <label>{{localize "CTHACK.ItemSizeUnequipped"}}</label>
                         {{formInput systemFields.size.fields.unequipped name="system.size.unequipped" value=systemSource.size.unequipped localize=true disabled=isPlay}}
+                        <label>{{localize "CTHACK.Status"}}</label>
+                        {{formInput systemFields.size.fields.status name="system.size.status" value=systemSource.size.status localize=true disabled=isPlay}}
                     </div>            
                     <div class="item-range">
                         <label>{{localize "CTHACK.ItemRangeName"}}</label>
@@ -47,7 +49,19 @@
                 <div class="item-properties grid-2 readonly">
                     <div class="item-size">
                         <label>{{localize "CTHACK.ItemSizeName"}}</label>
-                        <span data-tooltip="Equipé">{{system.size.equipped}}</span> {{#if hasSizeUnequipped }}<span data-tooltip="Non équipé">({{system.size.unequipped}})</span>{{/if}}
+                        <div>
+                            <span data-tooltip="{{localize "CTHACK.Equipped"}}">{{system.size.equipped}}</span>
+                            {{#if hasSizeUnequipped }}
+                                <span data-tooltip="{{localize "CTHACK.Unequipped"}}">({{system.size.unequipped}})</span>
+                            {{/if}}
+                            {{#if (eq system.size.status "equipped")}}
+                                <i class="fa-solid fa-user-shield" data-tooltip="{{localize "CTHACK.Status"}} {{localize "CTHACK.Equipped"}}"></i>
+                            {{else if (eq system.size.status "unequipped")}}
+                                <i class="fa-solid fa-suitcase" data-tooltip="{{localize "CTHACK.Status"}} {{localize "CTHACK.Unequipped"}}"></i>
+                            {{else if (eq system.size.status "home")}}
+                                <i class="fa-solid fa-house" data-tooltip="{{localize "CTHACK.Status"}} {{localize "CTHACK.Home"}}"></i>
+                            {{/if}}
+                        </div>
                     </div>            
                     <div class="item-range">
                         <label>{{localize "CTHACK.ItemRangeName"}}</label>
