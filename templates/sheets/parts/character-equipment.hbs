@@ -7,7 +7,18 @@
     <div class="items-list">
         {{#if editable}}
             <div class="title">
+                {{#if isEncumbranceEnabled}}
+                    Encombrement actuel : <input type="text" name="system.encumbrance.value" value="{{system.encumbrance.value}}" disabled/>
+                    Encombrement max : <input type="text" name="system.encumbrance.max" value="{{system.encumbrance.max}}"/>
+                {{/if}}
                 <i class="fas fa-plus item-create" data-tooltip="{{localize "CTHACK.AddEquipment"}}" data-tooltip-direction="LEFT" data-type="weapon" data-alt-type="item"></i>
+            </div>
+        {{else}}
+              <div class="title">
+                {{#if isEncumbranceEnabled}}
+                    Encombrement actuel : <input type="text" name="system.encumbrance.value" value="{{system.encumbrance.value}}" disabled/>
+                    Encombrement max : <input type="text" name="system.encumbrance.max" value="{{system.encumbrance.max}}" disabled/>
+                {{/if}}
             </div>
         {{/if}}
         {{#each weapons as |item id|}}

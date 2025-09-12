@@ -750,12 +750,16 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list div.title {
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .equipment .items-list div.title input {
+  width: 30px;
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list div.title i {
   padding: 10px 20px 0 0;
-  font-size: 1.2em;
+  font-size: 1rem;
+  padding-left: 50px;
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line {
   display: grid;
@@ -1421,7 +1425,6 @@ a.inline-roll {
 .cthack.sheet.item.magic .magic-content .magic-section .item-header input {
   width: auto;
   font-size: 1.2rem;
-  text-transform: uppercase;
   text-align: center;
   border: 0px;
   margin: 10px 0 0 0;
@@ -1522,7 +1525,6 @@ a.inline-roll {
 .cthack.sheet.item.ability .ability-content .ability-section .item-header input {
   width: auto;
   font-size: 1.2rem;
-  text-transform: uppercase;
   text-align: center;
   border: 0px;
   margin: 10px 0 0 0;
@@ -1620,7 +1622,6 @@ a.inline-roll {
 .cthack.sheet.item.object .object-content .item-section .item-header input {
   width: auto;
   font-size: 1.2rem;
-  text-transform: uppercase;
   text-align: center;
   border: 0px;
   margin: 10px 0 0 0;
@@ -1722,7 +1723,6 @@ a.inline-roll {
 .cthack.sheet.item.definition .definition-content .definition-section .item-header input {
   width: auto;
   font-size: 1.2rem;
-  text-transform: uppercase;
   text-align: center;
   border: 0px;
   margin: 10px 0 0 0;
@@ -1821,7 +1821,6 @@ a.inline-roll {
 .cthack.sheet.item.weapon .weapon-content .weapon-section .item-header input {
   width: auto;
   font-size: 1.2rem;
-  text-transform: uppercase;
   text-align: center;
   border: 0px;
   margin: 10px 0 0 0;
@@ -1952,7 +1951,6 @@ a.inline-roll {
 .cthack.sheet.item.attack .attack-content .attack-section .item-header input {
   width: auto;
   font-size: 1.2rem;
-  text-transform: uppercase;
   text-align: center;
   border: 0px;
   margin: 10px 0 0 0;
@@ -2051,7 +2049,6 @@ a.inline-roll {
 .cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header input {
   width: auto;
   font-size: 1.2rem;
-  text-transform: uppercase;
   text-align: center;
   border: 0px;
   margin: 10px 0 0 0;

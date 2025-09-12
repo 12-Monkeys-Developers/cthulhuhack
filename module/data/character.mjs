@@ -2,7 +2,7 @@ import { SYSTEM, ROLL_TYPE } from "../config/system.mjs"
 import CtHackRoll from "../documents/roll.mjs"
 import { CthackUtils } from "../utils.mjs"
 
-export default class CtHackCharacter extends foundry.abstract.DataModel {
+export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields
     const schema = {}
@@ -84,9 +84,30 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
       max: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 10 }),
     })
 
+    // Encombrement : géré via une option, utilisé pour le module Section 13
+    schema.encumbrance = new fields.SchemaField({
+      value: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 }),
+      max: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 }),
+    })
+
     return schema
   }
 
+  /** @inheritDoc */
+  prepareBaseData() {
+    // Encombrement si l'option est activée
+    if (game.settings.get("cthack", "useSize")) {
+      const items = this.parent.items.filter((i) => i.type === "item" || i.type === "weapon")
+      const totalEncumbrance = items.reduce((total, item) => {
+        // si le status est équipé ou non équippé, on prend la bonne valeur
+        const size = item.system.size.status === "equipped" ? item.system.size.equipped : (item.system.size.status === "unequipped" ? item.system.size.unequipped : 0)
+        return total + size
+      }, 0)
+      this.encumbrance.value = totalEncumbrance
+    } 
+  }
+
+  //#region Getters
   get hasShortDescription() {
     return !!this.shortDescription
   }
@@ -118,6 +139,8 @@ export default class CtHackCharacter extends foundry.abstract.DataModel {
     
     return `${abilitiesTitle} : ${abilitiesName.join(", ")} <br/> ${magicsTitle} : ${magicsName.join(", ")}`
   }
+
+  //#endregion
 
   /**
    * Perform a roll based on the specified roll type and target.

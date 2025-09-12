@@ -171,6 +171,13 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
     context.hasLostHitDice = this.actor.system.attributes.hitDice.value !== this.actor.system.attributes.hitDice.max
     context.hasLostWealthDice = this.actor.system.attributes.wealthDice.value !== this.actor.system.attributes.wealthDice.max
 
+    // Encombrement si l'option est activée
+    context.isEncumbranceEnabled = game.settings.get("cthack", "useSize")
+    if (context.isEncumbranceEnabled) {
+      context.encumbrance = this.actor.system.encumbrance.value
+    }
+
+
     if (CTHACK.debug) console.debug("Character Sheet Context", context)
     return context
   }
