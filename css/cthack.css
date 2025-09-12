@@ -913,6 +913,19 @@ a.inline-roll {
   height: 30px;
   margin: 0 5px 0 5px;
 }
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-dice {
+  display: flex;
+  align-items: center;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-dice img {
+  border: none;
+  width: 50px;
+  height: 50px;
+}
+.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-dice img.dice-d20 {
+  width: 30px;
+  height: 30px;
+}
 .cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-subtype {
   display: flex;
   align-items: center;
