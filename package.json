@@ -7,7 +7,7 @@
     "watch": "gulp",
     "gulp": "gulp",
     "LDBtoYAML": "node ./tools/LDBtoYML.mjs",
-    "YAMLtoLDB": "node ./tools/YMLtoLDB.mjs"
+    "YMLtoLDB": "node ./tools/YMLtoLDB.mjs"
   },
   "browserslist": [
     "last 3 versions"
