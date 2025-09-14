@@ -185,7 +185,7 @@
                   {{selectOptions diceDamageValues selected=system.attributes.armedDamage.value}}
                 </select>
               {{else}}
-                <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.armedDamage.value '.webp'}}"/>
+                <img class="img-damage-armed" src="{{ concat 'systems/cthack/ui/dice/' system.attributes.armedDamage.value '.webp'}}"/>
               {{/if}}
             </div>
         </div>
@@ -198,7 +198,7 @@
                   {{selectOptions diceDamageValues selected=system.attributes.unarmedDamage.value}}
                 </select>
               {{else}}
-                <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.unarmedDamage.value '.webp'}}"/>
+                <img class="img-damage-unarmed" src="{{ concat 'systems/cthack/ui/dice/' system.attributes.unarmedDamage.value '.webp'}}"/>
               {{/if}}
             </div>
         </div>
