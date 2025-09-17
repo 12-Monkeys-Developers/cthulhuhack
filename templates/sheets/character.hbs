@@ -147,9 +147,9 @@
       </div>
       <div class="fight {{getNbFightColumns}}">
         {{#if displayHP}}
-          <div class="resource">
+          <div class="resource hitpoints">
                 <label class="resource-label">{{localize "CTHACK.HitPoints"}}</label>
-                <div class="resource-content flexrow flex-center hitpoints">
+                <div class="hitpoints-content">
                     <input class="hitpoints-value" type="text" class="value" name="system.hp.value" value="{{system.hp.value}}"/>
                     /
                     <input class="hitpoints-max" type="text" class="max" name="system.hp.max" value="{{system.hp.max}}"{{disabled uneditable}}/>

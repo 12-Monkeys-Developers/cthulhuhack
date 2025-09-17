@@ -657,17 +657,24 @@ a.inline-roll {
   grid-template-columns: repeat(4, 1fr);
 }
 .cthack.sheet.actor.character .character-sheet-header .resource {
-  font-weight: bold;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   padding: 5px;
+  font-weight: bold;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource.hitpoints {
+  justify-content: space-between;
 }
 .cthack.sheet.actor.character .character-sheet-header .resource label {
   font-family: var(--font-secondary);
+  margin-bottom: 8px;
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content {
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
 }
@@ -679,27 +686,17 @@ a.inline-roll {
   width: 80px;
   height: 80px;
 }
-.cthack.sheet.actor.character .character-sheet-header .resource .hitpoints {
+.cthack.sheet.actor.character .character-sheet-header .resource .hitpoints-content {
   display: flex;
+  flex: 1;
   align-items: center;
-  /* Aligne verticalement au centre */
   justify-content: center;
-  /* Centrer horizontalement le contenu */
   gap: 5px;
-  /* Ajoute un espace entre les éléments */
 }
-.cthack.sheet.actor.character .character-sheet-header .resource .hitpoints input {
+.cthack.sheet.actor.character .character-sheet-header .resource .hitpoints-content input {
   height: 40px;
   width: 40px;
-  /* Ajustez la largeur selon vos besoins */
   text-align: center;
-  /* Centrer le texte dans l'input */
-}
-.cthack.sheet.actor.character .character-sheet-header .resource .hitpoints .hitpoints-value {
-  text-align: right;
-}
-.cthack.sheet.actor.character .character-sheet-header .resource .hitpoints .hitpoints-max {
-  text-align: left;
 }
 .cthack.sheet.actor.character .character-sheet-header .resource-value {
   color: black;
@@ -742,7 +739,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.character .sheet-body .equipment {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list {
   display: flex;
@@ -765,7 +762,7 @@ a.inline-roll {
   display: grid;
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line.weapon {
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: 4fr 1fr 2fr;
 }
 .cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line.other {
   grid-template-columns: 2fr 1fr;

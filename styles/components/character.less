@@ -283,16 +283,26 @@
       grid-template-columns: repeat(4, 1fr);
     }
     .resource {
-      font-weight: bold;
-      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
       text-align: center;
       padding: 5px;
+      font-weight: bold;
+
+      &.hitpoints{
+        justify-content: space-between;
+      }
+
       label {
         font-family: var(--font-secondary);
+        margin-bottom: 8px;
       }
+
       .resource-content {
         display: flex;
+        flex: 1;
         justify-content: center;
         align-items: center;
         select {
@@ -304,21 +314,17 @@
           height: 80px;
         }
       }
-      .hitpoints {
+
+      .hitpoints-content {
         display: flex;
-        align-items: center; /* Aligne verticalement au centre */
-        justify-content: center; /* Centrer horizontalement le contenu */
-        gap: 5px; /* Ajoute un espace entre les éléments */
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
         input {
           height: 40px;
-          width: 40px; /* Ajustez la largeur selon vos besoins */
-          text-align: center; /* Centrer le texte dans l'input */
-        }
-        .hitpoints-value {
-          text-align: right;
-        }
-        .hitpoints-max {
-          text-align: left;
+          width: 40px;
+          text-align: center;
         }
       }
     }
@@ -371,7 +377,7 @@
 
     .equipment {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       .items-list {
         div.title {
           display: flex;
@@ -392,7 +398,7 @@
         .item-line {
           display: grid;
           &.weapon {
-            grid-template-columns: 2fr 1fr 2fr;
+            grid-template-columns: 4fr 1fr 2fr;
           }
           &.other {
             grid-template-columns: 2fr 1fr;

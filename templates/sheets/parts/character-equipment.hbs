@@ -1,9 +1,6 @@
 
 {{!log 'equipment' this}}
-<div class="equipment flexrow">
-    <div class="misc">
-        {{editor enrichedEquipment target="system.equipment"  engine="prosemirror" button=true owner=owner}}
-    </div>
+<div class="equipment">
     <div class="items-list">
         {{#if editable}}
             <div class="title">
@@ -56,6 +53,9 @@
             </div>
         {{/each}}            
     </div>
+    <div class="misc">
+        {{editor enrichedEquipment target="system.equipment"  engine="prosemirror" button=true owner=owner}}
+    </div>    
 </div>
 
 
