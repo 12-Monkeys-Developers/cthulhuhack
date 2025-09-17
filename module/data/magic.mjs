@@ -20,12 +20,12 @@ export default class CtHackMagic extends CommonItem {
     return game.i18n.localize(SYSTEM.MAGIC_TYPE[this.subtype].label)
   }
 
-  get hasDice() {
-    return this.dice !== "0" && this.dice !== ""
+  get isDice() {
+    return this.dice !== "" && this.dice !== "0" && this.dice !== "1"
   }
 
-  get hasDice() {
-    return this.dice !== "" && this.dice !== "0" && this.dice !== "1"
+  get hasMaterialDice() {
+    return this.dice !== ""
   }
 
   hasDefaultImage() {

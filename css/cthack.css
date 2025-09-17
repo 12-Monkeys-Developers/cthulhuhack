@@ -1443,7 +1443,7 @@ a.inline-roll {
 .cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 10px 0 20px 0;
 }
@@ -1460,6 +1460,7 @@ a.inline-roll {
 }
 .cthack.sheet.item.magic .magic-content .magic-section .item-header .item-header-row .form-group.material {
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   font-size: 1.2rem;
@@ -1640,7 +1641,7 @@ a.inline-roll {
 .cthack.sheet.item.object .object-content .item-section .item-header .item-header-row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 10px 0 20px 0;
 }
@@ -1656,6 +1657,7 @@ a.inline-roll {
 }
 .cthack.sheet.item.object .object-content .item-section .item-header .item-header-row .form-group.material {
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   font-size: 1.2rem;
@@ -1839,7 +1841,7 @@ a.inline-roll {
 .cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 10px 0 20px 0;
 }
@@ -1856,12 +1858,14 @@ a.inline-roll {
 }
 .cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row .form-group.material {
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   font-size: 1.2rem;
 }
 .cthack.sheet.item.weapon .weapon-content .weapon-section .item-header .item-header-row .form-group.material img {
   max-height: 70px;
+  max-width: 150px;
 }
 .cthack.sheet.item.weapon .weapon-content .weapon-section .item-properties.grid-1 {
   display: grid;

@@ -24,8 +24,12 @@ export default class CtHackWeapon extends CommonItem {
     return this.range !== ""
   }
 
-  get hasDice() {
+  get isDice() {
     return this.dice !== "" && this.dice !== "0" && this.dice !== "1"
+  }
+
+  get hasMaterialDice() {
+    return this.dice !== ""
   }
 
   hasSizeUnequipped() {

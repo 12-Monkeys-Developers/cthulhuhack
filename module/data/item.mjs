@@ -16,8 +16,12 @@ export default class CtHackItemData extends CommonItem {
     return schema
   }
 
-  get hasDice() {
+  get isDice() {
     return this.dice !== "" && this.dice !== "0" && this.dice !== "1"
+  }
+
+  get hasMaterialDice() {
+    return this.dice !== ""
   }
 
   hasSizeUnequipped() {

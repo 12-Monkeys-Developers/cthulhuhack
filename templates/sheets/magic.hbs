@@ -3,29 +3,37 @@
     <div class="item-header">
         <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
         <div class="item-header-row">
-            <div class="item-image">
-                {{#if isEdit}}
+             {{#if isEdit}}
+                <div class="item-image">
                     <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
-                {{else}}
-                    {{#unless hasDefaultImage}}
-                        <img src="{{item.img}}" />
-                    {{/unless}}                        
-                {{/if}}
-            </div>
-            <div class="form-group material">
-                <label>{{localize "CTHACK.Sanitation"}}</label>
-                <div class="form-fields">
-                    {{#if isEdit}}
-                        <select {{#if isPlay}}disabled{{/if}} class="select-dice-material" name="system.dice">
+                </div>
+                <div class="form-group material edit">
+                    <label>{{localize "CTHACK.Sanitation"}}</label>
+                    <div class="form-fields">
+                        <select class="select-dice-material" name="system.dice">
                             {{selectOptions diceValues selected=system.dice blank="CTHACK.None" localize=true}}
                         </select>
-                    {{else}}
-                        {{#if item.system.hasDice}}
-                                <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
-                        {{/if}}
-                    {{/if}}
+                    </div>
                 </div>
-            </div>
+             {{else}}
+                <div class="item-image">
+                    {{#unless hasDefaultImage}}
+                        <img src="{{item.img}}" />
+                    {{/unless}} 
+                </div>
+                {{#if item.system.hasMaterialDice}}
+                    <div class="form-group material play">
+                        <label>{{localize "CTHACK.Sanitation"}}</label>
+                        <div class="form-fields">
+                            {{#if item.system.isDice}}
+                                <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
+                             {{else}}
+                                    <div>{{item.system.dice}}</div>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/if}}
+             {{/if}}
         </div>
     </div>
 

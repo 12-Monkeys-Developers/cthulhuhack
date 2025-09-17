@@ -26,7 +26,7 @@
                         <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
                         <div class="item-dice">
                             {{#if (isDiceRollable system.dice)}} <img class="dice-d20 weapon rollable" data-tooltip="{{localize 'CTHACK.MaterialRollPromptTitle'}}" src="systems/cthack/ui/dice/d20.webp"> {{/if}}
-                            {{#if item.system.hasDice}}
+                            {{#if item.system.isDice}}
                                 <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
                             {{/if}}
                         </div>
@@ -43,7 +43,7 @@
                         <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
                         <div class="item-dice">
                             {{#if (isDiceRollable system.dice)}} <img class="dice-d20 otherItem rollable" data-tooltip="{{localize 'CTHACK.MaterialRollPromptTitle'}}" src="systems/cthack/ui/dice/d20.webp"> {{/if}}
-                            {{#if item.system.hasDice}}
+                            {{#if item.system.isDice}}
                                 <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
                             {{/if}}
                         </div>
