@@ -1,3 +1,10 @@
+5.5.0
+- Change dices displayed on character sheet (thanks to Pretre)
+- Convert items sheet to ApplicationV2
+- Changes in items design
+- New system option : Size(Encombrement) to handle Section 13 module
+- Display of size in object and weapon sheets
+
 5.0.1
 - Fix sanity roll for character and opponent
 - Fix material roll for character
