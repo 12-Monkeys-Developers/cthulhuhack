@@ -1,3 +1,6 @@
+5.5.1
+- Fix some values not saved for some items (archetype, attack, definition, magic)
+
 5.5.0
 - Change dices displayed on character sheet (thanks to Pretre)
 - Convert items sheet to ApplicationV2

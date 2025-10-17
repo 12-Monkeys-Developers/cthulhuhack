@@ -41,6 +41,9 @@ export default class CtHackItemSheet extends CtHackDocumentSheetMixin(sheets.Ite
       width: 400,
       height: "auto",
     },
+   form: {
+      submitOnChange: true,
+    },    
     actions: {
       editImage: CtHackItemSheet.#onEditImage,
     },
@@ -59,7 +62,12 @@ export default class CtHackItemSheet extends CtHackDocumentSheetMixin(sheets.Ite
     const context = await super._prepareContext(options)
 
     Object.assign(context, {
+      fields: this.document.schema.fields,
+      systemFields: this.document.system.schema.fields,
+      systemSource: this.document.system._source,
       item: this.document,
+      system: this.document.system,
+      source: this.document.toObject(),
       enrichedDescription: await ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true }),
       diceValues: SYSTEM.DICE_VALUES,
       diceMaxValues: SYSTEM.DICE_MAX_VALUES,
