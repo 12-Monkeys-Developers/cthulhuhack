@@ -1,3 +1,6 @@
+5.5.2
+- :bug: Fix range input not saved with no Size option
+
 5.5.1
 - Fix some values not saved for some items (archetype, attack, definition, magic)
 
