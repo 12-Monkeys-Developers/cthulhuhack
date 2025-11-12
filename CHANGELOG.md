@@ -1,3 +1,7 @@
+5.5.3
+- Definition item can't be duplicated on character
+- :bug: Fix the deletion of condition item on the character sheet
+
 5.5.2
 - :bug: Fix range input not saved with no Size option
 

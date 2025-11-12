@@ -363,13 +363,19 @@ export default class CtHackActor extends Actor {
    * @param {*} itemData
    */
   async createDefinitionItem(itemData) {
+    // Si l'item a déjà été créé, ne rien faire
+    const existingItem = this.items.find((item) => item.system.key === itemData.system.key)
+    if (existingItem) {
+      return existingItem
+    }
+
     const key = itemData.system.key
     if (key.startsWith("OOA") || key.startsWith("TI") || key.startsWith("SK")) {
       this._createActiveEffect(itemData)
     }
 
     // Create the owned item
-    return this.createEmbeddedDocuments("Item", [itemData], { renderSheet: true })
+    return this.createEmbeddedDocuments("Item", [itemData])
   }
 
   /**
@@ -469,45 +475,77 @@ export default class CtHackActor extends Actor {
       }
     }
 
+    if (!effectData) return
+    effectData.name = itemData.name
+
     // Create the Active Effect
-    this.createEmbeddedDocuments("ActiveEffect", [effectData])
+    this.createEmbeddedDocuments("ActiveEffect", [effectData], { renderSheet: false })
   }
 
   /**
-   * @name deleteEffectFromItem
-   *
-   * @description Delete the associated active effect of a definition item if necessary
-   *
-   * @param {*} item
-   */
-  async deleteEffectFromItem(item) {
-    // Delete the Active Effect
-    let effect
-    const definitionKey = item.system.key
-    if (CTHACK.debug) console.log("CTHACK | deleteDefinitionItem : definitionKey = " + definitionKey)
-    if (definitionKey === "OOA-CRB") {
-      effect = this.effects.find((i) => i.name === definitionKey)
-      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id)
-      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
-    } else if (definitionKey === "OOA-MIC" || definitionKey === "OOA-STA" || definitionKey === "OOA-WIN") {
-      effect = this.effects.find((i) => i.name === definitionKey)
-      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id)
-      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
-      await this.unsetFlag("cthack", "disadvantageOOA")
-    } else if (definitionKey.startsWith("OOA")) {
-      effect = this.effects.find((i) => i.name === definitionKey)
-      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id)
-      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
-    } else if (definitionKey.startsWith("TI")) {
-      effect = this.effects.find((i) => i.name === definitionKey)
-      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id)
-      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
-    } else if (definitionKey.startsWith("SK")) {
-      effect = this.effects.find((i) => i.name === definitionKey)
-      if (CTHACK.debug) console.log("CTHACK | Delete Active Effect : " + effect._id)
-      await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
-    }
+ * @name deleteEffectFromItem
+ * @description Delete the associated active effect of a definition item if necessary
+ * @param {Object} item - The item whose associated effect should be deleted
+ */
+async deleteEffectFromItem(item) {
+  const definitionKey = item.system.key;
+  
+  if (CTHACK.debug) {
+    console.log(`CTHACK | deleteDefinitionItem : definitionKey = ${definitionKey}`);
   }
+
+  // Early return if the key doesn't match any patterns that require effect deletion
+  if (!this._shouldDeleteEffect(definitionKey)) {
+    return;
+  }
+
+  // Find and delete the active effect
+  const effect = this.effects.find(effect => effect.name === item.name);
+  
+  if (!effect) {
+    if (CTHACK.debug) {
+      console.log(`CTHACK | No active effect found for item: ${item.name}`);
+    }
+    return;
+  }
+
+  if (CTHACK.debug) {
+    console.log(`CTHACK | Delete Active Effect : ${effect._id}`);
+  }
+
+  // Delete the active effect
+  await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
+
+  // Handle special cases that require unsetting the disadvantage flag
+  if (this._shouldUnsetDisadvantageFlag(definitionKey)) {
+    await this.unsetFlag("cthack", "disadvantageOOA");
+  }
+}
+
+/**
+ * @name _shouldDeleteEffect
+ * @description Check if an effect should be deleted based on the definition key
+ * @private
+ * @param {string} definitionKey - The definition key to check
+ * @returns {boolean} True if effect should be deleted
+ */
+_shouldDeleteEffect(definitionKey) {
+  return definitionKey === "OOA-CRB" || 
+         definitionKey.startsWith("OOA") || 
+         definitionKey.startsWith("TI") || 
+         definitionKey.startsWith("SK");
+}
+
+/**
+ * @name _shouldUnsetDisadvantageFlag
+ * @description Check if the disadvantage flag should be unset based on the definition key
+ * @private
+ * @param {string} definitionKey - The definition key to check
+ * @returns {boolean} True if flag should be unset
+ */
+_shouldUnsetDisadvantageFlag(definitionKey) {
+  return ["OOA-MIC", "OOA-STA", "OOA-WIN"].includes(definitionKey);
+}
 
   /**
    * @name getAvailableAttributes
