@@ -1,16 +1,9 @@
+import CtHackActorSheet from "./actor.mjs"
 import { formatDate } from "../../utils.mjs"
-import { SearchChat } from "../research.mjs"
-import { CTHACK } from "../../config.mjs"
 
-/**
- * @extends {ActorSheet}
- */
-export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorSheet {
-  //#region Overrided methods
+const { ux } = foundry.applications
 
-  // Variable to check if the appV1 is used : will remove warning
-  // To migrate before V16
-  static _warnedAppV1 = true
+export default class CtHackCharacterSheet extends CtHackActorSheet {
 
   constructor(options) {
     super(options)
@@ -22,39 +15,165 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
   }
 
   /** @override */
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["cthack", "sheet", "actor", "character"],
+  static DEFAULT_OPTIONS = {
+    classes: ["character"],
+    window: {
+      contentClasses: ["character-content"],
+    },
+    position: {
       width: 1100,
       height: 860,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "items" }],
-      dragDrop: [{ dragSelector: '.items-list .item, [data-drag="true"]', dropSelector: null }],
-    })
+    },
+    actions: {
+      createItem: CtHackCharacterSheet.#onCreateItem,
+      rollSave: CtHackCharacterSheet.#onSaveRoll,
+      rollResource: CtHackCharacterSheet.#onResourceRoll,
+      rollDamage: CtHackCharacterSheet.#onDamageRoll,
+      rollMaterial: CtHackCharacterSheet.#onMaterialRoll,
+      rollSanity: CtHackCharacterSheet.#onSanityRoll,
+      toggleAdrenaline: CtHackCharacterSheet.#onToggleAdrenaline,
+    },
+    dragDrop: [{ dragSelector: '.items-list .item, [data-drag="true"]', dropSelector: null }],
   }
 
   /** @override */
-  get template() {
-    return "systems/cthack/templates/sheets/character.hbs"
+  static PARTS = {
+    sidebar: {
+      template: "systems/cthack/templates/sheets/parts/character-sidebar.hbs",
+    },
+    header: {
+      template: "systems/cthack/templates/sheets/parts/character-header.hbs",
+    },
+    tabs: {
+      template: "templates/generic/tab-navigation.hbs",
+    },
+    description: {
+      template: "systems/cthack/templates/sheets/parts/character-description.hbs",
+    },
+    equipment: {
+      template: "systems/cthack/templates/sheets/parts/character-equipment.hbs",
+    },
+    abilities: {
+      template: "systems/cthack/templates/sheets/parts/character-abilities.hbs",
+    },
+    notes: {
+      template: "systems/cthack/templates/sheets/parts/character-notes.hbs",
+    },
   }
 
-  /** @inheritdoc */
+  /** @override */
+  static TABS = {
+    primary: {
+      tabs: [
+        { id: "description", icon: "", label: "CTHACK.Description" },
+        { id: "equipment", icon: "", label: "CTHACK.Items" },
+        { id: "abilities", icon: "", label: "CTHACK.AbilitiesAndMagic" },
+        { id: "notes", icon: "", label: "CTHACK.Notes" },
+      ],
+      initial: "equipment",
+    },
+  }
+
+  /** @override */
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options)
+
+    // Enrich item descriptions
+    context.abilities = []
+    for (const item of this.document.itemTypes.ability) {
+      item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
+      context.abilities.push(item)
+    }
+
+    context.magics = []
+    for (const item of this.document.itemTypes.magic) {
+      item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
+      context.magics.push(item)
+    }
+
+    context.weapons = []
+    for (const item of this.document.itemTypes.weapon) {
+      item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
+      context.weapons.push(item)
+    }
+
+    context.otheritems = []
+    for (const item of this.document.itemTypes.item) {
+      item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
+      context.otheritems.push(item)
+    }
+
+    context.conditions = []
+    for (const item of this.document.itemTypes.definition) {
+      item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
+      context.conditions.push(item)
+    }
+
+    // Enrich text fields
+    context.enrichedBiography = await ux.TextEditor.implementation.enrichHTML(this.document.system.biography, { async: true })
+    context.enrichedNotes = await ux.TextEditor.implementation.enrichHTML(this.document.system.notes, { async: true })
+    context.enrichedEquipment = await ux.TextEditor.implementation.enrichHTML(this.document.system.equipment, { async: true })
+
+    // Health display settings
+    const healthDisplay = game.settings.get("cthack", "HealthDisplay")
+    context.displayHD = true
+    context.displayHP = true
+    if (healthDisplay === "hp") {
+      context.displayHD = false
+    } else if (healthDisplay === "hd") {
+      context.displayHP = false
+    }
+
+    // Resource flags
+    context.isWealthAsResource = game.settings.get("cthack", "Wealth") === "resource"
+    context.hasLostFlashlights = this.document.system.attributes.flashlights.value !== this.document.system.attributes.flashlights.max
+    context.hasLostSmokes = this.document.system.attributes.smokes.value !== this.document.system.attributes.smokes.max
+    context.hasLostSanity = this.document.system.attributes.sanity.value !== this.document.system.attributes.sanity.max
+    context.hasLostMiscellaneous = this.document.system.attributes.miscellaneous.value !== this.document.system.attributes.miscellaneous.max
+    context.hasLostHitDice = this.document.system.attributes.hitDice.value !== this.document.system.attributes.hitDice.max
+    context.hasLostWealthDice = this.document.system.attributes.wealthDice.value !== this.document.system.attributes.wealthDice.max
+
+    // Encumbrance
+    context.isEncumbranceEnabled = game.settings.get("cthack", "useSize")
+    if (context.isEncumbranceEnabled) {
+      context.encumbrance = this.document.system.encumbrance.value
+    }
+
+    return context
+  }
+
+  /** @override */
+  async _onRender(context, options) {
+    await super._onRender(context, options)
+
+    // Context menus
+    new foundry.applications.ux.ContextMenu.implementation(
+      this.element, ".character-contextmenu",
+      this._getCharacterEntryContextOptions(), { jQuery: false }
+    )
+    new foundry.applications.ux.ContextMenu.implementation(
+      this.element, ".character-sidebar-contextmenu",
+      this._getCharacterSidebarEntryContextOptions(), { jQuery: false }
+    )
+  }
+
+  /** @override */
   _onDragStart(event) {
     if ("link" in event.target.dataset) return
 
     const li = event.currentTarget
 
-    // Create drag data
     let dragData
 
     // Owned Items
     if (li.dataset.itemId) {
-      const item = this.actor.items.get(li.dataset.itemId)
+      const item = this.document.items.get(li.dataset.itemId)
       dragData = item.toDragData()
     }
 
     // Active Effect
     if (li.dataset.effectId) {
-      const effect = this.actor.effects.get(li.dataset.effectId)
+      const effect = this.document.effects.get(li.dataset.effectId)
       dragData = effect.toDragData()
     }
 
@@ -81,7 +200,7 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
             type: "roll",
             rollType: dragType,
             rollTarget: dataset.dragTarget,
-            value: dataset.value,
+            value: dataset.dragValue,
           }
           break
         case "damage":
@@ -99,171 +218,107 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
 
     if (!dragData) return
 
-    // Set data transfer
     event.dataTransfer.setData("text/plain", JSON.stringify(dragData))
   }
 
   /** @override */
-  async getData(options) {
-    const context = super.getData(options)
-    context.fields = this.document.schema.fields,
-    context.systemFields = this.document.system.schema.fields,
-    // By using isEditable, it will allow the automatic configuration to disabled on all input, select and textarea
-    context.editable = this.actor.isUnlocked
-    context.uneditable = !this.actor.isUnlocked // For all items, we enrich the description
-    context.abilities = []
-    const abilitiesRaw = this.actor.itemTypes.ability
-    for (const item of abilitiesRaw) {
-      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
-      context.abilities.push(item)
+  async _onDropItem(event, data) {
+    if (!this.isEditMode) return false
+    const item = await fromUuid(data.uuid)
+
+    switch (item.type) {
+      case "archetype":
+        return await this._onDropArchetypeItem(item.toObject())
+      case "ability":
+        return await this._onDropAbilityItem(item.toObject())
+      case "definition":
+        return await this._onDropDefinitionItem(item.toObject())
+      case "item":
+      case "weapon":
+      case "magic":
+        return await this._onDropStandardItem(item.toObject())
+      default:
+        return
     }
-    context.magics = []
-    const magicsRaw = this.actor.itemTypes.magic
-    for (const item of magicsRaw) {
-      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
-      context.magics.push(item)
-    }
-    context.weapons = []
-    const weaponsRaw = this.actor.itemTypes.weapon
-    for (const item of weaponsRaw) {
-      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
-      context.weapons.push(item)
-    }
-    context.otheritems = []
-    const otheritemsRaw = this.actor.itemTypes.item
-    for (const item of otheritemsRaw) {
-      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
-      context.otheritems.push(item)
-    }
-    context.conditions = []
-    const conditionsRaw = this.actor.itemTypes.definition
-    for (const item of conditionsRaw) {
-      item.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
-      context.conditions.push(item)
-    }
-    context.enrichedBiography = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.biography, { async: true })
-    context.enrichedNotes = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.notes, { async: true })
-    context.enrichedEquipment = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.equipment, { async: true })
-
-    context.isGm = game.user.isGM
-    context.hasImage = this.actor.hasImage
-
-    context.system = this.actor.system
-
-    context.diceValues = SYSTEM.DICE_VALUES
-    context.diceMaxValues = SYSTEM.DICE_MAX_VALUES
-    context.diceDamageValues = SYSTEM.DICE_DAMAGE_VALUES
-
-    const healthDisplay = game.settings.get("cthack", "HealthDisplay")
-    context.displayHD = true
-    context.displayHP = true
-    if (healthDisplay === "hp") {
-      context.displayHD = false
-    } else if (healthDisplay === "hd") {
-      context.displayHP = false
-    }
-
-    context.isWealthAsResource = game.settings.get("cthack", "Wealth") === "resource"
-    context.hasLostFlashlights = this.actor.system.attributes.flashlights.value !== this.actor.system.attributes.flashlights.max
-    context.hasLostSmokes = this.actor.system.attributes.smokes.value !== this.actor.system.attributes.smokes.max
-    context.hasLostSanity = this.actor.system.attributes.sanity.value !== this.actor.system.attributes.sanity.max
-    context.hasLostMiscellaneous = this.actor.system.attributes.miscellaneous.value !== this.actor.system.attributes.miscellaneous.max
-    context.hasLostHitDice = this.actor.system.attributes.hitDice.value !== this.actor.system.attributes.hitDice.max
-    context.hasLostWealthDice = this.actor.system.attributes.wealthDice.value !== this.actor.system.attributes.wealthDice.max
-
-    // Encombrement si l'option est activée
-    context.isEncumbranceEnabled = game.settings.get("cthack", "useSize")
-    if (context.isEncumbranceEnabled) {
-      context.encumbrance = this.actor.system.encumbrance.value
-    }
-
-
-    if (CTHACK.debug) console.debug("Character Sheet Context", context)
-    return context
   }
 
-  /** @override */
-  activateListeners(html) {
-    super.activateListeners(html)
+  // #region Drop handlers
 
-    html.find(".sheet-lock").click(this._onSheetLock.bind(this))
-
-    // Add Item
-    html.find(".item-create").click(this._onItemCreate.bind(this))
-
-    // Image actions
-    html.find(".share-image").click(this._onShareImage.bind(this))
-    html.find(".editable-image").on("contextmenu", this._resetImage.bind(this))
-
-    // Saving roll
-    html.find(".save-name").click(this._onSaveRoll.bind(this))
-
-    // Resource roll
-    html.find(".resource-name").click(this._onResourceRoll.bind(this))
-
-    // Armed and unarmed damage rolls
-    html.find(".damage.rollable").click(this._onDamagedRoll.bind(this))
-
-    // Roll for item in inventory
-    html.find(".dice-d20.weapon").click(this._onMaterialRoll.bind(this))
-    html.find(".dice-d20.otherItem").click(this._onMaterialRoll.bind(this))
-
-    // Roll for sanity
-    html.find(".fa-dice-d20.sanity").click(this._onSanityRoll.bind(this))
-
-    // Wealth roll if the option is enabled
-    if (game.settings.get("cthack", "Wealth") == "resource") {
-      html.find(".wealth-name").click(this._onResourceRoll.bind(this))
-    }
-
-    // HitDice roll if the option is enabled
-    if (game.settings.get("cthack", "HitDiceResource")) {
-      html.find(".hit-name").click(this._onResourceRoll.bind(this))
-    }
-
-    // Miscellaneous roll if the option is enabled
-    if (game.settings.get("cthack", "MiscellaneousResource")) {
-      html.find(".miscellaneous-name").click(this._onResourceRoll.bind(this))
-    }
-
-    // Adrenaline option
-    html.find("#adr1").click(this._onAdrenalineUse.bind(this))
-    html.find("#adr2").click(this._onAdrenalineUse.bind(this))
-
-    // Activate context menu
-    this._contextCharacterMenu(html)
-
-    html.find(".search-name").on("contextmenu", this._onSearchActor.bind(this))
+  async _onDropStandardItem(data) {
+    if (!this.document.isOwner) return false
+    return await this.document.createEmbeddedDocuments("Item", [data], { renderSheet: false })
   }
 
-  //#endregion
-
-  //#region Private methods
-
-  /**
-   * Create the context menu for the character sheet.
-   * @param {*} html
-   */
-  _contextCharacterMenu(html) {
-    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".character-contextmenu", this._getCharacterEntryContextOptions(), { jQuery: false })
-    foundry.applications.ux.ContextMenu.implementation.create(this, html[0], ".character-sidebar-contextmenu", this._getCharacterSidebarEntryContextOptions(), { jQuery: false })
+  async _onDropDefinitionItem(data) {
+    if (!this.document.isOwner) return false
+    const itemData = foundry.utils.deepClone(data)
+    itemData.system.creationDate = formatDate(new Date())
+    return this.document.createDefinitionItem(itemData)
   }
 
-  /**
-   * Add the context menu options for the character sheet.
-   * @returns
-   */
+  _onDropArchetypeItem(itemData) {
+    this.document.update({
+      "system.archetype": itemData.name,
+      "system.attributes.flashlights": { value: itemData.system.flashlights, max: itemData.system.flashlights },
+      "system.attributes.smokes": { value: itemData.system.smokes, max: itemData.system.smokes },
+      "system.attributes.sanity": { value: itemData.system.sanity, max: itemData.system.sanity },
+      "system.attributes.hitDice": { value: itemData.system.hitdice },
+      "system.attributes.wealthDice": { value: itemData.system.wealthDice },
+      "system.attributes.armedDamage": { value: itemData.system.armeddamage },
+      "system.attributes.unarmedDamage": { value: itemData.system.unarmeddamage },
+    })
+    this.render()
+  }
+
+  async _onDropAbilityItem(itemData) {
+    const id = itemData._id
+    const key = itemData.system.key
+    const multiple = itemData.system.multiple
+
+    let abilitiesList = this.document.system.abilities
+
+    if (multiple) {
+      if (!this._hasAbility(key, abilitiesList)) {
+        abilitiesList.push({ key: key, id: id })
+        await this.document.update({ "system.abilities": abilitiesList })
+      }
+      return await this.document.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
+    } else {
+      if (!this._hasAbility(key, abilitiesList)) {
+        abilitiesList.push({ key: key, id: id })
+        await this.document.update({ "system.abilities": abilitiesList })
+        return await this.document.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
+      } else {
+        ui.notifications.warn(game.i18n.format("CTHACK.Notifications.AbilityHasAlready", { abilityName: itemData.name }))
+        return
+      }
+    }
+  }
+
+  _hasAbility(key, abilitiesList) {
+    for (let ability of abilitiesList) {
+      if (key === ability.key) {
+        return true
+      }
+    }
+    return false
+  }
+
+  // #endregion
+
+  // #region Context menus
+
   _getCharacterEntryContextOptions() {
     return [
       {
         name: game.i18n.localize("CTHACK.ContextMenuSendToChatAll"),
         icon: '<i class="fa-solid fa-users"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner && item.system.hasDescription
         },
         callback: async (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           ChatMessage.create({
             user: game.user.id,
             content: await foundry.applications.handlebars.renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
@@ -276,11 +331,11 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
         name: game.i18n.localize("CTHACK.ContextMenuSendToChatGM"),
         icon: '<i class="fa-solid fa-user"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner && item.system.hasDescription && !game.user.isGM
         },
         callback: async (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           ChatMessage.create({
             user: game.user.id,
             whisper: ChatMessage.getWhisperRecipients("GM").map((u) => u.id),
@@ -294,11 +349,11 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
         name: game.i18n.localize("CTHACK.ContextMenuUse"),
         icon: '<i class="fas fa-check"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner && item.type === "ability" && item.system.isUsable
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           item.system.use()
           this.render()
         },
@@ -307,11 +362,11 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
         name: game.i18n.localize("CTHACK.ContextMenuResetUse"),
         icon: '<i class="fa-solid fa-0"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner && item.type === "ability" && item.system.isResetable
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           item.system.resetUse()
           this.render()
         },
@@ -320,11 +375,11 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
         name: game.i18n.localize("CTHACK.ContextMenuIncreaseUse"),
         icon: '<i class="fa-solid fa-plus"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner && item.type === "ability" && item.system.isIncreaseable
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           item.system.increase()
           this.render()
         },
@@ -333,11 +388,11 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
         name: game.i18n.localize("CTHACK.ContextMenuEdit"),
         icon: '<i class="fas fa-edit"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner
         },
         callback: (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           item.sheet.render(true)
         },
       },
@@ -345,23 +400,23 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
         name: game.i18n.localize("CTHACK.ContextMenuDelete"),
         icon: '<i class="fas fa-trash"></i>',
         condition: (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner
         },
         callback: async (li) => {
-          const item = this.actor.items.get(li.dataset.itemId)
+          const item = this.document.items.get(li.dataset.itemId)
           const key = item.system.key
           switch (item.type) {
             case "ability":
-              await this.actor.deleteAbility(key, item.id)
-              await this.actor.deleteEmbeddedDocuments("Item", [item.id])
+              await this.document.deleteAbility(key, item.id)
+              await this.document.deleteEmbeddedDocuments("Item", [item.id])
               break
             case "definition":
-              await this.actor.deleteEffectFromItem(item)
-              await this.actor.deleteEmbeddedDocuments("Item", [item.id])
+              await this.document.deleteEffectFromItem(item)
+              await this.document.deleteEmbeddedDocuments("Item", [item.id])
               break
             default:
-              await this.actor.deleteEmbeddedDocuments("Item", [item.id])
+              await this.document.deleteEmbeddedDocuments("Item", [item.id])
               break
           }
         },
@@ -369,10 +424,6 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
     ]
   }
 
-  /**
-   * Add the context menu options for the character sheet.
-   * @returns
-   */
   _getCharacterSidebarEntryContextOptions() {
     return [
       {
@@ -385,11 +436,10 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
         callback: (li) => {
           const currentValue = game.settings.get("cthack", "FortuneValue")
           const newValue = currentValue - 1
-
           game.settings.set("cthack", "FortuneValue", newValue)
           ChatMessage.create({
             user: game.user.id,
-            content: game.i18n.format("CTHACK.FortuneUseMessage", { name: this.actor.name, total: newValue }),
+            content: game.i18n.format("CTHACK.FortuneUseMessage", { name: this.document.name, total: newValue }),
           })
         },
       },
@@ -408,304 +458,104 @@ export default class CtHackCharacterSheet extends foundry.appv1.sheets.ActorShee
     ]
   }
 
-  /**
-   * Handles the event when sharing an image.
-   *
-   * @param {Event} event - The event object.
-   * @returns {void}
-   */
-  _onShareImage(event) {
-    event.preventDefault()
-    const imagePath = event.currentTarget.dataset.image
-    const characterName = event.currentTarget.dataset.name
+  // #endregion
 
-    const ip = new ImagePopout(imagePath, { title: characterName })
-
-    // Display the image popout
-    ip.render(true)
-  }
+  // #region Action handlers
 
   /**
-   * Resets the image of the character sheet.
-   * @param {Event} event - The event object.
-   * @returns {Promise<void>} - A promise that resolves when the image is reset.
+   * Handle creating a new item.
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target
    */
-  async _resetImage(event) {
-    event.preventDefault()
-    await this.actor.update({ img: "icons/svg/mystery-man.svg" })
-  }
-
-  /**
-   * Handles the search event for an actor.
-   * @param {Event} event - The search event.
-   * @returns {Promise<void>} - A promise that resolves when the search is complete.
-   */
-  async _onSearchActor(event) {
-    event.preventDefault()
-    const characterName = event.currentTarget.dataset.name
-    let search = await new SearchChat().create(characterName)
-    await search.searchWorld()
-    await search.display()
-  }
-
-  /** @override */
-  async _onDropItemCreate(itemData) {
-    // Only if the sheet is unlocked
-    if (!this.actor.isUnlocked) return
-
-    switch (itemData.type) {
-      case "archetype":
-        return await this._onDropArchetypeItem(itemData)
-      case "ability":
-        return await this._onDropAbilityItem(itemData)
-      case "definition":
-        return await this._onDropDefinitionItem(itemData)
-      case "item":
-      case "weapon":
-      case "magic":
-        return await this._onDropStandardItem(itemData)
-      default:
-        return
-    }
-  }
-
-  /**
-   * @name _onDropStandardItem
-   * @description Handles dropping of an item reference or item data onto an Actor Sheet
-   * 				Handles weapon and item types for character, and attack for opponent
-   * @private
-   *
-   * @param {Object} data   The data transfer extracted from the event
-   * Item of type 'attack' for npc, 'item', 'weapon', 'magic' for pc
-   * @return {Object} EmbeddedDocument Item data to create
-   */
-  async _onDropStandardItem(data) {
-    if (!this.actor.isOwner) return false
-
-    // Create the owned item
-    return await this.actor.createEmbeddedDocuments("Item", [data], { renderSheet: false })
-  }
-
-  /**
-   * Handle dropping of an item reference or item data of type definition onto an Actor Sheet
-   * @param {Object} data         The data transfer extracted from the event
-   * @return {Object}             EmbeddedDocument Item to create
-   * @private
-   */
-  async _onDropDefinitionItem(data) {
-    if (!this.actor.isOwner) return false
-
-    const itemData = foundry.utils.deepClone(data)
-    itemData.system.creationDate = formatDate(new Date())
-
-    return this.actor.createDefinitionItem(itemData)
-  }
-
-  /**
-   * Handle dropping of an archetype onto an Actor Sheet
-   * @param {DragEvent} event     The concluding DragEvent which contains drop data
-   * @param {Object} data         The data transfer extracted from the event
-   * @private
-   */
-  _onDropArchetypeItem(itemData) {
-    // Replace actor data
-    this.actor.update({
-      "system.archetype": itemData.name,
-      "system.attributes.flashlights": { value: itemData.system.flashlights, max: itemData.system.flashlights },
-      "system.attributes.smokes": { value: itemData.system.smokes, max: itemData.system.smokes },
-      "system.attributes.sanity": { value: itemData.system.sanity, max: itemData.system.sanity },
-      "system.attributes.hitDice": { value: itemData.system.hitdice },
-      "system.attributes.wealthDice": { value: itemData.system.wealthDice },
-      "system.attributes.armedDamage": { value: itemData.system.armeddamage },
-      "system.attributes.unarmedDamage": { value: itemData.system.unarmeddamage },
-    })
-    this.actor.sheet.render(true)
-  }
-
-  /**
-   * Handle dropping of an ability Item onto an Actor Sheet
-   * @param {DragEvent} event     The concluding DragEvent which contains drop data
-   * @param {Object} data         The data transfer extracted from the event
-   * @private
-   */
-  async _onDropAbilityItem(itemData) {
-    const id = itemData._id
-    const key = itemData.system.key
-    const multiple = itemData.system.multiple
-
-    let abilitiesList = this.actor.system.abilities
-
-    if (multiple) {
-      if (!this._hasAbility(key, abilitiesList)) {
-        abilitiesList.push({ key: key, id: id })
-        await this.actor.update({ "system.abilities": abilitiesList })
-      }
-      return await this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
-    } else {
-      if (!this._hasAbility(key, abilitiesList)) {
-        abilitiesList.push({ key: key, id: id })
-        await this.actor.update({ "system.abilities": abilitiesList })
-        return await this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
-      } else {
-        ui.notifications.warn(game.i18n.format("CTHACK.Notifications.AbilityHasAlready", { abilityName: itemData.name }))
-        return
-      }
-    }
-  }
-
-  /**
-   * Check if the ability is already owned based on key
-   * @param {String} key      The key to find
-   * @param {String[]} abilitiesList   All owned abilities
-   * @private
-   */
-  _hasAbility(key, abilitiesList) {
-    for (let ability of abilitiesList) {
-      if (key === ability.key) {
-        return true
-      }
-    }
-    return false
-  }
-
-  /**
-   * @name _onItemCreate
-   * @description Creates a new Owned Item for the actor using type defined in the HTML dataset
-   *
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
-   */
-  async _onItemCreate(event) {
-    event.preventDefault()
+  static async #onCreateItem(event, target) {
     event.stopPropagation()
-    const li = event.currentTarget
-    // Get the type of item to create.
     let type
-    event?.shiftKey ? (type = li.dataset.altType) : (type = li.dataset.type)
-
-    // Initialize a default name.
+    event?.shiftKey ? (type = target.dataset.altType) : (type = target.dataset.type)
     const name = game.i18n.format("CTHACK.ItemNew", { type: game.i18n.localize(`CTHACK.ItemType${type.capitalize()}`) })
-    // Prepare the item object
-    const itemData = {
-      name: name,
-      type: type,
-    }
-
-    // Create the item
-    return await this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: true })
+    const itemData = { name, type }
+    return await this.document.createEmbeddedDocuments("Item", [itemData], { renderSheet: true })
   }
 
   /**
-   * @name _onSaveRoll
-   * @description Callback on Save roll
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
+   * Handle rolling a save.
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target
    */
-  _onSaveRoll(event) {
-    event.preventDefault()
-    let save = event.currentTarget.parentElement.dataset.save
-    this.actor.rollSave(save, { event: event })
+  static #onSaveRoll(event, target) {
+    event.stopPropagation()
+    const save = target.closest("[data-save]").dataset.save
+    this.document.rollSave(save, { event })
   }
 
   /**
-   * @name _onResourceRoll
-   * @description Callback on Resource roll
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
+   * Handle rolling a resource.
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target
    */
-  async _onResourceRoll(event) {
-    event.preventDefault()
-    let resource = event.currentTarget.dataset.resource
-
-    await this.actor.rollResource(resource, { event: event })
+  static async #onResourceRoll(event, target) {
+    event.stopPropagation()
+    const resource = target.dataset.resource
+    await this.document.rollResource(resource, { event })
   }
 
   /**
-   * @name _onMaterialRoll
-   * @description Callback on Material roll
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
+   * Handle rolling damage.
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target
    */
-  async _onMaterialRoll(event) {
-    event.preventDefault()
+  static #onDamageRoll(event, target) {
+    event.stopPropagation()
+    const damage = target.dataset.resource
+    this.document.rollDamage(damage, { event })
+  }
 
-    const li = event.currentTarget.closest(".item")
+  /**
+   * Handle rolling material.
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target
+   */
+  static async #onMaterialRoll(event, target) {
+    event.stopPropagation()
+    const li = target.closest(".item")
     if (!li) return
     const itemId = li.dataset.itemId
     if (!itemId) return
-    const item = this.actor.items.get(itemId)
-
-    await this.actor.rollMaterial(item, { event: event })
+    const item = this.document.items.get(itemId)
+    await this.document.rollMaterial(item, { event })
   }
 
-
-
   /**
-   * Handles the event when a magic roll is triggered.
-   * @param {Event} event - The event object.
-   * @returns {Promise<void>} - A promise that resolves when the function finishes executing.
+   * Handle rolling sanity.
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target
    */
-  async _onSanityRoll(event) {
-    event.preventDefault()
-
-    const li = event.currentTarget.closest(".item")
+  static async #onSanityRoll(event, target) {
+    event.stopPropagation()
+    const li = target.closest(".item")
     const itemId = li.dataset.itemId
-    const item = this.actor.items.get(itemId)
-
-    await this.actor.rollSanity(item, { event: event })
-  }
-  /**
-   * @name _onDamagedRoll
-   * @description Callback on Damaged roll
-   * @private
-   *
-   * @param {Event} event   The originating click event
-   *
-   */
-  _onDamagedRoll(event) {
-    event.preventDefault()
-    const damage = event.currentTarget.dataset.resource
-    this.actor.rollDamage(damage, { event: event })
+    const item = this.document.items.get(itemId)
+    await this.document.rollSanity(item, { event })
+    this.render()
   }
 
   /**
-   * Toggle adrenaline 1
-   * @param {Event} event   The originating click event
-   * @private
+   * Handle toggling adrenaline.
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target
    */
-  _onAdrenalineUse(event) {
-    event.preventDefault()
-    const adr = event.currentTarget.id
-    if (adr === "adr1") {
-      const value = this.actor.system.attributes.adrenaline1.value
+  static #onToggleAdrenaline(event, target) {
+    event.stopPropagation()
+    const adr = target.dataset.adrenaline
+    if (adr === "1") {
+      const value = this.document.system.attributes.adrenaline1.value
       const newValue = value === "pj" ? "mj" : "pj"
-      this.actor.update({ "system.attributes.adrenaline1.value": newValue })
-    } else if (adr === "adr2") {
-      const value = this.actor.system.attributes.adrenaline2.value
+      this.document.update({ "system.attributes.adrenaline1.value": newValue })
+    } else if (adr === "2") {
+      const value = this.document.system.attributes.adrenaline2.value
       const newValue = value === "pj" ? "mj" : "pj"
-      this.actor.update({ "system.attributes.adrenaline2.value": newValue })
+      this.document.update({ "system.attributes.adrenaline2.value": newValue })
     }
   }
 
-  /**
-   * Lock or unlock the sheet
-   * @param {*} event
-   */
-  async _onSheetLock(event) {
-    event.preventDefault()
-    let flagData = await this.actor.getFlag(game.system.id, "SheetUnlocked")
-    if (flagData) await this.actor.unsetFlag(game.system.id, "SheetUnlocked")
-    else await this.actor.setFlag(game.system.id, "SheetUnlocked", "SheetUnlocked")
-    this.actor.sheet.render(true)
-  }
-
-  //#endregion
+  // #endregion
 }

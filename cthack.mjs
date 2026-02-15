@@ -2,7 +2,6 @@
 import { CTHACK } from "./module/config.mjs"
 import { SYSTEM_NAME, LOG_HEAD, DEV_MODE } from "./module/constants.mjs"
 import { registerHandlebarsHelpers } from "./module/helpers.mjs"
-import { preloadHandlebarsTemplates } from "./module/templates.mjs"
 import { registerSystemSettings } from "./module/settings.mjs"
 import { CthackUtils } from "./module/utils.mjs"
 import { Macros } from "./module/macros.mjs"
@@ -82,7 +81,7 @@ Hooks.once("init", function () {
   CONFIG.Macro.compendiumBanner = "systems/cthack/ui/cthulhu-hack-banner.webp"
 
   // Register sheet application classes
-  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet)
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.applications.sheets.ActorSheetV2)
   foundry.documents.collections.Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheet, { types: ["character"], label: "CTHACK.SheetClassCharacter", makeDefault: true })
   foundry.documents.collections.Actors.registerSheet(SYSTEM_NAME, applications.AdversaireSheet, { types: ["opponent"], label: "CTHACK.SheetClassOpponent", makeDefault: true })
 
@@ -98,9 +97,6 @@ Hooks.once("init", function () {
 
   // Dice system configuration
   CONFIG.Dice.rolls.push(documents.CtHackRoll)
-
-  // Preload Handlebars Templates
-  preloadHandlebarsTemplates()
 
   // Register Handlebars Helpers
   registerHandlebarsHelpers()

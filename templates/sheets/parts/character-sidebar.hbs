@@ -1,19 +1,19 @@
 {{!log 'sidebar' this}}
 <div class="sidebar flexcol">
   <div class="image-container">
-    {{#if editable}}
-      <img class="editable-image" src="{{data.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}"/>
+    {{#if isEdit}}
+      <img class="editable-image" src="{{actor.img}}" data-action="editImage" data-edit="img" data-uuid="{{actor.uuid}}" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}"/>
     {{else}}
       <img class="actor-image" src="{{actor.img}}" data-tooltip="{{actor.name}}"/>
-      <a class="hover-icon share-image" data-tooltip="{{localize 'TOOLTIPS.ShowImage'}}" data-image="{{actor.img}}" data-name="{{actor.name}}"><i class="fas fa-image fa-fw"></i></a>
-    {{/if}}    
+      <a class="hover-icon" data-action="shareImage" data-tooltip="{{localize 'TOOLTIPS.ShowImage'}}" data-image="{{actor.img}}" data-name="{{actor.name}}"><i class="fas fa-image fa-fw"></i></a>
+    {{/if}}
   </div>
-  
+
   {{#each actor.system.saves as |save key|}}
     {{!log 'save' save key}}
     <div class="sidebar-section" data-save="{{key}}" data-drag="true" data-drag-type="save" data-drag-target="{{key}}" data-drag-value="{{save.value}}">
-      <label class="save-name rollable" data-tooltip="{{localize (toDesc key)}}" data-tooltip-direction="UP" data-tooltip-class="tooltip-save">{{getSaveLabel key save}}</label>
-      {{#if @root.editable}}
+      <label class="save-name rollable" data-action="rollSave" data-tooltip="{{localize (toDesc key)}}" data-tooltip-direction="UP" data-tooltip-class="tooltip-save">{{getSaveLabel key save}}</label>
+      {{#if @root.isEdit}}
         <input class="save-value" type="text" name="system.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" />
         <input type="checkbox" name="system.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}} />
       {{else}}
@@ -28,8 +28,8 @@
   {{/if}}
   {{#if (isEnabled "Adrenaline")}}
     <div class="adrenaline">
-      <img class="adrenaline-img" id="adr1" src="{{getAdrenalineImage system.attributes.adrenaline1.value}}" />
-      <img class="adrenaline-img" id="adr2" src="{{getAdrenalineImage system.attributes.adrenaline2.value}}" />
+      <img class="adrenaline-img" data-action="toggleAdrenaline" data-adrenaline="1" src="{{getAdrenalineImage system.attributes.adrenaline1.value}}" />
+      <img class="adrenaline-img" data-action="toggleAdrenaline" data-adrenaline="2" src="{{getAdrenalineImage system.attributes.adrenaline2.value}}" />
     </div>
   {{/if}}
   {{#if (gt conditions.length 0)}}

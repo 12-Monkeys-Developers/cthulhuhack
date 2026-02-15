@@ -60,7 +60,7 @@ export default (base) => {
     }
 
     /**
-     * Resets the image of the opponent sheet.
+     * Resets the image of a document to its default.
      * @param {Event} event             The initiating click event.
      * @param {HTMLElement} target      The current target of the event listener.
      */
@@ -70,10 +70,11 @@ export default (base) => {
       if (!dataset) return
       const uuid = dataset.uuid
       if (!uuid) return
-      const item = fromUuidSync(uuid)
-      if (!item) return
-      if (item.type === "magic") await item.update({ img: "/systems/cthack/ui/icons/spell-book.png" })
-      else await item.update({ img: "icons/svg/item-bag.svg" })
+      const doc = fromUuidSync(uuid)
+      if (!doc) return
+      if (doc instanceof Actor) await doc.update({ img: "icons/svg/mystery-man.svg" })
+      else if (doc.type === "magic") await doc.update({ img: "/systems/cthack/ui/icons/spell-book.png" })
+      else await doc.update({ img: "icons/svg/item-bag.svg" })
     }
   }
 }
