@@ -6,6 +6,23 @@
 
   display: flex;
   flex-direction: column;
+  height: 100%;
+
+  .window-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .opponent-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
 
   .sheet-header {
     display: grid;
@@ -180,8 +197,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        input {
+          width: 45px;
+        }
         .hp-max {
-          width: 30px;
+          width: 45px;
           text-align: center;
         }
       }
@@ -213,8 +233,24 @@
   .sheet-body {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
     margin: 10px 0 10px 0;
-    padding: 0 10px 0 10px;
+    padding: 0 10px 10px 10px;
+    &::-webkit-scrollbar {
+      display: block;
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
+      border-radius: 3px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
     .description-editable {
       border: none;
       font-size: 1rem;

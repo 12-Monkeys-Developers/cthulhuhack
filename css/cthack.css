@@ -408,9 +408,6 @@ a.inline-roll {
   background: none;
   border: none;
 }
-.cthack ::-webkit-scrollbar {
-  display: none;
-}
 .cthack h4.ask-roll-title {
   font-size: 1rem;
   margin: 0;
@@ -521,7 +518,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .sidebar {
   grid-area: sidebar;
   margin: 30px 10px 0 20px;
-  padding: 0 10px 0 10px;
+  padding: 0 10px 10px 10px;
   min-height: 0;
   overflow-y: auto;
   scrollbar-width: thin;
@@ -996,10 +993,25 @@ a.inline-roll {
 .cthack.sheet.actor.opponent {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .cthack.sheet.actor.opponent #context-menu {
   width: 50px;
   text-align: left;
+}
+.cthack.sheet.actor.opponent .window-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+.cthack.sheet.actor.opponent .opponent-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }
 .cthack.sheet.actor.opponent .sheet-header {
   display: grid;
@@ -1175,8 +1187,11 @@ a.inline-roll {
   justify-content: center;
   align-items: center;
 }
+.cthack.sheet.actor.opponent .sheet-header .hp .hp-input input {
+  width: 45px;
+}
 .cthack.sheet.actor.opponent .sheet-header .hp .hp-input .hp-max {
-  width: 30px;
+  width: 45px;
   text-align: center;
 }
 .cthack.sheet.actor.opponent .sheet-header .armor {
@@ -1204,8 +1219,24 @@ a.inline-roll {
 .cthack.sheet.actor.opponent .sheet-body {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
   margin: 10px 0 10px 0;
-  padding: 0 10px 0 10px;
+  padding: 0 10px 10px 10px;
+}
+.cthack.sheet.actor.opponent .sheet-body::-webkit-scrollbar {
+  display: block;
+  width: 6px;
+}
+.cthack.sheet.actor.opponent .sheet-body::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 3px;
+}
+.cthack.sheet.actor.opponent .sheet-body::-webkit-scrollbar-track {
+  background: transparent;
 }
 .cthack.sheet.actor.opponent .sheet-body .description-editable {
   border: none;
