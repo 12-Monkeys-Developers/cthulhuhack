@@ -1,0 +1,7 @@
+<section class="tab character-notes {{tabs.notes.cssClass}}" data-group="primary" data-tab="notes">
+  {{#if isEdit}}
+    {{formInput systemFields.notes enriched=enrichedNotes value=system.notes name="system.notes" toggled=true}}
+  {{else}}
+    <div class="notes-content">{{{enrichedNotes}}}</div>
+  {{/if}}
+</section>

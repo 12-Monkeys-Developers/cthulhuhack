@@ -1,6 +1,35 @@
 &.sheet.actor.character {
   min-width: 960px;
 
+  .character-content {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar tabs"
+      "sidebar content";
+    column-gap: 10px;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0;
+
+    > .tab:not(.active) {
+      display: none;
+    }
+
+    > .tab.active {
+      grid-area: content;
+      min-height: 0;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) transparent;
+      padding: 10px 30px 10px 10px;
+      width: 100%;
+      min-width: 0;
+    }
+  }
+
   select {
     color: black;
   }
@@ -44,14 +73,21 @@
       width: auto;
     }
     &.sheet-tabs {
-      flex: 0;
+      grid-area: tabs;
       border-top: 0;
       border-bottom: 1px solid var(--nav-active-color);
-      margin: 10px 5px 0 5px;
-      .choice {
+      margin: 25px 30px 0 5px;
+      display: flex;
+      flex-direction: row;
+      [data-tab] {
+        flex: 1;
         height: 40px;
         line-height: 40px;
         font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 5px;
         &:hover {
           color: var(--nav-active-color);
           text-shadow: 0 0 10px var(--nav-active-shadow-color);
@@ -72,16 +108,23 @@
   }
 
   .sidebar {
+    grid-area: sidebar;
     margin: 30px 10px 0 20px;
     padding: 0 10px 0 10px;
-    flex: 220px 0 0;
-    height: 400px;
+    min-height: 0;
+    overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--primary) transparent;
 
     .image-container {
+      img.editable-image {
+        border: none;
+        max-width: 100%;
+        border-radius: 10px;
+      }
       img.actor-image {
         border: none;
+        max-width: 100%;
         min-width: 150px;
         border-radius: 10px;
       }
@@ -174,21 +217,10 @@
     }
   }
 
-  .main {
-    margin: 30px 0 0 0;
-    padding: 0 30px 10px 0;
-    min-width: 550px;
-    .sheet-body {
-      width: 100%;
-      padding: 0 10px 0 10px;
-      .tab {
-        width: 100%;
-      }
-    }
-  }
-
   .character-sheet-header {
+    grid-area: header;
     max-height: 300px;
+    margin: 30px 30px 0 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     .name {
@@ -337,10 +369,9 @@
     }
   }
 
-  .sheet-body {
-    .editor {
-      min-height: 150px;
-    }
+  .editor {
+    min-height: 150px;
+  }
 
     .editor-container {
       flex: 1;
@@ -578,5 +609,4 @@
         }
       }
     }
-  }
 }

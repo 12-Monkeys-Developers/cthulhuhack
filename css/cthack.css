@@ -22,7 +22,39 @@
 }
 @font-face {
   font-family: "EBGaramond";
-  src: url("../ui/fonts/EBGaramond-VariableFont_wght.ttf");
+  src: url("../ui/fonts/ebgaramond-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "EBGaramond";
+  src: url("../ui/fonts/ebgaramond-italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "EBGaramond";
+  src: url("../ui/fonts/ebgaramond-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "EBGaramond";
+  src: url("../ui/fonts/ebgaramond-mediumitalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "EBGaramond";
+  src: url("../ui/fonts/ebgaramond-bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "EBGaramond";
+  src: url("../ui/fonts/ebgaramond-bolditalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
 }
 /* Global styles */
 #logo {
@@ -399,6 +431,29 @@ a.inline-roll {
 .cthack.sheet.actor.character {
   min-width: 960px;
 }
+.cthack.sheet.actor.character .character-content {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas: "sidebar header" "sidebar tabs" "sidebar content";
+  column-gap: 10px;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+.cthack.sheet.actor.character .character-content > .tab:not(.active) {
+  display: none;
+}
+.cthack.sheet.actor.character .character-content > .tab.active {
+  grid-area: content;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+  padding: 10px 30px 10px 10px;
+  width: 100%;
+  min-width: 0;
+}
 .cthack.sheet.actor.character select {
   color: black;
 }
@@ -431,21 +486,28 @@ a.inline-roll {
   width: auto;
 }
 .cthack.sheet.actor.character nav.sheet-tabs {
-  flex: 0;
+  grid-area: tabs;
   border-top: 0;
   border-bottom: 1px solid var(--nav-active-color);
-  margin: 10px 5px 0 5px;
+  margin: 25px 30px 0 5px;
+  display: flex;
+  flex-direction: row;
 }
-.cthack.sheet.actor.character nav.sheet-tabs .choice {
+.cthack.sheet.actor.character nav.sheet-tabs [data-tab] {
+  flex: 1;
   height: 40px;
   line-height: 40px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
 }
-.cthack.sheet.actor.character nav.sheet-tabs .choice:hover {
+.cthack.sheet.actor.character nav.sheet-tabs [data-tab]:hover {
   color: var(--nav-active-color);
   text-shadow: 0 0 10px var(--nav-active-shadow-color);
 }
-.cthack.sheet.actor.character nav.sheet-tabs .choice.active {
+.cthack.sheet.actor.character nav.sheet-tabs [data-tab].active {
   color: var(--nav-active-color);
   font-weight: bold;
   border-top: 1px solid var(--nav-active-color);
@@ -457,15 +519,22 @@ a.inline-roll {
   text-shadow: 0 0 10px var(--nav-active-shadow-color);
 }
 .cthack.sheet.actor.character .sidebar {
+  grid-area: sidebar;
   margin: 30px 10px 0 20px;
   padding: 0 10px 0 10px;
-  flex: 220px 0 0;
-  height: 400px;
+  min-height: 0;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--primary) transparent;
 }
+.cthack.sheet.actor.character .sidebar .image-container img.editable-image {
+  border: none;
+  max-width: 100%;
+  border-radius: 10px;
+}
 .cthack.sheet.actor.character .sidebar .image-container img.actor-image {
   border: none;
+  max-width: 100%;
   min-width: 150px;
   border-radius: 10px;
 }
@@ -549,20 +618,10 @@ a.inline-roll {
 .cthack.sheet.actor.character .sidebar .conditions .items-list .item-summary {
   font-size: 0.9em;
 }
-.cthack.sheet.actor.character .main {
-  margin: 30px 0 0 0;
-  padding: 0 30px 10px 0;
-  min-width: 550px;
-}
-.cthack.sheet.actor.character .main .sheet-body {
-  width: 100%;
-  padding: 0 10px 0 10px;
-}
-.cthack.sheet.actor.character .main .sheet-body .tab {
-  width: 100%;
-}
 .cthack.sheet.actor.character .character-sheet-header {
+  grid-area: header;
   max-height: 300px;
+  margin: 30px 30px 0 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -704,117 +763,117 @@ a.inline-roll {
 .cthack.sheet.actor.character .character-sheet-header .resource-value.resource-value-lost {
   text-shadow: 0 0 10px red;
 }
-.cthack.sheet.actor.character .sheet-body .editor {
+.cthack.sheet.actor.character .editor {
   min-height: 150px;
 }
-.cthack.sheet.actor.character .sheet-body .editor-container {
+.cthack.sheet.actor.character .editor-container {
   flex: 1;
   position: relative;
   margin: 0;
   min-height: 200px;
 }
-.cthack.sheet.actor.character .sheet-body .editor-content {
+.cthack.sheet.actor.character .editor-content {
   margin: 0px 5px;
   font-weight: normal;
   font-size: var(--font-size-20);
 }
-.cthack.sheet.actor.character .sheet-body .prosemirror menu {
+.cthack.sheet.actor.character .prosemirror menu {
   font-size: 0.8em;
 }
-.cthack.sheet.actor.character .sheet-body .prosemirror menu li {
+.cthack.sheet.actor.character .prosemirror menu li {
   margin: 0px 0px;
 }
-.cthack.sheet.actor.character .sheet-body .prosemirror menu button {
+.cthack.sheet.actor.character .prosemirror menu button {
   color: var(--font-color-primary);
 }
-.cthack.sheet.actor.character .sheet-body .prosemirror menu button:hover {
+.cthack.sheet.actor.character .prosemirror menu button:hover {
   box-shadow: none;
   background: lightslategray;
   color: var(--font-color-primary);
 }
-.cthack.sheet.actor.character .sheet-body .prosemirror menu button.active {
+.cthack.sheet.actor.character .prosemirror menu button.active {
   box-shadow: none;
   background: grey;
   color: var(--font-color-primary);
 }
-.cthack.sheet.actor.character .sheet-body .equipment {
+.cthack.sheet.actor.character .equipment {
   display: grid;
   grid-template-columns: 1fr;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list {
+.cthack.sheet.actor.character .equipment .items-list {
   display: flex;
   flex-direction: column;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list div.title {
+.cthack.sheet.actor.character .equipment .items-list div.title {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list div.title input {
+.cthack.sheet.actor.character .equipment .items-list div.title input {
   width: 30px;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list div.title i {
+.cthack.sheet.actor.character .equipment .items-list div.title i {
   padding: 10px 20px 0 0;
   font-size: 1rem;
   padding-left: 50px;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line {
+.cthack.sheet.actor.character .equipment .items-list .item-line {
   display: grid;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line.weapon {
+.cthack.sheet.actor.character .equipment .items-list .item-line.weapon {
   grid-template-columns: 4fr 1fr 2fr;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line.other {
+.cthack.sheet.actor.character .equipment .items-list .item-line.other {
   grid-template-columns: 2fr 1fr;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-name-img {
+.cthack.sheet.actor.character .equipment .items-list .item-line .item-name-img {
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-name-img img {
+.cthack.sheet.actor.character .equipment .items-list .item-line .item-name-img img {
   width: 30px;
   height: 30px;
   margin: 0 5px 0 5px;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-dice {
+.cthack.sheet.actor.character .equipment .items-list .item-line .item-dice {
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-dice img {
+.cthack.sheet.actor.character .equipment .items-list .item-line .item-dice img {
   border: none;
   width: 50px;
   height: 50px;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-dice img.dice-d20 {
+.cthack.sheet.actor.character .equipment .items-list .item-line .item-dice img.dice-d20 {
   width: 30px;
   height: 30px;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .item-range {
+.cthack.sheet.actor.character .equipment .items-list .item-line .item-range {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-line .has-description {
+.cthack.sheet.actor.character .equipment .items-list .item-line .has-description {
   font-style: italic;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-description {
+.cthack.sheet.actor.character .equipment .items-list .item-description {
   display: flex;
   align-items: center;
   justify-content: left;
   text-align: left;
 }
-.cthack.sheet.actor.character .sheet-body .equipment .items-list .item-summary {
+.cthack.sheet.actor.character .equipment .items-list .item-summary {
   font-size: 0.9em;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic {
+.cthack.sheet.actor.character .abilities-magic {
   display: flex;
   flex-direction: column;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .abilities {
+.cthack.sheet.actor.character .abilities-magic .abilities {
   display: flex;
   flex-direction: column;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .abilities .title {
+.cthack.sheet.actor.character .abilities-magic .abilities .title {
   border: none;
   font-size: 1em;
   font-weight: bold;
@@ -823,18 +882,18 @@ a.inline-roll {
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .abilities .title a {
+.cthack.sheet.actor.character .abilities-magic .abilities .title a {
   padding-left: 10px;
   font-size: 0.8em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .magics {
+.cthack.sheet.actor.character .abilities-magic .magics {
   display: flex;
   flex-direction: column;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .magics .title {
+.cthack.sheet.actor.character .abilities-magic .magics .title {
   border: none;
   font-size: 1em;
   font-weight: bold;
@@ -843,14 +902,14 @@ a.inline-roll {
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .magics .title a {
+.cthack.sheet.actor.character .abilities-magic .magics .title a {
   padding-left: 10px;
   font-size: 0.8em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities {
+.cthack.sheet.actor.character .abilities-magic .grid-abilities {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 5px;
@@ -858,33 +917,33 @@ a.inline-roll {
   align-items: center;
   font-size: var(--font-size-16);
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line {
+.cthack.sheet.actor.character .abilities-magic .grid-abilities .item-line {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   height: 40px;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line .item-name {
+.cthack.sheet.actor.character .abilities-magic .grid-abilities .item-line .item-name {
   font-weight: bold;
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line .item-name img {
+.cthack.sheet.actor.character .abilities-magic .grid-abilities .item-line .item-name img {
   width: 30px;
   height: 30px;
   margin: 0 5px 0 5px;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line .item-use {
+.cthack.sheet.actor.character .abilities-magic .grid-abilities .item-line .item-use {
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .item-line .item-use-last {
+.cthack.sheet.actor.character .abilities-magic .grid-abilities .item-line .item-use-last {
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-abilities .has-description {
+.cthack.sheet.actor.character .abilities-magic .grid-abilities .has-description {
   font-style: italic;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics {
+.cthack.sheet.actor.character .abilities-magic .grid-magics {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 5px;
@@ -892,46 +951,46 @@ a.inline-roll {
   align-items: center;
   font-size: var(--font-size-16);
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line {
+.cthack.sheet.actor.character .abilities-magic .grid-magics .item-line {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   height: 40px;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line select {
+.cthack.sheet.actor.character .abilities-magic .grid-magics .item-line select {
   height: 40px;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-name {
+.cthack.sheet.actor.character .abilities-magic .grid-magics .item-line .item-name {
   font-weight: bold;
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-name img {
+.cthack.sheet.actor.character .abilities-magic .grid-magics .item-line .item-name img {
   width: 30px;
   height: 30px;
   margin: 0 5px 0 5px;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-dice {
+.cthack.sheet.actor.character .abilities-magic .grid-magics .item-line .item-dice {
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-dice img {
+.cthack.sheet.actor.character .abilities-magic .grid-magics .item-line .item-dice img {
   border: none;
   width: 50px;
   height: 50px;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-dice img.dice-d20 {
+.cthack.sheet.actor.character .abilities-magic .grid-magics .item-line .item-dice img.dice-d20 {
   width: 30px;
   height: 30px;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-subtype {
+.cthack.sheet.actor.character .abilities-magic .grid-magics .item-line .item-subtype {
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .item-line .item-incantation {
+.cthack.sheet.actor.character .abilities-magic .grid-magics .item-line .item-incantation {
   display: flex;
   align-items: center;
 }
-.cthack.sheet.actor.character .sheet-body .abilities-magic .grid-magics .has-description {
+.cthack.sheet.actor.character .abilities-magic .grid-magics .has-description {
   font-style: italic;
 }
 .cthack.sheet.actor.opponent {

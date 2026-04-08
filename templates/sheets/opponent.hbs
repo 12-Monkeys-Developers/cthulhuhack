@@ -1,86 +1,75 @@
-<form class="{{cssClass}}" autocomplete="off">
-  {{!log "opponent" this}}
-  <header class="sheet-header {{#if (or hasImage editable)}}grid-image{{else}}grid-noimage{{/if}}">
+{{!log "opponent" this}}
+<section class="opponent-section">
+  <header class="sheet-header {{#if (or hasImage isEdit)}}grid-image{{else}}grid-noimage{{/if}}">
 
     <div class="opponent-image">
-      {{#if editable}}
-        <img class="editable-image" src="{{data.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}"/>
+      {{#if isEdit}}
+        <img class="editable-image" src="{{actor.img}}" data-action="editImage" data-edit="img" data-uuid="{{actor.uuid}}" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}"/>
       {{else}}
-        {{#if actor.hasImage}}
+        {{#if hasImage}}
           <img class="actor-image" src="{{actor.img}}" data-tooltip="{{actor.name}}"/>
-          <a class="hover-icon share-image" data-tooltip="{{localize 'TOOLTIPS.ShowImage'}}" data-image="{{actor.img}}" data-name="{{actor.name}}"><i class="fas fa-image fa-fw"></i></a>
-        {{/if}}        
-      {{/if}}    
+          <a class="hover-icon" data-action="shareImage" data-tooltip="{{localize 'TOOLTIPS.ShowImage'}}" data-image="{{actor.img}}" data-name="{{actor.name}}"><i class="fas fa-image fa-fw"></i></a>
+        {{/if}}
+      {{/if}}
     </div>
 
     <div class="character">
       <div class="name">
-        {{#if editable}}
+        {{#if isEdit}}
           <input name="name" type="text" value="{{actor.name}}" />
         {{else}}
-          <div class="search-name" data-name="{{actor.name}}" data-tooltip="{{localize 'TOOLTIPS.SearchName'}}">{{actor.name}}</div>
-        {{/if}}
-      </div>
-      <div class="sheet-lock">
-        {{#if editable}}
-          <i class="fas fa-lock-open" data-tooltip="{{localize 'TOOLTIPS.LockSheet'}}"></i>
-        {{else}}
-          <i class="fas fa-lock" data-tooltip="{{localize 'TOOLTIPS.UnlockSheet'}}"></i>
+          <div data-action="searchName" data-name="{{actor.name}}" data-tooltip="{{localize 'TOOLTIPS.SearchName'}}">{{actor.name}}</div>
         {{/if}}
       </div>
     </div>
 
     <div class="short-description">
-      {{#if editable}}<input
-          class="input-editable"
-          name="system.shortDescription"
-          type="text"
-          value="{{actor.system.shortDescription}}"
-          placeholder="{{localize 'CTHACK.ShortDescription'}}"
-        />{{else}}{{actor.system.shortDescription}}{{/if}}
+      {{#if isEdit}}
+        <input class="input-editable" name="system.shortDescription" type="text" value="{{system.shortDescription}}" placeholder="{{localize 'CTHACK.ShortDescription'}}"/>
+      {{else}}
+        {{system.shortDescription}}
+      {{/if}}
     </div>
 
     <div class="data-group hitdice">
       <label for="system.hitDice" class="resource-label resource-name" data-tooltip="{{localize 'CTHACK.HitDice'}}">{{localize "CTHACK.HitDiceShort"}}</label>
-      {{#if editable}}
-        <select class="selectHitDice" name="system.hitDice" data-type="String">
-          {{selectOptions opponentHitDice selected=actor.system.hitDice}}
+      {{#if isEdit}}
+        <select name="system.hitDice" data-type="String">
+          {{selectOptions opponentHitDice selected=system.hitDice}}
         </select>
       {{else}}
-        <div>{{actor.system.hitDice}}</div>
+        <div>{{system.hitDice}}</div>
       {{/if}}
     </div>
 
     <div class="data-group hp">
       <label for="system.hp.value" class="resource-label" data-tooltip="{{localize 'CTHACK.HitPoints'}}">{{localize "CTHACK.HitPointsShort"}}</label>
       <div class="hp-input">
-        <input class="input-editable" type="text" name="system.hp.value" value="{{actor.system.hp.value}}" data-dtype="Number" />
+        <input class="input-editable" type="text" name="system.hp.value" value="{{system.hp.value}}" data-dtype="Number" />
         /
-        {{#if editable}}
-          <input class="input-editable" type="text" name="system.hp.max" value="{{actor.system.hp.max}}" data-dtype="Number" />
+        {{#if isEdit}}
+          <input class="input-editable" type="text" name="system.hp.max" value="{{system.hp.max}}" data-dtype="Number" />
         {{else}}
-          <div class="hp-max">
-            {{actor.system.hp.max}}
-          </div>
+          <div class="hp-max">{{system.hp.max}}</div>
         {{/if}}
       </div>
     </div>
 
     <div class="data-group armor">
       <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentArmor'}}">{{localize "CTHACK.OpponentArmorShort"}}</label>
-      {{#if editable}}
-        <input class="input-editable" name="system.armor" type="text" value="{{actor.system.armor}}" data-dtype="Number" />
+      {{#if isEdit}}
+        <input class="input-editable" name="system.armor" type="text" value="{{system.armor}}" data-dtype="Number" />
       {{else}}
-        <div>{{actor.system.armor}}</div>
+        <div>{{system.armor}}</div>
       {{/if}}
     </div>
 
     <div class="data-group malus">
       <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentTouchMalus'}}">{{localize "CTHACK.OpponentTouchMalusShort"}}</label>
-      {{#if editable}}
-        <input class="input-editable" name="system.malus" type="text" value="{{actor.system.malus}}" data-dtype="Number" />
+      {{#if isEdit}}
+        <input class="input-editable" name="system.malus" type="text" value="{{system.malus}}" data-dtype="Number" />
       {{else}}
-        <div>{{actor.system.malus}}</div>
+        <div>{{system.malus}}</div>
       {{/if}}
     </div>
   </header>
@@ -88,21 +77,21 @@
   {{! Sheet Body }}
   <section class="sheet-body {{#if hasImage}}grid-image{{else}}grid-noimage{{/if}}">
 
-    {{#if editable}}
+    {{#if isEdit}}
       <div class="description-editable">
         <div class="title">{{localize "CTHACK.Description"}}</div>
-        {{editor enrichedDescription target="system.description" engine="prosemirror" button=true owner=owner editable=editable}}
+        {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
       </div>
     {{else}}
       <div class="description">
         {{{enrichedDescription}}}
       </div>
     {{/if}}
-    
+
     <div class="attacks">
-      {{#if editable}}
+      {{#if isEdit}}
         <div class="title">{{localize "CTHACK.OpponentAttacks"}}
-         <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.AddAttack'}}" data-type="attack"><i class="fas fa-plus"></i></a>
+         <a class="item-control" data-action="createItem" data-tooltip="{{localize 'CTHACK.AddAttack'}}" data-type="attack"><i class="fas fa-plus"></i></a>
         </div>
       {{else}}
         {{#if (gt attacks.length 0)}}<div class="title">{{localize "CTHACK.OpponentAttacks"}}</div>{{/if}}
@@ -113,66 +102,65 @@
             <details>
               <summary class="item-line">
                 <div class="item-name {{#if attack.system.hasDescription}}has-description{{/if}}">{{#if attack.hasImage}}<img src="{{attack.img}}"/>{{/if}}{{attack.name}}</div>
-                <div class="item-details">{{#if attack.system.hasDamageDice}}<i class="fas fa-dice-d20 attack rollable">&nbsp;&nbsp;</i> {{/if}}{{{attack.system.details}}}</div>
+                <div class="item-details">{{#if attack.system.hasDamageDice}}<i class="fas fa-dice-d20 attack rollable" data-action="rollAttack">&nbsp;&nbsp;</i> {{/if}}{{{attack.system.details}}}</div>
               </summary>
               <div class="item-description">{{{attack.enrichedDescription}}}</div>
-            </details>    
+            </details>
           </div>
         {{/each}}
       </div>
     </div>
 
     <div class="abilities">
-      {{#if editable}}
+      {{#if isEdit}}
         <div class="title">{{localize "CTHACK.OpponentAbilities"}}
-          <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.AddOpponentAbility'}}" data-type="opponentAbility"><i class="fas fa-plus"></i></a>
+          <a class="item-control" data-action="createItem" data-tooltip="{{localize 'CTHACK.AddOpponentAbility'}}" data-type="opponentAbility"><i class="fas fa-plus"></i></a>
         </div>
       {{else}}
         {{#if (gt opponentAbilities.length 0)}}<div class="title">{{localize "CTHACK.OpponentAbilities"}}</div>{{/if}}
       {{/if}}
       <div class="grid-opponent-abilities">
-        {{#each opponentAbilities as |ability id|}}    
-          {{!log 'opponent-ability' ability}}   
-            <div class="item opponent-contextmenu" data-item-id="{{ability._id}}">
-              <details>
-                <summary class="item-line">
-                  <div class="item-name {{#if ability.system.hasDescription}}has-description{{/if}}">{{#if ability.hasImage}}<img src="{{ability.img}}"/>{{/if}}{{ability.name}}</div>
-                  <div class="item-use">
-                    {{#if ability.system.hasUse}}
-                      {{localize 'CTHACK.AbilityUseValue'}} ({{abilityPeriodToString ability.system.uses.per}}) : {{ability.system.uses.value}}/{{ability.system.uses.max}}
-                    {{/if}}
-                  </div>
-                </summary>                  
-                  <div class="item-description">{{{ability.enrichedDescription}}}</div>
-              </details>
-            </div>
+        {{#each opponentAbilities as |ability id|}}
+          <div class="item opponent-contextmenu" data-item-id="{{ability._id}}">
+            <details>
+              <summary class="item-line">
+                <div class="item-name {{#if ability.system.hasDescription}}has-description{{/if}}">{{#if ability.hasImage}}<img src="{{ability.img}}"/>{{/if}}{{ability.name}}</div>
+                <div class="item-use">
+                  {{#if ability.system.hasUse}}
+                    {{localize 'CTHACK.AbilityUseValue'}} ({{abilityPeriodToString ability.system.uses.per}}) : {{ability.system.uses.value}}/{{ability.system.uses.max}}
+                  {{/if}}
+                </div>
+              </summary>
+              <div class="item-description">{{{ability.enrichedDescription}}}</div>
+            </details>
+          </div>
         {{/each}}
-        </div>
+      </div>
     </div>
 
     <div class="magics">
-        {{#if editable}}
-          <div class="title">{{localize "CTHACK.OpponentMagics"}}
-            <a class="item-control attack-create" data-tooltip="{{localize 'CTHACK.AddMagic'}}" data-type="magic"><i class="fas fa-plus"></i></a>
-          </div>
-        {{else}}  
-          {{#if (gt magics.length 0)}}<div class="title">{{localize "CTHACK.OpponentMagics"}}</div>{{/if}}
-        {{/if}}
-        <div class="grid-magics">
-          {{#each magics as |magic id|}}
-          {{!log 'opponent-magic' magic}}
-            <div class="item opponent-contextmenu" data-item-id="{{magic._id}}">
-              <details>
-                <summary class="item-line">
-                  <div class="item-name {{#if magic.system.hasDescription}}has-description{{/if}}">{{#if magic.hasImage}}<img src="{{magic.img}}"/>{{/if}}{{{magic.name}}}</div>
-                  <div class="item-subtype">{{magic.system.subtypeLabel}}</div>
-                  <div class="item-dice">{{#if magic.system.isDice}}<i class="fas fa-dice-d20 sanity rollable">&nbsp;&nbsp;</i>{{magic.system.dice}}{{/if}}</div>
-                  <div class="item-incantation">{{magic.system.incantation}}</div>
-                </summary>                  
-                  <div class="item-description">{{{magic.enrichedDescription}}}</div>
-              </details>
-            </div>
-          {{/each}}
+      {{#if isEdit}}
+        <div class="title">{{localize "CTHACK.OpponentMagics"}}
+          <a class="item-control" data-action="createItem" data-tooltip="{{localize 'CTHACK.AddMagic'}}" data-type="magic"><i class="fas fa-plus"></i></a>
         </div>
+      {{else}}
+        {{#if (gt magics.length 0)}}<div class="title">{{localize "CTHACK.OpponentMagics"}}</div>{{/if}}
+      {{/if}}
+      <div class="grid-magics">
+        {{#each magics as |magic id|}}
+          <div class="item opponent-contextmenu" data-item-id="{{magic._id}}">
+            <details>
+              <summary class="item-line">
+                <div class="item-name {{#if magic.system.hasDescription}}has-description{{/if}}">{{#if magic.hasImage}}<img src="{{magic.img}}"/>{{/if}}{{{magic.name}}}</div>
+                <div class="item-subtype">{{magic.system.subtypeLabel}}</div>
+                <div class="item-dice">{{#if magic.system.isDice}}<i class="fas fa-dice-d20 sanity rollable" data-action="rollSanity">&nbsp;&nbsp;</i>{{magic.system.dice}}{{/if}}</div>
+                <div class="item-incantation">{{magic.system.incantation}}</div>
+              </summary>
+              <div class="item-description">{{{magic.enrichedDescription}}}</div>
+            </details>
+          </div>
+        {{/each}}
+      </div>
+    </div>
   </section>
-</form>
+</section>
