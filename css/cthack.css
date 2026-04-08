@@ -450,7 +450,7 @@ a.inline-roll {
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--primary) transparent;
-  padding: 0 30px 10px 10px;
+  padding: 10px 30px 10px 10px;
   width: 100%;
   min-width: 0;
 }
@@ -489,7 +489,7 @@ a.inline-roll {
   grid-area: tabs;
   border-top: 0;
   border-bottom: 1px solid var(--nav-active-color);
-  margin: 10px 5px 0 5px;
+  margin: 25px 30px 0 5px;
   display: flex;
   flex-direction: row;
 }

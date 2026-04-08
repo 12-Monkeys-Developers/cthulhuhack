@@ -14,6 +14,12 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
     })
   }
 
+  /** Width of the sheet in play mode. */
+  static PLAY_WIDTH = 1100
+
+  /** Width of the sheet in edit mode. */
+  static EDIT_WIDTH = 1300
+
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["character"],
@@ -155,6 +161,16 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
       this.element, ".character-sidebar-contextmenu",
       this._getCharacterSidebarEntryContextOptions(), { jQuery: false }
     )
+  }
+
+  /** @override */
+  async _onSheetChangeLock(event) {
+    const modes = this.constructor.SHEET_MODES
+    const isCurrentlyEdit = this._sheetMode === modes.EDIT
+    await super._onSheetChangeLock(event)
+    // Resize width based on new mode
+    const newWidth = isCurrentlyEdit ? this.constructor.PLAY_WIDTH : this.constructor.EDIT_WIDTH
+    this.setPosition({ width: newWidth })
   }
 
   /** @override */

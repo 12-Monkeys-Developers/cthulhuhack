@@ -1,3 +1,6 @@
+5.6.0
+- Convert actors sheet to ApplicationV2
+
 5.5.3
 - Definition item can't be duplicated on character
 - :bug: Fix the deletion of condition item on the character sheet
