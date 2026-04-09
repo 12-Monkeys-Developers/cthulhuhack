@@ -394,7 +394,7 @@ export default class CtHackRoll extends Roll {
               }
             })
             selectedModifiersInput.value = selectedModifiers.join(", ")
-            const value = avantages + nbChecked
+            let value = avantages + nbChecked
             if (value <= 0) value = 0
             if (value > 5) value = 5
 

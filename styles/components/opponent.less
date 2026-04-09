@@ -190,9 +190,9 @@
       .hover-icon {
         visibility: hidden;
         position: absolute;
-        top: 22px;
+        top: 60px;
         left: 32px;
-        font-size: var(--font-size-16);
+        font-size: var(--cthack-fs-base);
         color: black;
       }
 
@@ -208,7 +208,7 @@
       justify-content: center;
       align-items: center;
       padding-left: 15px;
-      font-size: 0.8em;
+      font-size: var(--cthack-fs-xs);
     }
 
     .character {
@@ -223,7 +223,7 @@
 
     .data-group {
       border: none;
-      font-size: 1rem;
+      font-size: var(--cthack-fs-base);
 
       label {
         font-weight: bold;
@@ -345,30 +345,36 @@
 
     .description-editable {
       border: none;
-      font-size: 1rem;
-      height: 100%;
-      min-height: 200px;
+      font-size: var(--cthack-fs-base);
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
 
       .title {
-        font-size: 1em;
+        font-size: var(--cthack-fs-md);
         font-weight: bold;
         padding: 10px 0 10px 0;
         text-align: center;
       }
 
-      .editor {
-        min-height: 150px;
-      }
+      > prose-mirror {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
 
-      .editor-content {
-        min-height: 100px;
-        height: auto;
-        margin: 0px 5px;
-        font-weight: normal;
+        > .editor-content {
+          flex: 1;
+          min-height: 0;
+          overflow-y: auto;
+          margin: 0px 5px;
+          font-weight: normal;
+        }
       }
 
       .prosemirror menu {
-        font-size: 0.8em;
+        font-size: var(--cthack-fs-xs);
 
         li {
           margin: 0px 0px;
@@ -402,7 +408,7 @@
 
       .title {
         border: none;
-        font-size: 1em;
+        font-size: var(--cthack-fs-md);
         font-weight: bold;
         padding: 0 0 10px 0;
         display: flex;
@@ -411,7 +417,7 @@
 
         a {
           padding-left: 10px;
-          font-size: 0.8em;
+          font-size: var(--cthack-fs-xs);
           display: flex;
           justify-content: center;
           align-items: center;
@@ -424,7 +430,7 @@
         grid-gap: 5px;
         padding-left: 10px;
         align-items: center;
-        font-size: var(--font-size-16);
+        font-size: var(--cthack-fs-base);
 
         .item-line {
           display: grid;
@@ -461,7 +467,7 @@
 
       .title {
         border: none;
-        font-size: 1em;
+        font-size: var(--cthack-fs-md);
         font-weight: bold;
         padding: 10px 0 10px 0;
         display: flex;
@@ -470,7 +476,7 @@
 
         a {
           padding-left: 10px;
-          font-size: 0.8em;
+          font-size: var(--cthack-fs-xs);
           display: flex;
           justify-content: center;
           align-items: center;
@@ -483,7 +489,7 @@
         grid-gap: 5px;
         padding-left: 10px;
         align-items: center;
-        font-size: var(--font-size-16);
+        font-size: var(--cthack-fs-base);
 
         .item-line {
           display: grid;
@@ -530,7 +536,7 @@
 
       .title {
         border: none;
-        font-size: 1em;
+        font-size: var(--cthack-fs-md);
         font-weight: bold;
         padding: 10px 0 10px 0;
         display: flex;
@@ -539,7 +545,7 @@
 
         a {
           padding-left: 10px;
-          font-size: 0.8em;
+          font-size: var(--cthack-fs-xs);
           display: flex;
           justify-content: center;
           align-items: center;
@@ -552,7 +558,7 @@
         grid-gap: 5px;
         padding-left: 10px;
         align-items: center;
-        font-size: var(--font-size-16);
+        font-size: var(--cthack-fs-base);
 
         .item-line {
           display: grid;

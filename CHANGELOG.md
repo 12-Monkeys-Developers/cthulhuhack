@@ -1,5 +1,8 @@
 5.6.0
 - Convert actors sheet to ApplicationV2
+- Width of character sheet depends of the mode locked/unlocked
+- Opponent : 2 tabs now ; "description" and "attacks, abilitiles, magics"
+- All font size are now relative and use rem as unity
 
 5.5.3
 - Definition item can't be duplicated on character

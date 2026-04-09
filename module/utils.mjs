@@ -3,14 +3,6 @@ import { CTHACK } from "./config.mjs"
 import { LOG_HEAD } from "./constants.mjs"
 
 /**
- * Check the value is a valid dice (dX)
- * @param event the roll event
- */
-export function isDice(value) {
-  return DICE_VALUES.includes(value)
-}
-
-/**
  * Format a date to a string
  * @param {Date} dt
  */
@@ -54,7 +46,7 @@ export class CthackUtils {
   }
 
   static _handleMsgAskRoll(data) {
-    const currentUser = game.user._id
+    const currentUser = game.user.id
     if (data.userId === currentUser) {
       foundry.audio.AudioHelper.play({ src: "/systems/cthack/sounds/drums.wav", volume: 0.8, autoplay: true, loop: false }, false)
     }
