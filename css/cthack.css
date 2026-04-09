@@ -538,8 +538,8 @@ a.inline-roll {
 .cthack.sheet.actor.character .sidebar .image-container .hover-icon {
   visibility: hidden;
   position: absolute;
-  top: 70px;
-  left: 45px;
+  top: 32px;
+  left: 32px;
   font-size: var(--font-size-16);
   color: black;
 }
@@ -1005,7 +1005,7 @@ a.inline-roll {
   flex: 1;
   min-height: 0;
   overflow: hidden;
-  padding: 0;
+  padding: 20px;
 }
 .cthack.sheet.actor.opponent .opponent-section {
   display: flex;
@@ -1106,16 +1106,18 @@ a.inline-roll {
 .cthack.sheet.actor.opponent .sheet-header .opponent-image .editable-image {
   border: none;
   height: 200px;
+  border-radius: 10px;
 }
 .cthack.sheet.actor.opponent .sheet-header .opponent-image img.actor-image {
   border: none;
   height: 150px;
+  border-radius: 10px;
 }
 .cthack.sheet.actor.opponent .sheet-header .opponent-image .hover-icon {
   visibility: hidden;
   position: absolute;
-  top: 40px;
-  left: 20px;
+  top: 22px;
+  left: 32px;
   font-size: var(--font-size-16);
   color: black;
 }
