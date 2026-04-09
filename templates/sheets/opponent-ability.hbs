@@ -1,10 +1,10 @@
 {{!log "Cthulhu Hack | opponent-ability" this}}
 <section class="opponent-ability-section">
   <div class="item-header">
-      <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
+      <input name="name" type="text" value="{{item.name}}"{{#if locked}} disabled{{/if}} />
       <div class="item-header-row">
           <div class="item-image">
-              {{#if isEdit}}
+              {{#if unlocked}}
                   <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
               {{else}}
                   {{#unless hasDefaultImage}}
@@ -16,14 +16,14 @@
   </div>
 
  <div class="item-properties grid-2">
-    {{formGroup systemFields.uses.fields.per name="system.uses.per" value=systemSource.uses.per localize=true disabled=isPlay}}  
-    {{formGroup systemFields.uses.fields.max name="system.uses.max" value=systemSource.uses.max localize=true disabled=isPlay}}
-    {{formGroup systemFields.uses.fields.value name="system.uses.value" value=systemSource.uses.value localize=true disabled=isPlay}}    
-    {{formGroup systemFields.uses.fields.last name="system.uses.last" value=systemSource.uses.last localize=true disabled=isPlay}}
+    {{formGroup systemFields.uses.fields.per name="system.uses.per" value=systemSource.uses.per localize=true disabled=locked}}  
+    {{formGroup systemFields.uses.fields.max name="system.uses.max" value=systemSource.uses.max localize=true disabled=locked}}
+    {{formGroup systemFields.uses.fields.value name="system.uses.value" value=systemSource.uses.value localize=true disabled=locked}}    
+    {{formGroup systemFields.uses.fields.last name="system.uses.last" value=systemSource.uses.last localize=true disabled=locked}}
  </div>
 
   <div class="item-description">
-    {{#if isEdit}}
+    {{#if unlocked}}
       <fieldset>
         <legend>{{localize "CTHACK.Description"}}</legend>
         <div class="description-content">

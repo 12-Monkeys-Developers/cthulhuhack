@@ -2,19 +2,19 @@
 {{!log 'equipment' this}}
 <section class="tab equipment {{tabs.equipment.cssClass}}" data-group="primary" data-tab="equipment">
     <div class="items-list">
-        {{#if isEdit}}
+        {{#if unlocked}}
             <div class="title">
                 {{#if isEncumbranceEnabled}}
-                    Encombrement actuel : <input type="text" name="system.encumbrance.value" value="{{system.encumbrance.value}}" disabled/>
-                    Encombrement max : <input type="text" name="system.encumbrance.max" value="{{system.encumbrance.max}}"/>
+                    Encombrement actuel : {{formInput systemFields.encumbrance.fields.value value=system.encumbrance.value disabled=true}}
+                    Encombrement max : {{formInput systemFields.encumbrance.fields.max value=system.encumbrance.max}}
                 {{/if}}
                 <i class="fas fa-plus" data-action="createItem" data-tooltip="{{localize "CTHACK.AddEquipment"}}" data-tooltip-direction="LEFT" data-type="weapon" data-alt-type="item"></i>
             </div>
         {{else}}
               <div class="title">
                 {{#if isEncumbranceEnabled}}
-                    Encombrement actuel : <input type="text" name="system.encumbrance.value" value="{{system.encumbrance.value}}" disabled/>
-                    Encombrement max : <input type="text" name="system.encumbrance.max" value="{{system.encumbrance.max}}" disabled/>
+                    Encombrement actuel : {{formInput systemFields.encumbrance.fields.value value=system.encumbrance.value disabled=true}}
+                    Encombrement max : {{formInput systemFields.encumbrance.fields.max value=system.encumbrance.max disabled=true}}
                 {{/if}}
             </div>
         {{/if}}
@@ -54,7 +54,7 @@
         {{/each}}
     </div>
     <div class="misc">
-        {{#if @root.isEdit}}
+        {{#if @root.unlocked}}
             {{formInput @root.systemFields.equipment enriched=@root.enrichedEquipment value=@root.system.equipment name="system.equipment" toggled=true}}
         {{else}}
             <div class="equipment-content">{{{@root.enrichedEquipment}}}</div>

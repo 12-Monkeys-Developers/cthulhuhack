@@ -1,7 +1,7 @@
 {{!log 'sidebar' this}}
 <div class="sidebar flexcol">
   <div class="image-container">
-    {{#if isEdit}}
+    {{#if unlocked}}
       <img class="editable-image" src="{{actor.img}}" data-action="editImage" data-edit="img" data-uuid="{{actor.uuid}}" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}"/>
     {{else}}
       <img class="actor-image" src="{{actor.img}}" data-tooltip="{{actor.name}}"/>
@@ -9,13 +9,12 @@
     {{/if}}
   </div>
 
-  {{#each actor.system.saves as |save key|}}
-    {{!log 'save' save key}}
-    <div class="sidebar-section" data-save="{{key}}" data-drag="true" data-drag-type="save" data-drag-target="{{key}}" data-drag-value="{{save.value}}">
-      <label class="save-name rollable" data-action="rollSave" data-tooltip="{{localize (toDesc key)}}" data-tooltip-direction="UP" data-tooltip-class="tooltip-save">{{getSaveLabel key save}}</label>
-      {{#if @root.isEdit}}
-        <input class="save-value" type="text" name="system.saves.{{key}}.value" value="{{save.value}}" data-dtype="Number" />
-        <input type="checkbox" name="system.saves.{{key}}.advantage" data-dtype="Boolean" {{checked save.advantage}} />
+  {{#each savesContext as |save|}}
+    <div class="sidebar-section" data-save="{{save.key}}" data-drag="true" data-drag-type="save" data-drag-target="{{save.key}}" data-drag-value="{{save.value}}">
+      <label class="save-name rollable" data-action="rollSave" data-tooltip="{{localize (toDesc save.key)}}" data-tooltip-direction="UP" data-tooltip-class="tooltip-save">{{getSaveLabel save.key save}}</label>
+      {{#if @root.unlocked}}
+        {{formInput save.valueField value=save.value name=save.valueName}}
+        {{formInput save.advantageField value=save.advantage name=save.advantageName}}
       {{else}}
         {{save.value}}
       {{/if}}

@@ -558,11 +558,8 @@ a.inline-roll {
   font-weight: bold;
   font-family: var(--font-secondary);
 }
-.cthack.sheet.actor.character .sidebar .sidebar-section .save-value {
-  flex: 1;
-  text-align: left;
-}
-.cthack.sheet.actor.character .sidebar .sidebar-section .save-value {
+.cthack.sheet.actor.character .sidebar .sidebar-section input[type="text"],
+.cthack.sheet.actor.character .sidebar .sidebar-section input[type="number"] {
   flex: 2;
   text-align: right;
 }
@@ -644,11 +641,11 @@ a.inline-roll {
   margin-left: 20px;
   margin-right: 10px;
 }
-.cthack.sheet.actor.character .character-sheet-header .occupation input.occupation-name {
+.cthack.sheet.actor.character .character-sheet-header .occupation input[name="system.occupation"] {
   border: 1px solid;
   width: 150px;
 }
-.cthack.sheet.actor.character .character-sheet-header .occupation input.occupation-skills {
+.cthack.sheet.actor.character .character-sheet-header .occupation input[name="system.skills"] {
   border: 1px solid;
   width: 250px;
 }
@@ -670,10 +667,10 @@ a.inline-roll {
   font-style: italic;
   padding-left: 50px;
 }
-.cthack.sheet.actor.character .character-sheet-header .short-description-editable {
+.cthack.sheet.actor.character .character-sheet-header .short-description input {
   border: 1px solid;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  width: 100%;
+  font-style: italic;
 }
 .cthack.sheet.actor.character .character-sheet-header .resources {
   grid-column-start: 1;
@@ -735,12 +732,15 @@ a.inline-roll {
   align-items: center;
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content select {
-  color: white;
+  color: black;
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content img {
   border: none;
   width: 80px;
   height: 80px;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource .resource-content.resource-lost select {
+  text-shadow: 0 0 10px red;
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .hitpoints-content {
   display: flex;
@@ -753,12 +753,6 @@ a.inline-roll {
   height: 40px;
   width: 40px;
   text-align: center;
-}
-.cthack.sheet.actor.character .character-sheet-header .resource-value {
-  color: black;
-}
-.cthack.sheet.actor.character .character-sheet-header .resource-value.resource-value-lost {
-  text-shadow: 0 0 10px red;
 }
 .cthack.sheet.actor.character .editor {
   min-height: 150px;
@@ -1148,7 +1142,7 @@ a.inline-roll {
   font-weight: bold;
   padding-right: 5px;
 }
-.cthack.sheet.actor.opponent .sheet-header .data-group .input-editable {
+.cthack.sheet.actor.opponent .sheet-header .data-group input {
   border: var(--border-standard);
   width: 30px;
   text-align: center;
@@ -1161,7 +1155,7 @@ a.inline-roll {
   padding: 5px 0 10px 0;
   font-style: italic;
 }
-.cthack.sheet.actor.opponent .sheet-header .short-description .input-editable {
+.cthack.sheet.actor.opponent .sheet-header .short-description input {
   border: var(--border-standard);
   margin-right: 20px;
 }
@@ -1202,7 +1196,7 @@ a.inline-roll {
   align-items: center;
 }
 .cthack.sheet.actor.opponent .sheet-header .armor input {
-  width: 20px;
+  width: 40px;
 }
 .cthack.sheet.actor.opponent .sheet-header .malus {
   display: flex;
@@ -1216,7 +1210,7 @@ a.inline-roll {
   text-transform: uppercase;
 }
 .cthack.sheet.actor.opponent .sheet-header .malus input {
-  width: 20px;
+  width: 40px;
 }
 .cthack.sheet.actor.opponent .sheet-body {
   display: flex;

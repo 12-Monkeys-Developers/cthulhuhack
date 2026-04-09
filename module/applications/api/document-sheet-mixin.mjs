@@ -21,13 +21,6 @@ export default (base) => {
       },
     }
 
-
-    /** @inheritdoc 
-    _configureRenderOptions(options) {
-      super._configureRenderOptions(options)
-      if (options.mode && this.isEditable) this._mode = options.mode
-    }*/
-
     /** @override */
     async _onRender(context, options) {
       await super._onRender(context, options)
@@ -45,8 +38,8 @@ export default (base) => {
       // super context : document, editable, fields, rootId, source, user
       const context = await super._prepareContext(options)
       Object.assign(context, {
-        isPlay: this.isPlayMode,
-        isEdit: this.isEditMode,
+        locked: this.isPlayMode,
+        unlocked: this.isEditMode,
         owner: this.document.isOwner,
         limited: this.document.limited,
         gm: game.user.isGM,

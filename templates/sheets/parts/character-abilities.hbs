@@ -1,8 +1,8 @@
-<section class="tab abilities {{tabs.abilities.cssClass}} flexrow abilities-magic" data-group="primary" data-tab="abilities">
+<section class="tab abilities {{tabs.abilities.cssClass}} abilities-magic" data-group="primary" data-tab="abilities">
 
     {{!-- Abilities--}}
     <div class="abilities">
-        {{#if isEdit}}
+        {{#if unlocked}}
             <div class="title">{{localize "CTHACK.Abilities"}}
                 <a class="item-control" data-action="createItem" data-tooltip="{{localize "CTHACK.AddAbility"}}" data-type="ability"><i class="fas fa-plus"></i></a>
             </div>
@@ -36,7 +36,7 @@
 
     {{!-- Magic --}}
     <div class="magics">
-         {{#if isEdit}}
+         {{#if unlocked}}
             <div class="title">{{localize "CTHACK.Ui.Magic"}}
                 <a class="item-control" data-action="createItem" data-tooltip="{{localize "CTHACK.AddMagic"}}" data-type="magic"><i class="fas fa-plus"></i></a>
             </div>

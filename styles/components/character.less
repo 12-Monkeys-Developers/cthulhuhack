@@ -155,11 +155,8 @@
         font-family: var(--font-secondary);
         //font-size: var(--font-size-24);
       }
-      .save-value {
-        flex: 1;
-        text-align: left;
-      }
-      .save-value {
+      input[type="text"],
+      input[type="number"] {
         flex: 2;
         text-align: right;
       }
@@ -245,11 +242,11 @@
         margin-left: 20px;
         margin-right: 10px;
       }
-      input.occupation-name {
+      input[name="system.occupation"] {
         border: 1px solid;
         width: 150px;
       }
-      input.occupation-skills {
+      input[name="system.skills"] {
         border: 1px solid;
         width: 250px;
       }
@@ -271,11 +268,11 @@
       grid-column-end: 3;
       font-style: italic;
       padding-left: 50px;
-    }
-    .short-description-editable {
-      border: 1px solid;
-      grid-column-start: 1;
-      grid-column-end: 3;
+      input {
+        border: 1px solid;
+        width: 100%;
+        font-style: italic;
+      }
     }
     .resources {
       grid-column-start: 1;
@@ -338,12 +335,15 @@
         justify-content: center;
         align-items: center;
         select {
-          color: white;
+          color: black;
         }
         img {
           border: none;
           width: 80px;
           height: 80px;
+        }
+        &.resource-lost select {
+          text-shadow: 0 0 10px red;
         }
       }
 
@@ -358,13 +358,6 @@
           width: 40px;
           text-align: center;
         }
-      }
-    }
-    .resource-value {
-      color: black;
-
-      &.resource-value-lost {
-        text-shadow: 0 0 10px red;
       }
     }
   }

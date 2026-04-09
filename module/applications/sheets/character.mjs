@@ -145,6 +145,18 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
       context.encumbrance = this.document.system.encumbrance.value
     }
 
+    // Pre-computed saves context for formInput (Handlebars can't do dynamic schema lookups)
+    const savesSchema = this.document.system.schema.fields.saves.fields
+    context.savesContext = Object.entries(this.document.system.saves).map(([key, save]) => ({
+      key,
+      value: save.value,
+      advantage: save.advantage,
+      valueField: savesSchema[key].fields.value,
+      advantageField: savesSchema[key].fields.advantage,
+      valueName: `system.saves.${key}.value`,
+      advantageName: `system.saves.${key}.advantage`,
+    }))
+
     return context
   }
 

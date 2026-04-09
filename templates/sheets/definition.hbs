@@ -1,10 +1,10 @@
 {{!log "Cthulhu Hack | definition" this}}
 <section class="definition-section">
     <div class="item-header">
-        <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
+        <input name="name" type="text" value="{{item.name}}"{{#if locked}} disabled{{/if}} />
         <div class="item-header-row">
             <div class="item-image">
-                {{#if isEdit}}
+                {{#if unlocked}}
                     <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
                 {{else}}
                     {{#unless hasDefaultImage}}
@@ -16,12 +16,12 @@
     </div>
 
   <div class="item-properties grid-2">
-      {{formGroup systemFields.definitionType name="system.definitionType" value=systemSource.definitionType localize=true disabled=isPlay}}
-      {{formGroup systemFields.key name="system.key" value=systemSource.key localize=true disabled=isPlay}}
+      {{formGroup systemFields.definitionType name="system.definitionType" value=systemSource.definitionType localize=true disabled=locked}}
+      {{formGroup systemFields.key name="system.key" value=systemSource.key localize=true disabled=locked}}
   </div>
 
   <div class="item-description">
-    {{#if isEdit}}
+    {{#if unlocked}}
       <fieldset>
         <legend>{{localize "CTHACK.Description"}}</legend>
         <div class="description-content">

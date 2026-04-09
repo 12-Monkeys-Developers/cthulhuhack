@@ -1,5 +1,5 @@
 <section class="tab biography {{tabs.description.cssClass}}" data-group="primary" data-tab="description">
-  {{#if isEdit}}
+  {{#if unlocked}}
     {{formInput systemFields.biography enriched=enrichedBiography value=system.biography name="system.biography" toggled=true}}
   {{else}}
     <div class="biography-content">{{{enrichedBiography}}}</div>

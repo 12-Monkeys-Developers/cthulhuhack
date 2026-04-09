@@ -1,9 +1,9 @@
 {{!log "Cthulhu Hack | weapon" this}}
 <section class="weapon-section">    
         <div class="item-header">
-            <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
+            <input name="name" type="text" value="{{item.name}}"{{#if locked}} disabled{{/if}} />
             <div class="item-header-row">                     
-                {{#if isEdit}}
+                {{#if unlocked}}
                     <div class="item-image">
                         <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
                     </div>
@@ -38,19 +38,19 @@
         </div>
  
         {{#if useSize}}
-            {{#if isEdit}}
+            {{#if unlocked}}
                 <div class="item-properties grid-2">
                     <div class="item-size">
                         <label>{{localize "CTHACK.ItemSizeEquipped"}}</label>
-                        {{formInput systemFields.size.fields.equipped name="system.size.equipped" value=systemSource.size.equipped localize=true disabled=isPlay}}
+                        {{formInput systemFields.size.fields.equipped name="system.size.equipped" value=systemSource.size.equipped localize=true disabled=locked}}
                         <label>{{localize "CTHACK.ItemSizeUnequipped"}}</label>
-                        {{formInput systemFields.size.fields.unequipped name="system.size.unequipped" value=systemSource.size.unequipped localize=true disabled=isPlay}}
+                        {{formInput systemFields.size.fields.unequipped name="system.size.unequipped" value=systemSource.size.unequipped localize=true disabled=locked}}
                         <label>{{localize "CTHACK.Status"}}</label>
-                        {{formInput systemFields.size.fields.status name="system.size.status" value=systemSource.size.status localize=true disabled=isPlay}}
+                        {{formInput systemFields.size.fields.status name="system.size.status" value=systemSource.size.status localize=true disabled=locked}}
                     </div>            
                     <div class="item-range">
                         <label>{{localize "CTHACK.ItemRangeName"}}</label>
-                        {{formInput systemFields.range name="system.range" value=systemSource.range localize=true blank="CTHACK.None" classes="select-range" disabled=isPlay}}
+                        {{formInput systemFields.range name="system.range" value=systemSource.range localize=true blank="CTHACK.None" classes="select-range" disabled=locked}}
                     </div>
                 </div>
             {{else}}
@@ -81,13 +81,13 @@
             <div class="item-properties grid-1">
                 <div class="item-range">
                     <label>{{localize "CTHACK.ItemRangeName"}}</label>
-                    {{formInput systemFields.range name="system.range" value=systemSource.range localize=true blank="CTHACK.None" classes="select-range" disabled=isPlay}}
+                    {{formInput systemFields.range name="system.range" value=systemSource.range localize=true blank="CTHACK.None" classes="select-range" disabled=locked}}
                 </div>
             </div>
         {{/if}}
         
         <div class="item-description">
-            {{#if isEdit}}
+            {{#if unlocked}}
                 <fieldset>
                     <legend>{{localize "CTHACK.Description"}}</legend>
                     <div class="description-content">

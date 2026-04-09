@@ -1,10 +1,10 @@
 {{log "Cthulhu Hack | attack" this}}
 <section class="attack-section">
     <div class="item-header">
-        <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
+        <input name="name" type="text" value="{{item.name}}"{{#if locked}} disabled{{/if}} />
         <div class="item-header-row">
             <div class="item-image">
-                {{#if isEdit}}
+                {{#if unlocked}}
                     <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
                 {{else}}
                     {{#unless hasDefaultImage}}
@@ -16,13 +16,13 @@
     </div>
 
   <div class="item-properties grid-3">
-    {{formGroup systemFields.damage name="system.damage" value=system.damage localize=true disabled=isPlay}}
-    {{formGroup systemFields.damageDice name="system.damageDice" value=system.damageDice localize=true disabled=isPlay}}
-    {{formGroup systemFields.nb name="system.nb" value=system.nb localize=true disabled=isPlay}}
+    {{formGroup systemFields.damage name="system.damage" value=system.damage localize=true disabled=locked}}
+    {{formGroup systemFields.damageDice name="system.damageDice" value=system.damageDice localize=true disabled=locked}}
+    {{formGroup systemFields.nb name="system.nb" value=system.nb localize=true disabled=locked}}
   </div>
 
   <div class="item-description">
-    {{#if isEdit}}
+    {{#if unlocked}}
       <fieldset>
         <legend>{{localize "CTHACK.Description"}}</legend>
         <div class="description-content">

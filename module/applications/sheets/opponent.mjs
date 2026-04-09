@@ -54,7 +54,7 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
     }
 
     context.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true })
-    context.hasShortDescription = !!this.document.system.description
+    context.hasShortDescription = !!this.document.system.shortDescription
     context.opponentHitDice = SYSTEM.OPPONENT_HIT_DICE
 
     return context
@@ -84,16 +84,15 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
    * Intercept form submission to compute derived values when hitDice changes.
    * @override
    */
-  async _prepareSubmitData(event, form, formData) {
-    const submitData = await super._prepareSubmitData(event, form, formData)
+  _prepareSubmitData(event, form, formData, updateData) {
+    const submitData = super._prepareSubmitData(event, form, formData, updateData)
     // When hitDice changes, compute HP max and malus
-    if ("system.hitDice" in submitData) {
-      const newHitDice = parseInt(submitData["system.hitDice"])
-      if (newHitDice !== this.document.system.hitDice) {
-        submitData["system.hp.value"] = 4 * newHitDice
-        submitData["system.hp.max"] = 4 * newHitDice
-        submitData["system.malus"] = -1 * (newHitDice - 1)
-      }
+    const newHitDice = submitData.system?.hitDice
+    if (newHitDice !== undefined && newHitDice !== this.document.system.hitDice) {
+      submitData.system.hp ??= {}
+      submitData.system.hp.value = 4 * newHitDice
+      submitData.system.hp.max = 4 * newHitDice
+      submitData.system.malus = -1 * (newHitDice - 1)
     }
     return submitData
   }

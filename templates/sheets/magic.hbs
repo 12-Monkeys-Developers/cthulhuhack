@@ -1,9 +1,9 @@
 {{!log "Cthulhu Hack | magic" this}}
 <section class="magic-section">
     <div class="item-header">
-        <input name="name" type="text" value="{{item.name}}"{{#if isPlay}} disabled{{/if}} />
+        <input name="name" type="text" value="{{item.name}}"{{#if locked}} disabled{{/if}} />
         <div class="item-header-row">
-             {{#if isEdit}}
+             {{#if unlocked}}
                 <div class="item-image">
                     <img class="editable-image" data-action="editImage" data-uuid="{{item.uuid}}" src="{{item.img}}" data-edit="img" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}" />
                 </div>
@@ -38,13 +38,13 @@
     </div>
 
     <div class="item-properties grid-2">     
-        {{formGroup systemFields.subtype name="system.subtype" value=systemSource.subtype localize=true disabled=isPlay}}       
-        {{formGroup systemFields.incantation name="system.incantation" value=systemSource.incantation localize=true disabled=isPlay}}       
+        {{formGroup systemFields.subtype name="system.subtype" value=systemSource.subtype localize=true disabled=locked}}       
+        {{formGroup systemFields.incantation name="system.incantation" value=systemSource.incantation localize=true disabled=locked}}       
     </div>
 
 
     <div class="item-description">
-        {{#if isEdit}}
+        {{#if unlocked}}
             <fieldset>
                 <legend>{{localize "CTHACK.Description"}}</legend>
                 <div class="description-content">

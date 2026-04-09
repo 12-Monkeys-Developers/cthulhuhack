@@ -73,6 +73,8 @@ export default class CtHackActorSheet extends CtHackDocumentSheetMixin(sheets.Ac
       diceValues: SYSTEM.DICE_VALUES,
       diceMaxValues: SYSTEM.DICE_MAX_VALUES,
       diceDamageValues: SYSTEM.DICE_DAMAGE_VALUES,
+      unlocked: this.isEditMode,
+      locked: this.isPlayMode
     })
     return context
   }

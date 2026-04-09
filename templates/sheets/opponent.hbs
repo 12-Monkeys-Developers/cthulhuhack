@@ -1,9 +1,9 @@
 {{!log "opponent" this}}
 <section class="opponent-section">
-  <header class="sheet-header {{#if (or hasImage isEdit)}}grid-image{{else}}grid-noimage{{/if}}">
+  <header class="sheet-header {{#if (or hasImage unlocked)}}grid-image{{else}}grid-noimage{{/if}}">
 
     <div class="opponent-image">
-      {{#if isEdit}}
+      {{#if unlocked}}
         <img class="editable-image" src="{{actor.img}}" data-action="editImage" data-edit="img" data-uuid="{{actor.uuid}}" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}"/>
       {{else}}
         {{#if hasImage}}
@@ -15,8 +15,8 @@
 
     <div class="character">
       <div class="name">
-        {{#if isEdit}}
-          <input name="name" type="text" value="{{actor.name}}" />
+        {{#if unlocked}}
+          {{formInput fields.name value=actor.name name="name"}}
         {{else}}
           <div data-action="searchName" data-name="{{actor.name}}" data-tooltip="{{localize 'TOOLTIPS.SearchName'}}">{{actor.name}}</div>
         {{/if}}
@@ -24,19 +24,17 @@
     </div>
 
     <div class="short-description">
-      {{#if isEdit}}
-        <input class="input-editable" name="system.shortDescription" type="text" value="{{system.shortDescription}}" placeholder="{{localize 'CTHACK.ShortDescription'}}"/>
+      {{#if unlocked}}
+        {{formInput systemFields.shortDescription value=system.shortDescription name="system.shortDescription" elementType="input" placeholder=(localize "CTHACK.ShortDescription")}}
       {{else}}
-        {{system.shortDescription}}
+        {{{system.shortDescription}}}
       {{/if}}
     </div>
 
     <div class="data-group hitdice">
       <label for="system.hitDice" class="resource-label resource-name" data-tooltip="{{localize 'CTHACK.HitDice'}}">{{localize "CTHACK.HitDiceShort"}}</label>
-      {{#if isEdit}}
-        <select name="system.hitDice" data-type="String">
-          {{selectOptions opponentHitDice selected=system.hitDice}}
-        </select>
+      {{#if unlocked}}
+        {{formInput systemFields.hitDice value=system.hitDice name="system.hitDice" choices=opponentHitDice}}
       {{else}}
         <div>{{system.hitDice}}</div>
       {{/if}}
@@ -45,10 +43,10 @@
     <div class="data-group hp">
       <label for="system.hp.value" class="resource-label" data-tooltip="{{localize 'CTHACK.HitPoints'}}">{{localize "CTHACK.HitPointsShort"}}</label>
       <div class="hp-input">
-        <input class="input-editable" type="text" name="system.hp.value" value="{{system.hp.value}}" data-dtype="Number" />
+        {{formInput systemFields.hp.fields.value value=system.hp.value name="system.hp.value"}}
         /
-        {{#if isEdit}}
-          <input class="input-editable" type="text" name="system.hp.max" value="{{system.hp.max}}" data-dtype="Number" />
+        {{#if unlocked}}
+          {{formInput systemFields.hp.fields.max value=system.hp.max name="system.hp.max"}}
         {{else}}
           <div class="hp-max">{{system.hp.max}}</div>
         {{/if}}
@@ -57,8 +55,8 @@
 
     <div class="data-group armor">
       <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentArmor'}}">{{localize "CTHACK.OpponentArmorShort"}}</label>
-      {{#if isEdit}}
-        <input class="input-editable" name="system.armor" type="text" value="{{system.armor}}" data-dtype="Number" />
+      {{#if unlocked}}
+        {{formInput systemFields.armor value=system.armor name="system.armor"}}
       {{else}}
         <div>{{system.armor}}</div>
       {{/if}}
@@ -66,8 +64,8 @@
 
     <div class="data-group malus">
       <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentTouchMalus'}}">{{localize "CTHACK.OpponentTouchMalusShort"}}</label>
-      {{#if isEdit}}
-        <input class="input-editable" name="system.malus" type="text" value="{{system.malus}}" data-dtype="Number" />
+      {{#if unlocked}}
+        {{formInput systemFields.malus value=system.malus name="system.malus"}}
       {{else}}
         <div>{{system.malus}}</div>
       {{/if}}
@@ -77,7 +75,7 @@
   {{! Sheet Body }}
   <section class="sheet-body {{#if hasImage}}grid-image{{else}}grid-noimage{{/if}}">
 
-    {{#if isEdit}}
+    {{#if unlocked}}
       <div class="description-editable">
         <div class="title">{{localize "CTHACK.Description"}}</div>
         {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
@@ -89,7 +87,7 @@
     {{/if}}
 
     <div class="attacks">
-      {{#if isEdit}}
+      {{#if unlocked}}
         <div class="title">{{localize "CTHACK.OpponentAttacks"}}
          <a class="item-control" data-action="createItem" data-tooltip="{{localize 'CTHACK.AddAttack'}}" data-type="attack"><i class="fas fa-plus"></i></a>
         </div>
@@ -112,7 +110,7 @@
     </div>
 
     <div class="abilities">
-      {{#if isEdit}}
+      {{#if unlocked}}
         <div class="title">{{localize "CTHACK.OpponentAbilities"}}
           <a class="item-control" data-action="createItem" data-tooltip="{{localize 'CTHACK.AddOpponentAbility'}}" data-type="opponentAbility"><i class="fas fa-plus"></i></a>
         </div>
@@ -139,7 +137,7 @@
     </div>
 
     <div class="magics">
-      {{#if isEdit}}
+      {{#if unlocked}}
         <div class="title">{{localize "CTHACK.OpponentMagics"}}
           <a class="item-control" data-action="createItem" data-tooltip="{{localize 'CTHACK.AddMagic'}}" data-type="magic"><i class="fas fa-plus"></i></a>
         </div>
