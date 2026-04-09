@@ -10,7 +10,7 @@
         flex-direction: column;
         input {
           width: auto;
-          font-size: 1.2rem;
+          font-size: var(--cthack-fs-md);
           text-align: center;
           border: 0px;
           margin: 10px 0 0 0;
@@ -38,7 +38,7 @@
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
-            font-size: 1.2rem;
+            font-size: var(--cthack-fs-md);
             img {
               max-height: 70px;
               max-width: 150px;
@@ -52,7 +52,7 @@
           grid-template-columns: repeat(1, 1fr);
           padding-left: 20px;
           padding-right: 20px;
-          font-size: 1rem;
+          font-size: var(--cthack-fs-base);
           text-align: center;
           color: var(--font-color-primary);
         }
@@ -62,7 +62,7 @@
           grid-template-columns: repeat(2, 1fr);
           padding-left: 20px;
           padding-right: 20px;
-          font-size: 1rem;
+          font-size: var(--cthack-fs-base);
           text-align: center;
           color: var(--font-color-primary);
           &.readonly {
@@ -75,7 +75,7 @@
             flex-direction: column;
             select {
               width: auto;
-              font-size: 1rem;
+              font-size: var(--cthack-fs-base);
               text-align: center;
               border: 0px;
               padding: 5px;
@@ -88,12 +88,12 @@
           justify-content: center;
           align-items: center;
           label {
-            font-size: 1rem;
+            font-size: var(--cthack-fs-base);
             margin-right: 10px;
           }
           .select-range {
             width: auto;
-            font-size: 1rem;
+            font-size: var(--cthack-fs-base);
             text-align: center;
             border: 0px;
             padding: 5px;
@@ -116,11 +116,11 @@
           min-height: 0;
           overflow: hidden;
           legend {
-            font-size: 1rem;
+            font-size: var(--cthack-fs-base);
             flex-shrink: 0;
           }
           .description-content {
-            font-size: 1rem;
+            font-size: var(--cthack-fs-base);
             display: flex;
             flex-direction: column;
             flex: 1;
