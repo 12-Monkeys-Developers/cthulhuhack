@@ -342,6 +342,7 @@
     "OpponentAttacks": "Attaques",
     "OpponentMagics": "Magie",
     "OpponentAbilities": "Capacités spéciales",
+    "OpponentCombatTab": "Attaques, Capacités, Magie",
     "NbAttacks": "Nombre d'attaques",
 
     "OutOfAction": {

@@ -1,0 +1,71 @@
+  <header class="sheet-header {{#if (or hasImage unlocked)}}grid-image{{else}}grid-noimage{{/if}}">
+
+    <div class="opponent-image">
+      {{#if unlocked}}
+        <img class="editable-image" src="{{actor.img}}" data-action="editImage" data-edit="img" data-uuid="{{actor.uuid}}" data-tooltip="{{localize 'TOOLTIPS.SelectImage'}}"/>
+      {{else}}
+        {{#if hasImage}}
+          <img class="actor-image" src="{{actor.img}}" data-tooltip="{{actor.name}}"/>
+          <a class="hover-icon" data-action="shareImage" data-tooltip="{{localize 'TOOLTIPS.ShowImage'}}" data-image="{{actor.img}}" data-name="{{actor.name}}"><i class="fas fa-image fa-fw"></i></a>
+        {{/if}}
+      {{/if}}
+    </div>
+
+    <div class="character">
+      <div class="name">
+        {{#if unlocked}}
+          {{formInput fields.name value=actor.name name="name"}}
+        {{else}}
+          <div data-action="searchName" data-name="{{actor.name}}" data-tooltip="{{localize 'TOOLTIPS.SearchName'}}">{{actor.name}}</div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="short-description">
+      {{#if unlocked}}
+        {{formInput systemFields.shortDescription value=system.shortDescription name="system.shortDescription" elementType="input" placeholder=(localize "CTHACK.ShortDescription")}}
+      {{else}}
+        {{{system.shortDescription}}}
+      {{/if}}
+    </div>
+
+    <div class="data-group hitdice">
+      <label for="system.hitDice" class="resource-label resource-name" data-tooltip="{{localize 'CTHACK.HitDice'}}">{{localize "CTHACK.HitDiceShort"}}</label>
+      {{#if unlocked}}
+        {{formInput systemFields.hitDice value=system.hitDice name="system.hitDice" choices=opponentHitDice}}
+      {{else}}
+        <div>{{system.hitDice}}</div>
+      {{/if}}
+    </div>
+
+    <div class="data-group hp">
+      <label for="system.hp.value" class="resource-label" data-tooltip="{{localize 'CTHACK.HitPoints'}}">{{localize "CTHACK.HitPointsShort"}}</label>
+      <div class="hp-input">
+        {{formInput systemFields.hp.fields.value value=system.hp.value name="system.hp.value"}}
+        /
+        {{#if unlocked}}
+          {{formInput systemFields.hp.fields.max value=system.hp.max name="system.hp.max"}}
+        {{else}}
+          <div class="hp-max">{{system.hp.max}}</div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="data-group armor">
+      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentArmor'}}">{{localize "CTHACK.OpponentArmorShort"}}</label>
+      {{#if unlocked}}
+        {{formInput systemFields.armor value=system.armor name="system.armor"}}
+      {{else}}
+        <div>{{system.armor}}</div>
+      {{/if}}
+    </div>
+
+    <div class="data-group malus">
+      <label class="resource-label" data-tooltip="{{localize 'CTHACK.OpponentTouchMalus'}}">{{localize "CTHACK.OpponentTouchMalusShort"}}</label>
+      {{#if unlocked}}
+        {{formInput systemFields.malus value=system.malus name="system.malus"}}
+      {{else}}
+        <div>{{system.malus}}</div>
+      {{/if}}
+    </div>
+  </header>

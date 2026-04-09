@@ -17,48 +17,102 @@
     padding: 20px;
   }
 
+  nav {
+    &#context-menu {
+      text-align: left;
+      width: auto;
+    }
+    &.sheet-tabs {
+      border-top: 0;
+      border-bottom: 1px solid var(--nav-active-color);
+      margin: 10px 10px 0 10px;
+      display: flex;
+      flex-direction: row;
+      [data-tab] {
+        flex: 1;
+        height: 40px;
+        line-height: 40px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 5px;
+        &:hover {
+          color: var(--nav-active-color);
+          text-shadow: 0 0 10px var(--nav-active-shadow-color);
+        }
+        &.active {
+          color: var(--nav-active-color);
+          font-weight: bold;
+          border-top: 1px solid var(--nav-active-color);
+          border-right: 1px solid var(--nav-active-color);
+          border-left: 1px solid var(--nav-active-color);
+          border-radius: 10px 10px 0 0;
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+          padding: 0 5px 0 5px;
+          text-shadow: 0 0 10px var(--nav-active-shadow-color);
+        }
+      }
+    }
+  }
+
   .opponent-section {
     display: flex;
     flex-direction: column;
     flex: 1;
     min-height: 0;
+
+    .tab.active {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
   }
 
   .sheet-header {
     display: grid;
+    margin-bottom: 10px;
+
     &.grid-image {
       grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 0.5fr 1fr;
+
       .character {
         grid-row-start: 1;
         grid-row-end: 2;
         grid-column-start: 2;
         grid-column-end: 6;
       }
+
       .short-description {
         grid-row-start: 2;
         grid-row-end: 3;
         grid-column-start: 2;
         grid-column-end: 6;
       }
+
       .hitdice {
         grid-row-start: 3;
         grid-row-end: 4;
         grid-column-start: 2;
         grid-column-end: 3;
       }
+
       .hp {
         grid-row-start: 3;
         grid-row-end: 4;
         grid-column-start: 3;
         grid-column-end: 4;
       }
+
       .armor {
         grid-row-start: 3;
         grid-row-end: 4;
         grid-column-start: 4;
         grid-column-end: 5;
       }
+
       .malus {
         grid-row-start: 3;
         grid-row-end: 4;
@@ -66,38 +120,45 @@
         grid-column-end: 6;
       }
     }
+
     &.grid-noimage {
       grid-template-columns: 1fr 1fr 1fr 1fr;
+
       .character {
         grid-row-start: 1;
         grid-row-end: 2;
         grid-column-start: 1;
         grid-column-end: 5;
       }
+
       .short-description {
         grid-row-start: 2;
         grid-row-end: 3;
         grid-column-start: 1;
         grid-column-end: 5;
       }
+
       .hitdice {
         grid-row-start: 3;
         grid-row-end: 4;
         grid-column-start: 1;
         grid-column-end: 2;
       }
+
       .hp {
         grid-row-start: 3;
         grid-row-end: 4;
         grid-column-start: 2;
         grid-column-end: 3;
       }
+
       .armor {
         grid-row-start: 3;
         grid-row-end: 4;
         grid-column-start: 3;
         grid-column-end: 4;
       }
+
       .malus {
         grid-row-start: 3;
         grid-row-end: 4;
@@ -105,6 +166,7 @@
         grid-column-end: 5;
       }
     }
+
     .opponent-image {
       grid-row-start: 1;
       grid-row-end: 4;
@@ -112,16 +174,19 @@
       grid-column-end: 2;
       display: flex;
       padding-left: 10px;
+
       .editable-image {
         border: none;
         height: 200px;
         border-radius: 10px;
       }
+
       img.actor-image {
         border: none;
         height: 150px;
         border-radius: 10px;
       }
+
       .hover-icon {
         visibility: hidden;
         position: absolute;
@@ -130,12 +195,14 @@
         font-size: var(--font-size-16);
         color: black;
       }
+
       &:hover {
         .hover-icon {
           visibility: visible;
         }
       }
     }
+
     .sheet-lock {
       display: flex;
       justify-content: center;
@@ -143,6 +210,7 @@
       padding-left: 15px;
       font-size: 0.8em;
     }
+
     .character {
       display: flex;
       justify-content: center;
@@ -152,13 +220,16 @@
       padding: 5px 0 5px 0;
       margin-right: 20px;
     }
+
     .data-group {
       border: none;
       font-size: 1rem;
+
       label {
         font-weight: bold;
         padding-right: 5px;
       }
+
       input {
         border: var(--border-standard);
         width: 30px;
@@ -166,24 +237,29 @@
         margin-right: 5px;
       }
     }
+
     .short-description {
       display: flex;
       justify-content: center;
       text-align: center;
       padding: 5px 0 10px 0;
       font-style: italic;
+
       input {
         border: var(--border-standard);
         margin-right: 20px;
       }
     }
+
     .hitdice {
       display: flex;
       justify-content: center;
       align-items: center;
+
       select {
         color: #fff;
       }
+
       .selectHitDice {
         border: var(--border-standard);
         width: 30px;
@@ -191,41 +267,51 @@
         text-align: center;
       }
     }
+
     .hp {
       display: flex;
       justify-content: center;
       align-items: center;
+
       .hp-input {
         display: flex;
         justify-content: center;
         align-items: center;
+
         input {
           width: 45px;
         }
+
         .hp-max {
           width: 45px;
           text-align: center;
         }
       }
     }
+
     .armor {
       display: flex;
       justify-content: center;
       align-items: center;
+
       input {
         width: 40px;
       }
     }
+
     .malus {
       display: flex;
       justify-content: center;
       align-items: center;
+
       label {
         text-transform: lowercase;
+
         &::first-letter {
           text-transform: uppercase;
         }
       }
+
       input {
         width: 40px;
       }
@@ -242,49 +328,61 @@
     scrollbar-color: var(--primary) transparent;
     margin: 10px 0 10px 0;
     padding: 0 10px 10px 10px;
+
     &::-webkit-scrollbar {
       display: block;
       width: 6px;
     }
+
     &::-webkit-scrollbar-thumb {
       background-color: var(--primary);
       border-radius: 3px;
     }
+
     &::-webkit-scrollbar-track {
       background: transparent;
     }
+
     .description-editable {
       border: none;
       font-size: 1rem;
       height: 100%;
       min-height: 200px;
+
       .title {
         font-size: 1em;
         font-weight: bold;
         padding: 10px 0 10px 0;
         text-align: center;
       }
+
       .editor {
         min-height: 150px;
       }
+
       .editor-content {
         min-height: 100px;
         height: auto;
         margin: 0px 5px;
         font-weight: normal;
       }
+
       .prosemirror menu {
         font-size: 0.8em;
+
         li {
           margin: 0px 0px;
         }
+
         button {
           color: var(--font-color-primary);
+
           &:hover {
             box-shadow: none;
             background: lightslategray;
             color: var(--font-color-primary);
           }
+
           &.active {
             box-shadow: none;
             background: grey;
@@ -293,12 +391,15 @@
         }
       }
     }
+
     .description {
       padding: 0 10px 0 10px;
     }
+
     .attacks {
       display: flex;
       flex-direction: column;
+
       .title {
         border: none;
         font-size: 1em;
@@ -307,6 +408,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         a {
           padding-left: 10px;
           font-size: 0.8em;
@@ -315,6 +417,7 @@
           align-items: center;
         }
       }
+
       .grid-attacks {
         display: grid;
         grid-template-columns: 1fr;
@@ -322,33 +425,40 @@
         padding-left: 10px;
         align-items: center;
         font-size: var(--font-size-16);
+
         .item-line {
           display: grid;
           grid-template-columns: 1fr 2fr;
           height: 40px;
+
           .item-name {
             font-weight: bold;
             display: flex;
             align-items: center;
+
             img {
               width: 30px;
               height: 30px;
               margin: 0 5px 0 5px;
             }
           }
+
           .item-details {
             display: flex;
             align-items: center;
           }
         }
+
         .has-description {
           font-style: italic;
         }
       }
     }
+
     .magics {
       display: flex;
       flex-direction: column;
+
       .title {
         border: none;
         font-size: 1em;
@@ -357,6 +467,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         a {
           padding-left: 10px;
           font-size: 0.8em;
@@ -365,6 +476,7 @@
           align-items: center;
         }
       }
+
       .grid-magics {
         display: grid;
         grid-template-columns: 1fr;
@@ -372,41 +484,50 @@
         padding-left: 10px;
         align-items: center;
         font-size: var(--font-size-16);
+
         .item-line {
           display: grid;
           grid-template-columns: 2fr 1fr 1fr 1fr;
           height: 40px;
+
           .item-name {
             font-weight: bold;
             display: flex;
             align-items: center;
+
             img {
               width: 30px;
               height: 30px;
               margin: 0 5px 0 5px;
             }
           }
+
           .item-subtype {
             display: flex;
             align-items: center;
           }
+
           .item-dice {
             display: flex;
             align-items: center;
           }
+
           .item-incantation {
             display: flex;
             align-items: center;
           }
         }
+
         .has-description {
           font-style: italic;
         }
       }
     }
+
     .abilities {
       display: flex;
       flex-direction: column;
+
       .title {
         border: none;
         font-size: 1em;
@@ -415,6 +536,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         a {
           padding-left: 10px;
           font-size: 0.8em;
@@ -423,6 +545,7 @@
           align-items: center;
         }
       }
+
       .grid-opponent-abilities {
         display: grid;
         grid-template-columns: 1fr;
@@ -430,29 +553,35 @@
         padding-left: 10px;
         align-items: center;
         font-size: var(--font-size-16);
+
         .item-line {
           display: grid;
           grid-template-columns: 1fr 1fr;
           height: 40px;
+
           .item-name {
             font-weight: bold;
             display: flex;
             align-items: center;
+
             img {
               width: 30px;
               height: 30px;
               margin: 0 5px 0 5px;
             }
           }
+
           .item-details {
             display: flex;
             align-items: center;
           }
+
           .item-use {
             display: flex;
             align-items: center;
           }
         }
+
         .has-description {
           font-style: italic;
         }

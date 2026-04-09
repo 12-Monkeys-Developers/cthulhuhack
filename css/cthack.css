@@ -732,6 +732,9 @@ a.inline-roll {
   align-items: center;
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content select {
+  color: #fff;
+}
+.cthack.sheet.actor.character .character-sheet-header .resource .resource-content option {
   color: black;
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content img {
@@ -753,6 +756,7 @@ a.inline-roll {
   height: 40px;
   width: 40px;
   text-align: center;
+  color: #fff;
 }
 .cthack.sheet.actor.character .editor {
   min-height: 150px;
@@ -1001,7 +1005,49 @@ a.inline-roll {
   overflow: hidden;
   padding: 20px;
 }
+.cthack.sheet.actor.opponent nav#context-menu {
+  text-align: left;
+  width: auto;
+}
+.cthack.sheet.actor.opponent nav.sheet-tabs {
+  border-top: 0;
+  border-bottom: 1px solid var(--nav-active-color);
+  margin: 10px 10px 0 10px;
+  display: flex;
+  flex-direction: row;
+}
+.cthack.sheet.actor.opponent nav.sheet-tabs [data-tab] {
+  flex: 1;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+.cthack.sheet.actor.opponent nav.sheet-tabs [data-tab]:hover {
+  color: var(--nav-active-color);
+  text-shadow: 0 0 10px var(--nav-active-shadow-color);
+}
+.cthack.sheet.actor.opponent nav.sheet-tabs [data-tab].active {
+  color: var(--nav-active-color);
+  font-weight: bold;
+  border-top: 1px solid var(--nav-active-color);
+  border-right: 1px solid var(--nav-active-color);
+  border-left: 1px solid var(--nav-active-color);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  padding: 0 5px 0 5px;
+  text-shadow: 0 0 10px var(--nav-active-shadow-color);
+}
 .cthack.sheet.actor.opponent .opponent-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.cthack.sheet.actor.opponent .opponent-section .tab.active {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -1009,6 +1055,7 @@ a.inline-roll {
 }
 .cthack.sheet.actor.opponent .sheet-header {
   display: grid;
+  margin-bottom: 10px;
 }
 .cthack.sheet.actor.opponent .sheet-header.grid-image {
   grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;

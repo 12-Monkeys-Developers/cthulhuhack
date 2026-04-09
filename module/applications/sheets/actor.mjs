@@ -48,7 +48,10 @@ export default class CtHackActorSheet extends CtHackDocumentSheetMixin(sheets.Ac
     actions: {
       editImage: CtHackActorSheet.#onEditImage,
       shareImage: CtHackActorSheet.#onShareImage,
-      searchName: CtHackActorSheet.#onSearchName,
+      searchName: {
+        handler: CtHackActorSheet.#onSearchName,
+        buttons: [2]
+      },
     },
   }
 

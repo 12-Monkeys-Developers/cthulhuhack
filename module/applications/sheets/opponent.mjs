@@ -7,7 +7,7 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["opponent"],
     window: {
-      contentClasses: ["opponent-content"],
+      contentClasses: ["opponent-content", "opponent-section"],
     },
     position: {
       width: 600,
@@ -23,8 +23,28 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
 
   /** @override */
   static PARTS = {
-    main: {
-      template: "systems/cthack/templates/sheets/opponent.hbs",
+    header: {
+      template: "systems/cthack/templates/sheets/parts/opponent-header.hbs",
+    },
+    tabs: {
+      template: "templates/generic/tab-navigation.hbs",
+    },
+    description: {
+      template: "systems/cthack/templates/sheets/parts/opponent-description.hbs",
+    },
+    combat: {
+      template: "systems/cthack/templates/sheets/parts/opponent-combat.hbs",
+    },
+  }
+
+  /** @override */
+  static TABS = {
+    primary: {
+      tabs: [
+        { id: "description", icon: "", label: "CTHACK.Description" },
+        { id: "combat", icon: "", label: "CTHACK.OpponentCombatTab" },
+      ],
+      initial: "description",
     },
   }
 
