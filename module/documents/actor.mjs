@@ -86,7 +86,7 @@ export default class CtHackActor extends Actor {
       if (game.settings.get("cthack", "MiscellaneousResource")) {
         title = game.i18n.format("CTHACK.ResourceRollPromptTitle", { resource: game.settings.get("cthack", "MiscellaneousResource") })
       } else {
-        const resourceName = ame.i18n.format("CTHACK.Misc")
+        const resourceName = game.i18n.localize("CTHACK.Misc")
         title = game.i18n.format("CTHACK.ResourceRollPromptTitle", { resource: resourceName })
       }
     }
@@ -163,7 +163,7 @@ export default class CtHackActor extends Actor {
     }
     const now = new Date()
     const lastTime = formatDate(now)
-    ability.update({ "data.uses.value": remaining, "data.uses.last": lastTime })
+    ability.update({ "system.uses.value": remaining, "system.uses.last": lastTime })
   }
 
   /**
@@ -179,7 +179,7 @@ export default class CtHackActor extends Actor {
 
   resetAbility(ability) {
     if (CTHACK.debug) console.log(`${LOG_HEAD}Reset ability ${ability.name}`)
-    ability.update({ "data.uses.value": ability.system.uses.max, "data.uses.last": "" })
+    ability.update({ "system.uses.value": ability.system.uses.max, "system.uses.last": "" })
   }
 
   /**
@@ -189,7 +189,7 @@ export default class CtHackActor extends Actor {
    */
   async _decreaseMaterialResource(itemId, dice) {
     const newDiceValue = CthackUtils.findLowerDice(dice)
-    this.updateEmbeddedDocuments("Item", [{ _id: itemId, "data.dice": newDiceValue }])
+    this.updateEmbeddedDocuments("Item", [{ _id: itemId, "system.dice": newDiceValue }])
   }
 
   /**
@@ -393,19 +393,19 @@ export default class CtHackActor extends Actor {
         icon: "systems/cthack/ui/icons/first-aid-kit.png",
         changes: [
           {
-            key: "data.saves.str.value",
+            key: "system.saves.str.value",
             mode: 2,
             value: -4,
             priority: "20",
           },
           {
-            key: "data.saves.dex.value",
+            key: "system.saves.dex.value",
             mode: 2,
             value: -4,
             priority: "20",
           },
           {
-            key: "data.saves.con.value",
+            key: "system.saves.con.value",
             mode: 2,
             value: -4,
             priority: "20",

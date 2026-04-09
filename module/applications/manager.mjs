@@ -155,7 +155,7 @@ export default class CtHackManager extends HandlebarsApplicationMixin(Applicatio
     const text = game.i18n.format("CHAT.AskRollIndividual", { resource: label, name: name })
 
     game.socket.emit(`system.${SYSTEM.id}`, {
-      action: "askRoll",
+      msg: "askRoll",
       data: {
         userId: recipient,
       },

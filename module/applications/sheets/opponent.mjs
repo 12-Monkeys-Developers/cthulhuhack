@@ -106,12 +106,16 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
    */
   _prepareSubmitData(event, form, formData, updateData) {
     const submitData = super._prepareSubmitData(event, form, formData, updateData)
-    // When hitDice changes, compute HP max and malus
+    // When hitDice changes, recompute HP max and malus while preserving any current wound.
     const newHitDice = submitData.system?.hitDice
     if (newHitDice !== undefined && newHitDice !== this.document.system.hitDice) {
+      const newMax = 4 * newHitDice
+      const oldMax = this.document.system.hp.max
+      const oldValue = this.document.system.hp.value
+      const wound = Math.max(0, oldMax - oldValue)
       submitData.system.hp ??= {}
-      submitData.system.hp.value = 4 * newHitDice
-      submitData.system.hp.max = 4 * newHitDice
+      submitData.system.hp.max = newMax
+      submitData.system.hp.value = Math.clamp(newMax - wound, 0, newMax)
       submitData.system.malus = -1 * (newHitDice - 1)
     }
     return submitData
