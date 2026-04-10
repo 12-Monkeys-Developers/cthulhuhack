@@ -479,7 +479,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .character-content > .tab.character-notes.active {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
 }
 .cthack.sheet.actor.character .character-content > .tab.biography.active > prose-mirror,
 .cthack.sheet.actor.character .character-content > .tab.character-notes.active > prose-mirror {
@@ -495,7 +495,7 @@ a.inline-roll {
   overflow-y: auto;
 }
 .cthack.sheet.actor.character select {
-  color: #fff;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.actor.character .rollable:hover,
 .cthack.sheet.actor.character .rollable:focus {
@@ -529,19 +529,24 @@ a.inline-roll {
   grid-area: tabs;
   border-top: 0;
   border-bottom: 1px solid var(--nav-active-color);
-  margin: 25px 30px 0 5px;
+  margin: 25px 10px 0 5px;
   display: flex;
   flex-direction: row;
+  gap: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
 }
 .cthack.sheet.actor.character nav.sheet-tabs [data-tab] {
-  flex: 1;
+  flex: 0 0 auto;
   height: 40px;
   line-height: 40px;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 5px;
+  white-space: nowrap;
+  padding: 0 12px;
 }
 .cthack.sheet.actor.character nav.sheet-tabs [data-tab]:hover {
   color: var(--nav-active-color);
@@ -555,7 +560,7 @@ a.inline-roll {
   border-left: 1px solid var(--nav-active-color);
   border-radius: 10px 10px 0 0;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-  padding: 0 5px 0 5px;
+  padding: 0 12px;
   text-shadow: 0 0 10px var(--nav-active-shadow-color);
 }
 .cthack.sheet.actor.character .sidebar {
@@ -777,10 +782,10 @@ a.inline-roll {
   align-items: center;
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content select {
-  color: #fff;
+  color: var(--font-color-primary);
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content option {
-  color: #fff;
+  color: var(--font-color-primary);
   background: var(--select-background-color);
 }
 .cthack.sheet.actor.character .character-sheet-header .resource .resource-content img {
@@ -840,6 +845,7 @@ a.inline-roll {
 .cthack.sheet.actor.character .equipment {
   display: grid;
   grid-template-columns: 1fr;
+  align-content: start;
 }
 .cthack.sheet.actor.character .equipment .items-list {
   display: flex;

@@ -102,12 +102,14 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
       item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.weapons.push(item)
     }
+    context.nbWeapons = context.weapons.length
 
     context.otheritems = []
     for (const item of this.document.itemTypes.item) {
       item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.otheritems.push(item)
     }
+    context.nbOtherItems = context.otheritems.length
 
     context.conditions = []
     for (const item of this.document.itemTypes.definition) {

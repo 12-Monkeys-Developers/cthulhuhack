@@ -136,7 +136,9 @@
                     {{formInput systemFields.attributes.fields.hitDice.fields.max value=system.attributes.hitDice.max choices=diceMaxValues}}
                     )
                   {{else}}
-                    <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.hitDice.value '.webp'}}" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.hitDice.max}}"/>
+                    {{#if (isDiceRollable system.attributes.hitDice.value)}}
+                      <img src="{{ concat 'systems/cthack/ui/dice/' system.attributes.hitDice.value '.webp'}}" data-tooltip="{{localize "TOOLTIPS.Max"}} {{system.attributes.hitDice.max}}"/>
+                    {{/if}}
                   {{/if}}
               </div>
         </div>

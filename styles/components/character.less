@@ -33,7 +33,7 @@
     > .tab.character-notes.active {
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      overflow-y: auto;
 
       > prose-mirror {
         flex: 1;
@@ -51,7 +51,7 @@
   }
 
   select {
-    color: #fff;
+    color: var(--font-color-primary);
   }
 
   .rollable {
@@ -96,18 +96,23 @@
       grid-area: tabs;
       border-top: 0;
       border-bottom: 1px solid var(--nav-active-color);
-      margin: 25px 30px 0 5px;
+      margin: 25px 10px 0 5px;
       display: flex;
       flex-direction: row;
+      gap: 4px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: thin;
       [data-tab] {
-        flex: 1;
+        flex: 0 0 auto;
         height: 40px;
         line-height: 40px;
         font-weight: bold;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0 5px;
+        white-space: nowrap;
+        padding: 0 12px;
         &:hover {
           color: var(--nav-active-color);
           text-shadow: 0 0 10px var(--nav-active-shadow-color);
@@ -120,7 +125,7 @@
           border-left: 1px solid var(--nav-active-color);
           border-radius: 10px 10px 0 0;
           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-          padding: 0 5px 0 5px;
+          padding: 0 12px;
           text-shadow: 0 0 10px var(--nav-active-shadow-color);
         }
       }
@@ -357,10 +362,10 @@
         justify-content: center;
         align-items: center;
         select {
-          color: #fff;
+          color: var(--font-color-primary);
         }
         option {
-          color: #fff;
+          color: var(--font-color-primary);
           background: var(--select-background-color);
         }
         img {
@@ -429,6 +434,7 @@
     .equipment {
       display: grid;
       grid-template-columns: 1fr;
+      align-content: start;
       .items-list {
         div.title {
           display: flex;

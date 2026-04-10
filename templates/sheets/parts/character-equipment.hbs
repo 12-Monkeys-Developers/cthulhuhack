@@ -1,58 +1,59 @@
 
 {{!log 'equipment' this}}
 <section class="tab equipment {{tabs.equipment.cssClass}}" data-group="primary" data-tab="equipment">
-    <div class="items-list">
-        {{#if unlocked}}
-            <div class="title">
-                {{#if isEncumbranceEnabled}}
-                    Encombrement actuel : {{formInput systemFields.encumbrance.fields.value value=system.encumbrance.value disabled=true}}
-                    Encombrement max : {{formInput systemFields.encumbrance.fields.max value=system.encumbrance.max}}
-                {{/if}}
-                <i class="fas fa-plus" data-action="createItem" data-tooltip="{{localize "CTHACK.AddEquipment"}}" data-tooltip-direction="LEFT" data-type="weapon" data-alt-type="item"></i>
-            </div>
-        {{else}}
-              <div class="title">
-                {{#if isEncumbranceEnabled}}
-                    Encombrement actuel : {{formInput systemFields.encumbrance.fields.value value=system.encumbrance.value disabled=true}}
-                    Encombrement max : {{formInput systemFields.encumbrance.fields.max value=system.encumbrance.max disabled=true}}
-                {{/if}}
-            </div>
-        {{/if}}
-        {{#each weapons as |item id|}}
-            {{!log 'weapon' item id}}
-            <div class="item character-contextmenu" data-item-id="{{_id}}">
-                <details>
-                    <summary class="item-line weapon">
-                        <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
-                        <div class="item-dice">
-                            {{#if (isDiceRollable system.dice)}} <img class="dice-d20 weapon rollable" data-action="rollMaterial" data-tooltip="{{localize 'CTHACK.MaterialRollPromptTitle'}}" src="systems/cthack/ui/dice/d20.webp"> {{/if}}
-                            {{#if item.system.isDice}}
-                                <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
-                            {{/if}}
-                        </div>
-                        <div class="item-range">{{#if (and (eq type "weapon")(eq system.hasRange true))}}{{localize "CTHACK.ItemRangeName"}} : {{localize (rangeDesc system.range)}}{{/if}}</div>
-                    </summary>
-                    <div class="item-description">{{{enrichedDescription}}}</div>
-                </details>
-            </div>
-        {{/each}}
-        {{#each otheritems as |item id|}}
-            <div class="item character-contextmenu" data-item-id="{{_id}}">
-                <details>
-                    <summary class="item-line other">
-                        <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
-                        <div class="item-dice">
-                            {{#if (isDiceRollable system.dice)}} <img class="dice-d20 otherItem rollable" data-action="rollMaterial" data-tooltip="{{localize 'CTHACK.MaterialRollPromptTitle'}}" src="systems/cthack/ui/dice/d20.webp"> {{/if}}
-                            {{#if item.system.isDice}}
-                                <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
-                            {{/if}}
-                        </div>
-                    </summary>
-                    <div class="item-description">{{{enrichedDescription}}}</div>
-                </details>
-            </div>
-        {{/each}}
-    </div>
+    {{#if (or @root.unlocked (or (gt @root.nbWeapons 0) (gt @root.nbOtherItems 0)))}}
+        <div class="items-list">
+            {{#if unlocked}}
+                <div class="title">
+                    {{#if isEncumbranceEnabled}}
+                        Encombrement actuel : {{formInput systemFields.encumbrance.fields.value value=system.encumbrance.value disabled=true}}
+                        Encombrement max : {{formInput systemFields.encumbrance.fields.max value=system.encumbrance.max}}
+                    {{/if}}
+                    <i class="fas fa-plus" data-action="createItem" data-tooltip="{{localize "CTHACK.AddEquipment"}}" data-tooltip-direction="LEFT" data-type="weapon" data-alt-type="item"></i>
+                </div>
+            {{else}}
+                <div class="title">
+                    {{#if isEncumbranceEnabled}}
+                        Encombrement actuel : {{formInput systemFields.encumbrance.fields.value value=system.encumbrance.value disabled=true}}
+                        Encombrement max : {{formInput systemFields.encumbrance.fields.max value=system.encumbrance.max disabled=true}}
+                    {{/if}}
+                </div>
+            {{/if}}
+            {{#each weapons as |item id|}}
+                <div class="item character-contextmenu" data-item-id="{{_id}}">
+                    <details>
+                        <summary class="item-line weapon">
+                            <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
+                            <div class="item-dice">
+                                {{#if (isDiceRollable system.dice)}} <img class="dice-d20 weapon rollable" data-action="rollMaterial" data-tooltip="{{localize 'CTHACK.MaterialRollPromptTitle'}}" src="systems/cthack/ui/dice/d20.webp"> {{/if}}
+                                {{#if item.system.isDice}}
+                                    <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
+                                {{/if}}
+                            </div>
+                            <div class="item-range">{{#if (and (eq type "weapon")(eq system.hasRange true))}}{{localize "CTHACK.ItemRangeName"}} : {{localize (rangeDesc system.range)}}{{/if}}</div>
+                        </summary>
+                        <div class="item-description">{{{enrichedDescription}}}</div>
+                    </details>
+                </div>
+            {{/each}}
+            {{#each otheritems as |item id|}}
+                <div class="item character-contextmenu" data-item-id="{{_id}}">
+                    <details>
+                        <summary class="item-line other">
+                            <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
+                            <div class="item-dice">
+                                {{#if (isDiceRollable system.dice)}} <img class="dice-d20 otherItem rollable" data-action="rollMaterial" data-tooltip="{{localize 'CTHACK.MaterialRollPromptTitle'}}" src="systems/cthack/ui/dice/d20.webp"> {{/if}}
+                                {{#if item.system.isDice}}
+                                    <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
+                                {{/if}}
+                            </div>
+                        </summary>
+                        <div class="item-description">{{{enrichedDescription}}}</div>
+                    </details>
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
     <div class="misc">
         {{#if @root.unlocked}}
             {{formInput @root.systemFields.equipment enriched=@root.enrichedEquipment value=@root.system.equipment name="system.equipment" toggled=true}}
