@@ -128,64 +128,64 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
   _getEntryContextOptions() {
     return [
       {
-        name: game.i18n.localize("CTHACK.ContextMenuUse"),
+        label: game.i18n.localize("CTHACK.ContextMenuUse"),
         icon: '<i class="fas fa-check"></i>',
-        condition: (li) => {
+        visible: (li) => {
           const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner && item.type === "opponentAbility" && item.system.isUsable
         },
-        callback: (li) => {
+        onClick: (event, li) => {
           const item = this.document.items.get(li.dataset.itemId)
           item.system.use()
           this.render()
         },
       },
       {
-        name: game.i18n.localize("CTHACK.ContextMenuResetUse"),
+        label: game.i18n.localize("CTHACK.ContextMenuResetUse"),
         icon: '<i class="fa-solid fa-0"></i>',
-        condition: (li) => {
+        visible: (li) => {
           const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner && item.type === "opponentAbility" && item.system.isResetable
         },
-        callback: (li) => {
+        onClick: (event, li) => {
           const item = this.document.items.get(li.dataset.itemId)
           item.system.resetUse()
           this.render()
         },
       },
       {
-        name: game.i18n.localize("CTHACK.ContextMenuIncreaseUse"),
+        label: game.i18n.localize("CTHACK.ContextMenuIncreaseUse"),
         icon: '<i class="fa-solid fa-plus"></i>',
-        condition: (li) => {
+        visible: (li) => {
           const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner && item.type === "opponentAbility" && item.system.isIncreaseable
         },
-        callback: (li) => {
+        onClick: (event, li) => {
           const item = this.document.items.get(li.dataset.itemId)
           item.system.increase()
           this.render()
         },
       },
       {
-        name: game.i18n.localize("CTHACK.ContextMenuEdit"),
+        label: game.i18n.localize("CTHACK.ContextMenuEdit"),
         icon: '<i class="fas fa-edit"></i>',
-        condition: (li) => {
+        visible: (li) => {
           const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner
         },
-        callback: (li) => {
+        onClick: (event, li) => {
           const item = this.document.items.get(li.dataset.itemId)
           item.sheet.render(true)
         },
       },
       {
-        name: game.i18n.localize("CTHACK.ContextMenuDelete"),
+        label: game.i18n.localize("CTHACK.ContextMenuDelete"),
         icon: '<i class="fas fa-trash"></i>',
-        condition: (li) => {
+        visible: (li) => {
           const item = this.document.items.get(li.dataset.itemId)
           return item.isOwner
         },
-        callback: async (li) => {
+        onClick: async (event, li) => {
           const item = this.document.items.get(li.dataset.itemId)
           await this.document.deleteEmbeddedDocuments("Item", [item.id])
         },
