@@ -1,3 +1,6 @@
+6.0.0
+- Compatibilité V14
+
 5.6.0
 - Convert actors sheet to ApplicationV2
 - Width of character sheet depends of the mode locked/unlocked

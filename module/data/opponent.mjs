@@ -36,7 +36,7 @@ export default class CtHackOpponent extends foundry.abstract.DataModel {
       actorImage: this.parent.img,
     })
     if (!roll) return null
-    await roll.toMessage({}, { rollMode: roll.options.rollMode })
+    await roll.toMessage({}, { messageMode: roll.options.rollMode })
   }
 
   async rollSanity(rollTarget) {
@@ -50,7 +50,7 @@ export default class CtHackOpponent extends foundry.abstract.DataModel {
       actorImage: this.parent.img,
     })
     if (!roll) return null
-    await roll.toMessage({}, { rollMode: roll.options.rollMode })
+    await roll.toMessage({}, { messageMode: roll.options.rollMode })
 
     // Perte de ressource pour un jet de sanité
     if (roll.resultType === "failure") {

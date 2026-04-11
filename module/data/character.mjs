@@ -211,7 +211,7 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
     })
     if (!roll) return null
 
-    await roll.toMessage({}, { rollMode: roll.options.rollMode })
+    await roll.toMessage({}, { messageMode: roll.options.rollMode })
 
     // Perte de ressouce pour un jet de ressource
     if (rollType === ROLL_TYPE.RESOURCE && roll.resultType === "failure") {

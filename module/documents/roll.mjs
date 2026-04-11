@@ -205,8 +205,8 @@ export default class CtHackRoll extends Roll {
       }
     }
 
-    const rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value.label)]))
-    const defaultRollMode = game.settings.get("core", "rollMode")
+    const rollModes = CONFIG.ChatMessage.modes
+    const defaultRollMode = game.settings.get("core", "messageMode") ?? CONST.DICE_ROLL_MODES.PUBLIC
     const fieldRollMode = new foundry.data.fields.StringField({
       choices: rollModes,
       blank: false,
@@ -352,6 +352,9 @@ export default class CtHackRoll extends Roll {
       rejectClose: false, // Click on Close button will not launch an error
       render: (event, dialog) => {
         if (CTHACK.debug) console.debug("dialog", dialog)
+        // Initialisation de la valeur du select Visibilité
+        const visibilitySelect = dialog.element.querySelector('select[name="visibility"]')
+        if (visibilitySelect) visibilitySelect.value = defaultRollMode
         // Gestion du sélecteur Avantages et désavantages
         const rangeInput = dialog.element.querySelector('input[name="avantages"]')
         if (rangeInput) {
@@ -655,11 +658,11 @@ export default class CtHackRoll extends Roll {
    *
    * @param {Object} [messageData={}] Additional data to include in the message.
    * @param {Object} options Options for message creation.
-   * @param {string} options.rollMode The mode of the roll (e.g., public, private).
+   * @param {string} options.messageMode The mode of the roll (e.g., public, private).
    * @param {boolean} [options.create=true] Whether to create the message.
    * @returns {Promise} - A promise that resolves when the message is created.
    */
-  async toMessage(messageData = {}, { rollMode, create = true } = {}) {
+  async toMessage(messageData = {}, { messageMode, create = true } = {}) {
     super.toMessage(
       {
         isSave: this.isSave,
@@ -668,7 +671,7 @@ export default class CtHackRoll extends Roll {
         isDamage: this.isDamage,
         isMaterial: this.isMaterial,
         isSanity: this.isSanity,
-        isFailure: this.resultType === "failure",        
+        isFailure: this.resultType === "failure",
         avantages: this.avantages,
         introText: this.introText,
         introTextTooltip: this.introTextTooltip,
@@ -681,7 +684,7 @@ export default class CtHackRoll extends Roll {
         realDamage: this.realDamage,
         ...messageData,
       },
-      { rollMode: rollMode }
+      { messageMode }
     )
   }
 
