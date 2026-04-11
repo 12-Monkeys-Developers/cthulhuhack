@@ -294,7 +294,22 @@ a.inline-roll {
 .cthack-sidebar {
   flex-direction: column;
   overflow-y: auto;
-  color: var(--color-text-secondary);
+  color: black;
+}
+.cthack-sidebar .cthack h1,
+.cthack-sidebar .cthack h2,
+.cthack-sidebar .cthack h3,
+.cthack-sidebar .cthack h4 {
+  color: black;
+}
+.theme-dark .cthack-sidebar {
+  color: white;
+}
+.theme-dark .cthack-sidebar .cthack h1,
+.theme-dark .cthack-sidebar .cthack h2,
+.theme-dark .cthack-sidebar .cthack h3,
+.theme-dark .cthack-sidebar .cthack h4 {
+  color: white;
 }
 .cthack-sidebar.active {
   display: flex;

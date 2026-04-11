@@ -1,7 +1,23 @@
 .cthack-sidebar {
   flex-direction: column;
   overflow-y: auto;
-  color: var(--color-text-secondary);
+  color: black;
+
+  .cthack {
+    h1, h2, h3, h4 {
+      color: black;
+    }
+  }
+
+  .theme-dark & {
+    color: white;
+    .cthack {
+      h1, h2, h3, h4 {
+        color: white;
+      }
+    }
+  }
+
   &.active { // Excluded from popout
     display: flex;
     gap: 1rem;
