@@ -586,10 +586,13 @@ a.inline-roll {
 .cthack.sheet.actor.character .sidebar .image-container .hover-icon {
   visibility: hidden;
   position: absolute;
-  top: 70px;
+  top: 32px;
   left: 32px;
   font-size: var(--cthack-fs-base);
   color: black;
+}
+body.theme-light .cthack.sheet.actor.character .sidebar .image-container .hover-icon {
+  top: 70px;
 }
 .cthack.sheet.actor.character .sidebar .image-container:hover .hover-icon {
   visibility: visible;
@@ -1209,10 +1212,13 @@ a.inline-roll {
 .cthack.sheet.actor.opponent .sheet-header .opponent-image .hover-icon {
   visibility: hidden;
   position: absolute;
-  top: 60px;
+  top: 22px;
   left: 32px;
   font-size: var(--cthack-fs-base);
   color: black;
+}
+body.theme-light .cthack.sheet.actor.opponent .sheet-header .opponent-image .hover-icon {
+  top: 60px;
 }
 .cthack.sheet.actor.opponent .sheet-header .opponent-image:hover .hover-icon {
   visibility: visible;

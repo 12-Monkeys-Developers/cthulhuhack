@@ -190,10 +190,14 @@
       .hover-icon {
         visibility: hidden;
         position: absolute;
-        top: 60px;
+        top: 22px;
         left: 32px;
         font-size: var(--cthack-fs-base);
         color: black;
+
+        body.theme-light & {
+          top: 60px;
+        }
       }
 
       &:hover {
