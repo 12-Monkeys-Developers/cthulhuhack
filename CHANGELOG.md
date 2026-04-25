@@ -1,3 +1,6 @@
+6.0.1
+- Update package release API url
+
 6.0.0
 - Compatibilité V14
 
