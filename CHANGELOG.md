@@ -1,3 +1,6 @@
+6.0.2
+- Correction sur le @jet pour qu'il soit pris en compte quand le journal est "détaché"
+
 6.0.1
 - Update package release API url
 

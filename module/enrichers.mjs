@@ -6,15 +6,29 @@
  * y est le titre du jet et permet de décrire l'action
  * z est l'avantage du jet, avec pour valeurs possibles : --, -, +, ++
  */
-export function setupTextEnrichers() {
+export function setupTextEnrichers(onClickHandler) {
+  const onRender = (element) => {
+    const anchor = element.querySelector("a.ask-roll-journal")
+    if (!anchor) return
+    anchor.onclick = (event) => {
+      event.preventDefault()
+      event.stopPropagation()
+      onClickHandler(anchor)
+    }
+  }
+
   CONFIG.TextEditor.enrichers = CONFIG.TextEditor.enrichers.concat([
     {
+      id: "cthack-jet",
       pattern: /\@jet\[(.+?)\]{(.*?)}\((.*?)\)/gm,
       enricher: async (match, options) => enrichRoll(match),
+      onRender,
     },
     {
+      id: "cthack-roll",
       pattern: /\@roll\[(.+?)\]{(.*?)}\((.*?)\)/gm,
       enricher: async (match, options) => enrichRoll(match),
+      onRender,
     },
   ])
 }

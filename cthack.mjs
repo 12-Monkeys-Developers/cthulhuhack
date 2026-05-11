@@ -116,19 +116,13 @@ Hooks.once("init", function () {
   CONFIG.ui.cthack = applications.CthackSidebarMenu
 
   // Setup Text Enrichers
-  setupTextEnrichers()
-
-  // Gestion des jets de dés depuis les journaux
- document.addEventListener("click", (event) => {
-    const anchor = event.target.closest("a.ask-roll-journal")
-    if (!anchor) return
-    event.preventDefault()
-    event.stopPropagation()
-    const type = anchor.dataset.rollType
-    const target = anchor.dataset.rollTarget
-    const title = anchor.dataset.rollTitle
-    const avantage = anchor.dataset.rollAvantage
-    applications.CthulhuHackManager.askRollForAll(type, target, title, avantage)
+  setupTextEnrichers((anchor) => {
+    applications.CthulhuHackManager.askRollForAll(
+      anchor.dataset.rollType,
+      anchor.dataset.rollTarget,
+      anchor.dataset.rollTitle,
+      anchor.dataset.rollAvantage,
+    )
   })
 
   // Other Document Configuration
