@@ -8,7 +8,7 @@
     }
   ],
   "url": "#{URL}#",
-  "license": "LICENSE.txt",
+  "license": "LICENSE",
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": "14",

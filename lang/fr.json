@@ -435,7 +435,7 @@
         "smokes": "Bagou",
         "sanity": "Santé mentale",
         "hitPoints": "Points de Vie",
-        "hitDice:": "Dé de Vie",
+        "hitDice": "Dé de Vie",
         "wealthDice": "Richesse"
       },
       "damage": {
