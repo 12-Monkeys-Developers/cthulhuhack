@@ -37,7 +37,7 @@
       </div>
     {{/if}}
     <div class="resources {{getNbRessources}}">
-      <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="flashlights">
+      <div class="resource draggable" data-drag="true" data-drag-type="resource" data-drag-target="flashlights" data-drag-value="{{system.attributes.flashlights.value}}">
           <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.flashlights.value)}}rollable{{/if}}" data-action="rollResource" data-resource="flashlights" data-tooltip="{{localize 'CTHACK.FlashLightsDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.FlashLights"}}</label>
           <div class="resource-content {{#if hasLostFlashlights}}resource-lost{{/if}}">
               {{#if unlocked}}
@@ -50,7 +50,7 @@
               {{/if}}
           </div>
       </div>
-      <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="smokes">
+      <div class="resource draggable" data-drag="true" data-drag-type="resource" data-drag-target="smokes" data-drag-value="{{system.attributes.smokes.value}}">
           <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.smokes.value)}}rollable{{/if}}" data-action="rollResource" data-resource="smokes" data-tooltip="{{localize 'CTHACK.SmokesDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Smokes"}}</label>
           <div class="resource-content {{#if hasLostSmokes}}resource-lost{{/if}}">
               {{#if unlocked}}
@@ -63,7 +63,7 @@
               {{/if}}
           </div>
       </div>
-      <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="sanity">
+      <div class="resource draggable" data-drag="true" data-drag-type="resource" data-drag-target="sanity" data-drag-value="{{system.attributes.sanity.value}}">
           <label class="resource-label resource-name {{#if (isDiceRollable system.attributes.sanity.value)}}rollable{{/if}}" data-action="rollResource" data-resource="sanity" data-tooltip="{{localize 'CTHACK.SanityDesc'}}" data-tooltip-direction="UP">{{localize "CTHACK.Sanity"}}</label>
           <div class="resource-content {{#if hasLostSanity}}resource-lost{{/if}}">
               {{#if unlocked}}
@@ -78,7 +78,7 @@
       </div>
 
       {{#if (isEnabled "Wealth")}}
-        <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="wealthDice">
+        <div class="resource draggable" data-drag="true" data-drag-type="resource" data-drag-target="wealthDice" data-drag-value="{{system.attributes.wealthDice.value}}">
             <label for="wealthDice.value" class="resource-label wealth-name {{#if isWealthAsResource}}rollable{{/if}}" data-action="rollResource" data-resource="wealthDice">{{localize "CTHACK.Wealth"}}</label>
             <div class="resource-content {{#if hasLostWealthDice}}resource-lost{{/if}}">
                 {{#if unlocked}}
@@ -98,7 +98,7 @@
       {{/if}}
 
       {{#if (isEnabled "MiscellaneousResource")}}
-          <div class="resource" data-drag="true" data-drag-type="resource" data-drag-target="miscellaneous">
+          <div class="resource draggable" data-drag="true" data-drag-type="resource" data-drag-target="miscellaneous" data-drag-value="{{system.attributes.miscellaneous.value}}">
               <label for="miscellaneous.value" class="resource-label miscellaneous-name {{#if (isDiceRollable system.attributes.miscellaneous.value)}}rollable{{/if}} {{#if hasLostMiscellaneous}}resource-lost{{/if}}" data-action="rollResource" data-resource="miscellaneous">{{getMiscellaneousValue}}</label>
               <div class="resource-content {{#if hasLostMiscellaneous}}resource-lost{{/if}}">
                   {{#if unlocked}}
@@ -144,7 +144,7 @@
         </div>
       {{/if}}
 
-      <div class="resource" data-drag="true" data-drag-type="damage" data-drag-target="armedDamage">
+      <div class="resource draggable" data-drag="true" data-drag-type="damage" data-drag-target="armedDamage" data-drag-value="{{system.attributes.armedDamage.value}}">
           <label for="armedDamage.value" class="resource-label damage {{#if (isDiceRollable system.attributes.armedDamage.value)}}rollable{{/if}}" data-action="rollDamage" data-resource="armedDamage">{{localize "CTHACK.ArmedDamage"}}</label>
           <div class="resource-content">
             {{#if unlocked}}
@@ -155,7 +155,7 @@
           </div>
       </div>
 
-      <div class="resource" data-drag="true" data-drag-type="damage" data-drag-target="unarmedDamage">
+      <div class="resource draggable" data-drag="true" data-drag-type="damage" data-drag-target="unarmedDamage" data-drag-value="{{system.attributes.unarmedDamage.value}}">
           <label for="unarmedDamage.value" class="resource-label damage {{#if (isDiceRollable system.attributes.unarmedDamage.value)}}rollable{{/if}}" data-action="rollDamage" data-resource="unarmedDamage">{{localize "CTHACK.UnarmedDamage"}}</label>
           <div class="resource-content">
             {{#if unlocked}}

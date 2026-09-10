@@ -18,7 +18,6 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
       rollAttack: CtHackOpponentSheet.#onAttackDamageRoll,
       rollSanity: CtHackOpponentSheet.#onSanityRoll,
     },
-    dragDrop: [{ dragSelector: ".items-list .item", dropSelector: null }],
   }
 
   /** @override */

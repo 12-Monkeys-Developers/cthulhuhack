@@ -10,7 +10,7 @@
   </div>
 
   {{#each savesContext as |save|}}
-    <div class="sidebar-section" data-save="{{save.key}}" data-drag="true" data-drag-type="save" data-drag-target="{{save.key}}" data-drag-value="{{save.value}}">
+    <div class="sidebar-section draggable" data-save="{{save.key}}" data-drag="true" data-drag-type="save" data-drag-target="{{save.key}}" data-drag-value="{{save.value}}">
       <label class="save-name rollable" data-action="rollSave" data-tooltip="{{localize (toDesc save.key)}}" data-tooltip-direction="UP" data-tooltip-class="tooltip-save">{{getSaveLabel save.key save}}</label>
       {{#if @root.unlocked}}
         {{formInput save.valueField value=save.value name=save.valueName}}

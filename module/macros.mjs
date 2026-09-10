@@ -71,6 +71,23 @@ export class Macros {
         macroName = item.name + " (" + game.actors.get(actor.id).name + ")"
       }
 
+      // Magic (character or opponent)
+      else if (item.type === "magic") {
+        command = `game.cthack.macros.rollMagicMacro("${item.id}", "${item.name}");`
+        macroName = item.name + " (" + game.actors.get(actor.id).name + ")"
+      }
+
+      // Opponent's ability
+      else if (item.type === "opponentAbility") {
+        const maxUses = item.system.uses.max
+        if (maxUses === null) {
+          return ui.notifications.warn(game.i18n.format("MACROS.AbilityWithoutUsage", { itemName: item.name }))
+        }
+
+        command = `game.cthack.macros.useOpponentAbilityMacro("${item.id}", "${item.name}");`
+        macroName = item.name + " (" + game.actors.get(actor.id).name + ")"
+      }
+
       if (command !== null) {
         this.createMacro(slot, macroName, command, item.img)
       }
@@ -226,7 +243,7 @@ export class Macros {
     if (!item) return ui.notifications.warn(game.i18n.format("MACROS.AttackNotFound", { opponentName: actor.name, itemName: itemName }))
 
     // Open the roll window
-    actor.system.roll(item.system.damageDice, item.name)
+    return await actor.system.rollAttack(item.system.damageDice, item.name)
   }
 
   /**
@@ -258,6 +275,64 @@ export class Macros {
       ui.notifications.warn(game.i18n.format("MACROS.AbilityUsesAtZero", { itemName: itemName }))
     }
     actor.useAbility(item)
+  }
+
+  /**
+   * @name rollMagicMacro
+   * @description Roll the sanity dice of a magic item (character or opponent)
+   *              Check that only one token is selected and he has the item
+   * @public
+   *
+   * @param {*} itemId
+   * @param {*} itemName
+   *
+   * @returns     Launch the roll window
+   */
+  static rollMagicMacro = async function (itemId, itemName) {
+    // Check only one token is selected
+    const tokens = canvas.tokens.controlled
+    if (tokens.length > 1) return ui.notifications.warn(game.i18n.localize("MACROS.MultipleTokensSelected"))
+    const token = tokens[0]
+
+    const actor = token ? token.actor : null
+    if (!actor) return ui.notifications.warn(game.i18n.localize("MACROS.NoTokenSelected"))
+
+    // Check the actor has the item
+    let item = actor.items.get(itemId)
+    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.ObjectNotInInventory", { itemName, actorName: actor.name }))
+
+    return await actor.rollSanity(item)
+  }
+
+  /**
+   * @name useOpponentAbilityMacro
+   * @description Use the opponent's ability if there is still uses left
+   *              Check that only one token is selected and he has the ability item
+   * @public
+   *
+   * @param {*} itemId
+   * @param {*} itemName
+   *
+   * @returns     Launch the item roll window
+   */
+  static useOpponentAbilityMacro = async function (itemId, itemName) {
+    // Check only one token is selected
+    const tokens = canvas.tokens.controlled
+    if (tokens.length > 1) return ui.notifications.warn(game.i18n.localize("MACROS.MultipleTokensSelected"))
+    const token = canvas.tokens.controlled[0]
+
+    const actor = token ? token.actor : null
+    if (!actor) return ui.notifications.warn(game.i18n.localize("MACROS.NoTokenSelected"))
+
+    // Check the actor has the item
+    let item = actor.items.get(itemId)
+    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.AbilityNotFound", { characterName: actor.name, itemName }))
+
+    // Use the ability
+    if (item.system.uses.value === 0) {
+      return ui.notifications.warn(game.i18n.format("MACROS.AbilityUsesAtZero", { itemName }))
+    }
+    return await item.system.use()
   }
 
   static launchGMManager = function () {

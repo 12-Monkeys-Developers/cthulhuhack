@@ -39,7 +39,6 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
       rollSanity: CtHackCharacterSheet.#onSanityRoll,
       toggleAdrenaline: CtHackCharacterSheet.#onToggleAdrenaline,
     },
-    dragDrop: [{ dragSelector: '.items-list .item, [data-drag="true"]', dropSelector: null }],
   }
 
   /** @override */
@@ -212,35 +211,16 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
       const dataset = el.dataset
       const dragType = dataset.dragType
 
-      let target
       switch (dragType) {
         case "resource":
-          target = event.currentTarget.querySelector("select")
-          dragData = {
-            actorId: this.document.id,
-            type: "roll",
-            rollType: dragType,
-            rollTarget: dataset.dragTarget,
-            value: target.value,
-          }
-          break
         case "save":
+        case "damage":
           dragData = {
             actorId: this.document.id,
             type: "roll",
             rollType: dragType,
             rollTarget: dataset.dragTarget,
             value: dataset.dragValue,
-          }
-          break
-        case "damage":
-          target = event.currentTarget.querySelector("select")
-          dragData = {
-            actorId: this.document.id,
-            type: "roll",
-            rollType: dragType,
-            rollTarget: dataset.dragTarget,
-            value: target.value,
           }
           break
       }

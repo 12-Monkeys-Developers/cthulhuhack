@@ -12,7 +12,7 @@
 
         <div class="grid-abilities">
             {{#each abilities as |item id|}}
-                <div class="item character-contextmenu" data-item-id="{{_id}}">
+                <div class="item character-contextmenu draggable" data-item-id="{{_id}}">
                   <details>
                     <summary class="item-line">
                       <div class="item-name {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}"/>{{/if}}{{{name}}}</div>
@@ -46,7 +46,7 @@
 
         <div class="grid-magics">
             {{#each magics as |item id|}}
-                <div class="item character-contextmenu" data-item-id="{{_id}}">
+                <div class="item character-contextmenu draggable" data-item-id="{{_id}}">
                     <details>
                         <summary class="item-line">
                             <div class="item-name {{#if system.hasDescription}}has-description{{/if}}">{{#if system.hasImage}}<img src="{{img}}"/>{{/if}}{{{name}}}</div>

@@ -20,7 +20,7 @@
                 </div>
             {{/if}}
             {{#each weapons as |item id|}}
-                <div class="item character-contextmenu" data-item-id="{{_id}}">
+                <div class="item character-contextmenu draggable" data-item-id="{{_id}}">
                     <details>
                         <summary class="item-line weapon">
                             <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
@@ -37,7 +37,7 @@
                 </div>
             {{/each}}
             {{#each otheritems as |item id|}}
-                <div class="item character-contextmenu" data-item-id="{{_id}}">
+                <div class="item character-contextmenu draggable" data-item-id="{{_id}}">
                     <details>
                         <summary class="item-line other">
                             <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>

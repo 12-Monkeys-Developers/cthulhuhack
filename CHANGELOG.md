@@ -1,3 +1,8 @@
+6.1.0
+- Correction du glisser-déposer vers la barre de raccourcis, cassé par un changement d'API V14 (armes, objets, capacités, sorts, sauvegardes, ressources, dégâts, attaques/capacités/sorts adversaire)
+- Correction du jet d'attaque adversaire via macro
+- Glisser un sort ou une capacité adversaire vers la hotbar crée désormais une macro fonctionnelle
+
 6.0.2
 - Correction sur le @jet pour qu'il soit pris en compte quand le journal est "détaché"
 
