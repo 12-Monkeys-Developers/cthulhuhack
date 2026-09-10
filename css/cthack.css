@@ -112,7 +112,28 @@ a.inline-roll {
 .chat-message .message-content .chat-other-roll-result {
   padding: 5px;
 }
+.chat-message .message-header {
+  display: grid;
+  color: var(--font-color-primary);
+}
+.chat-message .message-header .message-metadata {
+  margin-top: -53px;
+}
+.chat-message .message-header img {
+  max-width: 50px;
+  max-height: 50px;
+  margin-right: 4px;
+}
+.chat-message .message-header .title {
+  font-size: 18px;
+  font-weight: bold;
+  display: inline;
+  text-wrap: auto;
+}
 .chat-message .message-header .message-sender {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   font-weight: bold;
 }
 .chat-message .message,
@@ -2489,11 +2510,6 @@ body.theme-light .cthack.sheet.actor.opponent .sheet-header .opponent-image .hov
   display: flex;
   flex-direction: row;
 }
-.dice-roll .intro-chat .intro-img {
-  padding: 5px;
-  width: 80px;
-  align-self: center;
-}
 .dice-roll .intro-chat .intro-right {
   display: flex;
   flex-direction: column;
@@ -2501,7 +2517,6 @@ body.theme-light .cthack.sheet.actor.opponent .sheet-header .opponent-image .hov
 .dice-roll .intro-chat .intro-right .introText {
   font-family: var(--font-secondary);
   font-size: var(--cthack-fs-md);
-  margin-left: 20px;
 }
 .dice-roll .result {
   display: flex;

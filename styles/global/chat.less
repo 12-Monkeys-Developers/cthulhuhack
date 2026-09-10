@@ -8,8 +8,33 @@
   .message-content .chat-other-roll-result {
     padding: 5px;
   }
-  .message-header .message-sender {
-    font-weight: bold;
+  .message-header {
+    display: grid;
+    color: var(--font-color-primary);
+
+    .message-metadata {
+      margin-top: -53px;
+    }
+
+    img {
+      max-width: 50px;
+      max-height: 50px;
+      margin-right: 4px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      display: inline;
+      text-wrap: auto;
+    }
+
+    .message-sender {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-weight: bold;
+    }
   }
   .message, .message-header, .message-content {
     background-image: var(--background-chat-image);

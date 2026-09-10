@@ -331,6 +331,7 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
           const item = this.document.items.get(li.dataset.itemId)
           ChatMessage.create({
             user: game.user.id,
+            speaker: ChatMessage.getSpeaker({ actor: this.document, scene: canvas.scene }),
             content: await foundry.applications.handlebars.renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
               item: item,
             }),
@@ -348,6 +349,7 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
           const item = this.document.items.get(li.dataset.itemId)
           ChatMessage.create({
             user: game.user.id,
+            speaker: ChatMessage.getSpeaker({ actor: this.document, scene: canvas.scene }),
             whisper: ChatMessage.getWhisperRecipients("GM").map((u) => u.id),
             content: await foundry.applications.handlebars.renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
               item: item,
@@ -449,6 +451,7 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
           game.settings.set("cthack", "FortuneValue", newValue)
           ChatMessage.create({
             user: game.user.id,
+            speaker: ChatMessage.getSpeaker({ actor: this.document, scene: canvas.scene }),
             content: game.i18n.format("CTHACK.FortuneUseMessage", { name: this.document.name, total: newValue }),
           })
         },

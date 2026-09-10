@@ -2,6 +2,8 @@
 - Correction du glisser-déposer vers la barre de raccourcis, cassé par un changement d'API V14 (armes, objets, capacités, sorts, sauvegardes, ressources, dégâts, attaques/capacités/sorts adversaire)
 - Correction du jet d'attaque adversaire via macro
 - Glisser un sort ou une capacité adversaire vers la hotbar crée désormais une macro fonctionnelle
+- Affichage de l'icône et du nom du personnage/PNJ dans l'en-tête des messages de tchat (jets, description d'objet envoyée au chat, utilisation de Fortune), à la place du nom de l'utilisateur connecté
+- Suppression de l'icône devenue redondante dans le corps des cartes de jet
 
 6.0.2
 - Correction sur le @jet pour qu'il soit pris en compte quand le journal est "détaché"

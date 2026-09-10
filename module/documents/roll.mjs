@@ -663,8 +663,10 @@ export default class CtHackRoll extends Roll {
    * @returns {Promise} - A promise that resolves when the message is created.
    */
   async toMessage(messageData = {}, { messageMode, create = true } = {}) {
+    const actor = game.actors.get(this.actorId)
     super.toMessage(
       {
+        speaker: ChatMessage.getSpeaker({ actor, scene: canvas.scene }),
         isSave: this.isSave,
         isWeapon: this.isWeapon,
         isResource: this.isResource,

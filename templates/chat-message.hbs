@@ -1,14 +1,7 @@
 {{!log 'chat-message' this}}
 <div class="{{cssClass}}">
     <div class="intro-chat">
-        {{#if (ne actingCharImg "icons/svg/mystery-man.svg")}}
-            <div class="intro-img">
-                <img src="{{actingCharImg}}" data-tooltip="{{actingCharName}}" />
-            </div>
-        {{else}}
-            <div></div>
-        {{/if}}
-        <div class="intro-right">                
+        <div class="intro-right">
             <p class="introText" {{#if (or isSave isWeapon)}}data-tooltip="{{introTextTooltip}}"{{/if}}>{{{introText}}}
             {{#if (or isSave isWeapon isResource isMaterial isSanity)}}
                     <br>
