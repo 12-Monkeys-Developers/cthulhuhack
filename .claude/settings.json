@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"let s='';process.stdin.on('data',c=>s+=c).on('end',()=>{const f=JSON.parse(s).tool_input?.file_path||'';if(f.endsWith('.mjs'))require('child_process').spawnSync('npx',['--no-install','prettier','--write',f],{stdio:'ignore'})})\""
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -15,6 +15,7 @@ npm install            # première fois (gulp, gulp-less, @foundryvtt/foundryvtt
 npm run css            # compile styles/cthack.less -> css/cthack.css (une fois)
 npm run watch          # recompile le LESS à chaque modification (tâche gulp par défaut)
 npm run YMLtoLDB       # src/packs/*.yml  -> packs/ (LevelDB)
+npm run format         # Prettier sur cthack.mjs, module/ et tools/
 npm run LDBtoYAML      # packs/ -> src/packs/*.yml (efface d'abord chaque dossier src/packs/<pack>)
 ```
 
@@ -39,7 +40,7 @@ Vues : `templates/` (Handlebars ; `sheets/parts/` pour les fragments, `chat/` po
 
 ## Conventions
 
-- Style **mixte** : la majorité des fichiers est sans point-virgule en indentation 2 espaces, mais plusieurs (`config.mjs`, `dice.mjs`, `helpers.mjs`, `hooks.mjs`, `elements/checkbox.mjs`…) ont des points-virgules, voire des tabulations. Suivre le style du fichier édité, ne pas reformater un fichier entier.
+- Style JS imposé par Prettier (`.prettierrc`) : pas de point-virgule, indentation 2 espaces, lignes ≤ 120. Lancer `npm run format` avant de livrer ; le LESS, les gabarits, `lang/` et les packs ne sont pas formatés par Prettier.
 - i18n : toute chaîne visible passe par `lang/en.json` **et** `lang/fr.json` (clés `CTHACK.*`), via `game.i18n` dans le JS et `{{localize}}` dans les gabarits. Aucune notification ni texte de gabarit n'est en dur aujourd'hui (seule exception : le titre de marque « Cthulhu Hack » dans `templates/sidebar-menu.hbs`).
 - Réutiliser l'existant plutôt que réinventer : nouvelle feuille → partir de `api/document-sheet-mixin.mjs` ; nouveau type de document → DataModel dans `data/`, constantes dans `config/`, entrée dans `system.json` ; nouveau jet → passer par `documents/roll.mjs` et `ROLL_TYPE`.
 - JSDoc sur les classes et méthodes publiques.
@@ -54,4 +55,4 @@ Vues : `templates/` (Handlebars ; `sheets/parts/` pour les fragments, `chat/` po
 
 ## Périmètre
 
-Ne modifier que ce que la demande exige : pas de refactoring opportuniste, pas de reformatage, pas de renommage au passage. Signaler les problèmes repérés à côté plutôt que de les corriger.
+Ne modifier que ce que la demande exige : pas de refactoring opportuniste, pas de reformatage (hors `npm run format` sur les fichiers touchés), pas de renommage au passage. Signaler les problèmes repérés à côté plutôt que de les corriger.
