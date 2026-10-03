@@ -40,7 +40,7 @@ Vues : `templates/` (Handlebars ; `sheets/parts/` pour les fragments, `chat/` po
 
 ## Conventions
 
-- Style JS imposé par Prettier (`.prettierrc`) : pas de point-virgule, indentation 2 espaces, lignes ≤ 120. Lancer `npm run format` avant de livrer ; le LESS, les gabarits, `lang/` et les packs ne sont pas formatés par Prettier.
+- Style JS imposé par Prettier (`.prettierrc`) : pas de point-virgule, indentation 2 espaces, lignes ≤ 180. Lancer `npm run format` avant de livrer ; le LESS, les gabarits, `lang/` et les packs ne sont pas formatés par Prettier.
 - i18n : toute chaîne visible passe par `lang/en.json` **et** `lang/fr.json` (clés `CTHACK.*`), via `game.i18n` dans le JS et `{{localize}}` dans les gabarits. Aucune notification ni texte de gabarit n'est en dur aujourd'hui (seule exception : le titre de marque « Cthulhu Hack » dans `templates/sidebar-menu.hbs`).
 - Réutiliser l'existant plutôt que réinventer : nouvelle feuille → partir de `api/document-sheet-mixin.mjs` ; nouveau type de document → DataModel dans `data/`, constantes dans `config/`, entrée dans `system.json` ; nouveau jet → passer par `documents/roll.mjs` et `ROLL_TYPE`.
 - JSDoc sur les classes et méthodes publiques.
