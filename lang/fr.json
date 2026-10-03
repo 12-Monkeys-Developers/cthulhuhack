@@ -390,6 +390,7 @@
       "ReadyEnd": "Système Cthulhu Hack prêt"
     },
     "Dialog": {
+      "chooseOpponentAttack": "Attaque de l'Opposant",
       "titleSave": "Jet de sauvegarde",
       "titleWeapon": "Jet d'attaque",
       "titleResource": "Jet de ressource",
@@ -554,7 +555,7 @@
     "displayOpponentMalus": "Afficher le malus d'adversité (Version Réédition)",
     "displayOpponentMalusHint": "Affiche le malus d'adversité pour les joueurs si l'option Réédition est active.",
     "simultaneousDamage": "Dégâts simultanés",
-    "simultaneousDamageHint": "Après un jet d'arme contre un Opposant ciblé, lance aussi les dégâts : dégâts armés du personnage en cas de réussite, première attaque de l'Opposant avec dés de dégâts en cas d'échec.",
+    "simultaneousDamageHint": "Après un jet d'arme contre un Opposant ciblé, lance aussi les dégâts : dégâts armés du personnage en cas de réussite, attaque de l'Opposant avec dés de dégâts en cas d'échec (au choix s'il y en a plusieurs).",
     "UseSizeName": "Utiliser l'option d'encombrement (Section 13)",
     "UseSizeHint": "Active la gestion de l'encombrement des armes et des objets (cf. module Section 13)"
   },

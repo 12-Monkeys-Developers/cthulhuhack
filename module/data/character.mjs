@@ -255,7 +255,17 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
     if (resultType === "success") {
       await this.parent.rollDamage("armedDamage")
     } else {
-      const attack = opponent.itemTypes.attack.find((a) => a.system.hasDamageDice)
+      const attacks = opponent.itemTypes.attack.filter((a) => a.system.hasDamageDice)
+      let attack = attacks[0]
+      if (attacks.length > 1) {
+        // Plusieurs attaques possibles : le joueur choisit laquelle l'Opposant utilise
+        const attackId = await foundry.applications.api.DialogV2.wait({
+          window: { title: game.i18n.localize("CTHACK.Dialog.chooseOpponentAttack") },
+          buttons: attacks.map((a) => ({ action: a.id, label: `${a.name} (${a.system.damageDice})` })),
+          rejectClose: false,
+        })
+        attack = attacks.find((a) => a.id === attackId)
+      }
       if (!attack) return
       await opponent.system.rollAttack(attack.system.damageDice, attack.name)
     }
