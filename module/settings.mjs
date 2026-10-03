@@ -122,6 +122,15 @@ export const registerSystemSettings = function () {
     default: true,
   })
 
+  game.settings.register("cthack", "simultaneousDamage", {
+    name: "SETTINGS.simultaneousDamage",
+    hint: "SETTINGS.simultaneousDamageHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false,
+  })
+
   /**
    * Use Size option for weapons and items (for Section 13 module)
    */
