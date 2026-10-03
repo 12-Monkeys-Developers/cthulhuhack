@@ -235,6 +235,30 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
       const newValue = CthackUtils.findLowerDice(value)
       await item.update({ "system.dice": newValue })
     }
+
+    // Dégâts simultanés : jet de dégâts enchaîné à un jet d'arme contre un opposant ciblé
+    if (rollType === ROLL_TYPE.WEAPON && hasTarget && game.settings.get("cthack", "simultaneousDamage")) {
+      await this._rollSimultaneousDamage(roll.resultType, opponentTarget.document.actor)
+    }
+  }
+
+  /**
+   * Chain the damage roll after a weapon roll.
+   * On success the character deals damage to the opponent, on failure the opponent deals damage to the character.
+   * @param {"success"|"failure"} resultType The result of the weapon roll.
+   * @param {CtHackActor} opponent The targeted actor.
+   * @returns {Promise<void>}
+   */
+  async _rollSimultaneousDamage(resultType, opponent) {
+    if (opponent?.type !== "opponent") return
+
+    if (resultType === "success") {
+      await this.parent.rollDamage("armedDamage")
+    } else {
+      const attack = opponent.itemTypes.attack.find((a) => a.system.hasDamageDice)
+      if (!attack) return
+      await opponent.system.rollAttack(attack.system.damageDice, attack.name)
+    }
   }
 
   getSaveModifiers(saveId) {
