@@ -126,6 +126,7 @@ jobs:
             system.json                          \
             cthack.mjs                           \
             README.md                            \
+            README.en.md                         \
             CHANGELOG.md                         \
             LICENSE                              \
             templates/                           \
