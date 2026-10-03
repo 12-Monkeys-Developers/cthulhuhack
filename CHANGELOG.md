@@ -1,3 +1,6 @@
+6.1.1
+- Corrige l'affichage de la ressource Divers quand la valeur n'est pas définie. Initialement vu dans le module Les Encagés, avec la ressource Respect. Corrige https://github.com/12-Monkeys-Developers/cthulhuhack/issues/17
+
 6.1.0
 - Correction du glisser-déposer vers la barre de raccourcis, cassé par un changement d'API V14 (armes, objets, capacités, sorts, sauvegardes, ressources, dégâts, attaques/capacités/sorts adversaire)
 - Correction du jet d'attaque adversaire via macro
