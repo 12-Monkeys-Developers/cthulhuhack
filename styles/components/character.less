@@ -351,7 +351,7 @@
       padding: 5px;
       font-weight: bold;
 
-      &.hitpoints{
+      &.hitpoints {
         justify-content: space-between;
       }
 
@@ -402,241 +402,241 @@
     min-height: 150px;
   }
 
-    .editor-container {
-      flex: 1;
-      position: relative;
-      margin: 0;
-      min-height: 200px;
-    }
+  .editor-container {
+    flex: 1;
+    position: relative;
+    margin: 0;
+    min-height: 200px;
+  }
 
-    .editor-content {
-      margin: 0px 5px;
-      font-weight: normal;
-      font-size: var(--cthack-fs-md);
-    }
+  .editor-content {
+    margin: 0px 5px;
+    font-weight: normal;
+    font-size: var(--cthack-fs-md);
+  }
 
-    .prosemirror menu {
-      font-size: var(--cthack-fs-xs);
-      li {
-        margin: 0px 0px;
-      }
-      button {
+  .prosemirror menu {
+    font-size: var(--cthack-fs-xs);
+    li {
+      margin: 0px 0px;
+    }
+    button {
+      color: var(--font-color-primary);
+      &:hover {
+        box-shadow: none;
+        background: lightslategray;
         color: var(--font-color-primary);
-        &:hover {
-          box-shadow: none;
-          background: lightslategray;
-          color: var(--font-color-primary);
-        }
-        &.active {
-          box-shadow: none;
-          background: grey;
-          color: var(--font-color-primary);
-        }
+      }
+      &.active {
+        box-shadow: none;
+        background: grey;
+        color: var(--font-color-primary);
       }
     }
+  }
 
-    .equipment {
-      display: grid;
-      grid-template-columns: 1fr;
-      align-content: start;
-      .items-list {
-        div.title {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          input {
-            width: 30px;
-          }
-          i {
-            padding: 10px 20px 0 0;
-            font-size: var(--cthack-fs-base);
-            padding-left: 50px;
-          }
-        }
-
+  .equipment {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: start;
+    .items-list {
+      div.title {
         display: flex;
-        flex-direction: column;
-        .item-line {
-          display: grid;
-          &.weapon {
-            grid-template-columns: 4fr 1fr 2fr;
-          }
-          &.other {
-            grid-template-columns: 2fr 1fr;
-          }
-          .item-name-img {
-            display: flex;
-            align-items: center;
-            img {
-              width: 30px;
-              height: 30px;
-              margin: 0 5px 0 5px;
-            }
-          }
-          .item-dice {
-            display: flex;
-            align-items: center;
-            img {
-              border: none;
-              width: 50px;
-              height: 50px;
-              &.dice-d20 {
-                width: 30px;
-                height: 30px;
-              }
-            }
-          }
-          .item-range {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          .has-description {
-            font-style: italic;
-          }
+        justify-content: center;
+        align-items: center;
+        input {
+          width: 30px;
         }
-        .item-description {
-          display: flex;
-          align-items: center;
-          justify-content: left;
-          text-align: left;
-        }
-        .item-summary {
-          font-size: var(--cthack-fs-sm);
+        i {
+          padding: 10px 20px 0 0;
+          font-size: var(--cthack-fs-base);
+          padding-left: 50px;
         }
       }
-    }
 
-    .abilities-magic {
       display: flex;
       flex-direction: column;
-
-      .abilities {
-        display: flex;
-        flex-direction: column;
-        .title {
-          border: none;
-          font-size: var(--cthack-fs-md);
-          font-weight: bold;
-          margin: 5px 0 5px 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          a {
-            padding-left: 10px;
-            font-size: var(--cthack-fs-xs);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-        }
-      }
-
-      .magics {
-        display: flex;
-        flex-direction: column;
-        .title {
-          border: none;
-          font-size: var(--cthack-fs-md);
-          font-weight: bold;
-          margin: 5px 0 5px 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          a {
-            padding-left: 10px;
-            font-size: var(--cthack-fs-xs);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-        }
-      }
-
-      .grid-abilities {
+      .item-line {
         display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 5px;
-        padding-left: 10px;
-        align-items: center;
-        font-size: var(--cthack-fs-base);
-        .item-line {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          height: 40px;
-          .item-name {
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            img {
+        &.weapon {
+          grid-template-columns: 4fr 1fr 2fr;
+        }
+        &.other {
+          grid-template-columns: 2fr 1fr;
+        }
+        .item-name-img {
+          display: flex;
+          align-items: center;
+          img {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px 0 5px;
+          }
+        }
+        .item-dice {
+          display: flex;
+          align-items: center;
+          img {
+            border: none;
+            width: 50px;
+            height: 50px;
+            &.dice-d20 {
               width: 30px;
               height: 30px;
-              margin: 0 5px 0 5px;
             }
           }
-          .item-use {
-            display: flex;
-            align-items: center;
-          }
-          .item-use-last {
-            display: flex;
-            align-items: center;
-          }
+        }
+        .item-range {
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         .has-description {
           font-style: italic;
         }
       }
-
-      .grid-magics {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 5px;
-        padding-left: 10px;
+      .item-description {
+        display: flex;
         align-items: center;
-        font-size: var(--cthack-fs-base);
-        .item-line {
-          display: grid;
-          grid-template-columns: 2fr 1fr 1fr 1fr;
-          height: 40px;
-          select {
-            height: 40px;
-          }
-          .item-name {
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            img {
-              width: 30px;
-              height: 30px;
-              margin: 0 5px 0 5px;
-            }
-          }
-          .item-dice {
-            display: flex;
-            align-items: center;
-            img {
-              border: none;
-              width: 50px;
-              height: 50px;
-              &.dice-d20 {
-                width: 30px;
-                height: 30px;
-              }
-            }
-          }
-          .item-subtype {
-            display: flex;
-            align-items: center;
-          }
-          .item-incantation {
-            display: flex;
-            align-items: center;
-          }
-        }
-        .has-description {
-          font-style: italic;
+        justify-content: left;
+        text-align: left;
+      }
+      .item-summary {
+        font-size: var(--cthack-fs-sm);
+      }
+    }
+  }
+
+  .abilities-magic {
+    display: flex;
+    flex-direction: column;
+
+    .abilities {
+      display: flex;
+      flex-direction: column;
+      .title {
+        border: none;
+        font-size: var(--cthack-fs-md);
+        font-weight: bold;
+        margin: 5px 0 5px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+          padding-left: 10px;
+          font-size: var(--cthack-fs-xs);
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }
+
+    .magics {
+      display: flex;
+      flex-direction: column;
+      .title {
+        border: none;
+        font-size: var(--cthack-fs-md);
+        font-weight: bold;
+        margin: 5px 0 5px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+          padding-left: 10px;
+          font-size: var(--cthack-fs-xs);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+
+    .grid-abilities {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 5px;
+      padding-left: 10px;
+      align-items: center;
+      font-size: var(--cthack-fs-base);
+      .item-line {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 40px;
+        .item-name {
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          img {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px 0 5px;
+          }
+        }
+        .item-use {
+          display: flex;
+          align-items: center;
+        }
+        .item-use-last {
+          display: flex;
+          align-items: center;
+        }
+      }
+      .has-description {
+        font-style: italic;
+      }
+    }
+
+    .grid-magics {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 5px;
+      padding-left: 10px;
+      align-items: center;
+      font-size: var(--cthack-fs-base);
+      .item-line {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        height: 40px;
+        select {
+          height: 40px;
+        }
+        .item-name {
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          img {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px 0 5px;
+          }
+        }
+        .item-dice {
+          display: flex;
+          align-items: center;
+          img {
+            border: none;
+            width: 50px;
+            height: 50px;
+            &.dice-d20 {
+              width: 30px;
+              height: 30px;
+            }
+          }
+        }
+        .item-subtype {
+          display: flex;
+          align-items: center;
+        }
+        .item-incantation {
+          display: flex;
+          align-items: center;
+        }
+      }
+      .has-description {
+        font-style: italic;
+      }
+    }
+  }
 }

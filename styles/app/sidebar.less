@@ -4,7 +4,10 @@
   color: black;
 
   .cthack {
-    h1, h2, h3, h4 {
+    h1,
+    h2,
+    h3,
+    h4 {
       color: black;
     }
   }
@@ -12,13 +15,17 @@
   .theme-dark & {
     color: white;
     .cthack {
-      h1, h2, h3, h4 {
+      h1,
+      h2,
+      h3,
+      h4 {
         color: white;
       }
     }
   }
 
-  &.active { // Excluded from popout
+  &.active {
+    // Excluded from popout
     display: flex;
     gap: 1rem;
     padding: 1rem;
@@ -60,7 +67,7 @@
     }
     .notification-pip {
       margin-left: 0.25rem;
-      color:  var(--color-text-accent);
+      color: var(--color-text-accent);
       position: initial;
     }
   }
