@@ -4,7 +4,6 @@ import { formatDate } from "../../utils.mjs"
 const { ux } = foundry.applications
 
 export default class CtHackCharacterSheet extends CtHackActorSheet {
-
   constructor(options) {
     super(options)
     Hooks.on("updateSetting", async (document, change, options, userId) => {
@@ -117,9 +116,13 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
     }
 
     // Enrich text fields
-    context.enrichedBiography = await ux.TextEditor.implementation.enrichHTML(this.document.system.biography, { async: true })
+    context.enrichedBiography = await ux.TextEditor.implementation.enrichHTML(this.document.system.biography, {
+      async: true,
+    })
     context.enrichedNotes = await ux.TextEditor.implementation.enrichHTML(this.document.system.notes, { async: true })
-    context.enrichedEquipment = await ux.TextEditor.implementation.enrichHTML(this.document.system.equipment, { async: true })
+    context.enrichedEquipment = await ux.TextEditor.implementation.enrichHTML(this.document.system.equipment, {
+      async: true,
+    })
 
     // Health display settings
     const healthDisplay = game.settings.get("cthack", "HealthDisplay")
@@ -133,12 +136,16 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
 
     // Resource flags
     context.isWealthAsResource = game.settings.get("cthack", "Wealth") === "resource"
-    context.hasLostFlashlights = this.document.system.attributes.flashlights.value !== this.document.system.attributes.flashlights.max
+    context.hasLostFlashlights =
+      this.document.system.attributes.flashlights.value !== this.document.system.attributes.flashlights.max
     context.hasLostSmokes = this.document.system.attributes.smokes.value !== this.document.system.attributes.smokes.max
     context.hasLostSanity = this.document.system.attributes.sanity.value !== this.document.system.attributes.sanity.max
-    context.hasLostMiscellaneous = this.document.system.attributes.miscellaneous.value !== this.document.system.attributes.miscellaneous.max
-    context.hasLostHitDice = this.document.system.attributes.hitDice.value !== this.document.system.attributes.hitDice.max
-    context.hasLostWealthDice = this.document.system.attributes.wealthDice.value !== this.document.system.attributes.wealthDice.max
+    context.hasLostMiscellaneous =
+      this.document.system.attributes.miscellaneous.value !== this.document.system.attributes.miscellaneous.max
+    context.hasLostHitDice =
+      this.document.system.attributes.hitDice.value !== this.document.system.attributes.hitDice.max
+    context.hasLostWealthDice =
+      this.document.system.attributes.wealthDice.value !== this.document.system.attributes.wealthDice.max
 
     // Encumbrance
     context.isEncumbranceEnabled = game.settings.get("cthack", "useSize")
@@ -167,12 +174,16 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
 
     // Context menus
     new foundry.applications.ux.ContextMenu.implementation(
-      this.element, ".character-contextmenu",
-      this._getCharacterEntryContextOptions(), { jQuery: false }
+      this.element,
+      ".character-contextmenu",
+      this._getCharacterEntryContextOptions(),
+      { jQuery: false },
     )
     new foundry.applications.ux.ContextMenu.implementation(
-      this.element, ".character-sidebar-contextmenu",
-      this._getCharacterSidebarEntryContextOptions(), { jQuery: false }
+      this.element,
+      ".character-sidebar-contextmenu",
+      this._getCharacterSidebarEntryContextOptions(),
+      { jQuery: false },
     )
   }
 
@@ -299,7 +310,9 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
         await this.document.update({ "system.abilities": abilitiesList })
         return await this.document.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
       } else {
-        ui.notifications.warn(game.i18n.format("CTHACK.Notifications.AbilityHasAlready", { abilityName: itemData.name }))
+        ui.notifications.warn(
+          game.i18n.format("CTHACK.Notifications.AbilityHasAlready", { abilityName: itemData.name }),
+        )
         return
       }
     }
@@ -332,9 +345,12 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
           ChatMessage.create({
             user: game.user.id,
             speaker: ChatMessage.getSpeaker({ actor: this.document, scene: canvas.scene }),
-            content: await foundry.applications.handlebars.renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
-              item: item,
-            }),
+            content: await foundry.applications.handlebars.renderTemplate(
+              `systems/cthack/templates/chat/item-description.hbs`,
+              {
+                item: item,
+              },
+            ),
           })
         },
       },
@@ -351,9 +367,12 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
             user: game.user.id,
             speaker: ChatMessage.getSpeaker({ actor: this.document, scene: canvas.scene }),
             whisper: ChatMessage.getWhisperRecipients("GM").map((u) => u.id),
-            content: await foundry.applications.handlebars.renderTemplate(`systems/cthack/templates/chat/item-description.hbs`, {
-              item: item,
-            }),
+            content: await foundry.applications.handlebars.renderTemplate(
+              `systems/cthack/templates/chat/item-description.hbs`,
+              {
+                item: item,
+              },
+            ),
           })
         },
       },

@@ -105,7 +105,8 @@ export default class CtHackManager extends HandlebarsApplicationMixin(Applicatio
   static async askRollForAll(type, value, title = null, avantage = null) {
     let text
 
-    if (type === "save") text = game.i18n.format("CHAT.AskRollForAll", { resource: game.i18n.localize(SYSTEM.SAVES[value].label) })
+    if (type === "save")
+      text = game.i18n.format("CHAT.AskRollForAll", { resource: game.i18n.localize(SYSTEM.SAVES[value].label) })
     else {
       let label
       if (value === "miscellaneous") {

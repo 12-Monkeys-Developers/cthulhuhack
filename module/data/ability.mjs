@@ -57,7 +57,10 @@ export default class CtHackAbility extends CommonItem {
       return
     }
     if (this.uses.value > 0) {
-      return this.parent.update({ "system.uses.value": this.uses.value - 1, "system.uses.last": formatDate(new Date()) })
+      return this.parent.update({
+        "system.uses.value": this.uses.value - 1,
+        "system.uses.last": formatDate(new Date()),
+      })
     }
   }
 

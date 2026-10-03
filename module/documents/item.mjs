@@ -2,14 +2,14 @@
  * @extends {Item}
  */
 export default class CtHackItem extends Item {
-  static DEFAULT_ICON_MAGIC = "/systems/cthack/ui/icons/spell-book.png";
-  static DEFAULT_ICON = "icons/svg/item-bag.svg";
+  static DEFAULT_ICON_MAGIC = "/systems/cthack/ui/icons/spell-book.png"
+  static DEFAULT_ICON = "icons/svg/item-bag.svg"
 
   async _preUpdate(changed, options, user) {
     await super._preUpdate(changed, options, user)
 
     // For abilitiy items, sets the defalut value for the "key" field, only for custom abilities.
-    if (this.type === "ability" && this.system.isCustom) {      
+    if (this.type === "ability" && this.system.isCustom) {
       this.updateSource({ "system.key": this.name.slugify() })
     }
   }
@@ -17,9 +17,9 @@ export default class CtHackItem extends Item {
   /** override */
   static getDefaultArtwork(itemData) {
     if (itemData.type === "magic") {
-      return { img: this.DEFAULT_ICON_MAGIC };
+      return { img: this.DEFAULT_ICON_MAGIC }
     }
-    return { img: this.DEFAULT_ICON };
+    return { img: this.DEFAULT_ICON }
   }
 
   /**
@@ -28,15 +28,15 @@ export default class CtHackItem extends Item {
    * @returns {boolean} Returns true if the item is unlocked, false otherwise.
    */
   get isUnlocked() {
-    return !this.system.locked;
+    return !this.system.locked
   }
 
   /**
    * Checks if the item has an image.
    * @returns {boolean} Returns true if the item has an image, false otherwise.
    */
-  get hasImage(){
-    if (this.type === "magic") return this.img && this.img !== CtHackItem.DEFAULT_ICON_MAGIC; 
-    else return this.img && this.img !== CtHackItem.DEFAULT_ICON;
+  get hasImage() {
+    if (this.type === "magic") return this.img && this.img !== CtHackItem.DEFAULT_ICON_MAGIC
+    else return this.img && this.img !== CtHackItem.DEFAULT_ICON
   }
 }

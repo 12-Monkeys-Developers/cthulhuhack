@@ -41,9 +41,9 @@ export default class CtHackItemSheet extends CtHackDocumentSheetMixin(sheets.Ite
       width: 400,
       height: "auto",
     },
-   form: {
+    form: {
       submitOnChange: true,
-    },    
+    },
     actions: {
       editImage: CtHackItemSheet.#onEditImage,
     },
@@ -68,7 +68,9 @@ export default class CtHackItemSheet extends CtHackDocumentSheetMixin(sheets.Ite
       item: this.document,
       system: this.document.system,
       source: this.document.toObject(),
-      enrichedDescription: await ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true }),
+      enrichedDescription: await ux.TextEditor.implementation.enrichHTML(this.document.system.description, {
+        async: true,
+      }),
       diceValues: SYSTEM.DICE_VALUES,
       diceMaxValues: SYSTEM.DICE_MAX_VALUES,
       diceDamageValues: SYSTEM.DICE_DAMAGE_VALUES,
@@ -102,7 +104,7 @@ export default class CtHackItemSheet extends CtHackDocumentSheetMixin(sheets.Ite
     return fp.browse()
   }
 
-    /**
+  /**
    * Manage the lock/unlock button on the sheet
    * @param {Event} event
    */

@@ -84,7 +84,9 @@ export default class CtHackActor extends Actor {
       title = game.i18n.format("CTHACK.ResourceRollPromptTitle", { resource: label })
     } else {
       if (game.settings.get("cthack", "MiscellaneousResource")) {
-        title = game.i18n.format("CTHACK.ResourceRollPromptTitle", { resource: game.settings.get("cthack", "MiscellaneousResource") })
+        title = game.i18n.format("CTHACK.ResourceRollPromptTitle", {
+          resource: game.settings.get("cthack", "MiscellaneousResource"),
+        })
       } else {
         const resourceName = game.i18n.localize("CTHACK.Misc")
         title = game.i18n.format("CTHACK.ResourceRollPromptTitle", { resource: resourceName })
@@ -315,10 +317,18 @@ export default class CtHackActor extends Actor {
 
     // Mapping of ability keys to their respective advantages
     const abilityAdvantages = {
-      SWILEA: { condition: ["str", "dex", "con"], text: "CTHACK.AdvantageSWILEA", origin: "CTHACK.StandardAbilities.SWILEA.label" },
+      SWILEA: {
+        condition: ["str", "dex", "con"],
+        text: "CTHACK.AdvantageSWILEA",
+        origin: "CTHACK.StandardAbilities.SWILEA.label",
+      },
       STA: { condition: [], text: "CTHACK.AdvantageSTA", origin: "CTHACK.StandardAbilities.STA.label" },
       ANIHAN: { condition: [], text: "CTHACK.AdvantageANIHAN", origin: "CTHACK.StandardAbilities.ANIHAN.label" },
-      IND: { condition: ["wis", "int", "cha"], text: "CTHACK.AdvantageIND", origin: "CTHACK.StandardAbilities.IND.label" },
+      IND: {
+        condition: ["wis", "int", "cha"],
+        text: "CTHACK.AdvantageIND",
+        origin: "CTHACK.StandardAbilities.IND.label",
+      },
       MEC: { condition: [], text: "CTHACK.AdvantageMEC", origin: "CTHACK.StandardAbilities.MEC.label" },
       IROMIN: { condition: [], text: "CTHACK.AdvantageIROMIN", origin: "CTHACK.StandardAbilities.IROMIN.label" },
       RIP: { condition: ["str"], text: "CTHACK.AdvantageRIP", origin: "CTHACK.StandardAbilities.RIP.label" },
@@ -354,7 +364,13 @@ export default class CtHackActor extends Actor {
    */
   _findSavesAdvantagesFromCustomAbilities() {
     return this.items
-      .filter((item) => item.type === "ability" && item.system.isCustom && item.system.advantageGiven && item.system.advantageText !== "")
+      .filter(
+        (item) =>
+          item.type === "ability" &&
+          item.system.isCustom &&
+          item.system.advantageGiven &&
+          item.system.advantageText !== "",
+      )
       .map((item) => ({ text: item.system.advantageText, origin: item.name }))
   }
 
@@ -483,69 +499,71 @@ export default class CtHackActor extends Actor {
   }
 
   /**
- * @name deleteEffectFromItem
- * @description Delete the associated active effect of a definition item if necessary
- * @param {Object} item - The item whose associated effect should be deleted
- */
-async deleteEffectFromItem(item) {
-  const definitionKey = item.system.key;
-  
-  if (CTHACK.debug) {
-    console.log(`CTHACK | deleteDefinitionItem : definitionKey = ${definitionKey}`);
-  }
+   * @name deleteEffectFromItem
+   * @description Delete the associated active effect of a definition item if necessary
+   * @param {Object} item - The item whose associated effect should be deleted
+   */
+  async deleteEffectFromItem(item) {
+    const definitionKey = item.system.key
 
-  // Early return if the key doesn't match any patterns that require effect deletion
-  if (!this._shouldDeleteEffect(definitionKey)) {
-    return;
-  }
-
-  // Find and delete the active effect
-  const effect = this.effects.find(effect => effect.name === item.name);
-  
-  if (!effect) {
     if (CTHACK.debug) {
-      console.log(`CTHACK | No active effect found for item: ${item.name}`);
+      console.log(`CTHACK | deleteDefinitionItem : definitionKey = ${definitionKey}`)
     }
-    return;
+
+    // Early return if the key doesn't match any patterns that require effect deletion
+    if (!this._shouldDeleteEffect(definitionKey)) {
+      return
+    }
+
+    // Find and delete the active effect
+    const effect = this.effects.find((effect) => effect.name === item.name)
+
+    if (!effect) {
+      if (CTHACK.debug) {
+        console.log(`CTHACK | No active effect found for item: ${item.name}`)
+      }
+      return
+    }
+
+    if (CTHACK.debug) {
+      console.log(`CTHACK | Delete Active Effect : ${effect._id}`)
+    }
+
+    // Delete the active effect
+    await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
+
+    // Handle special cases that require unsetting the disadvantage flag
+    if (this._shouldUnsetDisadvantageFlag(definitionKey)) {
+      await this.unsetFlag("cthack", "disadvantageOOA")
+    }
   }
 
-  if (CTHACK.debug) {
-    console.log(`CTHACK | Delete Active Effect : ${effect._id}`);
+  /**
+   * @name _shouldDeleteEffect
+   * @description Check if an effect should be deleted based on the definition key
+   * @private
+   * @param {string} definitionKey - The definition key to check
+   * @returns {boolean} True if effect should be deleted
+   */
+  _shouldDeleteEffect(definitionKey) {
+    return (
+      definitionKey === "OOA-CRB" ||
+      definitionKey.startsWith("OOA") ||
+      definitionKey.startsWith("TI") ||
+      definitionKey.startsWith("SK")
+    )
   }
 
-  // Delete the active effect
-  await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id]);
-
-  // Handle special cases that require unsetting the disadvantage flag
-  if (this._shouldUnsetDisadvantageFlag(definitionKey)) {
-    await this.unsetFlag("cthack", "disadvantageOOA");
+  /**
+   * @name _shouldUnsetDisadvantageFlag
+   * @description Check if the disadvantage flag should be unset based on the definition key
+   * @private
+   * @param {string} definitionKey - The definition key to check
+   * @returns {boolean} True if flag should be unset
+   */
+  _shouldUnsetDisadvantageFlag(definitionKey) {
+    return ["OOA-MIC", "OOA-STA", "OOA-WIN"].includes(definitionKey)
   }
-}
-
-/**
- * @name _shouldDeleteEffect
- * @description Check if an effect should be deleted based on the definition key
- * @private
- * @param {string} definitionKey - The definition key to check
- * @returns {boolean} True if effect should be deleted
- */
-_shouldDeleteEffect(definitionKey) {
-  return definitionKey === "OOA-CRB" || 
-         definitionKey.startsWith("OOA") || 
-         definitionKey.startsWith("TI") || 
-         definitionKey.startsWith("SK");
-}
-
-/**
- * @name _shouldUnsetDisadvantageFlag
- * @description Check if the disadvantage flag should be unset based on the definition key
- * @private
- * @param {string} definitionKey - The definition key to check
- * @returns {boolean} True if flag should be unset
- */
-_shouldUnsetDisadvantageFlag(definitionKey) {
-  return ["OOA-MIC", "OOA-STA", "OOA-WIN"].includes(definitionKey);
-}
 
   /**
    * @name getAvailableAttributes
@@ -565,7 +583,10 @@ _shouldUnsetDisadvantageFlag(definitionKey) {
       if (a[0] === "hitDice" && !game.settings.get("cthack", "HitDiceResource")) {
         return false
       }
-      if (a[0] === "wealthDice" && (!game.settings.get("cthack", "Wealth") || game.settings.get("cthack", "MiscellaneousResource") !== "")) {
+      if (
+        a[0] === "wealthDice" &&
+        (!game.settings.get("cthack", "Wealth") || game.settings.get("cthack", "MiscellaneousResource") !== "")
+      ) {
         return false
       }
       if (a[0] === "miscellaneous" && game.settings.get("cthack", "MiscellaneousResource") === "") {

@@ -35,7 +35,7 @@ export const SAVES = Object.freeze({
     abbreviation: "CTHACK.SaveChaAbbr",
     description: "CTHACK.SaveChaDesc",
   },
-});
+})
 
 export const RESOURCES = Object.freeze({
   flashlights: {
@@ -62,7 +62,7 @@ export const RESOURCES = Object.freeze({
     id: "miscellaneous",
     label: "CTHACK.Misc",
   },
-});
+})
 
 export const DAMAGES = Object.freeze({
   armedDamage: {
@@ -73,7 +73,7 @@ export const DAMAGES = Object.freeze({
     id: "unarmedDamage",
     label: "CTHACK.UnarmedDamage",
   },
-});
+})
 
 export const ADRENALINE = Object.freeze({
   adrenaline1: {
@@ -84,4 +84,4 @@ export const ADRENALINE = Object.freeze({
     id: "adrenaline2",
     label: "CTHACK.Adrenaline2",
   },
-});
+})

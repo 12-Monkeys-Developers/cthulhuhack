@@ -7,9 +7,9 @@ export default class CtHackArchetypeSheet extends CtHackItemSheet {
     position: {
       width: 800,
     },
-    window: {      
-      contentClasses: ["archetype-content"]
-    }
+    window: {
+      contentClasses: ["archetype-content"],
+    },
   }
 
   /** @override */

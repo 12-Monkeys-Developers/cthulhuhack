@@ -1,6 +1,8 @@
 import { AdoptedStylesheetMixin } from "./_module.mjs"
 
-export default class CheckboxElement extends AdoptedStylesheetMixin(foundry.applications.elements.AbstractFormInputElement) {
+export default class CheckboxElement extends AdoptedStylesheetMixin(
+  foundry.applications.elements.AbstractFormInputElement,
+) {
   /** @override */
   static tagName = "co-checkbox"
 

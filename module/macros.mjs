@@ -127,7 +127,7 @@ export class Macros {
           command: command,
           flags: { "cthack.macro": true },
         },
-        { displaySheet: false }
+        { displaySheet: false },
       )
       game.user.assignHotbarMacro(macro, slot)
     }
@@ -155,7 +155,10 @@ export class Macros {
 
     // Check the actor has the item
     let item = actor.items.get(itemId)
-    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.ObjectNotInInventory", { itemName: item.name, actorName: actor.name }))
+    if (!item)
+      return ui.notifications.warn(
+        game.i18n.format("MACROS.ObjectNotInInventory", { itemName: item.name, actorName: actor.name }),
+      )
 
     // Open the roll window if the item uses resource and is not at 0
     if (item.system.dice === "") {
@@ -192,7 +195,10 @@ export class Macros {
 
     // Check the actor has the item
     let item = actor.items.get(itemId)
-    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.ObjectNotInInventory", { itemName: item.name, actorName: actor.name }))
+    if (!item)
+      return ui.notifications.warn(
+        game.i18n.format("MACROS.ObjectNotInInventory", { itemName: item.name, actorName: actor.name }),
+      )
 
     // Open the save window if the item uses resource and is not at 0, or if the item uses no resource
     if (item.system.dice === "0") {
@@ -214,7 +220,9 @@ export class Macros {
         ? actor.rollSave("str", { modifier, rollAdvantage, isWeaponRoll, itemName })
         : actor.rollSave("dex", { modifier, rollAdvantage, isWeaponRoll, itemName })
     } else {
-      item.system.range === "" ? actor.rollSave("str", { rollAdvantage, isWeaponRoll, itemName }) : actor.rollSave("dex", { rollAdvantage, isWeaponRoll, itemName })
+      item.system.range === ""
+        ? actor.rollSave("str", { rollAdvantage, isWeaponRoll, itemName })
+        : actor.rollSave("dex", { rollAdvantage, isWeaponRoll, itemName })
     }
   }
 
@@ -240,7 +248,10 @@ export class Macros {
 
     // Check the actor has the item
     let item = actor.items.get(itemId)
-    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.AttackNotFound", { opponentName: actor.name, itemName: itemName }))
+    if (!item)
+      return ui.notifications.warn(
+        game.i18n.format("MACROS.AttackNotFound", { opponentName: actor.name, itemName: itemName }),
+      )
 
     // Open the roll window
     return await actor.system.rollAttack(item.system.damageDice, item.name)
@@ -268,7 +279,10 @@ export class Macros {
 
     // Check the actor has the item
     let item = actor.items.get(itemId)
-    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.AbilityNotFound", { characterName: actor.name, itemName: itemName }))
+    if (!item)
+      return ui.notifications.warn(
+        game.i18n.format("MACROS.AbilityNotFound", { characterName: actor.name, itemName: itemName }),
+      )
 
     // Use the ability
     if (item.system.uses.value === 0) {
@@ -299,7 +313,8 @@ export class Macros {
 
     // Check the actor has the item
     let item = actor.items.get(itemId)
-    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.ObjectNotInInventory", { itemName, actorName: actor.name }))
+    if (!item)
+      return ui.notifications.warn(game.i18n.format("MACROS.ObjectNotInInventory", { itemName, actorName: actor.name }))
 
     return await actor.rollSanity(item)
   }
@@ -326,7 +341,8 @@ export class Macros {
 
     // Check the actor has the item
     let item = actor.items.get(itemId)
-    if (!item) return ui.notifications.warn(game.i18n.format("MACROS.AbilityNotFound", { characterName: actor.name, itemName }))
+    if (!item)
+      return ui.notifications.warn(game.i18n.format("MACROS.AbilityNotFound", { characterName: actor.name, itemName }))
 
     // Use the ability
     if (item.system.uses.value === 0) {

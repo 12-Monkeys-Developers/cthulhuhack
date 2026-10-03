@@ -1,46 +1,46 @@
-import CommonItem from "./common-item.mjs";
+import CommonItem from "./common-item.mjs"
 import CtHackItem from "../documents/item.mjs"
-import { formatDate } from "../utils.mjs";
+import { formatDate } from "../utils.mjs"
 
 export default class CtHackOpponentAbility extends CommonItem {
-    /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = ["CTHACK.OpponentAbility"];  
+  /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = ["CTHACK.OpponentAbility"]
 
   static defineSchema() {
-    const fields = foundry.data.fields;
-    const common = super.defineSchema();
-    const schema = { ...common };
+    const fields = foundry.data.fields
+    const common = super.defineSchema()
+    const schema = { ...common }
     schema.uses = new fields.SchemaField({
-      value: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0}),
-      max: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0}),
+      value: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 }),
+      max: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
       per: new fields.StringField({ required: true, choices: SYSTEM.ABILITY_USAGE, initial: "Permanent" }),
       last: new fields.StringField({ required: true, nullable: false, initial: "" }),
-    });
-    return schema;
+    })
+    return schema
   }
 
   hasDefaultImage() {
     return this.parent.img === CtHackItem.DEFAULT_ICON
-  }  
+  }
 
   get hasUse() {
-    return this.uses.per !== "Permanent";
+    return this.uses.per !== "Permanent"
   }
 
   get hasLastUse() {
-    return this.uses.last !== "";
+    return this.uses.last !== ""
   }
 
   get isUsable() {
-    return this.uses.per !== "Permanent"  && this.uses.value > 0;
+    return this.uses.per !== "Permanent" && this.uses.value > 0
   }
 
   get isResetable() {
-    return this.uses.per !== "Permanent" && this.uses.max !== 0 && this.uses.value === 0;
+    return this.uses.per !== "Permanent" && this.uses.max !== 0 && this.uses.value === 0
   }
 
   get isIncreaseable() {
-    return this.uses.per !== "Permanent" && this.uses.value < this.uses.max;
+    return this.uses.per !== "Permanent" && this.uses.value < this.uses.max
   }
 
   /**
@@ -49,10 +49,13 @@ export default class CtHackOpponentAbility extends CommonItem {
    */
   async use() {
     if (this.uses.per === "Permanent") {
-      return;
+      return
     }
     if (this.uses.value > 0) {
-      return this.parent.update({ "system.uses.value": this.uses.value - 1, "system.uses.last": formatDate(new Date()) });
+      return this.parent.update({
+        "system.uses.value": this.uses.value - 1,
+        "system.uses.last": formatDate(new Date()),
+      })
     }
   }
 
@@ -64,10 +67,10 @@ export default class CtHackOpponentAbility extends CommonItem {
    */
   async resetUse() {
     if (this.uses.per === "Permanent") {
-      return;
+      return
     }
     if (this.uses.value === 0) {
-      return this.parent.update({ "system.uses.value": this.uses.max, "system.uses.last": "" });
+      return this.parent.update({ "system.uses.value": this.uses.max, "system.uses.last": "" })
     }
   }
 
@@ -79,11 +82,10 @@ export default class CtHackOpponentAbility extends CommonItem {
    */
   async increase() {
     if (this.uses.per === "Permanent") {
-      return;
+      return
     }
     if (this.uses.value < this.uses.max) {
-      return this.parent.update({ "system.uses.value": this.uses.value + 1 });
+      return this.parent.update({ "system.uses.value": this.uses.value + 1 })
     }
   }
-
 }

@@ -54,25 +54,33 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
     context.attacks = []
     const attacksRaw = this.document.itemTypes.attack
     for (const attack of attacksRaw) {
-      attack.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(attack.system.description, { async: true })
+      attack.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(attack.system.description, {
+        async: true,
+      })
       context.attacks.push(attack)
     }
 
     context.magics = []
     const magicsRaw = this.document.itemTypes.magic
     for (const magic of magicsRaw) {
-      magic.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(magic.system.description, { async: true })
+      magic.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(magic.system.description, {
+        async: true,
+      })
       context.magics.push(magic)
     }
 
     context.opponentAbilities = []
     const opponentAbilitiesRaw = this.document.itemTypes.opponentAbility
     for (const ability of opponentAbilitiesRaw) {
-      ability.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(ability.system.description, { async: true })
+      ability.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(ability.system.description, {
+        async: true,
+      })
       context.opponentAbilities.push(ability)
     }
 
-    context.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true })
+    context.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(this.document.system.description, {
+      async: true,
+    })
     context.hasShortDescription = !!this.document.system.shortDescription
     context.opponentHitDice = SYSTEM.OPPONENT_HIT_DICE
 
@@ -85,8 +93,10 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
 
     // Context menu for opponent items
     new foundry.applications.ux.ContextMenu.implementation(
-      this.element, ".opponent-contextmenu",
-      this._getEntryContextOptions(), { jQuery: false }
+      this.element,
+      ".opponent-contextmenu",
+      this._getEntryContextOptions(),
+      { jQuery: false },
     )
   }
 

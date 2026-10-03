@@ -35,4 +35,4 @@ export const USE = Object.freeze({
     id: "Moment",
     label: "CTHACK.AbilityUsePerMoment",
   },
-});
+})

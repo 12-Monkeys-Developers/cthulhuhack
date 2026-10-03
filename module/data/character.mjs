@@ -21,7 +21,7 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
       Object.values(SYSTEM.SAVES).reduce((obj, save) => {
         obj[save.id] = saveField(save.label)
         return obj
-      }, {})
+      }, {}),
     )
 
     // Resources : attribute
@@ -75,7 +75,7 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
       new fields.SchemaField({
         id: new fields.StringField({ required: false, blank: true }),
         key: new fields.StringField({ required: true, blank: false, nullable: false }),
-      })
+      }),
     )
 
     schema.hp = new fields.SchemaField({
@@ -100,11 +100,16 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
       const items = this.parent.items.filter((i) => i.type === "item" || i.type === "weapon")
       const totalEncumbrance = items.reduce((total, item) => {
         // si le status est équipé ou non équippé, on prend la bonne valeur
-        const size = item.system.size.status === "equipped" ? item.system.size.equipped : (item.system.size.status === "unequipped" ? item.system.size.unequipped : 0)
+        const size =
+          item.system.size.status === "equipped"
+            ? item.system.size.equipped
+            : item.system.size.status === "unequipped"
+              ? item.system.size.unequipped
+              : 0
         return total + size
       }, 0)
       this.encumbrance.value = totalEncumbrance
-    } 
+    }
   }
 
   //#region Getters
@@ -136,7 +141,7 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
     if (abilities.length === 0 && magics.length === 0) return ""
     if (abilities.length === 0) return `${magicsTitle} : ${magicsName.join(", ")}`
     if (magics.length === 0) return `${abilitiesTitle} : ${abilitiesName.join(", ")}`
-    
+
     return `${abilitiesTitle} : ${abilitiesName.join(", ")} <br/> ${magicsTitle} : ${magicsName.join(", ")}`
   }
 
@@ -152,8 +157,8 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
    * @returns {Promise<void>} - A promise that resolves when the roll is complete.
    */
   async roll(rollType, rollTarget, options = {}) {
-    const { rollAdvantage = "=" } = options;
-    let rollValue, opponentTarget;
+    const { rollAdvantage = "=" } = options
+    let rollValue, opponentTarget
     let rollOptions = {}
     switch (rollType) {
       case ROLL_TYPE.SAVE:
@@ -180,7 +185,7 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
         break
       default:
         // Handle other cases or do nothing
-        break      
+        break
     }
     await this._roll(rollType, rollTarget, rollValue, opponentTarget, rollAdvantage, rollOptions)
   }

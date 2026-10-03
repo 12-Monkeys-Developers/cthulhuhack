@@ -7,4 +7,4 @@ export const MAGIC_TYPE = Object.freeze({
     id: "ritual",
     label: "CTHACK.Ritual",
   },
-});
+})

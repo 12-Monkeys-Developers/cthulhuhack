@@ -12,7 +12,13 @@ export default class CtHackAttack extends CommonItem {
     const schema = { ...common }
     schema.nb = new fields.NumberField({ required: true, nullable: false, initial: 1, min: 1 })
     schema.damage = new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 })
-    schema.damageDice = new fields.StringField({ required: true, nullable: false, blank: false, choices: SYSTEM.ATTACK_DAMAGE_DICE, initial: "0" })
+    schema.damageDice = new fields.StringField({
+      required: true,
+      nullable: false,
+      blank: false,
+      choices: SYSTEM.ATTACK_DAMAGE_DICE,
+      initial: "0",
+    })
     return schema
   }
 

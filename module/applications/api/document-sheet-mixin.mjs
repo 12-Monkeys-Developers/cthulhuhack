@@ -31,7 +31,6 @@ export default (base) => {
         })
       }
     }
-    
 
     /** @inheritdoc */
     async _prepareContext(options) {

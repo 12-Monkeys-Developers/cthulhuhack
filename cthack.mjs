@@ -82,18 +82,50 @@ Hooks.once("init", function () {
 
   // Register sheet application classes
   foundry.documents.collections.Actors.unregisterSheet("core", foundry.applications.sheets.ActorSheetV2)
-  foundry.documents.collections.Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheet, { types: ["character"], label: "CTHACK.SheetClassCharacter", makeDefault: true })
-  foundry.documents.collections.Actors.registerSheet(SYSTEM_NAME, applications.AdversaireSheet, { types: ["opponent"], label: "CTHACK.SheetClassOpponent", makeDefault: true })
+  foundry.documents.collections.Actors.registerSheet(SYSTEM_NAME, applications.PersonnageSheet, {
+    types: ["character"],
+    label: "CTHACK.SheetClassCharacter",
+    makeDefault: true,
+  })
+  foundry.documents.collections.Actors.registerSheet(SYSTEM_NAME, applications.AdversaireSheet, {
+    types: ["opponent"],
+    label: "CTHACK.SheetClassOpponent",
+    makeDefault: true,
+  })
 
   foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet)
-  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.CapaciteSheet, { types: ["ability"], makeDefault: true })
-  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ObjetSheet, { types: ["item"], makeDefault: true })
-  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ArmeSheet, { types: ["weapon"], makeDefault: true })
-  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.MagieSheet, { types: ["magic"], makeDefault: true })
-  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ArchetypeSheet, { types: ["archetype"], makeDefault: true })
-  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.AttaqueSheet, { types: ["attack"], makeDefault: true })
-  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.AdversaireCapaciteSheet, { types: ["opponentAbility"], makeDefault: true })
-  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.DefinitionSheet, { types: ["definition"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.CapaciteSheet, {
+    types: ["ability"],
+    makeDefault: true,
+  })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ObjetSheet, {
+    types: ["item"],
+    makeDefault: true,
+  })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ArmeSheet, {
+    types: ["weapon"],
+    makeDefault: true,
+  })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.MagieSheet, {
+    types: ["magic"],
+    makeDefault: true,
+  })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.ArchetypeSheet, {
+    types: ["archetype"],
+    makeDefault: true,
+  })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.AttaqueSheet, {
+    types: ["attack"],
+    makeDefault: true,
+  })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.AdversaireCapaciteSheet, {
+    types: ["opponentAbility"],
+    makeDefault: true,
+  })
+  foundry.documents.collections.Items.registerSheet(SYSTEM_NAME, applications.DefinitionSheet, {
+    types: ["definition"],
+    makeDefault: true,
+  })
 
   // Dice system configuration
   CONFIG.Dice.rolls.push(documents.CtHackRoll)
@@ -109,9 +141,9 @@ Hooks.once("init", function () {
 
   // Add a custom sidebar tab
   CONFIG.ui.sidebar.TABS.cthack = {
-      active: false,
-			icon: `cthack`,
-			tooltip: `Cthulhu Hack`,
+    active: false,
+    icon: `cthack`,
+    tooltip: `Cthulhu Hack`,
   }
   CONFIG.ui.cthack = applications.CthackSidebarMenu
 

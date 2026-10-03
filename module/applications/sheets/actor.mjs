@@ -50,7 +50,7 @@ export default class CtHackActorSheet extends CtHackDocumentSheetMixin(sheets.Ac
       shareImage: CtHackActorSheet.#onShareImage,
       searchName: {
         handler: CtHackActorSheet.#onSearchName,
-        buttons: [2]
+        buttons: [2],
       },
     },
   }
@@ -77,7 +77,7 @@ export default class CtHackActorSheet extends CtHackDocumentSheetMixin(sheets.Ac
       diceMaxValues: SYSTEM.DICE_MAX_VALUES,
       diceDamageValues: SYSTEM.DICE_DAMAGE_VALUES,
       unlocked: this.isEditMode,
-      locked: this.isPlayMode
+      locked: this.isPlayMode,
     })
     return context
   }

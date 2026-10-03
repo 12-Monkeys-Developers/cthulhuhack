@@ -19,9 +19,9 @@ export default class CtHackDefinitionSheet extends CtHackItemSheet {
     },
   }
 
-    /** @override */
+  /** @override */
   async _prepareContext() {
-    const context = await super._prepareContext()  
+    const context = await super._prepareContext()
     context.hasDefaultImage = this.document.system.hasDefaultImage()
     return context
   }

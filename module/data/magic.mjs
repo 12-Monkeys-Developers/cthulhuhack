@@ -11,7 +11,13 @@ export default class CtHackMagic extends CommonItem {
     const common = super.defineSchema()
     const schema = { ...common }
     schema.subtype = new fields.StringField({ required: true, choices: SYSTEM.MAGIC_TYPE, initial: "spell" })
-    schema.dice = new fields.StringField({ required: true, nullable: false, blank: true, choices: SYSTEM.DICE_VALUES, initial: "" })
+    schema.dice = new fields.StringField({
+      required: true,
+      nullable: false,
+      blank: true,
+      choices: SYSTEM.DICE_VALUES,
+      initial: "",
+    })
     schema.incantation = new fields.StringField({ required: true, nullable: false, initial: "" })
     return schema
   }

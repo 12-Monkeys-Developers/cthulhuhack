@@ -166,7 +166,10 @@ export default class CtHackRoll extends Roll {
    * @returns {string} A formatted string containing the value, help, hindrance, and modifier.
    */
   _createIntroTextTooltip() {
-    let tooltip = game.i18n.format("TOOLTIPS.saveIntroTextTooltip", { value: this.value, modificateur: this.modificateur })
+    let tooltip = game.i18n.format("TOOLTIPS.saveIntroTextTooltip", {
+      value: this.value,
+      modificateur: this.modificateur,
+    })
     if (this.selectedModifiers) {
       tooltip = tooltip.concat(`<br>Avantages : ${this.selectedModifiers}`)
     }
@@ -213,7 +216,13 @@ export default class CtHackRoll extends Roll {
       default: defaultRollMode,
     })
 
-    const choiceAvantage = { normal: "Normal", avantage: "Avantage", desavantage: "Désavantage", doubleAvantage: "Double avantage", doubleDesavantage: "Double désavantage" }
+    const choiceAvantage = {
+      normal: "Normal",
+      avantage: "Avantage",
+      desavantage: "Désavantage",
+      doubleAvantage: "Double avantage",
+      doubleDesavantage: "Double désavantage",
+    }
     const choiceModificateur = {
       0: "0",
       "-1": "-1",
@@ -247,14 +256,22 @@ export default class CtHackRoll extends Roll {
     let saveModifiers
     const displayOpponentMalus = game.settings.get("cthack", "displayOpponentMalus")
 
-    if ((options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) && options.hasTarget && options.target.document.actor.type === "opponent") {
+    if (
+      (options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) &&
+      options.hasTarget &&
+      options.target.document.actor.type === "opponent"
+    ) {
       const actor = options.target.document.actor
       targetName = actor.name
       if (displayOpponentMalus) malus = actor.system.malus.toString()
       else targetMalus = actor.system.malus.toString()
     }
 
-    if (options.rollType === ROLL_TYPE.DAMAGE && options.hasTarget && options.target.document.actor.type === "opponent") {
+    if (
+      options.rollType === ROLL_TYPE.DAMAGE &&
+      options.hasTarget &&
+      options.target.document.actor.type === "opponent"
+    ) {
       const actor = options.target.document.actor
       targetName = actor.name
       targetArmor = actor.system.armor.toString()
@@ -311,7 +328,10 @@ export default class CtHackRoll extends Roll {
       initialAvantages: avantages,
     }
 
-    const content = await foundry.applications.handlebars.renderTemplate("systems/cthack/templates/roll-dialog-v2.hbs", dialogContext)
+    const content = await foundry.applications.handlebars.renderTemplate(
+      "systems/cthack/templates/roll-dialog-v2.hbs",
+      dialogContext,
+    )
 
     const title = CtHackRoll.createTitle(options)
     const buttonLabel = game.i18n.localize("CTHACK.Roll.roll")
@@ -451,7 +471,11 @@ export default class CtHackRoll extends Roll {
     }
 
     // Formula for a resource roll or a material roll
-    if (options.rollType === ROLL_TYPE.RESOURCE || options.rollType === ROLL_TYPE.MATERIAL || options.rollType === ROLL_TYPE.SANITY) {
+    if (
+      options.rollType === ROLL_TYPE.RESOURCE ||
+      options.rollType === ROLL_TYPE.MATERIAL ||
+      options.rollType === ROLL_TYPE.SANITY
+    ) {
       let dice = formula
       switch (rollContext.avantages) {
         case "avantage":
@@ -686,7 +710,7 @@ export default class CtHackRoll extends Roll {
         realDamage: this.realDamage,
         ...messageData,
       },
-      { messageMode }
+      { messageMode },
     )
   }
 

@@ -57,7 +57,14 @@ export class SearchChat {
     const chatData = foundry.utils.duplicate(this.data)
     chatData.user = game.user.id
     chatData.content = this.content
-    chatData.flags = { world: { type: "searchPage", searchPattern: this.searchPattern, searchData: this.data, highlighted: this.highlighted } }
+    chatData.flags = {
+      world: {
+        type: "searchPage",
+        searchPattern: this.searchPattern,
+        searchData: this.data,
+        highlighted: this.highlighted,
+      },
+    }
 
     this.chat = await ChatMessage.create(chatData)
     return this
@@ -135,7 +142,6 @@ export class SearchChat {
 
     const journals = foundry.applications.instances.values().filter((x) => x.document instanceof JournalEntry)
 
-
     for (const journal of journals) {
       foundry.applications.instances.get(journal.id).render(true)
     }
@@ -156,7 +162,10 @@ export class SearchChat {
     newChatMessage.data.searchPattern = searchPattern
     newChatMessage.data.highlighted = reset ? false : !highlighted
 
-    const newContent = await foundry.applications.handlebars.renderTemplate(newChatMessage.template, newChatMessage.data)
+    const newContent = await foundry.applications.handlebars.renderTemplate(
+      newChatMessage.template,
+      newChatMessage.data,
+    )
     message.update({ content: newContent, "flags.world.highlighted": reset ? false : !highlighted })
   }
 }
@@ -166,7 +175,6 @@ export class SearchChat {
  * @extends {Dialog}
  */
 export class SearchDialog extends Dialog {
-
   static _warnedAppV1 = true
 
   /** @override */
