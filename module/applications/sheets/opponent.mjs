@@ -92,12 +92,7 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
     await super._onRender(context, options)
 
     // Context menu for opponent items
-    new foundry.applications.ux.ContextMenu.implementation(
-      this.element,
-      ".opponent-contextmenu",
-      this._getEntryContextOptions(),
-      { jQuery: false },
-    )
+    new foundry.applications.ux.ContextMenu.implementation(this.element, ".opponent-contextmenu", this._getEntryContextOptions(), { jQuery: false })
   }
 
   /** @override */

@@ -162,10 +162,7 @@ export class SearchChat {
     newChatMessage.data.searchPattern = searchPattern
     newChatMessage.data.highlighted = reset ? false : !highlighted
 
-    const newContent = await foundry.applications.handlebars.renderTemplate(
-      newChatMessage.template,
-      newChatMessage.data,
-    )
+    const newContent = await foundry.applications.handlebars.renderTemplate(newChatMessage.template, newChatMessage.data)
     message.update({ content: newContent, "flags.world.highlighted": reset ? false : !highlighted })
   }
 }

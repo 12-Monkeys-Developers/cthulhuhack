@@ -13,8 +13,7 @@ export const highlightSuccessFailure = function (message, html, data) {
   if (!total) return
 
   if (options.target) {
-    if (roll.total < d.options.target + (d.options.modifier !== undefined ? parseFloat(d.options.modifier) : 0))
-      total.classList.add("roll-success")
+    if (roll.total < d.options.target + (d.options.modifier !== undefined ? parseFloat(d.options.modifier) : 0)) total.classList.add("roll-success")
     else total.classList.add("roll-failure")
   }
 

@@ -100,12 +100,7 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
       const items = this.parent.items.filter((i) => i.type === "item" || i.type === "weapon")
       const totalEncumbrance = items.reduce((total, item) => {
         // si le status est équipé ou non équippé, on prend la bonne valeur
-        const size =
-          item.system.size.status === "equipped"
-            ? item.system.size.equipped
-            : item.system.size.status === "unequipped"
-              ? item.system.size.unequipped
-              : 0
+        const size = item.system.size.status === "equipped" ? item.system.size.equipped : item.system.size.status === "unequipped" ? item.system.size.unequipped : 0
         return total + size
       }, 0)
       this.encumbrance.value = totalEncumbrance

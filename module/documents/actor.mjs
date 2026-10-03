@@ -364,13 +364,7 @@ export default class CtHackActor extends Actor {
    */
   _findSavesAdvantagesFromCustomAbilities() {
     return this.items
-      .filter(
-        (item) =>
-          item.type === "ability" &&
-          item.system.isCustom &&
-          item.system.advantageGiven &&
-          item.system.advantageText !== "",
-      )
+      .filter((item) => item.type === "ability" && item.system.isCustom && item.system.advantageGiven && item.system.advantageText !== "")
       .map((item) => ({ text: item.system.advantageText, origin: item.name }))
   }
 
@@ -546,12 +540,7 @@ export default class CtHackActor extends Actor {
    * @returns {boolean} True if effect should be deleted
    */
   _shouldDeleteEffect(definitionKey) {
-    return (
-      definitionKey === "OOA-CRB" ||
-      definitionKey.startsWith("OOA") ||
-      definitionKey.startsWith("TI") ||
-      definitionKey.startsWith("SK")
-    )
+    return definitionKey === "OOA-CRB" || definitionKey.startsWith("OOA") || definitionKey.startsWith("TI") || definitionKey.startsWith("SK")
   }
 
   /**
@@ -583,10 +572,7 @@ export default class CtHackActor extends Actor {
       if (a[0] === "hitDice" && !game.settings.get("cthack", "HitDiceResource")) {
         return false
       }
-      if (
-        a[0] === "wealthDice" &&
-        (!game.settings.get("cthack", "Wealth") || game.settings.get("cthack", "MiscellaneousResource") !== "")
-      ) {
+      if (a[0] === "wealthDice" && (!game.settings.get("cthack", "Wealth") || game.settings.get("cthack", "MiscellaneousResource") !== "")) {
         return false
       }
       if (a[0] === "miscellaneous" && game.settings.get("cthack", "MiscellaneousResource") === "") {

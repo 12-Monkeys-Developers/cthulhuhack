@@ -18,12 +18,7 @@ export function configureDiceSoNice(dice3d) {
 
   dice3d.addDicePreset({
     type: "d4",
-    labels: [
-      "systems/cthack/ui/dice/d4/d4-1.webp",
-      "systems/cthack/ui/dice/d4/d4-2.webp",
-      "systems/cthack/ui/dice/d4/d4-3.webp",
-      "systems/cthack/ui/dice/d4/d4-4.webp",
-    ],
+    labels: ["systems/cthack/ui/dice/d4/d4-1.webp", "systems/cthack/ui/dice/d4/d4-2.webp", "systems/cthack/ui/dice/d4/d4-3.webp", "systems/cthack/ui/dice/d4/d4-4.webp"],
     system: "cthack",
   })
 

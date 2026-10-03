@@ -27,8 +27,7 @@ export default class CtHackSidebarMenu extends HandlebarsApplicationMixin(Abstra
   static async #onOpenApp(event) {
     switch (event.target.dataset.app) {
       case "gmmanager":
-        if (!foundry.applications.instances.has("cthack-application-manager"))
-          game.system.applicationManager.render({ force: true })
+        if (!foundry.applications.instances.has("cthack-application-manager")) game.system.applicationManager.render({ force: true })
         break
       case "search":
         await new SearchDialog().render(true)

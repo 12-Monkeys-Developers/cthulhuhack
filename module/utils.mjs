@@ -48,10 +48,7 @@ export class CthackUtils {
   static _handleMsgAskRoll(data) {
     const currentUser = game.user.id
     if (data.userId === currentUser) {
-      foundry.audio.AudioHelper.play(
-        { src: "/systems/cthack/sounds/drums.wav", volume: 0.8, autoplay: true, loop: false },
-        false,
-      )
+      foundry.audio.AudioHelper.play({ src: "/systems/cthack/sounds/drums.wav", volume: 0.8, autoplay: true, loop: false }, false)
     }
   }
 

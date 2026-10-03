@@ -149,12 +149,7 @@ Hooks.once("init", function () {
 
   // Setup Text Enrichers
   setupTextEnrichers((anchor) => {
-    applications.CthulhuHackManager.askRollForAll(
-      anchor.dataset.rollType,
-      anchor.dataset.rollTarget,
-      anchor.dataset.rollTitle,
-      anchor.dataset.rollAvantage,
-    )
+    applications.CthulhuHackManager.askRollForAll(anchor.dataset.rollType, anchor.dataset.rollTarget, anchor.dataset.rollTitle, anchor.dataset.rollAvantage)
   })
 
   // Other Document Configuration

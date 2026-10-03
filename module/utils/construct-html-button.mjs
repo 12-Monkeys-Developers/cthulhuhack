@@ -9,14 +9,7 @@
  * @param {boolean} [config.disabled=false]
  * @returns {HTMLButtonElement}
  */
-export default function constructHTMLButton({
-  label,
-  dataset = {},
-  classes = [],
-  icon = "",
-  type = "button",
-  disabled = false,
-}) {
+export default function constructHTMLButton({ label, dataset = {}, classes = [], icon = "", type = "button", disabled = false }) {
   const button = document.createElement("button")
   button.type = type
 
