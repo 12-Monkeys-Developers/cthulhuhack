@@ -256,17 +256,12 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
       await this.parent.rollDamage("armedDamage")
     } else {
       const attacks = opponent.itemTypes.attack.filter((a) => a.system.hasDamageDice)
-      let attack = attacks[0]
-      if (attacks.length > 1) {
-        // Plusieurs attaques possibles : le MJ choisit laquelle l'Opposant utilise
-        const attackId = await CthackUtils.chooseOpponentAttack(
-          opponent.uuid,
-          attacks.map((a) => a.id),
-        )
-        attack = attacks.find((a) => a.id === attackId)
-      }
-      if (!attack) return
-      await opponent.system.rollAttack(attack.system.damageDice, attack.name)
+      if (!attacks.length) return
+      // Le jet de dégâts de l'Opposant (et le choix de l'attaque) est réalisé côté MJ
+      await CthackUtils.rollOpponentAttack(
+        opponent.uuid,
+        attacks.map((a) => a.id),
+      )
     }
   }
 
