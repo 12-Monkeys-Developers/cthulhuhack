@@ -1,3 +1,6 @@
+6.1.2
+- Correction du glisser-déposer vers la barre de raccourcis pour les joueurs : une macro déjà existante est désormais assignée à l'emplacement, et un message s'affiche quand la création est impossible. Corrige https://github.com/12-Monkeys-Developers/cthulhuhack/issues/13
+
 6.1.1
 - Corrige l'affichage de la ressource Divers quand la valeur n'est pas définie. Initialement vu dans le module Les Encagés, avec la ressource Respect. Corrige https://github.com/12-Monkeys-Developers/cthulhuhack/issues/17
 

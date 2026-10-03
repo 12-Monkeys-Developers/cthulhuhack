@@ -31,7 +31,7 @@ export function registerHooks() {
    */
   Hooks.on("hotbarDrop", (bar, data, slot) => {
     if (["Actor", "Item", "JournalEntry", "roll"].includes(data.type)) {
-      Macros.createCthackMacro(data, slot)
+      Macros.createCthackMacro(data, slot).catch((err) => console.error(err))
       return false
     }
   })

@@ -576,6 +576,7 @@
   },
 
   "MACROS": {
+    "CreateFailed": "Impossible de créer la macro : vous n'avez pas la permission de créer des macros de script.",
     "MultipleTokensSelected": "Vous avez sélectionné plusieurs tokens.",
     "NoTokenSelected": "Aucun token n'est sélectionné ou le joueur n'a pas de personnage attribué.",
     "ObjectNotInInventory": "L'objet {itemName} n'est pas dans l'inventaire de {actorName}.",

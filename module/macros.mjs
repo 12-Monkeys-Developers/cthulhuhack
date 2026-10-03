@@ -34,7 +34,7 @@ export class Macros {
           rollCommand = `game.actors.get('${dropData.actorId}').rollDamage('${dropData.rollTarget}');`
           break
       }
-      this.createMacro(slot, rollName, rollCommand, "icons/svg/d20-grey.svg")
+      await this.createMacro(slot, rollName, rollCommand, "icons/svg/d20-grey.svg")
     } else if (dropData.type == "Item") {
       const item = await fromUuid(dropData.uuid)
       const actor = item.actor
@@ -89,7 +89,7 @@ export class Macros {
       }
 
       if (command !== null) {
-        this.createMacro(slot, macroName, command, item.img)
+        await this.createMacro(slot, macroName, command, item.img)
       }
     }
 
@@ -97,40 +97,37 @@ export class Macros {
     else if (dropData.type == "Actor") {
       const actor = await fromUuid(dropData.uuid)
       const command = `game.actors.get("${actor.id}").sheet.render(true)`
-      this.createMacro(slot, actor.name, command, actor.img)
+      await this.createMacro(slot, actor.name, command, actor.img)
     }
 
     // Creates a macro to open the journal sheet of the journal dropped on the hotbar
     else if (dropData.type == "JournalEntry") {
       const journal = await fromUuid(dropData.uuid)
       const command = `game.journal.get("${journal.id}").sheet.render(true)`
-      this.createMacro(slot, journal.name, command, journal.img ? journal.img : "icons/svg/book.svg")
+      await this.createMacro(slot, journal.name, command, journal.img ? journal.img : "icons/svg/book.svg")
     }
   }
 
   /**
-   * @description Create a macro
-   *  All macros are flaged with a cthack.macro flag at true
-   * @param {*} slot
-   * @param {*} name
-   * @param {*} command
-   * @param {*} img
+   * @description Create a macro and assign it to the hotbar slot.
+   *  All macros are flaged with a cthack.macro flag at true.
+   *  Creation fails for a player without the MACRO_SCRIPT permission: a warning is displayed.
+   * @param {number} slot
+   * @param {string} name
+   * @param {string} command
+   * @param {string} img
    */
   static createMacro = async function (slot, name, command, img) {
     let macro = game.macros.contents.find((m) => m.name === name && m.command === command)
     if (!macro) {
-      macro = await Macro.create(
-        {
-          name: name,
-          type: "script",
-          img: img,
-          command: command,
-          flags: { "cthack.macro": true },
-        },
-        { displaySheet: false },
-      )
-      game.user.assignHotbarMacro(macro, slot)
+      try {
+        macro = await Macro.create({ name, type: "script", img, command, flags: { "cthack.macro": true } }, { displaySheet: false })
+      } catch (err) {
+        console.error(err)
+        return ui.notifications.warn(game.i18n.localize("MACROS.CreateFailed"))
+      }
     }
+    await game.user.assignHotbarMacro(macro, slot)
   }
 
   /**
