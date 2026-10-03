@@ -97,7 +97,7 @@
         </div>
       {{/if}}
 
-      {{#if (isEnabled "MiscellaneousResource")}}
+      {{#if (and (isEnabled "MiscellaneousResource") (or unlocked system.attributes.miscellaneous.value))}}
           <div class="resource draggable" data-drag="true" data-drag-type="resource" data-drag-target="miscellaneous" data-drag-value="{{system.attributes.miscellaneous.value}}">
               <label for="miscellaneous.value" class="resource-label miscellaneous-name {{#if (isDiceRollable system.attributes.miscellaneous.value)}}rollable{{/if}} {{#if hasLostMiscellaneous}}resource-lost{{/if}}" data-action="rollResource" data-resource="miscellaneous">{{getMiscellaneousValue}}</label>
               <div class="resource-content {{#if hasLostMiscellaneous}}resource-lost{{/if}}">
