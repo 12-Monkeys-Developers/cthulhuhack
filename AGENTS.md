@@ -15,7 +15,7 @@ npm install            # première fois (gulp, gulp-less, @foundryvtt/foundryvtt
 npm run css            # compile styles/cthack.less -> css/cthack.css (une fois)
 npm run watch          # recompile le LESS à chaque modification (tâche gulp par défaut)
 npm run YMLtoLDB       # src/packs/*.yml  -> packs/ (LevelDB)
-npm run format         # Prettier sur cthack.mjs, module/ et tools/
+npm run format         # Prettier sur gulpfile.js, cthack.mjs, module/ et tools/
 npm run LDBtoYAML      # packs/ -> src/packs/*.yml (efface d'abord chaque dossier src/packs/<pack>)
 ```
 
