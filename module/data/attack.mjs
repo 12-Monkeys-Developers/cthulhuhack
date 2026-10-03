@@ -32,6 +32,7 @@ export default class CtHackAttack extends CommonItem {
       details += ` ${this.damageDice} (${game.i18n.localize("CTHACK.Damage")})`
     }
     if (this.damage !== 0) {
+      if (details) details += " + "
       details += `${this.damage} (${game.i18n.localize("CTHACK.Damage")})&nbsp;&nbsp;`
     }
     if (this.nb > 1) {
@@ -46,6 +47,14 @@ export default class CtHackAttack extends CommonItem {
    */
   get hasDamageDice() {
     return this.damageDice !== "0" && this.damageDice !== ""
+  }
+
+  /**
+   * Checks if the attack deals damage, with a dice or a fixed value.
+   * @returns {boolean} True if the attack has damage dice or fixed damage.
+   */
+  get hasDamage() {
+    return this.hasDamageDice || this.damage > 0
   }
 
   hasDefaultImage() {

@@ -63,13 +63,18 @@ export class CthackUtils {
     if (attacks.length > 1) {
       const attackId = await foundry.applications.api.DialogV2.wait({
         window: { title: game.i18n.localize("CTHACK.Dialog.chooseOpponentAttack") },
-        buttons: attacks.map((a) => ({ action: a.id, label: `${a.name} (${a.system.damageDice})` })),
+        buttons: attacks.map((a) => ({ action: a.id, label: `${a.name} (${a.system.hasDamageDice ? a.system.damageDice : a.system.damage})` })),
         rejectClose: false,
       })
       attack = attacks.find((a) => a.id === attackId)
     }
     if (!attack) return
-    await opponent.system.rollAttack(attack.system.damageDice, attack.name)
+    if (attack.system.hasDamageDice) return opponent.system.rollAttack(attack.system.damageDice, attack.name)
+    // Dégâts fixes sans dé : pas de jet, la valeur est simplement annoncée dans le chat
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: opponent }),
+      content: `${attack.name} : ${attack.system.damage} (${game.i18n.localize("CTHACK.Damage")})`,
+    })
   }
 
   static async _handleMsgRollOpponentAttack(data) {

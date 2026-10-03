@@ -255,7 +255,7 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
     if (resultType === "success") {
       await this.parent.rollDamage("armedDamage")
     } else {
-      const attacks = opponent.itemTypes.attack.filter((a) => a.system.hasDamageDice)
+      const attacks = opponent.itemTypes.attack.filter((a) => a.system.hasDamage)
       if (!attacks.length) return
       // Le jet de dégâts de l'Opposant (et le choix de l'attaque) est réalisé côté MJ
       await CthackUtils.rollOpponentAttack(
