@@ -237,24 +237,23 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
     }
 
     // Dégâts simultanés : jet de dégâts enchaîné à un jet d'arme contre un opposant ciblé
-    if (rollType === ROLL_TYPE.WEAPON && hasTarget && game.settings.get("cthack", "simultaneousDamage")) {
-      await this._rollSimultaneousDamage(roll.resultType, opponentTarget.document.actor)
+    if (rollType === ROLL_TYPE.WEAPON && game.settings.get("cthack", "simultaneousDamage")) {
+      await this._rollSimultaneousDamage(roll.resultType, opponentTarget?.document.actor)
     }
   }
 
   /**
    * Chain the damage roll after a weapon roll.
-   * On success the character deals damage to the opponent, on failure the opponent deals damage to the character.
+   * On success the character deals damage (no target needed), on failure the targeted opponent deals damage to the character (a target is required).
    * @param {"success"|"failure"} resultType The result of the weapon roll.
-   * @param {CtHackActor} opponent The targeted actor.
+   * @param {CtHackActor} [opponent] The targeted actor.
    * @returns {Promise<void>}
    */
   async _rollSimultaneousDamage(resultType, opponent) {
-    if (opponent?.type !== "opponent") return
-
     if (resultType === "success") {
       await this.parent.rollDamage("armedDamage")
     } else {
+      if (opponent?.type !== "opponent") return
       const attacks = opponent.itemTypes.attack.filter((a) => a.system.hasDamage)
       if (!attacks.length) return
       // Le jet de dégâts de l'Opposant (et le choix de l'attaque) est réalisé côté MJ

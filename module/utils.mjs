@@ -60,7 +60,8 @@ export class CthackUtils {
     const opponent = await fromUuid(actorUuid)
     const attacks = attackIds.map((id) => opponent?.items.get(id)).filter(Boolean)
     let attack = attacks[0]
-    if (attacks.length > 1) {
+    // Le MJ se voit toujours proposer les attaques de l'Opposant, même s'il n'y en a qu'une
+    if (attacks.length) {
       const attackId = await foundry.applications.api.DialogV2.wait({
         window: { title: game.i18n.localize("CTHACK.Dialog.chooseOpponentAttack") },
         buttons: attacks.map((a) => ({ action: a.id, label: `${a.name} (${a.system.hasDamageDice ? a.system.damageDice : a.system.damage})` })),
