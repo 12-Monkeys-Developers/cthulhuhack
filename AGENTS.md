@@ -56,3 +56,28 @@ Vues : `templates/` (Handlebars ; `sheets/parts/` pour les fragments, `chat/` po
 ## Périmètre
 
 Ne modifier que ce que la demande exige : pas de refactoring opportuniste, pas de reformatage (hors `npm run format` sur les fichiers touchés), pas de renommage au passage. Signaler les problèmes repérés à côté plutôt que de les corriger.
+
+## Commits
+
+- Message en français, à l'impératif ou au présent, préfixé par un gitmoji **en notation `:code:`** (comme dans l'historique, ex. `:bug: Restaure le glisser-déposer vers la hotbar`). Un seul gitmoji par commit, choisi dans cette table :
+
+  | Type | Gitmoji |
+  | --- | --- |
+  | Nouvelle fonctionnalité | `:sparkles:` ✨ |
+  | Correction de bug | `:bug:` 🐛 |
+  | Documentation | `:books:` 📚 |
+  | Documentation du code source | `:bulb:` 💡 |
+  | Cosmétique | `:lipstick:` 💄 |
+  | Traduction | `:alien:` 👽 |
+  | Texte | `:pencil:` 📝 |
+  | Correctif critique | `:ambulance:` 🚑 |
+  | Déploiement | `:rocket:` 🚀 |
+  | Travail en cours | `:construction:` 🚧 |
+  | Amélioration du format / de la structure | `:art:` 🎨 |
+  | Refactoring | `:hammer:` 🔨 |
+  | Suppression de code / fichiers | `:fire:` 🔥 |
+  | Compendium | `:card_index:` 📇 |
+  | Tag de version | `:bookmark:` 🔖 |
+  | Fusion de branches | `:twisted_rightwards_arrows:` 🔀 |
+
+- Ne **jamais** ajouter de ligne `Co-Authored-By` (notamment `Co-Authored-By: Claude ... <noreply@anthropic.com>`) ni d'autre mention d'attribution à un outil dans les messages de commit.
