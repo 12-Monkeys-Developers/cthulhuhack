@@ -555,7 +555,7 @@
     "displayOpponentMalus": "Display Opponent malus",
     "displayOpponentMalusHint": "Display the Opponent malus to the players (if Reissue activated).",
     "simultaneousDamage": "Simultaneous damage",
-    "simultaneousDamageHint": "After a weapon roll against a targeted Opponent, also roll damage: the character's armed damage on a success, the Opponent's attack with damage dice on a failure (you choose when there are several).",
+    "simultaneousDamageHint": "After a weapon roll against a targeted Opponent, also roll damage: the character's armed damage on a success, the Opponent's attack with damage dice on a failure (the GM chooses when there are several).",
     "UseSizeName": "Use the encumbrance option",
     "UseSizeHint": "Activate the management of weapon and item encumbrance"
   },

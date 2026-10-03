@@ -38,7 +38,55 @@ export class CthackUtils {
         return CthackUtils._handleMsgUseFortune(sockmsg.data)
       case "askRoll":
         return CthackUtils._handleMsgAskRoll(sockmsg.data)
+      case "chooseOpponentAttack":
+        return CthackUtils._handleMsgChooseOpponentAttack(sockmsg.data)
+      case "chooseOpponentAttackResult":
+        return CthackUtils._handleMsgChooseOpponentAttackResult(sockmsg.data)
     }
+  }
+
+  /** Resolvers of the pending attack choices, by request id. */
+  static _pendingAttackChoices = new Map()
+
+  /**
+   * Ask the GM to choose which attack an opponent uses.
+   * @param {string} actorUuid The uuid of the opponent.
+   * @param {string[]} attackIds The ids of the possible attacks.
+   * @returns {Promise<string|null>} The chosen attack id, or null if no choice was made (no active GM, closed dialog).
+   */
+  static async chooseOpponentAttack(actorUuid, attackIds) {
+    if (game.user.isGM) return CthackUtils._promptOpponentAttack(await fromUuid(actorUuid), attackIds)
+    const gm = game.users.activeGM
+    if (!gm) return null
+    const requestId = foundry.utils.randomID()
+    return new Promise((resolve) => {
+      CthackUtils._pendingAttackChoices.set(requestId, resolve)
+      game.socket.emit("system.cthack", { msg: "chooseOpponentAttack", data: { requestId, gmId: gm.id, actorUuid, attackIds } })
+    })
+  }
+
+  static async _promptOpponentAttack(opponent, attackIds) {
+    const attacks = attackIds.map((id) => opponent?.items.get(id)).filter(Boolean)
+    const attackId = await foundry.applications.api.DialogV2.wait({
+      window: { title: game.i18n.localize("CTHACK.Dialog.chooseOpponentAttack") },
+      buttons: attacks.map((a) => ({ action: a.id, label: `${a.name} (${a.system.damageDice})` })),
+      rejectClose: false,
+    })
+    return attackId ?? null
+  }
+
+  static async _handleMsgChooseOpponentAttack(data) {
+    if (data.gmId !== game.user.id) return
+    const opponent = await fromUuid(data.actorUuid)
+    const attackId = await CthackUtils._promptOpponentAttack(opponent, data.attackIds)
+    game.socket.emit("system.cthack", { msg: "chooseOpponentAttackResult", data: { requestId: data.requestId, attackId } })
+  }
+
+  static _handleMsgChooseOpponentAttackResult(data) {
+    const resolve = CthackUtils._pendingAttackChoices.get(data.requestId)
+    if (!resolve) return
+    CthackUtils._pendingAttackChoices.delete(data.requestId)
+    resolve(data.attackId)
   }
 
   static _handleMsgUseFortune(data) {
