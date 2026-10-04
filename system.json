@@ -58,7 +58,7 @@
           "name": "FR",
           "sorting": "m",
           "color": "#59564c",
-          "packs": ["pregenerated", "archetypes", "abilities", "weapons", "opponents", "gametables", "outofaction", "temporaryinsanity", "shock", "macros"],
+          "packs": ["guide", "pregenerated", "archetypes", "abilities", "weapons", "opponents", "gametables", "outofaction", "temporaryinsanity", "shock", "macros"],
           "folders": []
         },
         {
@@ -66,6 +66,7 @@
           "sorting": "m",
           "color": "#59564c",
           "packs": [
+            "guide-en",
             "pregenerated-en",
             "archetypes-en",
             "abilities-en",
@@ -83,6 +84,28 @@
     }
   ],
   "packs": [
+    {
+      "name": "guide",
+      "label": "FR - Guide du système",
+      "system": "cthack",
+      "path": "packs/guide",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "guide-en",
+      "label": "EN - System guide",
+      "system": "cthack",
+      "path": "packs/guide-en",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
     {
       "name": "pregenerated",
       "label": "FR - Prétirés",

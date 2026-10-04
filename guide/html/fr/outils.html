@@ -1,0 +1,86 @@
+<div class="cthack-guide">
+  <h2>Outils du MJ</h2>
+
+  <h3>Le gestionnaire de joueurs</h3>
+  <p>
+    La fenêtre <strong>Statut des joueurs</strong> s'ouvre automatiquement pour le MJ au chargement du monde. Si vous la fermez, rouvrez-la avec le bouton
+    <strong>Gestionnaire de joueurs</strong> de l'onglet Cthulhu Hack de la barre latérale.
+  </p>
+  <div class="guide-image"><img src="@@img:gestionnaire@@" alt="Gestionnaire de joueurs" /></div>
+  <p>
+    Elle affiche une ligne par joueur connecté et son personnage : ressources, dé de vie et points de vie selon les réglages, jetons d'Adrénaline (ou de Fortune avec la
+    réédition) et les six sauvegardes. Elle se met à jour en direct pendant la partie.
+  </p>
+  <ul>
+    <li>Cliquez sur l'<strong>en-tête d'une colonne</strong> pour demander ce jet à <strong>tous</strong> les joueurs : un message « Jet de … pour tous ! » est publié.</li>
+    <li>
+      Cliquez sur une <strong>case</strong> pour demander le jet à <strong>ce joueur seulement</strong> : il reçoit un message privé, accompagné d'un roulement de tambour.
+    </li>
+    <li>Cliquez sur le <strong>nom du personnage</strong> pour ouvrir sa fiche ; survolez-le pour voir ses capacités et ses sorts.</li>
+  </ul>
+  <p>Le joueur répond en cliquant sur <strong>Faire le jet !</strong> dans le message : la fenêtre de jet de son personnage s'ouvre.</p>
+
+  <h3>La Fortune</h3>
+  <div class="guide-row">
+    <div class="guide-image guide-image-narrow"><img src="@@img:fortune@@" alt="Menu de la Fortune" /></div>
+    <div>
+      <p>
+        Avec l'option Fortune, chaque fiche de personnage affiche « Fortune : N », le nombre de jetons restants pour toute la table. Faites un <strong>clic droit</strong>
+        dessus (réservé au MJ) :
+      </p>
+      <ul>
+        <li><strong>Utiliser</strong> : retire un jeton et annonce dans le tchat qui l'a dépensé et combien il en reste ;</li>
+        <li><strong>Augmenter</strong> : ajoute un jeton à la réserve.</li>
+      </ul>
+      <p>Sans les règles de la réédition, le total est aussi rappelé en haut du gestionnaire de joueurs.</p>
+    </div>
+  </div>
+
+  <h3>La recherche</h3>
+  <p>
+    Le bouton <strong>Recherche</strong> de l'onglet Cthulhu Hack ouvre une fenêtre où saisir un texte. Le système cherche dans les journaux, les acteurs et les objets du monde
+    (pas dans les compendiums) et vous envoie, à vous seul, la liste des résultats sous forme de liens. Au-delà de 20 résultats, il vous invite à affiner la recherche.
+  </p>
+  <div class="guide-row">
+    <div class="guide-image guide-image-half"><img src="@@img:recherche@@" alt="Fenêtre de recherche" /></div>
+    <div class="guide-image guide-image-card"><img src="@@img:recherche-resultats@@" alt="Résultats de la recherche" /></div>
+  </div>
+  <p>
+    Le bouton <strong>Surligner On / Off</strong> du message met en évidence le texte cherché dans les journaux ouverts. Raccourci : un clic droit sur le nom d'un personnage ou
+    d'un Adversaire, dans sa fiche, cherche ce nom.
+  </p>
+
+  <h3>Partager une description</h3>
+  <p>
+    Sur la fiche d'un personnage, le clic droit sur une arme, un objet, une capacité, un sort ou une condition permet d'<strong>envoyer sa description dans le tchat</strong>,
+    pour toute la table. Les joueurs peuvent aussi l'envoyer au MJ seul.
+  </p>
+
+  <h3>La barre de macros</h3>
+  <p>Faites glisser un élément dans la barre de macros pour créer un raccourci :</p>
+  <table class="guide-table">
+    <thead>
+      <tr><th>Élément glissé</th><th>Effet de la macro</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Un acteur ou un journal</td><td>Ouvre sa fiche ou le journal</td></tr>
+      <tr><td>Une sauvegarde, une ressource ou des dégâts depuis la fiche</td><td>Lance ce jet pour ce personnage</td></tr>
+      <tr><td>Une arme d'un personnage</td><td>Jet d'attaque (Force au contact, Dextérité à distance) ; <strong>Maj + clic</strong> : jet de matériel</td></tr>
+      <tr><td>Un objet d'un personnage</td><td>Jet de matériel</td></tr>
+      <tr><td>Une capacité, de personnage ou d'Adversaire</td><td>L'utilise (retire une utilisation)</td></tr>
+      <tr><td>Un sort, de personnage ou d'Adversaire</td><td>Jet de sanité</td></tr>
+      <tr><td>Une attaque d'Adversaire</td><td>Jet de dégâts</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Les macros d'arme, d'objet, de capacité, de sort et d'attaque agissent sur le <strong>token sélectionné</strong> (à défaut, la macro d'arme utilise le personnage attribué au
+    joueur) : une même macro sert donc à plusieurs personnages qui possèdent l'élément. Les macros de sauvegarde, de ressource et de dégâts restent attachées au personnage
+    d'origine. Glissez les éléments depuis une fiche : un objet de la barre latérale ou d'un compendium ne crée pas de macro.
+  </p>
+
+  <h3>Les tables de conséquences</h3>
+  <p>
+    Le compendium <strong>Tables aléatoires</strong> contient les tables Hors jeu, Folie passagère et Choc. Le compendium <strong>Macros</strong> propose un tirage sur chacune,
+    visible du MJ seul. Importez d'abord les tables dans votre monde : les macros les retrouvent par leur nom.
+  </p>
+</div>

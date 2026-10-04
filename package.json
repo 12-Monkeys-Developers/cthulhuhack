@@ -8,6 +8,7 @@
     "gulp": "gulp",
     "LDBtoYAML": "node ./tools/LDBtoYML.mjs",
     "YMLtoLDB": "node ./tools/YMLtoLDB.mjs",
+    "guide": "node ./guide/build-guide.mjs",
     "format": "prettier --write \"gulpfile.js\" \"cthack.mjs\" \"module/**/*.mjs\" \"tools/*.mjs\" \"styles/**/*.less\""
   },
   "browserslist": [

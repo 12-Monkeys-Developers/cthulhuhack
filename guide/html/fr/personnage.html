@@ -1,0 +1,133 @@
+<div class="cthack-guide">
+  <h2>Le Personnage</h2>
+  <div class="guide-image"><img src="@@img:fiche-personnage@@" alt="Fiche de personnage" /></div>
+
+  <h3>Verrouillage de la fiche</h3>
+  <p>
+    Toutes les fiches s'ouvrent <strong>verrouillées</strong> : on peut jouer (lancer les dés, utiliser les capacités) sans risquer de modifier une valeur par erreur.
+    L'interrupteur en haut à gauche de la barre de titre la <strong>déverrouille</strong>. La fiche s'élargit alors et permet :
+  </p>
+  <ul>
+    <li>de saisir le nom, le métier, les compétences, l'archétype et une description courte ;</li>
+    <li>de modifier les sauvegardes, les ressources (valeur et maximum), les points de vie et les dés de dégâts ;</li>
+    <li>de créer des objets, armes, capacités et sorts avec les boutons <strong>+</strong> ;</li>
+    <li>de déposer des éléments venus de la barre latérale ou d'un compendium : <strong>une fiche verrouillée refuse les dépôts</strong>.</li>
+  </ul>
+  <div class="guide-image"><img src="@@img:fiche-personnage-edition@@" alt="Fiche déverrouillée" /></div>
+  <p>
+    Le portrait se change d'un clic quand la fiche est déverrouillée (clic droit pour revenir à l'image par défaut). Fiche verrouillée, survolez-le pour le montrer aux joueurs.
+    Un clic droit sur le nom du personnage lance une recherche de ce nom dans le monde.
+  </p>
+
+  <h3>L'en-tête : ressources, santé et dégâts</h3>
+  <ul>
+    <li>
+      <strong>Torche</strong>, <strong>Bagou</strong>, <strong>Santé mentale</strong>, ainsi que la <strong>Richesse</strong> et la <strong>ressource diverse</strong> selon les
+      réglages : cliquez sur le nom pour lancer le dé. En cas d'échec, le dé baisse d'un cran automatiquement. Un dé réduit par rapport à son maximum est mis en évidence.
+    </li>
+    <li><strong>Points de vie</strong> et <strong>Dé de vie</strong>, selon le réglage « Gestion des points de vie ».</li>
+    <li>
+      <strong>Dégât(s) armé</strong> et <strong>Dégât(s) sans arme</strong> : cliquez pour lancer les dégâts. Si un Adversaire est ciblé, son armure est déduite sur la carte.
+    </li>
+  </ul>
+
+  <h3>La colonne de gauche</h3>
+  <ul>
+    <li>Les six <strong>sauvegardes</strong> : cliquez sur un nom pour faire le jet (voir @@page:jets@@).</li>
+    <li>La <strong>Fortune</strong> et les jetons d'<strong>Adrénaline</strong>, si ces options sont actives (voir @@page:options@@).</li>
+    <li>Les <strong>Conditions</strong> subies par le personnage (voir plus bas).</li>
+  </ul>
+
+  <h3>Les onglets</h3>
+  <ul>
+    <li><strong>Description</strong> : la biographie.</li>
+    <li>
+      <strong>Équipement</strong> (ouvert par défaut) : les armes, puis les objets, l'encombrement si l'option est active, et une zone de texte libre pour le reste de
+      l'équipement.
+    </li>
+    <li><strong>Capacités &amp; Magie</strong> : les capacités spéciales, puis les sortilèges et rituels.</li>
+    <li><strong>Notes</strong> : une zone de texte libre.</li>
+  </ul>
+  <p>Dans les listes, un clic sur une ligne déplie sa description.</p>
+
+  <h3>Armes et objets</h3>
+  <p>
+    Chaque arme ou objet peut avoir un <strong>dé de matériel</strong> : l'icône de dé lance un jet de matériel, et le dé baisse d'un cran en cas d'échec. Les armes affichent
+    aussi leur <strong>portée</strong>.
+  </p>
+  <p>
+    Pour attaquer avec une arme, faites glisser l'arme dans la barre de macros (voir @@page:outils@@), ou ciblez un Adversaire et faites un jet de Force ou de Dextérité en
+    déclarant l'attaque (voir @@page:jets@@).
+  </p>
+  <div class="guide-astuce">
+    <p>
+      Fiche déverrouillée, le bouton <strong>+</strong> de l'onglet Équipement crée une <strong>arme</strong> ; avec <strong>Maj + clic</strong>, il crée un
+      <strong>objet</strong>. La fiche du nouvel élément s'ouvre verrouillée : basculez son interrupteur pour la remplir.
+    </p>
+  </div>
+
+  <h3>Le menu du clic droit</h3>
+  <div class="guide-row">
+    <div class="guide-image guide-image-half"><img src="@@img:menu-capacite@@" alt="Menu contextuel d'une capacité" /></div>
+    <div>
+      <p>Un clic droit sur une arme, un objet, une capacité, un sort ou une condition ouvre un menu :</p>
+      <ul>
+        <li><strong>Envoyer dans le chat pour tous</strong> : publie la description dans le tchat (si l'élément en a une) ;</li>
+        <li><strong>Envoyer dans le chat pour le MJ</strong> : proposé aux joueurs, pour vous transmettre discrètement une description ;</li>
+        <li><strong>Editer</strong> : ouvre la fiche de l'élément ;</li>
+        <li><strong>Supprimer</strong> : retire l'élément du personnage.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Les capacités spéciales</h3>
+  <p>
+    Une capacité peut avoir un nombre d'<strong>utilisations</strong> limité, avec une période : permanent, par scénario, par séance, par jour, par nuit, par heure, par scène,
+    par combat ou par moment. La liste affiche les utilisations restantes et la date du dernier usage. Le clic droit propose en plus :
+  </p>
+  <ul>
+    <li><strong>Utiliser</strong> : retire une utilisation et note la date ;</li>
+    <li><strong>Augmenter</strong> : rend une utilisation ;</li>
+    <li><strong>Réinitialiser</strong> : apparaît quand il ne reste plus d'utilisation, et rend toutes les utilisations.</li>
+  </ul>
+  <div class="guide-image"><img src="@@img:fiche-personnage-capacites@@" alt="Onglet Capacités et Magie" /></div>
+  <p>
+    Les <strong>capacités standard</strong> du compendium sont reconnues par le système : déposées sur la fiche, elles sont proposées automatiquement comme avantage dans la
+    fenêtre de jet quand elles s'appliquent. Une capacité qui n'est pas « multiple » ne peut pas être ajoutée deux fois.
+  </p>
+  <p>
+    Pour une <strong>capacité personnelle</strong>, cochez <em>Custom</em> et <em>Donne un avantage</em> sur sa fiche, puis décrivez l'avantage : il sera proposé dans la fenêtre
+    de jet.
+  </p>
+  <div class="guide-astuce">
+    <p>Déposez les capacités standard depuis le compendium plutôt que de les recréer avec le bouton + : seules les capacités déposées sont reconnues par la fenêtre de jet.</p>
+  </div>
+
+  <h3>Sortilèges et rituels</h3>
+  <p>
+    Chaque sort indique son type (sortilège ou rituel), son dé de sanité et son incantation. L'icône de dé lance un jet de sanité ; en cas d'échec, le dé du sort baisse d'un
+    cran.
+  </p>
+
+  <h3>Créer un personnage : archétypes et prétirés</h3>
+  <p>
+    Le compendium <strong>Prétirés</strong> contient un investigateur prêt à jouer par archétype : faites-le glisser dans l'onglet des acteurs pour l'importer.
+  </p>
+  <p>
+    Pour partir d'une fiche vierge, déverrouillez-la et déposez-y un <strong>archétype</strong>. Il renseigne le nom de l'archétype, la Torche, le Bagou et la Santé mentale
+    (valeur et maximum), le Dé de vie, la Richesse et les dés de dégâts armés et sans arme. Les points de vie, les sauvegardes et les capacités restent à saisir.
+  </p>
+
+  <h3>Les conditions : Hors jeu, Folie passagère et Choc</h3>
+  <p>
+    Quand un personnage subit une conséquence, déverrouillez sa fiche et déposez-y la condition depuis le compendium <strong>Hors jeu</strong>, <strong>Folie passagère</strong>
+    ou <strong>Choc</strong>. Elle apparaît sous « Conditions » dans la colonne de gauche (survolez-la pour lire sa description) et une icône s'affiche sur le token. Déposer
+    une condition déjà présente n'a pas d'effet.
+  </p>
+  <p>Certaines conditions sont appliquées automatiquement :</p>
+  <ul>
+    <li><strong>Commotion</strong>, <strong>Titubant</strong> et <strong>Essouflé</strong> : un désavantage sur les jets de sauvegarde ;</li>
+    <li><strong>Os brisés</strong> : −4 aux sauvegardes de Force, de Dextérité et de Constitution.</li>
+  </ul>
+  <p>Les autres servent de rappel : leurs effets restent à appliquer à la table. Pour retirer une condition, faites un clic droit dessus puis <strong>Supprimer</strong>.</p>
+</div>

@@ -222,6 +222,80 @@ a.inline-roll {
   background: rgba(0, 0, 0, 0.05);
   border: 2px groove var(--color-border-light-secondary);
 }
+/* Guide du système : pages de journal des compendiums « Guide du système » / « System guide » */
+:root {
+  --cthack-guide-accent: #782e22;
+  --cthack-guide-tip-background: rgba(120, 46, 34, 0.08);
+}
+.cthack-guide h2 {
+  font-family: var(--font-primary);
+  border-bottom: 2px solid var(--cthack-guide-accent);
+  margin-top: 1.5rem;
+}
+.cthack-guide h3 {
+  font-family: var(--font-primary);
+  border-bottom: none;
+  margin-top: 1rem;
+}
+.cthack-guide img {
+  border: none;
+  max-width: 100%;
+  height: auto;
+}
+.cthack-guide .guide-banner {
+  text-align: center;
+}
+.cthack-guide .guide-image {
+  text-align: center;
+  margin: 0.75rem auto;
+}
+.cthack-guide .guide-image img {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+.cthack-guide .guide-image-narrow {
+  flex: 0 0 200px;
+}
+.cthack-guide .guide-image-card {
+  flex: 0 1 260px;
+  max-width: 260px;
+}
+.cthack-guide .guide-image-half {
+  flex: 1 1 45%;
+}
+.cthack-guide .guide-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+.cthack-guide .guide-row > div:not(.guide-image) {
+  flex: 1 1 300px;
+}
+.cthack-guide .guide-row .guide-image {
+  margin: 0;
+}
+.cthack-guide .guide-astuce {
+  border-left: 4px solid var(--cthack-guide-accent);
+  background: var(--cthack-guide-tip-background);
+  padding: 0.25rem 0.75rem;
+  margin: 0.75rem 0;
+}
+.cthack-guide .guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+}
+.cthack-guide .guide-table th,
+.cthack-guide .guide-table td {
+  border: 1px solid var(--cthack-guide-accent);
+  padding: 0.25rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+.cthack-guide code {
+  white-space: nowrap;
+}
 /* App styles*/
 .cthack.gm-manager {
   font-size: var(--cthack-fs-sm);

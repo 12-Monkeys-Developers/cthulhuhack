@@ -22,58 +22,64 @@ Thanks to Limpar for the English translation of the compendiums.
 
 ## Features
 
-Version 6.1.2 — compatible with Foundry VTT V14. See the [CHANGELOG](CHANGELOG.md) for the detailed history.
+Version 6.2.0 — compatible with Foundry VTT V14. See the [CHANGELOG](CHANGELOG.md) for the detailed history.
+
+A **user guide** for the GM, in French and English, is provided in the "FR - Guide du système" and "EN - System guide" compendiums.
 
 ### Supported modules with specific adaptation
-- Token Action HUD Classic
+- Token Action HUD Cthulhu Hack (with Token Action HUD Core)
 - Dice So Nice (custom dice)
 
 ### Character
-- Lockable / unlockable sheet with a notes tab
-- Items, weapons and special abilities can be added, edited and sorted by drag and drop; click a name to expand its description
-- Abilities with limited uses (per day, scene, scenario…), with last-use date and a reset button
-- Magic items (spells and rituals)
-- Supplies die, resources (hit dice or hit points, wealth, miscellaneous resource) with automatic reduction on failure
-- Item size / encumbrance (option)
-- Quick creation: click for an item, Shift + click for a weapon
+- Sheet locked by default, unlocked with a switch in the title bar; drops are only accepted on an unlocked sheet
+- Description, Equipment, Abilities & Magic and Notes tabs
+- Items, weapons, abilities and spells added by drag and drop or with the + buttons (click: weapon, Shift + click: item); click a line to expand its description
+- Right-click an element: send its description to the chat, edit, delete
+- Abilities with limited uses (per day, scene, scenario…) with last-use date; right-click to Use, Increase or Reset
+- Spells and rituals with a sanity roll
+- Material die, resources (Flashlights, Smokes, Sanity, wealth, miscellaneous resource) with automatic reduction on failure
+- Weapon and item encumbrance (option)
+- Archetype dropped on the sheet: fills in the resources, hit dice, wealth and damage
 
 ### Opponent
 - Two-tab sheet: description, then attacks / abilities / spells
-- Attacks are items with an integrated damage roll
+- Changing the hit dice recomputes the maximum HP and the penalty
+- Attacks with a damage die and fixed damage
 
 ### Dice rolls
-- Saves, resources, supplies and weapons with advantage, disadvantage, double advantage / disadvantage, bonus and penalty
-- Single roll dialog taking abilities, occupation and skills into account (revised edition: success if result ≤ target)
-- Targeted adversary's penalty (option)
-- Simultaneous damage (option): a weapon roll against a targeted opponent chains the damage roll
-- Character icon and name shown in chat messages
-- `@jet` enrichers to create roll links in journals, actors and items
+- Saves, resources, material, sanity, damage and attacks
+- Single roll dialog: target, Armed / Unarmed attack, malus from 0 to −10, final threshold, clickable modifiers (occupation, skills with the reissue, abilities), single or double advantage and disadvantage, roll visibility
+- Targeted Opponent's malus filled in automatically (option)
+- Roll cards: actor and target tokens, discarded dice greyed out, threshold breakdown, Success / Failure banner, lost resource
+- Combat on a single card against a targeted Opponent: the character's damage on a success (automatic with the Simultaneous damage option), counter-attack chosen by the GM on a failure, GM "Apply" button that removes the damage from HP (armour deducted) or Hit Dice roll
+- `@jet` / `@roll` enrichers to ask everyone for a roll from a journal, an actor or an item
 
 ### Conditions
-- "Definition" items for the Out of Action, Temporary Insanity and Shock tables, added by drag and drop
-- Token icon and automatic handling of disadvantages
+- "Definition" items for Out of Action, Temporary Insanity and Shock, added by drag and drop
+- Token icon; automatic disadvantage (Mild Concussion, Staggered, Winded) and −4 to physical saves (Cracked Bones)
 
 ### GM tools
-- GM Manager: resources and abilities of connected players, ask one or all players for a roll, Fortune management
-- System menu in the scene controls
-- Search in journals and items
-- Send an item's description to the chat
+- Cthulhu Hack sidebar tab: version, help links, players manager and search
+- Players manager: resources and saves of connected players, ask one or all players for a roll
+- Fortune: right-click the Fortune on a sheet to use it (announced in chat) or increase it
+- Search in the world's journals, actors and items, with highlighting
 
 ### Macro bar
-- Drag an actor, an article, an item, an ability, a save, a resource, a damage roll or an opponent attack / spell to create the matching macro
-- The relevant token must be selected to use a macro
+- Drag an actor, a journal, a save, a resource, damage, a weapon (click: attack, Shift + click: material), an item, an ability, a spell or an Opponent attack to create the matching macro
+- Item, weapon, ability, spell and attack macros act on the selected token
 
 ### Options
-- Show / hide the French or English compendiums
-- Fortune (tokens spent by the GM, announced in chat) and Adrenaline
-- Hit dice, hit points or both; wealth or miscellaneous resource
-- Size (encumbrance), revised edition, adversary penalty, simultaneous damage
+- Reissue, Fortune and Adrenaline
+- Hit points, hit dice or both; wealth and miscellaneous resource
+- Encumbrance, opponent malus, simultaneous damage
 - CSS style customizable by a module
 
 ### Compendiums
+- Grouped in a Cthulhu Hack folder, with FR and EN subfolders
+- System guide (GM)
 - Archetypes (revised, with the Scholar's variations): drag onto the sheet to fill it in
 - Special weapons and standard special abilities
 - Out of Action, Temporary Insanity and Shock tables, with their RollTables
 - Pregenerated characters: one per archetype
 - Creatures from the core book
-- Macros: table rolls, display of the GM Manager
+- Macros: table rolls

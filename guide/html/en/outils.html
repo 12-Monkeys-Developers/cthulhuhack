@@ -1,0 +1,83 @@
+<div class="cthack-guide">
+  <h2>GM tools</h2>
+
+  <h3>The players manager</h3>
+  <p>
+    The <strong>Players status</strong> window opens automatically for the GM when the world loads. If you close it, reopen it with the <strong>Players Manager</strong> button
+    of the Cthulhu Hack sidebar tab.
+  </p>
+  <div class="guide-image"><img src="@@img:gestionnaire@@" alt="Players manager" /></div>
+  <p>
+    It shows one line per connected player and their character: resources, hit dice and hit points depending on the settings, Adrenaline tokens (or Fortune tokens with the
+    reissue) and the six saves. It updates live during the game.
+  </p>
+  <ul>
+    <li>Click a <strong>column header</strong> to ask <strong>all</strong> players for that roll: a "Roll of … for all !" message is posted.</li>
+    <li>Click a <strong>cell</strong> to ask <strong>that player only</strong>: they get a private message, with a drum roll.</li>
+    <li>Click the <strong>character's name</strong> to open their sheet; hover over it to see their abilities and spells.</li>
+  </ul>
+  <p>The player answers by clicking <strong>Let's roll !</strong> in the message: their character's roll dialog opens.</p>
+
+  <h3>Fortune</h3>
+  <div class="guide-row">
+    <div class="guide-image guide-image-narrow"><img src="@@img:fortune@@" alt="Fortune menu" /></div>
+    <div>
+      <p>
+        With the Fortune option, every character sheet shows "Fortune : N", the number of tokens left for the whole table. <strong>Right-click</strong> it (GM only):
+      </p>
+      <ul>
+        <li><strong>Use</strong>: removes one token and announces in the chat who spent it and how many are left;</li>
+        <li><strong>Increase</strong>: adds one token to the pool.</li>
+      </ul>
+      <p>Without the reissue rules, the total is also shown at the top of the players manager.</p>
+    </div>
+  </div>
+
+  <h3>Search</h3>
+  <p>
+    The <strong>Search</strong> button of the Cthulhu Hack tab opens a window where you type a text. The system searches the world's journals, actors and items (not the
+    compendiums) and sends you, and only you, the list of results as links. Above 20 results it asks you to refine your search.
+  </p>
+  <div class="guide-row">
+    <div class="guide-image guide-image-half"><img src="@@img:recherche@@" alt="Search window" /></div>
+    <div class="guide-image guide-image-card"><img src="@@img:recherche-resultats@@" alt="Search results" /></div>
+  </div>
+  <p>
+    The <strong>Highlight On / Off</strong> button of the message highlights the searched text in open journals. Shortcut: right-clicking the name of a character or an
+    Opponent, on its sheet, searches for that name.
+  </p>
+
+  <h3>Sharing a description</h3>
+  <p>
+    On a character sheet, right-clicking a weapon, item, ability, spell or condition lets you <strong>send its description to the chat</strong> for the whole table. Players can
+    also send it to the GM only.
+  </p>
+
+  <h3>The macro bar</h3>
+  <p>Drag an element to the macro bar to create a shortcut:</p>
+  <table class="guide-table">
+    <thead>
+      <tr><th>Dragged element</th><th>What the macro does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>An actor or a journal</td><td>Opens its sheet or the journal</td></tr>
+      <tr><td>A save, a resource or damage from the sheet</td><td>Rolls it for that character</td></tr>
+      <tr><td>A character's weapon</td><td>Attack roll (Strength in melee, Dexterity at range); <strong>Shift + click</strong>: material roll</td></tr>
+      <tr><td>A character's item</td><td>Material roll</td></tr>
+      <tr><td>An ability, of a character or an Opponent</td><td>Uses it (removes one use)</td></tr>
+      <tr><td>A spell, of a character or an Opponent</td><td>Sanity roll</td></tr>
+      <tr><td>An Opponent's attack</td><td>Damage roll</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Weapon, item, ability, spell and attack macros act on the <strong>selected token</strong> (failing that, the weapon macro uses the player's assigned character): one macro
+    therefore works for several characters who own the element. Save, resource and damage macros stay tied to the character they came from. Drag elements from a sheet: an item
+    from the sidebar or a compendium does not create a macro.
+  </p>
+
+  <h3>Consequence tables</h3>
+  <p>
+    The <strong>Tables</strong> compendium holds the Out of Action, Temporary Insanity and Shock tables. The <strong>Macros</strong> compendium offers a draw on each one,
+    visible to the GM only. Import the tables into your world first: the macros find them by name.
+  </p>
+</div>

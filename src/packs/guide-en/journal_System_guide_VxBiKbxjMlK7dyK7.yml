@@ -1,0 +1,664 @@
+_id: VxBiKbxjMlK7dyK7
+name: System guide
+pages:
+  - _id: ThKLWsHL8wFLbX3q
+    name: Introduction
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <div class="guide-banner"><img src="systems/cthack/ui/cthulhu-hack-banner-large.webp" alt="Cthulhu Hack" /></div>
+
+          <h2>Welcome</h2>
+          <p>
+            This guide shows what the <strong>Cthulhu Hack</strong> system for Foundry VTT offers you as the Game Master: the sheets, the dice rolls, combat from the chat and the tools
+            that help you run the game. It does not replace the rulebook: it explains how Foundry helps you apply the rules.
+          </p>
+
+          <h3>Contents</h3>
+          <ul>
+            <li>@UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.KsksA2v9ze5O80AW]{System settings}: the world settings and what they change at the table.</li>
+            <li>@UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.jUW07znuDRrGJ0cm]{The Character}: the investigators' sheet, their resources, equipment and conditions.</li>
+            <li>@UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.FjUQK4jDVqbQww0H]{The Opponent}: the sheet for creatures and hostile NPCs.</li>
+            <li>@UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.MkpSqd2pzzBsYpRB]{Rolls and messages}: the roll dialog, the chat cards and combat.</li>
+            <li>@UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.Syeh6uaZWPJzq16a]{GM tools}: the players manager, search, Fortune and macros.</li>
+          </ul>
+
+          <h3>Versions</h3>
+          <p>This guide describes version <strong>6.2.0</strong> of the system, which requires <strong>Foundry VTT V14</strong>.</p>
+
+          <h2>The Cthulhu Hack tab</h2>
+          <div class="guide-row">
+            <div class="guide-image guide-image-narrow"><img src="systems/cthack/ui/guide/en/barre-laterale.webp" alt="Cthulhu Hack sidebar tab" /></div>
+            <div>
+              <p>
+                The system adds a tab to the sidebar, with the Cthulhu Hack icon. It shows the installed version and links to the communities where you can find help: the XII Singes
+                Discord and the Fonderie Discord (French-speaking).
+              </p>
+              <p>It also holds two buttons for the GM only:</p>
+              <ul>
+                <li><strong>Players Manager</strong>: reopens the "Players status" window (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.Syeh6uaZWPJzq16a]{GM tools});</li>
+                <li><strong>Search</strong>: looks for a text in the world's journals, actors and items.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2>Compendiums</h2>
+          <div class="guide-row">
+            <div class="guide-image guide-image-narrow"><img src="systems/cthack/ui/guide/en/compendiums.webp" alt="System compendiums" /></div>
+            <div>
+              <p>
+                The compendiums are grouped in a <strong>Cthulhu Hack</strong> folder, with an <strong>FR</strong> subfolder and an <strong>EN</strong> subfolder: every content exists in
+                both languages.
+              </p>
+              <ul>
+                <li><strong>System guide</strong>: this guide.</li>
+                <li><strong>Example characters</strong>: one ready-to-play investigator per archetype.</li>
+                <li><strong>Archetypes</strong>: drop one on a sheet to set it up.</li>
+                <li><strong>Special abilities</strong> and <strong>Special weapons</strong>: the game's standard abilities and weapons.</li>
+                <li><strong>Opponents</strong>: the creatures of the core book.</li>
+                <li><strong>Tables</strong>: the Out of Action, Temporary Insanity and Shock tables.</li>
+                <li><strong>Out of action</strong>, <strong>Temporary insanity</strong> and <strong>Shock</strong>: the conditions, to drop on a sheet.</li>
+                <li><strong>Macros</strong>: draws on the consequence tables.</li>
+              </ul>
+              <p>
+                By default players cannot see the compendiums; trusted players can browse them and assistants can edit them. This guide can be read by all players.
+              </p>
+            </div>
+          </div>
+
+          <h2>Compatible modules</h2>
+          <ul>
+            <li><strong>Dice So Nice</strong>: the system provides dice in Cthulhu Hack colours.</li>
+            <li><strong>Token Action HUD Cthulhu Hack</strong> (with Token Action HUD Core): rolls saves, resources and damage from the selected token.</li>
+          </ul>
+
+          <h2>Credits</h2>
+          <p>
+            Cthulhu Hack is a roleplaying game by Paul Baldowski, published by Just Crunch Games. The French edition, Cthulhu Hack VF, is published by Les XII Singes in the Dark Monkeys
+            collection.
+          </p>
+          <p>
+            The Cthulhu Hack VF brand and logo, the Dark Monkeys brand and logo, and the Les XII Singes brand and logo are the property of ReSpell. The Cthulhu Hack brand and logo and
+            the Just Crunch Games brand and logo are the property of Just Crunch Games.
+          </p>
+          <p>
+            The artwork used in Foundry VTT is by Maxime Plasse (maxsmaps.com). It is provided for use in Foundry VTT; any other use or reproduction requires the agreement of ReSpell /
+            Les XII Singes.
+          </p>
+          <p>The system is developed by Kristov, with Lightbringer contributing the compendiums and testing. Thanks to Limpar for the English translation of the compendiums.</p>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 100000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!VxBiKbxjMlK7dyK7.ThKLWsHL8wFLbX3q'
+  - _id: KsksA2v9ze5O80AW
+    name: System settings
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <h2>System settings</h2>
+          <p>
+            The settings are in <strong>Game Settings → Configure Settings → Cthulhu Hack</strong>. They apply to everyone and only the GM can change them. Some of them require a page
+            reload, which Foundry offers when you save.
+          </p>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/en/reglages.webp" alt="System settings" /></div>
+
+          <h3>Cthulhu Hack Reissue</h3>
+          <p>Turns on the rules of the reissue (on by default). In Foundry this means:</p>
+          <ul>
+            <li>the character's <strong>skills</strong> are offered as a modifier in the roll dialog;</li>
+            <li>with the Adrenaline option, the character's two tokens are shown as <strong>Fortune</strong> tokens in the players manager;</li>
+            <li>the shared Fortune pool is no longer shown in the players manager.</li>
+          </ul>
+
+          <h3>Adrenaline Option</h3>
+          <p>
+            Adds two tokens below the saves of each character. Clicking a token passes it from the player to the GM, and back. The tokens are also shown in the players manager.
+          </p>
+
+          <h3>Fortune Option and Fortune available</h3>
+          <p>
+            Turns on a pool of Fortune tokens shared by the whole table. The number of tokens left is shown on every character sheet and updates live. You set it here, or directly
+            from a sheet (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.Syeh6uaZWPJzq16a]{GM tools}).
+          </p>
+
+          <h3>Wealth</h3>
+          <ul>
+            <li><strong>No wealth management</strong>: wealth does not appear on the sheet.</li>
+            <li><strong>Wealth as a fixed dice value</strong>: wealth is a die shown on the sheet, which you manage by hand.</li>
+            <li><strong>Wealth is managed as a resource</strong>: wealth is rolled and goes down on a failure, like Flashlights or Smokes.</li>
+          </ul>
+
+          <h3>Miscellaneous Resource</h3>
+          <p>Enter a name (for example "Respect") to add an extra resource to every sheet. It is rolled like the other resources. Leave it empty to disable it.</p>
+
+          <h3>Health Display Option</h3>
+          <ul>
+            <li><strong>Hit points</strong>: the sheet shows HP; the "Apply" button of damage cards removes them automatically.</li>
+            <li><strong>Hit dice</strong>: the sheet shows the Hit Dice. When a character is hurt, the damage card offers a <strong>Hit Dice roll</strong> instead of removing HP.</li>
+            <li><strong>Hit points and hit dice</strong> (default): both are shown; damage is removed from HP.</li>
+          </ul>
+
+          <h3>Display Opponent malus</h3>
+          <p>When a player targets an Opponent before rolling:</p>
+          <ul>
+            <li><strong>on</strong> (default): the Opponent's malus is filled in automatically in the roll dialog and lowers the threshold;</li>
+            <li>
+              <strong>off</strong>: players do not see the malus. Only you see it, in the roll dialog and on the chat card ("Opponent's malus (hidden)" line). It is not removed from the
+              threshold: take it into account yourself when you announce the result.
+            </li>
+          </ul>
+
+          <h3>Simultaneous damage</h3>
+          <p>
+            When a character succeeds an attack against a targeted Opponent, their damage is rolled at once, on the same card. When off, the player rolls it with the card's button. In
+            both cases a failure hands over to the GM for the counter-attack (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.MkpSqd2pzzBsYpRB]{Rolls and messages}).
+          </p>
+
+          <h3>Use the encumbrance option</h3>
+          <p>
+            Adds encumbrance to weapons and items: a size when equipped, a size when not equipped, and a status <em>Equipped</em>, <em>Unequipped</em> or <em>Home</em>. The sheet's
+            Equipment tab shows the current encumbrance, computed automatically, against the maximum you enter. Items left at home do not count.
+          </p>
+
+          <h3>Customising the look</h3>
+          <p>The system's colours are defined with CSS variables: a module (a campaign module, for example) can redefine them to restyle the sheets and the chat cards.</p>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 200000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!VxBiKbxjMlK7dyK7.KsksA2v9ze5O80AW'
+  - _id: jUW07znuDRrGJ0cm
+    name: The Character
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <h2>The Character</h2>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/en/fiche-personnage.webp" alt="Character sheet" /></div>
+
+          <h3>Locking the sheet</h3>
+          <p>
+            Every sheet opens <strong>locked</strong>: you can play (roll dice, use abilities) without changing a value by mistake. The switch at the top left of the title bar
+            <strong>unlocks</strong> it. The sheet then widens and lets you:
+          </p>
+          <ul>
+            <li>enter the name, occupation, skills, archetype and a short description;</li>
+            <li>edit the saves, the resources (value and maximum), the hit points and the damage dice;</li>
+            <li>create items, weapons, abilities and spells with the <strong>+</strong> buttons;</li>
+            <li>drop elements from the sidebar or a compendium: <strong>a locked sheet refuses drops</strong>.</li>
+          </ul>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/en/fiche-personnage-edition.webp" alt="Unlocked sheet" /></div>
+          <p>
+            Click the portrait to change it when the sheet is unlocked (right-click to go back to the default image). On a locked sheet, hover over it to show it to the players.
+            Right-clicking the character's name searches the world for that name.
+          </p>
+
+          <h3>The header: resources, health and damage</h3>
+          <ul>
+            <li>
+              <strong>Flashlights</strong>, <strong>Smokes</strong>, <strong>Sanity</strong>, plus <strong>Wealth</strong> and the <strong>miscellaneous resource</strong> depending on
+              the settings: click the name to roll the die. On a failure the die automatically goes down one step. A die below its maximum is highlighted.
+            </li>
+            <li><strong>Hit Points</strong> and <strong>Hit Dice</strong>, depending on the "Health Display Option" setting.</li>
+            <li><strong>Armed damage</strong> and <strong>Unarmed damage</strong>: click to roll damage. If an Opponent is targeted, its armour is deducted on the card.</li>
+          </ul>
+
+          <h3>The left column</h3>
+          <ul>
+            <li>The six <strong>saves</strong>: click a name to roll it (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.MkpSqd2pzzBsYpRB]{Rolls and messages}).</li>
+            <li><strong>Fortune</strong> and the <strong>Adrenaline</strong> tokens, when these options are on (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.KsksA2v9ze5O80AW]{System settings}).</li>
+            <li>The <strong>Conditions</strong> the character suffers (see below).</li>
+          </ul>
+
+          <h3>The tabs</h3>
+          <ul>
+            <li><strong>Description</strong>: the biography.</li>
+            <li><strong>Equipment</strong> (open by default): weapons, then items, encumbrance when the option is on, and a free text area for the rest of the gear.</li>
+            <li><strong>Abilities &amp; Magic</strong>: special abilities, then spells and rituals.</li>
+            <li><strong>Notes</strong>: a free text area.</li>
+          </ul>
+          <p>In the lists, clicking a line unfolds its description.</p>
+
+          <h3>Weapons and items</h3>
+          <p>
+            Each weapon or item can have a <strong>material die</strong>: the die icon rolls a material check, and the die goes down one step on a failure. Weapons also show their
+            <strong>range</strong>.
+          </p>
+          <p>
+            To attack with a weapon, drag it to the macro bar (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.Syeh6uaZWPJzq16a]{GM tools}), or target an Opponent and roll a Strength or Dexterity save while declaring the attack (see
+            @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.MkpSqd2pzzBsYpRB]{Rolls and messages}).
+          </p>
+          <div class="guide-astuce">
+            <p>
+              On an unlocked sheet, the <strong>+</strong> button of the Equipment tab creates a <strong>weapon</strong>; with <strong>Shift + click</strong> it creates an
+              <strong>item</strong>. The new element's sheet opens locked: flip its switch to fill it in.
+            </p>
+          </div>
+
+          <h3>The right-click menu</h3>
+          <div class="guide-row">
+            <div class="guide-image guide-image-half"><img src="systems/cthack/ui/guide/en/menu-capacite.webp" alt="Ability context menu" /></div>
+            <div>
+              <p>Right-clicking a weapon, item, ability, spell or condition opens a menu:</p>
+              <ul>
+                <li><strong>Send to chat for all</strong>: posts the description in the chat (when the element has one);</li>
+                <li><strong>Send to chat for GM</strong>: offered to players, to pass you a description privately;</li>
+                <li><strong>Edit</strong>: opens the element's sheet;</li>
+                <li><strong>Delete</strong>: removes the element from the character.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Special abilities</h3>
+          <p>
+            An ability can have a limited number of <strong>uses</strong> with a period: permanent, per scenario, per session, per day, per night, per hour, per scene, per fight or per
+            moment. The list shows the remaining uses and the date of the last use. The right-click menu also offers:
+          </p>
+          <ul>
+            <li><strong>Use</strong>: removes one use and records the date;</li>
+            <li><strong>Increase</strong>: gives one use back;</li>
+            <li><strong>Reset</strong>: appears when no use is left, and restores all uses.</li>
+          </ul>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/en/fiche-personnage-capacites.webp" alt="Abilities and Magic tab" /></div>
+          <p>
+            The <strong>standard abilities</strong> of the compendium are recognised by the system: once dropped on the sheet, they are offered automatically as an advantage in the roll
+            dialog when they apply. An ability that is not "Multiple" cannot be added twice.
+          </p>
+          <p>
+            For a <strong>personal ability</strong>, tick <em>Custom</em> and <em>Advantage given</em> on its sheet, then describe the advantage: it will be offered in the roll dialog.
+          </p>
+          <div class="guide-astuce">
+            <p>Drop standard abilities from the compendium rather than recreating them with the + button: only dropped abilities are recognised by the roll dialog.</p>
+          </div>
+
+          <h3>Spells and rituals</h3>
+          <p>Each spell shows its type (spell or ritual), its sanity die and its incantation. The die icon rolls a sanity check; on a failure the spell's die goes down one step.</p>
+
+          <h3>Creating a character: archetypes and example characters</h3>
+          <p>The <strong>Example characters</strong> compendium holds a ready-to-play investigator per archetype: drag one into the actors tab to import it.</p>
+          <p>
+            To start from a blank sheet, unlock it and drop an <strong>archetype</strong> on it. It fills in the archetype name, Flashlights, Smokes and Sanity (value and maximum), the
+            Hit Dice, Wealth and the armed and unarmed damage dice. Hit points, saves and abilities are left for you to enter.
+          </p>
+
+          <h3>Conditions: Out of Action, Temporary Insanity and Shock</h3>
+          <p>
+            When a character suffers a consequence, unlock their sheet and drop the condition from the <strong>Out of action</strong>, <strong>Temporary insanity</strong> or
+            <strong>Shock</strong> compendium. It appears under "Conditions" in the left column (hover over it to read its description) and an icon is shown on the token. Dropping a
+            condition the character already has does nothing.
+          </p>
+          <p>Some conditions are applied automatically:</p>
+          <ul>
+            <li><strong>Mild Concussion</strong>, <strong>Staggered</strong> and <strong>Winded</strong>: a disadvantage on save rolls;</li>
+            <li><strong>Cracked Bones</strong>: −4 to the Strength, Dexterity and Constitution saves.</li>
+          </ul>
+          <p>The others are reminders: apply their effects at the table. To remove a condition, right-click it and choose <strong>Delete</strong>.</p>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 300000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!VxBiKbxjMlK7dyK7.jUW07znuDRrGJ0cm'
+  - _id: FjUQK4jDVqbQww0H
+    name: The Opponent
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <h2>The Opponent</h2>
+          <p>
+            Creatures and hostile NPCs use the <strong>Opponent</strong> sheet. The <strong>Opponents</strong> compendium holds the creatures of the core book, ready to use.
+          </p>
+          <div class="guide-row">
+            <div class="guide-image guide-image-half"><img src="systems/cthack/ui/guide/en/fiche-adversaire.webp" alt="Opponent sheet, Description tab" /></div>
+            <div class="guide-image guide-image-half"><img src="systems/cthack/ui/guide/en/fiche-adversaire-combat.webp" alt="Opponent sheet, Attacks tab" /></div>
+          </div>
+
+          <h3>The header</h3>
+          <ul>
+            <li><strong>HD</strong>: the Opponent's hit dice;</li>
+            <li><strong>HP</strong>: current and maximum hit points;</li>
+            <li><strong>AP</strong>: armour points, deducted automatically from the damage it takes;</li>
+            <li><strong>Penalty</strong>: the malus suffered by the characters who attack or resist it.</li>
+          </ul>
+          <div class="guide-astuce">
+            <p>
+              On an unlocked sheet, changing the <strong>HD</strong> recomputes the maximum HP (4 per HD, keeping the wounds already taken) and the penalty (−1 per HD beyond the first).
+            </p>
+          </div>
+
+          <h3>The tabs</h3>
+          <ul>
+            <li><strong>Description</strong>: the creature's text (open by default).</li>
+            <li><strong>Attacks, Abilities, Magic</strong>: three lists, each with a <strong>+</strong> button when the sheet is unlocked.</li>
+          </ul>
+          <p>Only attacks, opponent abilities and spells can be dropped on this sheet. Right-click an element to edit or delete it.</p>
+
+          <h3>Attacks</h3>
+          <p>
+            An attack is defined by a damage die, fixed damage and a number of attacks. When it has a damage die, a die icon rolls its damage (die + fixed damage, for example
+            "d8 + 2"). If a character is targeted, the chat card offers to <strong>apply</strong> the damage to them.
+          </p>
+          <p>An attack with fixed damage only has no roll icon: its damage applies when you pick it for a counter-attack (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.MkpSqd2pzzBsYpRB]{Rolls and messages}).</p>
+
+          <h3>Abilities and spells</h3>
+          <ul>
+            <li>
+              <strong>Opponent abilities</strong> track limited uses like the characters' abilities: right-click to <strong>Use</strong>, <strong>Increase</strong> or
+              <strong>Reset</strong>.
+            </li>
+            <li><strong>Spells</strong> are cast with the die icon (sanity check); the spell's die goes down on a failure.</li>
+          </ul>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 400000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!VxBiKbxjMlK7dyK7.FjUQK4jDVqbQww0H'
+  - _id: MkpSqd2pzzBsYpRB
+    name: Rolls and messages
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <h2>Rolls and messages</h2>
+
+          <h3>Available rolls</h3>
+          <ul>
+            <li><strong>Save</strong>: click a save name on the sheet. Success if the d20 is lower than or equal to the threshold.</li>
+            <li><strong>Resource</strong>: click Flashlights, Smokes, Sanity, Wealth or the miscellaneous resource. On a failure the die goes down one step.</li>
+            <li><strong>Material</strong>: die icon of a weapon or item. On a failure the material die goes down.</li>
+            <li><strong>Sanity</strong>: die icon of a spell.</li>
+            <li><strong>Damage</strong>: click a character's armed or unarmed damage, or the die icon of an Opponent's attack.</li>
+            <li><strong>Attack</strong>: a weapon macro, or a Strength or Dexterity save declared as an attack against a targeted Opponent.</li>
+          </ul>
+
+          <h2>The roll dialog</h2>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/en/fenetre-jet.webp" alt="Weapon roll dialog" /></div>
+          <p>Every roll opens a dialog gathering everything that changes the result:</p>
+          <ul>
+            <li>
+              <strong>Target</strong>: if the player targeted a token (T key or right-click on the token), its image, name and opponent malus are shown. For a damage roll the GM also
+              sees its armour. If several tokens are targeted, only the first one counts and a warning says so.
+            </li>
+            <li>
+              <strong>Attack</strong>: when an Opponent is targeted, the player declares an <strong>Armed</strong> or <strong>Unarmed</strong> attack (with the matching damage die).
+              For a Strength or Dexterity save, a <strong>No attack</strong> choice is offered, and selected by default.
+            </li>
+            <li><strong>Save</strong> and <strong>Malus</strong>: the save value and a malus from 0 to −10, pre-filled with the targeted Opponent's malus.</li>
+            <li><strong>Final threshold</strong>: the threshold to beat, updated on every change.</li>
+            <li>
+              <strong>Modifiers</strong>: the occupation, the skills (reissue rules), the standard abilities that apply and the personal abilities that give an advantage. Clicking a
+              modifier adds one step of advantage.
+            </li>
+            <li><strong>Advantages and disadvantages</strong>: a five-step slider, from double disadvantage to double advantage.</li>
+            <li><strong>Roll visibility</strong>: public, private to the GM, blind or self only.</li>
+          </ul>
+          <p>
+            Conditions that impose a disadvantage (Mild Concussion, Staggered, Winded) are already taken into account when the dialog opens. With an advantage the system rolls extra dice
+            and keeps the best one; with a disadvantage it keeps the worst one.
+          </p>
+
+          <h2>Chat cards</h2>
+          <div class="guide-row">
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/en/carte-attente-degats.webp" alt="Successful attack card" /></div>
+            <div>
+              <p>Each roll produces a card that sums up:</p>
+              <ul>
+                <li>the character (portrait and name at the top of the card) and their target when there is one ("against Ghoul");</li>
+                <li>the declared attack type (Armed or Unarmed);</li>
+                <li>the dice rolled: with an advantage or a disadvantage, the discarded die is greyed out;</li>
+                <li>the result against the threshold, the formula and the modifiers used;</li>
+                <li>the threshold breakdown, which can be unfolded (save, opponent malus, malus);</li>
+                <li>the <strong>Success</strong> or <strong>Failure</strong> banner;</li>
+                <li>for a lost resource, how the die changed (for example "d4 → 0").</li>
+              </ul>
+              <p>Clicking a token portrait in the card pans the scene to that token.</p>
+            </div>
+          </div>
+          <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/en/carte-ressource.webp" alt="Failed resource roll card" /></div>
+
+          <h2>Combat from the chat</h2>
+          <p>When a character attacks a targeted Opponent, the whole exchange fits on <strong>a single card</strong>, updated as the actions go.</p>
+
+          <h3>The attack succeeds</h3>
+          <ol>
+            <li>
+              The card reads "Hit! Waiting for …'s damage". The player (or the GM) clicks <strong>Roll armed damage</strong> or <strong>Roll unarmed damage</strong>. With the
+              <strong>Simultaneous damage</strong> setting, this roll is made automatically.
+            </li>
+            <li>The damage is added to the card. Only you see the armour deducted and the real damage.</li>
+            <li>The <strong>Apply … damage to …</strong> button, for the GM only, removes the real damage from the Opponent's HP. The card then shows how the HP changed.</li>
+          </ol>
+          <div class="guide-row">
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/en/carte-degats.webp" alt="Damage rolled on the card" /></div>
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/en/carte-reussite.webp" alt="Damage applied" /></div>
+          </div>
+
+          <h3>The attack fails: the counter-attack</h3>
+          <ol>
+            <li>The card says the Opponent strikes back and waits for the GM. Click <strong>Choose the attack</strong>.</li>
+            <li>A dialog lists the Opponent's attacks, with their dice or fixed damage. Pick one and click <strong>Roll damage</strong>.</li>
+            <li>The damage is added to the card, with the <strong>Apply … damage to …</strong> button that removes it from the character's HP.</li>
+          </ol>
+          <div class="guide-row">
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/en/carte-attente-mj.webp" alt="Counter-attack waiting for the GM" /></div>
+            <div class="guide-image guide-image-half"><img src="systems/cthack/ui/guide/en/choix-attaque.webp" alt="Choosing the Opponent's attack" /></div>
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/en/carte-riposte.webp" alt="Opponent's counter-attack" /></div>
+          </div>
+          <div class="guide-astuce">
+            <p>
+              If health is tracked with <strong>Hit dice</strong> only, there are no HP to remove: a failure directly offers the character a <strong>Hit Dice roll</strong>, and the
+              Apply button is replaced by that roll for a wounded character.
+            </p>
+          </div>
+
+          <h3>Other damage rolls</h3>
+          <ul>
+            <li>A character's damage roll against a targeted Opponent deducts its armour and offers the Apply button.</li>
+            <li>An Opponent's attack rolled from its sheet against a targeted character also offers the Apply button.</li>
+          </ul>
+
+          <h2>Asking for a roll from a journal: @jet</h2>
+          <p>
+            In a journal, or in an actor's or item's description, you can insert a roll request link. When you click it, a <strong>"Roll of … for all !"</strong> message is posted in
+            the chat; each player clicks <strong>Let's roll !</strong> to roll with the character assigned to them (in the user configuration).
+          </p>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/en/journal-jet.webp" alt="@jet links in a journal" /></div>
+          <div class="guide-row">
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/en/demande-jet.webp" alt="Roll request, GM view" /></div>
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/en/demande-jet-joueur.webp" alt="Roll request, player view" /></div>
+          </div>
+
+          <h3>Syntax</h3>
+          <p><code>@jet[target]{}(advantage)</code></p>
+          <p>The braces and parentheses are required, even when empty. <code>@roll</code> works the same way as <code>@jet</code>.</p>
+          <table class="guide-table">
+            <thead>
+              <tr><th>Target</th><th>Requested roll</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>str</code>, <code>dex</code>, <code>con</code>, <code>wis</code>, <code>int</code>, <code>cha</code></td><td>Save</td></tr>
+              <tr><td><code>flashlights</code>, <code>smokes</code>, <code>san</code></td><td>Flashlights, Smokes, Sanity</td></tr>
+              <tr><td><code>wealthDice</code>, <code>hitDice</code>, <code>miscellaneous</code></td><td>Wealth, Hit Dice, miscellaneous resource</td></tr>
+            </tbody>
+          </table>
+          <p>
+            The advantage is optional: <code>++</code> double advantage, <code>+</code> advantage, <code>-</code> disadvantage, <code>--</code> double disadvantage. It is carried over
+            to the player's roll dialog.
+          </p>
+          <p>Examples:</p>
+          <ul>
+            <li><code>@jet[wis]{}(-)</code>: Wisdom save with disadvantage;</li>
+            <li><code>@jet[flashlights]{}()</code>: Flashlights roll.</li>
+          </ul>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 500000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!VxBiKbxjMlK7dyK7.MkpSqd2pzzBsYpRB'
+  - _id: Syeh6uaZWPJzq16a
+    name: GM tools
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <h2>GM tools</h2>
+
+          <h3>The players manager</h3>
+          <p>
+            The <strong>Players status</strong> window opens automatically for the GM when the world loads. If you close it, reopen it with the <strong>Players Manager</strong> button
+            of the Cthulhu Hack sidebar tab.
+          </p>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/en/gestionnaire.webp" alt="Players manager" /></div>
+          <p>
+            It shows one line per connected player and their character: resources, hit dice and hit points depending on the settings, Adrenaline tokens (or Fortune tokens with the
+            reissue) and the six saves. It updates live during the game.
+          </p>
+          <ul>
+            <li>Click a <strong>column header</strong> to ask <strong>all</strong> players for that roll: a "Roll of … for all !" message is posted.</li>
+            <li>Click a <strong>cell</strong> to ask <strong>that player only</strong>: they get a private message, with a drum roll.</li>
+            <li>Click the <strong>character's name</strong> to open their sheet; hover over it to see their abilities and spells.</li>
+          </ul>
+          <p>The player answers by clicking <strong>Let's roll !</strong> in the message: their character's roll dialog opens.</p>
+
+          <h3>Fortune</h3>
+          <div class="guide-row">
+            <div class="guide-image guide-image-narrow"><img src="systems/cthack/ui/guide/en/fortune.webp" alt="Fortune menu" /></div>
+            <div>
+              <p>
+                With the Fortune option, every character sheet shows "Fortune : N", the number of tokens left for the whole table. <strong>Right-click</strong> it (GM only):
+              </p>
+              <ul>
+                <li><strong>Use</strong>: removes one token and announces in the chat who spent it and how many are left;</li>
+                <li><strong>Increase</strong>: adds one token to the pool.</li>
+              </ul>
+              <p>Without the reissue rules, the total is also shown at the top of the players manager.</p>
+            </div>
+          </div>
+
+          <h3>Search</h3>
+          <p>
+            The <strong>Search</strong> button of the Cthulhu Hack tab opens a window where you type a text. The system searches the world's journals, actors and items (not the
+            compendiums) and sends you, and only you, the list of results as links. Above 20 results it asks you to refine your search.
+          </p>
+          <div class="guide-row">
+            <div class="guide-image guide-image-half"><img src="systems/cthack/ui/guide/en/recherche.webp" alt="Search window" /></div>
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/en/recherche-resultats.webp" alt="Search results" /></div>
+          </div>
+          <p>
+            The <strong>Highlight On / Off</strong> button of the message highlights the searched text in open journals. Shortcut: right-clicking the name of a character or an
+            Opponent, on its sheet, searches for that name.
+          </p>
+
+          <h3>Sharing a description</h3>
+          <p>
+            On a character sheet, right-clicking a weapon, item, ability, spell or condition lets you <strong>send its description to the chat</strong> for the whole table. Players can
+            also send it to the GM only.
+          </p>
+
+          <h3>The macro bar</h3>
+          <p>Drag an element to the macro bar to create a shortcut:</p>
+          <table class="guide-table">
+            <thead>
+              <tr><th>Dragged element</th><th>What the macro does</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>An actor or a journal</td><td>Opens its sheet or the journal</td></tr>
+              <tr><td>A save, a resource or damage from the sheet</td><td>Rolls it for that character</td></tr>
+              <tr><td>A character's weapon</td><td>Attack roll (Strength in melee, Dexterity at range); <strong>Shift + click</strong>: material roll</td></tr>
+              <tr><td>A character's item</td><td>Material roll</td></tr>
+              <tr><td>An ability, of a character or an Opponent</td><td>Uses it (removes one use)</td></tr>
+              <tr><td>A spell, of a character or an Opponent</td><td>Sanity roll</td></tr>
+              <tr><td>An Opponent's attack</td><td>Damage roll</td></tr>
+            </tbody>
+          </table>
+          <p>
+            Weapon, item, ability, spell and attack macros act on the <strong>selected token</strong> (failing that, the weapon macro uses the player's assigned character): one macro
+            therefore works for several characters who own the element. Save, resource and damage macros stay tied to the character they came from. Drag elements from a sheet: an item
+            from the sidebar or a compendium does not create a macro.
+          </p>
+
+          <h3>Consequence tables</h3>
+          <p>
+            The <strong>Tables</strong> compendium holds the Out of Action, Temporary Insanity and Shock tables. The <strong>Macros</strong> compendium offers a draw on each one,
+            visible to the GM only. Import the tables into your world first: the macros find them by name.
+          </p>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 600000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!VxBiKbxjMlK7dyK7.Syeh6uaZWPJzq16a'
+folder: null
+sort: 0
+ownership:
+  default: 0
+flags: {}
+_key: '!journal!VxBiKbxjMlK7dyK7'

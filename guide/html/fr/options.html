@@ -1,0 +1,77 @@
+<div class="cthack-guide">
+  <h2>Options du système</h2>
+  <p>
+    Les réglages se trouvent dans <strong>Paramètres du jeu → Configurer les paramètres → Cthulhu Hack</strong>. Ils s'appliquent à tout le monde et seul le MJ peut les
+    modifier. Certains nécessitent de recharger la page, ce que Foundry vous propose à l'enregistrement.
+  </p>
+  <div class="guide-image"><img src="@@img:reglages@@" alt="Réglages du système" /></div>
+
+  <h3>Cthulhu Hack Réédition</h3>
+  <p>Active les règles de la réédition (activé par défaut). Concrètement, dans Foundry :</p>
+  <ul>
+    <li>les <strong>compétences</strong> du personnage sont proposées comme modificateur dans la fenêtre de jet ;</li>
+    <li>avec l'option Adrénaline, les deux jetons du personnage sont présentés comme des jetons de <strong>Fortune</strong> dans le gestionnaire de joueurs ;</li>
+    <li>la réserve commune de Fortune n'apparaît plus dans le gestionnaire de joueurs.</li>
+  </ul>
+
+  <h3>Option Adrénaline</h3>
+  <p>
+    Ajoute deux jetons sous les sauvegardes de chaque personnage. Un clic sur un jeton le fait passer du joueur au MJ, et inversement. Les jetons sont aussi visibles dans le
+    gestionnaire de joueurs.
+  </p>
+
+  <h3>Option Fortune et Nb jetons Fortune</h3>
+  <p>
+    Active une réserve de jetons de Fortune commune à la table. Le nombre de jetons restants s'affiche sur toutes les fiches de personnage et se met à jour en direct. Vous le
+    réglez ici, ou directement depuis une fiche (voir @@page:outils@@).
+  </p>
+
+  <h3>Richesse</h3>
+  <ul>
+    <li><strong>Pas de gestion de la richesse</strong> : la richesse n'apparaît pas sur la fiche.</li>
+    <li><strong>Valeur fixe sous forme d'un dé</strong> : la richesse est un dé indiqué sur la fiche, que vous gérez à la main.</li>
+    <li><strong>Gérée comme une ressource</strong> : la richesse se lance et diminue sur un échec, comme la Torche ou le Bagou.</li>
+  </ul>
+
+  <h3>Ressource diverse</h3>
+  <p>
+    Saisissez un nom (par exemple « Respect ») pour ajouter une ressource supplémentaire à toutes les fiches. Elle se lance comme les autres ressources. Laissez vide pour ne pas
+    l'utiliser.
+  </p>
+
+  <h3>Gestion des points de vie</h3>
+  <ul>
+    <li><strong>Points de vie</strong> : la fiche affiche les PV ; le bouton « Appliquer » des cartes de dégâts les retire automatiquement.</li>
+    <li><strong>Dés de vie</strong> : la fiche affiche le Dé de vie. Quand un personnage est blessé, la carte de dégâts propose un <strong>jet de Dé de vie</strong> au lieu de retirer des PV.</li>
+    <li><strong>Points et dés de vie</strong> (par défaut) : les deux sont affichés ; les dégâts se retirent des PV.</li>
+  </ul>
+
+  <h3>Afficher le malus d'adversité (Version Réédition)</h3>
+  <p>Quand un joueur cible un Adversaire avant son jet :</p>
+  <ul>
+    <li><strong>activé</strong> (par défaut) : le malus de l'Adversaire est reporté automatiquement dans la fenêtre de jet et réduit le seuil ;</li>
+    <li>
+      <strong>désactivé</strong> : les joueurs ne voient pas ce malus. Vous seul le voyez, dans la fenêtre de jet et sur la carte du tchat (ligne « Malus de l'Opposant
+      (caché) »). Il n'est pas retiré du seuil : à vous d'en tenir compte au moment d'annoncer le résultat.
+    </li>
+  </ul>
+
+  <h3>Dégâts simultanés</h3>
+  <p>
+    Quand un personnage réussit une attaque contre un Adversaire ciblé, ses dégâts sont lancés aussitôt, sur la même carte. Désactivé, le joueur les lance lui-même avec le bouton
+    de la carte. Dans les deux cas, un échec laisse la main au MJ pour la riposte (voir @@page:jets@@).
+  </p>
+
+  <h3>Utiliser l'option d'encombrement (Section 13)</h3>
+  <p>
+    Ajoute un encombrement aux armes et aux objets : taille quand l'objet est équipé, quand il ne l'est pas, et un statut <em>Équipé</em>, <em>Non équipé</em> ou <em>Chez
+    soi</em>. L'onglet Équipement de la fiche affiche l'encombrement actuel, calculé automatiquement, face au maximum que vous saisissez. Les objets laissés chez soi ne comptent
+    pas.
+  </p>
+
+  <h3>Personnaliser l'apparence</h3>
+  <p>
+    Les couleurs du système sont définies par des variables CSS : un module (par exemple le module d'une campagne) peut les redéfinir pour habiller les fiches et les cartes du
+    tchat à ses couleurs.
+  </p>
+</div>

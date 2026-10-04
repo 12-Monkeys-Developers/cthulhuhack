@@ -1,0 +1,136 @@
+<div class="cthack-guide">
+  <h2>Jets et messages</h2>
+
+  <h3>Les jets disponibles</h3>
+  <ul>
+    <li><strong>Sauvegarde</strong> : clic sur le nom d'une sauvegarde dans la fiche. Réussite si le d20 est inférieur ou égal au seuil.</li>
+    <li><strong>Ressource</strong> : clic sur Torche, Bagou, Santé mentale, Richesse ou la ressource diverse. Sur un échec, le dé baisse d'un cran.</li>
+    <li><strong>Matériel</strong> : icône de dé d'une arme ou d'un objet. Sur un échec, le dé de matériel baisse.</li>
+    <li><strong>Sanité</strong> : icône de dé d'un sort.</li>
+    <li><strong>Dégâts</strong> : clic sur les dégâts armés ou sans arme d'un personnage, ou sur l'icône de dé d'une attaque d'Adversaire.</li>
+    <li><strong>Attaque</strong> : macro d'une arme, ou sauvegarde de Force ou de Dextérité déclarée comme attaque contre un Adversaire ciblé.</li>
+  </ul>
+
+  <h2>La fenêtre de jet</h2>
+  <div class="guide-image"><img src="@@img:fenetre-jet@@" alt="Fenêtre de jet d'attaque" /></div>
+  <p>Chaque jet ouvre une fenêtre qui réunit tout ce qui modifie le résultat :</p>
+  <ul>
+    <li>
+      <strong>Cible</strong> : si le joueur a ciblé un token (touche T ou clic droit sur le token), son image, son nom et son adversité s'affichent. Pour un jet de dégâts, le
+      MJ voit aussi son armure. Si plusieurs tokens sont ciblés, seul le premier est pris en compte et un avertissement le signale.
+    </li>
+    <li>
+      <strong>Attaque</strong> : quand un Adversaire est ciblé, le joueur déclare une attaque <strong>Armée</strong> ou <strong>Sans arme</strong> (avec le dé de dégâts
+      correspondant). Pour une sauvegarde de Force ou de Dextérité, le choix <strong>Pas d'attaque</strong> est proposé, et sélectionné par défaut.
+    </li>
+    <li><strong>Sauvegarde</strong> et <strong>Malus</strong> : la valeur de la sauvegarde et un malus de 0 à −10, prérempli avec celui de l'Adversaire ciblé.</li>
+    <li><strong>Seuil final</strong> : le seuil à atteindre, mis à jour à chaque changement.</li>
+    <li>
+      <strong>Modificateurs</strong> : le métier, les compétences (règles de la réédition), les capacités standard qui s'appliquent et les capacités personnelles qui donnent un
+      avantage. Cliquer sur un modificateur ajoute un cran d'avantage.
+    </li>
+    <li><strong>Avantages et désavantages</strong> : un curseur à cinq crans, du double désavantage au double avantage.</li>
+    <li><strong>Visibilité du lancer</strong> : public, privé pour le MJ, aveugle ou pour soi seul.</li>
+  </ul>
+  <p>
+    Les conditions qui imposent un désavantage (Commotion, Titubant, Essouflé) sont déjà prises en compte à l'ouverture de la fenêtre. Avec un avantage, le système lance des
+    dés supplémentaires et garde le meilleur ; avec un désavantage, il garde le moins bon.
+  </p>
+
+  <h2>Les cartes du tchat</h2>
+  <div class="guide-row">
+    <div class="guide-image guide-image-card"><img src="@@img:carte-attente-degats@@" alt="Carte d'attaque réussie" /></div>
+    <div>
+      <p>Chaque jet produit une carte qui résume :</p>
+      <ul>
+        <li>le personnage (son portrait et son nom en tête de carte), et sa cible le cas échéant (« contre Goule ») ;</li>
+        <li>le type d'attaque déclaré (Armée ou Sans arme) ;</li>
+        <li>les dés lancés : avec un avantage ou un désavantage, le dé écarté apparaît grisé ;</li>
+        <li>le résultat face au seuil, la formule et les modificateurs utilisés ;</li>
+        <li>le détail du seuil, à déplier (sauvegarde, adversité, malus) ;</li>
+        <li>le bandeau <strong>Réussite</strong> ou <strong>Échec</strong> ;</li>
+        <li>pour une ressource perdue, l'évolution du dé (par exemple « d4 → 0 »).</li>
+      </ul>
+      <p>Un clic sur le portrait d'un token dans la carte centre la scène sur ce token.</p>
+    </div>
+  </div>
+  <div class="guide-image guide-image-card"><img src="@@img:carte-ressource@@" alt="Carte de jet de ressource raté" /></div>
+
+  <h2>Le combat depuis le tchat</h2>
+  <p>
+    Quand un personnage attaque un Adversaire ciblé, tout le déroulé de l'échange tient sur <strong>une seule carte</strong>, mise à jour au fil des actions.
+  </p>
+
+  <h3>L'attaque réussit</h3>
+  <ol>
+    <li>
+      La carte indique « Touché ! En attente des dégâts de… ». Le joueur (ou le MJ) clique sur <strong>Lancer les dégâts armés</strong> ou <strong>sans arme</strong>. Avec le
+      réglage <strong>Dégâts simultanés</strong>, ce jet est fait automatiquement.
+    </li>
+    <li>Les dégâts s'ajoutent à la carte. Vous seul voyez l'armure déduite et les dégâts réels.</li>
+    <li>Le bouton <strong>Appliquer … dégâts à …</strong>, réservé au MJ, retire les dégâts réels des PV de l'Adversaire. La carte affiche alors l'évolution des PV.</li>
+  </ol>
+  <div class="guide-row">
+    <div class="guide-image guide-image-card"><img src="@@img:carte-degats@@" alt="Dégâts lancés sur la carte" /></div>
+    <div class="guide-image guide-image-card"><img src="@@img:carte-reussite@@" alt="Dégâts appliqués" /></div>
+  </div>
+
+  <h3>L'attaque échoue : la riposte</h3>
+  <ol>
+    <li>La carte indique que l'Adversaire riposte et attend le MJ. Cliquez sur <strong>Choisir l'attaque</strong>.</li>
+    <li>Une fenêtre liste les attaques de l'Adversaire, avec leurs dés ou leurs dégâts fixes. Choisissez-en une et cliquez sur <strong>Lancer les dégâts</strong>.</li>
+    <li>Les dégâts s'ajoutent à la carte, avec le bouton <strong>Appliquer … dégâts à …</strong> qui les retire des PV du personnage.</li>
+  </ol>
+  <div class="guide-row">
+    <div class="guide-image guide-image-card"><img src="@@img:carte-attente-mj@@" alt="Riposte en attente du MJ" /></div>
+    <div class="guide-image guide-image-half"><img src="@@img:choix-attaque@@" alt="Choix de l'attaque de l'Adversaire" /></div>
+    <div class="guide-image guide-image-card"><img src="@@img:carte-riposte@@" alt="Riposte de l'Adversaire" /></div>
+  </div>
+  <div class="guide-astuce">
+    <p>
+      Si la santé est gérée en <strong>Dés de vie</strong> seulement, il n'y a pas de PV à retirer : un échec propose directement un <strong>Jet de Dé de vie</strong> au personnage,
+      et le bouton Appliquer est remplacé par ce même jet pour un personnage blessé.
+    </p>
+  </div>
+
+  <h3>Les autres jets de dégâts</h3>
+  <ul>
+    <li>Un jet de dégâts d'un personnage contre un Adversaire ciblé déduit son armure et propose le bouton Appliquer.</li>
+    <li>Une attaque d'Adversaire lancée depuis sa fiche contre un personnage ciblé propose aussi le bouton Appliquer.</li>
+  </ul>
+
+  <h2>Demander un jet depuis un journal : @jet</h2>
+  <p>
+    Dans un journal, la description d'un acteur ou d'un objet, vous pouvez insérer un lien de demande de jet. Quand vous cliquez dessus, un message
+    <strong>« Jet de … pour tous ! »</strong> est publié dans le tchat ; chaque joueur clique sur <strong>Faire le jet !</strong> pour lancer le dé avec le personnage qui lui est
+    attribué (dans la configuration de l'utilisateur).
+  </p>
+  <div class="guide-image"><img src="@@img:journal-jet@@" alt="Liens @jet dans un journal" /></div>
+  <div class="guide-row">
+    <div class="guide-image guide-image-card"><img src="@@img:demande-jet@@" alt="Demande de jet, vue du MJ" /></div>
+    <div class="guide-image guide-image-card"><img src="@@img:demande-jet-joueur@@" alt="Demande de jet, vue d'un joueur" /></div>
+  </div>
+
+  <h3>Syntaxe</h3>
+  <p><code>@jet[cible]{}(avantage)</code></p>
+  <p>Les accolades et les parenthèses sont obligatoires, même vides. <code>@roll</code> fonctionne de la même façon que <code>@jet</code>.</p>
+  <table class="guide-table">
+    <thead>
+      <tr><th>Cible</th><th>Jet demandé</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>for</code>, <code>dex</code>, <code>con</code>, <code>sag</code>, <code>int</code>, <code>cha</code></td><td>Sauvegarde</td></tr>
+      <tr><td><code>torche</code>, <code>bagou</code>, <code>san</code></td><td>Torche, Bagou, Santé mentale</td></tr>
+      <tr><td><code>richesse</code>, <code>hitDice</code>, <code>miscellaneous</code></td><td>Richesse, Dé de vie, ressource diverse</td></tr>
+    </tbody>
+  </table>
+  <p>
+    L'avantage est facultatif : <code>++</code> double avantage, <code>+</code> avantage, <code>-</code> désavantage, <code>--</code> double désavantage. Il est reporté dans la
+    fenêtre de jet du joueur.
+  </p>
+  <p>Exemples :</p>
+  <ul>
+    <li><code>@jet[sag]{}(-)</code> : sauvegarde de Sagesse avec désavantage ;</li>
+    <li><code>@jet[torche]{}()</code> : jet de Torche.</li>
+  </ul>
+</div>

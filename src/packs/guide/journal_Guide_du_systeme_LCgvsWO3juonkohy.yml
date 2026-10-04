@@ -1,0 +1,698 @@
+_id: LCgvsWO3juonkohy
+name: Guide du système
+pages:
+  - _id: 6rz53Y4KlOMRvkw3
+    name: Introduction
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <div class="guide-banner"><img src="systems/cthack/ui/cthulhu-hack-banner-large.webp" alt="Cthulhu Hack" /></div>
+
+          <h2>Bienvenue</h2>
+          <p>
+            Ce guide présente ce que le système <strong>Cthulhu Hack</strong> pour Foundry VTT met à votre disposition en tant que Meneur de jeu : les fiches, les jets de dés, le combat
+            depuis le tchat et les outils pour animer la partie. Il ne remplace pas le livre de règles : il explique comment Foundry vous aide à les appliquer.
+          </p>
+
+          <h3>Sommaire</h3>
+          <ul>
+            <li>@UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.FOaRYBbzkJhYejtu]{Options du système} : les réglages du monde et leur effet à la table.</li>
+            <li>@UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.RU9sFGH6pljeJQi6]{Le Personnage} : la fiche des investigateurs, leurs ressources, leur équipement et leurs conditions.</li>
+            <li>@UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.8y6qQY3vl7DLJMWY]{L'Adversaire} : la fiche des créatures et des PNJ hostiles.</li>
+            <li>@UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.myQHUZRgImQ9cmj5]{Jets et messages} : la fenêtre de jet, les cartes du tchat et le combat.</li>
+            <li>@UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.7BUnactZ8KvPfGhB]{Outils du MJ} : le gestionnaire de joueurs, la recherche, la Fortune et les macros.</li>
+          </ul>
+
+          <h3>Versions</h3>
+          <p>Ce guide décrit la version <strong>6.2.0</strong> du système, qui nécessite <strong>Foundry VTT V14</strong>.</p>
+
+          <h2>L'onglet Cthulhu Hack</h2>
+          <div class="guide-row">
+            <div class="guide-image guide-image-narrow"><img src="systems/cthack/ui/guide/fr/barre-laterale.webp" alt="Onglet Cthulhu Hack de la barre latérale" /></div>
+            <div>
+              <p>
+                Le système ajoute un onglet à la barre latérale, reconnaissable à l'icône Cthulhu Hack. Il affiche la version installée et des liens vers les communautés où trouver de
+                l'aide : le Discord des XII Singes et le Discord de la Fonderie.
+              </p>
+              <p>Vous y trouvez aussi, réservés au MJ, deux boutons :</p>
+              <ul>
+                <li><strong>Gestionnaire de joueurs</strong> : rouvre la fenêtre « Statut des joueurs » (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.7BUnactZ8KvPfGhB]{Outils du MJ}) ;</li>
+                <li><strong>Recherche</strong> : cherche un texte dans les journaux, les acteurs et les objets du monde.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2>Les compendiums</h2>
+          <div class="guide-row">
+            <div class="guide-image guide-image-narrow"><img src="systems/cthack/ui/guide/fr/compendiums.webp" alt="Compendiums du système" /></div>
+            <div>
+              <p>
+                Les compendiums sont rangés dans un dossier <strong>Cthulhu Hack</strong>, avec un sous-dossier <strong>FR</strong> et un sous-dossier <strong>EN</strong> : chaque contenu
+                existe dans les deux langues.
+              </p>
+              <ul>
+                <li><strong>Guide du système</strong> : ce guide.</li>
+                <li><strong>Prétirés</strong> : un investigateur prêt à jouer par archétype.</li>
+                <li><strong>Archétypes</strong> : à déposer sur une fiche pour l'initialiser.</li>
+                <li><strong>Capacités spéciales</strong> et <strong>Armes spéciales</strong> : les capacités et armes standard du jeu.</li>
+                <li><strong>Adversaires</strong> : les créatures du livre de base.</li>
+                <li><strong>Tables aléatoires</strong> : les tables Hors jeu, Folie passagère et Choc.</li>
+                <li><strong>Hors jeu</strong>, <strong>Folie passagère</strong> et <strong>Choc</strong> : les conditions, à déposer sur une fiche.</li>
+                <li><strong>Macros</strong> : tirages sur les tables de conséquences.</li>
+              </ul>
+              <p>
+                Par défaut, les joueurs ne voient pas les compendiums ; les joueurs de confiance peuvent les consulter et les assistants les modifier. Le guide, lui, est consultable par
+                tous les joueurs.
+              </p>
+            </div>
+          </div>
+
+          <h2>Modules compatibles</h2>
+          <ul>
+            <li><strong>Dice So Nice</strong> : le système fournit des dés aux couleurs de Cthulhu Hack.</li>
+            <li><strong>Token Action HUD Cthulhu Hack</strong> (avec Token Action HUD Core) : lance sauvegardes, ressources et dégâts depuis le token sélectionné.</li>
+          </ul>
+
+          <h2>Crédits</h2>
+          <p>
+            Cthulhu Hack est un jeu de rôle de Paul Baldowski édité par Just Crunch Games. Il est édité en version française par Les XII Singes sous le nom Cthulhu Hack VF, dans la
+            collection Dark Monkeys.
+          </p>
+          <p>
+            La marque Cthulhu Hack VF, le logo Cthulhu Hack VF, la marque Dark Monkeys, le logo Dark Monkeys, la marque Les XII Singes, le logo Les XII Singes sont la propriété de
+            ReSpell. La marque Cthulhu Hack, le logo Cthulhu Hack, la marque Just Crunch Games, le logo Just Crunch Games sont la propriété de Just Crunch Games.
+          </p>
+          <p>
+            Les visuels utilisés sur Foundry VTT sont réalisés par Maxime Plasse (maxsmaps.com). Ils sont fournis pour l'utilisation de Foundry VTT ; toute autre utilisation ou
+            reproduction doit obtenir l'accord de ReSpell / Les XII Singes.
+          </p>
+          <p>
+            Le système est développé par Kristov, avec la contribution de Lightbringer pour les compendiums et les tests. Merci à Limpar pour la traduction anglaise des compendiums.
+          </p>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 100000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!LCgvsWO3juonkohy.6rz53Y4KlOMRvkw3'
+  - _id: FOaRYBbzkJhYejtu
+    name: Options du système
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <h2>Options du système</h2>
+          <p>
+            Les réglages se trouvent dans <strong>Paramètres du jeu → Configurer les paramètres → Cthulhu Hack</strong>. Ils s'appliquent à tout le monde et seul le MJ peut les
+            modifier. Certains nécessitent de recharger la page, ce que Foundry vous propose à l'enregistrement.
+          </p>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/fr/reglages.webp" alt="Réglages du système" /></div>
+
+          <h3>Cthulhu Hack Réédition</h3>
+          <p>Active les règles de la réédition (activé par défaut). Concrètement, dans Foundry :</p>
+          <ul>
+            <li>les <strong>compétences</strong> du personnage sont proposées comme modificateur dans la fenêtre de jet ;</li>
+            <li>avec l'option Adrénaline, les deux jetons du personnage sont présentés comme des jetons de <strong>Fortune</strong> dans le gestionnaire de joueurs ;</li>
+            <li>la réserve commune de Fortune n'apparaît plus dans le gestionnaire de joueurs.</li>
+          </ul>
+
+          <h3>Option Adrénaline</h3>
+          <p>
+            Ajoute deux jetons sous les sauvegardes de chaque personnage. Un clic sur un jeton le fait passer du joueur au MJ, et inversement. Les jetons sont aussi visibles dans le
+            gestionnaire de joueurs.
+          </p>
+
+          <h3>Option Fortune et Nb jetons Fortune</h3>
+          <p>
+            Active une réserve de jetons de Fortune commune à la table. Le nombre de jetons restants s'affiche sur toutes les fiches de personnage et se met à jour en direct. Vous le
+            réglez ici, ou directement depuis une fiche (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.7BUnactZ8KvPfGhB]{Outils du MJ}).
+          </p>
+
+          <h3>Richesse</h3>
+          <ul>
+            <li><strong>Pas de gestion de la richesse</strong> : la richesse n'apparaît pas sur la fiche.</li>
+            <li><strong>Valeur fixe sous forme d'un dé</strong> : la richesse est un dé indiqué sur la fiche, que vous gérez à la main.</li>
+            <li><strong>Gérée comme une ressource</strong> : la richesse se lance et diminue sur un échec, comme la Torche ou le Bagou.</li>
+          </ul>
+
+          <h3>Ressource diverse</h3>
+          <p>
+            Saisissez un nom (par exemple « Respect ») pour ajouter une ressource supplémentaire à toutes les fiches. Elle se lance comme les autres ressources. Laissez vide pour ne pas
+            l'utiliser.
+          </p>
+
+          <h3>Gestion des points de vie</h3>
+          <ul>
+            <li><strong>Points de vie</strong> : la fiche affiche les PV ; le bouton « Appliquer » des cartes de dégâts les retire automatiquement.</li>
+            <li><strong>Dés de vie</strong> : la fiche affiche le Dé de vie. Quand un personnage est blessé, la carte de dégâts propose un <strong>jet de Dé de vie</strong> au lieu de retirer des PV.</li>
+            <li><strong>Points et dés de vie</strong> (par défaut) : les deux sont affichés ; les dégâts se retirent des PV.</li>
+          </ul>
+
+          <h3>Afficher le malus d'adversité (Version Réédition)</h3>
+          <p>Quand un joueur cible un Adversaire avant son jet :</p>
+          <ul>
+            <li><strong>activé</strong> (par défaut) : le malus de l'Adversaire est reporté automatiquement dans la fenêtre de jet et réduit le seuil ;</li>
+            <li>
+              <strong>désactivé</strong> : les joueurs ne voient pas ce malus. Vous seul le voyez, dans la fenêtre de jet et sur la carte du tchat (ligne « Malus de l'Opposant
+              (caché) »). Il n'est pas retiré du seuil : à vous d'en tenir compte au moment d'annoncer le résultat.
+            </li>
+          </ul>
+
+          <h3>Dégâts simultanés</h3>
+          <p>
+            Quand un personnage réussit une attaque contre un Adversaire ciblé, ses dégâts sont lancés aussitôt, sur la même carte. Désactivé, le joueur les lance lui-même avec le bouton
+            de la carte. Dans les deux cas, un échec laisse la main au MJ pour la riposte (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.myQHUZRgImQ9cmj5]{Jets et messages}).
+          </p>
+
+          <h3>Utiliser l'option d'encombrement (Section 13)</h3>
+          <p>
+            Ajoute un encombrement aux armes et aux objets : taille quand l'objet est équipé, quand il ne l'est pas, et un statut <em>Équipé</em>, <em>Non équipé</em> ou <em>Chez
+            soi</em>. L'onglet Équipement de la fiche affiche l'encombrement actuel, calculé automatiquement, face au maximum que vous saisissez. Les objets laissés chez soi ne comptent
+            pas.
+          </p>
+
+          <h3>Personnaliser l'apparence</h3>
+          <p>
+            Les couleurs du système sont définies par des variables CSS : un module (par exemple le module d'une campagne) peut les redéfinir pour habiller les fiches et les cartes du
+            tchat à ses couleurs.
+          </p>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 200000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!LCgvsWO3juonkohy.FOaRYBbzkJhYejtu'
+  - _id: RU9sFGH6pljeJQi6
+    name: Le Personnage
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <h2>Le Personnage</h2>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/fr/fiche-personnage.webp" alt="Fiche de personnage" /></div>
+
+          <h3>Verrouillage de la fiche</h3>
+          <p>
+            Toutes les fiches s'ouvrent <strong>verrouillées</strong> : on peut jouer (lancer les dés, utiliser les capacités) sans risquer de modifier une valeur par erreur.
+            L'interrupteur en haut à gauche de la barre de titre la <strong>déverrouille</strong>. La fiche s'élargit alors et permet :
+          </p>
+          <ul>
+            <li>de saisir le nom, le métier, les compétences, l'archétype et une description courte ;</li>
+            <li>de modifier les sauvegardes, les ressources (valeur et maximum), les points de vie et les dés de dégâts ;</li>
+            <li>de créer des objets, armes, capacités et sorts avec les boutons <strong>+</strong> ;</li>
+            <li>de déposer des éléments venus de la barre latérale ou d'un compendium : <strong>une fiche verrouillée refuse les dépôts</strong>.</li>
+          </ul>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/fr/fiche-personnage-edition.webp" alt="Fiche déverrouillée" /></div>
+          <p>
+            Le portrait se change d'un clic quand la fiche est déverrouillée (clic droit pour revenir à l'image par défaut). Fiche verrouillée, survolez-le pour le montrer aux joueurs.
+            Un clic droit sur le nom du personnage lance une recherche de ce nom dans le monde.
+          </p>
+
+          <h3>L'en-tête : ressources, santé et dégâts</h3>
+          <ul>
+            <li>
+              <strong>Torche</strong>, <strong>Bagou</strong>, <strong>Santé mentale</strong>, ainsi que la <strong>Richesse</strong> et la <strong>ressource diverse</strong> selon les
+              réglages : cliquez sur le nom pour lancer le dé. En cas d'échec, le dé baisse d'un cran automatiquement. Un dé réduit par rapport à son maximum est mis en évidence.
+            </li>
+            <li><strong>Points de vie</strong> et <strong>Dé de vie</strong>, selon le réglage « Gestion des points de vie ».</li>
+            <li>
+              <strong>Dégât(s) armé</strong> et <strong>Dégât(s) sans arme</strong> : cliquez pour lancer les dégâts. Si un Adversaire est ciblé, son armure est déduite sur la carte.
+            </li>
+          </ul>
+
+          <h3>La colonne de gauche</h3>
+          <ul>
+            <li>Les six <strong>sauvegardes</strong> : cliquez sur un nom pour faire le jet (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.myQHUZRgImQ9cmj5]{Jets et messages}).</li>
+            <li>La <strong>Fortune</strong> et les jetons d'<strong>Adrénaline</strong>, si ces options sont actives (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.FOaRYBbzkJhYejtu]{Options du système}).</li>
+            <li>Les <strong>Conditions</strong> subies par le personnage (voir plus bas).</li>
+          </ul>
+
+          <h3>Les onglets</h3>
+          <ul>
+            <li><strong>Description</strong> : la biographie.</li>
+            <li>
+              <strong>Équipement</strong> (ouvert par défaut) : les armes, puis les objets, l'encombrement si l'option est active, et une zone de texte libre pour le reste de
+              l'équipement.
+            </li>
+            <li><strong>Capacités &amp; Magie</strong> : les capacités spéciales, puis les sortilèges et rituels.</li>
+            <li><strong>Notes</strong> : une zone de texte libre.</li>
+          </ul>
+          <p>Dans les listes, un clic sur une ligne déplie sa description.</p>
+
+          <h3>Armes et objets</h3>
+          <p>
+            Chaque arme ou objet peut avoir un <strong>dé de matériel</strong> : l'icône de dé lance un jet de matériel, et le dé baisse d'un cran en cas d'échec. Les armes affichent
+            aussi leur <strong>portée</strong>.
+          </p>
+          <p>
+            Pour attaquer avec une arme, faites glisser l'arme dans la barre de macros (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.7BUnactZ8KvPfGhB]{Outils du MJ}), ou ciblez un Adversaire et faites un jet de Force ou de Dextérité en
+            déclarant l'attaque (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.myQHUZRgImQ9cmj5]{Jets et messages}).
+          </p>
+          <div class="guide-astuce">
+            <p>
+              Fiche déverrouillée, le bouton <strong>+</strong> de l'onglet Équipement crée une <strong>arme</strong> ; avec <strong>Maj + clic</strong>, il crée un
+              <strong>objet</strong>. La fiche du nouvel élément s'ouvre verrouillée : basculez son interrupteur pour la remplir.
+            </p>
+          </div>
+
+          <h3>Le menu du clic droit</h3>
+          <div class="guide-row">
+            <div class="guide-image guide-image-half"><img src="systems/cthack/ui/guide/fr/menu-capacite.webp" alt="Menu contextuel d'une capacité" /></div>
+            <div>
+              <p>Un clic droit sur une arme, un objet, une capacité, un sort ou une condition ouvre un menu :</p>
+              <ul>
+                <li><strong>Envoyer dans le chat pour tous</strong> : publie la description dans le tchat (si l'élément en a une) ;</li>
+                <li><strong>Envoyer dans le chat pour le MJ</strong> : proposé aux joueurs, pour vous transmettre discrètement une description ;</li>
+                <li><strong>Editer</strong> : ouvre la fiche de l'élément ;</li>
+                <li><strong>Supprimer</strong> : retire l'élément du personnage.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Les capacités spéciales</h3>
+          <p>
+            Une capacité peut avoir un nombre d'<strong>utilisations</strong> limité, avec une période : permanent, par scénario, par séance, par jour, par nuit, par heure, par scène,
+            par combat ou par moment. La liste affiche les utilisations restantes et la date du dernier usage. Le clic droit propose en plus :
+          </p>
+          <ul>
+            <li><strong>Utiliser</strong> : retire une utilisation et note la date ;</li>
+            <li><strong>Augmenter</strong> : rend une utilisation ;</li>
+            <li><strong>Réinitialiser</strong> : apparaît quand il ne reste plus d'utilisation, et rend toutes les utilisations.</li>
+          </ul>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/fr/fiche-personnage-capacites.webp" alt="Onglet Capacités et Magie" /></div>
+          <p>
+            Les <strong>capacités standard</strong> du compendium sont reconnues par le système : déposées sur la fiche, elles sont proposées automatiquement comme avantage dans la
+            fenêtre de jet quand elles s'appliquent. Une capacité qui n'est pas « multiple » ne peut pas être ajoutée deux fois.
+          </p>
+          <p>
+            Pour une <strong>capacité personnelle</strong>, cochez <em>Custom</em> et <em>Donne un avantage</em> sur sa fiche, puis décrivez l'avantage : il sera proposé dans la fenêtre
+            de jet.
+          </p>
+          <div class="guide-astuce">
+            <p>Déposez les capacités standard depuis le compendium plutôt que de les recréer avec le bouton + : seules les capacités déposées sont reconnues par la fenêtre de jet.</p>
+          </div>
+
+          <h3>Sortilèges et rituels</h3>
+          <p>
+            Chaque sort indique son type (sortilège ou rituel), son dé de sanité et son incantation. L'icône de dé lance un jet de sanité ; en cas d'échec, le dé du sort baisse d'un
+            cran.
+          </p>
+
+          <h3>Créer un personnage : archétypes et prétirés</h3>
+          <p>
+            Le compendium <strong>Prétirés</strong> contient un investigateur prêt à jouer par archétype : faites-le glisser dans l'onglet des acteurs pour l'importer.
+          </p>
+          <p>
+            Pour partir d'une fiche vierge, déverrouillez-la et déposez-y un <strong>archétype</strong>. Il renseigne le nom de l'archétype, la Torche, le Bagou et la Santé mentale
+            (valeur et maximum), le Dé de vie, la Richesse et les dés de dégâts armés et sans arme. Les points de vie, les sauvegardes et les capacités restent à saisir.
+          </p>
+
+          <h3>Les conditions : Hors jeu, Folie passagère et Choc</h3>
+          <p>
+            Quand un personnage subit une conséquence, déverrouillez sa fiche et déposez-y la condition depuis le compendium <strong>Hors jeu</strong>, <strong>Folie passagère</strong>
+            ou <strong>Choc</strong>. Elle apparaît sous « Conditions » dans la colonne de gauche (survolez-la pour lire sa description) et une icône s'affiche sur le token. Déposer
+            une condition déjà présente n'a pas d'effet.
+          </p>
+          <p>Certaines conditions sont appliquées automatiquement :</p>
+          <ul>
+            <li><strong>Commotion</strong>, <strong>Titubant</strong> et <strong>Essouflé</strong> : un désavantage sur les jets de sauvegarde ;</li>
+            <li><strong>Os brisés</strong> : −4 aux sauvegardes de Force, de Dextérité et de Constitution.</li>
+          </ul>
+          <p>Les autres servent de rappel : leurs effets restent à appliquer à la table. Pour retirer une condition, faites un clic droit dessus puis <strong>Supprimer</strong>.</p>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 300000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!LCgvsWO3juonkohy.RU9sFGH6pljeJQi6'
+  - _id: 8y6qQY3vl7DLJMWY
+    name: L'Adversaire
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <h2>L'Adversaire</h2>
+          <p>
+            Les créatures et les PNJ hostiles utilisent la fiche <strong>Adversaire</strong>. Les cartes du tchat les appellent « Opposant ». Le compendium <strong>Adversaires</strong>
+            contient les créatures du livre de base, prêtes à l'emploi.
+          </p>
+          <div class="guide-row">
+            <div class="guide-image guide-image-half"><img src="systems/cthack/ui/guide/fr/fiche-adversaire.webp" alt="Fiche d'Adversaire, onglet Description" /></div>
+            <div class="guide-image guide-image-half"><img src="systems/cthack/ui/guide/fr/fiche-adversaire-combat.webp" alt="Fiche d'Adversaire, onglet Attaques" /></div>
+          </div>
+
+          <h3>L'en-tête</h3>
+          <ul>
+            <li><strong>DV</strong> : les dés de vie de l'Adversaire ;</li>
+            <li><strong>PV</strong> : points de vie actuels et maximum ;</li>
+            <li><strong>PA</strong> : points d'armure, déduits automatiquement des dégâts qu'il subit ;</li>
+            <li><strong>Malus</strong> : le malus au toucher que subissent les personnages qui l'attaquent ou lui résistent.</li>
+          </ul>
+          <div class="guide-astuce">
+            <p>
+              Fiche déverrouillée, changer les <strong>DV</strong> recalcule tout seul les PV maximum (4 par DV, en conservant les blessures déjà subies) et le malus (−1 par DV au-delà
+              du premier).
+            </p>
+          </div>
+
+          <h3>Les onglets</h3>
+          <ul>
+            <li><strong>Description</strong> : le texte de la créature (ouvert par défaut).</li>
+            <li><strong>Attaques, Capacités, Magie</strong> : trois listes, avec un bouton <strong>+</strong> pour chacune quand la fiche est déverrouillée.</li>
+          </ul>
+          <p>
+            Seuls les attaques, les capacités d'adversaire et les sorts peuvent être déposés sur cette fiche. Un clic droit sur un élément permet de l'éditer ou de le supprimer.
+          </p>
+
+          <h3>Les attaques</h3>
+          <p>
+            Une attaque se définit par un dé de dégâts, des dégâts fixes et un nombre d'attaques. Quand elle a un dé de dégâts, une icône de dé permet de lancer ses dégâts (dé + dégâts
+            fixes, par exemple « d8 + 2 »). Si un personnage est ciblé, la carte du tchat vous propose de lui <strong>appliquer</strong> les dégâts.
+          </p>
+          <p>
+            Une attaque à dégâts fixes seulement n'a pas d'icône de jet : ses dégâts s'appliquent quand vous la choisissez pour une riposte (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.myQHUZRgImQ9cmj5]{Jets et messages}).
+          </p>
+
+          <h3>Capacités et sorts</h3>
+          <ul>
+            <li>
+              Les <strong>capacités d'adversaire</strong> gèrent des utilisations limitées comme celles des personnages : clic droit pour <strong>Utiliser</strong>,
+              <strong>Augmenter</strong> ou <strong>Réinitialiser</strong>.
+            </li>
+            <li>Les <strong>sorts</strong> se lancent avec l'icône de dé (jet de sanité) ; le dé du sort baisse sur un échec.</li>
+          </ul>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 400000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!LCgvsWO3juonkohy.8y6qQY3vl7DLJMWY'
+  - _id: myQHUZRgImQ9cmj5
+    name: Jets et messages
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <h2>Jets et messages</h2>
+
+          <h3>Les jets disponibles</h3>
+          <ul>
+            <li><strong>Sauvegarde</strong> : clic sur le nom d'une sauvegarde dans la fiche. Réussite si le d20 est inférieur ou égal au seuil.</li>
+            <li><strong>Ressource</strong> : clic sur Torche, Bagou, Santé mentale, Richesse ou la ressource diverse. Sur un échec, le dé baisse d'un cran.</li>
+            <li><strong>Matériel</strong> : icône de dé d'une arme ou d'un objet. Sur un échec, le dé de matériel baisse.</li>
+            <li><strong>Sanité</strong> : icône de dé d'un sort.</li>
+            <li><strong>Dégâts</strong> : clic sur les dégâts armés ou sans arme d'un personnage, ou sur l'icône de dé d'une attaque d'Adversaire.</li>
+            <li><strong>Attaque</strong> : macro d'une arme, ou sauvegarde de Force ou de Dextérité déclarée comme attaque contre un Adversaire ciblé.</li>
+          </ul>
+
+          <h2>La fenêtre de jet</h2>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/fr/fenetre-jet.webp" alt="Fenêtre de jet d'attaque" /></div>
+          <p>Chaque jet ouvre une fenêtre qui réunit tout ce qui modifie le résultat :</p>
+          <ul>
+            <li>
+              <strong>Cible</strong> : si le joueur a ciblé un token (touche T ou clic droit sur le token), son image, son nom et son adversité s'affichent. Pour un jet de dégâts, le
+              MJ voit aussi son armure. Si plusieurs tokens sont ciblés, seul le premier est pris en compte et un avertissement le signale.
+            </li>
+            <li>
+              <strong>Attaque</strong> : quand un Adversaire est ciblé, le joueur déclare une attaque <strong>Armée</strong> ou <strong>Sans arme</strong> (avec le dé de dégâts
+              correspondant). Pour une sauvegarde de Force ou de Dextérité, le choix <strong>Pas d'attaque</strong> est proposé, et sélectionné par défaut.
+            </li>
+            <li><strong>Sauvegarde</strong> et <strong>Malus</strong> : la valeur de la sauvegarde et un malus de 0 à −10, prérempli avec celui de l'Adversaire ciblé.</li>
+            <li><strong>Seuil final</strong> : le seuil à atteindre, mis à jour à chaque changement.</li>
+            <li>
+              <strong>Modificateurs</strong> : le métier, les compétences (règles de la réédition), les capacités standard qui s'appliquent et les capacités personnelles qui donnent un
+              avantage. Cliquer sur un modificateur ajoute un cran d'avantage.
+            </li>
+            <li><strong>Avantages et désavantages</strong> : un curseur à cinq crans, du double désavantage au double avantage.</li>
+            <li><strong>Visibilité du lancer</strong> : public, privé pour le MJ, aveugle ou pour soi seul.</li>
+          </ul>
+          <p>
+            Les conditions qui imposent un désavantage (Commotion, Titubant, Essouflé) sont déjà prises en compte à l'ouverture de la fenêtre. Avec un avantage, le système lance des
+            dés supplémentaires et garde le meilleur ; avec un désavantage, il garde le moins bon.
+          </p>
+
+          <h2>Les cartes du tchat</h2>
+          <div class="guide-row">
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/fr/carte-attente-degats.webp" alt="Carte d'attaque réussie" /></div>
+            <div>
+              <p>Chaque jet produit une carte qui résume :</p>
+              <ul>
+                <li>le personnage (son portrait et son nom en tête de carte), et sa cible le cas échéant (« contre Goule ») ;</li>
+                <li>le type d'attaque déclaré (Armée ou Sans arme) ;</li>
+                <li>les dés lancés : avec un avantage ou un désavantage, le dé écarté apparaît grisé ;</li>
+                <li>le résultat face au seuil, la formule et les modificateurs utilisés ;</li>
+                <li>le détail du seuil, à déplier (sauvegarde, adversité, malus) ;</li>
+                <li>le bandeau <strong>Réussite</strong> ou <strong>Échec</strong> ;</li>
+                <li>pour une ressource perdue, l'évolution du dé (par exemple « d4 → 0 »).</li>
+              </ul>
+              <p>Un clic sur le portrait d'un token dans la carte centre la scène sur ce token.</p>
+            </div>
+          </div>
+          <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/fr/carte-ressource.webp" alt="Carte de jet de ressource raté" /></div>
+
+          <h2>Le combat depuis le tchat</h2>
+          <p>
+            Quand un personnage attaque un Adversaire ciblé, tout le déroulé de l'échange tient sur <strong>une seule carte</strong>, mise à jour au fil des actions.
+          </p>
+
+          <h3>L'attaque réussit</h3>
+          <ol>
+            <li>
+              La carte indique « Touché ! En attente des dégâts de… ». Le joueur (ou le MJ) clique sur <strong>Lancer les dégâts armés</strong> ou <strong>sans arme</strong>. Avec le
+              réglage <strong>Dégâts simultanés</strong>, ce jet est fait automatiquement.
+            </li>
+            <li>Les dégâts s'ajoutent à la carte. Vous seul voyez l'armure déduite et les dégâts réels.</li>
+            <li>Le bouton <strong>Appliquer … dégâts à …</strong>, réservé au MJ, retire les dégâts réels des PV de l'Adversaire. La carte affiche alors l'évolution des PV.</li>
+          </ol>
+          <div class="guide-row">
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/fr/carte-degats.webp" alt="Dégâts lancés sur la carte" /></div>
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/fr/carte-reussite.webp" alt="Dégâts appliqués" /></div>
+          </div>
+
+          <h3>L'attaque échoue : la riposte</h3>
+          <ol>
+            <li>La carte indique que l'Adversaire riposte et attend le MJ. Cliquez sur <strong>Choisir l'attaque</strong>.</li>
+            <li>Une fenêtre liste les attaques de l'Adversaire, avec leurs dés ou leurs dégâts fixes. Choisissez-en une et cliquez sur <strong>Lancer les dégâts</strong>.</li>
+            <li>Les dégâts s'ajoutent à la carte, avec le bouton <strong>Appliquer … dégâts à …</strong> qui les retire des PV du personnage.</li>
+          </ol>
+          <div class="guide-row">
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/fr/carte-attente-mj.webp" alt="Riposte en attente du MJ" /></div>
+            <div class="guide-image guide-image-half"><img src="systems/cthack/ui/guide/fr/choix-attaque.webp" alt="Choix de l'attaque de l'Adversaire" /></div>
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/fr/carte-riposte.webp" alt="Riposte de l'Adversaire" /></div>
+          </div>
+          <div class="guide-astuce">
+            <p>
+              Si la santé est gérée en <strong>Dés de vie</strong> seulement, il n'y a pas de PV à retirer : un échec propose directement un <strong>Jet de Dé de vie</strong> au personnage,
+              et le bouton Appliquer est remplacé par ce même jet pour un personnage blessé.
+            </p>
+          </div>
+
+          <h3>Les autres jets de dégâts</h3>
+          <ul>
+            <li>Un jet de dégâts d'un personnage contre un Adversaire ciblé déduit son armure et propose le bouton Appliquer.</li>
+            <li>Une attaque d'Adversaire lancée depuis sa fiche contre un personnage ciblé propose aussi le bouton Appliquer.</li>
+          </ul>
+
+          <h2>Demander un jet depuis un journal : @jet</h2>
+          <p>
+            Dans un journal, la description d'un acteur ou d'un objet, vous pouvez insérer un lien de demande de jet. Quand vous cliquez dessus, un message
+            <strong>« Jet de … pour tous ! »</strong> est publié dans le tchat ; chaque joueur clique sur <strong>Faire le jet !</strong> pour lancer le dé avec le personnage qui lui est
+            attribué (dans la configuration de l'utilisateur).
+          </p>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/fr/journal-jet.webp" alt="Liens @jet dans un journal" /></div>
+          <div class="guide-row">
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/fr/demande-jet.webp" alt="Demande de jet, vue du MJ" /></div>
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/fr/demande-jet-joueur.webp" alt="Demande de jet, vue d'un joueur" /></div>
+          </div>
+
+          <h3>Syntaxe</h3>
+          <p><code>@jet[cible]{}(avantage)</code></p>
+          <p>Les accolades et les parenthèses sont obligatoires, même vides. <code>@roll</code> fonctionne de la même façon que <code>@jet</code>.</p>
+          <table class="guide-table">
+            <thead>
+              <tr><th>Cible</th><th>Jet demandé</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>for</code>, <code>dex</code>, <code>con</code>, <code>sag</code>, <code>int</code>, <code>cha</code></td><td>Sauvegarde</td></tr>
+              <tr><td><code>torche</code>, <code>bagou</code>, <code>san</code></td><td>Torche, Bagou, Santé mentale</td></tr>
+              <tr><td><code>richesse</code>, <code>hitDice</code>, <code>miscellaneous</code></td><td>Richesse, Dé de vie, ressource diverse</td></tr>
+            </tbody>
+          </table>
+          <p>
+            L'avantage est facultatif : <code>++</code> double avantage, <code>+</code> avantage, <code>-</code> désavantage, <code>--</code> double désavantage. Il est reporté dans la
+            fenêtre de jet du joueur.
+          </p>
+          <p>Exemples :</p>
+          <ul>
+            <li><code>@jet[sag]{}(-)</code> : sauvegarde de Sagesse avec désavantage ;</li>
+            <li><code>@jet[torche]{}()</code> : jet de Torche.</li>
+          </ul>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 500000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!LCgvsWO3juonkohy.myQHUZRgImQ9cmj5'
+  - _id: 7BUnactZ8KvPfGhB
+    name: Outils du MJ
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="cthack-guide">
+          <h2>Outils du MJ</h2>
+
+          <h3>Le gestionnaire de joueurs</h3>
+          <p>
+            La fenêtre <strong>Statut des joueurs</strong> s'ouvre automatiquement pour le MJ au chargement du monde. Si vous la fermez, rouvrez-la avec le bouton
+            <strong>Gestionnaire de joueurs</strong> de l'onglet Cthulhu Hack de la barre latérale.
+          </p>
+          <div class="guide-image"><img src="systems/cthack/ui/guide/fr/gestionnaire.webp" alt="Gestionnaire de joueurs" /></div>
+          <p>
+            Elle affiche une ligne par joueur connecté et son personnage : ressources, dé de vie et points de vie selon les réglages, jetons d'Adrénaline (ou de Fortune avec la
+            réédition) et les six sauvegardes. Elle se met à jour en direct pendant la partie.
+          </p>
+          <ul>
+            <li>Cliquez sur l'<strong>en-tête d'une colonne</strong> pour demander ce jet à <strong>tous</strong> les joueurs : un message « Jet de … pour tous ! » est publié.</li>
+            <li>
+              Cliquez sur une <strong>case</strong> pour demander le jet à <strong>ce joueur seulement</strong> : il reçoit un message privé, accompagné d'un roulement de tambour.
+            </li>
+            <li>Cliquez sur le <strong>nom du personnage</strong> pour ouvrir sa fiche ; survolez-le pour voir ses capacités et ses sorts.</li>
+          </ul>
+          <p>Le joueur répond en cliquant sur <strong>Faire le jet !</strong> dans le message : la fenêtre de jet de son personnage s'ouvre.</p>
+
+          <h3>La Fortune</h3>
+          <div class="guide-row">
+            <div class="guide-image guide-image-narrow"><img src="systems/cthack/ui/guide/fr/fortune.webp" alt="Menu de la Fortune" /></div>
+            <div>
+              <p>
+                Avec l'option Fortune, chaque fiche de personnage affiche « Fortune : N », le nombre de jetons restants pour toute la table. Faites un <strong>clic droit</strong>
+                dessus (réservé au MJ) :
+              </p>
+              <ul>
+                <li><strong>Utiliser</strong> : retire un jeton et annonce dans le tchat qui l'a dépensé et combien il en reste ;</li>
+                <li><strong>Augmenter</strong> : ajoute un jeton à la réserve.</li>
+              </ul>
+              <p>Sans les règles de la réédition, le total est aussi rappelé en haut du gestionnaire de joueurs.</p>
+            </div>
+          </div>
+
+          <h3>La recherche</h3>
+          <p>
+            Le bouton <strong>Recherche</strong> de l'onglet Cthulhu Hack ouvre une fenêtre où saisir un texte. Le système cherche dans les journaux, les acteurs et les objets du monde
+            (pas dans les compendiums) et vous envoie, à vous seul, la liste des résultats sous forme de liens. Au-delà de 20 résultats, il vous invite à affiner la recherche.
+          </p>
+          <div class="guide-row">
+            <div class="guide-image guide-image-half"><img src="systems/cthack/ui/guide/fr/recherche.webp" alt="Fenêtre de recherche" /></div>
+            <div class="guide-image guide-image-card"><img src="systems/cthack/ui/guide/fr/recherche-resultats.webp" alt="Résultats de la recherche" /></div>
+          </div>
+          <p>
+            Le bouton <strong>Surligner On / Off</strong> du message met en évidence le texte cherché dans les journaux ouverts. Raccourci : un clic droit sur le nom d'un personnage ou
+            d'un Adversaire, dans sa fiche, cherche ce nom.
+          </p>
+
+          <h3>Partager une description</h3>
+          <p>
+            Sur la fiche d'un personnage, le clic droit sur une arme, un objet, une capacité, un sort ou une condition permet d'<strong>envoyer sa description dans le tchat</strong>,
+            pour toute la table. Les joueurs peuvent aussi l'envoyer au MJ seul.
+          </p>
+
+          <h3>La barre de macros</h3>
+          <p>Faites glisser un élément dans la barre de macros pour créer un raccourci :</p>
+          <table class="guide-table">
+            <thead>
+              <tr><th>Élément glissé</th><th>Effet de la macro</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Un acteur ou un journal</td><td>Ouvre sa fiche ou le journal</td></tr>
+              <tr><td>Une sauvegarde, une ressource ou des dégâts depuis la fiche</td><td>Lance ce jet pour ce personnage</td></tr>
+              <tr><td>Une arme d'un personnage</td><td>Jet d'attaque (Force au contact, Dextérité à distance) ; <strong>Maj + clic</strong> : jet de matériel</td></tr>
+              <tr><td>Un objet d'un personnage</td><td>Jet de matériel</td></tr>
+              <tr><td>Une capacité, de personnage ou d'Adversaire</td><td>L'utilise (retire une utilisation)</td></tr>
+              <tr><td>Un sort, de personnage ou d'Adversaire</td><td>Jet de sanité</td></tr>
+              <tr><td>Une attaque d'Adversaire</td><td>Jet de dégâts</td></tr>
+            </tbody>
+          </table>
+          <p>
+            Les macros d'arme, d'objet, de capacité, de sort et d'attaque agissent sur le <strong>token sélectionné</strong> (à défaut, la macro d'arme utilise le personnage attribué au
+            joueur) : une même macro sert donc à plusieurs personnages qui possèdent l'élément. Les macros de sauvegarde, de ressource et de dégâts restent attachées au personnage
+            d'origine. Glissez les éléments depuis une fiche : un objet de la barre latérale ou d'un compendium ne crée pas de macro.
+          </p>
+
+          <h3>Les tables de conséquences</h3>
+          <p>
+            Le compendium <strong>Tables aléatoires</strong> contient les tables Hors jeu, Folie passagère et Choc. Le compendium <strong>Macros</strong> propose un tirage sur chacune,
+            visible du MJ seul. Importez d'abord les tables dans votre monde : les macros les retrouvent par leur nom.
+          </p>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 600000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!LCgvsWO3juonkohy.7BUnactZ8KvPfGhB'
+folder: null
+sort: 0
+ownership:
+  default: 0
+flags: {}
+_key: '!journal!LCgvsWO3juonkohy'

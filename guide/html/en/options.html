@@ -1,0 +1,69 @@
+<div class="cthack-guide">
+  <h2>System settings</h2>
+  <p>
+    The settings are in <strong>Game Settings → Configure Settings → Cthulhu Hack</strong>. They apply to everyone and only the GM can change them. Some of them require a page
+    reload, which Foundry offers when you save.
+  </p>
+  <div class="guide-image"><img src="@@img:reglages@@" alt="System settings" /></div>
+
+  <h3>Cthulhu Hack Reissue</h3>
+  <p>Turns on the rules of the reissue (on by default). In Foundry this means:</p>
+  <ul>
+    <li>the character's <strong>skills</strong> are offered as a modifier in the roll dialog;</li>
+    <li>with the Adrenaline option, the character's two tokens are shown as <strong>Fortune</strong> tokens in the players manager;</li>
+    <li>the shared Fortune pool is no longer shown in the players manager.</li>
+  </ul>
+
+  <h3>Adrenaline Option</h3>
+  <p>
+    Adds two tokens below the saves of each character. Clicking a token passes it from the player to the GM, and back. The tokens are also shown in the players manager.
+  </p>
+
+  <h3>Fortune Option and Fortune available</h3>
+  <p>
+    Turns on a pool of Fortune tokens shared by the whole table. The number of tokens left is shown on every character sheet and updates live. You set it here, or directly
+    from a sheet (see @@page:outils@@).
+  </p>
+
+  <h3>Wealth</h3>
+  <ul>
+    <li><strong>No wealth management</strong>: wealth does not appear on the sheet.</li>
+    <li><strong>Wealth as a fixed dice value</strong>: wealth is a die shown on the sheet, which you manage by hand.</li>
+    <li><strong>Wealth is managed as a resource</strong>: wealth is rolled and goes down on a failure, like Flashlights or Smokes.</li>
+  </ul>
+
+  <h3>Miscellaneous Resource</h3>
+  <p>Enter a name (for example "Respect") to add an extra resource to every sheet. It is rolled like the other resources. Leave it empty to disable it.</p>
+
+  <h3>Health Display Option</h3>
+  <ul>
+    <li><strong>Hit points</strong>: the sheet shows HP; the "Apply" button of damage cards removes them automatically.</li>
+    <li><strong>Hit dice</strong>: the sheet shows the Hit Dice. When a character is hurt, the damage card offers a <strong>Hit Dice roll</strong> instead of removing HP.</li>
+    <li><strong>Hit points and hit dice</strong> (default): both are shown; damage is removed from HP.</li>
+  </ul>
+
+  <h3>Display Opponent malus</h3>
+  <p>When a player targets an Opponent before rolling:</p>
+  <ul>
+    <li><strong>on</strong> (default): the Opponent's malus is filled in automatically in the roll dialog and lowers the threshold;</li>
+    <li>
+      <strong>off</strong>: players do not see the malus. Only you see it, in the roll dialog and on the chat card ("Opponent's malus (hidden)" line). It is not removed from the
+      threshold: take it into account yourself when you announce the result.
+    </li>
+  </ul>
+
+  <h3>Simultaneous damage</h3>
+  <p>
+    When a character succeeds an attack against a targeted Opponent, their damage is rolled at once, on the same card. When off, the player rolls it with the card's button. In
+    both cases a failure hands over to the GM for the counter-attack (see @@page:jets@@).
+  </p>
+
+  <h3>Use the encumbrance option</h3>
+  <p>
+    Adds encumbrance to weapons and items: a size when equipped, a size when not equipped, and a status <em>Equipped</em>, <em>Unequipped</em> or <em>Home</em>. The sheet's
+    Equipment tab shows the current encumbrance, computed automatically, against the maximum you enter. Items left at home do not count.
+  </p>
+
+  <h3>Customising the look</h3>
+  <p>The system's colours are defined with CSS variables: a module (a campaign module, for example) can redefine them to restyle the sheets and the chat cards.</p>
+</div>

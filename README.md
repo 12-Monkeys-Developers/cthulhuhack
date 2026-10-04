@@ -25,58 +25,64 @@ Merci à Limpar pour la traduction anglaise des compendiums.
 
 ## Fonctionnalités
 
-Version 6.1.2 — compatible Foundry VTT V14. Le détail des évolutions est dans le [CHANGELOG](CHANGELOG.md).
+Version 6.2.0 — compatible Foundry VTT V14. Le détail des évolutions est dans le [CHANGELOG](CHANGELOG.md).
+
+Un **guide utilisateur** destiné au MJ, en français et en anglais, est fourni dans les compendiums « FR - Guide du système » et « EN - System guide ».
 
 ### Modules supportés avec une adaptation spécifique
-- Token Action HUD Classic
+- Token Action HUD Cthulhu Hack (avec Token Action HUD Core)
 - Dice So Nice (dés personnalisés)
 
 ### Personnage
-- Fiche verrouillable / déverrouillable avec onglet de notes
-- Objets, armes et capacités spéciales ajoutables, modifiables et triables par glisser-déposer ; clic sur le nom pour déplier la description
-- Capacités à usages limités (par jour, scène, scénario…) avec date de dernier usage et bouton de réinitialisation
-- Objets magiques (sorts et rituels)
-- Dé de matériel, ressources (dé de vie ou PV, richesse, ressource diverse) avec diminution automatique en cas d'échec
-- Taille / encombrement des objets (option)
-- Création rapide : clic pour un objet, Shift + clic pour une arme
+- Fiche verrouillée par défaut, déverrouillable par un interrupteur dans la barre de titre ; les dépôts ne sont acceptés que sur une fiche déverrouillée
+- Onglets Description, Équipement, Capacités & Magie et Notes
+- Objets, armes, capacités et sorts ajoutés par glisser-déposer ou par les boutons + (clic : arme, Maj + clic : objet) ; clic sur une ligne pour déplier sa description
+- Clic droit sur un élément : envoyer sa description dans le tchat, éditer, supprimer
+- Capacités à usages limités (par jour, scène, scénario…) avec date du dernier usage ; clic droit pour Utiliser, Augmenter ou Réinitialiser
+- Sortilèges et rituels avec jet de sanité
+- Dé de matériel, ressources (Torche, Bagou, Santé mentale, richesse, ressource diverse) avec diminution automatique en cas d'échec
+- Encombrement des armes et des objets (option)
+- Archétype déposé sur la fiche : renseigne les ressources, le dé de vie, la richesse et les dégâts
 
-### Opposant
+### Adversaire
 - Fiche en deux onglets : description, puis attaques / capacités / sorts
-- Attaques sous forme d'items avec jet de dégâts intégré
+- Changer les dés de vie recalcule les PV maximum et le malus
+- Attaques avec dé de dégâts et dégâts fixes
 
 ### Jets de dés
-- Sauvegardes, ressources, matériel et armes avec avantage, désavantage, double avantage / désavantage, bonus et malus
-- Fenêtre de jet unique prenant en compte les capacités, l'occupation et les compétences (version révisée : réussite si résultat ≤ seuil)
-- Malus de l'adversaire ciblé (option)
-- Dégâts simultanés (option) : un jet d'arme contre un opposant ciblé enchaîne le jet de dégâts
-- Icône et nom du personnage affichés dans les messages de tchat
-- Enrichers `@jet` pour créer des liens de jet dans les journaux, acteurs et objets
+- Sauvegardes, ressources, matériel, sanité, dégâts et attaques
+- Fenêtre de jet unique : cible, attaque Armée / Sans arme, malus de 0 à −10, seuil final, modificateurs cliquables (métier, compétences en réédition, capacités), avantage et désavantage simples ou doubles, visibilité du lancer
+- Malus de l'Adversaire ciblé reporté automatiquement (option)
+- Cartes de jet : jetons de l'acteur et de sa cible, dés écartés grisés, détail du seuil, bandeau Réussite / Échec, ressource perdue
+- Combat sur une seule carte contre un Adversaire ciblé : dégâts du personnage en cas de réussite (automatiques avec l'option Dégâts simultanés), riposte choisie par le MJ en cas d'échec, bouton MJ « Appliquer » qui retire les dégâts des PV (armure déduite) ou jet de Dé de vie
+- Enrichers `@jet` / `@roll` pour demander un jet à tous depuis un journal, un acteur ou un objet
 
 ### Conditions
-- Items « Définition » pour les tables Hors jeu, Folie passagère et Choc, ajoutés par glisser-déposer
-- Icône sur le token et prise en compte automatique des désavantages
+- Items « Définition » Hors jeu, Folie passagère et Choc, ajoutés par glisser-déposer
+- Icône sur le token ; désavantage automatique (Commotion, Titubant, Essouflé) et −4 aux sauvegardes physiques (Os brisés)
 
 ### Outils du MJ
-- Gestionnaire MJ : ressources et capacités des joueurs connectés, demande de jet à tous ou à un joueur, gestion de la Fortune
-- Menu système dans les contrôles de la scène
-- Recherche dans les journaux et les objets
-- Envoi de la description d'un objet au tchat
+- Onglet Cthulhu Hack dans la barre latérale : version, liens d'aide, gestionnaire de joueurs et recherche
+- Gestionnaire de joueurs : ressources et sauvegardes des joueurs connectés, demande de jet à tous ou à un joueur
+- Fortune : clic droit sur la Fortune d'une fiche pour l'utiliser (annonce dans le tchat) ou l'augmenter
+- Recherche dans les journaux, les acteurs et les objets du monde, avec surlignage
 
 ### Barre de macros
-- Glisser un acteur, un article, un objet, une capacité, une sauvegarde, une ressource, un jet de dégâts ou une attaque / un sort d'opposant crée la macro correspondante
-- Le token concerné doit être sélectionné pour utiliser la macro
+- Glisser un acteur, un journal, une sauvegarde, une ressource, des dégâts, une arme (clic : attaque, Maj + clic : matériel), un objet, une capacité, un sort ou une attaque d'Adversaire crée la macro correspondante
+- Les macros d'objet, d'arme, de capacité, de sort et d'attaque agissent sur le token sélectionné
 
 ### Options
-- Afficher / masquer les compendiums français ou anglais
-- Fortune (jetons dépensés par le MJ, annoncés dans le tchat) et Adrénaline
-- Dé de vie, points de vie ou les deux ; richesse ou ressource diverse
-- Taille (encombrement), version révisée, malus d'adversaire, dégâts simultanés
+- Réédition, Fortune et Adrénaline
+- Points de vie, dés de vie ou les deux ; richesse et ressource diverse
+- Encombrement, malus d'adversité, dégâts simultanés
 - Style CSS personnalisable par un module
 
 ### Compendiums
+- Rangés dans un dossier Cthulhu Hack, en sous-dossiers FR et EN
+- Guide du système (MJ)
 - Archétypes (révisés, avec les variantes du savant) : glisser sur la fiche pour la remplir
 - Armes spéciales et capacités spéciales standards
 - Tables Hors jeu, Folie passagère et Choc, avec leurs RollTables
 - Prétirés : un par archétype
 - Créatures du livre de base
-- Macros : jets sur les tables, affichage du gestionnaire MJ
+- Macros : jets sur les tables

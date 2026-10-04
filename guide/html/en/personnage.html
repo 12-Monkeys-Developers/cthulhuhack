@@ -1,0 +1,122 @@
+<div class="cthack-guide">
+  <h2>The Character</h2>
+  <div class="guide-image"><img src="@@img:fiche-personnage@@" alt="Character sheet" /></div>
+
+  <h3>Locking the sheet</h3>
+  <p>
+    Every sheet opens <strong>locked</strong>: you can play (roll dice, use abilities) without changing a value by mistake. The switch at the top left of the title bar
+    <strong>unlocks</strong> it. The sheet then widens and lets you:
+  </p>
+  <ul>
+    <li>enter the name, occupation, skills, archetype and a short description;</li>
+    <li>edit the saves, the resources (value and maximum), the hit points and the damage dice;</li>
+    <li>create items, weapons, abilities and spells with the <strong>+</strong> buttons;</li>
+    <li>drop elements from the sidebar or a compendium: <strong>a locked sheet refuses drops</strong>.</li>
+  </ul>
+  <div class="guide-image"><img src="@@img:fiche-personnage-edition@@" alt="Unlocked sheet" /></div>
+  <p>
+    Click the portrait to change it when the sheet is unlocked (right-click to go back to the default image). On a locked sheet, hover over it to show it to the players.
+    Right-clicking the character's name searches the world for that name.
+  </p>
+
+  <h3>The header: resources, health and damage</h3>
+  <ul>
+    <li>
+      <strong>Flashlights</strong>, <strong>Smokes</strong>, <strong>Sanity</strong>, plus <strong>Wealth</strong> and the <strong>miscellaneous resource</strong> depending on
+      the settings: click the name to roll the die. On a failure the die automatically goes down one step. A die below its maximum is highlighted.
+    </li>
+    <li><strong>Hit Points</strong> and <strong>Hit Dice</strong>, depending on the "Health Display Option" setting.</li>
+    <li><strong>Armed damage</strong> and <strong>Unarmed damage</strong>: click to roll damage. If an Opponent is targeted, its armour is deducted on the card.</li>
+  </ul>
+
+  <h3>The left column</h3>
+  <ul>
+    <li>The six <strong>saves</strong>: click a name to roll it (see @@page:jets@@).</li>
+    <li><strong>Fortune</strong> and the <strong>Adrenaline</strong> tokens, when these options are on (see @@page:options@@).</li>
+    <li>The <strong>Conditions</strong> the character suffers (see below).</li>
+  </ul>
+
+  <h3>The tabs</h3>
+  <ul>
+    <li><strong>Description</strong>: the biography.</li>
+    <li><strong>Equipment</strong> (open by default): weapons, then items, encumbrance when the option is on, and a free text area for the rest of the gear.</li>
+    <li><strong>Abilities &amp; Magic</strong>: special abilities, then spells and rituals.</li>
+    <li><strong>Notes</strong>: a free text area.</li>
+  </ul>
+  <p>In the lists, clicking a line unfolds its description.</p>
+
+  <h3>Weapons and items</h3>
+  <p>
+    Each weapon or item can have a <strong>material die</strong>: the die icon rolls a material check, and the die goes down one step on a failure. Weapons also show their
+    <strong>range</strong>.
+  </p>
+  <p>
+    To attack with a weapon, drag it to the macro bar (see @@page:outils@@), or target an Opponent and roll a Strength or Dexterity save while declaring the attack (see
+    @@page:jets@@).
+  </p>
+  <div class="guide-astuce">
+    <p>
+      On an unlocked sheet, the <strong>+</strong> button of the Equipment tab creates a <strong>weapon</strong>; with <strong>Shift + click</strong> it creates an
+      <strong>item</strong>. The new element's sheet opens locked: flip its switch to fill it in.
+    </p>
+  </div>
+
+  <h3>The right-click menu</h3>
+  <div class="guide-row">
+    <div class="guide-image guide-image-half"><img src="@@img:menu-capacite@@" alt="Ability context menu" /></div>
+    <div>
+      <p>Right-clicking a weapon, item, ability, spell or condition opens a menu:</p>
+      <ul>
+        <li><strong>Send to chat for all</strong>: posts the description in the chat (when the element has one);</li>
+        <li><strong>Send to chat for GM</strong>: offered to players, to pass you a description privately;</li>
+        <li><strong>Edit</strong>: opens the element's sheet;</li>
+        <li><strong>Delete</strong>: removes the element from the character.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Special abilities</h3>
+  <p>
+    An ability can have a limited number of <strong>uses</strong> with a period: permanent, per scenario, per session, per day, per night, per hour, per scene, per fight or per
+    moment. The list shows the remaining uses and the date of the last use. The right-click menu also offers:
+  </p>
+  <ul>
+    <li><strong>Use</strong>: removes one use and records the date;</li>
+    <li><strong>Increase</strong>: gives one use back;</li>
+    <li><strong>Reset</strong>: appears when no use is left, and restores all uses.</li>
+  </ul>
+  <div class="guide-image"><img src="@@img:fiche-personnage-capacites@@" alt="Abilities and Magic tab" /></div>
+  <p>
+    The <strong>standard abilities</strong> of the compendium are recognised by the system: once dropped on the sheet, they are offered automatically as an advantage in the roll
+    dialog when they apply. An ability that is not "Multiple" cannot be added twice.
+  </p>
+  <p>
+    For a <strong>personal ability</strong>, tick <em>Custom</em> and <em>Advantage given</em> on its sheet, then describe the advantage: it will be offered in the roll dialog.
+  </p>
+  <div class="guide-astuce">
+    <p>Drop standard abilities from the compendium rather than recreating them with the + button: only dropped abilities are recognised by the roll dialog.</p>
+  </div>
+
+  <h3>Spells and rituals</h3>
+  <p>Each spell shows its type (spell or ritual), its sanity die and its incantation. The die icon rolls a sanity check; on a failure the spell's die goes down one step.</p>
+
+  <h3>Creating a character: archetypes and example characters</h3>
+  <p>The <strong>Example characters</strong> compendium holds a ready-to-play investigator per archetype: drag one into the actors tab to import it.</p>
+  <p>
+    To start from a blank sheet, unlock it and drop an <strong>archetype</strong> on it. It fills in the archetype name, Flashlights, Smokes and Sanity (value and maximum), the
+    Hit Dice, Wealth and the armed and unarmed damage dice. Hit points, saves and abilities are left for you to enter.
+  </p>
+
+  <h3>Conditions: Out of Action, Temporary Insanity and Shock</h3>
+  <p>
+    When a character suffers a consequence, unlock their sheet and drop the condition from the <strong>Out of action</strong>, <strong>Temporary insanity</strong> or
+    <strong>Shock</strong> compendium. It appears under "Conditions" in the left column (hover over it to read its description) and an icon is shown on the token. Dropping a
+    condition the character already has does nothing.
+  </p>
+  <p>Some conditions are applied automatically:</p>
+  <ul>
+    <li><strong>Mild Concussion</strong>, <strong>Staggered</strong> and <strong>Winded</strong>: a disadvantage on save rolls;</li>
+    <li><strong>Cracked Bones</strong>: −4 to the Strength, Dexterity and Constitution saves.</li>
+  </ul>
+  <p>The others are reminders: apply their effects at the table. To remove a condition, right-click it and choose <strong>Delete</strong>.</p>
+</div>
