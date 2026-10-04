@@ -336,6 +336,6 @@ export class Macros {
   }
 
   static launchGMManager = function () {
-    game.cthack.gmManager.render(true)
+    game.system.applicationManager.render({ force: true })
   }
 }

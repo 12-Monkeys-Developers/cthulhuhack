@@ -680,7 +680,8 @@ pages:
           <h3>Les tables de conséquences</h3>
           <p>
             Le compendium <strong>Tables aléatoires</strong> contient les tables Hors jeu, Folie passagère et Choc. Le compendium <strong>Macros</strong> propose un tirage sur chacune,
-            visible du MJ seul. Importez d'abord les tables dans votre monde : les macros les retrouvent par leur nom.
+            visible du MJ seul. Importez d'abord les tables dans votre monde : les macros les retrouvent par leur nom. Il contient aussi la macro
+            <strong>Statut des joueurs (MJ)</strong>, qui ouvre le gestionnaire de joueurs.
           </p>
         </div>
     video:

@@ -205,6 +205,8 @@ Hooks.once("ready", function () {
 
   // Game Manager
   game.system.applicationManager = new applications.CthulhuHackManager()
+  // Used by the "Players status" macro of the compendium, and by the copies imported in the worlds
+  game.cthack.gmManager = game.system.applicationManager
   if (game.user.isGM) {
     game.system.applicationManager.render(true)
   }
