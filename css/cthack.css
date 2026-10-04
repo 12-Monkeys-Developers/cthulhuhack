@@ -2393,6 +2393,35 @@ body.theme-light .cthack.sheet.actor.opponent .sheet-header .opponent-image .hov
 .application.dialog.cthack legend {
   letter-spacing: 1px;
 }
+.application.dialog.cthack .cthack-roll-dialog.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 12px;
+  align-items: stretch;
+}
+.application.dialog.cthack .cthack-roll-dialog.two-columns .dialog-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.application.dialog.cthack .cthack-roll-dialog.two-columns .dialog-fill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.application.dialog.cthack .cthack-roll-dialog.two-columns .dialog-attack {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  justify-items: start;
+}
+.application.dialog.cthack .cthack-roll-dialog.two-columns .dialog-avantages input[type="range"] {
+  width: 100%;
+}
+.application.dialog.cthack .cthack-roll-dialog.single-column .dialog-avantages input[type="range"] {
+  width: 100%;
+}
 .application.dialog.cthack .cthack-roll-dialog fieldset {
   margin: 10px 0 0 0;
   padding: 5px;
@@ -2457,6 +2486,9 @@ body.theme-light .cthack.sheet.actor.opponent .sheet-header .opponent-image .hov
   background-color: rgba(0, 0, 0, 0.1);
   color: var(--color-light-1);
   width: 60px;
+  height: auto;
+  font-family: var(--font-secondary);
+  font-size: var(--cthack-fs-xl);
   text-align: center;
 }
 .application.dialog.cthack .cthack-roll-dialog .dialog-visibility {
@@ -2471,6 +2503,73 @@ body.theme-light .cthack.sheet.actor.opponent .sheet-header .opponent-image .hov
   width: 100%;
   text-align: center;
 }
+.application.dialog.cthack .cthack-roll-dialog .dialog-row {
+  display: flex;
+  gap: 10px;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-row > fieldset {
+  flex: 1;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-target .target-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-target .target-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border: 2px solid var(--color-light-1);
+  border-radius: 50%;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-target .target-info {
+  display: flex;
+  flex-direction: column;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-target .target-name {
+  font-family: var(--font-secondary);
+  font-size: var(--cthack-fs-md);
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-target .target-stat {
+  font-size: var(--cthack-fs-sm);
+  opacity: 0.8;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-target .target-warning {
+  margin: 6px 0 0;
+  font-size: var(--cthack-fs-sm);
+  color: #e8c26a;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-target .no-target {
+  margin: 0;
+  font-style: italic;
+  opacity: 0.7;
+  text-align: center;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-attack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 12px;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-attack .attack-choice {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-threshold .threshold-formula {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-secondary);
+  font-size: var(--cthack-fs-lg);
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-threshold .threshold-formula strong {
+  cursor: help;
+  font-size: var(--cthack-fs-xl);
+}
 .application.dialog.cthack .cthack-roll-dialog .dialog-damage,
 .application.dialog.cthack .cthack-roll-dialog .dialog-resource,
 .application.dialog.cthack .cthack-roll-dialog .dialog-save {
@@ -2480,6 +2579,69 @@ body.theme-light .cthack.sheet.actor.opponent .sheet-header .opponent-image .hov
   font-family: var(--font-secondary);
   font-size: var(--cthack-fs-xl);
   color: var(--color-light-1);
+}
+.application.dialog.cthack .cthack-roll-dialog .dialog-save[data-tooltip],
+.application.dialog.cthack .cthack-roll-dialog .dialog-resource[data-tooltip] {
+  cursor: help;
+}
+.application.dialog.cthack .cthack-choose-attack-dialog .duel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.application.dialog.cthack .cthack-choose-attack-dialog .participant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-secondary);
+}
+.application.dialog.cthack .cthack-choose-attack-dialog .participant img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border: 2px solid var(--color-light-1);
+  border-radius: 50%;
+}
+.application.dialog.cthack .cthack-choose-attack-dialog .duel-arrow {
+  opacity: 0.7;
+}
+.application.dialog.cthack .cthack-choose-attack-dialog .attack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.application.dialog.cthack .cthack-choose-attack-dialog .attack-choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.application.dialog.cthack .cthack-choose-attack-dialog .attack-choice:has(input:checked) {
+  border-color: var(--color-light-1);
+  background: var(--color-dark-4);
+}
+.application.dialog.cthack .cthack-choose-attack-dialog .attack-choice img {
+  width: 32px;
+  height: 32px;
+  border: none;
+}
+.application.dialog.cthack .cthack-choose-attack-dialog .attack-choice .attack-name {
+  flex: 1;
+  font-family: var(--font-secondary);
+  font-size: var(--cthack-fs-md);
+}
+.application.dialog.cthack .cthack-choose-attack-dialog .attack-choice .attack-nb {
+  opacity: 0.7;
+}
+.application.dialog.cthack .cthack-choose-attack-dialog .attack-choice .attack-formula {
+  font-weight: bold;
+  white-space: nowrap;
 }
 .application.dialog.cthack button {
   border-color: var(--color-light-1);
@@ -2525,6 +2687,325 @@ body.theme-light .cthack.sheet.actor.opponent .sheet-header .opponent-image .hov
   align-items: center;
   font-size: var(--cthack-fs-md);
   text-shadow: 0 0 10px var(--color-shadow-primary);
+}
+.chat-message .cthack-card {
+  --card-ink: var(--font-color-primary);
+  --card-muted: rgba(255, 255, 255, 0.65);
+  --card-line: rgba(255, 255, 255, 0.25);
+  --card-success: rgba(74, 122, 96, 0.75);
+  --card-success-edge: #9cc9a8;
+  --card-failure: rgba(120, 30, 34, 0.75);
+  --card-failure-edge: #e0787c;
+  --card-blood: #782e22;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-secondary);
+  color: var(--card-ink);
+}
+.chat-message .cthack-card button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: auto;
+  padding: 4px 8px;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0;
+  border: 1px solid var(--card-line);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--card-ink);
+  font-family: var(--font-secondary);
+  font-size: var(--cthack-fs-base);
+}
+.chat-message .cthack-card button i {
+  flex-shrink: 0;
+}
+.chat-message .cthack-card button:hover {
+  background: rgba(120, 46, 34, 0.6);
+  border-color: var(--card-failure-edge);
+}
+.chat-message .cthack-card button:disabled {
+  opacity: 0.5;
+  cursor: progress;
+}
+.chat-message .cthack-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chat-message .cthack-card .card-duel {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+.chat-message .cthack-card .card-token img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  object-fit: cover;
+  border: 2px solid var(--card-line);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+}
+.chat-message .cthack-card .card-token.target img {
+  border-color: var(--card-failure-edge);
+}
+.chat-message .cthack-card .card-token:hover img {
+  border-color: var(--card-ink);
+  box-shadow: 0 0 6px var(--card-ink);
+}
+.chat-message .cthack-card .card-duel-arrow {
+  color: var(--card-muted);
+  font-size: var(--cthack-fs-sm);
+}
+.chat-message .cthack-card .card-title {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.15;
+}
+.chat-message .cthack-card .card-title .card-kind {
+  font-size: var(--cthack-fs-xs);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--card-muted);
+}
+.chat-message .cthack-card .card-title .card-label {
+  font-size: var(--cthack-fs-md);
+  font-weight: bold;
+}
+.chat-message .cthack-card .card-title .card-target-name {
+  font-size: var(--cthack-fs-sm);
+  font-style: italic;
+  color: var(--card-muted);
+}
+.chat-message .cthack-card .card-title .card-warning {
+  color: #e8c26a;
+}
+.chat-message .cthack-card .card-title .card-attack {
+  align-self: flex-start;
+  margin-top: 2px;
+  padding: 0 6px;
+  border: 1px solid var(--card-line);
+  border-radius: 8px;
+  font-size: var(--cthack-fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--card-muted);
+}
+.chat-message .cthack-card .card-roll {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 6px;
+  border: 1px solid var(--card-line);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+}
+.chat-message .cthack-card .card-dice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chat-message .cthack-card .card-die {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 3px;
+  border: 1px solid var(--card-ink);
+  border-radius: 4px;
+  font-size: var(--cthack-fs-base);
+  font-weight: bold;
+  line-height: 26px;
+  text-align: center;
+}
+.chat-message .cthack-card .card-die.d20 {
+  min-width: 30px;
+  height: 30px;
+  line-height: 30px;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  border: none;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.85);
+  color: #111;
+}
+.chat-message .cthack-card .card-die.discarded {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+.chat-message .cthack-card .card-versus {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-left: auto;
+}
+.chat-message .cthack-card .card-roll-total {
+  font-size: var(--cthack-fs-xl);
+  font-weight: bold;
+  line-height: 1;
+}
+.chat-message .cthack-card .hidden-roll {
+  text-align: center;
+}
+.chat-message .cthack-card .card-compare {
+  color: var(--card-muted);
+}
+.chat-message .cthack-card .card-threshold,
+.chat-message .cthack-card .card-real {
+  min-width: 30px;
+  padding: 0 4px;
+  border: 1px solid var(--card-ink);
+  border-radius: 4px;
+  font-size: var(--cthack-fs-md);
+  font-weight: bold;
+  text-align: center;
+}
+.chat-message .cthack-card .card-armor {
+  color: var(--card-muted);
+  font-size: var(--cthack-fs-sm);
+}
+.chat-message .cthack-card .card-formula {
+  font-size: var(--cthack-fs-sm);
+  color: var(--card-muted);
+  text-align: right;
+}
+.chat-message .cthack-card .card-formula .card-modifiers {
+  color: var(--card-success-edge);
+}
+.chat-message .cthack-card .card-breakdown {
+  font-size: var(--cthack-fs-sm);
+  color: var(--card-muted);
+}
+.chat-message .cthack-card .card-breakdown summary {
+  cursor: pointer;
+  color: var(--card-muted);
+}
+.chat-message .cthack-card .card-breakdown ul {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.chat-message .cthack-card .card-breakdown li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 1px 4px;
+  border-bottom: 1px dotted var(--card-line);
+}
+.chat-message .cthack-card .card-breakdown li.total {
+  font-weight: bold;
+}
+.chat-message .cthack-card .card-breakdown li.gm-only {
+  font-style: italic;
+  color: #e8c26a;
+}
+.chat-message .cthack-card .card-result {
+  padding: 3px 6px;
+  border-left: 4px solid var(--card-line);
+  background: rgba(0, 0, 0, 0.3);
+  font-size: var(--cthack-fs-md);
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.chat-message .cthack-card.success > .card-check .card-result {
+  border-color: var(--card-success-edge);
+  background: var(--card-success);
+}
+.chat-message .cthack-card.failure > .card-check .card-result {
+  border-color: var(--card-failure-edge);
+  background: var(--card-failure);
+}
+.chat-message .cthack-card .card-resource-lost {
+  font-size: var(--cthack-fs-sm);
+  text-align: center;
+}
+.chat-message .cthack-card .card-resource-lost i {
+  margin: 0 4px;
+  color: var(--card-failure-edge);
+}
+.chat-message .cthack-card .card-resource-lost .dice-to {
+  font-weight: bold;
+}
+.chat-message .cthack-card .card-combat-step {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--card-line);
+}
+.chat-message .cthack-card .card-pending {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
+  border: 1px dashed var(--card-muted);
+  border-radius: 4px;
+  font-size: var(--cthack-fs-sm);
+  text-align: center;
+  animation: cthack-card-pending 2.4s ease-in-out infinite;
+}
+.chat-message .cthack-card .card-pending.riposte {
+  border-color: var(--card-failure-edge);
+}
+.chat-message .cthack-card .card-no-damage {
+  font-size: var(--cthack-fs-sm);
+  font-style: italic;
+  color: var(--card-muted);
+  text-align: center;
+}
+.chat-message .cthack-card .card-damage {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.chat-message .cthack-card .card-damage.from-opponent .card-roll {
+  border-color: var(--card-failure-edge);
+  background: rgba(120, 30, 34, 0.35);
+}
+.chat-message .cthack-card .card-damage-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+}
+.chat-message .cthack-card .card-fixed {
+  color: var(--card-muted);
+}
+.chat-message .cthack-card .card-victim,
+.chat-message .cthack-card .card-applied {
+  font-size: var(--cthack-fs-sm);
+  text-align: center;
+}
+.chat-message .cthack-card .card-applied {
+  color: var(--card-success-edge);
+}
+.chat-message .cthack-card .card-applied .card-hp {
+  color: var(--card-muted);
+}
+@keyframes cthack-card-pending {
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.85);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-message .cthack-card .card-pending {
+    animation: none;
+  }
 }
 cthack-toggle-switch {
   --toggle-switch-height: 20px;

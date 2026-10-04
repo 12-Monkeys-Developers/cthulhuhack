@@ -7,6 +7,7 @@ import { CthackUtils } from "./module/utils.mjs"
 import { Macros } from "./module/macros.mjs"
 import { registerHooks } from "./module/hooks.mjs"
 import { setupTextEnrichers } from "./module/enrichers.mjs"
+import { CombatCard } from "./module/chat/combat-card.mjs"
 
 import { SYSTEM } from "./module/config/system.mjs"
 export * from "./module/elements/_module.mjs"
@@ -154,6 +155,12 @@ Hooks.once("init", function () {
 
   // Other Document Configuration
   CONFIG.ChatMessage.documentClass = documents.CtHackChatMessage
+  CONFIG.ChatMessage.dataModels = {
+    card: models.CtHackCardMessage,
+  }
+
+  // Queries : a player asks the active GM to update a chat card he cannot modify
+  CONFIG.queries["cthack.updateCard"] = CombatCard._handleUpdateQuery
 
   // Search
   foundry.documents.collections.Journal.registerSheet(game.system.id, FullsearchJournalSheet, { makeDefault: false })

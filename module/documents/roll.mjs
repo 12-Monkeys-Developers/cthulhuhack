@@ -1,5 +1,6 @@
 import { ROLL_TYPE } from "../config/system.mjs"
 import { CTHACK } from "../config.mjs"
+import { CthackUtils } from "../utils.mjs"
 
 export default class CtHackRoll extends Roll {
   /**
@@ -180,6 +181,30 @@ export default class CtHackRoll extends Roll {
   }
 
   /**
+   * The attack choices of the roll dialog, against a targeted opponent :
+   * a weapon roll is armed by default, a Strength or Dexterity save is not an attack by default.
+   * @param {Object} options The options of the prompt.
+   * @param {Object|null} targetInfo The target of the roll.
+   * @returns {Array<{value: string, label: string, checked: boolean}>|null} The choices, or null when the dialog does not offer them.
+   */
+  static _getAttackChoices(options, targetInfo) {
+    if (targetInfo?.type !== "opponent") return null
+    const isWeapon = options.rollType === ROLL_TYPE.WEAPON
+    const isAttackSave = options.rollType === ROLL_TYPE.SAVE && ["str", "dex"].includes(options.rollTarget)
+    if (!isWeapon && !isAttackSave) return null
+    const actor = fromUuidSync(options.actorUuid ?? "") ?? game.actors.get(options.actorId)
+    if (actor?.type !== "character") return null
+    const attack = (value, labelKey) => {
+      const dice = actor.system.attributes[value].value
+      return { value, label: `${game.i18n.localize(labelKey)} (${dice})`, checked: false }
+    }
+    const choices = [attack("armedDamage", "CTHACK.Card.attackArmed"), attack("unarmedDamage", "CTHACK.Card.attackUnarmed")]
+    if (isAttackSave) choices.unshift({ value: "", label: game.i18n.localize("CTHACK.Card.attackNone"), checked: false })
+    choices[0].checked = true
+    return choices
+  }
+
+  /**
    * Prompt the user with a dialog to configure and execute a roll.
    *
    * @param {Object} options Configuration options for the roll.
@@ -246,7 +271,7 @@ export default class CtHackRoll extends Roll {
 
     // Material roll or Sanity roll
     if (options.rollType === ROLL_TYPE.MATERIAL || options.rollType === ROLL_TYPE.SANITY) {
-      options.rollTarget = game.actors.get(options.actorId).items.get(options.rollTarget).name
+      options.rollTarget = (fromUuidSync(options.actorUuid ?? "") ?? game.actors.get(options.actorId)).items.get(options.rollTarget).name
     }
 
     let malus = "0"
@@ -255,23 +280,32 @@ export default class CtHackRoll extends Roll {
     let targetArmor
     let saveModifiers
     const displayOpponentMalus = game.settings.get("cthack", "displayOpponentMalus")
+    const isCheckRoll = options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON
+    const isDamageRoll = options.rollType === ROLL_TYPE.DAMAGE || options.rollType === ROLL_TYPE.ATTACK
 
-    if ((options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) && options.hasTarget && options.target.document.actor.type === "opponent") {
-      const actor = options.target.document.actor
-      targetName = actor.name
-      if (displayOpponentMalus) malus = actor.system.malus.toString()
-      else targetMalus = actor.system.malus.toString()
+    // The target is described in the dialog and stored in the chat card
+    const targetInfo = options.hasTarget ? CthackUtils.getTargetInfo(options.target) : null
+    if (targetInfo) targetName = targetInfo.name
+
+    if (isCheckRoll && targetInfo?.type === "opponent") {
+      if (displayOpponentMalus) malus = targetInfo.malus.toString()
+      else targetMalus = targetInfo.malus.toString()
     }
 
-    if (options.rollType === ROLL_TYPE.DAMAGE && options.hasTarget && options.target.document.actor.type === "opponent") {
-      const actor = options.target.document.actor
-      targetName = actor.name
-      targetArmor = actor.system.armor.toString()
+    if (options.rollType === ROLL_TYPE.DAMAGE && targetInfo?.type === "opponent") {
+      targetArmor = targetInfo.armor.toString()
     }
+
+    // Attaque contre un Opposant : le joueur déclare une attaque armée ou sans arme, une sauvegarde de FOR ou de DEX peut aussi en être une
+    const attackChoices = CtHackRoll._getAttackChoices(options, targetInfo)
 
     if (options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) {
       saveModifiers = game.actors.get(options.actorId).system.getSaveModifiers(options.rollTarget)
     }
+
+    // Mise en page d'une sauvegarde ou d'un jet d'arme : deux colonnes avec une cible, une seule colonne sans cible
+    let checkLayout
+    if (isCheckRoll) checkLayout = targetInfo ? "target" : "single"
 
     let avantages = 3
     if (options.rollAdvantage) {
@@ -318,6 +352,26 @@ export default class CtHackRoll extends Roll {
       avantages,
       selectAvantages: CtHackRoll._convertAvantages(avantages),
       initialAvantages: avantages,
+      isGM: game.user.isGM,
+      // Sauvegarde et arme sans cible : pas de bloc Cible
+      showTarget: (isCheckRoll && !!targetInfo) || isDamageRoll,
+      isTargetLayout: checkLayout === "target",
+      isSingleLayout: checkLayout === "single",
+      target: targetInfo,
+      showTargetMalus: isCheckRoll && targetInfo?.type === "opponent" && (displayOpponentMalus || game.user.isGM),
+      showTargetArmor: options.rollType === ROLL_TYPE.DAMAGE && targetInfo?.type === "opponent" && game.user.isGM,
+      multipleTargets: game.user.targets.size > 1,
+      threshold: isCheckRoll ? options.rollValue + parseInt(malus, 10) : undefined,
+      // Nom de la caractéristique, en infobulle de la valeur de sauvegarde
+      saveLabel: isCheckRoll ? game.i18n.localize(`CTHACK.Character.saves.${options.rollTarget}`) : undefined,
+      // Nom de la ressource (Divers : nom défini dans les réglages), en infobulle de la valeur de ressource
+      resourceLabel:
+        options.rollType !== ROLL_TYPE.RESOURCE
+          ? undefined
+          : options.rollTarget === "miscellaneous"
+            ? game.settings.get("cthack", "MiscellaneousResource")
+            : game.i18n.localize(`CTHACK.Character.resources.${options.rollTarget}`),
+      attackChoices,
     }
 
     const content = await foundry.applications.handlebars.renderTemplate("systems/cthack/templates/roll-dialog-v2.hbs", dialogContext)
@@ -327,12 +381,16 @@ export default class CtHackRoll extends Roll {
     const rollContext = await foundry.applications.api.DialogV2.wait({
       window: { title: title },
       classes: ["cthack"],
+      // Sauvegarde et arme : fenêtre sur deux colonnes avec une cible, sur une colonne sans cible
+      ...(isCheckRoll ? { position: { width: checkLayout === "single" ? 340 : 640 } } : {}),
       content,
       buttons: [
         {
           label: buttonLabel,
           callback: (event, button, dialog) => {
             const output = Array.from(button.form.elements).reduce((obj, input) => {
+              // Boutons radio : seul le choix coché est retenu
+              if (input.type === "radio" && !input.checked) return obj
               if (input.name) obj[input.name] = input.value
               return obj
             }, {})
@@ -364,6 +422,14 @@ export default class CtHackRoll extends Roll {
         // Initialisation de la valeur du select Visibilité
         const visibilitySelect = dialog.element.querySelector('select[name="visibility"]')
         if (visibilitySelect) visibilitySelect.value = defaultRollMode
+        // Aperçu du seuil final selon l'adversité choisie
+        const modifierSelect = dialog.element.querySelector('select[name="modificateur"]')
+        if (modifierSelect) {
+          modifierSelect.addEventListener("change", (event) => {
+            const adversity = parseInt(event.target.value, 10) || 0
+            dialog.element.querySelector("[data-preview-threshold]").textContent = options.rollValue + adversity
+          })
+        }
         // Gestion du sélecteur Avantages et désavantages
         const rangeInput = dialog.element.querySelector('input[name="avantages"]')
         if (rangeInput) {
@@ -495,8 +561,11 @@ export default class CtHackRoll extends Roll {
       value: options.rollValue,
       treshold: treshold,
       actorId: options.actorId,
+      actorUuid: options.actorUuid,
       actorName: options.actorName,
       actorImage: options.actorImage,
+      targetInfo,
+      targetsCount: game.user.targets.size,
       rollMode: rollContext.visibility,
       hasTarget: options.hasTarget,
       targetName,
@@ -663,40 +732,113 @@ export default class CtHackRoll extends Roll {
   }
 
   /**
-   * Converts the roll result to a chat message.
+   * Converts the roll result to a chat card : a chat message of type "card".
    *
-   * @param {Object} [messageData={}] Additional data to include in the message.
+   * @param {Object} [messageData={}] Additional data to include in the message. Its system data is merged into the card data.
    * @param {Object} options Options for message creation.
    * @param {string} options.messageMode The mode of the roll (e.g., public, private).
    * @param {boolean} [options.create=true] Whether to create the message.
-   * @returns {Promise} - A promise that resolves when the message is created.
+   * @returns {Promise<ChatMessage|Object>} The created message, or its data.
    */
   async toMessage(messageData = {}, { messageMode, create = true } = {}) {
-    const actor = game.actors.get(this.actorId)
-    super.toMessage(
+    const actor = this._getActor()
+    const { system = {}, ...rest } = messageData
+    return super.toMessage(
       {
-        speaker: ChatMessage.getSpeaker({ actor, scene: canvas.scene }),
-        isSave: this.isSave,
-        isWeapon: this.isWeapon,
-        isResource: this.isResource,
-        isDamage: this.isDamage,
-        isMaterial: this.isMaterial,
-        isSanity: this.isSanity,
-        isFailure: this.resultType === "failure",
-        avantages: this.avantages,
-        introText: this.introText,
-        introTextTooltip: this.introTextTooltip,
-        actingCharName: this.actorName,
-        actingCharImg: this.actorImage,
-        hasTarget: this.hasTarget,
-        targetName: this.targetName,
-        targetArmor: this.targetArmor,
-        targetMalus: this.targetMalus,
-        realDamage: this.realDamage,
-        ...messageData,
+        speaker: ChatMessage.getSpeaker({ actor, token: actor?.token, scene: canvas.scene }),
+        type: "card",
+        // Un contenu avec un élément empêche le cœur de rendre les jets : la carte est rendue par CtHackChatMessage
+        content: '<div class="cthack-card"></div>',
+        system: foundry.utils.mergeObject(this._getCardData(actor), system, { inplace: false }),
+        ...rest,
       },
-      { messageMode },
+      { messageMode, create },
     )
+  }
+
+  /**
+   * The actor who made the roll.
+   * @returns {Actor|undefined}
+   */
+  _getActor() {
+    return (this.options.actorUuid && fromUuidSync(this.options.actorUuid)) || game.actors.get(this.actorId)
+  }
+
+  /**
+   * The label of the roll : the save, the resource, the damage, the attack or the item.
+   * @returns {string}
+   */
+  _getCardLabel() {
+    switch (this.type) {
+      case ROLL_TYPE.SAVE:
+      case ROLL_TYPE.WEAPON:
+        return game.i18n.localize(`CTHACK.Character.saves.${this.target}`)
+      case ROLL_TYPE.RESOURCE:
+        if (this.target === "miscellaneous") return game.settings.get("cthack", "MiscellaneousResource")
+        return game.i18n.localize(`CTHACK.Character.resources.${this.target}`)
+      case ROLL_TYPE.DAMAGE:
+        return game.i18n.localize(`CTHACK.Character.damage.${this.target}`)
+      default:
+        return this.target ?? ""
+    }
+  }
+
+  /**
+   * The data of the chat card (system data of the chat message of type "card").
+   * @param {Actor} [actor] The actor who made the roll.
+   * @returns {Object}
+   */
+  _getCardData(actor) {
+    const target = this.options.targetInfo ?? null
+    const data = {
+      rollType: this.type,
+      label: this._getCardLabel(),
+      itemName: this.itemName ?? "",
+      actor: actor ? CthackUtils.getActorInfo(actor) : { name: this.actorName ?? "", img: this.actorImage ?? "" },
+      target,
+      targetsCount: this.options.targetsCount ?? 0,
+      advantage: this.avantages ?? "",
+      result: this.resultType ?? "",
+    }
+    if (this.isSave || this.isWeapon) {
+      const hiddenMalus = parseInt(this.options.targetMalus, 10) || 0
+      data.check = {
+        base: this.value,
+        adversity: parseInt(this.modificateur, 10) || 0,
+        threshold: this.treshold,
+        hiddenMalus: hiddenMalus || null,
+        modifiers: this.selectedModifiers ? this.selectedModifiers.split(", ").filter(Boolean) : [],
+      }
+    }
+    if (this.isDamage || this.type === ROLL_TYPE.ATTACK) {
+      const side = this.isDamage ? "character" : "opponent"
+      data.damage = CtHackRoll.computeDamage(this, { side, source: this._getCardLabel(), target })
+    }
+    return data
+  }
+
+  /**
+   * The damage dealt by a damage roll, taking into account the armor of an opponent hit by a character.
+   * @param {Roll} roll The evaluated damage roll.
+   * @param {Object} options
+   * @param {"character"|"opponent"} options.side Who deals the damage.
+   * @param {string} options.source The name of the damage or of the attack.
+   * @param {Object|null} options.target The target data of the card.
+   * @returns {Object} The damage data of the card.
+   */
+  static computeDamage(roll, { side, source, target }) {
+    const armor = side === "character" && target?.type === "opponent" ? (target.armor ?? 0) : 0
+    return {
+      side,
+      source,
+      formula: roll.formula,
+      total: roll.total,
+      armor,
+      real: Math.max(0, roll.total - armor),
+      applied: false,
+      hpBefore: null,
+      hpAfter: null,
+    }
   }
 
   // Used in the avantages select : convert the selected value to the corresponding string

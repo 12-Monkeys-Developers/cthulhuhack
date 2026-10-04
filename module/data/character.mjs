@@ -1,6 +1,8 @@
 import { SYSTEM, ROLL_TYPE } from "../config/system.mjs"
 import CtHackRoll from "../documents/roll.mjs"
 import { CthackUtils } from "../utils.mjs"
+import { COMBAT_STATUS } from "./card-message.mjs"
+import { CombatCard } from "../chat/combat-card.mjs"
 
 export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
   static defineSchema() {
@@ -182,7 +184,7 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
         // Handle other cases or do nothing
         break
     }
-    await this._roll(rollType, rollTarget, rollValue, opponentTarget, rollAdvantage, rollOptions)
+    return await this._roll(rollType, rollTarget, rollValue, opponentTarget, rollAdvantage, rollOptions)
   }
 
   /**
@@ -195,13 +197,13 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
   async _roll(rollType, rollTarget, rollValue, opponentTarget = undefined, rollAdvantage = "=", rollOptions = {}) {
-    // console.log("Rolling", rollType, rollTarget, rollValue, opponentTarget, rollAdvantage)
     const hasTarget = opponentTarget !== undefined
     let roll = await CtHackRoll.prompt({
       rollType,
       rollTarget,
       rollValue,
       actorId: this.parent.id,
+      actorUuid: this.parent.uuid,
       actorName: this.parent.name,
       actorImage: this.parent.img,
       hasTarget,
@@ -211,57 +213,57 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
     })
     if (!roll) return null
 
-    await roll.toMessage({}, { messageMode: roll.options.rollMode })
+    const failed = roll.resultType === "failure"
+    const system = {}
 
-    // Perte de ressouce pour un jet de ressource
-    if (rollType === ROLL_TYPE.RESOURCE && roll.resultType === "failure") {
-      const value = this.attributes[rollTarget].value
-      const newValue = CthackUtils.findLowerDice(value)
-      await this.parent.update({ [`system.attributes.${rollTarget}.value`]: newValue })
+    // Perte de ressource pour un jet de ressource, de matériel ou de sanité : le dé perdu est affiché dans la carte
+    let lostResource
+    if (failed && [ROLL_TYPE.RESOURCE, ROLL_TYPE.MATERIAL, ROLL_TYPE.SANITY].includes(rollType)) {
+      const from = rollType === ROLL_TYPE.RESOURCE ? this.attributes[rollTarget].value : this.parent.items.get(rollTarget).system.dice
+      lostResource = { from, to: CthackUtils.findLowerDice(from) }
+      system.resource = lostResource
     }
 
-    // Perte de ressource pour un jet de matériel
-    if (rollType === ROLL_TYPE.MATERIAL && roll.resultType === "failure") {
-      const item = this.parent.items.get(rollTarget)
-      const value = item.system.dice
-      const newValue = CthackUtils.findLowerDice(value)
-      await item.update({ "system.dice": newValue })
+    // Attaque déclarée contre un Opposant : carte de combat, les dégâts (armés ou sans arme) sont lancés ensuite sur la même carte
+    const attackDamage = roll.options.attack
+    if (attackDamage && opponentTarget?.actor?.type === "opponent") {
+      system.attackDamage = attackDamage
+      system.combat = this._getCombatStatus(roll.resultType, opponentTarget.actor, attackDamage)
     }
 
-    // Perte de ressource pour un jet de sanité
-    if (rollType === ROLL_TYPE.SANITY && roll.resultType === "failure") {
-      const item = this.parent.items.get(rollTarget)
-      const value = item.system.dice
-      const newValue = CthackUtils.findLowerDice(value)
-      await item.update({ "system.dice": newValue })
+    const message = await roll.toMessage({ system }, { messageMode: roll.options.rollMode })
+
+    // Dégâts simultanés : les dégâts du personnage sont lancés tout de suite, sans attendre le bouton de la carte
+    if (system.combat === COMBAT_STATUS.AWAITING_PLAYER && game.settings.get("cthack", "simultaneousDamage")) {
+      await CombatCard.rollPlayerDamage(message)
     }
 
-    // Dégâts simultanés : jet de dégâts enchaîné à un jet d'arme contre un opposant ciblé
-    if (rollType === ROLL_TYPE.WEAPON && game.settings.get("cthack", "simultaneousDamage")) {
-      await this._rollSimultaneousDamage(roll.resultType, opponentTarget?.document.actor)
+    if (lostResource) {
+      if (rollType === ROLL_TYPE.RESOURCE) await this.parent.update({ [`system.attributes.${rollTarget}.value`]: lostResource.to })
+      else await this.parent.items.get(rollTarget).update({ "system.dice": lostResource.to })
     }
+    return roll
   }
 
   /**
-   * Chain the damage roll after a weapon roll.
-   * On success the character deals damage (no target needed), on failure the targeted opponent deals damage to the character (a target is required).
+   * The status of the combat card after an attack (weapon roll or save declared as an attack) against an opponent.
+   * On success the character deals its armed or unarmed damage (rolled from the card, or at once with simultaneous damage),
+   * on failure the opponent deals damage (the GM chooses the attack from the card),
+   * or, when the health is managed with the Hit Dice, the character rolls its Hit Dice.
    * @param {"success"|"failure"} resultType The result of the weapon roll.
-   * @param {CtHackActor} [opponent] The targeted actor.
-   * @returns {Promise<void>}
+   * @param {CtHackActor} opponent The targeted opponent.
+   * @param {"armedDamage"|"unarmedDamage"} attackDamage The damage attribute of the declared attack.
+   * @returns {string} The combat status of the card.
    */
-  async _rollSimultaneousDamage(resultType, opponent) {
+  _getCombatStatus(resultType, opponent, attackDamage) {
     if (resultType === "success") {
-      await this.parent.rollDamage("armedDamage")
-    } else {
-      if (opponent?.type !== "opponent") return
-      const attacks = opponent.itemTypes.attack.filter((a) => a.system.hasDamage)
-      if (!attacks.length) return
-      // Le jet de dégâts de l'Opposant (et le choix de l'attaque) est réalisé côté MJ
-      await CthackUtils.rollOpponentAttack(
-        opponent.uuid,
-        attacks.map((a) => a.id),
-      )
+      const dice = this.attributes[attackDamage].value
+      return dice && dice !== "0" ? COMBAT_STATUS.AWAITING_PLAYER : COMBAT_STATUS.NO_DAMAGE
     }
+    if (!CthackUtils.getDamagingAttacks(opponent).length) return COMBAT_STATUS.NO_DAMAGE
+    // Santé en Dés de vie : pas de choix d'attaque par le MJ, le personnage fait directement son jet de Dé de vie
+    if (game.settings.get("cthack", "HealthDisplay") === "hd") return COMBAT_STATUS.AWAITING_HIT_DICE
+    return COMBAT_STATUS.AWAITING_GM
   }
 
   getSaveModifiers(saveId) {

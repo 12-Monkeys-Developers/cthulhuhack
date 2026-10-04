@@ -57,6 +57,17 @@ export default class CtHackAttack extends CommonItem {
     return this.hasDamageDice || this.damage > 0
   }
 
+  /**
+   * The damage formula of the attack : the damage dice plus the fixed damage.
+   * @returns {string} For example "d8 + 2", "2d6" or "3".
+   */
+  get damageFormula() {
+    const parts = []
+    if (this.hasDamageDice) parts.push(this.damageDice)
+    if (this.damage > 0) parts.push(String(this.damage))
+    return parts.join(" + ")
+  }
+
   hasDefaultImage() {
     return this.parent.img === CtHackItem.DEFAULT_ICON
   }

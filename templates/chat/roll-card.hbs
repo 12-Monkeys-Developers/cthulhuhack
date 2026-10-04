@@ -1,0 +1,132 @@
+<article class="cthack-card {{system.rollType}}{{#if isCombat}} combat{{/if}}{{#unless isPrivate}}{{#if result}} {{result}}{{/if}}{{/unless}}">
+  {{!-- En-tête : qui agit, contre qui --}}
+  <header class="card-header">
+    <div class="card-duel">
+      <a class="card-token" data-action="panToToken" data-token-uuid="{{actor.tokenUuid}}" data-tooltip="{{actor.name}}">
+        <img src="{{actor.img}}" alt="{{actor.name}}">
+      </a>
+      {{#if target}}
+        <i class="fa-solid fa-angles-right card-duel-arrow"></i>
+        <a class="card-token target" data-action="panToToken" data-token-uuid="{{target.tokenUuid}}" data-tooltip="{{target.name}}">
+          <img src="{{target.img}}" alt="{{target.name}}">
+        </a>
+      {{/if}}
+    </div>
+    <div class="card-title">
+      <span class="card-kind">{{title}}</span>
+      <span class="card-label">{{subtitle}}</span>
+      {{#if target}}<span class="card-target-name">{{localize "CTHACK.Card.versus" name=target.name}}</span>{{/if}}
+      {{#if attackLabel}}<span class="card-attack{{#if system.isUnarmed}} unarmed{{/if}}">{{attackLabel}}</span>{{/if}}
+      {{#if multipleTargets}}<span class="card-warning" data-tooltip="{{localize 'CTHACK.Card.multipleTargets'}}"><i class="fa-solid fa-triangle-exclamation"></i></span>{{/if}}
+    </div>
+  </header>
+
+  {{!-- Jet principal --}}
+  {{#if isCheck}}
+    <section class="card-check">
+      {{#if isPrivate}}
+        <div class="card-roll-total hidden-roll">?</div>
+      {{else}}
+        <div class="card-roll">
+          {{> "cthack.card-dice" dice=mainDice}}
+          <div class="card-versus">
+            <span class="card-roll-total">{{mainTotal}}</span>
+            <span class="card-compare">{{#if isSuccess}}≤{{else}}&gt;{{/if}}</span>
+            <span class="card-threshold" data-tooltip="{{localize 'CTHACK.Card.finalThreshold'}}">{{system.check.threshold}}</span>
+          </div>
+        </div>
+        <div class="card-formula">
+          {{mainFormula}}{{#if advantageLabel}} — {{advantageLabel}}{{/if}}
+          {{#if system.check.modifiers.length}}<span class="card-modifiers">({{#each system.check.modifiers as |modifier|}}{{#unless @first}}, {{/unless}}{{modifier}}{{/each}})</span>{{/if}}
+        </div>
+        {{#if hasThresholdDetail}}
+          <details class="card-breakdown">
+            <summary>
+              {{localize "CTHACK.Card.threshold"}} {{system.check.threshold}} =
+              {{system.label}} {{system.check.base}}
+              {{#if system.check.adversity}}{{numberFormat system.check.adversity sign=true}} {{localize "CTHACK.Roll.adversite"}}{{/if}}
+            </summary>
+            <ul>
+              <li><span>{{system.label}}</span><span>{{system.check.base}}</span></li>
+              {{#if system.check.adversity}}
+                <li><span>{{localize "CTHACK.Roll.adversite"}}{{#if target}} ({{target.name}}){{/if}}</span><span>{{numberFormat system.check.adversity sign=true}}</span></li>
+              {{/if}}
+              {{#if showHiddenMalus}}
+                <li class="gm-only" data-tooltip="{{localize 'CTHACK.Card.hiddenMalusHint'}}"><span><i class="fa-solid fa-eye-slash"></i> {{localize "CTHACK.Card.hiddenMalus"}}</span><span>{{numberFormat system.check.hiddenMalus sign=true}}</span></li>
+              {{/if}}
+              <li class="total"><span>{{localize "CTHACK.Card.finalThreshold"}}</span><span>{{system.check.threshold}}</span></li>
+            </ul>
+          </details>
+        {{else}}
+          <div class="card-breakdown">{{localize "CTHACK.Card.threshold"}} {{system.check.threshold}} : {{system.label}}</div>
+        {{/if}}
+      {{/if}}
+      <div class="card-result">{{#if isPrivate}}?{{else}}{{#if isSuccess}}{{localize "CTHACK.Roll.success"}}{{else}}{{localize "CTHACK.Roll.failure"}}{{/if}}{{/if}}</div>
+    </section>
+  {{/if}}
+
+  {{#if isResource}}
+    <section class="card-check">
+      {{#if isPrivate}}
+        <div class="card-roll-total hidden-roll">?</div>
+      {{else}}
+        <div class="card-roll">
+          {{> "cthack.card-dice" dice=mainDice}}
+          <div class="card-versus"><span class="card-roll-total">{{mainTotal}}</span></div>
+        </div>
+        <div class="card-formula">{{mainFormula}}{{#if advantageLabel}} — {{advantageLabel}}{{/if}}</div>
+      {{/if}}
+      <div class="card-result">
+        {{#if isPrivate}}?{{else}}{{#if isSuccess}}{{localize "CTHACK.Roll.success"}}{{else}}{{localize "CTHACK.Roll.failure"}}{{/if}}{{/if}}
+      </div>
+      {{#if resourceLost}}{{#unless isPrivate}}
+        <div class="card-resource-lost">
+          {{localize "CTHACK.Roll.resourceLost"}} :
+          <span class="dice-from">{{system.resource.from}}</span><i class="fa-solid fa-arrow-right"></i><span class="dice-to">{{system.resource.to}}</span>
+        </div>
+      {{/unless}}{{/if}}
+    </section>
+  {{/if}}
+
+  {{!-- Carte de combat : l'étape des dégâts --}}
+  {{#if isCombat}}
+    <section class="card-combat-step">
+      {{#if awaitingPlayer}}
+        <div class="card-pending">
+          <span><i class="fa-solid fa-hourglass-half"></i> {{localize "CTHACK.Card.awaitingPlayer" name=actor.name}}</span>
+          {{#if canRollPlayerDamage}}
+            <button type="button" data-action="rollPlayerDamage"><i class="fa-solid fa-dice"></i> {{rollPlayerDamageLabel}}</button>
+          {{/if}}
+        </div>
+      {{/if}}
+      {{#if awaitingGm}}
+        <div class="card-pending riposte">
+          <span><i class="fa-solid fa-hourglass-half"></i> {{localize "CTHACK.Card.awaitingGm" name=target.name}}</span>
+          {{#if canRollOpponentDamage}}
+            <button type="button" data-action="rollOpponentDamage"><i class="fa-solid fa-skull"></i> {{localize "CTHACK.Card.chooseAttack"}}</button>
+          {{/if}}
+        </div>
+      {{/if}}
+      {{#if awaitingHitDice}}
+        <div class="card-pending riposte">
+          <span><i class="fa-solid fa-hourglass-half"></i> {{localize "CTHACK.Card.awaitingHitDice" name=actor.name}}</span>
+          {{#if canRollHitDice}}
+            <button type="button" data-action="rollHitDice"><i class="fa-solid fa-dice"></i> {{localize "CTHACK.Card.rollHitDice" name=actor.name}}</button>
+          {{/if}}
+        </div>
+      {{/if}}
+      {{#if hitDiceDone}}
+        <div class="card-applied"><i class="fa-solid fa-check"></i> {{localize "CTHACK.Card.hitDiceRolled"}}</div>
+      {{/if}}
+      {{#if noDamage}}
+        <div class="card-no-damage">{{localize "CTHACK.Card.noDamage"}}</div>
+      {{/if}}
+      {{#if damage}}{{> "cthack.card-damage" damage=damage isPrivate=isPrivate}}{{/if}}
+    </section>
+  {{/if}}
+
+  {{!-- Jet de dégâts seul --}}
+  {{#if isDamage}}
+    {{#if damage}}{{> "cthack.card-damage" damage=damage isPrivate=isPrivate}}{{/if}}
+  {{/if}}
+</article>

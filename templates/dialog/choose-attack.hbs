@@ -1,0 +1,29 @@
+<div class="cthack-choose-attack-dialog">
+  <div class="duel">
+    <div class="participant">
+      <img src="{{opponent.img}}" alt="{{opponent.name}}">
+      <span>{{opponent.name}}</span>
+    </div>
+    {{#if victim}}
+      <i class="fa-solid fa-angles-right duel-arrow"></i>
+      <div class="participant">
+        <img src="{{victim.img}}" alt="{{victim.name}}">
+        <span>{{victim.name}}</span>
+      </div>
+    {{/if}}
+  </div>
+  <fieldset class="attack-list">
+    <legend>{{localize "CTHACK.Card.chooseAttack"}}</legend>
+    {{#each attacks as |attack|}}
+      <label class="attack-choice">
+        <input type="radio" name="attackId" value="{{attack.id}}" {{checked attack.checked}}>
+        <img src="{{attack.img}}" alt="">
+        <span class="attack-name">{{attack.name}}{{#if (gt attack.nb 1)}} <span class="attack-nb">×{{attack.nb}}</span>{{/if}}</span>
+        <span class="attack-formula {{#if attack.isFixed}}fixed{{/if}}"
+          data-tooltip="{{#if attack.isFixed}}{{localize 'CTHACK.Card.fixedDamage'}}{{else}}{{localize 'CTHACK.Card.damageDice'}}{{/if}}">
+          {{#if attack.isFixed}}<i class="fa-solid fa-equals"></i>{{else}}<i class="fa-solid fa-dice"></i>{{/if}} {{attack.formula}}
+        </span>
+      </label>
+    {{/each}}
+  </fieldset>
+</div>

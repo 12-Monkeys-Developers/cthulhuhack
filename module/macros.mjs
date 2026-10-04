@@ -239,8 +239,8 @@ export class Macros {
     let item = actor.items.get(itemId)
     if (!item) return ui.notifications.warn(game.i18n.format("MACROS.AttackNotFound", { opponentName: actor.name, itemName: itemName }))
 
-    // Nothing to roll for a fixed-damage attack
-    if (!item.system.hasDamageDice) return
+    // Nothing to roll for an attack without damage
+    if (!item.system.hasDamage) return
 
     // Open the roll window
     return await actor.system.rollAttack(item.system.damageDice, item.name)

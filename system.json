@@ -34,6 +34,9 @@
       "character": { "htmlFields": ["description", "shortDescription", "biography", "notes", "equipment"] },
       "opponent": { "htmlFields": ["description", "shortDescription"] }
     },
+    "ChatMessage": {
+      "card": {}
+    },
     "Item": {
       "ability": { "htmlFields": ["description"] },
       "item": { "htmlFields": ["description"] },

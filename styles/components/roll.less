@@ -14,6 +14,47 @@
   }
 
   .cthack-roll-dialog {
+    &.two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 12px;
+      // Les deux colonnes ont toujours la même hauteur, quel que soit le contenu de l'une ou l'autre
+      align-items: stretch;
+
+      .dialog-column {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+
+      // Le bloc qui absorbe l'écart de hauteur dans chaque colonne, désigné par le gabarit selon la mise en page.
+      // Le bloc Attaque reste en colonne, l'un sous l'autre
+      .dialog-fill {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      // Attaque : les choix forment un groupe centré dans le bloc, alignés à gauche entre eux
+      .dialog-attack {
+        display: grid;
+        align-content: center;
+        justify-content: center;
+        justify-items: start;
+      }
+
+      // La glissière garde sa largeur fixe dans une colonne étroite
+      .dialog-avantages input[type="range"] {
+        width: 100%;
+      }
+    }
+
+    // Sauvegarde sans cible : une seule colonne étroite, la glissière occupe toute la largeur
+    &.single-column .dialog-avantages input[type="range"] {
+      width: 100%;
+    }
+
     fieldset {
       //padding: 20px 10px 10px 10px;
       margin: 10px 0 0 0;
@@ -77,11 +118,15 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      // Même police que la valeur de Sauvegarde
       select {
         border: none;
         background-color: rgba(0, 0, 0, 0.1);
         color: var(--color-light-1);
         width: 60px;
+        height: auto;
+        font-family: var(--font-secondary);
+        font-size: var(--cthack-fs-xl);
         text-align: center;
       }
     }
@@ -99,6 +144,82 @@
       }
     }
 
+    .dialog-row {
+      display: flex;
+      gap: 10px;
+      > fieldset {
+        flex: 1;
+      }
+    }
+
+    .dialog-target {
+      .target-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      .target-img {
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        border: 2px solid var(--color-light-1);
+        border-radius: 50%;
+      }
+      .target-info {
+        display: flex;
+        flex-direction: column;
+      }
+      .target-name {
+        font-family: var(--font-secondary);
+        font-size: var(--cthack-fs-md);
+      }
+      .target-stat {
+        font-size: var(--cthack-fs-sm);
+        opacity: 0.8;
+      }
+      .target-warning {
+        margin: 6px 0 0;
+        font-size: var(--cthack-fs-sm);
+        color: #e8c26a;
+      }
+      .no-target {
+        margin: 0;
+        font-style: italic;
+        opacity: 0.7;
+        text-align: center;
+      }
+    }
+
+    // Attaque déclarée contre un Opposant : armée, sans arme, ou pas d'attaque pour une sauvegarde
+    .dialog-attack {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 12px;
+      .attack-choice {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+      }
+    }
+
+    .dialog-threshold {
+      .threshold-formula {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        gap: 8px;
+        font-family: var(--font-secondary);
+        font-size: var(--cthack-fs-lg);
+        strong {
+          cursor: help;
+          font-size: var(--cthack-fs-xl);
+        }
+      }
+    }
+
     .dialog-damage,
     .dialog-resource,
     .dialog-save {
@@ -108,6 +229,73 @@
       font-family: var(--font-secondary);
       font-size: var(--cthack-fs-xl);
       color: var(--color-light-1);
+    }
+    // Comme le seuil final : la valeur porte une infobulle (le nom de la caractéristique ou de la ressource)
+    .dialog-save[data-tooltip],
+    .dialog-resource[data-tooltip] {
+      cursor: help;
+    }
+  }
+
+  .cthack-choose-attack-dialog {
+    .duel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .participant {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-family: var(--font-secondary);
+      img {
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        border: 2px solid var(--color-light-1);
+        border-radius: 50%;
+      }
+    }
+    .duel-arrow {
+      opacity: 0.7;
+    }
+    .attack-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .attack-choice {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 6px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      &:has(input:checked) {
+        border-color: var(--color-light-1);
+        background: var(--color-dark-4);
+      }
+      img {
+        width: 32px;
+        height: 32px;
+        border: none;
+      }
+      .attack-name {
+        flex: 1;
+        font-family: var(--font-secondary);
+        font-size: var(--cthack-fs-md);
+      }
+      .attack-nb {
+        opacity: 0.7;
+      }
+      .attack-formula {
+        font-weight: bold;
+        white-space: nowrap;
+      }
     }
   }
 

@@ -1,0 +1,372 @@
+// Cartes de jet du chat (messages de type "card")
+.chat-message .cthack-card {
+  --card-ink: var(--font-color-primary);
+  --card-muted: rgba(255, 255, 255, 0.65);
+  --card-line: rgba(255, 255, 255, 0.25);
+  --card-success: rgba(74, 122, 96, 0.75);
+  --card-success-edge: #9cc9a8;
+  --card-failure: rgba(120, 30, 34, 0.75);
+  --card-failure-edge: #e0787c;
+  --card-blood: #782e22;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-secondary);
+  color: var(--card-ink);
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    // Un libellé long (nom du personnage) passe sur deux lignes : le bouton grandit au lieu de garder la hauteur fixe du cœur
+    height: auto;
+    padding: 4px 8px;
+    line-height: 1.2;
+    text-align: center;
+    margin: 0;
+    border: 1px solid var(--card-line);
+    background: rgba(0, 0, 0, 0.35);
+    color: var(--card-ink);
+    font-family: var(--font-secondary);
+    font-size: var(--cthack-fs-base);
+
+    // L'icône garde sa taille quand le libellé passe sur deux lignes
+    i {
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background: rgba(120, 46, 34, 0.6);
+      border-color: var(--card-failure-edge);
+    }
+    &:disabled {
+      opacity: 0.5;
+      cursor: progress;
+    }
+  }
+
+  // En-tête : jetons et titre
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-duel {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: none;
+  }
+
+  .card-token img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    object-fit: cover;
+    border: 2px solid var(--card-line);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .card-token.target img {
+    border-color: var(--card-failure-edge);
+  }
+
+  .card-token:hover img {
+    border-color: var(--card-ink);
+    box-shadow: 0 0 6px var(--card-ink);
+  }
+
+  .card-duel-arrow {
+    color: var(--card-muted);
+    font-size: var(--cthack-fs-sm);
+  }
+
+  .card-title {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    line-height: 1.15;
+
+    .card-kind {
+      font-size: var(--cthack-fs-xs);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--card-muted);
+    }
+    .card-label {
+      font-size: var(--cthack-fs-md);
+      font-weight: bold;
+    }
+    .card-target-name {
+      font-size: var(--cthack-fs-sm);
+      font-style: italic;
+      color: var(--card-muted);
+    }
+    .card-warning {
+      color: #e8c26a;
+    }
+    // Attaque déclarée : armée ou sans arme
+    .card-attack {
+      align-self: flex-start;
+      margin-top: 2px;
+      padding: 0 6px;
+      border: 1px solid var(--card-line);
+      border-radius: 8px;
+      font-size: var(--cthack-fs-xs);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--card-muted);
+    }
+  }
+
+  // Dés et comparaison au seuil
+  .card-roll {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 6px;
+    border: 1px solid var(--card-line);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .card-dice {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .card-die {
+    min-width: 28px;
+    height: 28px;
+    padding: 0 3px;
+    border: 1px solid var(--card-ink);
+    border-radius: 4px;
+    font-size: var(--cthack-fs-base);
+    font-weight: bold;
+    line-height: 26px;
+    text-align: center;
+
+    &.d20 {
+      min-width: 30px;
+      height: 30px;
+      line-height: 30px;
+      clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+      border: none;
+      border-radius: 0;
+      background: rgba(255, 255, 255, 0.85);
+      color: #111;
+    }
+    &.discarded {
+      opacity: 0.35;
+      text-decoration: line-through;
+    }
+  }
+
+  .card-versus {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-left: auto;
+  }
+
+  .card-roll-total {
+    font-size: var(--cthack-fs-xl);
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  .hidden-roll {
+    text-align: center;
+  }
+
+  .card-compare {
+    color: var(--card-muted);
+  }
+
+  .card-threshold,
+  .card-real {
+    min-width: 30px;
+    padding: 0 4px;
+    border: 1px solid var(--card-ink);
+    border-radius: 4px;
+    font-size: var(--cthack-fs-md);
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .card-armor {
+    color: var(--card-muted);
+    font-size: var(--cthack-fs-sm);
+  }
+
+  .card-formula {
+    font-size: var(--cthack-fs-sm);
+    color: var(--card-muted);
+    text-align: right;
+
+    .card-modifiers {
+      color: var(--card-success-edge);
+    }
+  }
+
+  // Détail du seuil
+  .card-breakdown {
+    font-size: var(--cthack-fs-sm);
+    color: var(--card-muted);
+
+    summary {
+      cursor: pointer;
+      color: var(--card-muted);
+    }
+    ul {
+      margin: 4px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 1px 4px;
+      border-bottom: 1px dotted var(--card-line);
+    }
+    li.total {
+      font-weight: bold;
+    }
+    li.gm-only {
+      font-style: italic;
+      color: #e8c26a;
+    }
+  }
+
+  // Bandeau de résultat
+  .card-result {
+    padding: 3px 6px;
+    border-left: 4px solid var(--card-line);
+    background: rgba(0, 0, 0, 0.3);
+    font-size: var(--cthack-fs-md);
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &.success > .card-check .card-result {
+    border-color: var(--card-success-edge);
+    background: var(--card-success);
+  }
+  &.failure > .card-check .card-result {
+    border-color: var(--card-failure-edge);
+    background: var(--card-failure);
+  }
+
+  .card-resource-lost {
+    font-size: var(--cthack-fs-sm);
+    text-align: center;
+
+    i {
+      margin: 0 4px;
+      color: var(--card-failure-edge);
+    }
+    .dice-to {
+      font-weight: bold;
+    }
+  }
+
+  // Étape des dégâts de la carte de combat
+  .card-combat-step {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--card-line);
+  }
+
+  .card-pending {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px;
+    border: 1px dashed var(--card-muted);
+    border-radius: 4px;
+    font-size: var(--cthack-fs-sm);
+    text-align: center;
+    animation: cthack-card-pending 2.4s ease-in-out infinite;
+
+    &.riposte {
+      border-color: var(--card-failure-edge);
+    }
+  }
+
+  .card-no-damage {
+    font-size: var(--cthack-fs-sm);
+    font-style: italic;
+    color: var(--card-muted);
+    text-align: center;
+  }
+
+  // Bloc de dégâts
+  .card-damage {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &.from-opponent .card-roll {
+      border-color: var(--card-failure-edge);
+      background: rgba(120, 30, 34, 0.35);
+    }
+  }
+
+  .card-damage-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+  }
+
+  .card-fixed {
+    color: var(--card-muted);
+  }
+
+  .card-victim,
+  .card-applied {
+    font-size: var(--cthack-fs-sm);
+    text-align: center;
+  }
+
+  .card-applied {
+    color: var(--card-success-edge);
+
+    .card-hp {
+      color: var(--card-muted);
+    }
+  }
+}
+
+@keyframes cthack-card-pending {
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-message .cthack-card .card-pending {
+    animation: none;
+  }
+}

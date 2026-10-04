@@ -1,0 +1,53 @@
+<div class="card-damage{{#if damage.fromOpponent}} from-opponent{{/if}}">
+  <div class="card-damage-title">
+    <i class="fa-solid {{#if damage.fromOpponent}}fa-skull{{else}}fa-burst{{/if}}"></i>
+    <span>{{localize "CTHACK.Label.degats"}} — {{damage.source}}</span>
+  </div>
+  {{#if isPrivate}}
+    <div class="card-roll-total hidden-roll">?</div>
+  {{else}}
+    <div class="card-roll">
+      {{#if damage.isFixed}}
+        <span class="card-fixed" data-tooltip="{{localize 'CTHACK.Card.fixedDamage'}}"><i class="fa-solid fa-equals"></i></span>
+      {{else}}
+        {{> "cthack.card-dice" dice=damage.dice}}
+      {{/if}}
+      <div class="card-versus">
+        <span class="card-roll-total">{{damage.total}}</span>
+        {{#if damage.showArmor}}
+          <span class="card-armor" data-tooltip="{{localize 'CTHACK.Card.armor'}}"><i class="fa-solid fa-shield-halved"></i> −{{damage.armor}}</span>
+        {{/if}}
+        {{#if damage.showReal}}
+          <span class="card-compare">=</span>
+          <span class="card-real" data-tooltip="{{localize 'CTHACK.Card.realDamage'}}">{{damage.real}}</span>
+        {{/if}}
+      </div>
+    </div>
+    {{#unless damage.isFixed}}<div class="card-formula">{{damage.formula}}</div>{{/unless}}
+    {{#if damage.victim}}
+      <div class="card-victim">{{localize "CTHACK.Card.takesDamage" name=damage.victim.name}}</div>
+    {{/if}}
+    {{#if damage.canApply}}
+      <button type="button" class="card-apply" data-action="applyDamage">
+        <i class="fa-solid fa-heart-crack"></i> {{localize "CTHACK.Card.applyDamage" value=damage.real name=damage.victim.name}}
+      </button>
+    {{/if}}
+    {{#if damage.usesHitDice}}
+      {{#if damage.hitDiceRolled}}
+        <div class="card-applied"><i class="fa-solid fa-check"></i> {{localize "CTHACK.Card.hitDiceRolled"}}</div>
+      {{else if damage.canRollHitDice}}
+        <button type="button" class="card-apply" data-action="rollHitDice">
+          <i class="fa-solid fa-dice"></i> {{localize "CTHACK.Card.rollHitDice" name=damage.victim.name}}
+        </button>
+      {{else}}
+        <div class="card-pending"><span><i class="fa-solid fa-hourglass-half"></i> {{localize "CTHACK.Card.awaitingHitDice" name=damage.victim.name}}</span></div>
+      {{/if}}
+    {{/if}}
+    {{#if damage.applied}}
+      <div class="card-applied">
+        <i class="fa-solid fa-check"></i> {{localize "CTHACK.Card.applied"}}
+        {{#if damage.isGM}}<span class="card-hp">{{localize "CTHACK.Card.appliedHp" before=damage.hpBefore after=damage.hpAfter}}</span>{{/if}}
+      </div>
+    {{/if}}
+  {{/if}}
+</div>

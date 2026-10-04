@@ -28,19 +28,25 @@ export default class CtHackOpponent extends foundry.abstract.DataModel {
   }
 
   /**
-   * Rolls a dice attack for an opponent.
-   * @param {number} rollValue The dice to roll.
-   * @param {number} rollTarget The name of the attack
+   * Rolls a dice attack for an opponent, against the targeted token if any.
+   * The damage formula of the attack (dice plus fixed damage) is used when the attack is found by its name.
+   * @param {string} rollValue The dice to roll.
+   * @param {string} rollTarget The name of the attack
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
   async rollAttack(rollValue, rollTarget) {
+    const attack = this.parent.itemTypes.attack.find((a) => a.name === rollTarget)
+    const target = game.user.targets.first()
     let roll = await CtHackRoll.prompt({
       rollType: ROLL_TYPE.ATTACK,
-      rollValue,
+      rollValue: attack?.system.damageFormula || rollValue,
       rollTarget,
       actorId: this.parent.id,
+      actorUuid: this.parent.uuid,
       actorName: this.parent.name,
       actorImage: this.parent.img,
+      hasTarget: target !== undefined,
+      target,
     })
     if (!roll) return null
     await roll.toMessage({}, { messageMode: roll.options.rollMode })
@@ -53,18 +59,17 @@ export default class CtHackOpponent extends foundry.abstract.DataModel {
       rollValue,
       rollTarget,
       actorId: this.parent.id,
+      actorUuid: this.parent.uuid,
       actorName: this.parent.name,
       actorImage: this.parent.img,
     })
     if (!roll) return null
-    await roll.toMessage({}, { messageMode: roll.options.rollMode })
 
-    // Perte de ressource pour un jet de sanité
-    if (roll.resultType === "failure") {
-      const item = this.parent.items.get(rollTarget)
-      const value = item.system.dice
-      const newValue = CthackUtils.findLowerDice(value)
-      await item.update({ "system.dice": newValue })
-    }
+    // Perte de ressource pour un jet de sanité : le dé perdu est affiché dans la carte
+    const item = this.parent.items.get(rollTarget)
+    const failed = roll.resultType === "failure"
+    const resource = failed ? { from: item.system.dice, to: CthackUtils.findLowerDice(item.system.dice) } : undefined
+    await roll.toMessage({ system: { resource } }, { messageMode: roll.options.rollMode })
+    if (failed) await item.update({ "system.dice": resource.to })
   }
 }

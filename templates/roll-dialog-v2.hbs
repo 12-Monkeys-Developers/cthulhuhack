@@ -1,31 +1,32 @@
 {{!log "roll-dialog" this}}
-<div class="cthack-roll-dialog">
-  {{#if (or isSave isWeapon)}}
-    <fieldSet>
-      <legend>{{localize "CTHACK.Label.sauvegarde"}}</legend>
-      <div class="dialog-save">{{formula}}</div>
+{{#*inline "cthack-roll-target"}}
+  {{#if showTarget}}
+    <fieldSet class="dialog-target{{#if fill}} dialog-fill{{/if}}">
+      <legend>{{localize "CTHACK.Card.target"}}</legend>
+      {{#if target}}
+        <div class="target-row">
+          <img class="target-img" src="{{target.img}}" alt="{{target.name}}">
+          <div class="target-info">
+            <span class="target-name">{{target.name}}</span>
+            {{#if (and showTargetMalus target.malus)}}
+              <span class="target-stat">{{localize "CTHACK.Roll.adversite"}} : {{numberFormat target.malus sign=true}}</span>
+            {{/if}}
+            {{#if showTargetArmor}}
+              <span class="target-stat">{{localize "CTHACK.Card.armor"}} : {{target.armor}}</span>
+            {{/if}}
+          </div>
+        </div>
+        {{#if multipleTargets}}
+          <p class="target-warning"><i class="fa-solid fa-triangle-exclamation"></i> {{localize "CTHACK.Card.multipleTargets"}}</p>
+        {{/if}}
+      {{else}}
+        <p class="no-target">{{localize "CTHACK.Card.noTarget"}}</p>
+      {{/if}}
     </fieldSet>
-    <fieldSet class="dialog-modificateur">
-      <legend>{{localize "CTHACK.Roll.adversite"}}</legend>
-      <select name="modificateur" {{#if hasTarget}}data-tooltip="Cible : {{targetName}}" data-tooltip-direction="UP"{{/if}}>
-        {{selectOptions choiceModificateur selected=malus}}
-      </select>
-    </fieldSet>    
-    <fieldSet>
-      <legend>{{localize "CTHACK.Label.modificateurs"}}</legend>
-      <div class="dialog-bonus">
-          {{#each saveModifiers as |modifier|}}
-            <div class="bonus" data-tooltip="{{modifier.origin}}">
-              {{modifier.text}}
-            </div>
-          {{/each}}
-      </div>
-    </fieldSet>
-    <input type="hidden" name="selectedModifiers" >    
-    <input type="hidden" name="initialAvantages" value="{{initialAvantages}}">
   {{/if}}
-  {{#if (or isSave isWeapon isResource isMaterial isSanity)}}
-      <fieldSet class="dialog-avantages">
+{{/inline}}
+{{#*inline "cthack-roll-avantages"}}
+      <fieldSet class="dialog-avantages{{#if fill}} dialog-fill{{/if}}">
       <legend>{{localize "CTHACK.Roll.avantagesDesavantages"}}</legend>
       <input
         type="range"
@@ -38,36 +39,119 @@
         value = {{avantages}}
       />      
       <input id="selectAvantages" name="selectAvantages" readonly value="{{selectAvantages}}">
-    </fieldSet>  
-  {{/if}}
-  {{#if (or isDamage isAttack)}}
-    <fieldSet>
-      <legend>{{localize "CTHACK.Label.degats"}}</legend>
-      <div class="dialog-damage">{{damageDice}}</div>
     </fieldSet>
-  {{/if}}
-  {{#if isResource}}
-    <fieldSet>
-      <legend>{{localize "CTHACK.Label.ressource"}}</legend>
-      <div class="dialog-resource">{{formula}}</div>
-    </fieldSet>
-  {{/if}}
-  {{#if isMaterial}}
-    <fieldSet>
-      <legend>{{localize "CTHACK.Label.material"}}</legend>
-      <div class="dialog-resource">{{formula}}</div>
-    </fieldSet>
-  {{/if}}  
-  {{#if isSanity}}
-    <fieldSet>
-      <legend>{{localize "CTHACK.Label.sanity"}}</legend>
-      <div class="dialog-resource">{{formula}}</div>
-    </fieldSet>
-  {{/if}}    
-  <fieldSet class="dialog-visibility">
+{{/inline}}
+{{#*inline "cthack-roll-visibility"}}
+  <fieldSet class="dialog-visibility{{#if fill}} dialog-fill{{/if}}">
     <legend>{{localize "CTHACK.Roll.visibilite"}}</legend>
     <select name="visibility">
       {{selectOptions rollModes selected=defaultRollMode localize=true}}
     </select>
   </fieldSet>
-</div>
+{{/inline}}
+{{#*inline "cthack-roll-attack"}}
+  {{#if attackChoices}}
+    <fieldSet class="dialog-attack{{#if fill}} dialog-fill{{/if}}">
+      <legend>{{localize "CTHACK.Card.attack"}}</legend>
+      {{#each attackChoices as |choice|}}
+        <label class="attack-choice">
+          <input type="radio" name="attack" value="{{choice.value}}" {{checked choice.checked}}>
+          {{choice.label}}
+        </label>
+      {{/each}}
+    </fieldSet>
+  {{/if}}
+{{/inline}}
+{{#*inline "cthack-roll-save"}}
+  <div class="dialog-row">
+    <fieldSet>
+      <legend>{{localize "CTHACK.Label.sauvegarde"}}</legend>
+      <div class="dialog-save" data-tooltip="{{saveLabel}}" data-tooltip-direction="UP">{{formula}}</div>
+    </fieldSet>
+    <fieldSet class="dialog-modificateur">
+      <legend>{{localize "CTHACK.Roll.malus"}}</legend>
+      <select name="modificateur">
+        {{selectOptions choiceModificateur selected=malus}}
+      </select>
+    </fieldSet>
+  </div>
+  <fieldSet class="dialog-threshold{{#if fill}} dialog-fill{{/if}}">
+    <legend>{{localize "CTHACK.Card.finalThreshold"}}</legend>
+    <div class="threshold-formula">
+      <strong data-preview-threshold data-tooltip="{{localize 'CTHACK.Card.thresholdHint'}}" data-tooltip-direction="UP">{{threshold}}</strong>
+    </div>
+  </fieldSet>
+{{/inline}}
+{{#*inline "cthack-roll-modifiers"}}
+  {{#if saveModifiers.length}}
+    <fieldSet class="dialog-modifiers{{#if fill}} dialog-fill{{/if}}">
+      <legend>{{localize "CTHACK.Label.modificateurs"}}</legend>
+      <div class="dialog-bonus">
+        {{#each saveModifiers as |modifier|}}
+          <div class="bonus" data-tooltip="{{modifier.origin}}">
+            {{modifier.text}}
+          </div>
+        {{/each}}
+      </div>
+    </fieldSet>
+  {{/if}}
+  <input type="hidden" name="selectedModifiers">
+  <input type="hidden" name="initialAvantages" value="{{initialAvantages}}">
+{{/inline}}
+{{#if isTargetLayout}}
+  {{!-- Avec cible : cible, attaque (FOR ou DEX contre un Opposant) et visibilité à gauche ; sauvegarde, seuil, modificateurs et avantages à droite --}}
+  <div class="cthack-roll-dialog two-columns">
+    <div class="dialog-column">
+      {{> cthack-roll-target}}
+      {{> cthack-roll-attack fill=true}}
+      {{> cthack-roll-visibility fill=(not attackChoices)}}
+    </div>
+    <div class="dialog-column">
+      {{> cthack-roll-save}}
+      {{> cthack-roll-modifiers fill=true}}
+      {{> cthack-roll-avantages fill=(not saveModifiers.length)}}
+    </div>
+  </div>
+{{else if isSingleLayout}}
+  {{!-- Sans cible : une seule colonne --}}
+  <div class="cthack-roll-dialog single-column">
+    {{> cthack-roll-save}}
+    {{> cthack-roll-modifiers}}
+    {{> cthack-roll-avantages}}
+    {{> cthack-roll-visibility}}
+  </div>
+{{else}}
+  <div class="cthack-roll-dialog">
+    {{> cthack-roll-target}}
+    {{#if (or isMaterial isSanity)}}
+      {{> cthack-roll-avantages}}
+    {{/if}}
+    {{#if (or isDamage isAttack)}}
+      <fieldSet>
+        <legend>{{localize "CTHACK.Label.degats"}}</legend>
+        <div class="dialog-damage">{{damageDice}}</div>
+      </fieldSet>
+    {{/if}}
+    {{#if isResource}}
+      <fieldSet>
+        <legend>{{localize "CTHACK.Label.ressource"}}</legend>
+        <div class="dialog-resource" data-tooltip="{{resourceLabel}}" data-tooltip-direction="UP">{{formula}}</div>
+      </fieldSet>
+      {{!-- Ressource : avantages après le dé de ressource, avant la visibilité --}}
+      {{> cthack-roll-avantages}}
+    {{/if}}
+    {{#if isMaterial}}
+      <fieldSet>
+        <legend>{{localize "CTHACK.Label.material"}}</legend>
+        <div class="dialog-resource">{{formula}}</div>
+      </fieldSet>
+    {{/if}}  
+    {{#if isSanity}}
+      <fieldSet>
+        <legend>{{localize "CTHACK.Label.sanity"}}</legend>
+        <div class="dialog-resource">{{formula}}</div>
+      </fieldSet>
+    {{/if}}
+    {{> cthack-roll-visibility}}
+  </div>
+{{/if}}

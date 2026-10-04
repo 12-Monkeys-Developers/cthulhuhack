@@ -311,7 +311,7 @@ export default class CtHackActor extends Actor {
     }
 
     // Skills avantage : V2 only
-    if (game.settings.get("cthack", "Revised")) {
+    if (skills && game.settings.get("cthack", "Revised")) {
       advantages.push({ text: skills, origin: game.i18n.localize("CTHACK.Skills") })
     }
 

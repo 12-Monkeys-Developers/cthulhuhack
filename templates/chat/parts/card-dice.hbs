@@ -1,0 +1,5 @@
+<ol class="card-dice">
+  {{#each dice as |die|}}
+    <li class="card-die d{{die.faces}}{{#if die.discarded}} discarded{{/if}}">{{die.value}}</li>
+  {{/each}}
+</ol>
