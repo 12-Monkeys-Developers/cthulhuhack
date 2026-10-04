@@ -59,7 +59,7 @@ Un **guide utilisateur** destiné au MJ, en français et en anglais, est fourni 
 
 ### Conditions
 - Items « Définition » Hors jeu, Folie passagère et Choc, ajoutés par glisser-déposer
-- Icône sur le token ; désavantage automatique (Commotion, Titubant, Essouflé) et −4 aux sauvegardes physiques (Os brisés)
+- Icône sur le token ; désavantage automatique (Commotion, Titubant, Essoufflé) et −4 aux sauvegardes physiques (Os brisés)
 
 ### Outils du MJ
 - Onglet Cthulhu Hack dans la barre latérale : version, liens d'aide, gestionnaire de joueurs et recherche

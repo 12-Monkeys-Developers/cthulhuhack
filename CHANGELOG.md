@@ -15,6 +15,7 @@
 - Correction : glisser un objet, une arme, une capacité ou un sort sur une autre ligne de la même fiche de personnage le dupliquait ; il est désormais réordonné, et les listes des fiches respectent cet ordre
 - Corrections mineures : libellés « Encombrement actuel / max » traduits, coquille du réglage « Wealth » en anglais, traces de débogage retirées des fiches d'attaque et de sort
 - Compendiums Folie passagère (FR et EN) : la condition Délire avait une clé erronée (`DEL` au lieu de `TI-DEL`) et n'affichait pas d'icône sur le token. Une condition Délire déjà posée doit être reposée depuis le compendium
+- Orthographe : « Essouflé » devient « Essoufflé » (condition Hors jeu, table des conséquences, traduction)
 
 6.1.2
 - Correction du glisser-déposer vers la barre de raccourcis pour les joueurs : une macro déjà existante est désormais assignée à l'emplacement, et un message s'affiche quand la création est impossible. Corrige https://github.com/12-Monkeys-Developers/cthulhuhack/issues/13
