@@ -6,16 +6,16 @@
             {{#if unlocked}}
                 <div class="title">
                     {{#if isEncumbranceEnabled}}
-                        Encombrement actuel : {{formInput systemFields.encumbrance.fields.value value=system.encumbrance.value disabled=true}}
-                        Encombrement max : {{formInput systemFields.encumbrance.fields.max value=system.encumbrance.max}}
+                        {{localize 'CTHACK.EncumbranceCurrent'}} : {{formInput systemFields.encumbrance.fields.value value=system.encumbrance.value disabled=true}}
+                        {{localize 'CTHACK.EncumbranceMax'}} : {{formInput systemFields.encumbrance.fields.max value=system.encumbrance.max}}
                     {{/if}}
                     <i class="fas fa-plus" data-action="createItem" data-tooltip="{{localize "CTHACK.AddEquipment"}}" data-tooltip-direction="LEFT" data-type="weapon" data-alt-type="item"></i>
                 </div>
             {{else}}
                 <div class="title">
                     {{#if isEncumbranceEnabled}}
-                        Encombrement actuel : {{formInput systemFields.encumbrance.fields.value value=system.encumbrance.value disabled=true}}
-                        Encombrement max : {{formInput systemFields.encumbrance.fields.max value=system.encumbrance.max disabled=true}}
+                        {{localize 'CTHACK.EncumbranceCurrent'}} : {{formInput systemFields.encumbrance.fields.value value=system.encumbrance.value disabled=true}}
+                        {{localize 'CTHACK.EncumbranceMax'}} : {{formInput systemFields.encumbrance.fields.max value=system.encumbrance.max disabled=true}}
                     {{/if}}
                 </div>
             {{/if}}

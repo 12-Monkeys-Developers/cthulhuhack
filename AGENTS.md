@@ -21,7 +21,7 @@ npm run LDBtoYAML      # packs/ -> src/packs/*.yml (efface d'abord chaque dossie
 
 - `css/cthack.css` **est versionné** (seuls les `styles/**/*.css` sont ignorés) : le recompiler et le commiter avec les changements LESS.
 - `packs/` est ignoré par git ; la source de vérité des compendiums est `src/packs/` en YAML. Après un clone, lancer `npm run YMLtoLDB`. Les commandes de packs doivent être lancées depuis la page d'accueil de Foundry (aucun monde ouvert), sinon LevelDB est verrouillé. Pour modifier un compendium : le modifier dans Foundry, puis `LDBtoYAML`, puis commiter les YAML.
-- Les packs existent en paires FR / `-en` (ex. `archetypes` / `archetypes-en`) ; `system.json` (`packFolders`) les range sous « FR » et « EN », et deux réglages masquent l'une ou l'autre langue.
+- Les packs existent en paires FR / `-en` (ex. `archetypes` / `archetypes-en`) ; `system.json` (`packFolders`) les range dans les dossiers « FR » et « EN » du dossier « Cthulhu Hack » (il n'y a plus de réglage pour masquer une langue). Le guide du système (`guide` / `guide-en`) est généré depuis `guide/html/` par `npm run guide`.
 - Pas de linter ni de tests automatisés : la vérification se fait en lançant Foundry. Le code est du Vanilla JS en ES modules, sans jQuery.
 
 ## Architecture

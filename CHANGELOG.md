@@ -13,6 +13,7 @@
 - Correction des conditions Hors jeu, Folie passagère et Choc : les effets sont créés au format V14 et retrouvent leur icône sur le token (les conditions déjà posées gardent l'icône générique jusqu'à ce qu'elles soient reposées). Le désavantage de Commotion, Titubant et Essoufflé est calculé à partir des conditions présentes : retirer l'une d'elles ne l'annule plus si une autre l'impose, et il s'applique aussi aux jets lancés par macro
 - Correction : la macro « Statut des joueurs (MJ) » du compendium (et ses copies importées dans les mondes) n'ouvrait plus le gestionnaire de joueurs
 - Correction : glisser un objet, une arme, une capacité ou un sort sur une autre ligne de la même fiche de personnage le dupliquait ; il est désormais réordonné, et les listes des fiches respectent cet ordre
+- Corrections mineures : libellés « Encombrement actuel / max » traduits, coquille du réglage « Wealth » en anglais, traces de débogage retirées des fiches d'attaque et de sort
 
 6.1.2
 - Correction du glisser-déposer vers la barre de raccourcis pour les joueurs : une macro déjà existante est désormais assignée à l'emplacement, et un message s'affiche quand la création est impossible. Corrige https://github.com/12-Monkeys-Developers/cthulhuhack/issues/13
