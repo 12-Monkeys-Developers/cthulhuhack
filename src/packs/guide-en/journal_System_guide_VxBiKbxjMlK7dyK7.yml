@@ -521,8 +521,11 @@ pages:
           </div>
 
           <h3>Syntax</h3>
-          <p><code>@jet[target]{}(advantage)</code></p>
-          <p>The braces and parentheses are required, even when empty. <code>@roll</code> works the same way as <code>@jet</code>.</p>
+          <p><code>@jet[target]{title}(advantage)</code></p>
+          <p>
+            The braces and parentheses are required, even when empty. The <strong>title</strong> is optional: it replaces the link text and is shown below the request in the chat.
+            <code>@roll</code> works the same way as <code>@jet</code>.
+          </p>
           <table class="guide-table">
             <thead>
               <tr><th>Target</th><th>Requested roll</th></tr>
@@ -539,7 +542,7 @@ pages:
           </p>
           <p>Examples:</p>
           <ul>
-            <li><code>@jet[wis]{}(-)</code>: Wisdom save with disadvantage;</li>
+            <li><code>@jet[wis]{Resist the horror}(-)</code>: Wisdom save with disadvantage, link titled "Resist the horror";</li>
             <li><code>@jet[flashlights]{}()</code>: Flashlights roll.</li>
           </ul>
         </div>

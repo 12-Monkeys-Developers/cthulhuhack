@@ -73,7 +73,8 @@ async function enrichRoll(match) {
     }
   }
 
-  let rollAvantage = "normal"
+  // "=" : no advantage, the value understood by the roll dialog and CtHackRoll.addDisadvantage
+  let rollAvantage = "="
   if (avantage) {
     switch (avantage) {
       case "++":
@@ -97,9 +98,10 @@ async function enrichRoll(match) {
   a.dataset.rollTarget = target
   a.dataset.rollTitle = title
   a.dataset.rollAvantage = rollAvantage
-  a.innerHTML = `
-      <i class="fas fa-dice-d20"></i> ${getLibelle(type, target)}${rollAvantage !== "normal" ? rollAvantage : ""}
-    `
+  // The title, when given, replaces the label of the link; set as text so that it cannot inject HTML
+  const icon = document.createElement("i")
+  icon.classList.add("fas", "fa-dice-d20")
+  a.append(icon, ` ${title || getLibelle(type, target)}${rollAvantage !== "=" ? rollAvantage : ""}`)
   return a
 }
 

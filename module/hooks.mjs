@@ -52,7 +52,8 @@ export function registerHooks() {
         btn.addEventListener("click", (event) => {
           const type = btn.dataset.type
           const value = btn.dataset.value
-          const avantage = btn.dataset.avantage ?? "="
+          // Messages created before 6.2.0 store "normal" for no advantage
+          const avantage = !btn.dataset.avantage || btn.dataset.avantage === "normal" ? "=" : btn.dataset.avantage
           const character = game.user.character
           if (type === "resource") character.rollResource(value, { rollAdvantage: avantage })
           else if (type === "save") character.rollSave(value, { rollAdvantage: avantage })

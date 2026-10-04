@@ -9,6 +9,7 @@
 - Les messages de jet sont désormais un sous-type de message (`card`) ; les anciens messages restent lisibles
 - Correction : en mode édition, modifier la fiche ou la reverrouiller réécrivait les sauvegardes avec la valeur réduite par une condition (Os brisés : −4 rendu permanent et cumulable). Les champs affichent désormais la valeur de base. Les fiches déjà touchées sont à corriger à la main
 - Correction : avec le réglage « Afficher le malus d'adversité » désactivé, le malus de l'Opposant ciblé n'était jamais déduit du seuil. Il s'applique désormais en secret : la carte du joueur n'affiche ni le seuil ni son détail, le MJ voit le détail complet
+- Correction : le titre d'un lien `@jet[cible]{titre}(avantage)` n'était affiché nulle part. Il remplace désormais le texte du lien et s'affiche sous la demande de jet dans le tchat. Un lien sans avantage n'empêche plus le désavantage dû à une condition Hors jeu
 
 6.1.2
 - Correction du glisser-déposer vers la barre de raccourcis pour les joueurs : une macro déjà existante est désormais assignée à l'emplacement, et un message s'affiche quand la création est impossible. Corrige https://github.com/12-Monkeys-Developers/cthulhuhack/issues/13

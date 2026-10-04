@@ -547,6 +547,10 @@ a.inline-roll {
   margin: 0;
   padding: 5px 0 5px 0;
 }
+.cthack .ask-roll-subtitle {
+  font-style: italic;
+  padding-bottom: 5px;
+}
 .cthack .ask-roll-dice {
   margin-bottom: 5px;
   padding: 5px;
