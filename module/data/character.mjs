@@ -145,6 +145,15 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
   //#endregion
 
   /**
+   * Out of Action conditions which give a disadvantage to saves and weapon rolls (Mild concussion, Staggered, Winded).
+   * Computed from the condition items, so that removing one condition keeps the disadvantage of another.
+   * @type {boolean}
+   */
+  get hasOutOfActionDisadvantage() {
+    return this.parent.itemTypes.definition.some((item) => ["OOA-MIC", "OOA-STA", "OOA-WIN"].includes(item.system.key))
+  }
+
+  /**
    * Perform a roll based on the specified roll type and target.
    *
    * @param {string} rollType - The type of roll to perform (e.g., SAVE, WEAPON, RESOURCE, DAMAGE, MATERIAL, SANITY).
@@ -154,7 +163,11 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
    * @returns {Promise<void>} - A promise that resolves when the roll is complete.
    */
   async roll(rollType, rollTarget, options = {}) {
-    const { rollAdvantage = "=" } = options
+    // "normal" : no advantage, as sent by roll requests created before 6.2.0
+    let rollAdvantage = !options.rollAdvantage || options.rollAdvantage === "normal" ? "=" : options.rollAdvantage
+    if ((rollType === ROLL_TYPE.SAVE || rollType === ROLL_TYPE.WEAPON) && this.hasOutOfActionDisadvantage) {
+      rollAdvantage = CtHackRoll.addDisadvantage(rollAdvantage)
+    }
     let rollValue, opponentTarget
     let rollOptions = {}
     switch (rollType) {

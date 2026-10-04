@@ -3,7 +3,6 @@ import { formatDate } from "../utils.mjs"
 import { CthackUtils } from "../utils.mjs"
 import { LOG_HEAD } from "../constants.mjs"
 import { ROLL_TYPE } from "../config/system.mjs"
-import CtHackRoll from "./roll.mjs"
 
 /**
  * @extends {Actor}
@@ -36,16 +35,8 @@ export default class CtHackActor extends Actor {
    */
   async rollSave(saveId, options = {}) {
     if (CTHACK.debug) console.log(`${LOG_HEAD}Roll save ${saveId}`)
-    let hasDisadvantage = false
-    if (this.getFlag("cthack", "disadvantageOOA") !== undefined && this.getFlag("cthack", "disadvantageOOA") === true) {
-      if (CTHACK.debug) console.log("CTHACK | Out of Action Disadvantage")
-      hasDisadvantage = true
-    }
-
-    let rollAdvantage = options.rollAdvantage || "="
-    if (hasDisadvantage) {
-      rollAdvantage = CtHackRoll.addDisadvantage(rollAdvantage)
-    }
+    // The Out of Action disadvantage is added by CharacterData#roll, whatever the origin of the roll (sheet, macro, module)
+    const rollAdvantage = options.rollAdvantage || "="
 
     // Weapon roll
     if (options.isWeaponRoll) {
@@ -389,107 +380,39 @@ export default class CtHackActor extends Actor {
   }
 
   /**
-   *
-   * @param {*} itemData
+   * Create the Active Effect shown on the token for an Out of Action, Temporary Insanity or Shock condition.
+   * Out of Action "Cracked bones" also lowers the physical saves; the disadvantage of the other Out of Action
+   * conditions is computed from the condition items (CharacterData#hasOutOfActionDisadvantage).
+   * @param {object} itemData The condition (definition item) data
    */
   async _createActiveEffect(itemData) {
     if (CTHACK.debug) console.log(`CTHACK | Create active Effect with itemData ${itemData}`)
 
-    let effectData
+    const key = itemData.system.key
+    let img
+    let seconds = 3600
+    if (key.startsWith("OOA")) {
+      img = "systems/cthack/ui/icons/first-aid-kit.png"
+      seconds = { "OOA-MIC": 1200, "OOA-STA": 600, "OOA-WIN": 60 }[key] ?? 3600
+    } else if (key.startsWith("TI")) img = "systems/cthack/ui/icons/screaming.png"
+    else if (key.startsWith("SK")) img = "systems/cthack/ui/icons/dead-head.png"
+    else return
 
-    if (itemData.system.key === "OOA-CRB") {
-      effectData = {
-        label: "OOA-CRB",
-        icon: "systems/cthack/ui/icons/first-aid-kit.png",
-        changes: [
-          {
-            key: "system.saves.str.value",
-            mode: 2,
-            value: -4,
-            priority: "20",
-          },
-          {
-            key: "system.saves.dex.value",
-            mode: 2,
-            value: -4,
-            priority: "20",
-          },
-          {
-            key: "system.saves.con.value",
-            mode: 2,
-            value: -4,
-            priority: "20",
-          },
-        ],
-        duration: {
-          seconds: 3600,
-        },
-        tint: "#BB0022",
-      }
-    } else if (itemData.system.key === "OOA-MIC") {
-      effectData = {
-        label: "OOA-MIC",
-        icon: "systems/cthack/ui/icons/first-aid-kit.png",
-        duration: {
-          seconds: 1200,
-        },
-        tint: "#BB0022",
-      }
-      await this.setFlag("cthack", "disadvantageOOA", true)
-    } else if (itemData.system.key === "OOA-STA") {
-      effectData = {
-        label: "OOA-STA",
-        icon: "systems/cthack/ui/icons/first-aid-kit.png",
-        duration: {
-          seconds: 600,
-        },
-        tint: "#BB0022",
-      }
-      await this.setFlag("cthack", "disadvantageOOA", true)
-    } else if (itemData.system.key === "OOA-WIN") {
-      effectData = {
-        label: "OOA-WIN",
-        icon: "systems/cthack/ui/icons/first-aid-kit.png",
-        duration: {
-          seconds: 60,
-        },
-        tint: "#BB0022",
-      }
-      await this.setFlag("cthack", "disadvantageOOA", true)
-    } else if (itemData.system.key.startsWith("OOA")) {
-      effectData = {
-        label: itemData.system.key,
-        icon: "systems/cthack/ui/icons/first-aid-kit.png",
-        duration: {
-          seconds: 3600,
-        },
-        tint: "#BB0022",
-      }
-    } else if (itemData.system.key.startsWith("TI")) {
-      effectData = {
-        label: itemData.system.key,
-        icon: "systems/cthack/ui/icons/screaming.png",
-        duration: {
-          seconds: 3600,
-        },
-        tint: "#BB0022",
-      }
-    } else if (itemData.system.key.startsWith("SK")) {
-      effectData = {
-        label: itemData.system.key,
-        icon: "systems/cthack/ui/icons/dead-head.png",
-        duration: {
-          seconds: 3600,
-        },
-        tint: "#BB0022",
+    const effectData = {
+      name: itemData.name,
+      img,
+      type: "base",
+      duration: { value: seconds, units: "seconds" },
+      tint: "#BB0022",
+    }
+    if (key === "OOA-CRB") {
+      effectData.system = {
+        changes: ["str", "dex", "con"].map((save) => ({ key: `system.saves.${save}.value`, type: "add", value: "-4", phase: "initial", priority: 20 })),
       }
     }
 
-    if (!effectData) return
-    effectData.name = itemData.name
-
     // Create the Active Effect
-    this.createEmbeddedDocuments("ActiveEffect", [effectData], { renderSheet: false })
+    return this.createEmbeddedDocuments("ActiveEffect", [effectData], { renderSheet: false })
   }
 
   /**
@@ -525,11 +448,6 @@ export default class CtHackActor extends Actor {
 
     // Delete the active effect
     await this.deleteEmbeddedDocuments("ActiveEffect", [effect._id])
-
-    // Handle special cases that require unsetting the disadvantage flag
-    if (this._shouldUnsetDisadvantageFlag(definitionKey)) {
-      await this.unsetFlag("cthack", "disadvantageOOA")
-    }
   }
 
   /**
@@ -541,17 +459,6 @@ export default class CtHackActor extends Actor {
    */
   _shouldDeleteEffect(definitionKey) {
     return definitionKey === "OOA-CRB" || definitionKey.startsWith("OOA") || definitionKey.startsWith("TI") || definitionKey.startsWith("SK")
-  }
-
-  /**
-   * @name _shouldUnsetDisadvantageFlag
-   * @description Check if the disadvantage flag should be unset based on the definition key
-   * @private
-   * @param {string} definitionKey - The definition key to check
-   * @returns {boolean} True if flag should be unset
-   */
-  _shouldUnsetDisadvantageFlag(definitionKey) {
-    return ["OOA-MIC", "OOA-STA", "OOA-WIN"].includes(definitionKey)
   }
 
   /**
