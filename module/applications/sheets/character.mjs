@@ -150,10 +150,14 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
     }
 
     // Pre-computed saves context for formInput (Handlebars can't do dynamic schema lookups)
+    // The input shows the source value: the displayed value includes active effects (e.g. -4 from a condition),
+    // and submitting it would write the modified value back into the source
     const savesSchema = this.document.system.schema.fields.saves.fields
+    const savesSource = this.document._source.system.saves
     context.savesContext = Object.entries(this.document.system.saves).map(([key, save]) => ({
       key,
       value: save.value,
+      sourceValue: savesSource[key].value,
       advantage: save.advantage,
       valueField: savesSchema[key].fields.value,
       advantageField: savesSchema[key].fields.advantage,

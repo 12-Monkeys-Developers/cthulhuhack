@@ -7,6 +7,7 @@
 - Bouton MJ « Appliquer » sur les cartes de dégâts : retire les dégâts des points de vie de celui qui les subit, Opposant ciblé (armure déduite) ou personnage (riposte de l'Opposant, attaque d'Opposant ciblant un personnage). Quand la santé n'affiche que les Dés de vie, le bouton est remplacé, pour un personnage blessé, par un jet de ressource de son Dé de vie ; une attaque ratée passe alors directement à ce jet, sans choix d'attaque par le MJ
 - Les jets d'attaque d'un Opposant ajoutent les dégâts fixes aux dés de dégâts (« d8 + 2 »), comme l'indique la fiche
 - Les messages de jet sont désormais un sous-type de message (`card`) ; les anciens messages restent lisibles
+- Correction : en mode édition, modifier la fiche ou la reverrouiller réécrivait les sauvegardes avec la valeur réduite par une condition (Os brisés : −4 rendu permanent et cumulable). Les champs affichent désormais la valeur de base. Les fiches déjà touchées sont à corriger à la main
 
 6.1.2
 - Correction du glisser-déposer vers la barre de raccourcis pour les joueurs : une macro déjà existante est désormais assignée à l'emplacement, et un message s'affiche quand la création est impossible. Corrige https://github.com/12-Monkeys-Developers/cthulhuhack/issues/13

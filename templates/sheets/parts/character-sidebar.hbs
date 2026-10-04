@@ -13,7 +13,7 @@
     <div class="sidebar-section draggable" data-save="{{save.key}}" data-drag="true" data-drag-type="save" data-drag-target="{{save.key}}" data-drag-value="{{save.value}}">
       <label class="save-name rollable" data-action="rollSave" data-tooltip="{{localize (toDesc save.key)}}" data-tooltip-direction="UP" data-tooltip-class="tooltip-save">{{getSaveLabel save.key save}}</label>
       {{#if @root.unlocked}}
-        {{formInput save.valueField value=save.value name=save.valueName}}
+        {{formInput save.valueField value=save.sourceValue name=save.valueName}}
         {{formInput save.advantageField value=save.advantage name=save.advantageName}}
       {{else}}
         {{save.value}}
