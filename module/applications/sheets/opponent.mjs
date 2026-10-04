@@ -52,7 +52,7 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
     const context = await super._prepareContext(options)
 
     context.attacks = []
-    const attacksRaw = this.document.itemTypes.attack
+    const attacksRaw = this.document.itemTypes.attack.toSorted((a, b) => a.sort - b.sort)
     for (const attack of attacksRaw) {
       attack.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(attack.system.description, {
         async: true,
@@ -61,7 +61,7 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
     }
 
     context.magics = []
-    const magicsRaw = this.document.itemTypes.magic
+    const magicsRaw = this.document.itemTypes.magic.toSorted((a, b) => a.sort - b.sort)
     for (const magic of magicsRaw) {
       magic.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(magic.system.description, {
         async: true,
@@ -70,7 +70,7 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
     }
 
     context.opponentAbilities = []
-    const opponentAbilitiesRaw = this.document.itemTypes.opponentAbility
+    const opponentAbilitiesRaw = this.document.itemTypes.opponentAbility.toSorted((a, b) => a.sort - b.sort)
     for (const ability of opponentAbilitiesRaw) {
       ability.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(ability.system.description, {
         async: true,

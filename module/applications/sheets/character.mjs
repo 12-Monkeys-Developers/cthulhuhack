@@ -84,33 +84,33 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
 
     // Enrich item descriptions
     context.abilities = []
-    for (const item of this.document.itemTypes.ability) {
+    for (const item of this.document.itemTypes.ability.toSorted((a, b) => a.sort - b.sort)) {
       item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.abilities.push(item)
     }
 
     context.magics = []
-    for (const item of this.document.itemTypes.magic) {
+    for (const item of this.document.itemTypes.magic.toSorted((a, b) => a.sort - b.sort)) {
       item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.magics.push(item)
     }
 
     context.weapons = []
-    for (const item of this.document.itemTypes.weapon) {
+    for (const item of this.document.itemTypes.weapon.toSorted((a, b) => a.sort - b.sort)) {
       item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.weapons.push(item)
     }
     context.nbWeapons = context.weapons.length
 
     context.otheritems = []
-    for (const item of this.document.itemTypes.item) {
+    for (const item of this.document.itemTypes.item.toSorted((a, b) => a.sort - b.sort)) {
       item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.otheritems.push(item)
     }
     context.nbOtherItems = context.otheritems.length
 
     context.conditions = []
-    for (const item of this.document.itemTypes.definition) {
+    for (const item of this.document.itemTypes.definition.toSorted((a, b) => a.sort - b.sort)) {
       item.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(item.system.description, { async: true })
       context.conditions.push(item)
     }
@@ -234,8 +234,10 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
 
   /** @override */
   async _onDropItem(event, data) {
-    if (!this.isEditMode) return false
     const item = await fromUuid(data.uuid)
+    // An item already owned by this character is being sorted, not added
+    if (item.parent === this.document) return this._onSortItem(event, item)
+    if (!this.isEditMode) return false
 
     switch (item.type) {
       case "archetype":
