@@ -502,7 +502,8 @@ export default class CtHackRoll extends Roll {
     let treshold
     if (options.rollType === ROLL_TYPE.SAVE || options.rollType === ROLL_TYPE.WEAPON) {
       const modificateur = rollContext.modificateur === "" ? 0 : parseInt(rollContext.modificateur, 10)
-      treshold = options.rollValue + modificateur
+      // The Opponent's malus hidden from the players (setting "displayOpponentMalus" off) still applies
+      treshold = options.rollValue + modificateur + (parseInt(targetMalus, 10) || 0)
     }
 
     // Formula for a save roll, a weapon roll

@@ -79,6 +79,8 @@ export default class CtHackChatMessage extends ChatMessage {
       mainFormula: mainRoll?.formula,
       advantageLabel: system.advantage && system.advantage !== "normal" ? game.i18n.localize(`CTHACK.Roll.${system.advantage}`) : "",
       showHiddenMalus: isGM && system.check.hiddenMalus !== null,
+      // Malus caché : le joueur ne voit ni le seuil ni son détail, qui le trahiraient
+      hideThreshold: !isGM && system.check.hiddenMalus !== null,
       // Sans adversité ni malus caché, le seuil se résume à la sauvegarde : pas de détail dépliable
       hasThresholdDetail: system.check.adversity !== 0 || (isGM && system.check.hiddenMalus !== null),
       resourceLost: system.isResource && system.result === "failure" && system.resource.from,

@@ -32,19 +32,21 @@
           <div class="card-versus">
             <span class="card-roll-total">{{mainTotal}}</span>
             <span class="card-compare">{{#if isSuccess}}≤{{else}}&gt;{{/if}}</span>
-            <span class="card-threshold" data-tooltip="{{localize 'CTHACK.Card.finalThreshold'}}">{{system.check.threshold}}</span>
+            <span class="card-threshold" data-tooltip="{{localize 'CTHACK.Card.finalThreshold'}}">{{#if hideThreshold}}?{{else}}{{system.check.threshold}}{{/if}}</span>
           </div>
         </div>
         <div class="card-formula">
           {{mainFormula}}{{#if advantageLabel}} — {{advantageLabel}}{{/if}}
           {{#if system.check.modifiers.length}}<span class="card-modifiers">({{#each system.check.modifiers as |modifier|}}{{#unless @first}}, {{/unless}}{{modifier}}{{/each}})</span>{{/if}}
         </div>
-        {{#if hasThresholdDetail}}
+        {{#if hideThreshold}}
+        {{else if hasThresholdDetail}}
           <details class="card-breakdown">
             <summary>
               {{localize "CTHACK.Card.threshold"}} {{system.check.threshold}} =
               {{system.label}} {{system.check.base}}
               {{#if system.check.adversity}}{{numberFormat system.check.adversity sign=true}} {{localize "CTHACK.Roll.adversite"}}{{/if}}
+              {{#if showHiddenMalus}}{{numberFormat system.check.hiddenMalus sign=true}} <i class="fa-solid fa-eye-slash"></i>{{/if}}
             </summary>
             <ul>
               <li><span>{{system.label}}</span><span>{{system.check.base}}</span></li>

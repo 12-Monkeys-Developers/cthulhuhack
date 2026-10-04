@@ -169,8 +169,8 @@ pages:
           <ul>
             <li><strong>activé</strong> (par défaut) : le malus de l'Adversaire est reporté automatiquement dans la fenêtre de jet et réduit le seuil ;</li>
             <li>
-              <strong>désactivé</strong> : les joueurs ne voient pas ce malus. Vous seul le voyez, dans la fenêtre de jet et sur la carte du tchat (ligne « Malus de l'Opposant
-              (caché) »). Il n'est pas retiré du seuil : à vous d'en tenir compte au moment d'annoncer le résultat.
+              <strong>désactivé</strong> : le malus s'applique toujours, mais en secret. Les joueurs ne le voient pas : leur carte n'affiche pas le seuil. Vous seul le voyez,
+              dans la fenêtre de jet et dans le détail du seuil sur la carte du tchat (ligne « Malus de l'Opposant (caché) »).
             </li>
           </ul>
 
