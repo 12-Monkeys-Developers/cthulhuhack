@@ -28,7 +28,7 @@
             align-items: center;
             img {
               border: 0px;
-              max-height: 120px;
+              max-height: 100px;
               max-width: auto;
               margin-right: 10px;
             }
@@ -64,7 +64,7 @@
       .item-description {
         display: flex;
         flex-direction: column;
-        flex: 1;
+        flex: 1 1 auto;
         margin-top: 0;
         margin-bottom: 10px;
         overflow: hidden;
@@ -72,7 +72,7 @@
         fieldset {
           display: flex;
           flex-direction: column;
-          flex: 1;
+          flex: 1 1 auto;
           margin-top: 10px;
           min-height: 0;
           overflow: hidden;
@@ -84,13 +84,15 @@
             font-size: var(--cthack-fs-base);
             display: flex;
             flex-direction: column;
-            flex: 1;
+            flex: 1 1 auto;
             min-height: 0;
             overflow: hidden;
             prose-mirror {
-              flex: 1;
+              flex: 1 1 auto;
               overflow: auto;
-              min-height: 0;
+              // Fenêtre en hauteur auto : la description prend la hauteur de son texte, ascenseur au-delà du plafond
+              min-height: 3em;
+              max-height: 40vh;
               button {
                 color: white;
               }
