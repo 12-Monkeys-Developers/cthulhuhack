@@ -233,6 +233,8 @@
     "AbilityUsePerFight": "Par combat",
     "AbilityUsePerMoment": "Par moment",
     "AbilityIsCustom": "Custom",
+    "AbilitySettings": "Paramètres",
+    "AbilityUses": "Utilisations",
     "AbilityAdvantageGiven": "Donne un avantage",
     "AbilityAdvantageText": "Description avantage",
 

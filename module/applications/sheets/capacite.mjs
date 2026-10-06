@@ -24,6 +24,7 @@ export default class CtHackCapaciteSheet extends CtHackItemSheet {
     const context = await super._prepareContext()
     context.usage = SYSTEM.ABILITY_USAGE
     context.hasDefaultImage = this.document.system.hasDefaultImage()
+    context.hasAdvantage = this.document.system.advantageGiven && this.document.system.advantageText !== ""
     return context
   }
 }

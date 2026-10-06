@@ -45,6 +45,21 @@
         }
       }
       .item-properties {
+        &.grid-3 {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          padding-left: 20px;
+          padding-right: 20px;
+          font-size: var(--cthack-fs-base);
+          text-align: center;
+          color: var(--font-color-primary);
+          select {
+            width: auto;
+          }
+          input {
+            text-align: center;
+          }
+        }
         &.grid-2 {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
@@ -60,6 +75,33 @@
             text-align: center;
           }
         }
+      }
+      .ability-group {
+        margin: 0 10px 6px 10px;
+        font-size: var(--cthack-fs-base);
+        color: var(--font-color-primary);
+        legend {
+          font-size: var(--cthack-fs-base);
+        }
+        .ability-summary-line,
+        .ability-advantage-text {
+          padding: 4px 20px 0 20px;
+          text-align: center;
+        }
+        .ability-advantage-text .form-group {
+          flex-direction: column;
+          input {
+            text-align: center;
+          }
+        }
+      }
+      .ability-summary {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        font-size: var(--cthack-fs-base);
+        color: var(--font-color-primary);
       }
       .item-description {
         display: flex;

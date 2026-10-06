@@ -4,6 +4,9 @@ export default class CtHackAdversaireCapaciteSheet extends CtHackItemSheet {
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["opponent-ability"],
+    position: {
+      width: 520,
+    },
     window: {
       contentClasses: ["opponent-ability-content"],
     },

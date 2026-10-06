@@ -1894,6 +1894,33 @@ body.theme-light .cthack.sheet.actor.opponent .sheet-header .opponent-image .hov
 .cthack.sheet.item.ability .ability-content .ability-section .item-properties.grid-3 input {
   text-align: center;
 }
+.cthack.sheet.item.ability .ability-content .ability-section .ability-group {
+  margin: 0 10px 6px 10px;
+  font-size: var(--cthack-fs-base);
+  color: var(--font-color-primary);
+}
+.cthack.sheet.item.ability .ability-content .ability-section .ability-group legend {
+  font-size: var(--cthack-fs-base);
+}
+.cthack.sheet.item.ability .ability-content .ability-section .ability-group .ability-summary-line,
+.cthack.sheet.item.ability .ability-content .ability-section .ability-group .ability-advantage-text {
+  padding: 4px 20px 0 20px;
+  text-align: center;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .ability-group .ability-advantage-text .form-group {
+  flex-direction: column;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .ability-group .ability-advantage-text .form-group input {
+  text-align: center;
+}
+.cthack.sheet.item.ability .ability-content .ability-section .ability-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--cthack-fs-base);
+  color: var(--font-color-primary);
+}
 .cthack.sheet.item.ability .ability-content .ability-section .item-description {
   display: flex;
   flex-direction: column;
@@ -2408,6 +2435,21 @@ body.theme-light .cthack.sheet.actor.opponent .sheet-header .opponent-image .hov
 .cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-header .item-header-row .form-group.material img {
   max-height: 70px;
 }
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-properties.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: var(--cthack-fs-base);
+  text-align: center;
+  color: var(--font-color-primary);
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-properties.grid-3 select {
+  width: auto;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-properties.grid-3 input {
+  text-align: center;
+}
 .cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-properties.grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2422,6 +2464,33 @@ body.theme-light .cthack.sheet.actor.opponent .sheet-header .opponent-image .hov
 }
 .cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-properties.grid-2 input {
   text-align: center;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .ability-group {
+  margin: 0 10px 6px 10px;
+  font-size: var(--cthack-fs-base);
+  color: var(--font-color-primary);
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .ability-group legend {
+  font-size: var(--cthack-fs-base);
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .ability-group .ability-summary-line,
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .ability-group .ability-advantage-text {
+  padding: 4px 20px 0 20px;
+  text-align: center;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .ability-group .ability-advantage-text .form-group {
+  flex-direction: column;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .ability-group .ability-advantage-text .form-group input {
+  text-align: center;
+}
+.cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .ability-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--cthack-fs-base);
+  color: var(--font-color-primary);
 }
 .cthack.sheet.item.opponent-ability .opponent-ability-content .opponent-ability-section .item-description {
   display: flex;
