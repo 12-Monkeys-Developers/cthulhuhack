@@ -12,7 +12,7 @@ export default class CtHackAbility extends CommonItem {
     const schema = { ...common }
     schema.key = new fields.StringField({ required: true, nullable: false, initial: "" })
     schema.uses = new fields.SchemaField({
-      value: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 }),
+      value: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
       max: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
       per: new fields.StringField({ required: true, choices: SYSTEM.ABILITY_USAGE, initial: "Permanent" }),
       last: new fields.StringField({ required: true, nullable: false, initial: "" }),
@@ -41,7 +41,7 @@ export default class CtHackAbility extends CommonItem {
   }
 
   get isResetable() {
-    return this.uses.per !== "Permanent" && this.uses.max !== 0 && this.uses.value === 0
+    return this.uses.per !== "Permanent" && this.uses.max !== 0 && this.uses.value < this.uses.max
   }
 
   get isIncreaseable() {
@@ -67,14 +67,14 @@ export default class CtHackAbility extends CommonItem {
   /**
    * Resets the use of the opponent's ability.
    * If the uses are set to "Permanent", no action is taken.
-   * If the current use value is equal to 0 remaining use, the parent object is updated with the maximum use value and an empty last use value.
+   * If at least one use has been spent, the parent object is updated with the maximum use value and an empty last use value.
    * @returns {Promise<void>} A promise that resolves once the use is reset.
    */
   async resetUse() {
     if (this.uses.per === "Permanent") {
       return
     }
-    if (this.uses.value === 0) {
+    if (this.uses.value < this.uses.max) {
       return this.parent.update({ "system.uses.value": this.uses.max, "system.uses.last": "" })
     }
   }

@@ -11,7 +11,7 @@ export default class CtHackOpponentAbility extends CommonItem {
     const common = super.defineSchema()
     const schema = { ...common }
     schema.uses = new fields.SchemaField({
-      value: new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 }),
+      value: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
       max: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 }),
       per: new fields.StringField({ required: true, choices: SYSTEM.ABILITY_USAGE, initial: "Permanent" }),
       last: new fields.StringField({ required: true, nullable: false, initial: "" }),
@@ -36,7 +36,7 @@ export default class CtHackOpponentAbility extends CommonItem {
   }
 
   get isResetable() {
-    return this.uses.per !== "Permanent" && this.uses.max !== 0 && this.uses.value === 0
+    return this.uses.per !== "Permanent" && this.uses.max !== 0 && this.uses.value < this.uses.max
   }
 
   get isIncreaseable() {
@@ -69,7 +69,7 @@ export default class CtHackOpponentAbility extends CommonItem {
     if (this.uses.per === "Permanent") {
       return
     }
-    if (this.uses.value === 0) {
+    if (this.uses.value < this.uses.max) {
       return this.parent.update({ "system.uses.value": this.uses.max, "system.uses.last": "" })
     }
   }

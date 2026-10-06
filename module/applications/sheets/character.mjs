@@ -284,37 +284,13 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
   }
 
   async _onDropAbilityItem(itemData) {
-    const id = itemData._id
     const key = itemData.system.key
-    const multiple = itemData.system.multiple
-
-    let abilitiesList = this.document.system.abilities
-
-    if (multiple) {
-      if (!this._hasAbility(key, abilitiesList)) {
-        abilitiesList.push({ key: key, id: id })
-        await this.document.update({ "system.abilities": abilitiesList })
-      }
-      return await this.document.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
-    } else {
-      if (!this._hasAbility(key, abilitiesList)) {
-        abilitiesList.push({ key: key, id: id })
-        await this.document.update({ "system.abilities": abilitiesList })
-        return await this.document.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
-      } else {
-        ui.notifications.warn(game.i18n.format("CTHACK.Notifications.AbilityHasAlready", { abilityName: itemData.name }))
-        return
-      }
+    const alreadyOwned = this.document.itemTypes.ability.some((ability) => ability.system.key === key)
+    if (alreadyOwned && !itemData.system.multiple) {
+      ui.notifications.warn(game.i18n.format("CTHACK.Notifications.AbilityHasAlready", { abilityName: itemData.name }))
+      return
     }
-  }
-
-  _hasAbility(key, abilitiesList) {
-    for (let ability of abilitiesList) {
-      if (key === ability.key) {
-        return true
-      }
-    }
-    return false
+    return await this.document.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
   }
 
   // #endregion
@@ -420,12 +396,7 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
         },
         onClick: async (event, li) => {
           const item = this.document.items.get(li.dataset.itemId)
-          const key = item.system.key
           switch (item.type) {
-            case "ability":
-              await this.document.deleteAbility(key, item.id)
-              await this.document.deleteEmbeddedDocuments("Item", [item.id])
-              break
             case "definition":
               await this.document.deleteEffectFromItem(item)
               await this.document.deleteEmbeddedDocuments("Item", [item.id])

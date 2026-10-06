@@ -5,12 +5,25 @@ export default class CtHackItem extends Item {
   static DEFAULT_ICON_MAGIC = "/systems/cthack/ui/icons/spell-book.png"
   static DEFAULT_ICON = "icons/svg/item-bag.svg"
 
-  async _preUpdate(changed, options, user) {
-    await super._preUpdate(changed, options, user)
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user)
+    if (allowed === false) return false
 
-    // For abilitiy items, sets the defalut value for the "key" field, only for custom abilities.
+    // La clé d'une capacité custom est le nom en slug
     if (this.type === "ability" && this.system.isCustom) {
       this.updateSource({ "system.key": this.name.slugify() })
+    }
+  }
+
+  async _preUpdate(changed, options, user) {
+    const allowed = await super._preUpdate(changed, options, user)
+    if (allowed === false) return false
+
+    // La clé d'une capacité custom suit le nom : écrite dans la requête pour être enregistrée
+    if (this.type !== "ability") return
+    const isCustom = foundry.utils.getProperty(changed, "system.isCustom") ?? this.system.isCustom
+    if (isCustom) {
+      foundry.utils.setProperty(changed, "system.key", (changed.name ?? this.name).slugify())
     }
   }
 

@@ -239,46 +239,6 @@ export default class CtHackActor extends Actor {
     return await this.system.roll(ROLL_TYPE.DAMAGE, damageId)
   }
 
-  /**
-   *
-   * @param {*} key
-   * @param {*} itemId
-   */
-  async deleteAbility(key, itemId) {
-    const index = this._findAbilityIndex(key, itemId)
-    if (index !== -1) {
-      let abilitiesList = this.system.abilities
-      abilitiesList.splice(index, 1)
-
-      await this.update({ "system.abilities": abilitiesList })
-    }
-  }
-
-  /**
-   *
-   * @param {*} key
-   * @param {*} id
-   * @returns
-   */
-  _findAbilityIndex(key, id) {
-    let abilitiesList = this.system.abilities
-    let trouve = false
-    let index = -1
-    let i = 0
-    while (!trouve && i < abilitiesList.length) {
-      if (key === abilitiesList[i].key) {
-        trouve = true
-        index = i
-      }
-      i++
-    }
-
-    if (index === -1) {
-      if (CTHACK.debug) console.log(`La capacité de clé ${key} n'a pas été trouvée dans la liste.`)
-    }
-    return index
-  }
-
   findSavesAdvantagesHTML(saveId) {
     let advantages = "<ul>"
     let advantagesArray = this.findSavesAdvantages(saveId)
@@ -296,7 +256,7 @@ export default class CtHackActor extends Actor {
     const advantages = []
 
     // Occupation avantage
-    const { occupation, skills, abilities } = this.system
+    const { occupation, skills } = this.system
     if (occupation) {
       advantages.push({ text: occupation, origin: game.i18n.localize("CTHACK.Occupation") })
     }
@@ -328,9 +288,10 @@ export default class CtHackActor extends Actor {
       HAR: { condition: [], text: "CTHACK.AdvantageHAR", origin: "CTHACK.StandardAbilities.HAR.label" },
     }
 
-    // Check if the actor has the advantage from the standard abilities
-    abilities.forEach((ability) => {
-      const advantage = abilityAdvantages[ability.key]
+    // Check if the actor has the advantage from the standard abilities (once per key, even for multiple abilities)
+    const abilityKeys = new Set(this.itemTypes.ability.map((ability) => ability.system.key))
+    abilityKeys.forEach((key) => {
+      const advantage = abilityAdvantages[key]
       if (advantage && (advantage.condition.length === 0 || advantage.condition.includes(saveId))) {
         advantages.push({ text: game.i18n.localize(advantage.text), origin: game.i18n.localize(advantage.origin) })
       }
@@ -349,13 +310,13 @@ export default class CtHackActor extends Actor {
    * @name _findSavesAdvantagesFromCustomAbilities
    * @private
    *
-   * @description Find advantages given by custom abilitites
+   * @description Find advantages given by abilities with an advantage text, custom or not
    *
    * @returns
    */
   _findSavesAdvantagesFromCustomAbilities() {
     return this.items
-      .filter((item) => item.type === "ability" && item.system.isCustom && item.system.advantageGiven && item.system.advantageText !== "")
+      .filter((item) => item.type === "ability" && item.system.advantageGiven && item.system.advantageText !== "")
       .map((item) => ({ text: item.system.advantageText, origin: item.name }))
   }
 

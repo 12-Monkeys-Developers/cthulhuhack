@@ -73,6 +73,7 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
     schema.archetype = new fields.StringField({ required: false, blank: true })
     schema.occupation = new fields.StringField({ required: false, blank: true })
     schema.skills = new fields.StringField({ required: false, blank: true })
+    // Obsolète : n'est plus lu ni écrit, les capacités se lisent dans les objets possédés (itemTypes.ability)
     schema.abilities = new fields.ArrayField(
       new fields.SchemaField({
         id: new fields.StringField({ required: false, blank: true }),

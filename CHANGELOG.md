@@ -1,5 +1,9 @@
 6.2.2
 - Correction : la description des fiches de capacité, d'objet et de capacité d'Opposant était invisible à l'ouverture (il fallait agrandir la fenêtre). La fenêtre s'adapte désormais à la longueur de la description, avec un ascenseur pour les textes longs. L'image d'en-tête de ces fiches et de celle d'arme passe de 120 à 100 px
+- Correction : les capacités d'un personnage sont désormais lues directement dans ses objets. Une capacité supprimée autrement que par le menu contextuel (ou un exemplaire d'une capacité multiple) ne laisse plus d'avantage fantôme et peut être redéposée
+- Correction : la case Custom de la fiche de capacité n'était jamais enregistrée. La clé d'une capacité Custom suit désormais son nom de manière fiable (elle est enregistrée dès la création et à chaque renommage) ; le champ Clé n'est plus modifiable pour ces capacités
+- « Donne un avantage » fonctionne pour toute capacité, plus seulement pour les capacités Custom
+- Capacités de personnage et d'Opposant : « Réinitialiser » est proposé dès qu'une utilisation a été dépensée, et non plus seulement à zéro ; les utilisations restantes sont des nombres entiers
 
 6.2.1
 - Release technique (guide et correctifs non présents)
