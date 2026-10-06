@@ -1,3 +1,6 @@
+6.2.1
+- Release technique (guide et correctifs non présents)
+
 6.2.0
 - Guide utilisateur du système pour le MJ, en français et en anglais, dans les compendiums « FR - Guide du système » et « EN - System guide »
 - Combat depuis le tchat : un Opposant ciblé, le joueur déclare dans la fenêtre de jet une attaque Armée ou Sans arme (jet d'arme, ou sauvegarde de FOR ou de DEX). Une seule carte Attaque + Dégâts suit l'échange : dégâts armés ou sans arme du personnage en cas de réussite, attaque de l'Opposant choisie par le MJ en cas d'échec. Nouveau réglage « Dégâts simultanés » : les dégâts du personnage sont lancés aussitôt après une réussite, sans passer par le bouton de la carte. Corrige https://github.com/12-Monkeys-Developers/cthulhuhack/issues/19
