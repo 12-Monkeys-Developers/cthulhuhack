@@ -664,7 +664,10 @@ export default class CtHackRoll extends Roll {
   }
 
   /** @override */ async render(chatOptions = {}) {
-    let chatData = await this._getChatCardData(chatOptions.isPrivate)
+    // The legacy card template exposes contextual details even when it masks the total.
+    // Use Foundry's private roll context and template whenever the roll is hidden.
+    if (chatOptions.isPrivate) return super.render({ ...chatOptions, template: Roll.CHAT_TEMPLATE })
+    const chatData = await this._getChatCardData(false)
     return await foundry.applications.handlebars.renderTemplate(this.constructor.CHAT_TEMPLATE, chatData)
   }
 

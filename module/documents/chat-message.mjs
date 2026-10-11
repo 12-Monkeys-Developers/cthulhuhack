@@ -30,7 +30,9 @@ export default class CtHackChatMessage extends ChatMessage {
   async renderHTML({ canDelete, canClose = false, ...rest } = {}) {
     const html = await super.renderHTML({ canDelete, canClose, ...rest })
     this._enrichChatCard(html)
-    if (this.type === "card") await this._renderCard(html)
+    // Foundry has already rendered a safe placeholder for rolls hidden from this user.
+    // Never replace it with the card, whose context contains private results and targets.
+    if (this.type === "card" && this.isContentVisible) await this._renderCard(html)
     return html
   }
 
@@ -204,7 +206,7 @@ export default class CtHackChatMessage extends ChatMessage {
 
     const avatar = document.createElement("a")
     avatar.classList.add("avatar")
-    if (actor) avatar.dataset.uuid = actor.uuid
+    if (actor && this.isContentVisible) avatar.dataset.uuid = actor.uuid
     const avatarImg = document.createElement("img")
     Object.assign(avatarImg, { src: img, alt: nameText })
     avatar.append(avatarImg)

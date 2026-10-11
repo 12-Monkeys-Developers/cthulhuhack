@@ -1,3 +1,7 @@
+6.3.1
+- Correction : les jets aveugles ou réservés au MJ ne révèlent plus rien aux joueurs non autorisés. La carte du jet (cible, seuil, réussite ou échec, état du combat, boutons d'action) et le détail des dés restent masqués ; seul l'emplacement anonyme prévu par Foundry s'affiche
+- Correction : le roulement de tambour joué chez le joueur quand le MJ lui demande un jet depuis le gestionnaire de joueurs manquait dans l'archive publiée du système ; il y est désormais inclus
+
 6.3.0
 - Correction : la description des fiches de capacité, d'objet et de capacité d'Opposant était invisible à l'ouverture (il fallait agrandir la fenêtre). La fenêtre s'adapte désormais à la longueur de la description, avec un ascenseur pour les textes longs. L'image d'en-tête de ces fiches et de celle d'arme passe de 120 à 100 px
 - Correction : les capacités d'un personnage sont désormais lues directement dans ses objets. Une capacité supprimée autrement que par le menu contextuel (ou un exemplaire d'une capacité multiple) ne laisse plus d'avantage fantôme et peut être redéposée
