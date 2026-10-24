@@ -104,7 +104,7 @@ export default class CtHackCombat extends Combat {
 
   /**
    * Use an attack of an opponent in the active combat : its counter of attacks left for the round goes down by 1.
-   * Called when the GM rolls an attack of the opponent, and when a character rolls a save or a weapon roll against it.
+   * Called when the GM uses an attack of the opponent against a character, and when a character rolls a save or a weapon roll against it.
    * A player, who cannot modify the opponent's combatant, asks the active GM to do it.
    * Nothing happens outside a started combat, or when the opponent has no attack left.
    * @param {Actor} actor The opponent, the synthetic actor of its token for an unlinked token.

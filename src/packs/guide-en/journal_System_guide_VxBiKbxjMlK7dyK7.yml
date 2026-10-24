@@ -377,10 +377,16 @@ pages:
 
           <h3>Attacks</h3>
           <p>
-            An attack is defined by a damage die, fixed damage and a number of attacks. When it has a damage die, a die icon rolls its damage (die + fixed damage, for example
-            "d8 + 2"). If a character is targeted, the chat card offers to <strong>apply</strong> the damage to them.
+            An attack is defined by fixed damage, a number of attacks and, for the Opponents of older supplements, a damage die (die + fixed damage, for example "d8 + 2"). In
+            Cthulhu Hack the players always roll the dice: the GM never rolls for an Opponent.
           </p>
-          <p>An attack with fixed damage only has no roll icon: its damage applies when you pick it for a counter-attack (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.MkpSqd2pzzBsYpRB]{Rolls and messages}).</p>
+          <p>
+            To use an attack against a character (an attack left at the end of the round, for example), target their token, then click the die icon of the attack. Choose the save to
+            make (Dexterity or Strength) and any advantage: the attack is counted in the combat tracker, and the character's players receive a message with the
+            <strong>Defend</strong> button. On a success nothing happens; on a failure the roll card carries the damage of the attack (the player rolls the damage die if there is
+            one), with the <strong>Apply</strong> button for the GM. The attack macro does the same.
+          </p>
+          <p>An attack is also used for the counter-attack when a character fails their attack (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.MkpSqd2pzzBsYpRB]{Rolls and messages}).</p>
 
           <h3>Abilities and spells</h3>
           <ul>
@@ -489,7 +495,11 @@ pages:
           <h3>The attack fails: the counter-attack</h3>
           <ol>
             <li>The card says the Opponent strikes back and waits for the GM. Click <strong>Choose the attack</strong>.</li>
-            <li>A dialog lists the Opponent's attacks, with their dice or fixed damage. Pick one and click <strong>Roll damage</strong>.</li>
+            <li>A dialog lists the Opponent's attacks, with their dice or fixed damage. Pick one and click <strong>Choose the attack</strong>.</li>
+            <li>
+              Fixed damage is added to the card at once. A damage die (Opponent of an older supplement) is rolled by the player, with the <strong>Roll the damage</strong> button of
+              the card.
+            </li>
             <li>The damage is added to the card, with the <strong>Apply … damage to …</strong> button that removes it from the character's HP.</li>
           </ol>
           <div class="guide-row">
@@ -606,7 +616,7 @@ pages:
             </li>
             <li>
               <strong>Opponents' attacks</strong>: under an Opponent's name, one pip per attack of the round (sum of the attacks on their sheet, "Claw x 3" counts for 3), followed
-              by the number left. An attack is counted automatically when the GM rolls an attack of the Opponent (sheet or macro), and when a character makes a save or a weapon
+              by the number left. An attack is counted automatically when the GM uses an attack of the Opponent against a character (sheet or macro), and when a character makes a save or a weapon
               roll targeting the Opponent, even rolled by a player (whether the roll succeeds or not; choosing the attack on the combat card counts nothing more). Click a pip to mark attacks as used, an empty pip to recover them. The right-click <strong>Attacks per round</strong> entry changes this total for
               the encounter (0 goes back to the sheet). Players only see these pips if they can see the Opponent.
             </li>
@@ -661,7 +671,7 @@ pages:
               <tr><td>A character's item</td><td>Material roll</td></tr>
               <tr><td>An ability, of a character or an Opponent</td><td>Uses it (removes one use)</td></tr>
               <tr><td>A spell, of a character or an Opponent</td><td>Sanity roll</td></tr>
-              <tr><td>An Opponent's attack</td><td>Damage roll</td></tr>
+              <tr><td>An Opponent's attack</td><td>Save asked of the targeted character</td></tr>
             </tbody>
           </table>
           <p>

@@ -633,7 +633,8 @@ a.inline-roll {
   font-style: italic;
   padding-bottom: 5px;
 }
-.cthack .ask-roll-dice {
+.cthack .ask-roll-dice,
+.cthack .ask-defense-dice {
   margin-bottom: 5px;
   padding: 5px;
 }

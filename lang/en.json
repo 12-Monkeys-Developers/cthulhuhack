@@ -404,6 +404,26 @@
       "titleSanity": "Sanity Roll",
       "titleStandard": "Standard Roll"
     },
+    "Defense": {
+      "title": "Use an attack",
+      "use": "Use against the targeted character (they make a save)",
+      "save": "Character's save",
+      "advantageLabel": "Advantage",
+      "advantage": {
+        "++": "Double Advantage",
+        "+": "Advantage",
+        "=": "Normal",
+        "-": "Disadvantage",
+        "--": "Double Disadvantage"
+      },
+      "send": "Ask for the save",
+      "request": "{opponent} attacks {name}: {attack}",
+      "saveToMake": "{save} save to avoid the attack",
+      "defend": "Defend",
+      "noTarget": "Target the attacked character.",
+      "noToken": "{name} has no token on the scene.",
+      "attackNotFound": "The opponent or its attack cannot be found."
+    },
     "Card": {
       "attack": "Attack",
       "attackNone": "No attack",
@@ -438,6 +458,9 @@
       "rollHitDice": "Roll {name}'s Hit Dice",
       "awaitingHitDice": "Waiting for {name}'s Hit Dice roll",
       "hitDiceRolled": "Hit Dice roll done",
+      "defense": "Defense: {attack}",
+      "awaitingOpponentDice": "{name} is hit by {attack}: damage to roll",
+      "rollOpponentDice": "Roll the damage ({formula})",
       "noActiveGM": "No GM connected to update the card."
     },
     "Roll": {

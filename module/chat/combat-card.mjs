@@ -1,9 +1,11 @@
 import CtHackRoll from "../documents/roll.mjs"
 import { CthackUtils } from "../utils.mjs"
 import { COMBAT_STATUS } from "../data/card-message.mjs"
+import { SYSTEM } from "../config/system.mjs"
+import CtHackCombat from "../documents/combat.mjs"
 
 /**
- * Actions of the chat cards : roll the damage of a combat card, apply damage to an opponent.
+ * Actions of the chat cards : roll the damage of a combat card, apply damage to an opponent, ask a character to defend against an opponent's attack.
  * The card is always updated in place : the new roll is added to the message rolls and the card data is updated.
  */
 export class CombatCard {
@@ -28,7 +30,7 @@ export class CombatCard {
   }
 
   /**
-   * Roll the damage of the opponent, after a failed weapon roll : the GM chooses the attack, then its damage is rolled (or the fixed damage is used).
+   * Choose the damage of the opponent, after a failed weapon roll : the GM chooses the attack, the fixed damage is used at once, the damage dice are rolled by the player.
    * @param {ChatMessage} message The combat card.
    * @returns {Promise<void>}
    */
@@ -38,10 +40,141 @@ export class CombatCard {
     const opponent = await fromUuid(system.target?.uuid)
     const attack = await CombatCard.chooseAttack(opponent, { victim: system.actor })
     if (!attack) return
-    // Une attaque à dégâts fixes donne un jet constant : pas de dé, mais le même affichage
-    const roll = await new Roll(attack.system.damageFormula).evaluate()
-    const damage = CtHackRoll.computeDamage(roll, { side: "opponent", source: attack.name, target: system.actor })
+    // Les joueurs lancent les dés : le dé de dégâts d'une attaque est lancé par le joueur depuis la carte
+    if (attack.system.hasDamageDice) {
+      await CombatCard.updateCard(message, { combat: COMBAT_STATUS.AWAITING_OPPONENT_DICE, opponentAttack: CombatCard.getAttackInfo(attack) })
+      return
+    }
+    await CombatCard.updateCard(message, ...(await CombatCard.fixedDamage(attack, system.actor)))
+  }
+
+  /**
+   * Roll the damage dice of the opponent's attack, by the player of the character who takes it (or the GM).
+   * @param {ChatMessage} message The combat card.
+   * @returns {Promise<void>}
+   */
+  static async rollOpponentDice(message) {
+    const system = message.system
+    if (!system.canRollOpponentDice()) return
+    const roll = await new Roll(system.opponentAttack.formula).evaluate()
+    const damage = CtHackRoll.computeDamage(roll, { side: "opponent", source: system.opponentAttack.name, target: system.actor })
     await CombatCard.updateCard(message, { combat: COMBAT_STATUS.RESOLVED, damage }, roll)
+  }
+
+  /**
+   * The damage of an attack without damage dice : a constant roll, displayed as the other damage rolls.
+   * @param {Item} attack The attack of the opponent.
+   * @param {Object} victim The participant who takes the damage.
+   * @returns {Promise<[Object, Roll]>} The card changes and the roll.
+   */
+  static async fixedDamage(attack, victim) {
+    const roll = await new Roll(attack.system.damageFormula).evaluate()
+    const damage = CtHackRoll.computeDamage(roll, { side: "opponent", source: attack.name, target: victim })
+    return [{ combat: COMBAT_STATUS.RESOLVED, damage }, roll]
+  }
+
+  /**
+   * The attack data stored in a card.
+   * @param {Item} attack The attack of the opponent.
+   * @returns {{id: string, name: string, formula: string}}
+   */
+  static getAttackInfo(attack) {
+    return { id: attack.id, name: attack.name, formula: attack.system.damageFormula }
+  }
+
+  /**
+   * The card changes after the save of a character defending against an opponent's attack :
+   * nothing on a success, else the Hit Dice roll, the damage dice to roll by the player, or the fixed damage at once.
+   * @param {string} resultType The result of the save : success or failure.
+   * @param {Item} attack The attack of the opponent.
+   * @param {Object} victim The defending character.
+   * @returns {Promise<{system: Object, roll: Roll|undefined}>} The card data and the fixed damage roll, if any.
+   */
+  static async resolveDefense(resultType, attack, victim) {
+    const system = { defense: true, opponentAttack: CombatCard.getAttackInfo(attack) }
+    if (resultType === "success") return { system: { ...system, combat: COMBAT_STATUS.NO_DAMAGE } }
+    // Santé en Dés de vie : le personnage fait directement son jet de Dé de vie
+    if (game.settings.get("cthack", "HealthDisplay") === "hd") return { system: { ...system, combat: COMBAT_STATUS.AWAITING_HIT_DICE } }
+    if (attack.system.hasDamageDice) return { system: { ...system, combat: COMBAT_STATUS.AWAITING_OPPONENT_DICE } }
+    const [changes, roll] = await CombatCard.fixedDamage(attack, victim)
+    return { system: { ...system, ...changes }, roll }
+  }
+
+  /**
+   * The GM uses an attack of an opponent against the targeted character : the attack is used for the round,
+   * and the players of the character are asked to roll the save chosen by the GM to avoid it.
+   * @param {Actor} opponent The opponent.
+   * @param {Item} attack The attack of the opponent.
+   * @returns {Promise<ChatMessage|null>} The request message.
+   */
+  static async requestDefense(opponent, attack) {
+    if (!game.user.isGM || !attack?.system.hasDamage) return null
+    const character = game.user.targets.first()?.actor
+    if (character?.type !== "character") {
+      ui.notifications.warn(game.i18n.localize("CTHACK.Defense.noTarget"))
+      return null
+    }
+    // Le token de l'Opposant : celui de la fiche, sinon un token contrôlé, sinon le premier de la scène (tokens non liés compris)
+    const tokenDocument = opponent.token ?? canvas.tokens?.controlled.find((t) => t.actor?.id === opponent.id)?.document ?? opponent.getActiveTokens(false, true)[0]
+    if (!tokenDocument) {
+      ui.notifications.warn(game.i18n.format("CTHACK.Defense.noToken", { name: opponent.name }))
+      return null
+    }
+    opponent = tokenDocument.actor
+    const opponentInfo = CthackUtils.getActorInfo(opponent, tokenDocument)
+    const victim = CthackUtils.getActorInfo(character, game.user.targets.first().document)
+    const attackInfo = { ...CombatCard.getAttackInfo(attack), img: attack.img, isFixed: !attack.system.hasDamageDice }
+    const choice = await CombatCard.chooseDefense({ opponent: opponentInfo, victim, attack: attackInfo })
+    if (!choice) return null
+
+    await CtHackCombat.useOpponentAction(opponent)
+
+    const players = game.users.filter((u) => !u.isGM && character.testUserPermission(u, "OWNER"))
+    for (const player of players) game.socket.emit(`system.${SYSTEM.id}`, { msg: "askRoll", data: { userId: player.id } })
+    const saveLabel = game.i18n.localize(SYSTEM.SAVES[choice.save].label)
+    const advantageLabel = choice.avantage !== "=" ? game.i18n.localize(`CTHACK.Defense.advantage.${choice.avantage}`) : ""
+    return ChatMessage.create({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: opponent }),
+      content: await foundry.applications.handlebars.renderTemplate("systems/cthack/templates/chat/ask-defense.hbs", {
+        opponent: opponentInfo,
+        victim,
+        attack: attackInfo,
+        save: choice.save,
+        avantage: choice.avantage,
+        text: game.i18n.format("CTHACK.Defense.request", { opponent: opponentInfo.name, attack: attack.name, name: victim.name }),
+        saveText: advantageLabel ? `${saveLabel} (${advantageLabel})` : saveLabel,
+      }),
+      whisper: [game.user.id, ...players.map((u) => u.id)],
+      flags: { cthack: { typeMessage: "askDefense" } },
+    })
+  }
+
+  /**
+   * Ask the GM which save the character makes to defend against the attack, with which advantage.
+   * @param {Object} context The opponent, the victim and the attack.
+   * @returns {Promise<{save: string, avantage: string}|null>} The choice, or null if the dialog is closed.
+   */
+  static async chooseDefense(context) {
+    const advantages = ["++", "+", "=", "-", "--"].map((value) => ({ value, label: game.i18n.localize(`CTHACK.Defense.advantage.${value}`), checked: value === "=" }))
+    const saves = ["dex", "str"].map((id, index) => ({ id, label: game.i18n.localize(SYSTEM.SAVES[id].label), checked: index === 0 }))
+    const content = await foundry.applications.handlebars.renderTemplate("systems/cthack/templates/dialog/request-defense.hbs", { ...context, saves, advantages })
+    return foundry.applications.api.DialogV2.wait({
+      window: { title: game.i18n.localize("CTHACK.Defense.title"), icon: "fa-solid fa-shield-halved" },
+      classes: ["cthack", "cthack-choose-attack"],
+      position: { width: 420 },
+      content,
+      buttons: [
+        {
+          action: "request",
+          label: game.i18n.localize("CTHACK.Defense.send"),
+          icon: "fa-solid fa-dice-d20",
+          default: true,
+          callback: (event, button) => ({ save: button.form.elements.save.value, avantage: button.form.elements.avantage.value }),
+        },
+      ],
+      rejectClose: false,
+    })
   }
 
   /**
@@ -78,7 +211,7 @@ export class CombatCard {
       buttons: [
         {
           action: "roll",
-          label: game.i18n.localize("CTHACK.Card.rollDamage"),
+          label: game.i18n.localize("CTHACK.Card.chooseAttack"),
           icon: "fa-solid fa-dice",
           default: true,
           callback: (event, button) => button.form.elements.attackId.value,
@@ -160,7 +293,7 @@ export class CombatCard {
 
   /**
    * Handle the "cthack.updateCard" query on the GM side : only the card data and the rolls can be updated,
-   * by a user who can roll the character's damage or the Hit Dice of the wounded character (the only actions of a player on a card).
+   * by a user who can roll the character's damage, the damage dice of the opponent's attack or the Hit Dice of the wounded character (the only actions of a player on a card).
    * @param {Object} data
    * @param {string} data.messageId The id of the card.
    * @param {Object} data.updateData The update with the card data and the rolls.
@@ -171,7 +304,7 @@ export class CombatCard {
   static async _handleUpdateQuery({ messageId, updateData }, { user }) {
     const message = game.messages.get(messageId)
     if (message?.type !== "card") return false
-    if (!message.system.canRollPlayerDamage(user) && !message.system.canRollHitDice(user)) return false
+    if (!message.system.canRollPlayerDamage(user) && !message.system.canRollOpponentDice(user) && !message.system.canRollHitDice(user)) return false
     const { system, rolls } = updateData
     await message.update(rolls ? { system, rolls } : { system })
     return true

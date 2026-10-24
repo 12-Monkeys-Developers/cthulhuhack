@@ -31,6 +31,7 @@ export default class CtHackActor extends Actor {
    * @param {boolean} [options.isWeaponRoll=false] - Whether the roll is a weapon roll.
    * @param {boolean} [options.rollAdvantage=false] - Whether the roll has advantage (=, +, ++, -, --).
    * @param {string} [options.itemName] - The name of the item for weapon rolls.
+   * @param {Object} [options.defense] - A save asked by the GM to defend against an opponent's attack : opponentTokenUuid and attackId.
    * @returns {Promise} - A promise that resolves with the result of the roll.
    */
   async rollSave(saveId, options = {}) {
@@ -44,7 +45,7 @@ export default class CtHackActor extends Actor {
     }
     // Save roll
     else {
-      return await this.system.roll(ROLL_TYPE.SAVE, saveId, { rollAdvantage })
+      return await this.system.roll(ROLL_TYPE.SAVE, saveId, { rollAdvantage, defense: options.defense })
     }
   }
 

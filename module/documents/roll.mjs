@@ -188,7 +188,8 @@ export default class CtHackRoll extends Roll {
    * @returns {Array<{value: string, label: string, checked: boolean}>|null} The choices, or null when the dialog does not offer them.
    */
   static _getAttackChoices(options, targetInfo) {
-    if (targetInfo?.type !== "opponent") return null
+    // Une défense contre une attaque d'Opposant n'est pas une attaque du personnage
+    if (targetInfo?.type !== "opponent" || options.isDefense) return null
     const isWeapon = options.rollType === ROLL_TYPE.WEAPON
     const isAttackSave = options.rollType === ROLL_TYPE.SAVE && ["str", "dex"].includes(options.rollTarget)
     if (!isWeapon && !isAttackSave) return null
@@ -218,6 +219,7 @@ export default class CtHackRoll extends Roll {
    * @param {Object} options.target The target of the roll, if any.
    * @param {Object} options.data Additional data for the roll.
    * @param {Object} options.rollAdvantage Default advantage for the roll : =, + , ++, -, --
+   * @param {boolean} [options.isDefense] A save asked by the GM to defend against an opponent's attack : the target is the opponent, whatever the targets of the user.
    *
    * @returns {Promise<Object|null>} The roll result or null if the dialog was cancelled.
    */
@@ -360,7 +362,7 @@ export default class CtHackRoll extends Roll {
       target: targetInfo,
       showTargetMalus: isCheckRoll && targetInfo?.type === "opponent" && (displayOpponentMalus || game.user.isGM),
       showTargetArmor: options.rollType === ROLL_TYPE.DAMAGE && targetInfo?.type === "opponent" && game.user.isGM,
-      multipleTargets: game.user.targets.size > 1,
+      multipleTargets: !options.isDefense && game.user.targets.size > 1,
       threshold: isCheckRoll ? options.rollValue + parseInt(malus, 10) : undefined,
       // Nom de la caractéristique, en infobulle de la valeur de sauvegarde
       saveLabel: isCheckRoll ? game.i18n.localize(`CTHACK.Character.saves.${options.rollTarget}`) : undefined,
@@ -566,7 +568,7 @@ export default class CtHackRoll extends Roll {
       actorName: options.actorName,
       actorImage: options.actorImage,
       targetInfo,
-      targetsCount: game.user.targets.size,
+      targetsCount: options.isDefense ? 1 : game.user.targets.size,
       rollMode: rollContext.visibility,
       hasTarget: options.hasTarget,
       targetName,

@@ -1,3 +1,5 @@
+import { CombatCard } from "./chat/combat-card.mjs"
+
 export class Macros {
   static createCthackMacro = async function (dropData, slot) {
     // Create macro depending of the item dropped on the hotbar
@@ -217,7 +219,7 @@ export class Macros {
 
   /**
    * @name rollAttackMacro
-   * @description Roll the item of type Attack for Opponent
+   * @description Use the item of type Attack of an Opponent against the targeted character : its players roll a save
    *              Check that only one token is selected and he has the attack item
    * @public
    *
@@ -242,8 +244,8 @@ export class Macros {
     // Nothing to roll for an attack without damage
     if (!item.system.hasDamage) return
 
-    // Open the roll window
-    return await actor.system.rollAttack(item.system.damageDice, item.name)
+    // Ask the players of the targeted character for a save
+    return await CombatCard.requestDefense(actor, item)
   }
 
   /**

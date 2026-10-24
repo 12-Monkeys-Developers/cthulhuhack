@@ -1,7 +1,7 @@
 import CtHackRoll from "../documents/roll.mjs"
 import { ROLL_TYPE } from "../config/system.mjs"
 import { CthackUtils } from "../utils.mjs"
-import CtHackCombat from "../documents/combat.mjs"
+import { CombatCard } from "../chat/combat-card.mjs"
 export default class CtHackOpponent extends foundry.abstract.DataModel {
   static defineSchema() {
     const fields = foundry.data.fields
@@ -29,29 +29,15 @@ export default class CtHackOpponent extends foundry.abstract.DataModel {
   }
 
   /**
-   * Rolls a dice attack for an opponent, against the targeted token if any.
-   * The damage formula of the attack (dice plus fixed damage) is used when the attack is found by its name.
-   * @param {string} rollValue The dice to roll.
-   * @param {string} rollTarget The name of the attack
-   * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
+   * Use an attack against the targeted character : the players of the character roll a save to avoid it (the GM never rolls the dice).
+   * Kept with this signature for the macros and the modules (Token Action HUD).
+   * @param {string} rollValue Unused : the damage of the attack is read from the attack.
+   * @param {string} rollTarget The name of the attack.
+   * @returns {Promise<ChatMessage|null>} The request message.
    */
   async rollAttack(rollValue, rollTarget) {
     const attack = this.parent.itemTypes.attack.find((a) => a.name === rollTarget)
-    const target = game.user.targets.first()
-    let roll = await CtHackRoll.prompt({
-      rollType: ROLL_TYPE.ATTACK,
-      rollValue: attack?.system.damageFormula || rollValue,
-      rollTarget,
-      actorId: this.parent.id,
-      actorUuid: this.parent.uuid,
-      actorName: this.parent.name,
-      actorImage: this.parent.img,
-      hasTarget: target !== undefined,
-      target,
-    })
-    if (!roll) return null
-    await roll.toMessage({}, { messageMode: roll.options.rollMode })
-    await CtHackCombat.useOpponentAction(this.parent)
+    return CombatCard.requestDefense(this.parent, attack)
   }
 
   async rollSanity(rollTarget) {

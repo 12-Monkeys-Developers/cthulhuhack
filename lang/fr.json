@@ -404,6 +404,26 @@
       "titleSanity": "Jet de sanité",
       "titleStandard": "Jet standard"
     },
+    "Defense": {
+      "title": "Utiliser une attaque",
+      "use": "Utiliser contre le personnage ciblé (il fait une Sauvegarde)",
+      "save": "Sauvegarde du personnage",
+      "advantageLabel": "Avantage",
+      "advantage": {
+        "++": "Double Avantage",
+        "+": "Avantage",
+        "=": "Normal",
+        "-": "Désavantage",
+        "--": "Double Désavantage"
+      },
+      "send": "Demander la Sauvegarde",
+      "request": "{opponent} attaque {name} : {attack}",
+      "saveToMake": "Sauvegarde de {save} pour éviter l'attaque",
+      "defend": "Se défendre",
+      "noTarget": "Ciblez le personnage attaqué.",
+      "noToken": "{name} n'a pas de token sur la scène.",
+      "attackNotFound": "L'Opposant ou son attaque est introuvable."
+    },
     "Card": {
       "attack": "Attaque",
       "attackNone": "Pas d'attaque",
@@ -438,6 +458,9 @@
       "rollHitDice": "Jet de Dé de vie de {name}",
       "awaitingHitDice": "En attente du jet de Dé de vie de {name}",
       "hitDiceRolled": "Jet de Dé de vie effectué",
+      "defense": "Défense : {attack}",
+      "awaitingOpponentDice": "{attack} touche {name} : dégâts à lancer",
+      "rollOpponentDice": "Lancer les dégâts ({formula})",
       "noActiveGM": "Aucun MJ connecté pour mettre à jour la carte."
     },
     "Roll": {
