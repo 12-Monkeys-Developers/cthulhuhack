@@ -112,6 +112,23 @@ export default class CtHackActor extends Actor {
   }
 
   /**
+   * Roll the attack of a weapon : a Strength save for a weapon without range, a Dexterity save otherwise.
+   * Used by the character sheet and the weapon macro.
+   * @param {Item} item The weapon.
+   * @param {Object} [options={}]
+   * @param {string} [options.rollAdvantage="="] The advantage of the roll : =, +, ++, -, --.
+   * @returns {Promise<Roll|null>}
+   */
+  async rollWeapon(item, options = {}) {
+    // Weapon with resource at 0
+    if (item.system.dice === "0") {
+      return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: item.name }))
+    }
+    const saveId = item.system.range === "" ? "str" : "dex"
+    return await this.rollSave(saveId, { rollAdvantage: options.rollAdvantage || "=", isWeaponRoll: true, itemName: item.name })
+  }
+
+  /**
    * Roll a Sanity dice
    * @param {Item} item         The item used for the roll
    * @param {Object} options      Options which configure how resource tests are rolled

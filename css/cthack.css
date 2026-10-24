@@ -694,11 +694,13 @@ a.inline-roll {
 .cthack.sheet.actor.character select {
   color: var(--font-color-primary);
 }
+.cthack.sheet.actor.character .rollable {
+  cursor: pointer;
+}
 .cthack.sheet.actor.character .rollable:hover,
 .cthack.sheet.actor.character .rollable:focus {
   color: var(--rollable-color);
   text-shadow: 0 0 10px #eea3a3;
-  cursor: pointer;
 }
 .cthack.sheet.actor.character .no-dice {
   color: var(--font-color-primary);

@@ -194,28 +194,8 @@ export class Macros {
     let item = actor.items.get(itemId)
     if (!item) return ui.notifications.warn(game.i18n.format("MACROS.ObjectNotInInventory", { itemName: item.name, actorName: actor.name }))
 
-    // Open the save window if the item uses resource and is not at 0, or if the item uses no resource
-    if (item.system.dice === "0") {
-      return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: item.name }))
-    }
-
-    let modifier = 0
-    if (game.settings.get("cthack", "displayOpponentMalus") && game.user.targets.size > 0) {
-      const target = [...game.user.targets][0]
-      if (target.actor.type == "opponent") {
-        modifier = target.actor.system.malus
-      }
-    }
-
-    const isWeaponRoll = true
-    const itemName = item.name
-    if (modifier < 0) {
-      item.system.range === ""
-        ? actor.rollSave("str", { modifier, rollAdvantage, isWeaponRoll, itemName })
-        : actor.rollSave("dex", { modifier, rollAdvantage, isWeaponRoll, itemName })
-    } else {
-      item.system.range === "" ? actor.rollSave("str", { rollAdvantage, isWeaponRoll, itemName }) : actor.rollSave("dex", { rollAdvantage, isWeaponRoll, itemName })
-    }
+    // Open the save window if the item uses resource and is not at 0, or if the item uses no resource ; the opponent's malus comes from the target in the roll window
+    return actor.rollWeapon(item, { rollAdvantage })
   }
 
   /**

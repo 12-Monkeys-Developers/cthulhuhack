@@ -25,9 +25,14 @@
                         <summary class="item-line weapon">
                             <div class="item-name-img {{#if system.hasDescription}}has-description{{/if}}">{{#if hasImage}}<img src="{{img}}" data-tooltip="{{name}}"/>{{/if}}{{name}}</div>
                             <div class="item-dice">
-                                {{#if (isDiceRollable system.dice)}} <img class="dice-d20 weapon rollable" data-action="rollMaterial" data-tooltip="{{localize 'CTHACK.MaterialRollPromptTitle'}}" src="systems/cthack/ui/dice/d20.webp"> {{/if}}
+                                {{!-- d20 : jet d'attaque (FOR sans portée, DEX avec portée) ; dé de matériel : jet de matériel --}}
+                                <img class="dice-d20 weapon rollable" data-action="rollWeapon" data-tooltip="{{localize 'CTHACK.Dialog.titleWeapon'}}" src="systems/cthack/ui/dice/d20.webp">
                                 {{#if item.system.isDice}}
-                                    <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
+                                    {{#if (isDiceRollable system.dice)}}
+                                        <img {{{getDiceImg item.system.dice}}} class="item-dice-select rollable" data-action="rollMaterial" data-tooltip="{{localize 'CTHACK.MaterialRollPromptTitle'}} ({{item.system.dice}})"/>
+                                    {{else}}
+                                        <img {{{getDiceImg item.system.dice}}} class="item-dice-select" data-tooltip="{{item.system.dice}}"/>
+                                    {{/if}}
                                 {{/if}}
                             </div>
                             <div class="item-range">{{#if (and (eq type "weapon")(eq system.hasRange true))}}{{localize "CTHACK.ItemRangeName"}} : {{localize (rangeDesc system.range)}}{{/if}}</div>
