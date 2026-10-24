@@ -120,7 +120,8 @@ export class Macros {
    * @param {string} img
    */
   static createMacro = async function (slot, name, command, img) {
-    let macro = game.macros.contents.find((m) => m.name === name && m.command === command)
+    // Réutiliser seulement une macro que l'utilisateur peut exécuter : celle d'un autre (le MJ) lui est refusée par le cœur
+    let macro = game.macros.contents.find((m) => m.name === name && m.command === command && m.canExecute)
     if (!macro) {
       try {
         macro = await Macro.create({ name, type: "script", img, command, flags: { "cthack.macro": true } }, { displaySheet: false })
