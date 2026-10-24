@@ -56,6 +56,16 @@
     }
   }
 
+  .rollable {
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: var(--rollable-color);
+      text-shadow: 0 0 10px rgb(238, 163, 163);
+    }
+  }
+
   .opponent-section {
     display: flex;
     flex-direction: column;

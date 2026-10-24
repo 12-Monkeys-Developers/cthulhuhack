@@ -1293,6 +1293,14 @@ body.theme-light .cthack.sheet.actor.character .sidebar .image-container .hover-
   padding: 0 5px 0 5px;
   text-shadow: 0 0 10px var(--nav-active-shadow-color);
 }
+.cthack.sheet.actor.opponent .rollable {
+  cursor: pointer;
+}
+.cthack.sheet.actor.opponent .rollable:hover,
+.cthack.sheet.actor.opponent .rollable:focus {
+  color: var(--rollable-color);
+  text-shadow: 0 0 10px #eea3a3;
+}
 .cthack.sheet.actor.opponent .opponent-section {
   display: flex;
   flex-direction: column;
