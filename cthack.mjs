@@ -39,14 +39,10 @@ Hooks.once("init", function () {
     macros: Macros,
   }
 
-  /**
-   * Set an initiative formula for the system
-   * @type {String}
-   */
-  CONFIG.Combat.initiative = {
-    formula: "1d20",
-    decimals: 2,
-  }
+  // Combat without initiative : the GM orders the combatants, the Moments done and the attacks of the opponents are tracked
+  CONFIG.Combat.documentClass = documents.CtHackCombat
+  CONFIG.Combatant.documentClass = documents.CtHackCombatant
+  CONFIG.ui.combat = applications.CtHackCombatTracker
 
   // Define socket
   game.socket.on("system.cthack", (data) => {

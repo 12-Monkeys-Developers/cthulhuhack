@@ -1,0 +1,84 @@
+<ol class="combat-tracker plain">
+    {{#each turns}}
+    <li class="combatant {{ css }}" data-combatant-id="{{ id }}" data-action="activateCombatant">
+
+        {{!-- Drag handle --}}
+        {{#if canDrag}}
+        <i class="drag-handle fa-solid fa-grip-vertical" data-tooltip="CTHACK.Combat.Drag" aria-hidden="true"></i>
+        {{/if}}
+
+        {{!-- Image --}}
+        <img class="token-image" src="{{ img }}" alt="{{ name }}" loading="lazy">
+
+        {{!-- Name & Controls --}}
+        <div class="token-name">
+            <strong class="name">{{ name }}</strong>
+            <div class="combatant-controls">
+                {{#if @root.user.isGM}}
+                <button type="button" class="inline-control combatant-control icon fa-solid fa-eye-slash {{#if hidden}}active{{/if}}"
+                        data-action="toggleHidden" data-tooltip aria-label="{{ localize (ifThen hidden "COMBATANT.Show" "COMBATANT.Hide") }}"></button>
+                <button type="button" class="inline-control combatant-control icon fa-solid fa-skull {{#if isDefeated}}active{{/if}}"
+                        data-action="toggleDefeated" data-tooltip
+                        aria-label="{{ localize (ifThen isDefeated "COMBATANT.UnmarkDefeated" "COMBATANT.MarkDefeated") }}"></button>
+                {{#if @root.combat.started}}
+                {{#unless active}}
+                <button type="button" class="inline-control combatant-control icon fa-solid fa-hand-point-right"
+                        data-action="setTurn" data-tooltip aria-label="{{ localize "CTHACK.Combat.SetTurn" }}"></button>
+                {{/unless}}
+                {{/if}}
+                {{/if}}
+                {{#if canPing}}
+                <button type="button" class="inline-control combatant-control icon fa-solid fa-bullseye-arrow"
+                        data-action="pingCombatant" data-tooltip
+                        aria-label="{{ localize "COMBATANT.Ping" }}"></button>
+                {{/if}}
+                {{#unless @root.user.isGM}}
+                <button type="button" class="inline-control combatant-control icon fa-solid fa-arrows-to-eye"
+                        data-action="panToCombatant" data-tooltip
+                        aria-label="{{ localize "COMBATANT.PanTo" }}"></button>
+                {{/unless}}
+                <div class="token-effects" data-tooltip-html="{{ effects.tooltip }}">
+                    {{#each effects.icons}}
+                    <img class="token-effect" src="{{ img }}" alt="{{ name }}">
+                    {{/each}}
+                </div>
+            </div>
+
+            {{!-- Attacks of an opponent during the round --}}
+            {{#if actions}}
+            <div class="combatant-actions" role="group"
+                 aria-label="{{ localize "CTHACK.Combat.ActionsLeft" left=actions.left max=actions.max }}"
+                 data-tooltip="{{ localize "CTHACK.Combat.ActionsLeft" left=actions.left max=actions.max }}">
+                {{#each actions.pips}}
+                {{#if ../actions.editable}}
+                <button type="button" class="action-pip {{#if used}}used{{/if}}" data-action="useAction" data-index="{{ index }}"
+                        aria-pressed="{{ used }}" aria-label="{{ localize (ifThen used "CTHACK.Combat.RecoverAction" "CTHACK.Combat.UseAction") }}"></button>
+                {{else}}
+                <span class="action-pip {{#if used}}used{{/if}}"></span>
+                {{/if}}
+                {{/each}}
+                <span class="actions-count">{{ actions.left }}/{{ actions.max }}</span>
+            </div>
+            {{/if}}
+        </div>
+
+        {{!-- Resource --}}
+        {{#if resource includeZero=true}}
+        <div class="token-resource">
+            <span class="resource">{{ resource }}</span>
+        </div>
+        {{/if}}
+
+        {{!-- Moment done --}}
+        {{#if @root.combat.started}}
+        <div class="token-done">
+            <button type="button" class="combatant-control done-toggle {{#if done}}active{{/if}}" data-action="toggleDone"
+                    {{#unless canToggleDone}}disabled{{/unless}} aria-pressed="{{ done }}"
+                    data-tooltip aria-label="{{ localize (ifThen done "CTHACK.Combat.MarkNotDone" "CTHACK.Combat.MarkDone") }}">
+                <i class="{{#if done}}fa-solid fa-circle-check{{else}}fa-regular fa-circle{{/if}}" inert></i>
+            </button>
+        </div>
+        {{/if}}
+    </li>
+    {{/each}}
+</ol>

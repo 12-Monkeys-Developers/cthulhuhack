@@ -456,6 +456,88 @@ a.inline-roll {
   gap: 1.5rem;
   overflow-y: auto;
 }
+.cthack-combat {
+  --cthack-combat-accent: #782e22;
+}
+.cthack-combat .combat-tracker .combatant {
+  position: relative;
+}
+.cthack-combat .combat-tracker .combatant.dragging {
+  opacity: 0.5;
+}
+.cthack-combat .combat-tracker .combatant.drop-before {
+  box-shadow: inset 0 2px 0 var(--color-warm-2);
+}
+.cthack-combat .combat-tracker .combatant.drop-after {
+  box-shadow: inset 0 -2px 0 var(--color-warm-2);
+}
+.cthack-combat .combat-tracker .combatant.done:not(.active) .token-image {
+  opacity: 0.45;
+  filter: grayscale(0.8);
+}
+.cthack-combat .combat-tracker .combatant.done:not(.active) .name {
+  color: var(--color-text-subtle);
+}
+.cthack-combat .combat-tracker .drag-handle {
+  flex: 0 0 auto;
+  color: var(--color-text-subtle);
+  font-size: var(--font-size-12);
+  cursor: grab;
+}
+.cthack-combat .combat-tracker .token-done {
+  flex: 0 0 var(--input-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cthack-combat .combat-tracker .token-done .done-toggle {
+  width: var(--input-height);
+  height: var(--input-height);
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background: none;
+  font-size: var(--font-size-18);
+  color: var(--color-text-subtle);
+}
+.cthack-combat .combat-tracker .token-done .done-toggle.active {
+  color: var(--color-level-success, #2e8b57);
+}
+.cthack-combat .combat-tracker .token-done .done-toggle:focus-visible {
+  outline: 1px solid var(--color-warm-2);
+}
+.cthack-combat .combat-tracker .token-done .done-toggle:disabled {
+  cursor: default;
+}
+.cthack-combat .combat-tracker .combatant-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px;
+}
+.cthack-combat .combat-tracker .combatant-actions .action-pip {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  min-height: 0;
+  padding: 0;
+  border: 1px solid var(--cthack-combat-accent);
+  border-radius: 50%;
+  background: var(--cthack-combat-accent);
+}
+.cthack-combat .combat-tracker .combatant-actions .action-pip.used {
+  background: transparent;
+  border-color: var(--color-text-subtle);
+}
+.cthack-combat .combat-tracker .combatant-actions button.action-pip:hover {
+  box-shadow: 0 0 4px var(--color-warm-2);
+}
+.cthack-combat .combat-tracker .combatant-actions .actions-count {
+  margin-left: 2px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-11);
+}
 /* Styles limited to cthack sheets */
 .cthack .window-content {
   background: var(--background-standard);

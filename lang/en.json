@@ -563,6 +563,18 @@
       "gmManagerTooltip": "Open players manager",
       "search": "Search",
       "searchTooltip": "Open search window"
+    },
+    "Combat": {
+      "Drag": "Drag to reorder",
+      "SetTurn": "Give the turn",
+      "MarkDone": "Mark the Moment as done",
+      "MarkNotDone": "Mark the Moment as not done",
+      "ActionsLeft": "Attacks left: {left} of {max}",
+      "UseAction": "Use an attack",
+      "RecoverAction": "Recover the attack",
+      "SetActions": "Attacks per round",
+      "ActionsMax": "Attacks per round",
+      "ActionsMaxHint": "0: the sum of the opponent's attacks (Claw x 3 counts for 3)."
     }
   },
 

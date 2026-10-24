@@ -1,5 +1,6 @@
 export { default as CthulhuHackManager } from "./manager.mjs"
 export { default as CthackSidebarMenu } from "./sidebar-menu.mjs"
+export { default as CtHackCombatTracker } from "./combat-tracker.mjs"
 
 export { default as CtHackActorSheet } from "./sheets/actor.mjs"
 export { default as PersonnageSheet } from "./sheets/character.mjs"

@@ -1,0 +1,104 @@
+// Combat tracker without initiative : drag and drop, Moments done, attacks of the opponents
+.cthack-combat {
+  --cthack-combat-accent: #782e22;
+
+  .combat-tracker {
+    .combatant {
+      position: relative;
+
+      &.dragging {
+        opacity: 0.5;
+      }
+
+      &.drop-before {
+        box-shadow: inset 0 2px 0 var(--color-warm-2);
+      }
+
+      &.drop-after {
+        box-shadow: inset 0 -2px 0 var(--color-warm-2);
+      }
+
+      // Moment done : dimmed, the check stays readable
+      &.done:not(.active) {
+        .token-image {
+          opacity: 0.45;
+          filter: grayscale(0.8);
+        }
+        .name {
+          color: var(--color-text-subtle);
+        }
+      }
+    }
+
+    .drag-handle {
+      flex: 0 0 auto;
+      color: var(--color-text-subtle);
+      font-size: var(--font-size-12);
+      cursor: grab;
+    }
+
+    .token-done {
+      flex: 0 0 var(--input-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .done-toggle {
+        width: var(--input-height);
+        height: var(--input-height);
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        background: none;
+        font-size: var(--font-size-18);
+        color: var(--color-text-subtle);
+
+        &.active {
+          color: var(--color-level-success, #2e8b57);
+        }
+
+        &:focus-visible {
+          outline: 1px solid var(--color-warm-2);
+        }
+
+        &:disabled {
+          cursor: default;
+        }
+      }
+    }
+
+    .combatant-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3px;
+
+      .action-pip {
+        flex: 0 0 auto;
+        width: 12px;
+        height: 12px;
+        min-height: 0;
+        padding: 0;
+        border: 1px solid var(--cthack-combat-accent);
+        border-radius: 50%;
+        background: var(--cthack-combat-accent);
+
+        &.used {
+          background: transparent;
+          border-color: var(--color-text-subtle);
+        }
+      }
+
+      button.action-pip:hover {
+        box-shadow: 0 0 4px var(--color-warm-2);
+      }
+
+      .actions-count {
+        margin-left: 2px;
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-11);
+      }
+    }
+  }
+}
