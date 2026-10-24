@@ -407,8 +407,8 @@ pages:
           </p>
           <p>
             Pour utiliser une attaque contre un personnage (une attaque restante en fin de round, par exemple), ciblez son token puis cliquez sur l'icône de dé de l'attaque. Choisissez
-            la Sauvegarde à faire (Dextérité ou Force) et l'avantage éventuel : l'attaque est décomptée dans le suivi de combat, et les joueurs du personnage reçoivent un message
-            avec le bouton <strong>Se défendre</strong>. Sur une réussite, il ne se passe rien ; sur un échec, la carte du jet porte les dégâts de l'attaque (le joueur lance le dé de
+            la Sauvegarde à faire (Dextérité ou Force) et l'avantage éventuel : l'attaque est décomptée dans le suivi de combat, et un message visible de tous annonce l'attaque ;
+            seuls les joueurs du personnage y ont le bouton <strong>Se défendre</strong>. Sur une réussite, il ne se passe rien ; sur un échec, la carte du jet porte les dégâts de l'attaque (le joueur lance le dé de
             dégâts s'il y en a un), avec le bouton <strong>Appliquer</strong> pour le MJ. La macro d'attaque fait de même.
           </p>
           <p>Une attaque sert aussi à la riposte quand un personnage rate son attaque (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.myQHUZRgImQ9cmj5]{Jets et messages}).</p>

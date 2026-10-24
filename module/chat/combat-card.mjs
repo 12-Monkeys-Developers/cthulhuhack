@@ -150,7 +150,6 @@ export class CombatCard {
         avantage: choice.avantage,
         saveText: advantageLabel ? `${saveLabel} (${advantageLabel})` : saveLabel,
       }),
-      whisper: [game.user.id, ...players.map((u) => u.id)],
       flags: { cthack: { typeMessage: "askDefense" } },
     })
   }
