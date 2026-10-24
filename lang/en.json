@@ -408,7 +408,7 @@
       "title": "Use an attack",
       "use": "Use against the targeted character (they make a save)",
       "save": "Character's save",
-      "advantageLabel": "Advantage",
+      "advantagesTooltip": "Double disadvantage - Disadvantage - Normal - Advantage - Double advantage",
       "advantage": {
         "++": "Double Advantage",
         "+": "Advantage",
@@ -417,7 +417,6 @@
         "--": "Double Disadvantage"
       },
       "send": "Ask for the save",
-      "request": "{opponent} attacks {name}: {attack}",
       "saveToMake": "{save} save to avoid the attack",
       "defend": "Defend",
       "noTarget": "Target the attacked character.",

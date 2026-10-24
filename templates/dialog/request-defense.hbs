@@ -30,13 +30,13 @@
       </label>
     {{/each}}
   </fieldset>
-  <fieldset class="attack-list">
-    <legend>{{localize "CTHACK.Defense.advantageLabel"}}</legend>
-    {{#each advantages as |advantage|}}
-      <label class="attack-choice">
-        <input type="radio" name="avantage" value="{{advantage.value}}" {{checked advantage.checked}}>
-        <span class="attack-name">{{advantage.label}}</span>
-      </label>
-    {{/each}}
-  </fieldset>
+  {{!-- Même glissière que la fenêtre de jet --}}
+  <div class="cthack-roll-dialog single-column">
+    <fieldset class="dialog-avantages">
+      <legend>{{localize "CTHACK.Roll.avantagesDesavantages"}}</legend>
+      <input type="range" name="avantages" min="1" max="5" value="{{avantages}}"
+        data-tooltip="{{localize 'CTHACK.Defense.advantagesTooltip'}}" data-tooltip-direction="UP" data-tooltip-class="tooltip-avantages">
+      <input id="selectAvantages" name="selectAvantages" readonly value="{{selectAvantages}}">
+    </fieldset>
+  </div>
 </div>

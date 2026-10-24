@@ -10,6 +10,12 @@ import CtHackCombat from "../documents/combat.mjs"
  */
 export class CombatCard {
   /**
+   * The advantages of the slider, from 1 (double disadvantage) to 5 (double advantage).
+   * @type {string[]}
+   */
+  static ADVANTAGES = ["--", "-", "=", "+", "++"]
+
+  /**
    * Roll the damage of the character, armed or unarmed as declared in the roll dialog, after a successful attack.
    * @param {ChatMessage} message The combat card.
    * @returns {Promise<void>}
@@ -142,7 +148,6 @@ export class CombatCard {
         attack: attackInfo,
         save: choice.save,
         avantage: choice.avantage,
-        text: game.i18n.format("CTHACK.Defense.request", { opponent: opponentInfo.name, attack: attack.name, name: victim.name }),
         saveText: advantageLabel ? `${saveLabel} (${advantageLabel})` : saveLabel,
       }),
       whisper: [game.user.id, ...players.map((u) => u.id)],
@@ -156,9 +161,13 @@ export class CombatCard {
    * @returns {Promise<{save: string, avantage: string}|null>} The choice, or null if the dialog is closed.
    */
   static async chooseDefense(context) {
-    const advantages = ["++", "+", "=", "-", "--"].map((value) => ({ value, label: game.i18n.localize(`CTHACK.Defense.advantage.${value}`), checked: value === "=" }))
     const saves = ["dex", "str"].map((id, index) => ({ id, label: game.i18n.localize(SYSTEM.SAVES[id].label), checked: index === 0 }))
-    const content = await foundry.applications.handlebars.renderTemplate("systems/cthack/templates/dialog/request-defense.hbs", { ...context, saves, advantages })
+    const content = await foundry.applications.handlebars.renderTemplate("systems/cthack/templates/dialog/request-defense.hbs", {
+      ...context,
+      saves,
+      avantages: 3,
+      selectAvantages: CtHackRoll._convertAvantages(3),
+    })
     return foundry.applications.api.DialogV2.wait({
       window: { title: game.i18n.localize("CTHACK.Defense.title"), icon: "fa-solid fa-shield-halved" },
       classes: ["cthack", "cthack-choose-attack"],
@@ -170,9 +179,18 @@ export class CombatCard {
           label: game.i18n.localize("CTHACK.Defense.send"),
           icon: "fa-solid fa-dice-d20",
           default: true,
-          callback: (event, button) => ({ save: button.form.elements.save.value, avantage: button.form.elements.avantage.value }),
+          callback: (event, button) => ({
+            save: button.form.elements.save.value,
+            avantage: CombatCard.ADVANTAGES[parseInt(button.form.elements.avantages.value, 10) - 1],
+          }),
         },
       ],
+      // Libellé de la glissière mis à jour en direct, comme dans la fenêtre de jet
+      render: (event, dialog) => {
+        const range = dialog.element.querySelector('input[name="avantages"]')
+        const label = dialog.element.querySelector('input[name="selectAvantages"]')
+        range.addEventListener("input", () => (label.value = CtHackRoll._convertAvantages(parseInt(range.value, 10))))
+      },
       rejectClose: false,
     })
   }
