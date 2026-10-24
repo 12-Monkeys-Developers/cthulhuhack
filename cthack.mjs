@@ -157,6 +157,8 @@ Hooks.once("init", function () {
 
   // Queries : a player asks the active GM to update a chat card he cannot modify
   CONFIG.queries["cthack.updateCard"] = CombatCard._handleUpdateQuery
+  // Queries : a player's roll against an opponent asks the active GM to use one of its attacks
+  CONFIG.queries["cthack.useOpponentAction"] = documents.CtHackCombat._handleUseActionQuery
 
   // Search
   foundry.documents.collections.Journal.registerSheet(game.system.id, FullsearchJournalSheet, { makeDefault: false })

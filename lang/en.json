@@ -574,7 +574,8 @@
       "RecoverAction": "Recover the attack",
       "SetActions": "Attacks per round",
       "ActionsMax": "Attacks per round",
-      "ActionsMaxHint": "0: the sum of the opponent's attacks (Claw x 3 counts for 3)."
+      "ActionsMaxHint": "0: the sum of the opponent's attacks (Claw x 3 counts for 3).",
+      "noActiveGM": "No GM connected to count the Opponent's attack."
     }
   },
 

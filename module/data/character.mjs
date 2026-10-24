@@ -3,6 +3,7 @@ import CtHackRoll from "../documents/roll.mjs"
 import { CthackUtils } from "../utils.mjs"
 import { COMBAT_STATUS } from "./card-message.mjs"
 import { CombatCard } from "../chat/combat-card.mjs"
+import CtHackCombat from "../documents/combat.mjs"
 
 export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
   static defineSchema() {
@@ -246,6 +247,11 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
     }
 
     const message = await roll.toMessage({ system }, { messageMode: roll.options.rollMode })
+
+    // Une sauvegarde ou un jet d'arme contre un Opposant utilise une de ses attaques du round
+    if ([ROLL_TYPE.SAVE, ROLL_TYPE.WEAPON].includes(rollType) && opponentTarget?.actor?.type === "opponent") {
+      await CtHackCombat.useOpponentAction(opponentTarget.actor)
+    }
 
     // Dégâts simultanés : les dégâts du personnage sont lancés tout de suite, sans attendre le bouton de la carte
     if (system.combat === COMBAT_STATUS.AWAITING_PLAYER && game.settings.get("cthack", "simultaneousDamage")) {

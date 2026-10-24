@@ -606,7 +606,8 @@ pages:
             </li>
             <li>
               <strong>Opponents' attacks</strong>: under an Opponent's name, one pip per attack of the round (sum of the attacks on their sheet, "Claw x 3" counts for 3), followed
-              by the number left. Click a pip to mark attacks as used, an empty pip to recover them. The right-click <strong>Attacks per round</strong> entry changes this total for
+              by the number left. An attack is counted automatically when the GM rolls an attack of the Opponent (sheet or macro), and when a character makes a save or a weapon
+              roll targeting the Opponent, even rolled by a player (whether the roll succeeds or not; choosing the attack on the combat card counts nothing more). Click a pip to mark attacks as used, an empty pip to recover them. The right-click <strong>Attacks per round</strong> entry changes this total for
               the encounter (0 goes back to the sheet). Players only see these pips if they can see the Opponent.
             </li>
             <li><strong>New round</strong>: once everyone has acted, or with the Next round button, Moments and used attacks are reset.</li>

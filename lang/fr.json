@@ -574,7 +574,8 @@
       "RecoverAction": "Récupérer l'attaque",
       "SetActions": "Nombre d'attaques par round",
       "ActionsMax": "Attaques par round",
-      "ActionsMaxHint": "0 : la somme des attaques de l'adversaire (Griffe x 3 compte pour 3)."
+      "ActionsMaxHint": "0 : la somme des attaques de l'adversaire (Griffe x 3 compte pour 3).",
+      "noActiveGM": "Aucun MJ connecté pour décompter l'attaque de l'Opposant."
     }
   },
 

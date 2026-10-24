@@ -1,5 +1,6 @@
 6.4.0
 - Suivi de combat adapté aux règles : plus d'initiative (ni colonne, ni jets, ni entrées de menu). Le MJ réordonne les combattants par glisser-déposer ; chaque combattant a une case « Moment accompli », cochée par « Tour suivant » ou à la main (MJ ou propriétaire), et le MJ peut donner la main à n'importe quel combattant. Les attaques d'un Opposant pour le round (somme des attaques de sa fiche, modifiable par clic droit) s'affichent en pastilles à cocher. Un nouveau round remet à zéro Moments et attaques
+- Décompte automatique des attaques d'un Opposant dans le combat en cours : une attaque lancée par le MJ (fiche ou macro), ou une sauvegarde ou un jet d'arme d'un personnage ciblant l'Opposant, réussi ou non, même lancé par un joueur (le MJ connecté fait la mise à jour), utilise une attaque du round. Rien n'est décompté quand l'Opposant n'a plus d'attaque ; le choix de l'attaque sur la carte de combat ne décompte rien de plus
 
 6.3.1
 - Correction : les jets aveugles ou réservés au MJ ne révèlent plus rien aux joueurs non autorisés. La carte du jet (cible, seuil, réussite ou échec, état du combat, boutons d'action) et le détail des dés restent masqués ; seul l'emplacement anonyme prévu par Foundry s'affiche

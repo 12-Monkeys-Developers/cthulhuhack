@@ -1,6 +1,7 @@
 import CtHackRoll from "../documents/roll.mjs"
 import { ROLL_TYPE } from "../config/system.mjs"
 import { CthackUtils } from "../utils.mjs"
+import CtHackCombat from "../documents/combat.mjs"
 export default class CtHackOpponent extends foundry.abstract.DataModel {
   static defineSchema() {
     const fields = foundry.data.fields
@@ -50,6 +51,7 @@ export default class CtHackOpponent extends foundry.abstract.DataModel {
     })
     if (!roll) return null
     await roll.toMessage({}, { messageMode: roll.options.rollMode })
+    await CtHackCombat.useOpponentAction(this.parent)
   }
 
   async rollSanity(rollTarget) {

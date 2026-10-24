@@ -102,6 +102,43 @@ export default class CtHackCombat extends Combat {
     if (updates.length) await this.updateEmbeddedDocuments("Combatant", updates)
   }
 
+  /**
+   * Use an attack of an opponent in the active combat : its counter of attacks left for the round goes down by 1.
+   * Called when the GM rolls an attack of the opponent, and when a character rolls a save or a weapon roll against it.
+   * A player, who cannot modify the opponent's combatant, asks the active GM to do it.
+   * Nothing happens outside a started combat, or when the opponent has no attack left.
+   * @param {Actor} actor The opponent, the synthetic actor of its token for an unlinked token.
+   * @returns {Promise<void>}
+   */
+  static async useOpponentAction(actor) {
+    const combat = game.combat
+    if (!combat?.started || actor?.type !== "opponent") return
+    const candidates = combat.getCombatantsByActor(actor).filter((c) => c.hasActions && c.actionsLeft > 0)
+    // Several unlinked tokens of the same actor : the one whose turn it is, else the first one
+    const combatant = candidates.find((c) => c === combat.combatant) ?? candidates[0]
+    if (!combatant) return
+    if (combatant.canUserModify(game.user, "update")) return combatant.setFlag(SYSTEM_NAME, "actionsUsed", combatant.actionsUsed + 1)
+    const gm = game.users.activeGM
+    if (!gm) {
+      ui.notifications.warn(game.i18n.localize("CTHACK.Combat.noActiveGM"))
+      return
+    }
+    await gm.query("cthack.useOpponentAction", { combatantUuid: combatant.uuid })
+  }
+
+  /**
+   * Handle the "cthack.useOpponentAction" query on the GM side : one attack of an opponent is used.
+   * @param {Object} data
+   * @param {string} data.combatantUuid The uuid of the opponent's combatant.
+   * @returns {Promise<boolean>} Whether an attack has been used.
+   */
+  static async _handleUseActionQuery({ combatantUuid }) {
+    const combatant = await fromUuid(combatantUuid)
+    if (!combatant?.combat?.started || !combatant.hasActions || combatant.actionsLeft <= 0) return false
+    await combatant.setFlag(SYSTEM_NAME, "actionsUsed", combatant.actionsUsed + 1)
+    return true
+  }
+
   /** @override No initiative in Cthulhu Hack */
   async rollInitiative(ids, options) {
     return this
