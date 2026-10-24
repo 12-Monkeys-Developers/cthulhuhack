@@ -1,4 +1,5 @@
 import CtHackActorSheet from "./actor.mjs"
+import { CombatCard } from "../../chat/combat-card.mjs"
 
 const { ux } = foundry.applications
 
@@ -15,7 +16,7 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
     },
     actions: {
       createItem: CtHackOpponentSheet.#onCreateItem,
-      rollAttack: CtHackOpponentSheet.#onAttackDamageRoll,
+      requestDefense: CtHackOpponentSheet.#onRequestDefense,
       rollSanity: CtHackOpponentSheet.#onSanityRoll,
     },
   }
@@ -210,16 +211,16 @@ export default class CtHackOpponentSheet extends CtHackActorSheet {
   }
 
   /**
-   * Handle rolling attack damage.
+   * Handle using an attack against the targeted character : its players are asked for a save.
    * @param {PointerEvent} event
    * @param {HTMLElement} target
    */
-  static async #onAttackDamageRoll(event, target) {
+  static async #onRequestDefense(event, target) {
     event.stopPropagation()
     const li = target.closest(".item")
     const itemId = li.dataset.itemId
     const item = this.document.items.get(itemId)
-    await this.document.system.rollAttack(item.system.damageDice, item.name)
+    await CombatCard.requestDefense(this.document, item)
   }
 
   /**

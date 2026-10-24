@@ -3,6 +3,7 @@ import CtHackRoll from "../documents/roll.mjs"
 import { CthackUtils } from "../utils.mjs"
 import { COMBAT_STATUS } from "./card-message.mjs"
 import { CombatCard } from "../chat/combat-card.mjs"
+import CtHackCombat from "../documents/combat.mjs"
 
 export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
   static defineSchema() {
@@ -161,6 +162,9 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
    * @param {string} rollTarget - The target of the roll, which can be a save, attribute, or item. If the roll is a damage roll, this is the id of the item.
    * @param {Object} [options={}] - Additional options for the roll.
    * @param {string} [options.rollAdvantage="="] - The advantage or disadvantage for the roll. If there is an avantage (+), a disadvantage (-), a double advantage (++), a double disadvantage (--) or a normal roll (=).
+   * @param {Object} [options.defense] - A save asked by the GM to defend against an opponent's attack.
+   * @param {string} options.defense.opponentTokenUuid - The uuid of the opponent's token.
+   * @param {string} options.defense.attackId - The id of the attack.
    * @returns {Promise<void>} - A promise that resolves when the roll is complete.
    */
   async roll(rollType, rollTarget, options = {}) {
@@ -175,6 +179,12 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
       case ROLL_TYPE.SAVE:
         rollValue = this.saves[rollTarget].value
         opponentTarget = game.user.targets.first()
+        if (options.defense) {
+          const defense = CtHackCharacter._getDefense(options.defense)
+          if (!defense) return null
+          opponentTarget = defense.token
+          rollOptions.defenseAttack = defense.attack
+        }
         break
       case ROLL_TYPE.WEAPON:
         rollValue = this.saves[rollTarget].value
@@ -224,6 +234,7 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
       target: opponentTarget,
       rollAdvantage,
       itemName: rollOptions.itemName ? rollOptions.itemName : undefined,
+      isDefense: !!rollOptions.defenseAttack,
     })
     if (!roll) return null
 
@@ -245,7 +256,27 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
       system.combat = this._getCombatStatus(roll.resultType, opponentTarget.actor, attackDamage)
     }
 
+    // Défense contre une attaque d'Opposant : l'échec inflige les dégâts de cette attaque
+    let defenseRoll
+    if (rollOptions.defenseAttack) {
+      const defense = await CombatCard.resolveDefense(roll.resultType, rollOptions.defenseAttack, CthackUtils.getActorInfo(this.parent))
+      Object.assign(system, defense.system)
+      defenseRoll = defense.roll
+    }
+
     const message = await roll.toMessage({ system }, { messageMode: roll.options.rollMode })
+    // Dégâts fixes de la défense : le jet constant est ajouté à la carte, comme pour une riposte
+    if (defenseRoll) await message.update({ rolls: [...message.rolls, defenseRoll].map((r) => r.toJSON()) })
+
+    // Une sauvegarde ou un jet d'arme contre un Opposant utilise une de ses attaques du round, sauf une défense : l'attaque a été décomptée à la demande du MJ
+    if ([ROLL_TYPE.SAVE, ROLL_TYPE.WEAPON].includes(rollType) && opponentTarget?.actor?.type === "opponent" && !rollOptions.defenseAttack) {
+      await CtHackCombat.useOpponentAction(opponentTarget.actor)
+    }
+
+    // Dégâts simultanés : le dé de dégâts de l'attaque subie est lancé tout de suite par le joueur
+    if (system.combat === COMBAT_STATUS.AWAITING_OPPONENT_DICE && game.settings.get("cthack", "simultaneousDamage")) {
+      await CombatCard.rollOpponentDice(message)
+    }
 
     // Dégâts simultanés : les dégâts du personnage sont lancés tout de suite, sans attendre le bouton de la carte
     if (system.combat === COMBAT_STATUS.AWAITING_PLAYER && game.settings.get("cthack", "simultaneousDamage")) {
@@ -257,6 +288,23 @@ export default class CtHackCharacter extends foundry.abstract.TypeDataModel {
       else await this.parent.items.get(rollTarget).update({ "system.dice": lostResource.to })
     }
     return roll
+  }
+
+  /**
+   * The opponent's token and attack of a defense save. The token is found by its uuid : it does not need to be targeted, nor on the viewed scene.
+   * @param {Object} defense
+   * @param {string} defense.opponentTokenUuid The uuid of the opponent's token.
+   * @param {string} defense.attackId The id of the attack.
+   * @returns {{token: {actor: Actor, document: TokenDocument}, attack: Item}|null} The target of the roll and the attack, or null if not found.
+   */
+  static _getDefense({ opponentTokenUuid, attackId }) {
+    const tokenDocument = fromUuidSync(opponentTokenUuid)
+    const attack = tokenDocument?.actor?.items.get(attackId)
+    if (!attack) {
+      ui.notifications.warn(game.i18n.localize("CTHACK.Defense.attackNotFound"))
+      return null
+    }
+    return { token: { actor: tokenDocument.actor, document: tokenDocument }, attack }
   }
 
   /**

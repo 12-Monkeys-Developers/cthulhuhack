@@ -96,6 +96,8 @@ export default class CtHackChatMessage extends ChatMessage {
       canRollPlayerDamage: system.canRollPlayerDamage(),
       // Attaque déclarée : pastille de l'en-tête et libellé du bouton des dégâts du personnage
       attackLabel: system.isCombat && system.attackDamage ? game.i18n.localize(system.isUnarmed ? "CTHACK.Card.attackUnarmed" : "CTHACK.Card.attackArmed") : "",
+      // Défense : l'attaque de l'Opposant à éviter
+      defenseLabel: system.defense && system.opponentAttack ? game.i18n.format("CTHACK.Card.defense", { attack: system.opponentAttack.name }) : "",
       rollPlayerDamageLabel:
         status === COMBAT_STATUS.AWAITING_PLAYER
           ? game.i18n.format(system.isUnarmed ? "CTHACK.Card.rollUnarmedDamage" : "CTHACK.Card.rollArmedDamage", {
@@ -103,6 +105,8 @@ export default class CtHackChatMessage extends ChatMessage {
             })
           : "",
       canRollOpponentDamage: isGM && status === COMBAT_STATUS.AWAITING_GM,
+      awaitingOpponentDice: status === COMBAT_STATUS.AWAITING_OPPONENT_DICE,
+      canRollOpponentDice: system.canRollOpponentDice(),
       // The damage block : a damage card, or a resolved combat card
       damage: system.damage && damageRoll ? CtHackChatMessage._getDamageContext(system, damageRoll, isGM) : null,
     }
@@ -172,6 +176,8 @@ export default class CtHackChatMessage extends ChatMessage {
           return await CombatCard.rollPlayerDamage(this)
         case "rollOpponentDamage":
           return await CombatCard.rollOpponentDamage(this)
+        case "rollOpponentDice":
+          return await CombatCard.rollOpponentDice(this)
         case "applyDamage":
           return await CombatCard.applyDamage(this)
         case "rollHitDice":

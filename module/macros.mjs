@@ -1,3 +1,5 @@
+import { CombatCard } from "./chat/combat-card.mjs"
+
 export class Macros {
   static createCthackMacro = async function (dropData, slot) {
     // Create macro depending of the item dropped on the hotbar
@@ -118,7 +120,8 @@ export class Macros {
    * @param {string} img
    */
   static createMacro = async function (slot, name, command, img) {
-    let macro = game.macros.contents.find((m) => m.name === name && m.command === command)
+    // Réutiliser seulement une macro que l'utilisateur peut exécuter : celle d'un autre (le MJ) lui est refusée par le cœur
+    let macro = game.macros.contents.find((m) => m.name === name && m.command === command && m.canExecute)
     if (!macro) {
       try {
         macro = await Macro.create({ name, type: "script", img, command, flags: { "cthack.macro": true } }, { displaySheet: false })
@@ -191,33 +194,13 @@ export class Macros {
     let item = actor.items.get(itemId)
     if (!item) return ui.notifications.warn(game.i18n.format("MACROS.ObjectNotInInventory", { itemName: item.name, actorName: actor.name }))
 
-    // Open the save window if the item uses resource and is not at 0, or if the item uses no resource
-    if (item.system.dice === "0") {
-      return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: item.name }))
-    }
-
-    let modifier = 0
-    if (game.settings.get("cthack", "displayOpponentMalus") && game.user.targets.size > 0) {
-      const target = [...game.user.targets][0]
-      if (target.actor.type == "opponent") {
-        modifier = target.actor.system.malus
-      }
-    }
-
-    const isWeaponRoll = true
-    const itemName = item.name
-    if (modifier < 0) {
-      item.system.range === ""
-        ? actor.rollSave("str", { modifier, rollAdvantage, isWeaponRoll, itemName })
-        : actor.rollSave("dex", { modifier, rollAdvantage, isWeaponRoll, itemName })
-    } else {
-      item.system.range === "" ? actor.rollSave("str", { rollAdvantage, isWeaponRoll, itemName }) : actor.rollSave("dex", { rollAdvantage, isWeaponRoll, itemName })
-    }
+    // Open the save window if the item uses resource and is not at 0, or if the item uses no resource ; the opponent's malus comes from the target in the roll window
+    return actor.rollWeapon(item, { rollAdvantage })
   }
 
   /**
    * @name rollAttackMacro
-   * @description Roll the item of type Attack for Opponent
+   * @description Use the item of type Attack of an Opponent against the targeted character : its players roll a save
    *              Check that only one token is selected and he has the attack item
    * @public
    *
@@ -242,8 +225,8 @@ export class Macros {
     // Nothing to roll for an attack without damage
     if (!item.system.hasDamage) return
 
-    // Open the roll window
-    return await actor.system.rollAttack(item.system.damageDice, item.name)
+    // Ask the players of the targeted character for a save
+    return await CombatCard.requestDefense(actor, item)
   }
 
   /**

@@ -1,0 +1,42 @@
+<div class="cthack-choose-attack-dialog cthack-request-defense-dialog">
+  <div class="duel">
+    <div class="participant">
+      <img src="{{opponent.img}}" alt="{{opponent.name}}">
+      <span>{{opponent.name}}</span>
+    </div>
+    <i class="fa-solid fa-angles-right duel-arrow"></i>
+    <div class="participant">
+      <img src="{{victim.img}}" alt="{{victim.name}}">
+      <span>{{victim.name}}</span>
+    </div>
+  </div>
+  <fieldset class="attack-list">
+    <legend>{{localize "CTHACK.Card.attack"}}</legend>
+    <div class="attack-choice">
+      <img src="{{attack.img}}" alt="">
+      <span class="attack-name">{{attack.name}}</span>
+      <span class="attack-formula {{#if attack.isFixed}}fixed{{/if}}"
+        data-tooltip="{{#if attack.isFixed}}{{localize 'CTHACK.Card.fixedDamage'}}{{else}}{{localize 'CTHACK.Card.damageDice'}}{{/if}}">
+        {{#if attack.isFixed}}<i class="fa-solid fa-equals"></i>{{else}}<i class="fa-solid fa-dice"></i>{{/if}} {{attack.formula}}
+      </span>
+    </div>
+  </fieldset>
+  <fieldset class="attack-list">
+    <legend>{{localize "CTHACK.Defense.save"}}</legend>
+    {{#each saves as |save|}}
+      <label class="attack-choice">
+        <input type="radio" name="save" value="{{save.id}}" {{checked save.checked}}>
+        <span class="attack-name">{{save.label}}</span>
+      </label>
+    {{/each}}
+  </fieldset>
+  {{!-- Même glissière que la fenêtre de jet --}}
+  <div class="cthack-roll-dialog single-column">
+    <fieldset class="dialog-avantages">
+      <legend>{{localize "CTHACK.Roll.avantagesDesavantages"}}</legend>
+      <input type="range" name="avantages" min="1" max="5" value="{{avantages}}"
+        data-tooltip="{{localize 'CTHACK.Defense.advantagesTooltip'}}" data-tooltip-direction="UP" data-tooltip-class="tooltip-avantages">
+      <input id="selectAvantages" name="selectAvantages" readonly value="{{selectAvantages}}">
+    </fieldset>
+  </div>
+</div>

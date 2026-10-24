@@ -44,10 +44,22 @@ export function registerHooks() {
   Hooks.on("renderChatMessageHTML", (app, html, data) => {
     highlightSuccessFailure(app, html, data)
     if (game.user.isGM) {
-      html.querySelectorAll(".ask-roll-dice").forEach((btn) => {
+      html.querySelectorAll(".ask-roll-dice, .ask-defense-dice").forEach((btn) => {
         btn.style.display = "none"
       })
     } else {
+      // Défense contre une attaque d'Opposant : message public, seuls les propriétaires du personnage attaqué ont le bouton
+      html.querySelectorAll(".ask-defense-dice").forEach((btn) => {
+        const { actorUuid, opponentTokenUuid, attackId, save, avantage } = btn.dataset
+        const character = fromUuidSync(actorUuid)
+        if (!character?.isOwner) {
+          btn.style.display = "none"
+          return
+        }
+        btn.addEventListener("click", (event) => {
+          character.rollSave(save, { rollAdvantage: avantage || "=", defense: { opponentTokenUuid, attackId } })
+        })
+      })
       html.querySelectorAll(".ask-roll-dice").forEach((btn) => {
         btn.addEventListener("click", (event) => {
           const type = btn.dataset.type

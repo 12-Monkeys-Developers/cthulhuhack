@@ -31,6 +31,7 @@ export default class CtHackActor extends Actor {
    * @param {boolean} [options.isWeaponRoll=false] - Whether the roll is a weapon roll.
    * @param {boolean} [options.rollAdvantage=false] - Whether the roll has advantage (=, +, ++, -, --).
    * @param {string} [options.itemName] - The name of the item for weapon rolls.
+   * @param {Object} [options.defense] - A save asked by the GM to defend against an opponent's attack : opponentTokenUuid and attackId.
    * @returns {Promise} - A promise that resolves with the result of the roll.
    */
   async rollSave(saveId, options = {}) {
@@ -44,7 +45,7 @@ export default class CtHackActor extends Actor {
     }
     // Save roll
     else {
-      return await this.system.roll(ROLL_TYPE.SAVE, saveId, { rollAdvantage })
+      return await this.system.roll(ROLL_TYPE.SAVE, saveId, { rollAdvantage, defense: options.defense })
     }
   }
 
@@ -108,6 +109,23 @@ export default class CtHackActor extends Actor {
     }
 
     return await this.system.roll(ROLL_TYPE.MATERIAL, item.id)
+  }
+
+  /**
+   * Roll the attack of a weapon : a Strength save for a weapon without range, a Dexterity save otherwise.
+   * Used by the character sheet and the weapon macro.
+   * @param {Item} item The weapon.
+   * @param {Object} [options={}]
+   * @param {string} [options.rollAdvantage="="] The advantage of the roll : =, +, ++, -, --.
+   * @returns {Promise<Roll|null>}
+   */
+  async rollWeapon(item, options = {}) {
+    // Weapon with resource at 0
+    if (item.system.dice === "0") {
+      return ui.notifications.warn(game.i18n.format("MACROS.ObjectEmptyResource", { itemName: item.name }))
+    }
+    const saveId = item.system.range === "" ? "str" : "dex"
+    return await this.rollSave(saveId, { rollAdvantage: options.rollAdvantage || "=", isWeaponRoll: true, itemName: item.name })
   }
 
   /**

@@ -35,6 +35,7 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
       rollResource: CtHackCharacterSheet.#onResourceRoll,
       rollDamage: CtHackCharacterSheet.#onDamageRoll,
       rollMaterial: CtHackCharacterSheet.#onMaterialRoll,
+      rollWeapon: CtHackCharacterSheet.#onWeaponRoll,
       rollSanity: CtHackCharacterSheet.#onSanityRoll,
       toggleAdrenaline: CtHackCharacterSheet.#onToggleAdrenaline,
     },
@@ -509,6 +510,19 @@ export default class CtHackCharacterSheet extends CtHackActorSheet {
     if (!itemId) return
     const item = this.document.items.get(itemId)
     await this.document.rollMaterial(item, { event })
+  }
+
+  /**
+   * Handle rolling the attack of a weapon, as the weapon macro does : Strength without range, Dexterity with a range.
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target
+   */
+  static async #onWeaponRoll(event, target) {
+    event.stopPropagation()
+    const itemId = target.closest(".item")?.dataset.itemId
+    const item = itemId && this.document.items.get(itemId)
+    if (!item) return
+    await this.document.rollWeapon(item)
   }
 
   /**

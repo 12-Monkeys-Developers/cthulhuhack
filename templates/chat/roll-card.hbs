@@ -17,6 +17,7 @@
       <span class="card-label">{{subtitle}}</span>
       {{#if target}}<span class="card-target-name">{{localize "CTHACK.Card.versus" name=target.name}}</span>{{/if}}
       {{#if attackLabel}}<span class="card-attack{{#if system.isUnarmed}} unarmed{{/if}}">{{attackLabel}}</span>{{/if}}
+      {{#if defenseLabel}}<span class="card-attack defense">{{defenseLabel}}</span>{{/if}}
       {{#if multipleTargets}}<span class="card-warning" data-tooltip="{{localize 'CTHACK.Card.multipleTargets'}}"><i class="fa-solid fa-triangle-exclamation"></i></span>{{/if}}
     </div>
   </header>
@@ -106,6 +107,14 @@
           <span><i class="fa-solid fa-hourglass-half"></i> {{localize "CTHACK.Card.awaitingGm" name=target.name}}</span>
           {{#if canRollOpponentDamage}}
             <button type="button" data-action="rollOpponentDamage"><i class="fa-solid fa-skull"></i> {{localize "CTHACK.Card.chooseAttack"}}</button>
+          {{/if}}
+        </div>
+      {{/if}}
+      {{#if awaitingOpponentDice}}
+        <div class="card-pending riposte">
+          <span><i class="fa-solid fa-hourglass-half"></i> {{localize "CTHACK.Card.awaitingOpponentDice" name=actor.name attack=system.opponentAttack.name}}</span>
+          {{#if canRollOpponentDice}}
+            <button type="button" data-action="rollOpponentDice"><i class="fa-solid fa-dice"></i> {{localize "CTHACK.Card.rollOpponentDice" formula=system.opponentAttack.formula}}</button>
           {{/if}}
         </div>
       {{/if}}

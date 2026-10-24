@@ -267,12 +267,12 @@ pages:
 
           <h3>Armes et objets</h3>
           <p>
-            Chaque arme ou objet peut avoir un <strong>dé de matériel</strong> : l'icône de dé lance un jet de matériel, et le dé baisse d'un cran en cas d'échec. Les armes affichent
-            aussi leur <strong>portée</strong>.
+            Chaque arme ou objet peut avoir un <strong>dé de matériel</strong>, et le dé baisse d'un cran en cas d'échec au jet de matériel. Pour une arme, cliquez sur le dé de
+            matériel pour ce jet ; pour un objet, sur la petite icône de d20. Les armes affichent aussi leur <strong>portée</strong>.
           </p>
           <p>
-            Pour attaquer avec une arme, faites glisser l'arme dans la barre de macros (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.7BUnactZ8KvPfGhB]{Outils du MJ}), ou ciblez un Adversaire et faites un jet de Force ou de Dextérité en
-            déclarant l'attaque (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.myQHUZRgImQ9cmj5]{Jets et messages}).
+            Pour attaquer avec une arme, cliquez sur la petite icône de d20 de sa ligne : c'est un jet d'attaque en Force pour une arme sans portée, en Dextérité sinon, comme avec la
+            macro de l'arme (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.7BUnactZ8KvPfGhB]{Outils du MJ}). Ciblez l'Adversaire avant : son malus s'applique et la carte de combat gère les dégâts (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.myQHUZRgImQ9cmj5]{Jets et messages}).
           </p>
           <div class="guide-astuce">
             <p>
@@ -402,12 +402,16 @@ pages:
 
           <h3>Les attaques</h3>
           <p>
-            Une attaque se définit par un dé de dégâts, des dégâts fixes et un nombre d'attaques. Quand elle a un dé de dégâts, une icône de dé permet de lancer ses dégâts (dé + dégâts
-            fixes, par exemple « d8 + 2 »). Si un personnage est ciblé, la carte du tchat vous propose de lui <strong>appliquer</strong> les dégâts.
+            Une attaque se définit par des dégâts fixes, un nombre d'attaques et, pour les Adversaires des anciens suppléments, un dé de dégâts (dé + dégâts fixes, par exemple
+            « d8 + 2 »). Dans Cthulhu Hack, ce sont toujours les joueurs qui lancent les dés : le MJ n'a aucun jet à faire pour un Adversaire.
           </p>
           <p>
-            Une attaque à dégâts fixes seulement n'a pas d'icône de jet : ses dégâts s'appliquent quand vous la choisissez pour une riposte (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.myQHUZRgImQ9cmj5]{Jets et messages}).
+            Pour utiliser une attaque contre un personnage (une attaque restante en fin de round, par exemple), ciblez son token puis cliquez sur l'icône de dé de l'attaque. Choisissez
+            la Sauvegarde à faire (Dextérité ou Force) et l'avantage éventuel : l'attaque est décomptée dans le suivi de combat, et un message visible de tous annonce l'attaque ;
+            seuls les joueurs du personnage y ont le bouton <strong>Se défendre</strong>. Sur une réussite, il ne se passe rien ; sur un échec, la carte du jet porte les dégâts de l'attaque (le joueur lance le dé de
+            dégâts s'il y en a un), avec le bouton <strong>Appliquer</strong> pour le MJ. La macro d'attaque fait de même.
           </p>
+          <p>Une attaque sert aussi à la riposte quand un personnage rate son attaque (voir @UUID[Compendium.cthack.guide.JournalEntry.LCgvsWO3juonkohy.JournalEntryPage.myQHUZRgImQ9cmj5]{Jets et messages}).</p>
 
           <h3>Capacités et sorts</h3>
           <ul>
@@ -518,7 +522,11 @@ pages:
           <h3>L'attaque échoue : la riposte</h3>
           <ol>
             <li>La carte indique que l'Adversaire riposte et attend le MJ. Cliquez sur <strong>Choisir l'attaque</strong>.</li>
-            <li>Une fenêtre liste les attaques de l'Adversaire, avec leurs dés ou leurs dégâts fixes. Choisissez-en une et cliquez sur <strong>Lancer les dégâts</strong>.</li>
+            <li>Une fenêtre liste les attaques de l'Adversaire, avec leurs dés ou leurs dégâts fixes. Choisissez-en une et cliquez sur <strong>Choisir l'attaque</strong>.</li>
+            <li>
+              Des dégâts fixes s'ajoutent aussitôt à la carte. Un dé de dégâts (Adversaire d'un ancien supplément) est lancé par le joueur, avec le bouton
+              <strong>Lancer les dégâts</strong> de la carte.
+            </li>
             <li>Les dégâts s'ajoutent à la carte, avec le bouton <strong>Appliquer … dégâts à …</strong> qui les retire des PV du personnage.</li>
           </ol>
           <div class="guide-row">
@@ -619,6 +627,35 @@ pages:
           </ul>
           <p>Le joueur répond en cliquant sur <strong>Faire le jet !</strong> dans le message : la fenêtre de jet de son personnage s'ouvre.</p>
 
+          <h3>Le suivi de combat</h3>
+          <p>
+            Cthulhu Hack n'a pas d'initiative : pendant un round, les actions sont simultanées et chaque personnage a droit à son Moment. Le suivi de combat (onglet Combat de la
+            barre latérale) est adapté en conséquence : plus de colonne ni de jets d'initiative.
+          </p>
+          <ul>
+            <li>
+              <strong>Ordre</strong> : les combattants s'affichent dans leur ordre d'ajout. Faites-les <strong>glisser</strong> par la poignée de gauche pour les réordonner (MJ
+              seulement).
+            </li>
+            <li>
+              <strong>Moment accompli</strong> : le cercle à droite de chaque combattant se coche quand il a joué ; la ligne s'estompe. Le MJ et le propriétaire du personnage peuvent
+              le cocher ou le décocher. Cocher le combattant qui a la main la passe au suivant.
+            </li>
+            <li>
+              <strong>Tour suivant</strong> : marque le Moment du combattant actif comme accompli et donne la main au prochain qui n'a pas encore joué. Le bouton
+              <strong>Lui donner la main</strong> (main tendue) permet au MJ de faire jouer n'importe quel combattant, sans suivre l'ordre.
+            </li>
+            <li>
+              <strong>Attaques des Adversaires</strong> : sous le nom d'un Opposant, une pastille par attaque du round (somme des attaques de sa fiche, « Griffe x 3 » compte pour 3),
+              suivie du nombre restant. Une attaque est décomptée automatiquement quand le MJ utilise une attaque de l'Opposant contre un personnage (fiche ou macro), et quand un personnage fait une
+              sauvegarde ou un jet d'arme en ciblant l'Opposant, même lancé par un joueur (que le jet réussisse ou non ; le choix de l'attaque sur la carte de combat ne décompte
+              rien de plus). Cliquez sur une pastille pour noter les attaques utilisées, sur une pastille vide pour les récupérer. Le clic droit
+              <strong>Nombre d'attaques par round</strong> change ce total pour la rencontre (0 revient au calcul depuis la fiche). Les joueurs ne voient ces pastilles que s'ils
+              peuvent voir l'Opposant.
+            </li>
+            <li><strong>Nouveau round</strong> : quand tout le monde a joué, ou au bouton Round suivant, les Moments et les attaques utilisées sont remis à zéro.</li>
+          </ul>
+
           <h3>La Fortune</h3>
           <div class="guide-row">
             <div class="guide-image guide-image-narrow"><img src="systems/cthack/ui/guide/fr/fortune.webp" alt="Menu de la Fortune" /></div>
@@ -668,7 +705,7 @@ pages:
               <tr><td>Un objet d'un personnage</td><td>Jet de matériel</td></tr>
               <tr><td>Une capacité, de personnage ou d'Adversaire</td><td>L'utilise (retire une utilisation)</td></tr>
               <tr><td>Un sort, de personnage ou d'Adversaire</td><td>Jet de sanité</td></tr>
-              <tr><td>Une attaque d'Adversaire</td><td>Jet de dégâts</td></tr>
+              <tr><td>Une attaque d'Adversaire</td><td>Sauvegarde demandée au personnage ciblé</td></tr>
             </tbody>
           </table>
           <p>

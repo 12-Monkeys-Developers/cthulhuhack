@@ -9,6 +9,7 @@ export const COMBAT_STATUS = Object.freeze({
   AWAITING_PLAYER: "awaitingPlayerDamage",
   AWAITING_GM: "awaitingGmDamage",
   AWAITING_HIT_DICE: "awaitingHitDice",
+  AWAITING_OPPONENT_DICE: "awaitingOpponentDice",
   RESOLVED: "resolved",
   NO_DAMAGE: "noDamage",
 })
@@ -77,6 +78,17 @@ export default class CtHackCardMessage extends foundry.abstract.TypeDataModel {
       // Attaque déclarée dans la fenêtre de jet : clé de l'attribut de dégâts du personnage (armé ou sans arme)
       attackDamage: new fields.StringField({ required: true, blank: true, choices: ["", "armedDamage", "unarmedDamage"], initial: "" }),
       combat: new fields.StringField({ required: true, blank: true, choices: Object.values(COMBAT_STATUS), initial: COMBAT_STATUS.NONE }),
+      // Sauvegarde demandée par le MJ pour se défendre d'une attaque d'Opposant (déjà décomptée à la demande)
+      defense: new fields.BooleanField({ required: true, initial: false }),
+      // Attaque de l'Opposant dont le dé de dégâts reste à lancer par le joueur : celle de la défense, ou celle choisie par le MJ pour la riposte
+      opponentAttack: new fields.SchemaField(
+        {
+          id: new fields.StringField({ required: true, blank: true, initial: "" }),
+          name: new fields.StringField({ required: true, blank: true, initial: "" }),
+          formula: new fields.StringField({ required: true, blank: true, initial: "" }),
+        },
+        { nullable: true, initial: null },
+      ),
     }
   }
 
@@ -147,6 +159,18 @@ export default class CtHackCardMessage extends foundry.abstract.TypeDataModel {
     if (!this.victimUsesHitDice || this.hitDiceRolled || !this.victim.uuid) return false
     if (user.isGM) return true
     const actor = fromUuidSync(this.victim.uuid)
+    return !!actor?.testUserPermission(user, "OWNER")
+  }
+
+  /**
+   * Can the user roll the damage dice of the opponent's attack on a combat card : the owner of the character who takes it, or the GM
+   * @param {User} user
+   * @returns {boolean}
+   */
+  canRollOpponentDice(user = game.user) {
+    if (this.combat !== COMBAT_STATUS.AWAITING_OPPONENT_DICE || !this.opponentAttack) return false
+    if (user.isGM) return true
+    const actor = fromUuidSync(this.actor.uuid)
     return !!actor?.testUserPermission(user, "OWNER")
   }
 

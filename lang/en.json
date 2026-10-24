@@ -404,6 +404,25 @@
       "titleSanity": "Sanity Roll",
       "titleStandard": "Standard Roll"
     },
+    "Defense": {
+      "title": "Use an attack",
+      "use": "Use against the targeted character (they make a save)",
+      "save": "Character's save",
+      "advantagesTooltip": "Double disadvantage - Disadvantage - Normal - Advantage - Double advantage",
+      "advantage": {
+        "++": "Double Advantage",
+        "+": "Advantage",
+        "=": "Normal",
+        "-": "Disadvantage",
+        "--": "Double Disadvantage"
+      },
+      "send": "Ask for the save",
+      "saveToMake": "{save} save to avoid the attack",
+      "defend": "Defend",
+      "noTarget": "Target the attacked character.",
+      "noToken": "{name} has no token on the scene.",
+      "attackNotFound": "The opponent or its attack cannot be found."
+    },
     "Card": {
       "attack": "Attack",
       "attackNone": "No attack",
@@ -438,6 +457,9 @@
       "rollHitDice": "Roll {name}'s Hit Dice",
       "awaitingHitDice": "Waiting for {name}'s Hit Dice roll",
       "hitDiceRolled": "Hit Dice roll done",
+      "defense": "Defense: {attack}",
+      "awaitingOpponentDice": "{name} is hit by {attack}: damage to roll",
+      "rollOpponentDice": "Roll the damage ({formula})",
       "noActiveGM": "No GM connected to update the card."
     },
     "Roll": {
@@ -563,6 +585,19 @@
       "gmManagerTooltip": "Open players manager",
       "search": "Search",
       "searchTooltip": "Open search window"
+    },
+    "Combat": {
+      "Drag": "Drag to reorder",
+      "SetTurn": "Give the turn",
+      "MarkDone": "Mark the Moment as done",
+      "MarkNotDone": "Mark the Moment as not done",
+      "ActionsLeft": "Attacks left: {left} of {max}",
+      "UseAction": "Use an attack",
+      "RecoverAction": "Recover the attack",
+      "SetActions": "Attacks per round",
+      "ActionsMax": "Attacks per round",
+      "ActionsMaxHint": "0: the sum of the opponent's attacks (Claw x 3 counts for 3).",
+      "noActiveGM": "No GM connected to count the Opponent's attack."
     }
   },
 

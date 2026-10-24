@@ -251,12 +251,12 @@ pages:
 
           <h3>Weapons and items</h3>
           <p>
-            Each weapon or item can have a <strong>material die</strong>: the die icon rolls a material check, and the die goes down one step on a failure. Weapons also show their
-            <strong>range</strong>.
+            Each weapon or item can have a <strong>material die</strong>, which goes down one step when the material check fails. For a weapon, click the material die to roll
+            this check; for an item, click the small d20 icon. Weapons also show their <strong>range</strong>.
           </p>
           <p>
-            To attack with a weapon, drag it to the macro bar (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.Syeh6uaZWPJzq16a]{GM tools}), or target an Opponent and roll a Strength or Dexterity save while declaring the attack (see
-            @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.MkpSqd2pzzBsYpRB]{Rolls and messages}).
+            To attack with a weapon, click the small d20 icon of its line: it is a Strength attack roll for a weapon without range, Dexterity otherwise, as with the weapon macro
+            (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.Syeh6uaZWPJzq16a]{GM tools}). Target the Opponent first: its malus applies and the combat card handles the damage (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.MkpSqd2pzzBsYpRB]{Rolls and messages}).
           </p>
           <div class="guide-astuce">
             <p>
@@ -377,10 +377,16 @@ pages:
 
           <h3>Attacks</h3>
           <p>
-            An attack is defined by a damage die, fixed damage and a number of attacks. When it has a damage die, a die icon rolls its damage (die + fixed damage, for example
-            "d8 + 2"). If a character is targeted, the chat card offers to <strong>apply</strong> the damage to them.
+            An attack is defined by fixed damage, a number of attacks and, for the Opponents of older supplements, a damage die (die + fixed damage, for example "d8 + 2"). In
+            Cthulhu Hack the players always roll the dice: the GM never rolls for an Opponent.
           </p>
-          <p>An attack with fixed damage only has no roll icon: its damage applies when you pick it for a counter-attack (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.MkpSqd2pzzBsYpRB]{Rolls and messages}).</p>
+          <p>
+            To use an attack against a character (an attack left at the end of the round, for example), target their token, then click the die icon of the attack. Choose the save to
+            make (Dexterity or Strength) and any advantage: the attack is counted in the combat tracker, and a message visible to everyone announces the attack;
+            only the character's players get its <strong>Defend</strong> button. On a success nothing happens; on a failure the roll card carries the damage of the attack (the player rolls the damage die if there is
+            one), with the <strong>Apply</strong> button for the GM. The attack macro does the same.
+          </p>
+          <p>An attack is also used for the counter-attack when a character fails their attack (see @UUID[Compendium.cthack.guide-en.JournalEntry.VxBiKbxjMlK7dyK7.JournalEntryPage.MkpSqd2pzzBsYpRB]{Rolls and messages}).</p>
 
           <h3>Abilities and spells</h3>
           <ul>
@@ -489,7 +495,11 @@ pages:
           <h3>The attack fails: the counter-attack</h3>
           <ol>
             <li>The card says the Opponent strikes back and waits for the GM. Click <strong>Choose the attack</strong>.</li>
-            <li>A dialog lists the Opponent's attacks, with their dice or fixed damage. Pick one and click <strong>Roll damage</strong>.</li>
+            <li>A dialog lists the Opponent's attacks, with their dice or fixed damage. Pick one and click <strong>Choose the attack</strong>.</li>
+            <li>
+              Fixed damage is added to the card at once. A damage die (Opponent of an older supplement) is rolled by the player, with the <strong>Roll the damage</strong> button of
+              the card.
+            </li>
             <li>The damage is added to the card, with the <strong>Apply … damage to …</strong> button that removes it from the character's HP.</li>
           </ol>
           <div class="guide-row">
@@ -587,6 +597,32 @@ pages:
           </ul>
           <p>The player answers by clicking <strong>Let's roll !</strong> in the message: their character's roll dialog opens.</p>
 
+          <h3>Combat tracking</h3>
+          <p>
+            Cthulhu Hack has no initiative: during a round, actions are simultaneous and each character gets their Moment. The combat tracker (Combat tab of the sidebar) is adapted
+            accordingly: no initiative column or rolls anymore.
+          </p>
+          <ul>
+            <li>
+              <strong>Order</strong>: combatants are listed in the order they were added. <strong>Drag</strong> them by the left handle to reorder them (GM only).
+            </li>
+            <li>
+              <strong>Moment done</strong>: the circle on the right of each combatant is checked once they have acted; the row fades. The GM and the character's owner can check or
+              uncheck it. Checking the combatant who has the turn passes it to the next one.
+            </li>
+            <li>
+              <strong>Next turn</strong>: marks the Moment of the active combatant as done and gives the turn to the next one who has not acted yet. The <strong>Give the turn</strong>
+              button (pointing hand) lets the GM have any combatant act, regardless of the order.
+            </li>
+            <li>
+              <strong>Opponents' attacks</strong>: under an Opponent's name, one pip per attack of the round (sum of the attacks on their sheet, "Claw x 3" counts for 3), followed
+              by the number left. An attack is counted automatically when the GM uses an attack of the Opponent against a character (sheet or macro), and when a character makes a save or a weapon
+              roll targeting the Opponent, even rolled by a player (whether the roll succeeds or not; choosing the attack on the combat card counts nothing more). Click a pip to mark attacks as used, an empty pip to recover them. The right-click <strong>Attacks per round</strong> entry changes this total for
+              the encounter (0 goes back to the sheet). Players only see these pips if they can see the Opponent.
+            </li>
+            <li><strong>New round</strong>: once everyone has acted, or with the Next round button, Moments and used attacks are reset.</li>
+          </ul>
+
           <h3>Fortune</h3>
           <div class="guide-row">
             <div class="guide-image guide-image-narrow"><img src="systems/cthack/ui/guide/en/fortune.webp" alt="Fortune menu" /></div>
@@ -635,7 +671,7 @@ pages:
               <tr><td>A character's item</td><td>Material roll</td></tr>
               <tr><td>An ability, of a character or an Opponent</td><td>Uses it (removes one use)</td></tr>
               <tr><td>A spell, of a character or an Opponent</td><td>Sanity roll</td></tr>
-              <tr><td>An Opponent's attack</td><td>Damage roll</td></tr>
+              <tr><td>An Opponent's attack</td><td>Save asked of the targeted character</td></tr>
             </tbody>
           </table>
           <p>

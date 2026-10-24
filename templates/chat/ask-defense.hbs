@@ -1,0 +1,26 @@
+<article class="cthack-card ask-defense combat">
+  {{!-- En-tête comme les cartes de jet : l'Opposant attaque le personnage --}}
+  <header class="card-header">
+    <div class="card-duel">
+      <span class="card-token" data-tooltip="{{opponent.name}}"><img src="{{opponent.img}}" alt="{{opponent.name}}"></span>
+      <i class="fa-solid fa-angles-right card-duel-arrow"></i>
+      <span class="card-token target" data-tooltip="{{victim.name}}"><img src="{{victim.img}}" alt="{{victim.name}}"></span>
+    </div>
+    <div class="card-title">
+      <span class="card-kind">{{localize "CTHACK.Card.attack"}}</span>
+      <span class="card-label">{{attack.name}}</span>
+      <span class="card-target-name">{{localize "CTHACK.Card.versus" name=victim.name}}</span>
+      <span class="card-attack">{{#if attack.isFixed}}{{localize "CTHACK.Card.fixedDamage"}}{{else}}{{localize "CTHACK.Card.damageDice"}}{{/if}} : {{attack.formula}}</span>
+    </div>
+  </header>
+
+  <section class="card-combat-step">
+    <div class="card-pending riposte">
+      <span><i class="fa-solid fa-hourglass-half"></i> {{localize "CTHACK.Defense.saveToMake" save=saveText}}</span>
+      <button type="button" class="ask-defense-dice" data-actor-uuid="{{victim.uuid}}" data-opponent-token-uuid="{{opponent.tokenUuid}}" data-attack-id="{{attack.id}}"
+        data-save="{{save}}" data-avantage="{{avantage}}">
+        <i class="fa-solid fa-shield-halved"></i> {{localize "CTHACK.Defense.defend"}}
+      </button>
+    </div>
+  </section>
+</article>
