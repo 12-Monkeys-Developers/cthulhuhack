@@ -543,7 +543,7 @@ a.inline-roll {
   background: var(--background-standard);
   background-size: 100% 100%;
   color: var(--font-color-primary);
-  font-size: var(--cthack-fs-lg);
+  font-size: var(--cthack-fs-base);
 }
 .cthack .item-line:hover {
   background-color: var(--item-line-hover-background-color);
